@@ -23,6 +23,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx npm@11 publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   pages:
     runs-on: ubuntu-latest
