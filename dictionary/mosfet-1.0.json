@@ -1,0 +1,234 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "mosfet",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for discrete power MOSFETs, covering enhancement-mode N-channel and P-channel devices. Demonstrates that the datasheet schema is family-agnostic: the same measurement envelope, condition model, and provenance serve a discrete transistor as well as a linear regulator. Condition axes for this family include V_GS, V_DS, I_D, T_J, and T_C. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "drain_source_voltage",
+      "name": "Drain-source voltage",
+      "unit": "V",
+      "group": "ratings",
+      "aliases": ["VDS", "BVDSS", "V(BR)DSS", "drain-source breakdown voltage"],
+      "hint": "The absolute-maximum drain-to-source voltage, the headline voltage rating. Store as absolute_max. The breakdown voltage V(BR)DSS is the characterized counterpart."
+    },
+    {
+      "key": "gate_source_voltage",
+      "name": "Gate-source voltage",
+      "unit": "V",
+      "group": "ratings",
+      "aliases": ["VGS", "gate-source voltage rating"],
+      "hint": "Maximum gate-source voltage, typically a symmetric limit such as +/-20 V. Store as absolute_max, using min and max in the value."
+    },
+    {
+      "key": "continuous_drain_current",
+      "name": "Continuous drain current",
+      "unit": "A",
+      "group": "ratings",
+      "array": true,
+      "conditionAxis": "T_C",
+      "aliases": ["ID", "continuous drain current"],
+      "hint": "Continuous drain current, strongly case-temperature dependent, so specify T_C (often 25 degC and 100 degC). May be package-limited below the silicon capability."
+    },
+    {
+      "key": "pulsed_drain_current",
+      "name": "Pulsed drain current",
+      "unit": "A",
+      "group": "ratings",
+      "aliases": ["IDM", "pulsed drain current"],
+      "hint": "Peak pulsed drain current, pulse width and duty cycle limited."
+    },
+    {
+      "key": "avalanche_energy",
+      "name": "Single-pulse avalanche energy",
+      "unit": "J",
+      "group": "ratings",
+      "aliases": ["EAS", "single pulse avalanche energy"],
+      "optional": true,
+      "hint": "Single-pulse avalanche energy, specified with the test inductance and starting current."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "ratings",
+      "array": true,
+      "conditionAxis": "T_C",
+      "aliases": ["PD", "maximum power dissipation"],
+      "hint": "Maximum power dissipation, derated with case temperature."
+    },
+    {
+      "key": "gate_threshold_voltage",
+      "name": "Gate threshold voltage",
+      "unit": "V",
+      "group": "static",
+      "aliases": ["VGS(th)", "VTH", "gate threshold voltage"],
+      "hint": "Gate-source threshold, measured at a small drain current with VDS = VGS. Give min, typ, max where published, with the I_D and T_J conditions."
+    },
+    {
+      "key": "drain_source_on_resistance",
+      "name": "Static drain-source on-resistance",
+      "unit": "ohm",
+      "group": "static",
+      "array": true,
+      "conditionAxis": "V_GS",
+      "aliases": ["RDS(on)", "static drain-source on resistance", "on-resistance"],
+      "hint": "On-resistance, strongly gate-drive dependent, so emit one entry per V_GS point (for example 10 V and 4.5 V), each with its I_D and T_J conditions. This is the defining figure of merit for a switching MOSFET."
+    },
+    {
+      "key": "drain_source_leakage",
+      "name": "Zero-gate-voltage drain current",
+      "unit": "A",
+      "group": "static",
+      "aliases": ["IDSS", "zero gate voltage drain current", "drain-source leakage"],
+      "hint": "Drain leakage at VGS = 0 and VDS at or near the rating, at stated T_J."
+    },
+    {
+      "key": "gate_source_leakage",
+      "name": "Gate-source leakage current",
+      "unit": "A",
+      "group": "static",
+      "aliases": ["IGSS", "gate-source leakage current"],
+      "hint": "Gate leakage at maximum VGS with VDS = 0. Often a symmetric +/- bound."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "aliases": ["Ciss", "input capacitance"],
+      "hint": "Ciss = Cgs + Cgd, measured at a stated VDS, VGS = 0, and test frequency."
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "aliases": ["Coss", "output capacitance"],
+      "hint": "Coss = Cds + Cgd, at a stated VDS."
+    },
+    {
+      "key": "reverse_transfer_capacitance",
+      "name": "Reverse transfer capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "aliases": ["Crss", "reverse transfer capacitance", "Cgd"],
+      "hint": "Crss = Cgd, the Miller capacitance that governs switching speed."
+    },
+    {
+      "key": "total_gate_charge",
+      "name": "Total gate charge",
+      "unit": "C",
+      "group": "gate_charge",
+      "aliases": ["Qg", "total gate charge"],
+      "hint": "Total gate charge, at stated VDS, I_D, and drive VGS. Store in coulombs (a 10 nC figure is 1e-8 C)."
+    },
+    {
+      "key": "gate_source_charge",
+      "name": "Gate-source charge",
+      "unit": "C",
+      "group": "gate_charge",
+      "aliases": ["Qgs", "gate-source charge"]
+    },
+    {
+      "key": "gate_drain_charge",
+      "name": "Gate-drain charge",
+      "unit": "C",
+      "group": "gate_charge",
+      "aliases": ["Qgd", "gate-drain charge", "Miller charge"]
+    },
+    {
+      "key": "gate_resistance",
+      "name": "Internal gate resistance",
+      "unit": "ohm",
+      "group": "gate_charge",
+      "aliases": ["Rg", "internal gate resistance"],
+      "optional": true
+    },
+    {
+      "key": "turn_on_delay_time",
+      "name": "Turn-on delay time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": ["td(on)", "turn-on delay time"],
+      "hint": "Resistive-load switching times are specified together at one VDS, I_D, VGS, and Rg. Store in seconds (a 7 ns figure is 7e-9 s)."
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": ["tr", "rise time"]
+    },
+    {
+      "key": "turn_off_delay_time",
+      "name": "Turn-off delay time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": ["td(off)", "turn-off delay time"]
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": ["tf", "fall time"]
+    },
+    {
+      "key": "diode_forward_voltage",
+      "name": "Body-diode forward voltage",
+      "unit": "V",
+      "group": "body_diode",
+      "aliases": ["VSD", "diode forward voltage", "source-drain diode voltage"],
+      "hint": "Forward voltage of the intrinsic body diode at a stated forward current and T_J."
+    },
+    {
+      "key": "reverse_recovery_time",
+      "name": "Body-diode reverse recovery time",
+      "unit": "s",
+      "group": "body_diode",
+      "aliases": ["trr", "reverse recovery time"],
+      "optional": true
+    },
+    {
+      "key": "reverse_recovery_charge",
+      "name": "Body-diode reverse recovery charge",
+      "unit": "C",
+      "group": "body_diode",
+      "aliases": ["Qrr", "reverse recovery charge"],
+      "optional": true
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction to case",
+      "unit": "degC/W",
+      "group": "thermal",
+      "aliases": ["RthJC", "RJC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance. The unit is degC/W, equivalently K/W."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "unit": "degC/W",
+      "group": "thermal",
+      "aliases": ["RthJA", "RJA", "junction-to-ambient thermal resistance"],
+      "hint": "Junction-to-ambient thermal resistance, board and copper-area dependent, so record the stated mounting condition in the measurement conditions."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature"],
+      "hint": "Recommended operating junction temperature range. Store as recommended, with min and max in the value."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Absolute-maximum storage temperature range."
+    }
+  ]
+}

@@ -34,7 +34,7 @@ A conforming document is a JSON object with the following members.
 
 ## 5. Pinout
 
-Each pin REQUIRES a 1-indexed `number`, the printed `name`, and a normalized `function` from the controlled set IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD. A consuming tool SHOULD bind a part by `function` rather than by `name`.
+Each pin REQUIRES a 1-indexed `number`, the printed `name`, and a normalized `function`. `function` is an uppercase string from a controlled vocabulary that families extend, matching `^[A-Z][A-Z0-9_]*$`. The recommended vocabulary is IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. Using an unlisted function is permitted but reduces interoperability, and a validator MAY constrain the set for a given family. A consuming tool SHOULD bind a part by `function` rather than by `name`.
 
 ## 6. Parameters
 
@@ -75,7 +75,7 @@ Document-level `provenance` MAY record `datasheetSha256`, `sourceUrl`, `datashee
 
 ## 9. Units
 
-Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, dB, V/V, %, ppm/degC, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted.
+Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, J, dB, V/V, %, ppm/degC, degC/W, K/W, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted. Thermal resistance uses degC/W (equivalently K/W), and energy such as single-pulse avalanche uses J.
 
 ## 10. Conformance
 

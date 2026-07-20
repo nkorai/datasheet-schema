@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "EXAMPLE-NMOS-30",
+    "manufacturer": "Datasheet Schema Examples",
+    "family": "mosfet",
+    "package": "SOT-23",
+    "pinCount": 3,
+    "description": "Illustrative 30 V logic-level N-channel MOSFET. Representative values for a typical SOT-23 device, provided to demonstrate the mosfet family. Not transcribed from a specific manufacturer datasheet."
+  },
+  "pinout": [
+    { "number": 1, "name": "G", "function": "G", "type": "digital_in" },
+    { "number": 2, "name": "S", "function": "S", "type": "power" },
+    { "number": 3, "name": "D", "function": "D", "type": "power" }
+  ],
+  "parameters": [
+    {
+      "key": "drain_source_voltage",
+      "aliases": ["VDS"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 30 }, "unit": "V",
+          "conditions": [ { "param": "V_GS", "value": 0, "unit": "V" } ] }
+      ]
+    },
+    {
+      "key": "gate_source_voltage",
+      "aliases": ["VGS"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "min": -12, "max": 12 }, "unit": "V" }
+      ]
+    },
+    {
+      "key": "continuous_drain_current",
+      "aliases": ["ID"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 5.7 }, "unit": "A",
+          "conditions": [ { "param": "T_C", "value": 25, "unit": "degC" } ] },
+        { "limitClass": "absolute_max", "value": { "max": 3.6 }, "unit": "A",
+          "conditions": [ { "param": "T_C", "value": 70, "unit": "degC" } ] }
+      ]
+    },
+    {
+      "key": "pulsed_drain_current",
+      "aliases": ["IDM"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 30 }, "unit": "A" }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "aliases": ["PD"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 1.4 }, "unit": "W",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ] }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "aliases": ["Tstg"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "min": -55, "max": 150 }, "unit": "degC" }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "aliases": ["TJ"],
+      "measurements": [
+        { "limitClass": "recommended", "value": { "min": -55, "max": 150 }, "unit": "degC" }
+      ]
+    },
+    {
+      "key": "gate_threshold_voltage",
+      "aliases": ["VGS(th)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "min": 0.6, "typ": 1.1, "max": 1.6 }, "unit": "V",
+          "conditions": [ { "param": "V_DS", "value": 1.1, "unit": "V" }, { "param": "I_D", "value": 0.00025, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = VGS, ID = 250 uA", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "drain_source_on_resistance",
+      "aliases": ["RDS(on)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.028, "max": 0.035 }, "unit": "ohm",
+          "conditions": [ { "param": "V_GS", "value": 10, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" } ],
+          "conditionsVerbatim": "VGS = 10 V, ID = 5 A", "sourcePage": 2 },
+        { "limitClass": "characterized", "value": { "typ": 0.040, "max": 0.050 }, "unit": "ohm",
+          "conditions": [ { "param": "V_GS", "value": 4.5, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" } ],
+          "conditionsVerbatim": "VGS = 4.5 V, ID = 5 A", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "drain_source_leakage",
+      "aliases": ["IDSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "max": 0.000001 }, "unit": "A",
+          "conditions": [ { "param": "V_DS", "value": 30, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 30 V, VGS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "gate_source_leakage",
+      "aliases": ["IGSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "min": -0.0000001, "max": 0.0000001 }, "unit": "A",
+          "conditions": [ { "param": "V_GS", "min": -12, "max": 12, "unit": "V" }, { "param": "V_DS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VGS = +/-12 V, VDS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "aliases": ["Ciss"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 7.3e-10 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" }, { "param": "F", "value": 1000000, "unit": "Hz" } ],
+          "conditionsVerbatim": "VDS = 15 V, VGS = 0 V, f = 1 MHz", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "aliases": ["Coss"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 6.0e-11 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 15 V, f = 1 MHz", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "reverse_transfer_capacitance",
+      "aliases": ["Crss"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 4.5e-11 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 15 V, f = 1 MHz", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "total_gate_charge",
+      "aliases": ["Qg"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1.0e-8 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" }, { "param": "V_GS", "value": 10, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 15 V, ID = 5 A, VGS = 10 V", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "gate_drain_charge",
+      "aliases": ["Qgd"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 2.0e-9 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 15 V, ID = 5 A", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "turn_on_delay_time",
+      "aliases": ["td(on)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 7.0e-9 }, "unit": "s",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 15 V, ID = 5 A, VGS = 10 V, RG = 6 ohm", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "aliases": ["tr"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1.4e-8 }, "unit": "s",
+          "conditions": [ { "param": "V_DS", "value": 15, "unit": "V" }, { "param": "I_D", "value": 5, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 15 V, ID = 5 A, VGS = 10 V, RG = 6 ohm", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "diode_forward_voltage",
+      "aliases": ["VSD"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.8, "max": 1.2 }, "unit": "V",
+          "conditions": [ { "param": "I_D", "value": 5, "unit": "A" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "IS = 5 A, VGS = 0 V", "sourcePage": 3 }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "aliases": ["RthJA"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 125 }, "unit": "degC/W",
+          "conditions": [ { "param": "BOARD", "note": "minimum recommended pad, steady state" } ],
+          "conditionsVerbatim": "Steady state, minimum recommended pad", "sourcePage": 1 }
+      ]
+    }
+  ],
+  "provenance": {
+    "extractionMethod": "manual",
+    "verified": false
+  },
+  "notes": [
+    "Illustrative example demonstrating the mosfet family dictionary. Values are representative of a typical 30 V logic-level N-channel MOSFET in SOT-23 and are not transcribed from a specific manufacturer datasheet. Provenance is marked manual and unverified accordingly."
+  ]
+}

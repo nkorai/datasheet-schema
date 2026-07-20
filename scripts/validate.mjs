@@ -40,15 +40,24 @@ for (const f of glob('dictionary')) {
     ok ? pass(f) : fail(`${f}. ${ajv.errorsText(validateDict.errors)}`);
 }
 
-const ldoKeys = new Set(read('dictionary/ldo-1.0.json').parameters.map((p) => p.key));
+// A key set per family, so each example is checked against its own dictionary.
+const keysByFamily = new Map();
+for (const f of glob('dictionary')) {
+    if (f.startsWith('family-dictionary')) continue;
+    const dict = read(`dictionary/${f}`);
+    keysByFamily.set(dict.family, new Set(dict.parameters.map((p) => p.key)));
+}
 
-console.log('\nexamples (must pass, keys must be in dictionary):');
+console.log('\nexamples (must pass, keys must be in the family dictionary):');
 for (const f of glob('examples')) {
     const doc = read(`examples/${f}`);
     const ok = validate(doc);
     if (!ok) { fail(`${f}. ${ajv.errorsText(validate.errors)}`); continue; }
-    const unknown = (doc.parameters ?? []).map((p) => p.key).filter((k) => !ldoKeys.has(k));
-    unknown.length ? fail(`${f}. parameter keys not in dictionary: ${unknown.join(', ')}`) : pass(f);
+    const family = doc.component?.family;
+    const keys = keysByFamily.get(family);
+    if (!keys) { fail(`${f}. no dictionary for family "${family}"`); continue; }
+    const unknown = (doc.parameters ?? []).map((p) => p.key).filter((k) => !keys.has(k));
+    unknown.length ? fail(`${f}. parameter keys not in the ${family} dictionary: ${unknown.join(', ')}`) : pass(f);
 }
 
 console.log('\nconformance/valid (must pass):');

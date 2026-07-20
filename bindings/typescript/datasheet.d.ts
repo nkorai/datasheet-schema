@@ -85,9 +85,9 @@ export interface Pin {
    */
   name: string;
   /**
-   * Normalized semantic function.
+   * Normalized semantic function. A controlled vocabulary that families extend, in the same way the parameter key vocabulary is extended by a family dictionary. Recommended values: IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. A validator MAY constrain the set per family. Uppercase, matching ^[A-Z][A-Z0-9_]*$.
    */
-  function: 'IN' | 'OUT' | 'GND' | 'EN' | 'NC' | 'BYP' | 'ADJ' | 'FB' | 'PG' | 'SENSE' | 'BIAS' | 'PAD';
+  function: string;
   type?: 'power' | 'analog' | 'digital_in' | 'digital_out' | 'passive' | 'thermal';
   description?: string;
   sourcePage?: number;

@@ -51,7 +51,7 @@ The schema has three elements.
 
 1. Measurement. Every value is an object of `value` (with `min`, `typ`, `nom`, `max`), `unit`, `conditions`, and provenance fields. The `conditions` field is a first-class, typed list of axes.
 2. limitClass. One of `absolute_max`, `recommended`, or `characterized`. A single field replaces the separate datasheet tables and records whether a value is a stress limit, an operating range, or a guaranteed characteristic. A consumer must not treat an absolute-maximum value as an operating value.
-3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. The LDO dictionary is included. Additional families require only a new dictionary, not a schema change.
+3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Two families are included, an LDO regulator and a discrete power MOSFET, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND and a transistor's G, D, S. Adding a family requires only a new dictionary, not a schema change.
 
 The schema reuses established vocabulary, including IEC 61360 level roles, an Octopart-style identity envelope, and base-SI units. It adds the conditioned value and provenance that those sources omit.
 
@@ -69,7 +69,7 @@ Validate a document with any JSON Schema 2020-12 validator.
 npx ajv-cli validate -s schema/datasheet-1.0.schema.json -d my-part.datasheet.json --spec=draft2020
 ```
 
-Install from npm to get the types and the schema object from one import.
+Install from npm to get the TypeScript types and the schema object from one import.
 
 ```bash
 npm i datasheet-schema
@@ -80,13 +80,20 @@ import { datasheetSchema, ldoDictionary } from 'datasheet-schema';
 import type { Datasheet } from 'datasheet-schema';
 ```
 
+Python bindings ship pydantic models and a validator in [`bindings/python`](./bindings/python).
+
+```python
+from datasheet_schema import validate_document
+doc = validate_document(loaded_json)  # parses via pydantic, then the JSON Schema
+```
+
 Reference the hosted, versioned URL from a `$ref`.
 
 ```
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-A complete, validated example is in [`examples/ldo-tlv70033.datasheet.json`](./examples/ldo-tlv70033.datasheet.json).
+The [`examples/`](./examples) directory holds validated documents across both families, including four real LDO regulators and an illustrative MOSFET.
 
 ## Contents
 
@@ -97,7 +104,16 @@ A complete, validated example is in [`examples/ldo-tlv70033.datasheet.json`](./e
 | `parameters` | All specified values (absolute maximum, recommended, electrical, thermal, ESD), distinguished by `limitClass`. |
 | `provenance` | SHA-256 of the source PDF, revision, page, extraction method, and verified flag. |
 
-The LDO dictionary defines 51 canonical parameters across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, and ESD groups. See [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json).
+### Families
+
+A dictionary defines the canonical parameter keys, units, and vendor aliases for one component family. The schema stays family-agnostic. A validator checks each document's keys against the dictionary named by its `component.family`.
+
+| Family | Dictionary | Parameters |
+|---|---|---|
+| `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 54, across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, ESD, and general groups. |
+| `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 28, across the ratings, static, capacitance, gate-charge, switching, body-diode, thermal, and general groups. |
+
+To add a family, write a dictionary that conforms to [`dictionary/family-dictionary-1.0.schema.json`](./dictionary/family-dictionary-1.0.schema.json) and a validated example. No schema change is required.
 
 ## Validation against real datasheets
 

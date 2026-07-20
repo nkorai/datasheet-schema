@@ -85,8 +85,9 @@
         "number": { "description": "1-indexed physical pin number.", "type": "integer", "minimum": 1 },
         "name": { "description": "Pin name as printed.", "type": "string" },
         "function": {
-          "description": "Normalized semantic function.",
-          "enum": ["IN", "OUT", "GND", "EN", "NC", "BYP", "ADJ", "FB", "PG", "SENSE", "BIAS", "PAD"]
+          "description": "Normalized semantic function. A controlled vocabulary that families extend, in the same way the parameter key vocabulary is extended by a family dictionary. Recommended values: IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. A validator MAY constrain the set per family. Uppercase, matching ^[A-Z][A-Z0-9_]*$.",
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
         },
         "type": { "enum": ["power", "analog", "digital_in", "digital_out", "passive", "thermal"] },
         "description": { "type": "string" },
@@ -246,8 +247,8 @@
       "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate.",
       "type": "string",
       "enum": [
-        "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C",
-        "dB", "V/V", "%", "ppm/degC", "V/us", "A/us", "V/sqrtHz"
+        "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C", "J",
+        "dB", "V/V", "%", "ppm/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz"
       ]
     }
   }

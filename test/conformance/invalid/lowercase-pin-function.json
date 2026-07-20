@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "X", "manufacturer": "Y", "family": "mosfet" },
+  "pinout": [ { "number": 1, "name": "G", "function": "gate" } ],
+  "parameters": [
+    { "key": "drain_source_voltage", "measurements": [
+      { "limitClass": "absolute_max", "value": { "max": 30 }, "unit": "V" } ] }
+  ],
+  "provenance": { "verified": false }
+}
