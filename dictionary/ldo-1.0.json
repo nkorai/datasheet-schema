@@ -1,8 +1,8 @@
 {
   "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
   "family": "ldo",
-  "dictionaryVersion": "1.0",
-  "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming.",
+  "dictionaryVersion": "1.1",
+  "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming. Version 1.1 adds the rated output current and the operating and storage temperature ranges.",
   "parameters": [
     {
       "key": "output_voltage",
@@ -152,6 +152,20 @@
       ],
       "optional": true,
       "hint": "Supply current with EN low. Only for parts with an EN pin."
+    },
+    {
+      "key": "output_current",
+      "name": "Rated output current",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "IOUT",
+        "output current",
+        "maximum output current",
+        "rated output current",
+        "continuous output current"
+      ],
+      "hint": "The maximum continuous load current the part is specified to deliver, the headline current rating (for example a 1 A LDO). Distinct from current_limit, which is the fold-back knee."
     },
     {
       "key": "current_limit",
@@ -529,6 +543,31 @@
       "unit": "A",
       "group": "esd",
       "optional": true
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": [
+        "TJ",
+        "TA",
+        "operating junction temperature",
+        "operating ambient temperature",
+        "operating free-air temperature"
+      ],
+      "hint": "The recommended operating temperature range, junction or ambient as specified. Store as recommended limitClass, with min and max in the value."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": [
+        "TSTG",
+        "storage temperature"
+      ],
+      "hint": "The absolute-maximum storage temperature range. Store as absolute_max limitClass, with min and max in the value."
     }
   ]
 }
