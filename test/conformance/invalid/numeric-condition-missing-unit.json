@@ -1,0 +1,5 @@
+{ "schemaVersion":"1.0","component":{"mpn":"X","manufacturer":"Y","family":"ldo"},
+  "parameters":[{"key":"dropout_voltage","measurements":[
+    {"limitClass":"characterized","value":{"typ":0.2},"unit":"V","sourcePage":5,
+     "conditions":[{"param":"I_OUT","value":0.1}]}]}],
+  "provenance":{} }

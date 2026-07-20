@@ -1,0 +1,5 @@
+{ "schemaVersion":"1.0","component":{"mpn":"X","manufacturer":"Y","family":"ldo"},
+  "parameters":[{"key":"thermal_resistance_junction_ambient","measurements":[
+    {"limitClass":"characterized","value":{"typ":205},"unit":"degC","sourcePage":4,
+     "conditions":[{"param":"PACKAGE","note":"SOT-23-5, JEDEC 2s2p"}]}]}],
+  "provenance":{} }

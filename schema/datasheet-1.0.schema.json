@@ -176,13 +176,13 @@
 
     "conditionAxis": {
       "title": "Condition axis",
-      "description": "One test-condition dimension. param uses a controlled vocabulary where possible, defined in the specification, but any string is allowed so family-specific axes extend it. Provide a scalar value, or a min and max range.",
+      "description": "One test-condition dimension. param uses a controlled vocabulary where possible, defined in the specification, but any string is allowed so family-specific axes extend it. Provide a scalar value, or a min and max range, or a note. A unit is required when a numeric value, min, or max is given, and is omitted for a note-only axis such as a package name or capacitor type.",
       "type": "object",
-      "required": ["param", "unit"],
+      "required": ["param"],
       "additionalProperties": false,
       "properties": {
         "param": {
-          "description": "The condition dimension. Recommended vocabulary: T_J, T_A, V_IN, V_OUT, I_OUT, I_LOAD, F, C_OUT, C_IN, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, V_EN, C_OUT_TYPE. Family-specific axes such as V_GS, V_DS, and F_SW are permitted.",
+          "description": "The condition dimension. Recommended vocabulary: T_J, T_A, V_IN, V_OUT, I_OUT, I_LOAD, F, C_OUT, C_IN, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, V_EN, C_OUT_TYPE, PACKAGE, BOARD. Family-specific axes such as V_GS, V_DS, and F_SW are permitted.",
           "type": "string",
           "minLength": 1
         },
@@ -190,13 +190,20 @@
         "min": { "type": "number" },
         "max": { "type": "number" },
         "unit": { "$ref": "#/$defs/unit" },
-        "note": { "description": "Free text, for example a capacitor type such as X7R ceramic.", "type": "string" }
+        "note": { "description": "Free text, for example a capacitor type such as X7R ceramic, or a package name.", "type": "string" }
       },
       "anyOf": [
         { "required": ["value"] },
         { "required": ["min"] },
         { "required": ["max"] },
         { "required": ["note"] }
+      ],
+      "allOf": [
+        {
+          "$comment": "A unit is required when the axis carries a number.",
+          "if": { "anyOf": [{ "required": ["value"] }, { "required": ["min"] }, { "required": ["max"] }] },
+          "then": { "required": ["unit"] }
+        }
       ]
     },
 

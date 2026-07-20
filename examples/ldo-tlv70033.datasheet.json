@@ -392,7 +392,6 @@
           "conditions": [
             {
               "param": "C_OUT_TYPE",
-              "unit": "V/V",
               "note": "Ceramic X5R/X7R, ESR 5 mohm to 500 mohm"
             }
           ],
@@ -445,8 +444,7 @@
           "unit": "degC",
           "conditions": [
             {
-              "param": "C_OUT_TYPE",
-              "unit": "V/V",
+              "param": "PACKAGE",
               "note": "SOT-23-5, JEDEC 2s2p board, still air"
             }
           ],

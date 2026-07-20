@@ -1,6 +1,6 @@
 {
   "name": "datasheet-schema",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A machine-readable JSON Schema for electronic-component datasheet specifications, where each value records its test conditions and provenance. Ships JSON Schema artifacts and TypeScript types.",
   "keywords": [
     "datasheet",

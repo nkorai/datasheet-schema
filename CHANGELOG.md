@@ -2,6 +2,12 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.1.0]
+
+### Changed
+- A condition axis unit is now required only when the axis carries a numeric value, min, or max. Note-only axes such as a package name or capacitor type no longer require a unit. This loosens a constraint, so all previously valid documents remain valid.
+- Added PACKAGE and BOARD to the recommended condition vocabulary.
+
 ## [1.0.2]
 
 ### Changed

@@ -59,7 +59,7 @@ A parameter specified across several conditions, such as dropout per load curren
 
 ### 7.1 Condition axes
 
-A condition axis has a `param`, a `unit`, and a `value` or a `min` and `max` range, or a `note`. `param` uses this recommended vocabulary. Family-specific axes MAY extend it.
+A condition axis has a `param` and either a `value`, a `min` and `max` range, or a `note`. A `unit` is REQUIRED when a numeric `value`, `min`, or `max` is present, and is omitted for a note-only axis such as a package name or capacitor type. `param` uses this recommended vocabulary. Family-specific axes MAY extend it.
 
 `T_J, T_A, V_IN, V_OUT, I_OUT, I_LOAD, F, C_OUT, C_IN, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, V_EN, C_OUT_TYPE`
 
