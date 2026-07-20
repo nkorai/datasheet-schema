@@ -1,0 +1,486 @@
+{
+  "notes": [
+    "Extracted from section 8.2 Electrical properties (7533) for HT7533-1 variant",
+    "Temperature coefficient given as ±0.5 mV/°C, converted to approximately 151.5 ppm/°C based on 3.3V output",
+    "Output current min value of 60mA appears to be minimum guaranteed, typ 100mA is typical capability",
+    "Welding temperature: 260°C for 10s maximum"
+  ],
+  "pinout": [
+    {
+      "name": "G",
+      "number": 1,
+      "function": "GND",
+      "sourcePage": 1
+    },
+    {
+      "name": "V",
+      "number": 2,
+      "function": "IN",
+      "sourcePage": 1
+    },
+    {
+      "name": "V",
+      "number": 3,
+      "function": "OUT",
+      "sourcePage": 1
+    }
+  ],
+  "component": {
+    "mpn": "HT7533-1",
+    "family": "ldo",
+    "package": "SOT-89",
+    "pinCount": 3,
+    "description": "LDO high voltage regulator, 3.3V output",
+    "manufacturer": "UMW Youtai Semiconductor Co Ltd",
+    "orderingVariants": [
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW HT7533-1",
+        "outputVoltageV": 3.3
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW HT7533S",
+        "outputVoltageV": 3.3
+      },
+      {
+        "package": "TO-92",
+        "packing": "Tape and reel",
+        "orderCode": "UMW HT7533A-1",
+        "outputVoltageV": 3.3
+      },
+      {
+        "package": "SOT23-5",
+        "packing": "Tape and reel",
+        "orderCode": "UMW HT7533S-1",
+        "outputVoltageV": 3.3
+      }
+    ],
+    "temperatureGrade": "industrial"
+  },
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "aliases": [
+        "VIN",
+        "input voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 30
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter"
+        },
+        {
+          "unit": "V",
+          "value": {
+            "max": 30
+          },
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage",
+      "aliases": [
+        "VOUT",
+        "Output voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 3.399,
+            "min": 3.201,
+            "typ": 3.3
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 5.5
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.01
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "VIN=5.5V, IOUT=10mA"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "aliases": [
+        "Tolerance",
+        "output voltage tolerance"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "typ": 3
+          },
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Model selection"
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "aliases": [
+        "IOUT",
+        "Output current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "min": 60,
+            "typ": 0.1
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 5.5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "VIN=5.5V"
+        }
+      ]
+    },
+    {
+      "key": "load_regulation",
+      "aliases": [
+        "ΔVOUT",
+        "Load regulation"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 0.15,
+            "typ": 0.1
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 5.5
+            },
+            {
+              "max": 0.03,
+              "min": 0.001,
+              "unit": "A",
+              "param": "I_OUT"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "VIN=5.5V, 1mA≤IOUT≤30mA"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "aliases": [
+        "VDIF",
+        "Drop voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "typ": 0.1
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "IOUT=1mA"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "aliases": [
+        "ISS",
+        "Quiescent current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "max": 3e-06,
+            "typ": 2e-06
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 5.5
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "VIN=5.5V, no load"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "aliases": [
+        "ΔVOUT/(ΔVIN*VOUT)",
+        "Line Regulation"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "typ": 0.2
+          },
+          "conditions": [
+            {
+              "max": 30,
+              "min": 4.5,
+              "unit": "V",
+              "param": "V_IN"
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "4.5V≤VIN≤30V, IOUT=1mA"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_temperature_coefficient",
+      "aliases": [
+        "ΔVOUT/ΔTA",
+        "temperature coefficient"
+      ],
+      "measurements": [
+        {
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 151.5
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 5.5
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.01
+            },
+            {
+              "max": 70,
+              "min": 0,
+              "unit": "degC",
+              "param": "T_A"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "8.2 Electrical properties (7533)",
+          "conditionsVerbatim": "VIN=5.5V,IOUT=10mA,0°C≤TA≤70°C"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "aliases": [
+        "PD",
+        "power waste"
+      ],
+      "measurements": [
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.4
+          },
+          "conditions": [
+            {
+              "note": "SOT-89",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "SOT-89"
+        },
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          },
+          "conditions": [
+            {
+              "note": "SOT-23",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "SOT-23"
+        },
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.7
+          },
+          "conditions": [
+            {
+              "note": "TO-92",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "TO-92"
+        },
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          },
+          "conditions": [
+            {
+              "note": "SOT-23-5",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "SOT-23-5"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "aliases": [
+        "Tw",
+        "working temperature"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          },
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "aliases": [
+        "Tc",
+        "Storage temperature"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -50
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "aliases": [
+        "CIN"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-05
+          },
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Application circuit"
+        }
+      ]
+    },
+    {
+      "key": "min_output_capacitance",
+      "aliases": [
+        "COUT"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-05
+          },
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Application circuit"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "verified": true,
+    "fetchedAt": "2026-07-20T15:54:38.493Z",
+    "sourceUrl": "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8755878720480010240",
+    "confidence": 0.9,
+    "extractedAt": "2026-07-20T15:55:14.267Z",
+    "datasheetSha256": "c8d27849b87576cdb19687e0438316d2e482a062c756d33154629ff4e18d9eec",
+    "extractionMethod": "llm:us.anthropic.claude-opus-4-5-20251101-v1:0",
+    "datasheetRevision": "Mar.2025"
+  },
+  "schemaVersion": "1.0"
+}

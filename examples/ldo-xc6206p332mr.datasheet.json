@@ -1,0 +1,604 @@
+{
+  "notes": [
+    "XC6206P332MR is the 3.3V output variant in SOT-23 package with ±2.5% accuracy",
+    "Marking code for this variant is 662K",
+    "Test conditions default: Cin=Cout=1µF, TA=25°C unless otherwise specified",
+    "VOUT(T) refers to the specified/target output voltage (3.3V for this variant)"
+  ],
+  "pinout": [
+    {
+      "name": "GND",
+      "number": 1,
+      "function": "GND",
+      "sourcePage": 1
+    },
+    {
+      "name": "VIN",
+      "number": 2,
+      "function": "IN",
+      "sourcePage": 1
+    },
+    {
+      "name": "VOUT",
+      "number": 3,
+      "function": "OUT",
+      "sourcePage": 1
+    }
+  ],
+  "component": {
+    "mpn": "XC6206P332MR",
+    "family": "ldo",
+    "package": "SOT-23",
+    "pinCount": 3,
+    "description": "CMOS step-down voltage regulator with high ripple rejection, low power consumption, low dropout, overcurrent and short-circuit protection",
+    "manufacturer": "UMW Youtai Semiconductor Co Ltd",
+    "orderingVariants": [
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P182MR",
+        "outputVoltageV": 1.8
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P252MR",
+        "outputVoltageV": 2.5
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P282MR",
+        "outputVoltageV": 2.8
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P302MR",
+        "outputVoltageV": 3
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P332MR",
+        "outputVoltageV": 3.3
+      },
+      {
+        "package": "SOT-23",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P362MR",
+        "outputVoltageV": 3.6
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P182PR",
+        "outputVoltageV": 1.8
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P252PR",
+        "outputVoltageV": 2.5
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMWXC6206P282PR",
+        "outputVoltageV": 2.8
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P302PR",
+        "outputVoltageV": 3
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P332PR",
+        "outputVoltageV": 3.3
+      },
+      {
+        "package": "SOT-89",
+        "packing": "Tape and reel",
+        "orderCode": "UMW XC6206P362PR",
+        "outputVoltageV": 3.6
+      }
+    ],
+    "temperatureGrade": "industrial"
+  },
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "aliases": [
+        "VIN",
+        "input voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 9
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "Input voltage"
+        },
+        {
+          "unit": "V",
+          "value": {
+            "max": 8,
+            "min": 1.8
+          },
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "Operating input voltage range"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage",
+      "aliases": [
+        "VOUT(E)",
+        "effective output voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 3.3825,
+            "min": 3.2175,
+            "typ": 3.3
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.001
+            },
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "IOUT=1mA, VIN=VOUT(T)+1V"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "aliases": [
+        "precision"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "max": 2.5,
+            "min": -2.5
+          },
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "conditionsVerbatim": "Accuracy B: ±2.5%"
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "aliases": [
+        "IOUT(max)",
+        "Output Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "max": 0.5
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "output current"
+        },
+        {
+          "unit": "A",
+          "value": {
+            "min": 0.1
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1V"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "aliases": [
+        "Vdrop",
+        "Drop pressure difference"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 0.24,
+            "typ": 0.16
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.05
+            },
+            {
+              "max": 3.3,
+              "min": 2.6,
+              "unit": "V",
+              "param": "V_OUT"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "IOUT=50mA, 2.6V≤VOUT(T)≤3.3V"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "aliases": [
+        "ISS",
+        "quiescent current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 6e-06
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1V"
+        }
+      ]
+    },
+    {
+      "key": "load_regulation",
+      "aliases": [
+        "ΔVOUT",
+        "Load stability"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 0.02
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            },
+            {
+              "max": 0.08,
+              "min": 0.001,
+              "unit": "A",
+              "param": "I_OUT"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1V, 1mA≤IOUT≤80mA"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "aliases": [
+        "ΔVOUT/(ΔVIN*VOUT)",
+        "Input stability"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "max": 0.2,
+            "typ": 0.1
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "IOUT=1mA, VOUT(T)+0.5V ≤VIN≤5.5V"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_temperature_coefficient",
+      "aliases": [
+        "ΔVOUT/(ΔTA*VOUT)",
+        "Output voltage temperature coefficient"
+      ],
+      "measurements": [
+        {
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 100
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.01
+            },
+            {
+              "max": 85,
+              "min": -40,
+              "unit": "degC",
+              "param": "T_A"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1V, IOUT=10mA, -40°C≤TA≤85°C"
+        }
+      ]
+    },
+    {
+      "key": "psrr",
+      "aliases": [
+        "PSRR",
+        "Ripple suppression ratio"
+      ],
+      "measurements": [
+        {
+          "unit": "dB",
+          "value": {
+            "typ": 40
+          },
+          "conditions": [
+            {
+              "unit": "Hz",
+              "param": "F",
+              "value": 1000
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.01
+            },
+            {
+              "unit": "F",
+              "param": "C_IN",
+              "value": 1e-06
+            },
+            {
+              "unit": "F",
+              "param": "C_OUT",
+              "value": 1e-06
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=[VOUT(T)+1]V +1Vp-pAC, IOUT=10mA, f=1kHz"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "aliases": [
+        "Ishort",
+        "Short circuit current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 0.03
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1.5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1.5V, VOUT=VSS"
+        }
+      ]
+    },
+    {
+      "key": "current_limit",
+      "aliases": [
+        "Ilimt",
+        "Overcurrent protection current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 0.38
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1.5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "conditionsVerbatim": "VIN=VOUT(T)+1.5V"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "aliases": [
+        "PD",
+        "Maximum allowable power consumption"
+      ],
+      "measurements": [
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          },
+          "conditions": [
+            {
+              "note": "SOT-23",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "SOT23"
+        },
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.5
+          },
+          "conditions": [
+            {
+              "note": "SOT-89",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "SOT89-3"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "aliases": [
+        "Tw",
+        "Working temperature"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -25
+          },
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "Working temperature"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "aliases": [
+        "Tc",
+        "Storage temperature"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "conditionsVerbatim": "Storage temperature"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "aliases": [
+        "CIN"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-06
+          },
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "conditionsVerbatim": "Cin=1µF"
+        }
+      ]
+    },
+    {
+      "key": "min_output_capacitance",
+      "aliases": [
+        "COUT"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-06
+          },
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "conditionsVerbatim": "Cout=1µF"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "verified": true,
+    "fetchedAt": "2026-07-20T15:52:18.361Z",
+    "sourceUrl": "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8755873377028583424",
+    "confidence": 0.9,
+    "extractedAt": "2026-07-20T15:53:03.943Z",
+    "datasheetSha256": "1cee8a834cde53af5187a391d2dcbec5ede6baf8306ddf611d149845f97f41b7",
+    "extractionMethod": "llm:us.anthropic.claude-opus-4-5-20251101-v1:0",
+    "datasheetRevision": "Mar.2025"
+  },
+  "schemaVersion": "1.0"
+}

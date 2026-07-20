@@ -1,0 +1,614 @@
+{
+  "notes": [
+    "ME6211C series has external CE (enable) pin that can be set high to enable output",
+    "Test conditions: VIN= VOUT+1V, VCE = VIN, CIN=CL=1uF, Ta=25°C unless otherwise noted",
+    "Output voltage specified as X*0.98 to X*1.02 where X is nominal output voltage (3.3V)"
+  ],
+  "pinout": [
+    {
+      "name": "VIN",
+      "number": 1,
+      "function": "IN",
+      "sourcePage": 4
+    },
+    {
+      "name": "VSS",
+      "number": 2,
+      "function": "GND",
+      "sourcePage": 4
+    },
+    {
+      "name": "CE",
+      "number": 3,
+      "function": "EN",
+      "sourcePage": 4
+    },
+    {
+      "name": "NC",
+      "number": 4,
+      "function": "NC",
+      "sourcePage": 4
+    },
+    {
+      "name": "VOUT",
+      "number": 5,
+      "function": "OUT",
+      "sourcePage": 4
+    }
+  ],
+  "component": {
+    "mpn": "ME6211C33M5G-N",
+    "family": "ldo",
+    "package": "SOT23-5",
+    "pinCount": 5,
+    "description": "High Speed LDO Regulator, High PSRR, Low noise, 3.3V 500mA",
+    "manufacturer": "Nanjing Micro One Electronics",
+    "orderingVariants": [
+      {
+        "package": "SOT23-5",
+        "orderCode": "ME6211C33M5G-N",
+        "outputVoltageV": 3.3
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "aliases": [
+        "VIN",
+        "Operating Voltage Range"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 6,
+            "min": 2
+          },
+          "limitClass": "recommended",
+          "sourcePage": 1
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "aliases": [
+        "VIN",
+        "Input Voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 6.5
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 5
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "aliases": [
+        "IOUT",
+        "Output Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "max": 0.6
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 5
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "aliases": [
+        "IOUTMAX",
+        "Maximum Output Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 0.5
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_IN",
+              "value": 4.3
+            },
+            {
+              "unit": "V",
+              "param": "V_OUT",
+              "value": 3.3
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "VIN= VOUT+1V"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "aliases": [
+        "PD",
+        "Power Dissipation"
+      ],
+      "measurements": [
+        {
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          },
+          "conditions": [
+            {
+              "note": "SOT23",
+              "param": "package"
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 5
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "aliases": [
+        "TOPR",
+        "Operating Temperature Range"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -40
+          },
+          "limitClass": "recommended",
+          "sourcePage": 5
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "aliases": [
+        "TSTG",
+        "Storage Temperature Range"
+      ],
+      "measurements": [
+        {
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -40
+          },
+          "limitClass": "absolute_max",
+          "sourcePage": 5
+        }
+      ]
+    },
+    {
+      "key": "output_voltage",
+      "aliases": [
+        "VOUT",
+        "Output Voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 3.366,
+            "min": 3.234,
+            "typ": 3.3
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.03
+            },
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "IOUT=30mA, VIN= VOUT+1V"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "aliases": [
+        "Output Voltage Tolerance"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "max": 2
+          },
+          "limitClass": "characterized",
+          "sourcePage": 1
+        }
+      ]
+    },
+    {
+      "key": "load_regulation",
+      "aliases": [
+        "ΔVOUT",
+        "Load Regulation"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "typ": 0.009
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            },
+            {
+              "max": 0.1,
+              "min": 0.001,
+              "unit": "A",
+              "param": "I_OUT"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "VIN= VOUT+1V, 1mA≤IOUT≤100mA"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "aliases": [
+        "VDIF",
+        "Dropout Voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "typ": 0.12
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "IOUT =100mA"
+        },
+        {
+          "unit": "V",
+          "value": {
+            "typ": 0.26
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.2
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "IOUT =200mA"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "aliases": [
+        "ISS",
+        "Supply Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 6e-05
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "VIN= VOUT+1V"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "aliases": [
+        "ICEL",
+        "Stand-by Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 1e-07
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "V_EN",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "VCE＝0V"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "aliases": [
+        "Line Regulation"
+      ],
+      "measurements": [
+        {
+          "unit": "%",
+          "value": {
+            "typ": 0.05
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.04
+            },
+            {
+              "max": 6.5,
+              "min": 4.3,
+              "unit": "V",
+              "param": "V_IN"
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "IOUT =40mA, VOUT+1V ≤VIN≤6.5V"
+        }
+      ]
+    },
+    {
+      "key": "en_high_threshold",
+      "aliases": [
+        "VCEH",
+        "CE High Voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "min": 1
+          },
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "conditionsVerbatim": "Start up"
+        }
+      ]
+    },
+    {
+      "key": "en_low_threshold",
+      "aliases": [
+        "VCEL",
+        "CE Low Voltage"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "max": 0.5
+          },
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "Shut down"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_rms",
+      "aliases": [
+        "EN",
+        "Output noise"
+      ],
+      "measurements": [
+        {
+          "unit": "V",
+          "value": {
+            "typ": 5e-05
+          },
+          "conditions": [
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.04
+            },
+            {
+              "unit": "Hz",
+              "param": "BW_LOW",
+              "value": 300
+            },
+            {
+              "unit": "Hz",
+              "param": "BW_HIGH",
+              "value": 50000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "IOUT =40mA, 300Hz~50kHz"
+        }
+      ]
+    },
+    {
+      "key": "psrr",
+      "aliases": [
+        "PSRR",
+        "Ripple Rejection Rate"
+      ],
+      "measurements": [
+        {
+          "unit": "dB",
+          "value": {
+            "typ": 70
+          },
+          "conditions": [
+            {
+              "unit": "Hz",
+              "param": "F",
+              "value": 1000
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.01
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "VIN = [VOUT +1]V +1Vp-pAC, IOUT=10mA, 1kHZ"
+        },
+        {
+          "unit": "dB",
+          "value": {
+            "typ": 62
+          },
+          "conditions": [
+            {
+              "unit": "Hz",
+              "param": "F",
+              "value": 10000
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "VIN = [VOUT +1]V +1Vp-pAC, IOUT=100mA, 10kHZ"
+        },
+        {
+          "unit": "dB",
+          "value": {
+            "typ": 62
+          },
+          "conditions": [
+            {
+              "unit": "Hz",
+              "param": "F",
+              "value": 10000
+            },
+            {
+              "unit": "A",
+              "param": "I_OUT",
+              "value": 0.2
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "VIN = [VOUT +1]V +1Vp-pAC, IOUT=200mA, 10kHZ"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "aliases": [
+        "ISHORT",
+        "Short-circuit Current"
+      ],
+      "measurements": [
+        {
+          "unit": "A",
+          "value": {
+            "typ": 0.15
+          },
+          "conditions": [
+            {
+              "unit": "V",
+              "param": "HEADROOM",
+              "value": 1
+            },
+            {
+              "unit": "V",
+              "param": "V_OUT",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "conditionsVerbatim": "VIN= VOUT+1V, VCE＝VIN, VOUT＝0V"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "aliases": [
+        "CIN"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-06
+          },
+          "limitClass": "recommended",
+          "sourcePage": 2
+        }
+      ]
+    },
+    {
+      "key": "min_output_capacitance",
+      "aliases": [
+        "CL",
+        "COUT"
+      ],
+      "measurements": [
+        {
+          "unit": "F",
+          "value": {
+            "typ": 1e-06
+          },
+          "limitClass": "recommended",
+          "sourcePage": 2
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "verified": true,
+    "fetchedAt": "2026-07-20T15:58:38.656Z",
+    "sourceUrl": "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8586175151611760640",
+    "confidence": 0.92,
+    "extractedAt": "2026-07-20T15:59:26.531Z",
+    "datasheetSha256": "7e33d6651f019782b16169a5b26b7cad43e9d462b5e25dc54815b458f88fd59b",
+    "extractionMethod": "llm:us.anthropic.claude-opus-4-5-20251101-v1:0",
+    "datasheetRevision": "V14"
+  },
+  "schemaVersion": "1.0"
+}
