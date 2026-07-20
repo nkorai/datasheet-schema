@@ -2,7 +2,12 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
-## [1.0.0] unreleased
+## [1.0.1]
+
+### Changed
+- Published through the trusted-publishing workflow with a provenance attestation. No functional change from 1.0.0.
+
+## [1.0.0]
 
 ### Added
 - Initial `datasheet-1.0` schema, JSON Schema 2020-12, self-contained.
