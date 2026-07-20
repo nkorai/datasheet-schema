@@ -1,0 +1,38 @@
+name: publish
+
+# Manual, deliberate publishing only — never on push.
+# Publishes the npm package (OIDC trusted publishing, no NPM_TOKEN) and deploys
+# the versioned schema URLs to GitHub Pages so $id references resolve.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm run build
+      - run: npx npm@11 publish --access public --provenance
+
+  pages:
+    runs-on: ubuntu-latest
+    needs: npm
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      # Serve schema/ and dictionary/ at nkorai.github.io/datasheet-schema/... so
+      # the $id URLs resolve to the raw JSON permanently.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4

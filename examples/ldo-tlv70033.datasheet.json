@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TLV70033DDCR",
+    "manufacturer": "Texas Instruments",
+    "family": "ldo",
+    "description": "200-mA, low-IQ, low-dropout regulator with enable, fixed 3.3 V.",
+    "package": "SOT-23-5",
+    "pinCount": 5,
+    "lifecycle": "active",
+    "msl": "MSL1",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "TLV70033DDCR", "outputVoltageV": 3.3, "package": "SOT-23-5", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "IN", "function": "IN", "type": "power", "sourcePage": 3 },
+    { "number": 2, "name": "GND", "function": "GND", "type": "power", "sourcePage": 3 },
+    { "number": 3, "name": "EN", "function": "EN", "type": "digital_in", "sourcePage": 3 },
+    { "number": 4, "name": "NC", "function": "NC", "sourcePage": 3 },
+    { "number": 5, "name": "OUT", "function": "OUT", "type": "power", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage",
+      "group": "regulation",
+      "aliases": ["VIN"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "min": -0.3, "max": 7.0 }, "unit": "V", "conditionsVerbatim": "With respect to GND", "sourcePage": 6, "sourceTable": "Absolute Maximum Ratings" },
+        { "limitClass": "recommended", "value": { "min": 2.0, "max": 5.5 }, "unit": "V", "conditionsVerbatim": "Over operating temperature", "sourcePage": 6, "sourceTable": "Recommended Operating Conditions" }
+      ]
+    },
+    {
+      "key": "output_voltage",
+      "name": "Output voltage",
+      "group": "regulation",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.234, "typ": 3.3, "max": 3.366 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": 4.3, "unit": "V" },
+            { "param": "I_OUT", "value": 0.001, "unit": "A" },
+            { "param": "T_J", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(nom) + 1 V, IOUT = 1 mA, TJ = 25°C",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "group": "dropout",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.135 },
+          "unit": "V",
+          "conditions": [ { "param": "I_OUT", "value": 0.1, "unit": "A" }, { "param": "T_J", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "IOUT = 100 mA, TJ = 25°C",
+          "sourcePage": 5, "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.28, "max": 0.45 },
+          "unit": "V",
+          "conditions": [ { "param": "I_OUT", "value": 0.2, "unit": "A" }, { "param": "T_J", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "IOUT = 200 mA, TJ = 25°C",
+          "sourcePage": 5, "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent current",
+      "group": "current",
+      "aliases": ["IQ", "ground current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000315, "max": 0.00006 },
+          "unit": "A",
+          "conditions": [ { "param": "I_OUT", "value": 0, "unit": "A" }, { "param": "V_IN", "value": 4.3, "unit": "V" } ],
+          "conditionsVerbatim": "IOUT = 0 mA, VIN = 4.3 V",
+          "sourcePage": 5, "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "psrr",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection_noise",
+      "aliases": ["ripple rejection"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 68 }, "unit": "dB", "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" }, { "param": "I_OUT", "value": 0.1, "unit": "A" } ], "conditionsVerbatim": "f = 1 kHz, IOUT = 100 mA", "sourcePage": 7, "sourceTable": "Electrical Characteristics" },
+        { "limitClass": "characterized", "value": { "typ": 42 }, "unit": "dB", "conditions": [ { "param": "F", "value": 100000, "unit": "Hz" }, { "param": "I_OUT", "value": 0.1, "unit": "A" } ], "conditionsVerbatim": "f = 100 kHz, IOUT = 100 mA", "sourcePage": 7, "sourceTable": "Electrical Characteristics" }
+      ]
+    },
+    {
+      "key": "output_noise_rms",
+      "name": "Output noise",
+      "group": "rejection_noise",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000305 },
+          "unit": "V",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 100000, "unit": "Hz" },
+            { "param": "I_OUT", "value": 0.1, "unit": "A" }
+          ],
+          "conditionsVerbatim": "BW = 10 Hz to 100 kHz, IOUT = 100 mA",
+          "sourcePage": 7, "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "load_transient_response",
+      "name": "Load transient response",
+      "group": "dynamic",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.09 },
+          "unit": "V",
+          "stimulus": { "param": "I_OUT", "from": 0, "to": 0.2, "unit": "A", "slewRate": 0.2, "slewUnit": "A/us" },
+          "conditions": [ { "param": "C_OUT", "value": 0.000001, "unit": "F", "note": "1 uF X7R ceramic" }, { "param": "V_IN", "value": 5, "unit": "V" } ],
+          "conditionsVerbatim": "IOUT = 0 to 200 mA at 0.2 A/us, COUT = 1 uF, VIN = 5 V",
+          "sourcePage": 8, "sourceTable": "Typical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "en_high_threshold",
+      "name": "Enable high threshold",
+      "group": "enable",
+      "measurements": [
+        { "limitClass": "characterized", "value": { "min": 0.9 }, "unit": "V", "conditions": [ { "param": "V_IN", "min": 2.0, "max": 5.5, "unit": "V" } ], "conditionsVerbatim": "VIN = 2 V to 5.5 V", "sourcePage": 5, "sourceTable": "Electrical Characteristics" }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown",
+      "group": "protection",
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 160 }, "unit": "degC", "conditionsVerbatim": "Temperature rising", "sourcePage": 6, "sourceTable": "Electrical Characteristics" }
+      ]
+    },
+    {
+      "key": "min_output_capacitance",
+      "name": "Minimum output capacitance",
+      "group": "stability",
+      "measurements": [
+        { "limitClass": "recommended", "value": { "min": 0.0000009 }, "unit": "F", "conditions": [ { "param": "C_OUT_TYPE", "unit": "V/V", "note": "Ceramic X5R/X7R, ESR 5 mohm to 500 mohm" } ], "conditionsVerbatim": "Effective capacitance >= 0.9 uF", "sourcePage": 9, "sourceTable": "Application Information" }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Maximum power dissipation",
+      "group": "thermal",
+      "aliases": ["PD"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 0.36 }, "unit": "W", "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ], "conditionsVerbatim": "TA = 25°C, RthetaJA = 205°C/W", "sourcePage": 6, "sourceTable": "Thermal Information" }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJA"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 205 }, "unit": "degC", "conditions": [ { "param": "C_OUT_TYPE", "unit": "V/V", "note": "SOT-23-5, JEDEC 2s2p board, still air" } ], "conditionsVerbatim": "SOT-23-5, JEDEC 2s2p, still air (degC per watt)", "sourcePage": 4, "sourceTable": "Thermal Information" }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD HBM",
+      "group": "esd",
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "typ": 2000 }, "unit": "V", "conditionsVerbatim": "Human body model, ANSI/ESDA/JEDEC JS-001", "sourcePage": 6, "sourceTable": "ESD Ratings" }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SLVSAG4 (illustrative — this example is representative, not a verbatim transcription)",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

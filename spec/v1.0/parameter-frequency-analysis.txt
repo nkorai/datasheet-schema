@@ -1,0 +1,52 @@
+=== CURRENT DICTIONARY coverage across 39 datasheets ===
+  ██████████████████████·· 35/39  en_high_threshold
+  ██████████████████████·· 35/39  en_input_current
+  ██████████████████████·· 35/39  min_output_capacitance
+  █████████████████████··· 34/39  output_voltage_accuracy
+  █████████████████████··· 34/39  psrr
+  ████████████████████···· 33/39  line_regulation
+  ████████████████████···· 33/39  load_regulation
+  ████████████████████···· 33/39  dropout_voltage
+  ███████████████████····· 31/39  quiescent_current
+  ███████████████████····· 31/39  current_limit
+  ████████████████········ 26/39  output_noise_rms
+  ████████████████········ 26/39  load_transient_response
+  ███████████████········· 25/39  stable_esr_range
+  ███████████████········· 24/39  output_voltage_range
+  ███████████████········· 24/39  short_circuit_current
+  ███████████████········· 24/39  thermal_shutdown_threshold
+  █████████··············· 15/39  shutdown_current
+  █████████··············· 14/39  startup_time
+  █████████··············· 14/39  line_transient_response
+  ██████··················  9/39  output_noise_density
+  ██████··················  9/39  en_low_threshold
+  █████···················  8/39  uvlo_threshold
+  █████···················  8/39  output_active_discharge
+  ████····················  6/39  thermal_shutdown_hysteresis
+  ██······················  4/39  uvlo_hysteresis
+  █·······················  2/39  pg_threshold_rising
+  █·······················  2/39  pg_output_low_voltage
+  █·······················  1/39  pg_delay
+  ························  0/39  en_hysteresis
+  ························  0/39  en_delay_time
+  ························  0/39  pg_threshold_falling
+  ························  0/39  max_output_capacitance
+
+=== CANDIDATE MISSING parameters (frequency across 39) ===
+  ████████████████████···· 32/39  power_dissipation (absmax)  <-- ADD
+  ██████████████████······ 30/39  thermal_resistance_rthja  <-- ADD
+  ██████████████████······ 29/39  input_bypass/cap_requirement  <-- ADD
+  ███████████████········· 24/39  reference_voltage / feedback_voltage  <-- ADD
+  ████████████············ 20/39  output_voltage_temp_coefficient (tempco)  <-- ADD
+  ████████████············ 20/39  esd_hbm_cdm  <-- ADD
+  ██████··················  9/39  reverse_current / reverse_leakage
+  ██████··················  9/39  minimum_load_current
+  ██████··················  9/39  thermal_regulation
+  ████····················  7/39  adj_fb_pin_current (bias)
+  ████····················  6/39  moisture_sensitivity_level
+  ███·····················  5/39  input_current_at_dropout
+  ███·····················  5/39  output_voltage_tempco_long_term
+  ██······················  4/39  en_pulldown_resistance
+  ██······················  4/39  sink_current
+  █·······················  2/39  turn_off_time / discharge_time
+  █·······················  1/39  wettable_flank/pin_layout

@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json",
+  "$comment": "Datasheet Schema v1.0 — Apache-2.0 — https://github.com/nkorai/datasheet-schema. This file is self-contained: copy it anywhere and it validates with no external $refs.",
+  "title": "Datasheet Schema",
+  "description": "A machine-readable, design-grade schema for electronic-component datasheet specifications. Unlike parametric databases, every value carries the TEST CONDITIONS it was measured under and PROVENANCE back to the datasheet page — the two things that make a spec safe to design from, and the two things no existing standard captures.",
+  "specVersion": "1.0",
+  "type": "object",
+  "required": ["schemaVersion", "component", "parameters", "provenance"],
+  "additionalProperties": false,
+
+  "properties": {
+    "schemaVersion": {
+      "description": "The Datasheet Schema version this document conforms to.",
+      "const": "1.0"
+    },
+    "component": { "$ref": "#/$defs/component" },
+    "pinout": {
+      "description": "Physical pins with normalized functions, so a tool can wire the part without string-matching vendor pin names.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/pin" }
+    },
+    "parameters": {
+      "description": "EVERY specified value, unified. Absolute-maximum, recommended-operating, electrical, thermal, and ESD data all live here as parameters, distinguished by each measurement's `limitClass` rather than by separate tables. This is what lets one envelope describe any component family.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/parameter" }
+    },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "notes": {
+      "description": "Anything ambiguous, conflicting, or spread across variant tables that a human reviewer should know.",
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+
+  "$defs": {
+    "component": {
+      "title": "Component identity",
+      "description": "Who the part is. Borrows the Octopart/GS1 identity envelope.",
+      "type": "object",
+      "required": ["mpn", "manufacturer", "family"],
+      "additionalProperties": false,
+      "properties": {
+        "mpn": { "description": "Manufacturer part number.", "type": "string", "minLength": 1 },
+        "manufacturer": { "type": "string", "minLength": 1 },
+        "family": {
+          "description": "Component family. Determines which parameter dictionary applies.",
+          "type": "string",
+          "examples": ["ldo", "buck_converter", "ldo_reference", "load_switch", "mosfet", "mcu"]
+        },
+        "description": { "type": "string" },
+        "package": { "description": "Package designator as printed, e.g. \"SOT-23-5\".", "type": "string" },
+        "pinCount": { "type": "integer", "minimum": 1 },
+        "lifecycle": { "enum": ["active", "nrnd", "obsolete", "unknown"] },
+        "msl": { "description": "Moisture sensitivity level, e.g. \"MSL1\".", "type": "string" },
+        "temperatureGrade": {
+          "description": "Qualification / temperature grade, e.g. \"-40..125\", \"AEC-Q100 Grade 1\".",
+          "type": "string"
+        },
+        "orderingVariants": {
+          "description": "The orderable variants covered by this datasheet.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["orderCode"],
+            "additionalProperties": false,
+            "properties": {
+              "orderCode": { "type": "string" },
+              "outputVoltageV": { "description": "Fixed output option, when this variant pins a voltage.", "type": "number" },
+              "package": { "type": "string" },
+              "temperatureGrade": { "type": "string" },
+              "packing": { "description": "Tape & reel / tube / etc.", "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "pin": {
+      "title": "Pin",
+      "type": "object",
+      "required": ["number", "name", "function"],
+      "additionalProperties": false,
+      "properties": {
+        "number": { "description": "1-indexed physical pin number.", "type": "integer", "minimum": 1 },
+        "name": { "description": "Pin name as printed.", "type": "string" },
+        "function": {
+          "description": "Normalized semantic function.",
+          "enum": ["IN", "OUT", "GND", "EN", "NC", "BYP", "ADJ", "FB", "PG", "SENSE", "BIAS", "PAD"]
+        },
+        "type": { "enum": ["power", "analog", "digital_in", "digital_out", "passive", "thermal"] },
+        "description": { "type": "string" },
+        "sourcePage": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "parameter": {
+      "title": "Parameter",
+      "description": "One canonically-keyed characteristic. A family dictionary (e.g. dictionary/ldo-1.0.json) defines the legal keys, their units, and vendor aliases — but the schema keeps the parameter SHAPE universal so every family reuses it.",
+      "type": "object",
+      "required": ["key", "measurements"],
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "description": "Canonical parameter key from the family dictionary, e.g. \"dropout_voltage\", \"psrr\", \"reference_voltage\", \"thermal_resistance_junction_ambient\".",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": { "description": "Human-readable label.", "type": "string" },
+        "group": { "description": "Family-scoped functional group, e.g. \"regulation\", \"protection\".", "type": "string" },
+        "aliases": {
+          "description": "Vendor synonyms for this parameter (e.g. psrr ↔ \"ripple rejection\"). Normalizing naming in the schema, not in downstream code, is what keeps this interoperable across manufacturers.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "measurements": {
+          "description": "One entry per distinct condition set. A parameter specified across several load currents or frequencies (dropout, PSRR, quiescent current) has one measurement per point.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/measurement" }
+        }
+      }
+    },
+
+    "measurement": {
+      "title": "Measurement",
+      "description": "The design-grade atom: a value + unit + the conditions it holds under + which table it came from + provenance.",
+      "type": "object",
+      "required": ["limitClass", "value", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "limitClass": {
+          "description": "Which kind of limit this is — the distinction no other standard encodes. `absolute_max` is a stress limit (damage beyond it). `recommended` is the specified operating range. `characterized` is a measured/guaranteed electrical characteristic. Confusing absolute_max with recommended burns boards, so it is first-class here.",
+          "enum": ["absolute_max", "recommended", "characterized"]
+        },
+        "value": { "$ref": "#/$defs/value" },
+        "unit": { "$ref": "#/$defs/unit" },
+        "conditions": {
+          "description": "The test conditions this value holds under — the product's moat. An open list of typed axes so it generalizes across families (an LDO uses I_OUT/V_IN; a MOSFET uses V_GS/V_DS; a buck adds F_SW). At least the axes that govern the value should be present.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/conditionAxis" }
+        },
+        "stimulus": {
+          "description": "For dynamic parameters (load/line transient, start-up), the applied step. Modeled once here because the from/to/slew triple recurs for load steps, line steps, and MOSFET switching.",
+          "$ref": "#/$defs/stimulus"
+        },
+        "conditionsVerbatim": {
+          "description": "The test conditions exactly as printed in the datasheet. Kept alongside the parsed axes so nothing is ever lost in normalization.",
+          "type": "string"
+        },
+        "sourcePage": { "description": "1-indexed datasheet page this value was read from.", "type": "integer", "minimum": 1 },
+        "sourceTable": { "description": "The table it came from, e.g. \"Electrical Characteristics\".", "type": "string" }
+      },
+      "allOf": [
+        {
+          "$comment": "A characterized/recommended value should say where it came from; abs-max stress rows sometimes have no test conditions.",
+          "if": { "properties": { "limitClass": { "const": "characterized" } } },
+          "then": { "required": ["sourcePage"] }
+        }
+      ]
+    },
+
+    "value": {
+      "title": "Value",
+      "description": "IEC 61360 levelType roles. `nom` is a nominal/target (e.g. a fixed 3.3 V option); `typ` is a typical measured value. At least one role is present.",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "min": { "type": "number" },
+        "typ": { "type": "number" },
+        "nom": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+
+    "conditionAxis": {
+      "title": "Condition axis",
+      "description": "One test-condition dimension. `param` uses a controlled vocabulary where possible (see spec) but any string is allowed so family-specific axes extend it. Give a scalar `value`, or a `min`/`max` range.",
+      "type": "object",
+      "required": ["param", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "param": {
+          "description": "The condition dimension. Recommended vocabulary: T_J, T_A, V_IN, V_OUT, I_OUT, I_LOAD, F, C_OUT, C_IN, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, V_EN, C_OUT_TYPE. Family-specific axes (V_GS, V_DS, F_SW, ...) are permitted.",
+          "type": "string",
+          "minLength": 1
+        },
+        "value": { "type": "number" },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "unit": { "$ref": "#/$defs/unit" },
+        "note": { "description": "Free text, e.g. a capacitor type \"X7R ceramic\".", "type": "string" }
+      },
+      "anyOf": [
+        { "required": ["value"] },
+        { "required": ["min"] },
+        { "required": ["max"] },
+        { "required": ["note"] }
+      ]
+    },
+
+    "stimulus": {
+      "title": "Stimulus",
+      "description": "An applied step for a dynamic measurement: e.g. I_OUT from 0 to 300 mA at 0.2 A/us.",
+      "type": "object",
+      "required": ["param", "from", "to", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "param": { "description": "What is stepped, e.g. I_OUT, V_IN.", "type": "string" },
+        "from": { "type": "number" },
+        "to": { "type": "number" },
+        "unit": { "$ref": "#/$defs/unit" },
+        "slewRate": { "description": "Rate of the step.", "type": "number" },
+        "slewUnit": { "description": "Unit of the slew rate, e.g. \"A/us\", \"V/us\".", "type": "string" }
+      }
+    },
+
+    "provenance": {
+      "title": "Provenance",
+      "description": "The audit trail — where every value in this document ultimately came from. No existing standard carries this. It is what makes a spec verifiable rather than merely asserted.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "datasheetSha256": { "description": "SHA-256 of the exact datasheet PDF bytes.", "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sourceUrl": { "description": "Where the datasheet was fetched from.", "type": "string", "format": "uri" },
+        "datasheetRevision": { "description": "Revision string as printed, e.g. \"SBVS176K — REVISED MARCH 2023\".", "type": "string" },
+        "publishedDate": { "type": "string" },
+        "fetchedAt": { "type": "string", "format": "date-time" },
+        "extractionMethod": { "description": "How the data was produced, e.g. \"manual\", \"llm:claude-sonnet-4-5\".", "type": "string" },
+        "extractedAt": { "type": "string", "format": "date-time" },
+        "confidence": { "description": "0-1 extraction confidence. Advisory only — does not by itself imply the data is verified.", "type": "number", "minimum": 0, "maximum": 1 },
+        "verified": { "description": "True only when the data passed a validation suite.", "type": "boolean" }
+      }
+    },
+
+    "unit": {
+      "title": "Unit",
+      "description": "Base-SI unit symbol. Values are normalized to base units (volts, amperes, hertz, ...) so cross-part numeric comparison is always sound. Derived units are included where a datasheet parameter needs them (tempco ppm/degC, slew V/us).",
+      "type": "string",
+      "enum": [
+        "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C",
+        "dB", "V/V", "%", "ppm/degC", "V/us", "A/us", "V/sqrtHz"
+      ]
+    }
+  }
+}

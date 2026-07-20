@@ -1,0 +1,4 @@
+{ "schemaVersion":"1.0","component":{"mpn":"X","manufacturer":"Y","family":"ldo"},
+  "parameters":[{"key":"quiescent_current","measurements":[
+    {"limitClass":"characterized","value":{"typ":31.5},"unit":"mA","sourcePage":5}]}],
+  "provenance":{} }

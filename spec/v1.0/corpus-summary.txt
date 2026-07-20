@@ -1,0 +1,2 @@
+corpus: 39 datasheets, 916 pages, 20 manufacturers
+Advanced Monolithic Systems, Analog Devices, BL Shanghai Belling, Diodes Incorporated, HTC Korea TAEJIN Tech, Infineon Technologies, MICRONE Nanjing Micro One Elec, MSKSEMI, MaxLinear, Microchip Tech, Richtek Tech, STMicroelectronics, TDSEMIC, TECH PUBLIC, TOSHIBA, Texas Instruments, Torex Semicon, UMW Youtai Semiconductor Co Ltd, UTC Unisonic Tech, onsemi

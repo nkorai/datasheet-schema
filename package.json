@@ -1,0 +1,46 @@
+{
+  "name": "datasheet-schema",
+  "version": "1.0.0",
+  "description": "A machine-readable, design-grade schema for electronic-component datasheet specifications — where every value carries its test conditions and provenance. JSON Schema + TypeScript types.",
+  "keywords": [
+    "datasheet", "json-schema", "electronics", "component", "eda", "hardware",
+    "ldo", "semiconductor", "parametric", "spec", "provenance"
+  ],
+  "author": "nkorai",
+  "license": "Apache-2.0",
+  "repository": { "type": "git", "url": "https://github.com/nkorai/datasheet-schema" },
+  "homepage": "https://github.com/nkorai/datasheet-schema#readme",
+  "type": "module",
+  "types": "./bindings/typescript/index.d.ts",
+  "main": "./bindings/typescript/index.js",
+  "exports": {
+    ".": {
+      "types": "./bindings/typescript/index.d.ts",
+      "import": "./bindings/typescript/index.js"
+    },
+    "./schema/*.json": "./schema/*.json",
+    "./schema/defs/*.json": "./schema/defs/*.json",
+    "./dictionary/*.json": "./dictionary/*.json",
+    "./examples/*.json": "./examples/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "schema/",
+    "dictionary/",
+    "examples/",
+    "bindings/typescript/",
+    "spec/"
+  ],
+  "scripts": {
+    "gen:types": "node scripts/gen-types.mjs",
+    "validate": "node scripts/validate.mjs",
+    "build": "npm run gen:types && npm run validate",
+    "test": "npm run validate"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "json-schema-to-typescript": "^15.0.3"
+  },
+  "publishConfig": { "access": "public" }
+}

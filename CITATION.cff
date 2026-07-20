@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "datasheet-schema: a design-grade schema for electronic-component datasheet specifications"
+message: "If you use this schema, please cite it."
+authors:
+  - alias: nkorai
+repository-code: "https://github.com/nkorai/datasheet-schema"
+license: Apache-2.0
+version: "1.0.0"
+keywords: [datasheet, json-schema, electronics, component, provenance, eda]

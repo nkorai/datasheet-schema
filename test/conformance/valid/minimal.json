@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "X", "manufacturer": "Y", "family": "ldo" },
+  "parameters": [
+    { "key": "output_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 3.3 }, "unit": "V",
+        "conditions": [ { "param": "I_OUT", "value": 0.001, "unit": "A" } ], "sourcePage": 5 } ] }
+  ],
+  "provenance": { "verified": false }
+}
