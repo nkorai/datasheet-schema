@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>datasheet-schema — a standard for machine-readable datasheets</title>
+<meta name="description" content="An open JSON Schema for electronic-component datasheets. Every value carries its test conditions and a reference to its source. Existing standards omit both." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%231f5eff'/%3E%3Ctext x='8' y='12' font-family='monospace' font-size='11' fill='white' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #ffffff; --fg: #16181d; --muted: #5b6470; --line: #e4e7ec;
+    --card: #f7f8fa; --accent: #1f5eff; --accent-fg: #ffffff;
+    --code-bg: #f4f5f7; --code-fg: #1a1c22; --ok: #148f4b;
+    --key: #7a3ea0; --str: #0a7d54; --num: #b4531a;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1013; --fg: #e6e8ec; --muted: #98a1ad; --line: #262a31;
+      --card: #16191e; --accent: #5b8cff; --accent-fg: #0e1013;
+      --code-bg: #14171c; --code-fg: #dfe3ea; --ok: #46c07d;
+      --key: #c48fe6; --str: #5fd3a0; --num: #e8a06a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  code, pre { font-family: var(--mono); }
+  h1, h2, h3 { line-height: 1.25; letter-spacing: -0.01em; }
+
+  header.top { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); z-index: 10; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  header.top .name { font-family: var(--mono); font-weight: 600; }
+  header.top nav a { color: var(--muted); margin-left: 20px; font-size: 14px; }
+  header.top nav a:hover { color: var(--fg); text-decoration: none; }
+
+  .hero { padding: 72px 0 40px; border-bottom: 1px solid var(--line); }
+  .hero h1 { font-size: clamp(30px, 5vw, 46px); margin: 0 0 16px; }
+  .hero p.lead { font-size: clamp(17px, 2.4vw, 21px); color: var(--muted); max-width: 40em; margin: 0 0 28px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .badge { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 8px; font-weight: 550; font-size: 15px; border: 1px solid var(--line); }
+  .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .btn.primary:hover { text-decoration: none; opacity: 0.92; }
+  .btn.ghost:hover { text-decoration: none; border-color: var(--muted); }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section h2 { font-size: clamp(22px, 3.4vw, 30px); margin: 0 0 8px; }
+  section .sub { color: var(--muted); margin: 0 0 28px; max-width: 46em; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 720px) { .cols { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
+  .panel .head { padding: 10px 14px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); font-family: var(--mono); }
+  pre { margin: 0; padding: 16px; overflow-x: auto; background: var(--code-bg); color: var(--code-fg); font-size: 13px; line-height: 1.55; }
+  .cap { color: var(--muted); font-size: 14px; margin-top: 12px; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .grid3 { grid-template-columns: 1fr; } }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 18px; background: var(--card); }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; }
+  .card .tag { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 550; }
+  td code { font-size: 13px; }
+
+  .steps { display: grid; gap: 20px; }
+  .step h3 { margin: 0 0 8px; font-size: 15px; font-family: var(--mono); color: var(--muted); font-weight: 500; }
+
+  .tok-key { color: var(--key); } .tok-str { color: var(--str); } .tok-num { color: var(--num); }
+  .note { color: var(--ok); font-size: 13px; font-family: var(--mono); }
+
+  footer { padding: 40px 0 64px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="name">datasheet-schema</span>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#model">Model</a>
+      <a href="#families">Families</a>
+      <a href="#start">Quickstart</a>
+      <a href="https://github.com/nkorai/datasheet-schema">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>A standard for machine-readable datasheets.</h1>
+    <p class="lead">An open JSON Schema for electronic-component specifications. Every value records the test conditions under which it holds and a reference to its source in the datasheet. Existing standards omit both.</p>
+    <div class="badges">
+      <span class="badge">JSON Schema 2020-12</span>
+      <span class="badge">Apache-2.0</span>
+      <span class="badge">npm: datasheet-schema</span>
+      <span class="badge">TypeScript and Python bindings</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://www.npmjs.com/package/datasheet-schema">Install from npm</a>
+      <a class="btn ghost" href="https://github.com/nkorai/datasheet-schema">Read the source</a>
+      <a class="btn ghost" href="./spec/v1.0/datasheet-spec.md">Specification</a>
+    </div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <h2>A value without its conditions is not safe to design from.</h2>
+    <p class="sub">A datasheet is a PDF. A specified value has meaning only in the context of the table row and column that qualify it. Parametric databases and distributor APIs store a bare number and discard the conditions. Classification dictionaries standardize names and units but provide no field for a condition.</p>
+    <div class="cols">
+      <div class="panel">
+        <div class="head">a parametric database stores</div>
+        <pre>{ <span class="tok-key">"vout"</span>: <span class="tok-num">3.3</span>,
+  <span class="tok-key">"dropout"</span>: <span class="tok-num">0.28</span>,
+  <span class="tok-key">"iq"</span>: <span class="tok-num">0.0000315</span> }</pre>
+      </div>
+      <div class="panel">
+        <div class="head">datasheet-schema stores</div>
+<pre>{ <span class="tok-key">"key"</span>: <span class="tok-str">"dropout_voltage"</span>,
+  <span class="tok-key">"measurements"</span>: [
+    { <span class="tok-key">"limitClass"</span>: <span class="tok-str">"characterized"</span>,
+      <span class="tok-key">"value"</span>: { <span class="tok-key">"typ"</span>: <span class="tok-num">0.28</span>, <span class="tok-key">"max"</span>: <span class="tok-num">0.45</span> },
+      <span class="tok-key">"unit"</span>: <span class="tok-str">"V"</span>,
+      <span class="tok-key">"conditions"</span>: [
+        { <span class="tok-key">"param"</span>: <span class="tok-str">"I_OUT"</span>, <span class="tok-key">"value"</span>: <span class="tok-num">0.2</span>, <span class="tok-key">"unit"</span>: <span class="tok-str">"A"</span> } ],
+      <span class="tok-key">"sourcePage"</span>: <span class="tok-num">5</span> } ] }</pre>
+      </div>
+    </div>
+    <p class="cap">The flat form does not say at what load current the dropout is 0.28 V, whether 3.3 V is a minimum, typical, or maximum, or what the absolute-maximum input rating is. The conditioned form does, and it records the page the value came from.</p>
+  </div>
+</section>
+
+<section id="model">
+  <div class="wrap">
+    <h2>Three elements.</h2>
+    <p class="sub">The schema is small on purpose. One measurement shape, one field that replaces the separate datasheet tables, and one family-agnostic envelope.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="tag">measurement</div>
+        <h3>Every value is conditioned</h3>
+        <p>A value carries min, typ, nom, max, a base-SI unit, a first-class typed list of test conditions, and the page it was read from.</p>
+      </div>
+      <div class="card">
+        <div class="tag">limitClass</div>
+        <h3>Tables are semantics</h3>
+        <p>One field marks a value as an absolute-maximum stress limit, a recommended operating range, or a characterized guarantee. A consumer never treats a stress limit as an operating value.</p>
+      </div>
+      <div class="card">
+        <div class="tag">envelope</div>
+        <h3>One shape, many families</h3>
+        <p>The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases. Adding a family needs no schema change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="families">
+  <div class="wrap">
+    <h2>Families.</h2>
+    <p class="sub">A dictionary defines the canonical parameter keys for one component family. The schema stays agnostic. A validator checks each document's keys against the dictionary named by its family. Two families ship today, a linear regulator and a discrete transistor, which share one envelope.</p>
+    <table>
+      <thead><tr><th>Family</th><th>Parameters</th><th>Covers</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>ldo</code></td>
+          <td>54</td>
+          <td>regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, ESD</td>
+        </tr>
+        <tr>
+          <td><code>mosfet</code></td>
+          <td>28</td>
+          <td>ratings, static, capacitance, gate charge, switching, body diode, thermal</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="cap">The same <code>pinout</code> structure carries a regulator's IN, OUT, GND and a transistor's G, D, S, because a pin function is an open controlled vocabulary rather than a fixed set.</p>
+  </div>
+</section>
+
+<section id="curve">
+  <div class="wrap">
+    <h2>A condition-swept parameter keeps every point.</h2>
+    <p class="sub">Dropout depends strongly on load current, so a single scalar is not usable. The schema records one measurement per point, each with its own condition. This is a real extracted example.</p>
+    <div class="panel">
+      <div class="head">dropout_voltage, from a verified LDO extraction</div>
+<pre>{ <span class="tok-key">"key"</span>: <span class="tok-str">"dropout_voltage"</span>, <span class="tok-key">"measurements"</span>: [
+  { <span class="tok-key">"limitClass"</span>:<span class="tok-str">"characterized"</span>, <span class="tok-key">"value"</span>:{<span class="tok-key">"typ"</span>:<span class="tok-num">1.0</span>,<span class="tok-key">"max"</span>:<span class="tok-num">1.2</span>}, <span class="tok-key">"unit"</span>:<span class="tok-str">"V"</span>,
+    <span class="tok-key">"conditions"</span>:[{<span class="tok-key">"param"</span>:<span class="tok-str">"I_OUT"</span>,<span class="tok-key">"value"</span>:<span class="tok-num">0.1</span>,<span class="tok-key">"unit"</span>:<span class="tok-str">"A"</span>}], <span class="tok-key">"sourcePage"</span>:<span class="tok-num">4</span> },
+  { <span class="tok-key">"limitClass"</span>:<span class="tok-str">"characterized"</span>, <span class="tok-key">"value"</span>:{<span class="tok-key">"typ"</span>:<span class="tok-num">1.05</span>,<span class="tok-key">"max"</span>:<span class="tok-num">1.25</span>}, <span class="tok-key">"unit"</span>:<span class="tok-str">"V"</span>,
+    <span class="tok-key">"conditions"</span>:[{<span class="tok-key">"param"</span>:<span class="tok-str">"I_OUT"</span>,<span class="tok-key">"value"</span>:<span class="tok-num">0.5</span>,<span class="tok-key">"unit"</span>:<span class="tok-str">"A"</span>}], <span class="tok-key">"sourcePage"</span>:<span class="tok-num">4</span> },
+  { <span class="tok-key">"limitClass"</span>:<span class="tok-str">"characterized"</span>, <span class="tok-key">"value"</span>:{<span class="tok-key">"typ"</span>:<span class="tok-num">1.2</span>,<span class="tok-key">"max"</span>:<span class="tok-num">1.3</span>}, <span class="tok-key">"unit"</span>:<span class="tok-str">"V"</span>,
+    <span class="tok-key">"conditions"</span>:[{<span class="tok-key">"param"</span>:<span class="tok-str">"I_OUT"</span>,<span class="tok-key">"value"</span>:<span class="tok-num">1</span>,<span class="tok-key">"unit"</span>:<span class="tok-str">"A"</span>}], <span class="tok-key">"sourcePage"</span>:<span class="tok-num">4</span> } ] }</pre>
+    </div>
+    <p class="cap">See the full documents in <a href="https://github.com/nkorai/datasheet-schema/tree/main/examples">examples/</a>, spanning four real LDO manufacturers and an illustrative MOSFET.</p>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <h2>Quickstart.</h2>
+    <p class="sub">The schema is self-contained, with no external references. Adopt it at whatever level fits: copy the file, validate against it, or import the typed bindings.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>1. Validate any document</h3>
+        <div class="panel"><pre>npx ajv-cli validate -s schema/datasheet-1.0.schema.json \
+  -d my-part.datasheet.json --spec=draft2020</pre></div>
+      </div>
+      <div class="step">
+        <h3>2. TypeScript: types and the schema object from one import</h3>
+        <div class="panel"><pre>npm i datasheet-schema
+
+<span class="tok-key">import</span> { datasheetSchema, ldoDictionary } <span class="tok-key">from</span> <span class="tok-str">'datasheet-schema'</span>;
+<span class="tok-key">import type</span> { Datasheet } <span class="tok-key">from</span> <span class="tok-str">'datasheet-schema'</span>;</pre></div>
+      </div>
+      <div class="step">
+        <h3>3. Python: pydantic models and a validator</h3>
+        <div class="panel"><pre><span class="tok-key">from</span> datasheet_schema <span class="tok-key">import</span> validate_document
+doc = validate_document(loaded_json)  <span class="note"># pydantic, then JSON Schema</span></pre></div>
+      </div>
+      <div class="step">
+        <h3>4. Reference the hosted, versioned schema from a $ref</h3>
+        <div class="panel"><pre>https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json</pre></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conformance">
+  <div class="wrap">
+    <h2>Conformance and prior art.</h2>
+    <p class="sub">An implementation is conforming if every document it emits validates against the schema. A validator is conforming if it accepts every fixture in the valid set and rejects every fixture in the invalid set. The negative fixtures define what wrong means, because a schema you cannot fail is not a specification.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>What it is not</h3>
+        <p>Not a behavioral model, for which see IBIS and SPICE. Not a manufacturing format, for which see IPC-2581. Not a registration authority, for which see JEDEC.</p>
+      </div>
+      <div class="card">
+        <h3>The closest neighbor</h3>
+        <p>IEC 61360 and eCl@ss standardize property names and units but have no condition field. Distributor APIs provide identity and flat specifications. None represent a value together with its test conditions and provenance. That is this schema's contribution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>datasheet-schema, Apache-2.0.</span>
+    <span>
+      <a href="https://github.com/nkorai/datasheet-schema">GitHub</a> &nbsp;
+      <a href="https://www.npmjs.com/package/datasheet-schema">npm</a> &nbsp;
+      <a href="./spec/v1.0/datasheet-spec.md">Specification</a> &nbsp;
+      <a href="./schema/datasheet-1.0.schema.json">Schema</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

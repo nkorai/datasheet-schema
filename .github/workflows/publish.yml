@@ -1,9 +1,12 @@
 name: publish
 
-# Manual, deliberate publishing only. Never runs on push.
-# Publishes the npm package (OIDC trusted publishing, no NPM_TOKEN) and deploys
-# the versioned schema URLs to GitHub Pages so $id references resolve.
+# npm publishing is manual and deliberate (workflow_dispatch only): it never
+# runs on push. The GitHub Pages deploy, which serves the landing site and the
+# versioned schema URLs so $id references resolve, also runs on push to main so
+# the documentation stays current between releases.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,8 +14,15 @@ permissions:
   id-token: write
   pages: write
 
+# One in-flight Pages deploy at a time.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   npm:
+    # Only a deliberate dispatch publishes to npm, never a push.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -27,13 +37,14 @@ jobs:
       - run: npx npm@11 publish --access public --provenance
 
   pages:
+    # Deploys on push and on dispatch. Does not depend on the npm job, so the
+    # site updates on a documentation push without republishing the package.
     runs-on: ubuntu-latest
-    needs: npm
     environment: github-pages
     steps:
       - uses: actions/checkout@v7
-      # Serve schema/ and dictionary/ at nkorai.github.io/datasheet-schema/... so
-      # the $id URLs resolve to the raw JSON permanently.
+      # Serve index.html, and schema/ and dictionary/ at
+      # nkorai.github.io/datasheet-schema/... so the $id URLs resolve permanently.
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .
