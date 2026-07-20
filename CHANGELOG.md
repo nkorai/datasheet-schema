@@ -2,6 +2,11 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.0.2]
+
+### Changed
+- README: added a prior-art section positioning against edatasheets, JEDEC JEP30, Cyanobyte, and CCSDS SOIS EDS. Schema unchanged.
+
 ## [1.0.1]
 
 ### Changed

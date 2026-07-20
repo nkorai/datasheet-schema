@@ -111,14 +111,34 @@ Two version axes are kept distinct. The schema version is `MAJOR.MINOR` in the f
 
 A MINOR schema change is additive only. A MAJOR change publishes a new `$id`, and every previously published schema URL remains hosted so existing references do not break. The requirement that every value carries conditions and provenance does not change across versions. See [`GOVERNANCE.md`](./GOVERNANCE.md).
 
-## Related work
+## Prior art
 
-| Standard | Function | Difference |
+The idea of a machine-readable datasheet has been attempted before. None of the prior efforts combines a per-value test condition with provenance back to the source page, which is the requirement for machine-extracted specifications to be trustworthy.
+
+### edatasheets (the closest neighbor)
+
+The digital-datasheets working group, originated at Intel, defines a JSON Schema format for component datasheets with per-component-class specifications and value and condition structures. It is the nearest existing work to this project. Two facts shape the decision to publish a new schema rather than adopt it.
+
+First, it is effectively unmaintained. Intel's companion tooling states that it will no longer provide support, accept patches, or guarantee development, and it suggests forking. Second, its design center is a manufacturer-authored format on JSON Schema draft-07. This project's design center is different. It treats provenance to the source page and the absolute-maximum versus recommended versus characterized distinction as first-class, precisely so that a value produced by an extraction pipeline can be audited against the page it came from. It targets JSON Schema 2020-12, ships a conformance suite, and is actively maintained.
+
+Convergence would be welcome. If the digital-datasheets effort resumes, the two vocabularies can be cross-mapped. Until then, this schema is maintained and adoptable today.
+
+### Other machine-readable datasheet efforts
+
+| Effort | What it is | Difference |
+|---|---|---|
+| JEDEC JEP30 (PartModel) | Official XML standard for machine-readable part attributes. | Heavyweight and vendor-oriented, with limited grassroots adoption. No per-value provenance. |
+| Google Cyanobyte | Machine-readable register maps for I2C peripherals, used for code generation. | Describes device interfaces, not electrical specifications. Dormant. |
+| CCSDS SOIS Electronic Data Sheets | XML device-interface specifications used in spaceflight software. | Niche aerospace scope, interface-oriented. |
+
+### Adjacent standards and datasets
+
+| Standard or dataset | Function | Difference |
 |---|---|---|
 | IEC 61360, IEC CDD, eCl@ss | Property-name and unit dictionaries. | No test-condition field. |
 | IBIS, SPICE | Condition-aware behavioral models. | Model behavior, not the guaranteed datasheet table. |
-| Octopart, Nexar, distributor APIs | Identity and flat display specifications. | No conditions, min/typ/max, or provenance. |
-| JEDEC, IPC-2581, IEC 61360 | Registration, PCB manufacturing, classification. | None carry per-value conditions and provenance. |
+| Octopart, Nexar, SiliconExpert, Datasheets.com | Commercial parametric datasets and APIs. | Closed, ad-hoc schemas. Generally no test-condition capture or per-value provenance to the source PDF. |
+| IPC-2581 | PCB manufacturing data exchange. | Board manufacturing, not device specifications. |
 
 ## License
 
