@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Generates TypeScript types from the JSON Schema — schema stays the single
+ * Generates TypeScript types from the JSON Schema. schema stays the single
  * source of truth. Also emits an index that re-exports the schema object so
  * consumers get BOTH the typed object and the static type from one import.
  */
@@ -17,7 +17,7 @@ const schema = JSON.parse(readFileSync(join(root, 'schema/datasheet-1.0.schema.j
 
 const dts = await compile(schema, 'Datasheet', {
     additionalProperties: false,
-    bannerComment: '/* AUTO-GENERATED from schema/datasheet-1.0.schema.json — do not edit. */',
+    bannerComment: '/* AUTO-GENERATED from schema/datasheet-1.0.schema.json. do not edit. */',
     style: { singleQuote: true },
 });
 
@@ -46,4 +46,4 @@ export declare const SCHEMA_VERSION: '1.0';
 // json-schema-to-typescript emits .d.ts; provide a .js re-export target for the type module.
 writeFileSync(join(outDir, 'datasheet.js'), 'export {};\n');
 
-console.log('✓ generated bindings/typescript/{datasheet.d.ts,index.js,index.d.ts}');
+console.log('PASS generated bindings/typescript/{datasheet.d.ts,index.js,index.d.ts}');

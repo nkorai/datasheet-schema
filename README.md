@@ -1,31 +1,30 @@
 # datasheet-schema
 
-> A machine-readable, **design-grade** schema for electronic-component datasheet specifications — where every value carries its **test conditions** and **provenance**. The two things that make a spec safe to design from, and the two things no existing standard captures.
+A machine-readable JSON Schema for electronic-component datasheet specifications. Each value records the test conditions under which it holds and a reference to its source in the datasheet. Existing standards omit both.
 
 [![JSON Schema](https://img.shields.io/badge/JSON%20Schema-2020--12-blue)](https://json-schema.org/draft/2020-12/schema)
 [![conformance](https://img.shields.io/badge/conformance-passing-brightgreen)](./test/conformance)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE)
 [![npm](https://img.shields.io/badge/npm-datasheet--schema-cb3837)](https://www.npmjs.com/package/datasheet-schema)
 
----
+## Purpose
 
-## Why this exists
+A datasheet is a PDF. A specified value has meaning only in the context of the table row and column that qualify it. Parametric databases and distributor APIs store a bare value such as "V_OUT = 3.3 V" and discard the conditions that qualify it, for example "at I_OUT = 1 mA, T_J = 25 C, V_IN = 4.3 V". Classification dictionaries such as IEC 61360 and eCl@ss standardize property names and units but provide no field for a test condition. Simulation formats such as IBIS and SPICE carry conditions but describe device behavior rather than the guaranteed datasheet table.
 
-A datasheet is a PDF. To use it, you read a value out of a table — but the value is meaningless without the row and column headers around it.
+No open standard represents a datasheet value together with its test conditions and a reference to its source. This schema does.
 
-Parametric databases (Octopart, LCSC, distributor APIs) flatten `V_OUT = 3.3 V` and **silently drop** *"at I_OUT = 1 mA, T_J = 25 °C, V_IN = 4.3 V."* Classification dictionaries (IEC 61360, eCl@ss) standardize property *names* but have no slot for a test condition. Simulation formats (IBIS, SPICE) carry conditions but describe *behavior*, not the guaranteed datasheet table. **No open standard represents a datasheet value together with the conditions it holds under and a pointer back to where it came from.**
+## Comparison
 
-That gap is the difference between *searchable* and *designable-from*. This schema closes it.
+A parametric database stores:
 
-## The "holy sh*t" — before / after
-
-**A parametric database says:**
 ```json
 { "vout": 3.3, "dropout": 0.28, "iq": 0.0000315 }
 ```
-Which you cannot design from. At what load is dropout 0.28 V? Is 3.3 V the min, typ, or max? What's the abs-max input rating? Silence.
 
-**datasheet-schema says:**
+This is not sufficient to design from. The load current at which dropout equals 0.28 V is unspecified, as is whether 3.3 V is a minimum, typical, or maximum, and no absolute-maximum input rating is present.
+
+datasheet-schema stores:
+
 ```json
 {
   "key": "dropout_voltage",
@@ -34,7 +33,7 @@ Which you cannot design from. At what load is dropout 0.28 V? Is 3.3 V the min, 
       "value": { "typ": 0.135 }, "unit": "V",
       "conditions": [ { "param": "I_OUT", "value": 0.1, "unit": "A" },
                       { "param": "T_J",  "value": 25,  "unit": "degC" } ],
-      "conditionsVerbatim": "IOUT = 100 mA, TJ = 25°C",
+      "conditionsVerbatim": "IOUT = 100 mA, TJ = 25C",
       "sourcePage": 5, "sourceTable": "Electrical Characteristics" },
     { "limitClass": "characterized",
       "value": { "typ": 0.28, "max": 0.45 }, "unit": "V",
@@ -43,76 +42,84 @@ Which you cannot design from. At what load is dropout 0.28 V? Is 3.3 V the min, 
   ]
 }
 ```
-Now a tool — or an AI generating a schematic — knows dropout is **135 mV at 100 mA but up to 450 mV at 200 mA**, that it's a *characterized* value (not an absolute maximum), and can open **page 5** to check.
 
-## The three ideas
+A consumer can now determine that dropout is 135 mV at 100 mA and up to 450 mV at 200 mA, that the value is a characterized specification rather than an absolute maximum, and can locate it on page 5 of the source document.
 
-1. **The `Measurement` atom** — every value is `{ value {min,typ,nom,max}, unit, conditions[], provenance }`. `conditions` is a first-class, typed, open list of axes. This is the part no standard has.
-2. **`limitClass`** — `absolute_max` | `recommended` | `characterized`. One field replaces three separate datasheet tables and encodes the distinction that *burns boards when confused*. Absolute maximum is a stress limit; recommended is where the part works; characterized is what's guaranteed.
-3. **A universal envelope + pluggable family dictionaries** — the parameter *shape* is family-agnostic; a [dictionary](./dictionary/) supplies the canonical keys, units, and vendor **aliases** (so `psrr` = `ripple rejection` = `power supply ripple rejection`). LDO ships today; buck converters, MOSFETs, and MCUs slot in with only a new dictionary, no schema change.
+## Model
 
-Positioned as: **IEC 61360 property vocabulary + a conditioned-value extension + an Octopart-style identity/provenance envelope.** We reinvented no vocabulary — only the two things nobody had.
+The schema has three elements.
+
+1. Measurement. Every value is an object of `value` (with `min`, `typ`, `nom`, `max`), `unit`, `conditions`, and provenance fields. The `conditions` field is a first-class, typed list of axes.
+2. limitClass. One of `absolute_max`, `recommended`, or `characterized`. A single field replaces the separate datasheet tables and records whether a value is a stress limit, an operating range, or a guaranteed characteristic. A consumer must not treat an absolute-maximum value as an operating value.
+3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. The LDO dictionary is included. Additional families require only a new dictionary, not a schema change.
+
+The schema reuses established vocabulary, including IEC 61360 level roles, an Octopart-style identity envelope, and base-SI units. It adds the conditioned value and provenance that those sources omit.
 
 ## Quickstart
 
-**Copy the schema** (self-contained — one file, no external `$ref`s):
+Copy the schema. It is self-contained, with no external references.
+
 ```
 schema/datasheet-1.0.schema.json
 ```
 
-**Validate a document** with any JSON Schema 2020-12 validator:
+Validate a document with any JSON Schema 2020-12 validator.
+
 ```bash
 npx ajv-cli validate -s schema/datasheet-1.0.schema.json -d my-part.datasheet.json --spec=draft2020
 ```
 
-**Use it from npm** (types + schema object in one import):
+Install from npm to get the types and the schema object from one import.
+
 ```bash
 npm i datasheet-schema
 ```
+
 ```ts
 import { datasheetSchema, ldoDictionary } from 'datasheet-schema';
 import type { Datasheet } from 'datasheet-schema';
 ```
 
-**Or `$ref` the hosted, versioned URL:**
+Reference the hosted, versioned URL from a `$ref`.
+
 ```
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-A complete, validated example lives in [`examples/ldo-tlv70033.datasheet.json`](./examples/ldo-tlv70033.datasheet.json).
+A complete, validated example is in [`examples/ldo-tlv70033.datasheet.json`](./examples/ldo-tlv70033.datasheet.json).
 
-## What's in it
+## Contents
 
-| Section | What it holds |
+| Section | Description |
 |---|---|
-| `component` | identity + ordering variants (Octopart/GS1-style envelope) |
-| `pinout` | pins with **normalized functions** (IN/OUT/GND/EN/…) so tools skip vendor pin-name matching |
-| `parameters` | **everything** — abs-max, recommended, electrical, thermal, ESD — unified, distinguished by `limitClass` |
-| `provenance` | SHA-256 of the source PDF, revision, page, extraction method, verified flag |
+| `component` | Identity and ordering variants. |
+| `pinout` | Pins with normalized functions, so tools bind by function rather than vendor pin name. |
+| `parameters` | All specified values (absolute maximum, recommended, electrical, thermal, ESD), distinguished by `limitClass`. |
+| `provenance` | SHA-256 of the source PDF, revision, page, extraction method, and verified flag. |
 
-The LDO dictionary defines **50 canonical parameters** across regulation, dropout, current, protection, rejection/noise, enable, power-good, dynamic, stability, thermal, and ESD groups — see [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json).
+The LDO dictionary defines 51 canonical parameters across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, and ESD groups. See [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json).
 
-## This isn't hand-waving — it was validated against real datasheets
+## Validation against real datasheets
 
-The LDO dictionary was built and checked against a **corpus of 39 datasheets from 20 manufacturers (916 pages)** — TI, Analog Devices, onsemi, Torex, Microchip, Diodes, ST, Infineon, Richtek, Toshiba, and more — spanning simple 3-pin regulators to feature-rich low-noise parts with enable, power-good, and adjustable outputs. The parameter-frequency analysis that shaped the dictionary is in [`spec/v1.0/parameter-frequency-analysis.txt`](./spec/v1.0/parameter-frequency-analysis.txt). Every parameter in the dictionary earns its place by appearing across the corpus or in manufacturer parameter glossaries.
+The LDO dictionary was built and checked against a corpus of 39 datasheets from 20 manufacturers totaling 916 pages, including Texas Instruments, Analog Devices, onsemi, Torex, Microchip, Diodes, STMicroelectronics, Infineon, Richtek, and Toshiba. The corpus spans simple three-pin regulators through feature-rich parts with enable, power-good, and adjustable outputs. Each parameter in the dictionary appears across the corpus or in a manufacturer parameter glossary. The parameter-frequency analysis is in [`spec/v1.0/parameter-frequency-analysis.txt`](./spec/v1.0/parameter-frequency-analysis.txt).
 
-## Conformance & versioning
+## Conformance and versioning
 
-- **Conformance suite** — [`test/conformance/`](./test/conformance) has positive fixtures (must validate) and **negative fixtures** (must be rejected: empty values, non-base units, wrong `limitClass`, missing provenance). `npm test` runs them all. A schema you can't fail isn't a spec.
-- **Two version axes.** The **schema** version is `MAJOR.MINOR` in the filename and `$id` (`datasheet-1.0`); the **npm package** uses full semver. Many `1.0.x` package releases can ship the same `datasheet-1.0` schema.
-- **Compatibility.** MINOR = additive only (new optional params, new enum values). MAJOR = a new `$id`; old versions stay hosted forever. The invariant that every value carries `conditions` and traces to `provenance` never weakens — that's the spec's identity. See [`GOVERNANCE.md`](./GOVERNANCE.md).
+The [`test/conformance/`](./test/conformance) directory holds positive fixtures that must validate and negative fixtures that must be rejected, including empty values, non-base units, an invalid `limitClass`, and missing provenance. `npm test` runs the full suite.
 
-## Prior art / related standards
+Two version axes are kept distinct. The schema version is `MAJOR.MINOR` in the filename and `$id`, for example `datasheet-1.0`. The npm package uses full semantic versioning. Several `1.0.x` package releases may ship the same `datasheet-1.0` schema.
 
-| Standard | What it does | Why it isn't this |
+A MINOR schema change is additive only. A MAJOR change publishes a new `$id`, and every previously published schema URL remains hosted so existing references do not break. The requirement that every value carries conditions and provenance does not change across versions. See [`GOVERNANCE.md`](./GOVERNANCE.md).
+
+## Related work
+
+| Standard | Function | Difference |
 |---|---|---|
-| IEC 61360 / IEC CDD, eCl@ss | property-name + unit dictionaries | no test-condition slot; filter-grade |
-| IBIS, SPICE | condition-aware behavioral models | model behavior, not the guaranteed datasheet table |
-| Octopart / Nexar / distributor APIs | identity + flat display specs | no conditions, no min/typ/max, no provenance |
-| JEDEC / IPC-2581 / IEC 61360 | registration, PCB manufacturing, classification | none carry per-value conditions + provenance |
-
-datasheet-schema borrows their vocabulary (IEC 61360 `levelType`, Octopart identity, UN/CEFACT-style units) and adds the conditioned value + provenance they all omit.
+| IEC 61360, IEC CDD, eCl@ss | Property-name and unit dictionaries. | No test-condition field. |
+| IBIS, SPICE | Condition-aware behavioral models. | Model behavior, not the guaranteed datasheet table. |
+| Octopart, Nexar, distributor APIs | Identity and flat display specifications. | No conditions, min/typ/max, or provenance. |
+| JEDEC, IPC-2581, IEC 61360 | Registration, PCB manufacturing, classification. | None carry per-value conditions and provenance. |
 
 ## License
 
-Apache-2.0. Datasheet PDFs are copyrighted by their manufacturers and are **not** redistributed by this project — the schema describes *extracted factual specifications*, which are not themselves copyrightable.
+Apache-2.0. Datasheet PDFs are copyrighted by their manufacturers and are not redistributed by this project. The schema describes extracted factual specifications, which are not themselves copyrightable.

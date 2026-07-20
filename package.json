@@ -1,14 +1,26 @@
 {
   "name": "datasheet-schema",
   "version": "1.0.0",
-  "description": "A machine-readable, design-grade schema for electronic-component datasheet specifications — where every value carries its test conditions and provenance. JSON Schema + TypeScript types.",
+  "description": "A machine-readable JSON Schema for electronic-component datasheet specifications, where each value records its test conditions and provenance. Ships JSON Schema artifacts and TypeScript types.",
   "keywords": [
-    "datasheet", "json-schema", "electronics", "component", "eda", "hardware",
-    "ldo", "semiconductor", "parametric", "spec", "provenance"
+    "datasheet",
+    "json-schema",
+    "electronics",
+    "component",
+    "eda",
+    "hardware",
+    "ldo",
+    "semiconductor",
+    "parametric",
+    "spec",
+    "provenance"
   ],
   "author": "nkorai",
   "license": "Apache-2.0",
-  "repository": { "type": "git", "url": "https://github.com/nkorai/datasheet-schema" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nkorai/datasheet-schema"
+  },
   "homepage": "https://github.com/nkorai/datasheet-schema#readme",
   "type": "module",
   "types": "./bindings/typescript/index.d.ts",
@@ -42,5 +54,7 @@
     "ajv-formats": "^3.0.1",
     "json-schema-to-typescript": "^15.0.3"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }

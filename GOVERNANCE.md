@@ -2,33 +2,30 @@
 
 ## Versioning
 
-Two independent axes, kept distinct:
+Two independent axes are kept distinct.
 
-| Axis | Versions | Scheme | Lives in |
+| Axis | Versions | Scheme | Location |
 |---|---|---|---|
-| **Schema** | the data contract | `MAJOR.MINOR` | the schema filename + `$id` (`datasheet-1.0`) |
-| **Package** | the npm release | full semver | `package.json` |
+| Schema | The data contract. | MAJOR.MINOR | The schema filename and `$id`, for example `datasheet-1.0`. |
+| Package | The npm release. | Full semantic version | `package.json`. |
 
-Many `1.0.x` package releases may ship the same `datasheet-1.0` schema.
+Several `1.0.x` package releases may ship the same `datasheet-1.0` schema.
 
 ## Compatibility policy
 
-- **MINOR** (`1.0` → `1.1`): additive only — new optional fields, new enum
-  values, new dictionary parameters. Backward compatible; existing valid
-  documents stay valid.
-- **MAJOR** (`1.x` → `2.0`): removals, renames, or newly-required fields. Ships
-  a new `$id`; **every previously published schema URL stays hosted forever** so
-  existing `$ref`s never break.
-- **The invariant**: every value always carries `conditions` and traces to
-  `provenance`. That never becomes optional — it is the schema's identity.
+A MINOR change, for example `1.0` to `1.1`, is additive only. It may add optional fields, new enum values, or new dictionary parameters. Existing valid documents remain valid.
+
+A MAJOR change, for example `1.x` to `2.0`, may remove, rename, or newly require fields. It ships a new `$id`. Every previously published schema URL remains hosted so existing references do not break.
+
+One requirement does not change across versions. Every value carries `conditions` and traces to `provenance`. This is the schema's defining property.
 
 ## Changes
 
-Changes are proposed as GitHub issues/PRs. A change to the data contract must:
-1. update the schema + a normative note in `spec/`,
-2. add or update conformance fixtures (positive and negative),
-3. pass `npm test` (the conformance suite) in CI,
-4. be recorded in `CHANGELOG.md`.
+Changes are proposed as GitHub issues or pull requests. A change to the data contract must do the following.
 
-New component families are added as new dictionary files under `dictionary/`
-without changing the core schema.
+1. Update the schema and a normative note in `spec/`.
+2. Add or update conformance fixtures, both a positive fixture that must pass and a negative fixture that must fail.
+3. Pass `npm test`, the conformance suite, in CI.
+4. Record the change in `CHANGELOG.md`.
+
+New component families are added as new dictionary files under `dictionary/` without changing the core schema.

@@ -3,8 +3,8 @@
  * Conformance runner. Validates:
  *   - every examples/*.json against the schema (must PASS)
  *   - every test/conformance/valid/*.json  (must PASS)
- *   - every test/conformance/invalid/*.json (must FAIL — the negative fixtures
- *     that define what "wrong" means; a schema you can't fail isn't a spec)
+ *   - every test/conformance/invalid/*.json (must FAIL. the negative fixtures
+ *     that define what wrong means. A schema you cannot fail is not a spec.
  *   - the LDO dictionary against the family-dictionary meta-schema
  *   - dictionary/schema cross-check: every parameter `key` used in the examples
  *     exists in the family dictionary
@@ -30,14 +30,14 @@ const validate = ajv.compile(schema);
 const validateDict = ajv.compile(dictMeta);
 
 let failures = 0;
-const pass = (m) => console.log(`  \x1b[32m✓\x1b[0m ${m}`);
-const fail = (m) => { console.log(`  \x1b[31m✗ ${m}\x1b[0m`); failures += 1; };
+const pass = (m) => console.log(`  \x1b[32mPASS\x1b[0m ${m}`);
+const fail = (m) => { console.log(`  \x1b[31mFAIL ${m}\x1b[0m`); failures += 1; };
 
 console.log('\ndictionary meta-schema:');
 for (const f of glob('dictionary')) {
     if (f.startsWith('family-dictionary')) continue;
     const ok = validateDict(read(`dictionary/${f}`));
-    ok ? pass(f) : fail(`${f} — ${ajv.errorsText(validateDict.errors)}`);
+    ok ? pass(f) : fail(`${f}. ${ajv.errorsText(validateDict.errors)}`);
 }
 
 const ldoKeys = new Set(read('dictionary/ldo-1.0.json').parameters.map((p) => p.key));
@@ -46,21 +46,21 @@ console.log('\nexamples (must pass, keys must be in dictionary):');
 for (const f of glob('examples')) {
     const doc = read(`examples/${f}`);
     const ok = validate(doc);
-    if (!ok) { fail(`${f} — ${ajv.errorsText(validate.errors)}`); continue; }
+    if (!ok) { fail(`${f}. ${ajv.errorsText(validate.errors)}`); continue; }
     const unknown = (doc.parameters ?? []).map((p) => p.key).filter((k) => !ldoKeys.has(k));
-    unknown.length ? fail(`${f} — parameter keys not in dictionary: ${unknown.join(', ')}`) : pass(f);
+    unknown.length ? fail(`${f}. parameter keys not in dictionary: ${unknown.join(', ')}`) : pass(f);
 }
 
 console.log('\nconformance/valid (must pass):');
 for (const f of glob('test/conformance/valid')) {
     const ok = validate(read(`test/conformance/valid/${f}`));
-    ok ? pass(f) : fail(`${f} — ${ajv.errorsText(validate.errors)}`);
+    ok ? pass(f) : fail(`${f}. ${ajv.errorsText(validate.errors)}`);
 }
 
 console.log('\nconformance/invalid (must FAIL):');
 for (const f of glob('test/conformance/invalid')) {
     const ok = validate(read(`test/conformance/invalid/${f}`));
-    ok ? fail(`${f} — validated but should have been rejected`) : pass(`${f} (correctly rejected)`);
+    ok ? fail(`${f}. validated but should have been rejected`) : pass(`${f} (correctly rejected)`);
 }
 
 console.log(failures === 0 ? '\n\x1b[32mAll conformance checks passed.\x1b[0m\n' : `\n\x1b[31m${failures} failure(s).\x1b[0m\n`);

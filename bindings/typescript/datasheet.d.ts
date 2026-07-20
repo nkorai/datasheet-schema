@@ -1,14 +1,14 @@
-/* AUTO-GENERATED from schema/datasheet-1.0.schema.json — do not edit. */
+/* AUTO-GENERATED from schema/datasheet-1.0.schema.json. do not edit. */
 
 /**
- * The design-grade atom: a value + unit + the conditions it holds under + which table it came from + provenance.
+ * A value with its unit, the conditions under which it holds, the table it came from, and provenance.
  */
 export type Measurement = {
   [k: string]: unknown;
 };
 
 /**
- * A machine-readable, design-grade schema for electronic-component datasheet specifications. Unlike parametric databases, every value carries the TEST CONDITIONS it was measured under and PROVENANCE back to the datasheet page — the two things that make a spec safe to design from, and the two things no existing standard captures.
+ * A machine-readable schema for electronic-component datasheet specifications. Each value records the test conditions under which it holds and a reference to its source in the datasheet. Existing standards omit both.
  */
 export interface DatasheetSchema {
   /**
@@ -17,21 +17,21 @@ export interface DatasheetSchema {
   schemaVersion: '1.0';
   component: ComponentIdentity;
   /**
-   * Physical pins with normalized functions, so a tool can wire the part without string-matching vendor pin names.
+   * Physical pins with normalized functions, so a tool can bind a pin by function rather than by vendor pin name.
    */
   pinout?: Pin[];
   /**
-   * EVERY specified value, unified. Absolute-maximum, recommended-operating, electrical, thermal, and ESD data all live here as parameters, distinguished by each measurement's `limitClass` rather than by separate tables. This is what lets one envelope describe any component family.
+   * All specified values. Absolute-maximum, recommended-operating, electrical, thermal, and ESD data are held here as parameters and distinguished by each measurement's limitClass rather than by separate tables. This allows one envelope to describe any component family.
    */
   parameters: Parameter[];
   provenance: Provenance;
   /**
-   * Anything ambiguous, conflicting, or spread across variant tables that a human reviewer should know.
+   * Free text for a reviewer, covering anything ambiguous, conflicting, or spread across variant tables.
    */
   notes?: string[];
 }
 /**
- * Who the part is. Borrows the Octopart/GS1 identity envelope.
+ * Identifying information for the part.
  */
 export interface ComponentIdentity {
   /**
@@ -45,17 +45,17 @@ export interface ComponentIdentity {
   family: string;
   description?: string;
   /**
-   * Package designator as printed, e.g. "SOT-23-5".
+   * Package designator as printed, for example SOT-23-5.
    */
   package?: string;
   pinCount?: number;
   lifecycle?: 'active' | 'nrnd' | 'obsolete' | 'unknown';
   /**
-   * Moisture sensitivity level, e.g. "MSL1".
+   * Moisture sensitivity level, for example MSL1.
    */
   msl?: string;
   /**
-   * Qualification / temperature grade, e.g. "-40..125", "AEC-Q100 Grade 1".
+   * Qualification or temperature grade, for example -40..125 or AEC-Q100 Grade 1.
    */
   temperatureGrade?: string;
   /**
@@ -70,7 +70,7 @@ export interface ComponentIdentity {
     package?: string;
     temperatureGrade?: string;
     /**
-     * Tape & reel / tube / etc.
+     * Tape and reel, tube, or similar.
      */
     packing?: string;
   }[];
@@ -93,11 +93,11 @@ export interface Pin {
   sourcePage?: number;
 }
 /**
- * One canonically-keyed characteristic. A family dictionary (e.g. dictionary/ldo-1.0.json) defines the legal keys, their units, and vendor aliases — but the schema keeps the parameter SHAPE universal so every family reuses it.
+ * One canonically-keyed characteristic. A family dictionary, for example dictionary/ldo-1.0.json, defines the legal keys, their units, and vendor aliases. The schema keeps the parameter shape family-agnostic so every family reuses it.
  */
 export interface Parameter {
   /**
-   * Canonical parameter key from the family dictionary, e.g. "dropout_voltage", "psrr", "reference_voltage", "thermal_resistance_junction_ambient".
+   * Canonical parameter key from the family dictionary, for example dropout_voltage, psrr, reference_voltage, or thermal_resistance_junction_ambient.
    */
   key: string;
   /**
@@ -105,22 +105,22 @@ export interface Parameter {
    */
   name?: string;
   /**
-   * Family-scoped functional group, e.g. "regulation", "protection".
+   * Family-scoped functional group, for example regulation or protection.
    */
   group?: string;
   /**
-   * Vendor synonyms for this parameter (e.g. psrr ↔ "ripple rejection"). Normalizing naming in the schema, not in downstream code, is what keeps this interoperable across manufacturers.
+   * Vendor synonyms for this parameter, for example ripple rejection for psrr. Normalizing naming in the schema rather than in downstream code keeps documents interoperable across manufacturers.
    */
   aliases?: string[];
   /**
-   * One entry per distinct condition set. A parameter specified across several load currents or frequencies (dropout, PSRR, quiescent current) has one measurement per point.
+   * One entry per distinct condition set. A parameter specified across several load currents or frequencies, such as dropout, PSRR, or quiescent current, has one measurement per point.
    *
    * @minItems 1
    */
   measurements: [Measurement, ...Measurement[]];
 }
 /**
- * The audit trail — where every value in this document ultimately came from. No existing standard carries this. It is what makes a spec verifiable rather than merely asserted.
+ * The record of where every value in this document came from. It is what allows a specification to be verified rather than only asserted.
  */
 export interface Provenance {
   /**
@@ -132,18 +132,18 @@ export interface Provenance {
    */
   sourceUrl?: string;
   /**
-   * Revision string as printed, e.g. "SBVS176K — REVISED MARCH 2023".
+   * Revision string as printed, for example SBVS176K REVISED MARCH 2023.
    */
   datasheetRevision?: string;
   publishedDate?: string;
   fetchedAt?: string;
   /**
-   * How the data was produced, e.g. "manual", "llm:claude-sonnet-4-5".
+   * How the data was produced, for example manual or llm:claude-sonnet-4-5.
    */
   extractionMethod?: string;
   extractedAt?: string;
   /**
-   * 0-1 extraction confidence. Advisory only — does not by itself imply the data is verified.
+   * Extraction confidence from 0 to 1. Advisory only. It does not by itself imply the data is verified.
    */
   confidence?: number;
   /**

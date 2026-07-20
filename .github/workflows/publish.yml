@@ -1,6 +1,6 @@
 name: publish
 
-# Manual, deliberate publishing only — never on push.
+# Manual, deliberate publishing only. Never runs on push.
 # Publishes the npm package (OIDC trusted publishing, no NPM_TOKEN) and deploys
 # the versioned schema URLs to GitHub Pages so $id references resolve.
 on:

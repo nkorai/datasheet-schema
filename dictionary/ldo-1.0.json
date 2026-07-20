@@ -4,66 +4,531 @@
   "dictionaryVersion": "1.0",
   "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming.",
   "parameters": [
-    { "key": "output_voltage", "name": "Output voltage", "unit": "V", "group": "regulation", "aliases": ["VOUT", "regulated output voltage"], "hint": "Fixed nominal output as absolute volts with min/typ/max. Percentages break down at low Vout, so store absolute and derive tolerance." },
-    { "key": "output_voltage_accuracy", "name": "Output voltage accuracy", "unit": "%", "group": "regulation", "aliases": ["output voltage tolerance", "initial accuracy", "VOUT accuracy"], "hint": "Tolerance as a percentage. Vendors also express this as absolute mV for Vout<2V — capture that under output_voltage instead." },
-    { "key": "reference_voltage", "name": "Reference / feedback voltage", "unit": "V", "group": "regulation", "aliases": ["VREF", "VFB", "feedback voltage", "VSET", "adjust voltage"], "hint": "The error-amp reference. THE specified datum for adjustable parts — output_voltage_range is derived from it." },
-    { "key": "output_voltage_range", "name": "Adjustable output range", "unit": "V", "group": "regulation", "optional": true, "hint": "Settable Vout min..max for adjustable parts." },
-    { "key": "input_voltage_range", "name": "Input voltage operating range", "unit": "V", "group": "regulation", "aliases": ["VIN range", "operating input voltage"], "hint": "First-class operating VIN range (distinct from the abs-max VIN). Store as recommended limitClass." },
-    { "key": "output_voltage_temperature_coefficient", "name": "Output voltage temperature coefficient", "unit": "ppm/degC", "group": "regulation", "aliases": ["TCVO", "tempco", "output voltage drift", "temperature drift"], "hint": "Average tempco. Near-universal; captured in ~20/39 of the corpus." },
-    { "key": "line_regulation", "name": "Line regulation", "unit": "V", "group": "regulation", "aliases": ["input voltage regulation"], "hint": "ΔVout for a stated ΔVin — capture the Vin span as a condition." },
-    { "key": "load_regulation", "name": "Load regulation", "unit": "V", "group": "regulation", "aliases": ["output voltage regulation"], "hint": "ΔVout for a stated ΔIout — capture the Iout span as a condition." },
-    { "key": "thermal_regulation", "name": "Thermal regulation", "unit": "%", "group": "regulation", "optional": true, "hint": "%/W. Precision LDOs only." },
-    { "key": "output_voltage_long_term_stability", "name": "Long-term output stability", "unit": "V", "group": "regulation", "optional": true, "hint": "Drift over 1000h. Reference-grade parts only." },
-
-    { "key": "dropout_voltage", "name": "Dropout voltage", "unit": "V", "group": "dropout", "array": true, "conditionAxis": "I_OUT", "aliases": ["VDO", "dropout"], "hint": "Strongly load-dependent — one measurement per load current, I_OUT condition mandatory. A single point is an array of length 1." },
-
-    { "key": "quiescent_current", "name": "Quiescent / ground current", "unit": "A", "group": "current", "array": true, "conditionAxis": "I_OUT", "aliases": ["IQ", "ground current", "ground pin current", "bias current", "IB", "operating current"], "hint": "Typically specified at several loads. Watch nA/uA/mA normalization." },
-    { "key": "shutdown_current", "name": "Shutdown current", "unit": "A", "group": "current", "aliases": ["standby current", "disabled supply current", "ISHDN", "IB(OFF)"], "optional": true, "hint": "Supply current with EN low. Only for parts with an EN pin." },
-    { "key": "current_limit", "name": "Current limit", "unit": "A", "group": "current", "aliases": ["ILIM", "output current limit", "peak current limit"], "hint": "Output current-limit knee." },
-    { "key": "short_circuit_current", "name": "Short-circuit current", "unit": "A", "group": "current", "aliases": ["ISC", "foldback current"], "optional": true, "hint": "Foldback / short-circuit floor. Pair with current_limit; set foldback flag in notes if applicable." },
-    { "key": "minimum_load_current", "name": "Minimum load current", "unit": "A", "group": "current", "optional": true, "hint": "Some bipolar/older LDOs need a min load to regulate; CMOS parts state 0." },
-    { "key": "reverse_leakage_current", "name": "Reverse current / leakage", "unit": "A", "group": "current", "aliases": ["reverse current", "reverse output current"], "optional": true, "hint": "With input grounded and output forced. Common on automotive/battery parts." },
-    { "key": "adjust_pin_current", "name": "ADJ / FB pin bias current", "unit": "A", "group": "current", "aliases": ["IADJ", "IFB", "feedback pin current"], "optional": true, "hint": "Bias current into the adjust/feedback pin (adjustable parts)." },
-
-    { "key": "thermal_shutdown_threshold", "name": "Thermal shutdown threshold", "unit": "degC", "group": "protection", "aliases": ["TSD", "over-temperature shutdown", "thermal protection"], "optional": true },
-    { "key": "thermal_shutdown_hysteresis", "name": "Thermal shutdown hysteresis", "unit": "degC", "group": "protection", "optional": true },
-    { "key": "uvlo_threshold", "name": "UVLO threshold", "unit": "V", "group": "protection", "aliases": ["under-voltage lockout", "UVLO"], "optional": true, "hint": "Under-voltage lockout on VIN." },
-    { "key": "uvlo_hysteresis", "name": "UVLO hysteresis", "unit": "V", "group": "protection", "optional": true },
-
-    { "key": "psrr", "name": "Power-supply rejection ratio", "unit": "dB", "group": "rejection_noise", "array": true, "conditionAxis": "F", "aliases": ["PSRR", "ripple rejection", "power supply ripple rejection", "R.R."], "hint": "One measurement per frequency, F condition mandatory. \"Ripple rejection\" is the same quantity (20·log(ΔVin/ΔVout))." },
-    { "key": "output_noise_rms", "name": "Output noise (integrated RMS)", "unit": "V", "group": "rejection_noise", "aliases": ["output voltage noise", "RMS noise"], "hint": "Integrated RMS over a stated bandwidth — capture BW_LOW/BW_HIGH as conditions (noise is meaningless without the band)." },
-    { "key": "output_noise_density", "name": "Output noise spectral density", "unit": "V/sqrtHz", "group": "rejection_noise", "array": true, "conditionAxis": "F", "aliases": ["spot noise", "noise density"], "optional": true },
-
-    { "key": "en_high_threshold", "name": "Enable high threshold", "unit": "V", "group": "enable", "aliases": ["VIH(EN)", "enable turn-on voltage"], "optional": true },
-    { "key": "en_low_threshold", "name": "Enable low threshold", "unit": "V", "group": "enable", "aliases": ["VIL(EN)", "enable turn-off voltage"], "optional": true },
-    { "key": "en_hysteresis", "name": "Enable hysteresis", "unit": "V", "group": "enable", "optional": true },
-    { "key": "en_input_current", "name": "Enable input current", "unit": "A", "group": "enable", "aliases": ["IEN", "enable pin current"], "optional": true },
-    { "key": "en_pull_down_resistance", "name": "Enable pull-down resistance", "unit": "ohm", "group": "enable", "optional": true, "hint": "Internal EN pulldown; distinct from en_input_current." },
-    { "key": "en_delay_time", "name": "Enable-to-output delay", "unit": "s", "group": "enable", "optional": true },
-
-    { "key": "pg_threshold_rising", "name": "Power-good rising threshold", "unit": "%", "group": "power_good", "optional": true, "hint": "% of Vout(nom), rising." },
-    { "key": "pg_threshold_falling", "name": "Power-good falling threshold", "unit": "%", "group": "power_good", "optional": true },
-    { "key": "pg_delay", "name": "Power-good delay", "unit": "s", "group": "power_good", "optional": true },
-    { "key": "pg_output_low_voltage", "name": "Power-good output low voltage", "unit": "V", "group": "power_good", "optional": true, "hint": "VOL of the open-drain PG pin at a stated sink current." },
-
-    { "key": "startup_time", "name": "Start-up time", "unit": "s", "group": "dynamic", "aliases": ["turn-on time", "TON", "soft-start time"], "optional": true },
-    { "key": "turn_off_time", "name": "Turn-off / discharge time", "unit": "s", "group": "dynamic", "aliases": ["TOFF", "discharge time"], "optional": true },
-    { "key": "load_transient_response", "name": "Load transient response", "unit": "V", "group": "dynamic", "optional": true, "hint": "Output deviation for a load step — model the step with the measurement's `stimulus` (I_OUT from/to/slew)." },
-    { "key": "line_transient_response", "name": "Line transient response", "unit": "V", "group": "dynamic", "optional": true, "hint": "Output deviation for a line step — model with `stimulus` (V_IN from/to/slew)." },
-    { "key": "has_active_discharge", "name": "Active discharge present", "unit": "boolean", "group": "dynamic", "optional": true, "hint": "Capability flag; the resistance value goes in active_discharge_resistance." },
-    { "key": "active_discharge_resistance", "name": "Active discharge resistance", "unit": "ohm", "group": "dynamic", "aliases": ["output pull-down resistance", "auto-discharge resistance"], "optional": true },
-
-    { "key": "input_capacitance", "name": "Recommended input capacitance", "unit": "F", "group": "stability", "aliases": ["CIN"], "optional": true, "hint": "Minimum recommended CIN." },
-    { "key": "min_output_capacitance", "name": "Minimum output capacitance", "unit": "F", "group": "stability", "aliases": ["COUT min", "minimum COUT for stability"], "hint": "Capture C_OUT_TYPE (ceramic/tantalum) as a condition — stability specs are meaningless without it." },
-    { "key": "max_output_capacitance", "name": "Maximum output capacitance", "unit": "F", "group": "stability", "optional": true },
-    { "key": "stable_esr_range", "name": "Stable ESR range", "unit": "ohm", "group": "stability", "optional": true, "hint": "COUT ESR range for stability (min..max)." },
-
-    { "key": "power_dissipation", "name": "Maximum power dissipation", "unit": "W", "group": "thermal", "aliases": ["PD", "maximum power dissipation"], "hint": "Belongs in the absolute-maximum table (limitClass absolute_max). Present in ~32/39 of the corpus." },
-    { "key": "thermal_resistance_junction_ambient", "name": "Thermal resistance, junction-to-ambient", "unit": "degC", "group": "thermal", "aliases": ["RthetaJA", "theta-JA", "RthJA"], "hint": "degC/W (store the numeric per-watt figure). Capture the package and board/airflow (e.g. \"JEDEC 2s2p\") as conditions. Present in ~30/39." },
-    { "key": "thermal_resistance_junction_case", "name": "Thermal resistance, junction-to-case", "unit": "degC", "group": "thermal", "aliases": ["RthetaJC", "RthJC"], "optional": true },
-
-    { "key": "esd_hbm", "name": "ESD, human body model", "unit": "V", "group": "esd", "aliases": ["HBM"], "optional": true, "hint": "Per JEDEC JS-001. In abs-max or a dedicated ESD table." },
-    { "key": "esd_cdm", "name": "ESD, charged device model", "unit": "V", "group": "esd", "aliases": ["CDM"], "optional": true, "hint": "Per JEDEC JS-002." },
-    { "key": "latch_up", "name": "Latch-up immunity", "unit": "A", "group": "esd", "optional": true }
+    {
+      "key": "output_voltage",
+      "name": "Output voltage",
+      "unit": "V",
+      "group": "regulation",
+      "aliases": [
+        "VOUT",
+        "regulated output voltage"
+      ],
+      "hint": "Fixed nominal output as absolute volts with min/typ/max. Percentages break down at low Vout, so store absolute and derive tolerance."
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "name": "Output voltage accuracy",
+      "unit": "%",
+      "group": "regulation",
+      "aliases": [
+        "output voltage tolerance",
+        "initial accuracy",
+        "VOUT accuracy"
+      ],
+      "hint": "Tolerance as a percentage. Vendors also express this as absolute millivolts for Vout below 2 V. Capture that case under output_voltage instead."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "Reference / feedback voltage",
+      "unit": "V",
+      "group": "regulation",
+      "aliases": [
+        "VREF",
+        "VFB",
+        "feedback voltage",
+        "VSET",
+        "adjust voltage"
+      ],
+      "hint": "The error-amplifier reference. It is the specified datum for adjustable parts, and output_voltage_range is derived from it."
+    },
+    {
+      "key": "output_voltage_range",
+      "name": "Adjustable output range",
+      "unit": "V",
+      "group": "regulation",
+      "optional": true,
+      "hint": "Settable Vout min..max for adjustable parts."
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage operating range",
+      "unit": "V",
+      "group": "regulation",
+      "aliases": [
+        "VIN range",
+        "operating input voltage"
+      ],
+      "hint": "First-class operating VIN range (distinct from the abs-max VIN). Store as recommended limitClass."
+    },
+    {
+      "key": "output_voltage_temperature_coefficient",
+      "name": "Output voltage temperature coefficient",
+      "unit": "ppm/degC",
+      "group": "regulation",
+      "aliases": [
+        "TCVO",
+        "tempco",
+        "output voltage drift",
+        "temperature drift"
+      ],
+      "hint": "Average temperature coefficient. Present in about 20 of 39 datasheets in the corpus."
+    },
+    {
+      "key": "line_regulation",
+      "name": "Line regulation",
+      "unit": "V",
+      "group": "regulation",
+      "aliases": [
+        "input voltage regulation"
+      ],
+      "hint": "Change in Vout for a stated change in Vin. Capture the Vin span as a condition."
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "unit": "V",
+      "group": "regulation",
+      "aliases": [
+        "output voltage regulation"
+      ],
+      "hint": "Change in Vout for a stated change in Iout. Capture the Iout span as a condition."
+    },
+    {
+      "key": "thermal_regulation",
+      "name": "Thermal regulation",
+      "unit": "%",
+      "group": "regulation",
+      "optional": true,
+      "hint": "%/W. Precision LDOs only."
+    },
+    {
+      "key": "output_voltage_long_term_stability",
+      "name": "Long-term output stability",
+      "unit": "V",
+      "group": "regulation",
+      "optional": true,
+      "hint": "Drift over 1000h. Reference-grade parts only."
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "unit": "V",
+      "group": "dropout",
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": [
+        "VDO",
+        "dropout"
+      ],
+      "hint": "Strongly load-dependent. Provide one measurement per load current, with the I_OUT condition on each. A single point is an array of length one."
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent / ground current",
+      "unit": "A",
+      "group": "current",
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": [
+        "IQ",
+        "ground current",
+        "ground pin current",
+        "bias current",
+        "IB",
+        "operating current"
+      ],
+      "hint": "Typically specified at several loads. Watch nA/uA/mA normalization."
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown current",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "standby current",
+        "disabled supply current",
+        "ISHDN",
+        "IB(OFF)"
+      ],
+      "optional": true,
+      "hint": "Supply current with EN low. Only for parts with an EN pin."
+    },
+    {
+      "key": "current_limit",
+      "name": "Current limit",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "ILIM",
+        "output current limit",
+        "peak current limit"
+      ],
+      "hint": "Output current-limit knee."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Short-circuit current",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "ISC",
+        "foldback current"
+      ],
+      "optional": true,
+      "hint": "Foldback or short-circuit floor. Pair with current_limit, and record a foldback flag in notes if applicable."
+    },
+    {
+      "key": "minimum_load_current",
+      "name": "Minimum load current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "hint": "Some bipolar or older LDOs require a minimum load to regulate. CMOS parts state 0."
+    },
+    {
+      "key": "reverse_leakage_current",
+      "name": "Reverse current / leakage",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "reverse current",
+        "reverse output current"
+      ],
+      "optional": true,
+      "hint": "With input grounded and output forced. Common on automotive/battery parts."
+    },
+    {
+      "key": "adjust_pin_current",
+      "name": "ADJ / FB pin bias current",
+      "unit": "A",
+      "group": "current",
+      "aliases": [
+        "IADJ",
+        "IFB",
+        "feedback pin current"
+      ],
+      "optional": true,
+      "hint": "Bias current into the adjust/feedback pin (adjustable parts)."
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown threshold",
+      "unit": "degC",
+      "group": "protection",
+      "aliases": [
+        "TSD",
+        "over-temperature shutdown",
+        "thermal protection"
+      ],
+      "optional": true
+    },
+    {
+      "key": "thermal_shutdown_hysteresis",
+      "name": "Thermal shutdown hysteresis",
+      "unit": "degC",
+      "group": "protection",
+      "optional": true
+    },
+    {
+      "key": "uvlo_threshold",
+      "name": "UVLO threshold",
+      "unit": "V",
+      "group": "protection",
+      "aliases": [
+        "under-voltage lockout",
+        "UVLO"
+      ],
+      "optional": true,
+      "hint": "Under-voltage lockout on VIN."
+    },
+    {
+      "key": "uvlo_hysteresis",
+      "name": "UVLO hysteresis",
+      "unit": "V",
+      "group": "protection",
+      "optional": true
+    },
+    {
+      "key": "psrr",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "group": "rejection_noise",
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": [
+        "PSRR",
+        "ripple rejection",
+        "power supply ripple rejection",
+        "R.R."
+      ],
+      "hint": "One measurement per frequency, F condition mandatory. \"Ripple rejection\" is the same quantity (20\u00b7log(\u0394Vin/\u0394Vout))."
+    },
+    {
+      "key": "output_noise_rms",
+      "name": "Output noise (integrated RMS)",
+      "unit": "V",
+      "group": "rejection_noise",
+      "aliases": [
+        "output voltage noise",
+        "RMS noise"
+      ],
+      "hint": "Integrated RMS over a stated bandwidth. Capture BW_LOW and BW_HIGH as conditions, since the figure is meaningless without the band."
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output noise spectral density",
+      "unit": "V/sqrtHz",
+      "group": "rejection_noise",
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": [
+        "spot noise",
+        "noise density"
+      ],
+      "optional": true
+    },
+    {
+      "key": "en_high_threshold",
+      "name": "Enable high threshold",
+      "unit": "V",
+      "group": "enable",
+      "aliases": [
+        "VIH(EN)",
+        "enable turn-on voltage"
+      ],
+      "optional": true
+    },
+    {
+      "key": "en_low_threshold",
+      "name": "Enable low threshold",
+      "unit": "V",
+      "group": "enable",
+      "aliases": [
+        "VIL(EN)",
+        "enable turn-off voltage"
+      ],
+      "optional": true
+    },
+    {
+      "key": "en_hysteresis",
+      "name": "Enable hysteresis",
+      "unit": "V",
+      "group": "enable",
+      "optional": true
+    },
+    {
+      "key": "en_input_current",
+      "name": "Enable input current",
+      "unit": "A",
+      "group": "enable",
+      "aliases": [
+        "IEN",
+        "enable pin current"
+      ],
+      "optional": true
+    },
+    {
+      "key": "en_pull_down_resistance",
+      "name": "Enable pull-down resistance",
+      "unit": "ohm",
+      "group": "enable",
+      "optional": true,
+      "hint": "Internal EN pulldown. Distinct from en_input_current."
+    },
+    {
+      "key": "en_delay_time",
+      "name": "Enable-to-output delay",
+      "unit": "s",
+      "group": "enable",
+      "optional": true
+    },
+    {
+      "key": "pg_threshold_rising",
+      "name": "Power-good rising threshold",
+      "unit": "%",
+      "group": "power_good",
+      "optional": true,
+      "hint": "% of Vout(nom), rising."
+    },
+    {
+      "key": "pg_threshold_falling",
+      "name": "Power-good falling threshold",
+      "unit": "%",
+      "group": "power_good",
+      "optional": true
+    },
+    {
+      "key": "pg_delay",
+      "name": "Power-good delay",
+      "unit": "s",
+      "group": "power_good",
+      "optional": true
+    },
+    {
+      "key": "pg_output_low_voltage",
+      "name": "Power-good output low voltage",
+      "unit": "V",
+      "group": "power_good",
+      "optional": true,
+      "hint": "VOL of the open-drain PG pin at a stated sink current."
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "unit": "s",
+      "group": "dynamic",
+      "aliases": [
+        "turn-on time",
+        "TON",
+        "soft-start time"
+      ],
+      "optional": true
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off / discharge time",
+      "unit": "s",
+      "group": "dynamic",
+      "aliases": [
+        "TOFF",
+        "discharge time"
+      ],
+      "optional": true
+    },
+    {
+      "key": "load_transient_response",
+      "name": "Load transient response",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "hint": "Output deviation for a load step. Model the step with the measurement stimulus field, giving I_OUT from, to, and slew."
+    },
+    {
+      "key": "line_transient_response",
+      "name": "Line transient response",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "hint": "Output deviation for a line step. Model with the measurement stimulus field, giving V_IN from, to, and slew."
+    },
+    {
+      "key": "has_active_discharge",
+      "name": "Active discharge present",
+      "unit": "boolean",
+      "group": "dynamic",
+      "optional": true,
+      "hint": "Capability flag. The resistance value goes in active_discharge_resistance."
+    },
+    {
+      "key": "active_discharge_resistance",
+      "name": "Active discharge resistance",
+      "unit": "ohm",
+      "group": "dynamic",
+      "aliases": [
+        "output pull-down resistance",
+        "auto-discharge resistance"
+      ],
+      "optional": true
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Recommended input capacitance",
+      "unit": "F",
+      "group": "stability",
+      "aliases": [
+        "CIN"
+      ],
+      "optional": true,
+      "hint": "Minimum recommended CIN."
+    },
+    {
+      "key": "min_output_capacitance",
+      "name": "Minimum output capacitance",
+      "unit": "F",
+      "group": "stability",
+      "aliases": [
+        "COUT min",
+        "minimum COUT for stability"
+      ],
+      "hint": "Capture C_OUT_TYPE, for example ceramic or tantalum, as a condition, since stability specifications depend on it."
+    },
+    {
+      "key": "max_output_capacitance",
+      "name": "Maximum output capacitance",
+      "unit": "F",
+      "group": "stability",
+      "optional": true
+    },
+    {
+      "key": "stable_esr_range",
+      "name": "Stable ESR range",
+      "unit": "ohm",
+      "group": "stability",
+      "optional": true,
+      "hint": "COUT ESR range for stability (min..max)."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Maximum power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "aliases": [
+        "PD",
+        "maximum power dissipation"
+      ],
+      "hint": "Belongs in the absolute-maximum table with limitClass absolute_max. Present in about 32 of 39 datasheets in the corpus."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "RthetaJA",
+        "theta-JA",
+        "RthJA"
+      ],
+      "hint": "Store the numeric per-watt figure in degC. Capture the package and the board or airflow, for example JEDEC 2s2p, as conditions. Present in about 30 of 39 datasheets in the corpus."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "RthetaJC",
+        "RthJC"
+      ],
+      "optional": true
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "unit": "V",
+      "group": "esd",
+      "aliases": [
+        "HBM"
+      ],
+      "optional": true,
+      "hint": "Per JEDEC JS-001. In abs-max or a dedicated ESD table."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "unit": "V",
+      "group": "esd",
+      "aliases": [
+        "CDM"
+      ],
+      "optional": true,
+      "hint": "Per JEDEC JS-002."
+    },
+    {
+      "key": "latch_up",
+      "name": "Latch-up immunity",
+      "unit": "A",
+      "group": "esd",
+      "optional": true
+    }
   ]
 }

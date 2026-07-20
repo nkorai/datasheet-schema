@@ -1,33 +1,79 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
-  "$comment": "Meta-schema for a component-family parameter dictionary. A dictionary defines the canonical parameter keys, units, groups, and vendor aliases for one family (ldo, buck_converter, mosfet, ...). The datasheet schema stays family-agnostic; the dictionary supplies the vocabulary.",
+  "$comment": "Meta-schema for a component-family parameter dictionary. A dictionary defines the canonical parameter keys, units, groups, and vendor aliases for one family such as ldo, buck_converter, or mosfet. The datasheet schema stays family-agnostic. The dictionary supplies the vocabulary.",
   "title": "Family Parameter Dictionary",
   "type": "object",
-  "required": ["family", "dictionaryVersion", "parameters"],
+  "required": [
+    "family",
+    "dictionaryVersion",
+    "parameters"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "family": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
-    "dictionaryVersion": { "type": "string" },
-    "description": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "dictionaryVersion": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
     "parameters": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["key", "name", "unit", "group"],
+        "required": [
+          "key",
+          "name",
+          "unit",
+          "group"
+        ],
         "additionalProperties": false,
         "properties": {
-          "key": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
-          "name": { "type": "string" },
-          "unit": { "type": "string" },
-          "group": { "type": "string" },
-          "array": { "description": "True when typically specified across multiple conditions (per load current, per frequency).", "type": "boolean" },
-          "conditionAxis": { "description": "The condition axis that distinguishes array entries, e.g. \"I_OUT\" for dropout, \"F\" for PSRR.", "type": "string" },
-          "aliases": { "type": "array", "items": { "type": "string" } },
-          "iecCdd": { "description": "IEC 61360 Common Data Dictionary concept, where a clean mapping exists.", "type": "string" },
-          "hint": { "type": "string" },
-          "optional": { "description": "True for feature-gated params (power-good, sink current) present only on some parts.", "type": "boolean" }
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "array": {
+            "description": "True when typically specified across multiple conditions (per load current, per frequency).",
+            "type": "boolean"
+          },
+          "conditionAxis": {
+            "description": "The condition axis that distinguishes array entries, e.g. \"I_OUT\" for dropout, \"F\" for PSRR.",
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "iecCdd": {
+            "description": "IEC 61360 Common Data Dictionary concept, where a clean mapping exists.",
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "optional": {
+            "description": "True for feature-gated params (power-good, sink current) present only on some parts.",
+            "type": "boolean"
+          }
         }
       }
     }
