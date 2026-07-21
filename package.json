@@ -16,7 +16,7 @@
     "provenance"
   ],
   "author": "nkorai",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/nkorai/datasheet-schema"

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json",
-  "$comment": "Datasheet Schema v1.0. Apache-2.0. https://github.com/nkorai/datasheet-schema. This file is self-contained and validates with no external references.",
+  "$comment": "Datasheet Schema v1.0. MIT. https://github.com/nkorai/datasheet-schema. This file is self-contained and validates with no external references.",
   "title": "Datasheet Schema",
   "description": "A machine-readable schema for electronic-component datasheet specifications. Each value records the test conditions under which it holds and a reference to its source in the datasheet. Existing standards omit both.",
   "specVersion": "1.0",

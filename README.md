@@ -4,7 +4,7 @@ A machine-readable JSON Schema for electronic-component datasheet specifications
 
 [![JSON Schema](https://img.shields.io/badge/JSON%20Schema-2020--12-blue)](https://json-schema.org/draft/2020-12/schema)
 [![conformance](https://img.shields.io/badge/conformance-passing-brightgreen)](./test/conformance)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![npm](https://img.shields.io/badge/npm-datasheet--schema-cb3837)](https://www.npmjs.com/package/datasheet-schema)
 
 ## Purpose
@@ -158,4 +158,4 @@ Convergence would be welcome. If the digital-datasheets effort resumes, the two 
 
 ## License
 
-Apache-2.0. Datasheet PDFs are copyrighted by their manufacturers and are not redistributed by this project. The schema describes extracted factual specifications, which are not themselves copyrightable.
+MIT. Datasheet PDFs are copyrighted by their manufacturers and are not redistributed by this project. The schema describes extracted factual specifications, which are not themselves copyrightable.
