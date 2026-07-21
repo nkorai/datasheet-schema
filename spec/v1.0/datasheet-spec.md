@@ -32,6 +32,8 @@ A conforming document is a JSON object with the following members.
 
 `component` REQUIRES `mpn`, `manufacturer`, and `family`. `family` selects the applicable dictionary, for example `ldo`. `orderingVariants` MAY enumerate orderable codes with per-variant fixed voltage, package, temperature grade, and packing.
 
+A document describes **one orderable grade** of a part. When a single datasheet covers several grades whose specifications differ — for example initial accuracy or temperature coefficient that change with an A/B/C/D suffix — a producer SHOULD emit **one document per grade**, each with its `component.mpn` set to that grade's part number and its `measurements` carrying that grade's numbers, rather than merging grades into one document. This keeps every value unambiguous: a consumer never has to guess which grade a measurement applies to. `orderingVariants` MAY still list sibling order codes of the same grade (packing, tape-and-reel versus tube). A future MINOR MAY add an explicit per-measurement grade selector if multi-grade documents become necessary; until then the one-grade-per-document convention holds.
+
 ## 5. Pinout
 
 Each pin REQUIRES a 1-indexed `number`, the printed `name`, and a normalized `function`. `function` is an uppercase string from a controlled vocabulary that families extend, matching `^[A-Z][A-Z0-9_]*$`. The recommended vocabulary is IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. Using an unlisted function is permitted but reduces interoperability, and a validator MAY constrain the set for a given family. A consuming tool SHOULD bind a part by `function` rather than by `name`.

@@ -215,6 +215,7 @@ URLs that `$id` resolves to). The Pages job runs on push; the npm job does not.
 - **`limitClass`:** `absolute_max` | `recommended` | `characterized`.
 - **Measurement trust fields (all optional):** `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) — the datasheet's basis, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) and per-value `confidence` (0–1) — advisory extraction metadata, **not** the `verified` flag. The regression snapshot tracks `guarantee` (a fact), not `review`/`confidence` (advisory).
 - **Top-level required:** `schemaVersion` `component` `parameters` `provenance`.
+- **One grade per document.** A document describes one orderable grade (one `mpn`). When a datasheet covers several grades whose specs differ (A/B/C/D initial accuracy, tempco), emit one document per grade rather than merging them, so no measurement is ambiguous about which grade it applies to (spec §4). `orderingVariants` still lists same-grade sibling codes (packing/reel-vs-tube).
 
 ## Anti-goals — do not do these
 
