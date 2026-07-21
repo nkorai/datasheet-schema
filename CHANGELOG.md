@@ -2,7 +2,7 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.4.0]
 
 ### Changed
 - Relicensed from Apache-2.0 to MIT. The project has a single copyright holder and no external contributors, so the relicense is unencumbered. Versions already published under Apache-2.0 remain available under that license.
