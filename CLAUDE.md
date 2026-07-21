@@ -109,8 +109,8 @@ when extending anything.
 | `test/conformance/invalid/` | Documents that MUST be rejected — they *define what "wrong" means*. |
 | `scripts/validate.mjs` | The conformance runner (`npm test`). |
 | `scripts/gen-types.mjs` | Generates the TypeScript bindings from the schema. |
-| `bindings/typescript/` | Generated `.d.ts` + schema/dictionary re-exports (npm entrypoint). |
-| `bindings/python/` | Pydantic v2 models, a two-stage validator, a flat-parametric importer, pytest suite. |
+| `bindings/typescript/` | **Dumb data binding** (npm entrypoint): generated `.d.ts` types + re-exports of the schema object and all family dictionaries. No logic. |
+| `bindings/python/` | **Dumb data binding** (separate PyPI package): imports the schema + dictionaries as data, zero deps, no logic. Executable libraries (validation/extraction) ship separately, not here. |
 | `.github/workflows/` | `validate.yml` (CI on push/PR), `publish.yml` (npm + Pages). |
 
 ## How to add a component family (the golden path)
@@ -189,9 +189,10 @@ When you intentionally change or add an example, regenerate snapshots with
 `npm run regression -- --update` (or `UPDATE_SNAPSHOTS=1 npm run regression`) and commit them
 in the same change — the update is the deliberate acknowledgement that the extraction changed.
 
-`bindings/python` has a pytest suite that round-trips every example through the pydantic
-models *and* the JSON Schema. CI (`validate.yml`) runs the JS suite on every push and PR;
-`npm run build` (used by the publish job) runs it too, so a release can't ship red.
+The bindings (`bindings/typescript`, `bindings/python`) are pure data re-exports with no
+logic, so there is nothing to test in them beyond "the JSON imports"; the JS conformance +
+regression suite is the gate. CI (`validate.yml`) runs it on every push and PR; `npm run
+build` (used by the publish job) runs it too, so a release can't ship red.
 
 ## Publishing (do not run npm publish locally)
 

@@ -1,5 +1,8 @@
-/* AUTO-GENERATED. Re-exports the JSON Schema as a JS object. */
+/* AUTO-GENERATED. Re-exports the JSON Schema and family dictionaries as objects. Data only, no logic. */
 import datasheetSchema from '../../schema/datasheet-1.0.schema.json' with { type: 'json' };
 import ldoDictionary from '../../dictionary/ldo-1.0.json' with { type: 'json' };
-export { datasheetSchema, ldoDictionary };
+import mosfetDictionary from '../../dictionary/mosfet-1.0.json' with { type: 'json' };
+import voltageReferenceDictionary from '../../dictionary/voltage_reference-1.0.json' with { type: 'json' };
+export { datasheetSchema, ldoDictionary, mosfetDictionary, voltageReferenceDictionary };
+export const dictionaries = { 'ldo': ldoDictionary, 'mosfet': mosfetDictionary, 'voltage_reference': voltageReferenceDictionary };
 export const SCHEMA_VERSION = '1.0';

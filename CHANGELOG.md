@@ -2,6 +2,13 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.8.0]
+
+### Changed
+- The language bindings are now **dumb data re-exports with no runtime logic**. Validation, models, and extraction belong in separate libraries; the bindings only make the schema and dictionaries importable. The contract remains pure JSON (schema + dictionaries) — see [`CONFORMANCE.md`](CONFORMANCE.md) for the checks a consumer implements.
+  - **TypeScript** (`bindings/typescript`, the npm entrypoint): the generator now re-exports the schema, generated types, and **all** family dictionaries plus a `dictionaries` map — previously it exported only `ldoDictionary`, so `mosfet` and `voltage_reference` were unreachable. No validation code.
+  - **Python** (`bindings/python`, a separate package, now 2.0.0): removed the pydantic models, the two-stage validator, the flat-parametric importer, and the pytest suite. It now imports the schema and dictionaries as data (`DATASHEET_SCHEMA`, `DICTIONARIES`, `SCHEMA_VERSION`) with **zero dependencies**.
+
 ## [1.7.0]
 
 Extends the `ldo` and `mosfet` families from the same gap-analysis method applied to eight real manufacturer datasheets (silicon/SiC/GaN MOSFETs; low-noise, dual-rail, current-reference, and negative LDOs). All eight fit the envelope with additive vocabulary; unanimously no separate GaN/SiC family. Also adds a consumer conformance guide.

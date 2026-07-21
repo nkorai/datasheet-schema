@@ -1,57 +1,50 @@
-"""Python bindings for the Datasheet Schema v1.0.
+"""Python binding for the Datasheet Schema.
 
-The normative artifact is ``schema/datasheet-1.0.schema.json`` in the repository
-root. These bindings provide typed pydantic models over that schema and a
-:func:`validate_document` helper that checks a document against both the models
-and the normative JSON Schema.
+Intentionally dumb: it imports the schema and family dictionaries as data and
+exposes their file paths. There is no validation, no models, and no extraction
+logic here — that executable behavior will ship as a separate library. The
+normative artifacts are the JSON files in the repository root; this package just
+makes them importable from Python.
+
+    from datasheet_schema import DATASHEET_SCHEMA, DICTIONARIES, SCHEMA_VERSION
+
+Validate a document with any JSON Schema 2020-12 validator against
+DATASHEET_SCHEMA, then apply the family checks in the repo's CONFORMANCE.md
+against DICTIONARIES[doc["component"]["family"]].
 """
 
-from .importers import from_flat_parametric
-from .models import (
-    ComponentIdentity,
-    Component,
-    ConditionAxis,
-    Datasheet,
-    Lifecycle,
-    LimitClass,
-    Measurement,
-    OrderingVariant,
-    Parameter,
-    Pin,
-    RECOMMENDED_PIN_FUNCTIONS,
-    PinType,
-    Provenance,
-    Stimulus,
-    Unit,
-    Value,
-)
-from .validation import (
-    SCHEMA_VERSION,
-    bundled_schema_path,
-    load_schema,
-    validate_document,
-)
+import json
+from pathlib import Path
+
+SCHEMA_VERSION = "1.0"
+
+# Repository root, resolved relative to this file (schema/ and dictionary/ live there).
+_ROOT = Path(__file__).resolve().parents[3]
+
+SCHEMA_PATH = _ROOT / "schema" / "datasheet-1.0.schema.json"
+
+
+def _load(path: Path) -> dict:
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+DATASHEET_SCHEMA = _load(SCHEMA_PATH)
+
+# {family: dictionary object} for every dictionary/<family>-*.json (excluding the meta-schema).
+DICTIONARIES = {}
+DICTIONARY_PATHS = {}
+for _p in sorted((_ROOT / "dictionary").glob("*.json")):
+    if _p.name.startswith("family-dictionary"):
+        continue
+    _d = _load(_p)
+    DICTIONARIES[_d["family"]] = _d
+    DICTIONARY_PATHS[_d["family"]] = _p
 
 __all__ = [
     "SCHEMA_VERSION",
-    "Component",
-    "ComponentIdentity",
-    "ConditionAxis",
-    "Datasheet",
-    "Lifecycle",
-    "LimitClass",
-    "Measurement",
-    "OrderingVariant",
-    "Parameter",
-    "Pin",
-    "RECOMMENDED_PIN_FUNCTIONS",
-    "PinType",
-    "Provenance",
-    "Stimulus",
-    "Unit",
-    "Value",
-    "bundled_schema_path",
-    "from_flat_parametric",
-    "load_schema",
-    "validate_document",
+    "SCHEMA_PATH",
+    "DATASHEET_SCHEMA",
+    "DICTIONARIES",
+    "DICTIONARY_PATHS",
 ]

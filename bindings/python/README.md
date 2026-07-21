@@ -1,94 +1,45 @@
-# Datasheet Schema, Python bindings
+# Datasheet Schema, Python binding
 
-Pydantic v2 models for the [Datasheet Schema](../../schema/datasheet-1.0.schema.json) v1.0, with a validator that checks a document against both the models and the normative JSON Schema.
+A **dumb data binding**: it makes the [Datasheet Schema](../../schema/datasheet-1.0.schema.json)
+and its family dictionaries importable from Python. It has **no runtime logic** — no models,
+no validator, no importer, and no dependencies. Executable behavior (validation, extraction,
+typed models) will ship as a separate library; this package is only the data.
 
-The JSON Schema file is the authority. These models are a typed convenience layer over it. Some constraints are enforced only by the JSON Schema pass, so `validate_document` runs both.
+The JSON files in the repository root are the authority.
 
 ## Install
-
-From the repository root:
 
 ```bash
 pip install ./bindings/python
 ```
 
-For development, including the test dependency:
+Requires Python 3.9 or later. No dependencies.
 
-```bash
-pip install -e "./bindings/python[dev]"
-```
-
-Requires Python 3.9 or later. Depends on `pydantic>=2` and `jsonschema>=4`.
-
-## Quickstart
-
-Parse and validate a datasheet document. `validate_document` parses with the pydantic models and then validates against the bundled JSON Schema, returning the parsed model and raising on invalid input.
+## Use
 
 ```python
-from datasheet_schema import validate_document
+from datasheet_schema import DATASHEET_SCHEMA, DICTIONARIES, SCHEMA_VERSION, SCHEMA_PATH
 
-doc = {
-    "schemaVersion": "1.0",
-    "component": {
-        "mpn": "TLV70033DDCR",
-        "manufacturer": "Texas Instruments",
-        "family": "ldo",
-    },
-    "parameters": [
-        {
-            "key": "dropout_voltage",
-            "measurements": [
-                {
-                    "limitClass": "characterized",
-                    "value": {"typ": 0.28, "max": 0.45},
-                    "unit": "V",
-                    "conditions": [
-                        {"param": "I_OUT", "value": 0.2, "unit": "A"}
-                    ],
-                    "sourcePage": 5,
-                }
-            ],
-        }
-    ],
-    "provenance": {"extractionMethod": "manual", "verified": True},
-}
-
-model = validate_document(doc)
-print(model.component.mpn)                       # TLV70033DDCR
-print(model.parameters[0].measurements[0].unit)  # V
+DATASHEET_SCHEMA          # the JSON Schema 2020-12 document, as a dict
+DICTIONARIES["ldo"]       # the ldo family dictionary, as a dict (also "mosfet", "voltage_reference")
+SCHEMA_VERSION            # "1.0"
 ```
 
-Field aliases carry the exact wire names, so a model round-trips back to the wire form without renaming:
+To validate a document, use any JSON Schema 2020-12 validator against `DATASHEET_SCHEMA`,
+then apply the small family checks (key membership, unit scoping, condition-axis dimension)
+described in the repository's [`CONFORMANCE.md`](../../CONFORMANCE.md) against
+`DICTIONARIES[doc["component"]["family"]]`. For example:
 
 ```python
-model.model_dump(by_alias=True, exclude_none=True, mode="json")
-```
+import jsonschema  # your choice of validator, not a dependency of this package
+from datasheet_schema import DATASHEET_SCHEMA, DICTIONARIES
 
-## Importing flat parametric data
+jsonschema.Draft202012Validator(DATASHEET_SCHEMA).validate(doc)   # Layer 1
 
-A distributor API or classification database stores a bare value with no test conditions, limit class, unit, or page reference. `from_flat_parametric` lifts such a record into a minimal valid document, and in doing so shows what the flat form has already discarded.
-
-```python
-from datasheet_schema import validate_document
-from datasheet_schema.importers import from_flat_parametric
-
-flat = {"vout": 3.3, "dropout": 0.28, "iq": 3.15e-5}
-doc = from_flat_parametric(
-    flat,
-    mpn="TLV70033DDCR",
-    manufacturer="Texas Instruments",
-    family="ldo",
-)
-
-validate_document(doc.model_dump(by_alias=True, exclude_none=True, mode="json"))
-```
-
-Each value is recorded with `limitClass` `recommended` and no conditions or provenance, because the flat form supplies none. A `characterized` classification is deliberately not used, since the schema requires a `sourcePage` that a flat record cannot provide. See the module docstring in `datasheet_schema/importers.py` for how a richer edatasheets-style record maps onto the schema.
-
-## Tests
-
-```bash
-cd bindings/python
-pip install -e ".[dev]"
-pytest
+dictionary = DICTIONARIES[doc["component"]["family"]]             # Layer 2 (see CONFORMANCE.md)
+allowed = {p["key"]: {p["unit"], *p.get("altUnits", [])} for p in dictionary["parameters"]}
+for p in doc["parameters"]:
+    assert p["key"] in allowed
+    for m in p["measurements"]:
+        assert m["unit"] in allowed[p["key"]]
 ```

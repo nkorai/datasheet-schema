@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "datasheet-schema"
-version = "1.2.0"
-description = "Pydantic v2 bindings for the Datasheet Schema, a machine-readable JSON Schema for electronic-component datasheet specifications where each value records its test conditions and provenance."
+version = "2.0.0"
+description = "Python data binding for the Datasheet Schema: imports the JSON Schema and family dictionaries for electronic-component datasheet specifications. Data only, no runtime logic."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -22,18 +22,13 @@ keywords = [
     "parametric",
     "spec",
     "provenance",
-    "pydantic",
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
-    "Typing :: Typed",
 ]
-dependencies = ["pydantic>=2", "jsonschema>=4"]
-
-[project.optional-dependencies]
-dev = ["pytest>=7"]
+dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/nkorai/datasheet-schema"
@@ -41,6 +36,3 @@ Repository = "https://github.com/nkorai/datasheet-schema"
 
 [tool.setuptools]
 packages = ["datasheet_schema"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]

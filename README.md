@@ -76,15 +76,17 @@ npm i datasheet-schema
 ```
 
 ```ts
-import { datasheetSchema, ldoDictionary } from 'datasheet-schema';
+import { datasheetSchema, ldoDictionary, mosfetDictionary, dictionaries } from 'datasheet-schema';
 import type { Datasheet } from 'datasheet-schema';
 ```
 
-Python bindings ship pydantic models and a validator in [`bindings/python`](./bindings/python).
+The bindings are deliberately dumb: they re-export the schema and family dictionaries as data
+(and, for TypeScript, the generated types). They contain no validator — validate with any
+JSON Schema library plus the family checks in [`CONFORMANCE.md`](./CONFORMANCE.md). A separate
+Python data binding in [`bindings/python`](./bindings/python) exposes the same JSON:
 
 ```python
-from datasheet_schema import validate_document
-doc = validate_document(loaded_json)  # parses via pydantic, then the JSON Schema
+from datasheet_schema import DATASHEET_SCHEMA, DICTIONARIES, SCHEMA_VERSION
 ```
 
 Reference the hosted, versioned URL from a `$ref`.
