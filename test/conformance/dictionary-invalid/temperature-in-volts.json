@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "REF-X", "manufacturer": "Y", "family": "voltage_reference" },
+  "parameters": [
+    { "key": "operating_temperature_range", "measurements": [
+      { "limitClass": "recommended", "value": { "min": -40, "max": 125 }, "unit": "V" } ] }
+  ],
+  "provenance": { "verified": false },
+  "notes": ["Schema-valid (V is a legal enum unit) but wrong dimension: an operating temperature range must be degC, not V. The family unit-scoping check must reject this."]
+}

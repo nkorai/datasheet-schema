@@ -44,7 +44,13 @@
             "type": "string"
           },
           "unit": {
+            "description": "The canonical base-SI unit for this parameter. A conformance runner SHOULD reject a measurement whose unit is neither this nor one of altUnits, so an off-dimension unit (temperature in volts) is caught.",
             "type": "string"
+          },
+          "altUnits": {
+            "description": "Additional units a measurement of this parameter may legitimately use, for parameters that vendors specify more than one way (line regulation as ppm/V or V/V; drift/hysteresis as ppm, %, or V; accuracy as % or absolute V). Every entry MUST be in the schema's unit enum. Omit for single-unit parameters so their dimension is strictly enforced.",
+            "type": "array",
+            "items": { "type": "string" }
           },
           "group": {
             "type": "string"

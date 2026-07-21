@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "REF-X", "manufacturer": "Y", "family": "voltage_reference" },
+  "parameters": [
+    { "key": "temperature_sensor_slope", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.00264 }, "unit": "V/degC",
+        "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ], "sourcePage": 24 } ] },
+    { "key": "output_noise", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.0000012 }, "unit": "V", "statistic": "peak_to_peak",
+        "conditions": [ { "param": "BW_LOW", "value": 0.1, "unit": "Hz" }, { "param": "BW_HIGH", "value": 10, "unit": "Hz" } ], "sourcePage": 4 },
+      { "limitClass": "characterized", "value": { "typ": 0.0000009 }, "unit": "V", "statistic": "rms",
+        "conditions": [ { "param": "BW_LOW", "value": 10, "unit": "Hz" }, { "param": "BW_HIGH", "value": 1000, "unit": "Hz" } ], "sourcePage": 4 } ] }
+  ],
+  "provenance": { "verified": false }
+}

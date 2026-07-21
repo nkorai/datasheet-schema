@@ -17,6 +17,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -29,6 +30,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -69,6 +71,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -92,6 +95,7 @@
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -115,6 +119,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -136,6 +141,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -175,6 +181,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -207,6 +214,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -246,6 +254,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -277,6 +286,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -325,6 +335,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -380,6 +391,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -411,6 +423,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -442,6 +455,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -473,6 +487,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {
@@ -494,6 +509,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {
@@ -516,6 +532,7 @@
           "limitClass": "recommended",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -539,6 +556,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -561,6 +579,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -582,6 +601,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {

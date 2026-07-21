@@ -40,24 +40,45 @@ for (const f of glob('dictionary')) {
     ok ? pass(f) : fail(`${f}. ${ajv.errorsText(validateDict.errors)}`);
 }
 
-// A key set per family, so each example is checked against its own dictionary.
-const keysByFamily = new Map();
+// Per-family dictionary index: the key set, and the units each key permits
+// (its canonical unit plus any altUnits), so a measurement can be scoped to the
+// right dimension. output_voltage is volts; a temperature key is degC; an
+// off-dimension unit (temperature in volts) is rejected.
+const dictByFamily = new Map();
 for (const f of glob('dictionary')) {
     if (f.startsWith('family-dictionary')) continue;
     const dict = read(`dictionary/${f}`);
-    keysByFamily.set(dict.family, new Set(dict.parameters.map((p) => p.key)));
+    const units = new Map();
+    for (const p of dict.parameters) units.set(p.key, new Set([p.unit, ...(p.altUnits ?? [])]));
+    dictByFamily.set(dict.family, { keys: new Set(dict.parameters.map((p) => p.key)), units });
 }
 
-console.log('\nexamples (must pass, keys must be in the family dictionary):');
+// Dictionary conformance for one document: unknown keys and off-dimension units.
+// Returns a list of human-readable problems (empty = clean).
+const dictionaryProblems = (doc) => {
+    const family = doc.component?.family;
+    const dict = dictByFamily.get(family);
+    if (!dict) return [`no dictionary for family "${family}"`];
+    const problems = [];
+    for (const p of doc.parameters ?? []) {
+        if (!dict.keys.has(p.key)) { problems.push(`key "${p.key}" not in the ${family} dictionary`); continue; }
+        const allowed = dict.units.get(p.key);
+        for (const m of p.measurements ?? []) {
+            if (m.unit && !allowed.has(m.unit)) {
+                problems.push(`"${p.key}" uses unit "${m.unit}", not permitted (allowed: ${[...allowed].join(', ')})`);
+            }
+        }
+    }
+    return problems;
+};
+
+console.log('\nexamples (must pass; keys and units must match the family dictionary):');
 for (const f of glob('examples')) {
     const doc = read(`examples/${f}`);
     const ok = validate(doc);
     if (!ok) { fail(`${f}. ${ajv.errorsText(validate.errors)}`); continue; }
-    const family = doc.component?.family;
-    const keys = keysByFamily.get(family);
-    if (!keys) { fail(`${f}. no dictionary for family "${family}"`); continue; }
-    const unknown = (doc.parameters ?? []).map((p) => p.key).filter((k) => !keys.has(k));
-    unknown.length ? fail(`${f}. parameter keys not in the ${family} dictionary: ${unknown.join(', ')}`) : pass(f);
+    const problems = dictionaryProblems(doc);
+    problems.length ? fail(`${f}. ${problems.join('; ')}`) : pass(f);
 }
 
 console.log('\nconformance/valid (must pass):');
@@ -66,10 +87,21 @@ for (const f of glob('test/conformance/valid')) {
     ok ? pass(f) : fail(`${f}. ${ajv.errorsText(validate.errors)}`);
 }
 
-console.log('\nconformance/invalid (must FAIL):');
+console.log('\nconformance/invalid (must FAIL schema validation):');
 for (const f of glob('test/conformance/invalid')) {
     const ok = validate(read(`test/conformance/invalid/${f}`));
     ok ? fail(`${f}. validated but should have been rejected`) : pass(`${f} (correctly rejected)`);
+}
+
+// These are schema-valid documents that violate a dictionary rule (unknown key
+// or off-dimension unit). They MUST be caught by the dictionary check, not the
+// core schema — that is the point of the family-scoped unit enforcement.
+console.log('\nconformance/dictionary-invalid (schema-valid, must FAIL the dictionary check):');
+for (const f of glob('test/conformance/dictionary-invalid')) {
+    const doc = read(`test/conformance/dictionary-invalid/${f}`);
+    if (!validate(doc)) { fail(`${f}. expected schema-valid, but the schema itself rejected it (move to conformance/invalid)`); continue; }
+    const problems = dictionaryProblems(doc);
+    problems.length ? pass(`${f} (correctly rejected: ${problems[0]})`) : fail(`${f}. passed the dictionary check but should have been rejected`);
 }
 
 console.log(failures === 0 ? '\n\x1b[32mAll conformance checks passed.\x1b[0m\n' : `\n\x1b[31m${failures} failure(s).\x1b[0m\n`);

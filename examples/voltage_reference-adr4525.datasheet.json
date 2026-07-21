@@ -220,6 +220,7 @@
           "limitClass": "characterized",
           "value": { "typ": 0.00000125 },
           "unit": "V",
+          "statistic": "peak_to_peak",
           "conditions": [
             { "param": "BW_LOW", "value": 0.1, "unit": "Hz" },
             { "param": "BW_HIGH", "value": 10, "unit": "Hz" }

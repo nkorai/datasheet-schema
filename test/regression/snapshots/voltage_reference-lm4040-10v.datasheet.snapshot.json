@@ -34,6 +34,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -65,6 +66,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -97,6 +99,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -136,6 +139,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -165,6 +169,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -196,6 +201,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -218,6 +224,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -240,6 +247,7 @@
           "limitClass": "recommended",
           "sourcePage": 6,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -252,6 +260,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -291,6 +300,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "ohm",
           "value": {
@@ -338,6 +348,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": "rms",
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -376,6 +387,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -407,6 +419,7 @@
           "limitClass": "characterized",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -428,6 +441,7 @@
           "limitClass": "recommended",
           "sourcePage": 6,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -450,6 +464,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -481,6 +496,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {

@@ -16,6 +16,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -29,6 +30,7 @@
           "limitClass": "recommended",
           "sourcePage": 6,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -74,6 +76,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -112,6 +115,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -141,6 +145,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -181,6 +186,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -220,6 +226,7 @@
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -249,6 +256,7 @@
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -293,6 +301,7 @@
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -329,6 +338,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Typical Characteristics",
+          "statistic": null,
           "stimulus": {
             "from": 0,
             "param": "I_OUT",
@@ -364,6 +374,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -383,6 +394,7 @@
           "limitClass": "characterized",
           "sourcePage": 6,
           "sourceTable": "Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -411,6 +423,7 @@
           "limitClass": "recommended",
           "sourcePage": 9,
           "sourceTable": "Application Information",
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -441,6 +454,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "Thermal Information",
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {
@@ -471,6 +485,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Thermal Information",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -490,6 +505,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "ESD Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {

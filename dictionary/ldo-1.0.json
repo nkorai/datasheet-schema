@@ -77,21 +77,23 @@
       "key": "line_regulation",
       "name": "Line regulation",
       "unit": "V",
+      "altUnits": ["%", "V/V"],
       "group": "regulation",
       "aliases": [
         "input voltage regulation"
       ],
-      "hint": "Change in Vout for a stated change in Vin. Capture the Vin span as a condition."
+      "hint": "Change in Vout for a stated change in Vin. Capture the Vin span as a condition. Vendors give this as absolute volts, a percentage of Vout, or a normalized V/V (uV/V) rate; all three are permitted."
     },
     {
       "key": "load_regulation",
       "name": "Load regulation",
       "unit": "V",
+      "altUnits": ["%", "ohm"],
       "group": "regulation",
       "aliases": [
         "output voltage regulation"
       ],
-      "hint": "Change in Vout for a stated change in Iout. Capture the Iout span as a condition."
+      "hint": "Change in Vout for a stated change in Iout. Capture the Iout span as a condition. Vendors give this as absolute volts, a percentage of Vout, or a normalized dVout/dIout (mV/A = ohm); all three are permitted."
     },
     {
       "key": "thermal_regulation",

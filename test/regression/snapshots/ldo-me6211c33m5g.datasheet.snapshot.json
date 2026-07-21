@@ -17,6 +17,7 @@
           "limitClass": "recommended",
           "sourcePage": 1,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -40,6 +41,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -62,6 +64,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -101,6 +104,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -132,6 +136,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {
@@ -154,6 +159,7 @@
           "limitClass": "recommended",
           "sourcePage": 5,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -177,6 +183,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -217,6 +224,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -240,6 +248,7 @@
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -279,6 +288,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -310,6 +320,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -331,6 +342,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -362,6 +374,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -393,6 +406,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -431,6 +445,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -453,6 +468,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -475,6 +491,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -522,6 +539,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -561,6 +579,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -590,6 +609,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -619,6 +639,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -658,6 +679,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -679,6 +701,7 @@
           "limitClass": "recommended",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -701,6 +724,7 @@
           "limitClass": "recommended",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {

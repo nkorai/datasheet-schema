@@ -100,7 +100,7 @@ when extending anything.
 |---|---|
 | `schema/datasheet-1.0.schema.json` | **The normative artifact.** Self-contained, no external `$ref`. Where prose and this disagree, this governs. |
 | `dictionary/family-dictionary-1.0.schema.json` | Meta-schema every family dictionary validates against. |
-| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (53 params), `mosfet` (28), `voltage_reference` (26). |
+| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (53 params), `mosfet` (28), `voltage_reference` (41). |
 | `spec/v1.0/datasheet-spec.md` | Human-readable normative spec (RFC-2119 language). |
 | `spec/v1.0/*.txt` | Corpus evidence: parameter-frequency analysis over the 39-datasheet LDO corpus. |
 | `examples/*.datasheet.json` | Validated documents. 4 **real** LDOs + 1 illustrative MOSFET + 3 **real** voltage references. Double as regression fixtures. |
@@ -208,12 +208,13 @@ URLs that `$id` resolves to). The Pages job runs on push; the npm job does not.
 
 ## Conventions (quick reference)
 
-- **Unit enum (closed):** `V A Hz degC ohm F s W C J dB V/V % ppm ppm/degC ppm/V ppm/A degC/W K/W V/us A/us V/sqrtHz`. No SI prefixes (a real per-mA/uV rate becomes `ppm/A` or `ohm`, never `ppm/mA`).
+- **Unit enum (closed):** `V A Hz degC ohm F s W C J dB V/V % ppm ppm/degC ppm/V ppm/A V/degC degC/W K/W V/us A/us V/sqrtHz`. No SI prefixes (a real per-mA/uV rate becomes `ppm/A` or `ohm`, never `ppm/mA`).
+- **Unit scoping (dimension safety):** the enum is family-agnostic, so the core schema can't know `output_voltage` is volts. Each dictionary parameter declares its canonical `unit` plus, for genuinely multi-unit params (line/load regulation, drift, hysteresis, accuracy), an `altUnits` list. `scripts/validate.mjs` **rejects** any measurement whose unit isn't the param's `unit`/`altUnits` (temperature in volts fails), and `scripts/regression.mjs` checks numeric conditions on well-known axes carry the right dimension (`T_*`→degC, `V_*`→V, `I_*`→A, `F/BW_*`→Hz, `C_*`→F). Negative fixtures live in `test/conformance/dictionary-invalid/`.
 - **Parameter key:** `^[a-z][a-z0-9_]*$` (snake_case).
 - **Pin function:** `^[A-Z][A-Z0-9_]*$` (open uppercase vocab).
-- **Condition axis `param` vocab:** `T_J T_A V_IN V_OUT I_OUT I_LOAD F C_OUT C_IN ESR HEADROOM RIPPLE BW_LOW BW_HIGH V_EN C_OUT_TYPE` (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes).
+- **Condition axis `param` vocab:** `T_J T_A V_IN V_OUT V_EN V_S I_OUT I_LOAD I_R I_C F C_OUT C_IN C_NR ESR HEADROOM RIPPLE BW_LOW BW_HIGH C_OUT_TYPE PACKAGE BOARD DIRECTION` (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes like `DIRECTION`=source/sink/shunt).
 - **`limitClass`:** `absolute_max` | `recommended` | `characterized`.
-- **Measurement trust fields (all optional):** `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) — the datasheet's basis, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) and per-value `confidence` (0–1) — advisory extraction metadata, **not** the `verified` flag. The regression snapshot tracks `guarantee` (a fact), not `review`/`confidence` (advisory).
+- **Measurement optional fields:** `statistic` (`rms` | `peak_to_peak` | `peak` | `mean`) distinguishes a p-p from an RMS figure of the same quantity; `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) — the datasheet's basis, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) and per-value `confidence` (0–1) — advisory extraction metadata, **not** the `verified` flag. The regression snapshot tracks `statistic` and `guarantee` (facts), not `review`/`confidence` (advisory).
 - **Top-level required:** `schemaVersion` `component` `parameters` `provenance`.
 - **One grade per document.** A document describes one orderable grade (one `mpn`). When a datasheet covers several grades whose specs differ (A/B/C/D initial accuracy, tempco), emit one document per grade rather than merging them, so no measurement is ambiguous about which grade it applies to (spec §4). `orderingVariants` still lists same-grade sibling codes (packing/reel-vs-tube).
 

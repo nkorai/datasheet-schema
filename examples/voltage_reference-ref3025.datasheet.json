@@ -171,7 +171,7 @@
       "key": "output_current",
       "name": "Output current",
       "group": "current",
-      "aliases": ["ILOAD", "short-circuit current"],
+      "aliases": ["ILOAD"],
       "measurements": [
         {
           "limitClass": "recommended",
@@ -180,7 +180,15 @@
           "conditionsVerbatim": "Recommended load current up to 25 mA",
           "sourcePage": 4,
           "sourceTable": "Recommended Operating Conditions"
-        },
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Short-circuit current",
+      "group": "current",
+      "aliases": ["ISC"],
+      "measurements": [
         {
           "limitClass": "characterized",
           "value": { "typ": 0.045 },
@@ -201,6 +209,7 @@
           "limitClass": "characterized",
           "value": { "typ": 0.000028 },
           "unit": "V",
+          "statistic": "peak_to_peak",
           "conditions": [
             { "param": "BW_LOW", "value": 10, "unit": "Hz" },
             { "param": "BW_HIGH", "value": 1000, "unit": "Hz" }
@@ -213,6 +222,7 @@
           "limitClass": "characterized",
           "value": { "typ": 0.00008 },
           "unit": "V",
+          "statistic": "rms",
           "conditions": [
             { "param": "BW_LOW", "value": 10, "unit": "Hz" },
             { "param": "BW_HIGH", "value": 10000, "unit": "Hz" }

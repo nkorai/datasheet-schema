@@ -33,6 +33,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -66,6 +67,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -96,6 +98,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -117,6 +120,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -156,6 +160,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -187,6 +192,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -225,6 +231,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/V",
           "value": {
@@ -264,6 +271,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/A",
           "value": {
@@ -294,6 +302,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/A",
           "value": {
@@ -316,6 +325,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -328,6 +338,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -367,6 +378,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": "peak_to_peak",
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -398,6 +410,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V/sqrtHz",
           "value": {
@@ -429,6 +442,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "dB",
           "value": {
@@ -459,6 +473,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -489,6 +504,7 @@
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -527,6 +543,7 @@
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)",
+          "statistic": null,
           "stimulus": null,
           "unit": "s",
           "value": {
@@ -549,6 +566,7 @@
           "limitClass": "recommended",
           "sourcePage": 5,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)",
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -572,6 +590,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -585,6 +604,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -606,6 +626,7 @@
           "limitClass": "recommended",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -628,6 +649,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -659,6 +681,7 @@
           "limitClass": "characterized",
           "sourcePage": 10,
           "sourceTable": "Table 8. Thermal Resistance",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC/W",
           "value": {
@@ -680,6 +703,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {

@@ -41,6 +41,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -64,6 +65,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "%",
           "value": {
@@ -95,6 +97,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -117,6 +120,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/degC",
           "value": {
@@ -149,6 +153,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -171,6 +176,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -192,6 +198,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -223,6 +230,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/V",
           "value": {
@@ -262,6 +270,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm/A",
           "value": {
@@ -273,8 +282,7 @@
     },
     {
       "aliases": [
-        "ILOAD",
-        "short-circuit current"
+        "ILOAD"
       ],
       "group": "current",
       "key": "output_current",
@@ -285,18 +293,29 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
             "max": 0.025
           }
-        },
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISC"
+      ],
+      "group": "current",
+      "key": "short_circuit_current",
+      "measurements": [
         {
           "conditions": [],
           "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -335,6 +354,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": "peak_to_peak",
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -364,6 +384,7 @@
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": "rms",
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -385,6 +406,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -406,6 +428,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "ppm",
           "value": {
@@ -437,6 +460,7 @@
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "statistic": null,
           "stimulus": null,
           "unit": "s",
           "value": {
@@ -458,6 +482,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -471,6 +496,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 4,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -492,6 +518,7 @@
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -514,6 +541,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 4,
           "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -536,6 +564,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 4,
           "sourceTable": "ESD Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -557,6 +586,7 @@
           "limitClass": "absolute_max",
           "sourcePage": 4,
           "sourceTable": "ESD Ratings",
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {

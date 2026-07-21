@@ -36,7 +36,7 @@ A document describes **one orderable grade** of a part. When a single datasheet 
 
 ## 5. Pinout
 
-Each pin REQUIRES a 1-indexed `number`, the printed `name`, and a normalized `function`. `function` is an uppercase string from a controlled vocabulary that families extend, matching `^[A-Z][A-Z0-9_]*$`. The recommended vocabulary is IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. Using an unlisted function is permitted but reduces interoperability, and a validator MAY constrain the set for a given family. A consuming tool SHOULD bind a part by `function` rather than by `name`.
+Each pin REQUIRES a 1-indexed `number`, the printed `name`, and a normalized `function`. `function` is an uppercase string from a controlled vocabulary that families extend, matching `^[A-Z][A-Z0-9_]*$`. The recommended vocabulary is IN, OUT, GND, EN, NC, BYP, ADJ, FB, PG, SENSE, BIAS, PAD for regulators and references, and G, D, S for field-effect transistors. References extend it with CATHODE, ANODE (shunt), REF (adjustable reference input), TRIM, NR (noise reduction), SHDN, TEMP (temperature-sensor output), HEATER, VSET (output-programming strap), GND_SENSE, OUT_FORCE, OUT_SENSE (Kelvin), KS (Kelvin/driver source), NIC, DNC. Using an unlisted function is permitted but reduces interoperability, and a validator MAY constrain the set for a given family. A consuming tool SHOULD bind a part by `function` rather than by `name`.
 
 ## 6. Parameters
 
@@ -56,6 +56,7 @@ A parameter specified across several conditions, such as dropout per load curren
 | `conditionsVerbatim` | OPTIONAL | The conditions exactly as printed, so nothing is lost in normalization. |
 | `sourcePage` | REQUIRED for `characterized` | 1-indexed page. |
 | `sourceTable` | OPTIONAL | The originating table. |
+| `statistic` | OPTIONAL | The statistical form when a quantity is specified more than one way: `rms`, `peak_to_peak`, `peak`, or `mean` (for example a peak-to-peak versus an RMS noise figure). |
 | `guarantee` | OPTIONAL | The datasheet's basis for the value: `production_tested`, `by_design`, `by_characterization`, or `typical`. |
 | `review` | OPTIONAL | Extraction review state: `unchecked`, `confirmed`, or `edited`. |
 | `confidence` | OPTIONAL | Advisory per-value extraction confidence, 0 to 1. |
@@ -68,9 +69,9 @@ A parameter specified across several conditions, such as dropout per load curren
 
 A condition axis has a `param` and either a `value`, a `min` and `max` range, or a `note`. A `unit` is REQUIRED when a numeric `value`, `min`, or `max` is present, and is omitted for a note-only axis such as a package name or capacitor type. `param` uses this recommended vocabulary. Family-specific axes MAY extend it.
 
-`T_J, T_A, V_IN, V_OUT, I_OUT, I_LOAD, F, C_OUT, C_IN, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, V_EN, C_OUT_TYPE`
+`T_J, T_A, V_IN, V_OUT, V_EN, V_S, I_OUT, I_LOAD, I_R, I_C, F, C_OUT, C_IN, C_NR, ESR, HEADROOM, RIPPLE, BW_LOW, BW_HIGH, C_OUT_TYPE, PACKAGE, BOARD, DIRECTION`
 
-Using an unlisted `param` is permitted but reduces cross-tool interoperability.
+`I_R` is a shunt reverse/cathode current, `V_S` a heater/stabilizer supply rail, `C_NR` a noise-reduction capacitor, `I_C` a transistor collector current, and `DIRECTION` a note-only axis (`source`, `sink`, `shunt`) for a spec given per current direction. Using an unlisted `param` is permitted but reduces cross-tool interoperability.
 
 ### 7.2 Stimulus
 
@@ -82,7 +83,9 @@ Document-level `provenance` MAY record `datasheetSha256`, `sourceUrl`, `datashee
 
 ## 9. Units
 
-Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, J, dB, V/V, %, ppm, ppm/degC, ppm/V, ppm/A, degC/W, K/W, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted. Thermal resistance uses degC/W (equivalently K/W), and energy such as single-pulse avalanche uses J. The fractional-rate family — ppm for a dimensionless change such as long-term drift or thermal hysteresis, and ppm/V and ppm/A for line and load regulation — joins ppm/degC so that a rate a datasheet prints per volt or per milliamp is captured as printed rather than lossily converted; the value stays comparable across parts and auditable against the page. A rate printed in uV/V or uV/mA MAY instead use the dimensionless V/V or the derived ohm (dVOUT/dIOUT) when that is how the part specifies it.
+Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, J, dB, V/V, %, ppm, ppm/degC, ppm/V, ppm/A, V/degC, degC/W, K/W, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted. Thermal resistance uses degC/W (equivalently K/W), and energy such as single-pulse avalanche uses J. The fractional-rate family — ppm for a dimensionless change such as long-term drift or thermal hysteresis, and ppm/V and ppm/A for line and load regulation — joins ppm/degC so that a rate a datasheet prints per volt or per milliamp is captured as printed rather than lossily converted; the value stays comparable across parts and auditable against the page. A rate printed in uV/V or uV/mA MAY instead use the dimensionless V/V or the derived ohm (dVOUT/dIOUT) when that is how the part specifies it. `V/degC` carries a temperature-sensor output slope.
+
+The unit enum is family-agnostic, so the core schema alone does not know that `output_voltage` is volts. A family dictionary parameter declares its canonical `unit` and, for parameters vendors specify more than one way, an `altUnits` list; a conforming validator SHOULD reject a measurement whose unit is neither the parameter's `unit` nor one of its `altUnits`, so an off-dimension unit (a temperature in volts) is caught. Likewise a numeric condition on a well-known axis SHOULD carry the axis's dimension (a `T_*` axis is degC, a `V_*` axis is V, an `I_*` axis is A, a frequency axis is Hz, a `C_*` axis is F). The reference conformance runner enforces both.
 
 ## 10. Conformance
 

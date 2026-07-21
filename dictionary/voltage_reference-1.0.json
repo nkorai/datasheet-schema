@@ -16,6 +16,7 @@
       "key": "initial_accuracy",
       "name": "Initial accuracy",
       "unit": "%",
+      "altUnits": ["V"],
       "group": "reference",
       "aliases": ["initial tolerance", "output voltage tolerance", "output voltage accuracy", "VOUT accuracy", "VBR tolerance", "reference voltage tolerance", "accuracy", "voltage error"],
       "hint": "Output-voltage tolerance at 25 degC as a percentage. Vendors also print it as +/- absolute millivolts; capture the absolute case as min/typ/max under output_voltage and keep the percentage here. Grade suffixes (A/B/C/D) set this number."
@@ -70,6 +71,7 @@
       "key": "line_regulation",
       "name": "Line regulation",
       "unit": "ppm/V",
+      "altUnits": ["V/V"],
       "group": "regulation",
       "optional": true,
       "array": true,
@@ -81,6 +83,7 @@
       "key": "load_regulation",
       "name": "Load regulation",
       "unit": "ppm/A",
+      "altUnits": ["ohm"],
       "group": "regulation",
       "optional": true,
       "array": true,
@@ -144,6 +147,7 @@
       "key": "long_term_stability",
       "name": "Long-term stability / drift",
       "unit": "ppm",
+      "altUnits": ["%", "V"],
       "group": "dynamic",
       "optional": true,
       "aliases": ["long-term stability", "long-term drift", "output voltage long-term drift", "long-term output voltage change", "aging"],
@@ -153,6 +157,7 @@
       "key": "thermal_hysteresis",
       "name": "Thermal hysteresis",
       "unit": "ppm",
+      "altUnits": ["%", "V"],
       "group": "dynamic",
       "optional": true,
       "aliases": ["thermal hysteresis", "output voltage hysteresis", "VOUT hysteresis", "temperature cycle hysteresis"],
@@ -246,6 +251,142 @@
       "optional": true,
       "aliases": ["ESD CDM", "charged device model", "CDM", "ESD charged device model"],
       "hint": "ESD withstand, charged device model. Store as absolute_max."
+    },
+    {
+      "key": "esd_mm",
+      "name": "ESD, machine model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD MM", "machine model", "MM"],
+      "hint": "ESD withstand, machine model. Store as absolute_max."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "Internal reference voltage",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VFB", "feedback voltage", "reference input threshold", "internal reference", "bandgap voltage"],
+      "hint": "The internal reference/feedback threshold of an adjustable or shunt reference, distinct from output_voltage. For an adjustable shunt (e.g. TL431) the output is set by an external divider to this datum; for a fixed series reference output_voltage is the guaranteed value and this is usually omitted."
+    },
+    {
+      "key": "reference_input_current",
+      "name": "Reference / adjust input current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["IREF", "IFB", "reference input current", "feedback input current", "adjust pin current"],
+      "hint": "Bias current into the reference/feedback (adjust) pin of an adjustable reference, which sets the error of the external programming divider. Capture its temperature drift as a second measurement over a T_A range."
+    },
+    {
+      "key": "off_state_current",
+      "name": "Off-state current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IOFF", "off-state cathode current", "off-state leakage", "standby leakage"],
+      "hint": "Shunt references: cathode leakage current when the device is biased below regulation (Vref forced to 0). Distinct from the operating supply/quiescent current."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Short-circuit current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["ISC", "short-circuit current", "output short-circuit current", "current limit"],
+      "hint": "The current the output delivers into a short, a protection limit distinct from the specified output_current. Source and sink shorts (VOUT to GND vs to VIN) can differ, so use one measurement per direction with a note."
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["ISHDN", "shutdown current", "standby current", "disabled supply current"],
+      "hint": "Series references with an enable/shutdown pin: the supply current drawn when disabled. Distinct from supply_current (the enabled quiescent draw)."
+    },
+    {
+      "key": "enable_threshold_voltage",
+      "name": "Enable threshold voltage",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["VEN", "enable threshold", "shutdown threshold", "VIH", "VIL", "enable logic threshold"],
+      "hint": "Enable/shutdown pin logic thresholds. Use min for the guaranteed-active (high) level and max for the guaranteed-shutdown (low) level, or one measurement per level with a note."
+    },
+    {
+      "key": "trim_range",
+      "name": "Output trim / adjustment range",
+      "unit": "%",
+      "altUnits": ["V"],
+      "group": "reference",
+      "optional": true,
+      "aliases": ["trim range", "output adjustment range", "trim adjustment", "output voltage trim"],
+      "hint": "The range over which the output can be fine-trimmed via a TRIM pin and external network, as a percentage of the nominal output (or absolute volts). Note the trim attenuation/network in conditionsVerbatim."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJC", "theta-JC", "junction-to-case thermal resistance", "RthJC"],
+      "hint": "Thermal resistance from junction to case for the given package. Note the package in a condition."
+    },
+    {
+      "key": "temperature_sensor_output_voltage",
+      "name": "Temperature-sensor output voltage",
+      "unit": "V",
+      "group": "temperature_sensor",
+      "optional": true,
+      "aliases": ["VTEMP", "temperature output voltage", "temp sensor output"],
+      "hint": "For a reference with a TEMP output pin, the sensor output voltage at a stated temperature. Give the T_A condition. This is a secondary on-chip function of the reference; use group temperature_sensor so a consumer can tell it apart from the reference output."
+    },
+    {
+      "key": "temperature_sensor_slope",
+      "name": "Temperature-sensor slope",
+      "unit": "V/degC",
+      "group": "temperature_sensor",
+      "optional": true,
+      "aliases": ["temperature sensor slope", "TEMP slope", "temperature coefficient of VTEMP", "mV/degC slope"],
+      "hint": "The slope of the TEMP-pin output versus temperature (e.g. 2.64 mV/degC = 0.00264 V/degC). Secondary function; group temperature_sensor."
+    },
+    {
+      "key": "heater_supply_voltage",
+      "name": "Heater supply voltage",
+      "unit": "V",
+      "group": "heater",
+      "optional": true,
+      "aliases": ["heater voltage", "temperature stabilizer supply voltage", "oven supply voltage", "VH"],
+      "hint": "Ovenized/heated references: the operating supply-voltage range for the on-chip heater/temperature-stabilizer, on a rail separate from the reference. Use the V_S condition axis where the heater rail conditions other specs."
+    },
+    {
+      "key": "heater_supply_current",
+      "name": "Heater supply current",
+      "unit": "A",
+      "group": "heater",
+      "optional": true,
+      "aliases": ["heater current", "stabilizer current", "oven current", "steady-state heater current"],
+      "hint": "Heated references: the steady-state current drawn by the heater at a stated ambient and heater supply. Strongly ambient-dependent, so give a T_A condition."
+    },
+    {
+      "key": "heater_turn_on_current",
+      "name": "Heater turn-on (inrush) current",
+      "unit": "A",
+      "group": "heater",
+      "optional": true,
+      "aliases": ["heater inrush current", "initial heater current", "warm-up current"],
+      "hint": "Heated references: the peak heater current at cold turn-on, before the oven reaches temperature."
+    },
+    {
+      "key": "heater_resistance",
+      "name": "Heater resistance",
+      "unit": "ohm",
+      "group": "heater",
+      "optional": true,
+      "aliases": ["heater resistance", "stabilizer resistance"],
+      "hint": "Ovenized references: the resistance of the on-chip heater element."
     }
   ]
 }

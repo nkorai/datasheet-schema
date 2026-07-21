@@ -151,6 +151,10 @@
         },
         "sourcePage": { "description": "1-indexed datasheet page this value was read from.", "type": "integer", "minimum": 1 },
         "sourceTable": { "description": "The table it came from, for example Electrical Characteristics.", "type": "string" },
+        "statistic": {
+          "description": "The statistical form of the value, when a parameter is specified in more than one, so that a peak-to-peak figure and an RMS figure of the same quantity (for example reference output noise) are machine-distinguishable rather than differing only in a verbatim string. rms, peak_to_peak, and peak are the usual noise forms; mean is occasionally used.",
+          "enum": ["rms", "peak_to_peak", "peak", "mean"]
+        },
         "guarantee": {
           "description": "The datasheet's basis for the value, from the specification footnotes. production_tested is 100% tested in production (usually the bold min/max limits). by_design and by_characterization are ensured but not production-tested. typical is a typical value that is not a guaranteed limit. This is the guarantee basis, distinct from limitClass (which kind of limit) and from review/confidence (extraction trust).",
           "enum": ["production_tested", "by_design", "by_characterization", "typical"]
@@ -262,7 +266,7 @@
       "type": "string",
       "enum": [
         "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C", "J",
-        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz"
+        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz"
       ]
     }
   }

@@ -25,6 +25,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -46,6 +47,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -77,6 +79,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -98,6 +101,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -119,6 +123,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -149,6 +154,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "W",
           "value": {
@@ -170,6 +176,7 @@
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -192,6 +199,7 @@
           "limitClass": "recommended",
           "sourcePage": null,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "degC",
           "value": {
@@ -231,6 +239,7 @@
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -271,6 +280,7 @@
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "ohm",
           "value": {
@@ -301,6 +311,7 @@
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "ohm",
           "value": {
@@ -340,6 +351,7 @@
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -378,6 +390,7 @@
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "A",
           "value": {
@@ -417,6 +430,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -447,6 +461,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -477,6 +492,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "F",
           "value": {
@@ -523,6 +539,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "C",
           "value": {
@@ -561,6 +578,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "C",
           "value": {
@@ -599,6 +617,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "s",
           "value": {
@@ -637,6 +656,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "s",
           "value": {
@@ -675,6 +695,7 @@
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "V",
           "value": {
@@ -706,6 +727,7 @@
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,
+          "statistic": null,
           "stimulus": null,
           "unit": "degC/W",
           "value": {

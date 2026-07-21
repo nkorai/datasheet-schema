@@ -2,6 +2,17 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.6.0]
+
+Driven by a gap analysis extracting ten real manufacturer voltage-reference datasheets (TI, ADI, Renesas, Microchip — not via any pre-normalized source) into the schema and recording what did not fit. Eleven of twelve parts fit with additive vocabulary only; the sole structural case (the ovenized multi-block LTZ1000) is documented as an out-of-scope limitation rather than driving a re-architecture.
+
+### Added
+- Per-parameter **unit scoping** so an off-dimension unit is caught (a temperature in volts is rejected). The family-dictionary meta-schema gains an optional `altUnits` list; a parameter permits its canonical `unit` plus any `altUnits`, and `scripts/validate.mjs` rejects any measurement outside that set. `scripts/regression.mjs` additionally checks that a numeric condition on a well-known axis carries the right dimension (`T_*`→degC, `V_*`→V, `I_*`→A, `F`/`BW_*`→Hz, `C_*`→F). Negative fixtures in `test/conformance/dictionary-invalid/` (temperature-in-volts, voltage-in-degC); `altUnits` populated for the regulation/drift/hysteresis/accuracy parameters of `ldo` and `voltage_reference`.
+- Measurement field `statistic` (`rms` | `peak_to_peak` | `peak` | `mean`) so a peak-to-peak and an RMS figure of the same quantity (reference output noise) are machine-distinguishable rather than differing only in a verbatim string. Tracked in the value snapshot.
+- Unit `V/degC` (temperature-sensor output slope).
+- `voltage_reference` dictionary: 15 parameters from the gap analysis — `short_circuit_current`, `reference_voltage` (adjustable/shunt internal reference, distinct from `output_voltage`), `reference_input_current`, `off_state_current`, `shutdown_current`, `enable_threshold_voltage`, `trim_range`, `esd_mm`, `thermal_resistance_junction_case`, a temperature-sensor sub-block (`temperature_sensor_output_voltage`, `temperature_sensor_slope`), and a heater sub-block (`heater_supply_voltage`, `heater_supply_current`, `heater_turn_on_current`, `heater_resistance`, groups `temperature_sensor`/`heater`). Now 41 parameters, 213 aliases.
+- Recommended pin-function vocabulary extended: `REF`, `TRIM`, `NR`, `TEMP`, `SHDN`, `HEATER`, `VSET`, `GND_SENSE`, `OUT_FORCE`, `OUT_SENSE`, `KS`. Recommended condition axes extended: `V_S`, `I_R`, `I_C`, `C_NR`, `DIRECTION` (spec §5, §7.1).
+
 ## [1.5.0]
 
 ### Added

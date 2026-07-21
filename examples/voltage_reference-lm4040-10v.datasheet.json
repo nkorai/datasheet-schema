@@ -186,6 +186,7 @@
           "limitClass": "characterized",
           "value": { "typ": 0.00018 },
           "unit": "V",
+          "statistic": "rms",
           "conditions": [
             { "param": "I_R", "value": 0.00015, "unit": "A" },
             { "param": "BW_LOW", "value": 10, "unit": "Hz" },

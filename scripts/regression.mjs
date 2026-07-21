@@ -89,10 +89,49 @@ for (const f of glob('dictionary')) {
 
     for (const p of params) {
         if (unitEnum && !unitEnum.has(p.unit)) problems.push(`"${p.key}" unit "${p.unit}" is not in the schema unit enum`);
+        for (const u of p.altUnits ?? []) {
+            if (unitEnum && !unitEnum.has(u)) problems.push(`"${p.key}" altUnit "${u}" is not in the schema unit enum`);
+            if (u === p.unit) problems.push(`"${p.key}" altUnit "${u}" duplicates its canonical unit`);
+        }
         if (p.array && !p.conditionAxis) problems.push(`"${p.key}" is array:true but declares no conditionAxis`);
     }
 
     problems.length ? fail(`${f}\n      - ${problems.join('\n      - ')}`) : pass(`${f} (${params.length} params, ${aliasOwner.size} aliases)`);
+}
+
+// ---------------------------------------------------------------------------
+// 1b. Condition-axis dimension check: a numeric condition on a well-known axis
+// must carry the right dimension of unit (T_* is degC, V_* is V, I_* is A, a
+// frequency axis is Hz, a capacitance axis is F). Unknown/family-specific axes
+// are skipped (the vocab is open). This is the same "temperature is not volts"
+// guard the dictionary applies to values, extended to conditions.
+const expectedAxisUnit = (param) => {
+    if (param === 'F' || param === 'BW_LOW' || param === 'BW_HIGH') return 'Hz';
+    if (param === 'ESR') return 'ohm';
+    if (param === 'HEADROOM' || param === 'RIPPLE') return 'V';
+    if (param.startsWith('T_')) return 'degC';
+    if (param.startsWith('V_')) return 'V';
+    if (param.startsWith('I_')) return 'A';
+    if (param.startsWith('C_') && param !== 'C_OUT_TYPE') return 'F';
+    if (param.startsWith('F_')) return 'Hz';
+    return null; // unknown axis: not enforced
+};
+
+console.log('\ncondition-axis dimensions (examples):');
+for (const f of glob('examples')) {
+    const doc = read(`examples/${f}`);
+    const problems = [];
+    for (const p of doc.parameters ?? []) {
+        for (const m of p.measurements ?? []) {
+            for (const c of m.conditions ?? []) {
+                const numeric = c.value !== undefined || c.min !== undefined || c.max !== undefined;
+                if (!numeric || !c.unit) continue; // note-only axes carry no unit
+                const exp = expectedAxisUnit(c.param);
+                if (exp && c.unit !== exp) problems.push(`${p.key}: condition ${c.param} has unit "${c.unit}", expected "${exp}"`);
+            }
+        }
+    }
+    problems.length ? fail(`${f}\n      - ${problems.join('\n      - ')}`) : pass(f);
 }
 
 // ---------------------------------------------------------------------------
@@ -118,6 +157,7 @@ const projectMeasurement = (m) => ({
         note: c.note ?? null,
     })),
     stimulus: m.stimulus ?? null,
+    statistic: m.statistic ?? null,
     guarantee: m.guarantee ?? null,
     sourcePage: m.sourcePage ?? null,
     sourceTable: m.sourceTable ?? null,
