@@ -1,0 +1,233 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "voltage_reference",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for precision voltage references, covering both series (3-terminal) and shunt (2-terminal) topologies with one vocabulary. The reference voltage is output_voltage for a series part and the reverse breakdown voltage for a shunt part; the aliases unify the two so cross-topology extraction normalizes to one key. Grounded in real parts across manufacturers (TI LM4040 shunt, TI REF3025 series, ADI ADR4525 precision series). Condition axes for this family include V_IN, I_OUT, I_R (reverse/cathode current, shunt only), F, T_A, and the noise bandwidth axes BW_LOW/BW_HIGH. Aliases normalize the printed datasheet symbols; base-SI units keep cross-part comparison sound (ppm/degC for tempco, V for noise, ohm for dynamic impedance).",
+  "parameters": [
+    {
+      "key": "output_voltage",
+      "name": "Reference output voltage",
+      "unit": "V",
+      "group": "reference",
+      "aliases": ["VOUT", "VO", "VREF", "reference voltage", "reference output voltage", "VBR", "reverse breakdown voltage", "V(BR)", "breakdown voltage", "nominal output voltage"],
+      "hint": "The regulated reference voltage. For a series reference this is the output voltage; for a shunt reference it is the reverse breakdown voltage across the 2-terminal device (same concept, hence the shared aliases). Store the nominal with min/typ/max from the initial-accuracy spec at T_A = 25 degC."
+    },
+    {
+      "key": "initial_accuracy",
+      "name": "Initial accuracy",
+      "unit": "%",
+      "group": "reference",
+      "aliases": ["initial tolerance", "output voltage tolerance", "output voltage accuracy", "VOUT accuracy", "VBR tolerance", "reference voltage tolerance", "accuracy", "voltage error"],
+      "hint": "Output-voltage tolerance at 25 degC as a percentage. Vendors also print it as +/- absolute millivolts; capture the absolute case as min/typ/max under output_voltage and keep the percentage here. Grade suffixes (A/B/C/D) set this number."
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Output voltage temperature coefficient",
+      "unit": "ppm/degC",
+      "group": "temperature",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["tempco", "TCVO", "TCVOUT", "temperature drift", "temperature coefficient of output voltage", "average temperature coefficient", "output voltage drift", "VBR temperature coefficient", "temperature coefficient of VBR", "dVOUT/dT"],
+      "hint": "The headline reference spec. Give the temperature range as a T_A condition (min..max). Note whether the datasheet uses the box (min/max) method or a typical average, in conditionsVerbatim. Grade suffixes set this number."
+    },
+    {
+      "key": "supply_current",
+      "name": "Quiescent / supply current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IQ", "quiescent current", "IIN", "supply current", "ground current", "operating current", "IGND", "IDD"],
+      "hint": "Series references only: the current the reference draws to operate. Not applicable to a 2-terminal shunt (use minimum_operating_current there). Base-SI amps: a 42 uA IQ is 4.2e-05."
+    },
+    {
+      "key": "minimum_operating_current",
+      "name": "Minimum operating (cathode) current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IR(min)", "minimum cathode current", "minimum reverse current", "IMIN", "minimum operating current", "IZ(min)", "minimum shunt current"],
+      "hint": "Shunt references only: the minimum reverse (cathode) current needed to reach and hold regulation. Below it the device is not in regulation."
+    },
+    {
+      "key": "maximum_operating_current",
+      "name": "Maximum operating (cathode) current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IR(max)", "maximum cathode current", "maximum reverse current", "IMAX", "maximum operating current", "IZ(max)"],
+      "hint": "Shunt references only: the maximum reverse current over which the reference is specified (distinct from the absolute-maximum reverse current, which is a stress limit)."
+    },
+    {
+      "key": "output_current",
+      "name": "Output current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IOUT", "output source current", "output sink current", "source current", "sink current", "load current", "IL"],
+      "hint": "Series references only: the specified output source/sink current capability. Use min/max to bound a source(+)/sink(-) range."
+    },
+    {
+      "key": "line_regulation",
+      "name": "Line regulation",
+      "unit": "V/V",
+      "group": "regulation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_IN",
+      "aliases": ["line regulation", "dVOUT/dVIN", "input voltage influence", "voltage regulation vs input", "input voltage rejection"],
+      "hint": "Series references: the output-voltage change per volt of input change, as a base-SI ratio V/V (equivalently uV/V). Datasheets print uV/V or ppm/V; ppm/V normalizes to V/V by multiplying by VOUT (1 ppm/V x 2.5 V = 2.5e-06 V/V). Keep the printed rate in conditionsVerbatim and give the V_IN range as a condition."
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "unit": "ohm",
+      "group": "regulation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": ["load regulation", "dVOUT/dIOUT", "output current influence", "voltage regulation vs load", "output resistance"],
+      "hint": "The output-voltage change per amp of load change, dVOUT/dIOUT, which has units of ohms (an effective output resistance). Datasheets print uV/mA or ppm/mA; ppm/mA normalizes by multiplying by VOUT then converting mA to A (30 ppm/mA x 2.5 V = 0.075 ohm). Source and sink can differ, so use one measurement per direction and keep the printed rate in conditionsVerbatim."
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage / headroom",
+      "unit": "V",
+      "group": "regulation",
+      "optional": true,
+      "aliases": ["dropout voltage", "headroom", "input-output voltage differential", "VIN-VOUT", "minimum input-output differential", "supply headroom"],
+      "hint": "Series references only: the minimum input-to-output differential (VIN - VOUT) for the output to stay in regulation."
+    },
+    {
+      "key": "output_noise",
+      "name": "Output voltage noise (peak-to-peak)",
+      "unit": "V",
+      "group": "noise",
+      "array": true,
+      "conditionAxis": "BW_HIGH",
+      "aliases": ["output voltage noise", "0.1 Hz to 10 Hz noise", "peak-to-peak noise", "Vn(p-p)", "en p-p", "low-frequency noise", "wideband noise", "noise voltage"],
+      "hint": "Broadband output noise over a stated bandwidth, usually 0.1 Hz to 10 Hz peak-to-peak. Give BW_LOW and BW_HIGH as conditions. Convert uVpp to volts: 8 uVpp is 8e-06."
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output voltage noise density",
+      "unit": "V/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["noise spectral density", "voltage noise density", "spot noise", "en", "output spectral noise density", "broadband noise density"],
+      "hint": "Spectral noise density at a stated frequency (give F as a condition). Convert nV/sqrtHz to V/sqrtHz: 150 nV/sqrtHz is 1.5e-07."
+    },
+    {
+      "key": "dynamic_output_impedance",
+      "name": "Dynamic output impedance",
+      "unit": "ohm",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["reverse dynamic impedance", "ZR", "dynamic impedance", "output impedance", "ZOUT", "ZKA", "dynamic output resistance", "small-signal output impedance"],
+      "hint": "Shunt references: the reverse dynamic impedance ZR (dVR/dIR), specified at an operating current and frequency. Series references: the small-signal output impedance. Give the operating current (I_R or I_OUT) and F as conditions; one measurement per point."
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "group": "rejection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["PSRR", "ripple rejection", "power supply rejection", "line noise rejection", "supply rejection", "power supply rejection ratio"],
+      "hint": "Series references: rejection of input ripple, specified per frequency; one measurement per frequency point."
+    },
+    {
+      "key": "long_term_stability",
+      "name": "Long-term stability / drift",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["long-term stability", "long-term drift", "output voltage long-term drift", "long-term output voltage change", "aging"],
+      "hint": "Output-voltage change over an elapsed time (commonly 1000 hours). Datasheets print ppm/1000 hr; convert to the absolute output change in volts (ppm x VOUT) and keep the ppm figure and the duration in conditionsVerbatim."
+    },
+    {
+      "key": "thermal_hysteresis",
+      "name": "Thermal hysteresis",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["thermal hysteresis", "output voltage hysteresis", "VOUT hysteresis", "temperature cycle hysteresis"],
+      "hint": "The residual output-voltage shift after a temperature cycle back to 25 degC. Datasheets print ppm or mV; convert to volts and note the temperature cycle in conditionsVerbatim."
+    },
+    {
+      "key": "turn_on_settling_time",
+      "name": "Turn-on settling time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["turn-on settling time", "settling time", "startup time", "turn-on time", "warm-up time"],
+      "hint": "Time from power-up to the output settling within a stated error band. Note the error band and load in conditionsVerbatim."
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage range",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["VIN", "input voltage", "supply voltage range", "operating input voltage", "VIN range", "VS"],
+      "hint": "Series references only: the operating input-voltage range (limitClass recommended) and/or the absolute-maximum input voltage (limitClass absolute_max), distinguished by limitClass."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": ["operating temperature", "operating free-air temperature", "TA range", "operating junction temperature", "TA", "ambient temperature range"],
+      "hint": "The temperature range over which the device is specified. Store min and max."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["storage temperature", "TSTG", "Tstg"],
+      "hint": "Absolute-maximum storage temperature range. Store as absolute_max with min and max."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJA", "theta-JA", "junction-to-ambient thermal resistance", "RthJA"],
+      "hint": "Thermal resistance from junction to ambient for the given package and board. Note the package/board in a condition."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["PD", "power dissipation", "maximum power dissipation", "device power dissipation"],
+      "hint": "Absolute-maximum power dissipation, temperature/derating dependent. Note T_A in a condition."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM", "human body model", "HBM", "ESD human body model"],
+      "hint": "ESD withstand, human body model. Store as absolute_max."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM", "charged device model", "CDM", "ESD charged device model"],
+      "hint": "ESD withstand, charged device model. Store as absolute_max."
+    }
+  ]
+}

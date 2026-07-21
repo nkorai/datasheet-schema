@@ -51,7 +51,7 @@ The schema has three elements.
 
 1. Measurement. Every value is an object of `value` (with `min`, `typ`, `nom`, `max`), `unit`, `conditions`, and provenance fields. The `conditions` field is a first-class, typed list of axes.
 2. limitClass. One of `absolute_max`, `recommended`, or `characterized`. A single field replaces the separate datasheet tables and records whether a value is a stress limit, an operating range, or a guaranteed characteristic. A consumer must not treat an absolute-maximum value as an operating value.
-3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Two families are included, an LDO regulator and a discrete power MOSFET, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND and a transistor's G, D, S. Adding a family requires only a new dictionary, not a schema change.
+3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Three families are included, an LDO regulator, a discrete power MOSFET, and a precision voltage reference, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND, a transistor's G, D, S, and a shunt reference's CATHODE, ANODE. Adding a family requires only a new dictionary, not a schema change.
 
 The schema reuses established vocabulary, including IEC 61360 level roles, an Octopart-style identity envelope, and base-SI units. It adds the conditioned value and provenance that those sources omit.
 
@@ -93,7 +93,7 @@ Reference the hosted, versioned URL from a `$ref`.
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-The [`examples/`](./examples) directory holds validated documents across both families, including four real LDO regulators and an illustrative MOSFET.
+The [`examples/`](./examples) directory holds validated documents across all three families, including four real LDO regulators, an illustrative MOSFET, and three real voltage references (a shunt and two series parts across three manufacturers).
 
 ## Contents
 
@@ -110,8 +110,9 @@ A dictionary defines the canonical parameter keys, units, and vendor aliases for
 
 | Family | Dictionary | Parameters |
 |---|---|---|
-| `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 54, across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, ESD, and general groups. |
+| `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 53, across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, ESD, and general groups. |
 | `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 28, across the ratings, static, capacitance, gate-charge, switching, body-diode, thermal, and general groups. |
+| `voltage_reference` | [`dictionary/voltage_reference-1.0.json`](./dictionary/voltage_reference-1.0.json) | 24, unifying series and shunt topologies across the reference, temperature, current, regulation, noise, dynamic, rejection, thermal, and general groups. |
 
 To add a family, write a dictionary that conforms to [`dictionary/family-dictionary-1.0.schema.json`](./dictionary/family-dictionary-1.0.schema.json) and a validated example. No schema change is required.
 

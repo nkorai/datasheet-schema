@@ -1,0 +1,370 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "REF3025AIDBZR",
+    "manufacturer": "Texas Instruments",
+    "family": "voltage_reference",
+    "description": "2.5 V low-power series voltage reference in SOT-23-3, 0.2% initial accuracy (REF30, non-E variant).",
+    "package": "SOT-23-3",
+    "pinCount": 3,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      {
+        "orderCode": "REF3025AIDBZR",
+        "outputVoltageV": 2.5,
+        "package": "SOT-23-3",
+        "temperatureGrade": "-40..125",
+        "packing": "Tape and Reel"
+      }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "IN", "function": "IN", "type": "power", "description": "Input supply voltage.", "sourcePage": 3 },
+    { "number": 2, "name": "OUT", "function": "OUT", "type": "power", "description": "Reference output voltage.", "sourcePage": 3 },
+    { "number": 3, "name": "GND", "function": "GND", "type": "power", "description": "Ground.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "output_voltage",
+      "name": "Output voltage",
+      "group": "reference",
+      "aliases": ["VOUT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.495, "typ": 2.5, "max": 2.505 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "V_IN", "value": 5, "unit": "V" },
+            { "param": "I_LOAD", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "TA = 25 degC, VIN = 5 V, ILOAD = 0 mA",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "initial_accuracy",
+      "name": "Initial accuracy",
+      "group": "reference",
+      "aliases": ["output voltage tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.2 },
+          "unit": "%",
+          "conditionsVerbatim": "+/-0.2% initial accuracy",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Output voltage temperature drift",
+      "group": "temperature",
+      "aliases": ["dVOUT/dT", "temperature drift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20, "max": 50 },
+          "unit": "ppm/degC",
+          "conditions": [ { "param": "T_A", "min": 0, "max": 70, "unit": "degC" } ],
+          "conditionsVerbatim": "0 degC to 70 degC, box method",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 35, "max": 75 },
+          "unit": "ppm/degC",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "-40 degC to 125 degC, box method",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Quiescent current",
+      "group": "current",
+      "aliases": ["IQ", "quiescent current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000042, "max": 0.00005 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "TA = 25 degC (42 uA typ, 50 uA max)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.000059 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "-40 degC to 125 degC (59 uA max)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "group": "regulation",
+      "aliases": ["VDO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.001, "max": 0.05 },
+          "unit": "V",
+          "conditionsVerbatim": "VDO, 1 mV typ / 50 mV max",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "name": "Line regulation",
+      "group": "regulation",
+      "aliases": ["dVOUT/dVIN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00012, "max": 0.000325 },
+          "unit": "V/V",
+          "conditions": [ { "param": "V_IN", "min": 2.55, "max": 5.5, "unit": "V" } ],
+          "conditionsVerbatim": "120 uV/V typ, 325 uV/V max; VREF + 50 mV <= VIN <= 5.5 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "group": "regulation",
+      "aliases": ["dVOUT/dILOAD"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0003, "max": 0.01 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_OUT", "min": 0, "max": 0.025, "unit": "A" },
+            { "param": "V_IN", "value": 3.0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "3 ppm typ / 100 ppm max over ILOAD = 0 to 25 mA, VIN = VREF + 500 mV (dVOUT/dILOAD as effective ohms)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "name": "Output current",
+      "group": "current",
+      "aliases": ["ILOAD", "short-circuit current"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 0.025 },
+          "unit": "A",
+          "conditionsVerbatim": "Recommended load current up to 25 mA",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.045 },
+          "unit": "A",
+          "conditionsVerbatim": "Isc, short-circuit current, typ 45 mA",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "output_noise",
+      "name": "Output voltage noise",
+      "group": "noise",
+      "aliases": ["output voltage noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000028 },
+          "unit": "V",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "10 Hz to 1 kHz, peak-to-peak (28 uVpp)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00008 },
+          "unit": "V",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 10000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "10 Hz to 10 kHz, RMS (80 uVrms)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "long_term_stability",
+      "name": "Long-term stability",
+      "group": "dynamic",
+      "aliases": ["long term stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0024 },
+          "unit": "%",
+          "conditionsVerbatim": "24 ppm, 0 h to 1000 h",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "thermal_hysteresis",
+      "name": "Thermal hysteresis",
+      "group": "dynamic",
+      "aliases": ["thermal hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0025, "max": 0.01 },
+          "unit": "%",
+          "conditionsVerbatim": "25 ppm typ / 100 ppm max",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_settling_time",
+      "name": "Turn-on settling time",
+      "group": "dynamic",
+      "aliases": ["turnon settling time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00012 },
+          "unit": "s",
+          "conditions": [ { "param": "C_OUT", "value": 0.000001, "unit": "F" } ],
+          "conditionsVerbatim": "120 us to 0.1%, CL = 1 uF",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage range",
+      "group": "general",
+      "aliases": ["VIN"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.55, "max": 5.5 },
+          "unit": "V",
+          "conditionsVerbatim": "VOUT + 0.05 V <= VIN <= 5.5 V",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage, IN to GND",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["TA"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "-40 degC <= TA <= 125 degC",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range, Tstg",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4000 },
+          "unit": "V",
+          "conditionsVerbatim": "HBM, ANSI/ESDA/JEDEC JS-001 (REF30)",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1500 },
+          "unit": "V",
+          "conditionsVerbatim": "CDM, JESD22-C101 (REF30)",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/ref30.pdf",
+    "datasheetRevision": "Rev. K, REF30 (non-E) variant (representative extraction via datasheets.md, normalized to base-SI; not a verbatim transcription)",
+    "extractionMethod": "llm:datasheets.md",
+    "verified": true
+  }
+}

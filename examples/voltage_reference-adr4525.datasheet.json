@@ -1,0 +1,414 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "ADR4525ARZ",
+    "manufacturer": "Analog Devices",
+    "family": "voltage_reference",
+    "description": "2.5 V high-precision series voltage reference, A grade (0.04% initial error, 4 ppm/degC max), 8-lead SOIC.",
+    "package": "SOIC-8",
+    "pinCount": 8,
+    "lifecycle": "active",
+    "msl": "MSL1",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      {
+        "orderCode": "ADR4525ARZ",
+        "outputVoltageV": 2.5,
+        "package": "SOIC-8",
+        "temperatureGrade": "-40..125",
+        "packing": "Tube"
+      }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "NIC", "function": "NIC", "description": "Not internally connected.", "sourcePage": 11 },
+    { "number": 2, "name": "VIN", "function": "IN", "type": "power", "description": "Input supply voltage.", "sourcePage": 11 },
+    { "number": 3, "name": "NIC", "function": "NIC", "description": "Not internally connected.", "sourcePage": 11 },
+    { "number": 4, "name": "GND", "function": "GND", "type": "power", "description": "Ground.", "sourcePage": 11 },
+    { "number": 5, "name": "NIC", "function": "NIC", "description": "Not internally connected.", "sourcePage": 11 },
+    { "number": 6, "name": "VOUT", "function": "OUT", "type": "power", "description": "Reference output voltage.", "sourcePage": 11 },
+    { "number": 7, "name": "NIC", "function": "NIC", "description": "Not internally connected.", "sourcePage": 11 },
+    { "number": 8, "name": "DNC", "function": "DNC", "description": "Do not connect.", "sourcePage": 11 }
+  ],
+  "parameters": [
+    {
+      "key": "output_voltage",
+      "name": "Output voltage",
+      "group": "reference",
+      "aliases": ["VOUT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.499, "typ": 2.5, "max": 2.501 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "I_LOAD", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = 3 V to 15 V, IL = 0 mA, TA = 25 degC; A grade +/-1 mV",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "initial_accuracy",
+      "name": "Initial output voltage error",
+      "group": "reference",
+      "aliases": ["initial output voltage error", "VOUT error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.04 },
+          "unit": "%",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "A grade, TA = 25 degC (+/-0.04%, +/-1 mV)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Temperature coefficient",
+      "group": "temperature",
+      "aliases": ["TCVOUT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 4 },
+          "unit": "ppm/degC",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "A grade, -40 degC to 125 degC, box method",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 8 },
+          "unit": "ppm/degC",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "A grade, -40 degC to 125 degC, bowtie method",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Quiescent current",
+      "group": "current",
+      "aliases": ["IQ", "quiescent current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0007, "max": 0.00095 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" },
+            { "param": "I_LOAD", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "-40 degC to 125 degC, no load (700 uA typ, 950 uA max)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "group": "regulation",
+      "aliases": ["VDO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.5 },
+          "unit": "V",
+          "conditions": [ { "param": "I_LOAD", "value": 0.002, "unit": "A" } ],
+          "conditionsVerbatim": "VDO, IL = 2 mA, -40 degC to 125 degC (500 mV for the 2.5 V option)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "name": "Line regulation",
+      "group": "regulation",
+      "aliases": ["dVOUT/dVIN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000025, "max": 0.000025 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "V_IN", "min": 3, "max": 15, "unit": "V" },
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "1 ppm/V typ, 10 ppm/V max (x VOUT = 2.5 V); VIN = 3 V to 15 V",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "group": "regulation",
+      "aliases": ["dVOUT/dIL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.075, "max": 0.2 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_OUT", "min": 0, "max": 0.01, "unit": "A" },
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "30 ppm/mA typ, 80 ppm/mA max, sourcing, IL = 0 to 10 mA (x VOUT = 2.5 V)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.15, "max": 0.3 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_OUT", "min": -0.01, "max": 0, "unit": "A" },
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "60 ppm/mA typ, 120 ppm/mA max, sinking, IL = 0 to -10 mA (x VOUT = 2.5 V)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "name": "Output current capacity",
+      "group": "current",
+      "aliases": ["IL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.01 },
+          "unit": "A",
+          "conditionsVerbatim": "Sourcing, 10 mA",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.01 },
+          "unit": "A",
+          "conditionsVerbatim": "Sinking, 10 mA",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_noise",
+      "name": "Output voltage noise (peak-to-peak)",
+      "group": "noise",
+      "aliases": ["eN p-p", "0.1 Hz to 10 Hz noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00000125 },
+          "unit": "V",
+          "conditions": [
+            { "param": "BW_LOW", "value": 0.1, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 10, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "0.1 Hz to 10 Hz, peak-to-peak (1.25 uVpp)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output voltage noise density",
+      "group": "noise",
+      "aliases": ["eN", "noise spectral density"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000000413 },
+          "unit": "V/sqrtHz",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "1 kHz (41.3 nV/sqrtHz)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Ripple rejection ratio",
+      "group": "rejection",
+      "aliases": ["RRR", "ripple rejection"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 90 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "fIN = 1 kHz",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "long_term_stability",
+      "name": "Long-term drift",
+      "group": "dynamic",
+      "aliases": ["long-term drift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0025 },
+          "unit": "%",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "25 ppm, 1000 hours, TA = 25 degC",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_hysteresis",
+      "name": "Output voltage hysteresis",
+      "group": "dynamic",
+      "aliases": ["output voltage hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -0.0013 },
+          "unit": "%",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "-13 ppm, +25 degC to +125 degC to -40 degC to +25 degC (full cycle)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_settling_time",
+      "name": "Turn-on settling time",
+      "group": "dynamic",
+      "aliases": ["turn-on settling time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000125 },
+          "unit": "s",
+          "conditions": [
+            { "param": "C_OUT", "value": 0.000001, "unit": "F" },
+            { "param": "C_IN", "value": 0.0000001, "unit": "F" }
+          ],
+          "conditionsVerbatim": "125 us; COUT = 1 uF, CIN = 0.1 uF, RLOAD = 1 kohm",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage range",
+      "group": "general",
+      "aliases": ["VIN", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3, "max": 15 },
+          "unit": "V",
+          "conditionsVerbatim": "Operating input voltage, VIN = 3 V to 15 V (Table 2 conditions)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 16 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range (A grade)",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["theta-JA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 120 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "PACKAGE", "note": "8-lead SOIC, 2-layer JEDEC board" } ],
+          "conditionsVerbatim": "theta-JA, 8-lead SOIC, 2S2P JEDEC board",
+          "sourcePage": 10,
+          "sourceTable": "Table 8. Thermal Resistance"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 6000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human body model (HBM), 6 kV",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADR4520_4525_4530_4533_4540_4550.pdf",
+    "datasheetRevision": "Rev. G (representative extraction via datasheets.md, normalized to base-SI; not a verbatim transcription)",
+    "extractionMethod": "llm:datasheets.md",
+    "verified": true
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LM4040DIM3-10.0/NOPB",
+    "manufacturer": "Texas Instruments",
+    "family": "voltage_reference",
+    "description": "Precision micropower 10.0 V shunt (2-terminal) voltage reference, tolerance grade D (1%), SOT-23.",
+    "package": "SOT-23-3",
+    "pinCount": 3,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      {
+        "orderCode": "LM4040DIM3-10.0/NOPB",
+        "outputVoltageV": 10.0,
+        "package": "SOT-23-3",
+        "temperatureGrade": "-40..85",
+        "packing": "Tape and Reel"
+      }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Cathode", "function": "CATHODE", "type": "power", "description": "Cathode (+). Shunt current and reference output.", "sourcePage": 4 },
+    { "number": 2, "name": "Anode", "function": "ANODE", "type": "power", "description": "Anode (-), normally grounded.", "sourcePage": 4 },
+    { "number": 3, "name": "NC", "function": "NC", "description": "No internal connection; float or tie to anode.", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "output_voltage",
+      "name": "Reverse breakdown (reference) voltage",
+      "group": "reference",
+      "aliases": ["VR", "reverse breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9.9, "typ": 10.0, "max": 10.1 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_R", "value": 0.00015, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR = 150 uA, TA = TJ = 25 degC; grade D, +/-1%",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9.802, "max": 10.198 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_R", "value": 0.00015, "unit": "A" },
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR = 150 uA, TA = TJ = -40 degC to 85 degC; grade D, +/-1.98%",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "initial_accuracy",
+      "name": "Initial accuracy",
+      "group": "reference",
+      "aliases": ["reverse breakdown voltage tolerance", "VR tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0 },
+          "unit": "%",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "grade D, TA = 25 degC (+/-100 mV on 10 V)",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Reverse breakdown voltage temperature coefficient",
+      "group": "temperature",
+      "aliases": ["average reverse breakdown voltage temperature coefficient", "dVR/dT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "I_R", "value": 0.001, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR = 1 mA, TA = TJ = 25 degC; grade D",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 150 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "I_R", "value": 0.001, "unit": "A" },
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR = 1 mA, TA = TJ = -40 degC to 85 degC; grade D",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "minimum_operating_current",
+      "name": "Minimum operating (cathode) current",
+      "group": "current",
+      "aliases": ["IR(min)", "minimum operating current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000075, "max": 0.00011 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "TA = TJ = 25 degC; grade D",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.000113 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 85, "unit": "degC" } ],
+          "conditionsVerbatim": "TA = TJ = -40 degC to 85 degC; grade D",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "maximum_operating_current",
+      "name": "Maximum operating (cathode) current",
+      "group": "current",
+      "aliases": ["IR(max)", "reverse current"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 0.015 },
+          "unit": "A",
+          "conditionsVerbatim": "LM4040-10.0 recommended operating reverse current, up to 15 mA",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.02 },
+          "unit": "A",
+          "conditionsVerbatim": "Reverse current, over operating free-air temperature range",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "dynamic_output_impedance",
+      "name": "Reverse dynamic impedance",
+      "group": "dynamic",
+      "aliases": ["ZR", "reverse dynamic impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2.3 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_R", "value": 0.001, "unit": "A" },
+            { "param": "F", "value": 120, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IR = 1 mA, f = 120 Hz, IAC = 0.1 x IR; grade D",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "output_noise",
+      "name": "Wideband output noise",
+      "group": "noise",
+      "aliases": ["eN", "wideband noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00018 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_R", "value": 0.00015, "unit": "A" },
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 10000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IR = 150 uA, 10 Hz to 10 kHz, RMS",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "long_term_stability",
+      "name": "Reverse breakdown voltage long-term stability",
+      "group": "dynamic",
+      "aliases": ["long term stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.012 },
+          "unit": "%",
+          "conditions": [
+            { "param": "I_R", "value": 0.00015, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "120 ppm, t = 1000 h, T = 25 degC +/-0.1 degC, IR = 150 uA",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "thermal_hysteresis",
+      "name": "Thermal hysteresis",
+      "group": "dynamic",
+      "aliases": ["VHYST", "thermal hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.08 },
+          "unit": "%",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "delta-T = -40 degC to 125 degC (0.08% of VR)",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating free-air temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Industrial temperature grade I: -40 degC <= TA <= 85 degC",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature, Tstg",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "thermal",
+      "aliases": ["PD"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.306 },
+          "unit": "W",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "TA = 25 degC, SOT-23 (M3) package",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/lm4040-n.pdf",
+    "datasheetRevision": "SNOS633N (representative extraction via datasheets.md, normalized to base-SI; not a verbatim transcription)",
+    "extractionMethod": "llm:datasheets.md",
+    "verified": true
+  }
+}

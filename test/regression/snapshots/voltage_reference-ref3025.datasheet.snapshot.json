@@ -1,0 +1,564 @@
+{
+  "family": "voltage_reference",
+  "manufacturer": "Texas Instruments",
+  "mpn": "REF3025AIDBZR",
+  "parameters": [
+    {
+      "aliases": [
+        "VOUT"
+      ],
+      "group": "reference",
+      "key": "output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_LOAD",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.505,
+            "min": 2.495,
+            "typ": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output voltage tolerance"
+      ],
+      "group": "reference",
+      "key": "initial_accuracy",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dT",
+        "temperature drift"
+      ],
+      "group": "temperature",
+      "key": "temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 70,
+              "min": 0,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 50,
+            "typ": 20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 75,
+            "typ": 35
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "quiescent current"
+      ],
+      "group": "current",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00005,
+            "typ": 0.000042
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000059
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDO"
+      ],
+      "group": "regulation",
+      "key": "dropout_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.05,
+            "typ": 0.001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dVIN"
+      ],
+      "group": "regulation",
+      "key": "line_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5.5,
+              "min": 2.55,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 0.000325,
+            "typ": 0.00012
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dILOAD"
+      ],
+      "group": "regulation",
+      "key": "load_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 0.025,
+              "min": 0,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 3
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.01,
+            "typ": 0.0003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ILOAD",
+        "short-circuit current"
+      ],
+      "group": "current",
+      "key": "output_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.025
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.045
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output voltage noise"
+      ],
+      "group": "noise",
+      "key": "output_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.000028
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.00008
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "long term stability"
+      ],
+      "group": "dynamic",
+      "key": "long_term_stability",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.0024
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "thermal hysteresis"
+      ],
+      "group": "dynamic",
+      "key": "thermal_hysteresis",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0.01,
+            "typ": 0.0025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "turnon settling time"
+      ],
+      "group": "dynamic",
+      "key": "turn_on_settling_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_OUT",
+              "unit": "F",
+              "value": 0.000001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.00012
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIN"
+      ],
+      "group": "general",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 2.55
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CDM"
+      ],
+      "group": "general",
+      "key": "esd_cdm",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1500
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "IN",
+      "name": "IN",
+      "number": 1
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 2
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 3
+    }
+  ]
+}

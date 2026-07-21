@@ -100,10 +100,10 @@ when extending anything.
 |---|---|
 | `schema/datasheet-1.0.schema.json` | **The normative artifact.** Self-contained, no external `$ref`. Where prose and this disagree, this governs. |
 | `dictionary/family-dictionary-1.0.schema.json` | Meta-schema every family dictionary validates against. |
-| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (54 params), `mosfet` (28). |
+| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (53 params), `mosfet` (28), `voltage_reference` (24). |
 | `spec/v1.0/datasheet-spec.md` | Human-readable normative spec (RFC-2119 language). |
 | `spec/v1.0/*.txt` | Corpus evidence: parameter-frequency analysis over the 39-datasheet LDO corpus. |
-| `examples/*.datasheet.json` | Validated documents. 4 **real** LDOs + 1 illustrative MOSFET. Double as regression fixtures. |
+| `examples/*.datasheet.json` | Validated documents. 4 **real** LDOs + 1 illustrative MOSFET + 3 **real** voltage references. Double as regression fixtures. |
 | `test/conformance/valid/` | Documents that MUST validate. |
 | `test/conformance/invalid/` | Documents that MUST be rejected — they *define what "wrong" means*. |
 | `scripts/validate.mjs` | The conformance runner (`npm test`). |

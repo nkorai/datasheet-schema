@@ -1,0 +1,688 @@
+{
+  "family": "voltage_reference",
+  "manufacturer": "Analog Devices",
+  "mpn": "ADR4525ARZ",
+  "parameters": [
+    {
+      "aliases": [
+        "VOUT"
+      ],
+      "group": "reference",
+      "key": "output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_LOAD",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.501,
+            "min": 2.499,
+            "typ": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOUT error",
+        "initial output voltage error"
+      ],
+      "group": "reference",
+      "key": "initial_accuracy",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCVOUT"
+      ],
+      "group": "temperature",
+      "key": "temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 4
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "quiescent current"
+      ],
+      "group": "current",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_LOAD",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00095,
+            "typ": 0.0007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDO"
+      ],
+      "group": "regulation",
+      "key": "dropout_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_LOAD",
+              "unit": "A",
+              "value": 0.002
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dVIN"
+      ],
+      "group": "regulation",
+      "key": "line_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 15,
+              "min": 3,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 0.000025,
+            "typ": 0.0000025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dIL"
+      ],
+      "group": "regulation",
+      "key": "load_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 0.01,
+              "min": 0,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.2,
+            "typ": 0.075
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 0,
+              "min": -0.01,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.3,
+            "typ": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IL"
+      ],
+      "group": "current",
+      "key": "output_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.01
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "min": -0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "0.1 Hz to 10 Hz noise",
+        "eN p-p"
+      ],
+      "group": "noise",
+      "key": "output_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.00000125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "eN",
+        "noise spectral density"
+      ],
+      "group": "noise",
+      "key": "output_noise_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 4.13e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RRR",
+        "ripple rejection"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 90
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "long-term drift"
+      ],
+      "group": "dynamic",
+      "key": "long_term_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.0025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output voltage hysteresis"
+      ],
+      "group": "dynamic",
+      "key": "thermal_hysteresis",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -0.0013
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "turn-on settling time"
+      ],
+      "group": "dynamic",
+      "key": "turn_on_settling_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_OUT",
+              "unit": "F",
+              "value": 0.000001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_IN",
+              "unit": "F",
+              "value": 1e-7
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIN",
+        "supply voltage"
+      ],
+      "group": "general",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 15,
+            "min": 3
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "8-lead SOIC, 2-layer JEDEC board",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "Table 8. Thermal Resistance",
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 120
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 10,
+          "sourceTable": "Table 7. Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6000
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "NIC",
+      "name": "NIC",
+      "number": 1
+    },
+    {
+      "function": "IN",
+      "name": "VIN",
+      "number": 2
+    },
+    {
+      "function": "NIC",
+      "name": "NIC",
+      "number": 3
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 4
+    },
+    {
+      "function": "NIC",
+      "name": "NIC",
+      "number": 5
+    },
+    {
+      "function": "OUT",
+      "name": "VOUT",
+      "number": 6
+    },
+    {
+      "function": "NIC",
+      "name": "NIC",
+      "number": 7
+    },
+    {
+      "function": "DNC",
+      "name": "DNC",
+      "number": 8
+    }
+  ]
+}

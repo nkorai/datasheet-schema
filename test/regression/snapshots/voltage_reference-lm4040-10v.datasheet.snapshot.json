@@ -1,0 +1,494 @@
+{
+  "family": "voltage_reference",
+  "manufacturer": "Texas Instruments",
+  "mpn": "LM4040DIM3-10.0/NOPB",
+  "parameters": [
+    {
+      "aliases": [
+        "VR",
+        "reverse breakdown voltage"
+      ],
+      "group": "reference",
+      "key": "output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.00015
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 10.1,
+            "min": 9.9,
+            "typ": 10
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.00015
+            },
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 10.198,
+            "min": 9.802
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR tolerance",
+        "reverse breakdown voltage tolerance"
+      ],
+      "group": "reference",
+      "key": "initial_accuracy",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "average reverse breakdown voltage temperature coefficient",
+        "dVR/dT"
+      ],
+      "group": "temperature",
+      "key": "temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR(min)",
+        "minimum operating current"
+      ],
+      "group": "current",
+      "key": "minimum_operating_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00011,
+            "typ": 0.000075
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000113
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR(max)",
+        "reverse current"
+      ],
+      "group": "current",
+      "key": "maximum_operating_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.015
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ZR",
+        "reverse dynamic impedance"
+      ],
+      "group": "dynamic",
+      "key": "dynamic_output_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 120
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 2.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "eN",
+        "wideband noise"
+      ],
+      "group": "noise",
+      "key": "output_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.00015
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.00018
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "long term stability"
+      ],
+      "group": "dynamic",
+      "key": "long_term_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.00015
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.012
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VHYST",
+        "thermal hysteresis"
+      ],
+      "group": "dynamic",
+      "key": "thermal_hysteresis",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 34,
+          "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.08
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating free-air temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.306
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 1
+    },
+    {
+      "function": "ANODE",
+      "name": "Anode",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 3
+    }
+  ]
+}
