@@ -46,8 +46,9 @@
   "scripts": {
     "gen:types": "node scripts/gen-types.mjs",
     "validate": "node scripts/validate.mjs",
-    "build": "npm run gen:types && npm run validate",
-    "test": "npm run validate"
+    "regression": "node scripts/regression.mjs",
+    "build": "npm run gen:types && npm run validate && npm run regression",
+    "test": "npm run validate && npm run regression"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

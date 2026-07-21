@@ -1,8 +1,8 @@
 {
   "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
   "family": "ldo",
-  "dictionaryVersion": "1.1",
-  "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming. Version 1.1 adds the rated output current and the operating and storage temperature ranges.",
+  "dictionaryVersion": "1.2",
+  "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming. Version 1.1 adds the rated output current and the operating and storage temperature ranges. Version 1.2 removes the unusable has_active_discharge capability flag (a boolean has no base-SI unit and so could never appear in a measurement); the capability is signalled by the presence of active_discharge_resistance.",
   "parameters": [
     {
       "key": "output_voltage",
@@ -424,14 +424,6 @@
       "group": "dynamic",
       "optional": true,
       "hint": "Output deviation for a line step. Model with the measurement stimulus field, giving V_IN from, to, and slew."
-    },
-    {
-      "key": "has_active_discharge",
-      "name": "Active discharge present",
-      "unit": "boolean",
-      "group": "dynamic",
-      "optional": true,
-      "hint": "Capability flag. The resistance value goes in active_discharge_resistance."
     },
     {
       "key": "active_discharge_resistance",

@@ -23,6 +23,17 @@ design center is auditable extraction, and it is maintained.
 consume its output. Every design decision serves the goal of making extracted
 specifications trustworthy and machine-checkable.
 
+**Where extraction lives:** *not here.* This repo is the **contract and the exemplars**,
+not a pipeline. PDF→JSON extraction runs in downstream consumers. The `examples/` here are
+frozen outputs of past extraction runs, committed as validated reference documents. Nothing
+in this repo fetches a PDF, calls a model, or needs the network — the whole test suite is
+hermetic and runs identically in a network-isolated CI or publish job.
+
+**Origin / end goal:** built to let an AI design a PCB end-to-end (the maintainer's Eurorack
+synth boards) with no manual engineering effort. Datasheet ingestion is the bottleneck in
+that flow, and no open, condition-and-provenance-aware schema existed. That is the north star:
+specs an AI can ingest and *design from* safely.
+
 ## The non-negotiable invariant
 
 > **Every value carries its `conditions` and traces to `provenance`.**
@@ -30,6 +41,29 @@ specifications trustworthy and machine-checkable.
 This is the schema's defining property. It does **not** change across any version, MINOR
 or MAJOR. If a proposed change would let a value exist without a path to its conditions
 and its source, the change is wrong, not the invariant. Everything else is negotiable.
+
+## Externally validated — protect these
+
+**Datasheets.md** (a commercial unified-datasheet effort, `dev.datasheets.md`) reviewed the
+spec and the LDO/MOSFET dictionaries in detail and is folding this work into their own schema.
+They independently singled out the following as solving real problems for them. Treat these as
+**proven load-bearing decisions**: do not weaken or "simplify" them without a very strong
+reason, because a real adopter depends on them.
+
+1. **A test condition is a structured `param`/`value` pair, not free text.** This was called
+   out as the single most valuable idea. Never let conditions degrade to a string blob.
+2. **A parameter is an array of `measurements`** — a condition-swept spec (dropout per load,
+   PSRR per frequency) never collapses into one row.
+3. **`limitClass` is a first-class field on the value** (absolute_max / recommended /
+   characterized), not a container or a layout artifact.
+4. **Per-value provenance** to the source page.
+5. **Deep, thoroughly-aliased vocabularies.** The dictionaries' alias sets were specifically
+   praised as deeper than the adopter's own. Rich `aliases` are a **first-class deliverable**,
+   not an afterthought — they are what makes cross-vendor extraction normalize to one key.
+   Hold every new/edited parameter to this bar: enumerate the real vendor terms.
+
+The license is **MIT** (relaxed from Apache-2.0 specifically to lower friction for adopters
+like this). Attribution is welcomed but not required.
 
 ## Guiding principles
 
@@ -127,25 +161,36 @@ its own `dictionaryVersion` (additive bumps as parameters are added).
 
 ## Testing
 
-`npm test` runs `scripts/validate.mjs`, which asserts:
+The whole suite is **hermetic**: it reads only committed files, never the network, never a
+PDF, never a model. It runs identically in network-isolated CI and in the OIDC publish job.
 
+**`npm test` runs two scripts:**
+
+`scripts/validate.mjs` — *conformance* (is a document structurally valid?):
 - every `examples/*.json` **validates** against the schema, and its parameter `key`s all
   exist in the dictionary named by its `component.family`;
-- every `test/conformance/valid/*` validates;
-- every `test/conformance/invalid/*` is **rejected**;
+- every `test/conformance/valid/*` validates; every `test/conformance/invalid/*` is
+  **rejected** (the negative fixtures define what "wrong" means);
 - every dictionary validates against the family meta-schema.
 
-`bindings/python` has a pytest suite that round-trips every example through the pydantic
-models *and* the JSON Schema. CI (`validate.yml`) runs the JS suite on every push and PR.
+`scripts/regression.mjs` — *regression* (do past extractions keep working?):
+- **dictionary integrity** the schema can't express: no duplicate keys, no alias collisions
+  (an alias mapping to two keys, or an alias equal to a key), every dictionary `unit` is in
+  the schema's closed enum, every `array: true` param declares a `conditionAxis`;
+- **value snapshots** — a canonical projection of each example's *extracted values*
+  (identity, pin functions, and every measurement's `limitClass`/`value`/`unit`/`conditions`/
+  `stimulus`/`sourcePage`) is compared against a committed snapshot in
+  `test/regression/snapshots/`. A silently changed number, unit, condition, or page **fails
+  the build**. This is the offline guarantee that a schema change or an edit never quietly
+  alters a past extraction.
 
-**What the suite does NOT yet catch** (see the regression note the maintainer is tracking):
-it checks that documents are *structurally valid*, not that specific extracted *values* stay
-stable, and it does not check dictionary integrity (duplicate keys, alias collisions, units
-outside the enum, `array` params missing a `conditionAxis`). When you touch a dictionary or
-re-extract an example, add value-level assertions so a silently changed number fails the
-build. Treat the committed real examples as **golden regression fixtures**: they must always
-validate, and their headline values should be asserted, so "past extractions keep working" is
-enforced, not assumed.
+When you intentionally change or add an example, regenerate snapshots with
+`npm run regression -- --update` (or `UPDATE_SNAPSHOTS=1 npm run regression`) and commit them
+in the same change — the update is the deliberate acknowledgement that the extraction changed.
+
+`bindings/python` has a pytest suite that round-trips every example through the pydantic
+models *and* the JSON Schema. CI (`validate.yml`) runs the JS suite on every push and PR;
+`npm run build` (used by the publish job) runs it too, so a release can't ship red.
 
 ## Publishing (do not run npm publish locally)
 

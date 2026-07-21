@@ -16,5 +16,5 @@ jobs:
       - run: npm ci
       - name: Generate TypeScript bindings
         run: npm run gen:types
-      - name: Run conformance suite (examples + positive/negative fixtures)
-        run: npm run validate
+      - name: Run conformance + regression suite
+        run: npm test

@@ -1,0 +1,513 @@
+{
+  "family": "ldo",
+  "manufacturer": "Texas Instruments",
+  "mpn": "TLV70033DDCR",
+  "parameters": [
+    {
+      "aliases": [
+        "VIN"
+      ],
+      "group": "regulation",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7,
+            "min": -0.3
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "regulation",
+      "key": "output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 4.3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.366,
+            "min": 3.234,
+            "typ": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "dropout",
+      "key": "dropout_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.135
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.2
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.45,
+            "typ": 0.28
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "ground current"
+      ],
+      "group": "current",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 4.3
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00006,
+            "typ": 0.0000315
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ripple rejection"
+      ],
+      "group": "rejection_noise",
+      "key": "psrr",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 100000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 42
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "rejection_noise",
+      "key": "output_noise_rms",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 100000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.0000305
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "dynamic",
+      "key": "load_transient_response",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "1 uF X7R ceramic",
+              "param": "C_OUT",
+              "unit": "F",
+              "value": 0.000001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Typical Characteristics",
+          "stimulus": {
+            "from": 0,
+            "param": "I_OUT",
+            "slewRate": 0.2,
+            "slewUnit": "A/us",
+            "to": 0.2,
+            "unit": "A"
+          },
+          "unit": "V",
+          "value": {
+            "typ": 0.09
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "enable",
+      "key": "en_high_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5.5,
+              "min": 2,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "protection",
+      "key": "thermal_shutdown_threshold",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "typ": 160
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "stability",
+      "key": "min_output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Ceramic X5R/X7R, ESR 5 mohm to 500 mohm",
+              "param": "C_OUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "recommended",
+          "sourcePage": 9,
+          "sourceTable": "Application Information",
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "min": 9e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 6,
+          "sourceTable": "Thermal Information",
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.36
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "SOT-23-5, JEDEC 2s2p board, still air",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Thermal Information",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "typ": 205
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "group": "esd",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 6,
+          "sourceTable": "ESD Ratings",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 2000
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "IN",
+      "name": "IN",
+      "number": 1
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 2
+    },
+    {
+      "function": "EN",
+      "name": "EN",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 5
+    }
+  ]
+}

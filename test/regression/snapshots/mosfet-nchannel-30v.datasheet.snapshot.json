@@ -1,0 +1,713 @@
+{
+  "family": "mosfet",
+  "manufacturer": "Datasheet Schema Examples",
+  "mpn": "EXAMPLE-NMOS-30",
+  "parameters": [
+    {
+      "aliases": [
+        "VDS"
+      ],
+      "group": null,
+      "key": "drain_source_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS"
+      ],
+      "group": null,
+      "key": "gate_source_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 12,
+            "min": -12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID"
+      ],
+      "group": null,
+      "key": "continuous_drain_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 3.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDM"
+      ],
+      "group": null,
+      "key": "pulsed_drain_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD"
+      ],
+      "group": null,
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 1.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": null,
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ"
+      ],
+      "group": null,
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": null,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS(th)"
+      ],
+      "group": null,
+      "key": "gate_threshold_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 1.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 0.00025
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.6,
+            "min": 0.6,
+            "typ": 1.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RDS(on)"
+      ],
+      "group": null,
+      "key": "drain_source_on_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.035,
+            "typ": 0.028
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 4.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.05,
+            "typ": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDSS"
+      ],
+      "group": null,
+      "key": "drain_source_leakage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 30
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IGSS"
+      ],
+      "group": null,
+      "key": "gate_source_leakage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 12,
+              "min": -12,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-7,
+            "min": -1e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ciss"
+      ],
+      "group": null,
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 7.3e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Coss"
+      ],
+      "group": null,
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 6e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Crss"
+      ],
+      "group": null,
+      "key": "reverse_transfer_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 4.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Qg"
+      ],
+      "group": null,
+      "key": "total_gate_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Qgd"
+      ],
+      "group": null,
+      "key": "gate_drain_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "td(on)"
+      ],
+      "group": null,
+      "key": "turn_on_delay_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 7e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tr"
+      ],
+      "group": null,
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.4e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VSD"
+      ],
+      "group": null,
+      "key": "diode_forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.2,
+            "typ": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA"
+      ],
+      "group": null,
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "minimum recommended pad, steady state",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 125
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "G",
+      "name": "G",
+      "number": 1
+    },
+    {
+      "function": "S",
+      "name": "S",
+      "number": 2
+    },
+    {
+      "function": "D",
+      "name": "D",
+      "number": 3
+    }
+  ]
+}

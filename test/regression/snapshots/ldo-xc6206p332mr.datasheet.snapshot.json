@@ -1,0 +1,591 @@
+{
+  "family": "ldo",
+  "manufacturer": "UMW Youtai Semiconductor Co Ltd",
+  "mpn": "XC6206P332MR",
+  "parameters": [
+    {
+      "aliases": [
+        "VIN",
+        "input voltage"
+      ],
+      "group": null,
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 9
+          }
+        },
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 8,
+            "min": 1.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOUT(E)",
+        "effective output voltage"
+      ],
+      "group": null,
+      "key": "output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.3825,
+            "min": 3.2175,
+            "typ": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "precision"
+      ],
+      "group": null,
+      "key": "output_voltage_accuracy",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 2.5,
+            "min": -2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOUT(max)",
+        "Output Current"
+      ],
+      "group": null,
+      "key": "output_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "min": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Drop pressure difference",
+        "Vdrop"
+      ],
+      "group": null,
+      "key": "dropout_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.05
+            },
+            {
+              "max": 3.3,
+              "min": 2.6,
+              "note": null,
+              "param": "V_OUT",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.24,
+            "typ": 0.16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISS",
+        "quiescent current"
+      ],
+      "group": null,
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000006
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Load stability",
+        "ΔVOUT"
+      ],
+      "group": null,
+      "key": "load_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": 0.08,
+              "min": 0.001,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Input stability",
+        "ΔVOUT/(ΔVIN*VOUT)"
+      ],
+      "group": null,
+      "key": "line_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0.2,
+            "typ": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Output voltage temperature coefficient",
+        "ΔVOUT/(ΔTA*VOUT)"
+      ],
+      "group": null,
+      "key": "output_voltage_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSRR",
+        "Ripple suppression ratio"
+      ],
+      "group": null,
+      "key": "psrr",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_IN",
+              "unit": "F",
+              "value": 0.000001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_OUT",
+              "unit": "F",
+              "value": 0.000001
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ishort",
+        "Short circuit current"
+      ],
+      "group": null,
+      "key": "short_circuit_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1.5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ilimt",
+        "Overcurrent protection current"
+      ],
+      "group": null,
+      "key": "current_limit",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "HEADROOM",
+              "unit": "V",
+              "value": 1.5
+            }
+          ],
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical characteristics",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.38
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Maximum allowable power consumption",
+        "PD"
+      ],
+      "group": null,
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "SOT-23",
+              "param": "package",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "SOT-89",
+              "param": "package",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tw",
+        "Working temperature"
+      ],
+      "group": null,
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Storage temperature",
+        "Tc"
+      ],
+      "group": null,
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Limit parameter",
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CIN"
+      ],
+      "group": null,
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COUT"
+      ],
+      "group": null,
+      "key": "min_output_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 1
+    },
+    {
+      "function": "IN",
+      "name": "VIN",
+      "number": 2
+    },
+    {
+      "function": "OUT",
+      "name": "VOUT",
+      "number": 3
+    }
+  ]
+}
