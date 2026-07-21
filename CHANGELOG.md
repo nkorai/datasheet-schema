@@ -2,7 +2,7 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.5.0]
 
 ### Added
 - Optional per-measurement trust fields (additive; every previously valid document stays valid): `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) records the datasheet's specification basis from the footnotes, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) records extraction review state, mapping directly to an adopter's per-row review vocabulary; and per-value `confidence` (0–1) complements the document-level `provenance.confidence`. `review`/`confidence` are advisory and are not the `verified` flag (spec §7, §8). The value snapshot tracks `guarantee` (an extracted fact) but not `review`/`confidence` (advisory). Fixtures: `valid/measurement-trust-fields.json`; `invalid/bad-guarantee-value.json`, `invalid/bad-confidence-range.json`.
