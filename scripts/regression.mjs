@@ -102,6 +102,9 @@ for (const f of glob('dictionary')) {
 // Project only the extracted-spec fields. Cosmetic edits (description, notes,
 // human-readable name) are deliberately excluded so doc-string tweaks do not
 // trip regression; a changed value, unit, condition, class, or page does.
+// guarantee is an extracted datasheet fact, so it belongs in the snapshot; review
+// and confidence describe the extraction (advisory) and are intentionally excluded
+// so review-workflow state changes do not churn the value snapshot.
 const projectMeasurement = (m) => ({
     limitClass: m.limitClass ?? null,
     value: m.value ?? null,
@@ -115,6 +118,7 @@ const projectMeasurement = (m) => ({
         note: c.note ?? null,
     })),
     stimulus: m.stimulus ?? null,
+    guarantee: m.guarantee ?? null,
     sourcePage: m.sourcePage ?? null,
     sourceTable: m.sourceTable ?? null,
 });

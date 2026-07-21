@@ -54,8 +54,13 @@ A parameter specified across several conditions, such as dropout per load curren
 | `conditionsVerbatim` | OPTIONAL | The conditions exactly as printed, so nothing is lost in normalization. |
 | `sourcePage` | REQUIRED for `characterized` | 1-indexed page. |
 | `sourceTable` | OPTIONAL | The originating table. |
+| `guarantee` | OPTIONAL | The datasheet's basis for the value: `production_tested`, `by_design`, `by_characterization`, or `typical`. |
+| `review` | OPTIONAL | Extraction review state: `unchecked`, `confirmed`, or `edited`. |
+| `confidence` | OPTIONAL | Advisory per-value extraction confidence, 0 to 1. |
 
 `absolute_max` is a stress limit. Operating a device beyond it may cause permanent damage. `recommended` is the range over which parameters are specified. `characterized` is a measured or guaranteed electrical characteristic. Consumers MUST NOT treat an `absolute_max` value as an operating value.
+
+`guarantee` records the specification basis from the datasheet's footnotes and is independent of `limitClass`: `limitClass` says which kind of limit a value is, `guarantee` says whether it is production-tested or ensured by design or characterization. `review` and `confidence` describe the extraction, not the datasheet, and are advisory in the sense of section 8: neither is the `verified` flag, and `confidence` alone MUST NOT be read as verification.
 
 ### 7.1 Condition axes
 

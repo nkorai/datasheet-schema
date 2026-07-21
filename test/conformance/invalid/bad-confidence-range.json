@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "REF-X", "manufacturer": "Y", "family": "voltage_reference" },
+  "parameters": [
+    { "key": "output_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 2.5 }, "unit": "V", "sourcePage": 4,
+        "confidence": 2 } ] }
+  ],
+  "provenance": { "verified": false }
+}

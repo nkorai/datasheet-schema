@@ -64,7 +64,10 @@
           "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
           "conditionsVerbatim": "A grade, TA = 25 degC (+/-0.04%, +/-1 mV)",
           "sourcePage": 4,
-          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "guarantee": "production_tested",
+          "review": "confirmed",
+          "confidence": 0.95
         }
       ]
     },
@@ -223,7 +226,8 @@
           ],
           "conditionsVerbatim": "0.1 Hz to 10 Hz, peak-to-peak (1.25 uVpp)",
           "sourcePage": 4,
-          "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
+          "guarantee": "typical"
         }
       ]
     },
@@ -310,6 +314,22 @@
             { "param": "C_IN", "value": 0.0000001, "unit": "F" }
           ],
           "conditionsVerbatim": "125 us; COUT = 1 uF, CIN = 0.1 uF, RLOAD = 1 kohm",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance_range",
+      "name": "Output capacitance range",
+      "group": "stability",
+      "aliases": ["COUT", "load capacitance"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0.000001, "max": 0.0001 },
+          "unit": "F",
+          "conditionsVerbatim": "COUT = 1 uF to 100 uF",
           "sourcePage": 5,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)"
         }

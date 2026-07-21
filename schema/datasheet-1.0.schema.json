@@ -150,7 +150,21 @@
           "type": "string"
         },
         "sourcePage": { "description": "1-indexed datasheet page this value was read from.", "type": "integer", "minimum": 1 },
-        "sourceTable": { "description": "The table it came from, for example Electrical Characteristics.", "type": "string" }
+        "sourceTable": { "description": "The table it came from, for example Electrical Characteristics.", "type": "string" },
+        "guarantee": {
+          "description": "The datasheet's basis for the value, from the specification footnotes. production_tested is 100% tested in production (usually the bold min/max limits). by_design and by_characterization are ensured but not production-tested. typical is a typical value that is not a guaranteed limit. This is the guarantee basis, distinct from limitClass (which kind of limit) and from review/confidence (extraction trust).",
+          "enum": ["production_tested", "by_design", "by_characterization", "typical"]
+        },
+        "review": {
+          "description": "Extraction review state for this value, so a consumer can tell a machine-extracted number from a human-checked one. unchecked is raw extractor output; confirmed means a reviewer verified it against the page as-is; edited means a reviewer corrected it. Absent means not recorded. Advisory, like confidence: it is not the schema's verified flag.",
+          "enum": ["unchecked", "confirmed", "edited"]
+        },
+        "confidence": {
+          "description": "Advisory extraction confidence for this specific value, 0 to 1. Per-measurement companion to document-level provenance.confidence. MUST NOT be read as verification; see review for the checked/unchecked state.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
       },
       "allOf": [
         {

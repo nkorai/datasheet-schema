@@ -168,6 +168,24 @@
       "hint": "Time from power-up to the output settling within a stated error band. Note the error band and load in conditionsVerbatim."
     },
     {
+      "key": "output_capacitance_range",
+      "name": "Output capacitance range",
+      "unit": "F",
+      "group": "stability",
+      "optional": true,
+      "aliases": ["COUT", "output capacitor", "load capacitance", "CL", "output capacitance", "recommended output capacitor"],
+      "hint": "The output (load) capacitance range over which the reference is stable, as min..max in farads. Some references are stable with no output cap and specify only a maximum; others require a minimum. Note the ESR or dielectric in conditionsVerbatim if the datasheet constrains it."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "unit": "F",
+      "group": "stability",
+      "optional": true,
+      "aliases": ["CIN", "input capacitor", "bypass capacitor", "supply bypass capacitance"],
+      "hint": "Series references only: the recommended input/bypass capacitance. Store the recommended value or min in farads."
+    },
+    {
       "key": "input_voltage_range",
       "name": "Input voltage range",
       "unit": "V",

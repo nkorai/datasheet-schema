@@ -29,6 +29,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -61,6 +62,7 @@
               "value": 25
             }
           ],
+          "guarantee": "production_tested",
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -90,6 +92,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -110,6 +113,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -148,6 +152,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -178,6 +183,7 @@
               "value": 0.002
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -215,6 +221,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -253,6 +260,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -282,6 +290,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -303,6 +312,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -314,6 +324,7 @@
         },
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -352,6 +363,7 @@
               "value": 10
             }
           ],
+          "guarantee": "typical",
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -382,6 +394,7 @@
               "value": 1000
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -412,6 +425,7 @@
               "value": 1000
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -441,6 +455,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -470,6 +485,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -507,6 +523,7 @@
               "value": 1e-7
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)",
@@ -514,6 +531,29 @@
           "unit": "s",
           "value": {
             "typ": 0.000125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COUT",
+        "load capacitance"
+      ],
+      "group": "stability",
+      "key": "output_capacitance_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. ADR4525 Electrical Characteristics (continued)",
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 0.0001,
+            "min": 0.000001
           }
         }
       ]
@@ -528,6 +568,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
@@ -540,6 +581,7 @@
         },
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
@@ -560,6 +602,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
@@ -581,6 +624,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
@@ -611,6 +655,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 10,
           "sourceTable": "Table 8. Thermal Resistance",
@@ -631,6 +676,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",

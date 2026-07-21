@@ -100,7 +100,7 @@ when extending anything.
 |---|---|
 | `schema/datasheet-1.0.schema.json` | **The normative artifact.** Self-contained, no external `$ref`. Where prose and this disagree, this governs. |
 | `dictionary/family-dictionary-1.0.schema.json` | Meta-schema every family dictionary validates against. |
-| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (53 params), `mosfet` (28), `voltage_reference` (24). |
+| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (53 params), `mosfet` (28), `voltage_reference` (26). |
 | `spec/v1.0/datasheet-spec.md` | Human-readable normative spec (RFC-2119 language). |
 | `spec/v1.0/*.txt` | Corpus evidence: parameter-frequency analysis over the 39-datasheet LDO corpus. |
 | `examples/*.datasheet.json` | Validated documents. 4 **real** LDOs + 1 illustrative MOSFET + 3 **real** voltage references. Double as regression fixtures. |
@@ -213,6 +213,7 @@ URLs that `$id` resolves to). The Pages job runs on push; the npm job does not.
 - **Pin function:** `^[A-Z][A-Z0-9_]*$` (open uppercase vocab).
 - **Condition axis `param` vocab:** `T_J T_A V_IN V_OUT I_OUT I_LOAD F C_OUT C_IN ESR HEADROOM RIPPLE BW_LOW BW_HIGH V_EN C_OUT_TYPE` (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes).
 - **`limitClass`:** `absolute_max` | `recommended` | `characterized`.
+- **Measurement trust fields (all optional):** `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) — the datasheet's basis, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) and per-value `confidence` (0–1) — advisory extraction metadata, **not** the `verified` flag. The regression snapshot tracks `guarantee` (a fact), not `review`/`confidence` (advisory).
 - **Top-level required:** `schemaVersion` `component` `parameters` `provenance`.
 
 ## Anti-goals — do not do these

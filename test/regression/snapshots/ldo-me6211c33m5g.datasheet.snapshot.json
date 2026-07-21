@@ -13,6 +13,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 1,
           "sourceTable": null,
@@ -35,6 +36,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
@@ -56,6 +58,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
@@ -94,6 +97,7 @@
               "value": 3.3
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -124,6 +128,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
@@ -145,6 +150,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 5,
           "sourceTable": null,
@@ -167,6 +173,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 5,
           "sourceTable": null,
@@ -206,6 +213,7 @@
               "value": 1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -228,6 +236,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,
@@ -266,6 +275,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -296,6 +306,7 @@
               "value": 0.1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -316,6 +327,7 @@
               "value": 0.2
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -346,6 +358,7 @@
               "value": 1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -376,6 +389,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -413,6 +427,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -434,6 +449,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": null,
@@ -455,6 +471,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -501,6 +518,7 @@
               "value": 50000
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -539,6 +557,7 @@
               "value": 0.01
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -567,6 +586,7 @@
               "value": 0.1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -595,6 +615,7 @@
               "value": 0.2
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -633,6 +654,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 9,
           "sourceTable": null,
@@ -653,6 +675,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 2,
           "sourceTable": null,
@@ -674,6 +697,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 2,
           "sourceTable": null,

@@ -12,6 +12,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "Absolute Maximum Ratings",
@@ -24,6 +25,7 @@
         },
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 6,
           "sourceTable": "Recommended Operating Conditions",
@@ -68,6 +70,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
@@ -105,6 +108,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
@@ -133,6 +137,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
@@ -172,6 +177,7 @@
               "value": 4.3
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
@@ -210,6 +216,7 @@
               "value": 0.1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
@@ -238,6 +245,7 @@
               "value": 0.1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
@@ -281,6 +289,7 @@
               "value": 0.1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 7,
           "sourceTable": "Electrical Characteristics",
@@ -316,6 +325,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 8,
           "sourceTable": "Typical Characteristics",
@@ -350,6 +360,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 5,
           "sourceTable": "Electrical Characteristics",
@@ -368,6 +379,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 6,
           "sourceTable": "Electrical Characteristics",
@@ -395,6 +407,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 9,
           "sourceTable": "Application Information",
@@ -424,6 +437,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "Thermal Information",
@@ -453,6 +467,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Thermal Information",
@@ -471,6 +486,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 6,
           "sourceTable": "ESD Ratings",

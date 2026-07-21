@@ -13,6 +13,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -24,6 +25,7 @@
         },
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -62,6 +64,7 @@
               "value": 0.01
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -85,6 +88,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": "Model selection",
@@ -115,6 +119,7 @@
               "value": 5.5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -154,6 +159,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -185,6 +191,7 @@
               "value": 0.001
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -223,6 +230,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -262,6 +270,7 @@
               "value": 0.001
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -308,6 +317,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "8.2 Electrical properties (7533)",
@@ -338,6 +348,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -358,6 +369,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -378,6 +390,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -398,6 +411,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -419,6 +433,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -441,6 +456,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -462,6 +478,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 7,
           "sourceTable": "Application circuit",
@@ -482,6 +499,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 7,
           "sourceTable": "Application circuit",

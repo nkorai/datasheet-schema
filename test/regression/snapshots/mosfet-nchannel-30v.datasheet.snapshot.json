@@ -21,6 +21,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -41,6 +42,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -71,6 +73,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -91,6 +94,7 @@
               "value": 70
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -111,6 +115,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -140,6 +145,7 @@
               "value": 25
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -160,6 +166,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": null,
           "sourceTable": null,
@@ -181,6 +188,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": null,
           "sourceTable": null,
@@ -219,6 +227,7 @@
               "value": 0.00025
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
@@ -258,6 +267,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
@@ -287,6 +297,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
@@ -325,6 +336,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
@@ -362,6 +374,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 2,
           "sourceTable": null,
@@ -400,6 +413,7 @@
               "value": 1000000
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -429,6 +443,7 @@
               "value": 15
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -458,6 +473,7 @@
               "value": 15
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -503,6 +519,7 @@
               "value": 10
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -540,6 +557,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -577,6 +595,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -614,6 +633,7 @@
               "value": 5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -651,6 +671,7 @@
               "value": 0
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 3,
           "sourceTable": null,
@@ -681,6 +702,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,

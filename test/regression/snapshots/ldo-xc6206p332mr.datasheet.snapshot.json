@@ -13,6 +13,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -24,6 +25,7 @@
         },
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -63,6 +65,7 @@
               "value": 1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -85,6 +88,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 1,
           "sourceTable": null,
@@ -107,6 +111,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -127,6 +132,7 @@
               "value": 1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -165,6 +171,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -196,6 +203,7 @@
               "value": 1
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -234,6 +242,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -264,6 +273,7 @@
               "value": 0.001
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -311,6 +321,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -365,6 +376,7 @@
               "value": 0.000001
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -395,6 +407,7 @@
               "value": 1.5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -425,6 +438,7 @@
               "value": 1.5
             }
           ],
+          "guarantee": null,
           "limitClass": "characterized",
           "sourcePage": 4,
           "sourceTable": "Electrical characteristics",
@@ -455,6 +469,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -475,6 +490,7 @@
               "value": null
             }
           ],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -496,6 +512,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -518,6 +535,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "absolute_max",
           "sourcePage": 3,
           "sourceTable": "Limit parameter",
@@ -539,6 +557,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": null,
@@ -559,6 +578,7 @@
       "measurements": [
         {
           "conditions": [],
+          "guarantee": null,
           "limitClass": "recommended",
           "sourcePage": 4,
           "sourceTable": null,
