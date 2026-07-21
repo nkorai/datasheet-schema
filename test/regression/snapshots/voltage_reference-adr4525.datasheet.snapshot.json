@@ -219,10 +219,10 @@
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
           "stimulus": null,
-          "unit": "V/V",
+          "unit": "ppm/V",
           "value": {
-            "max": 0.000025,
-            "typ": 0.0000025
+            "max": 10,
+            "typ": 1
           }
         }
       ]
@@ -257,10 +257,10 @@
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
           "stimulus": null,
-          "unit": "ohm",
+          "unit": "ppm/A",
           "value": {
-            "max": 0.2,
-            "typ": 0.075
+            "max": 80000,
+            "typ": 30000
           }
         },
         {
@@ -286,10 +286,10 @@
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
           "stimulus": null,
-          "unit": "ohm",
+          "unit": "ppm/A",
           "value": {
-            "max": 0.3,
-            "typ": 0.15
+            "max": 120000,
+            "typ": 60000
           }
         }
       ]
@@ -445,9 +445,9 @@
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "typ": 0.0025
+            "typ": 25
           }
         }
       ]
@@ -474,9 +474,9 @@
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "typ": -0.0013
+            "typ": -13
           }
         }
       ]
@@ -560,7 +560,7 @@
       "measurements": [
         {
           "conditions": [],
-          "limitClass": "absolute_max",
+          "limitClass": "recommended",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings",
           "stimulus": null,

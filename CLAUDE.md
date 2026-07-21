@@ -208,7 +208,7 @@ URLs that `$id` resolves to). The Pages job runs on push; the npm job does not.
 
 ## Conventions (quick reference)
 
-- **Unit enum (closed):** `V A Hz degC ohm F s W C J dB V/V % ppm/degC degC/W K/W V/us A/us V/sqrtHz`. No SI prefixes.
+- **Unit enum (closed):** `V A Hz degC ohm F s W C J dB V/V % ppm ppm/degC ppm/V ppm/A degC/W K/W V/us A/us V/sqrtHz`. No SI prefixes (a real per-mA/uV rate becomes `ppm/A` or `ohm`, never `ppm/mA`).
 - **Parameter key:** `^[a-z][a-z0-9_]*$` (snake_case).
 - **Pin function:** `^[A-Z][A-Z0-9_]*$` (open uppercase vocab).
 - **Condition axis `param` vocab:** `T_J T_A V_IN V_OUT I_OUT I_LOAD F C_OUT C_IN ESR HEADROOM RIPPLE BW_LOW BW_HIGH V_EN C_OUT_TYPE` (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes).

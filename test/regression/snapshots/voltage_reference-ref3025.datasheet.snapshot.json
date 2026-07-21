@@ -216,10 +216,10 @@
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
           "stimulus": null,
-          "unit": "V/V",
+          "unit": "ppm/V",
           "value": {
-            "max": 0.000325,
-            "typ": 0.00012
+            "max": 130,
+            "typ": 48
           }
         }
       ]
@@ -254,10 +254,10 @@
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
           "stimulus": null,
-          "unit": "ohm",
+          "unit": "ppm/A",
           "value": {
-            "max": 0.01,
-            "typ": 0.0003
+            "max": 4000,
+            "typ": 120
           }
         }
       ]
@@ -372,9 +372,9 @@
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "typ": 0.0024
+            "typ": 24
           }
         }
       ]
@@ -392,10 +392,10 @@
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "max": 0.01,
-            "typ": 0.0025
+            "max": 100,
+            "typ": 25
           }
         }
       ]

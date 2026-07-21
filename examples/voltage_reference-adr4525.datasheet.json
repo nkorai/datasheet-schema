@@ -139,13 +139,13 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.0000025, "max": 0.000025 },
-          "unit": "V/V",
+          "value": { "typ": 1, "max": 10 },
+          "unit": "ppm/V",
           "conditions": [
             { "param": "V_IN", "min": 3, "max": 15, "unit": "V" },
             { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
           ],
-          "conditionsVerbatim": "1 ppm/V typ, 10 ppm/V max (x VOUT = 2.5 V); VIN = 3 V to 15 V",
+          "conditionsVerbatim": "1 ppm/V typ, 10 ppm/V max; VIN = 3 V to 15 V",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
         }
@@ -159,25 +159,25 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.075, "max": 0.2 },
-          "unit": "ohm",
+          "value": { "typ": 30000, "max": 80000 },
+          "unit": "ppm/A",
           "conditions": [
             { "param": "I_OUT", "min": 0, "max": 0.01, "unit": "A" },
             { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
           ],
-          "conditionsVerbatim": "30 ppm/mA typ, 80 ppm/mA max, sourcing, IL = 0 to 10 mA (x VOUT = 2.5 V)",
+          "conditionsVerbatim": "30 ppm/mA typ, 80 ppm/mA max, sourcing, IL = 0 to 10 mA (x 1000 for ppm/A)",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
         },
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.15, "max": 0.3 },
-          "unit": "ohm",
+          "value": { "typ": 60000, "max": 120000 },
+          "unit": "ppm/A",
           "conditions": [
             { "param": "I_OUT", "min": -0.01, "max": 0, "unit": "A" },
             { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
           ],
-          "conditionsVerbatim": "60 ppm/mA typ, 120 ppm/mA max, sinking, IL = 0 to -10 mA (x VOUT = 2.5 V)",
+          "conditionsVerbatim": "60 ppm/mA typ, 120 ppm/mA max, sinking, IL = 0 to -10 mA (x 1000 for ppm/A)",
           "sourcePage": 4,
           "sourceTable": "Table 2. ADR4525 Electrical Characteristics"
         }
@@ -269,8 +269,8 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.0025 },
-          "unit": "%",
+          "value": { "typ": 25 },
+          "unit": "ppm",
           "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
           "conditionsVerbatim": "25 ppm, 1000 hours, TA = 25 degC",
           "sourcePage": 4,
@@ -286,8 +286,8 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": -0.0013 },
-          "unit": "%",
+          "value": { "typ": -13 },
+          "unit": "ppm",
           "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
           "conditionsVerbatim": "-13 ppm, +25 degC to +125 degC to -40 degC to +25 degC (full cycle)",
           "sourcePage": 4,
@@ -346,10 +346,10 @@
       "aliases": ["operating temperature range"],
       "measurements": [
         {
-          "limitClass": "absolute_max",
+          "limitClass": "recommended",
           "value": { "min": -40, "max": 125 },
           "unit": "degC",
-          "conditionsVerbatim": "Operating temperature range (A grade)",
+          "conditionsVerbatim": "Operating temperature range (A grade); listed in the Absolute Maximum Ratings table but semantically the specified operating range",
           "sourcePage": 10,
           "sourceTable": "Table 7. Absolute Maximum Ratings"
         }

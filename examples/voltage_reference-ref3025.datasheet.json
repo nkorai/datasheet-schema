@@ -138,10 +138,10 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.00012, "max": 0.000325 },
-          "unit": "V/V",
+          "value": { "typ": 48, "max": 130 },
+          "unit": "ppm/V",
           "conditions": [ { "param": "V_IN", "min": 2.55, "max": 5.5, "unit": "V" } ],
-          "conditionsVerbatim": "120 uV/V typ, 325 uV/V max; VREF + 50 mV <= VIN <= 5.5 V",
+          "conditionsVerbatim": "120 uV/V typ, 325 uV/V max (/ VOUT = 2.5 V); VREF + 50 mV <= VIN <= 5.5 V",
           "sourcePage": 8,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
         }
@@ -155,13 +155,13 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.0003, "max": 0.01 },
-          "unit": "ohm",
+          "value": { "typ": 120, "max": 4000 },
+          "unit": "ppm/A",
           "conditions": [
             { "param": "I_OUT", "min": 0, "max": 0.025, "unit": "A" },
             { "param": "V_IN", "value": 3.0, "unit": "V" }
           ],
-          "conditionsVerbatim": "3 ppm typ / 100 ppm max over ILOAD = 0 to 25 mA, VIN = VREF + 500 mV (dVOUT/dILOAD as effective ohms)",
+          "conditionsVerbatim": "3 ppm typ / 100 ppm max total over ILOAD = 0 to 25 mA (/ 0.025 A), VIN = VREF + 500 mV",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
         }
@@ -231,8 +231,8 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.0024 },
-          "unit": "%",
+          "value": { "typ": 24 },
+          "unit": "ppm",
           "conditionsVerbatim": "24 ppm, 0 h to 1000 h",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"
@@ -247,8 +247,8 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.0025, "max": 0.01 },
-          "unit": "%",
+          "value": { "typ": 25, "max": 100 },
+          "unit": "ppm",
           "conditionsVerbatim": "25 ppm typ / 100 ppm max",
           "sourcePage": 9,
           "sourceTable": "Electrical Characteristics, REF3025 (2.5 V)"

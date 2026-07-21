@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "REF-X", "manufacturer": "Y", "family": "voltage_reference" },
+  "parameters": [
+    { "key": "line_regulation", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 1, "max": 10 }, "unit": "ppm/V",
+        "conditions": [ { "param": "V_IN", "min": 3, "max": 15, "unit": "V" } ], "sourcePage": 4 } ] },
+    { "key": "load_regulation", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 30000 }, "unit": "ppm/A",
+        "conditions": [ { "param": "I_OUT", "min": 0, "max": 0.01, "unit": "A" } ], "sourcePage": 4 } ] },
+    { "key": "thermal_hysteresis", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": -13 }, "unit": "ppm", "sourcePage": 4 } ] }
+  ],
+  "provenance": { "verified": false }
+}

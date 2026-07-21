@@ -75,7 +75,7 @@ Document-level `provenance` MAY record `datasheetSha256`, `sourceUrl`, `datashee
 
 ## 9. Units
 
-Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, J, dB, V/V, %, ppm/degC, degC/W, K/W, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted. Thermal resistance uses degC/W (equivalently K/W), and energy such as single-pulse avalanche uses J.
+Values are normalized to base-SI units so numeric comparison across parts is sound. `unit` MUST be one of V, A, Hz, degC, ohm, F, s, W, C, J, dB, V/V, %, ppm, ppm/degC, ppm/V, ppm/A, degC/W, K/W, V/us, A/us, V/sqrtHz. A current of 500 mA is 0.5 with unit A. The unit mA is not permitted. Thermal resistance uses degC/W (equivalently K/W), and energy such as single-pulse avalanche uses J. The fractional-rate family — ppm for a dimensionless change such as long-term drift or thermal hysteresis, and ppm/V and ppm/A for line and load regulation — joins ppm/degC so that a rate a datasheet prints per volt or per milliamp is captured as printed rather than lossily converted; the value stays comparable across parts and auditable against the page. A rate printed in uV/V or uV/mA MAY instead use the dimensionless V/V or the derived ohm (dVOUT/dIOUT) when that is how the part specifies it.
 
 ## 10. Conformance
 

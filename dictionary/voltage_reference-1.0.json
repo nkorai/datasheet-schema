@@ -69,24 +69,24 @@
     {
       "key": "line_regulation",
       "name": "Line regulation",
-      "unit": "V/V",
+      "unit": "ppm/V",
       "group": "regulation",
       "optional": true,
       "array": true,
       "conditionAxis": "V_IN",
       "aliases": ["line regulation", "dVOUT/dVIN", "input voltage influence", "voltage regulation vs input", "input voltage rejection"],
-      "hint": "Series references: the output-voltage change per volt of input change, as a base-SI ratio V/V (equivalently uV/V). Datasheets print uV/V or ppm/V; ppm/V normalizes to V/V by multiplying by VOUT (1 ppm/V x 2.5 V = 2.5e-06 V/V). Keep the printed rate in conditionsVerbatim and give the V_IN range as a condition."
+      "hint": "The fractional output-voltage change per volt of input change, ppm/V, the sibling of ppm/degC. Capture the printed ppm/V directly; a part printed in uV/V converts by dividing by VOUT (120 uV/V / 2.5 V = 48 ppm/V), or MAY use unit V/V instead when that is how it is specified. Give the V_IN range as a condition and keep the printed rate in conditionsVerbatim."
     },
     {
       "key": "load_regulation",
       "name": "Load regulation",
-      "unit": "ohm",
+      "unit": "ppm/A",
       "group": "regulation",
       "optional": true,
       "array": true,
       "conditionAxis": "I_OUT",
       "aliases": ["load regulation", "dVOUT/dIOUT", "output current influence", "voltage regulation vs load", "output resistance"],
-      "hint": "The output-voltage change per amp of load change, dVOUT/dIOUT, which has units of ohms (an effective output resistance). Datasheets print uV/mA or ppm/mA; ppm/mA normalizes by multiplying by VOUT then converting mA to A (30 ppm/mA x 2.5 V = 0.075 ohm). Source and sink can differ, so use one measurement per direction and keep the printed rate in conditionsVerbatim."
+      "hint": "The fractional output-voltage change per amp of load change, ppm/A. Datasheets print ppm/mA (multiply by 1000 for ppm/A) or a total ppm over a stated load range (divide by the range in A). A part printed in uV/mA MAY instead use the derived unit ohm (dVOUT/dIOUT). Source and sink can differ, so use one measurement per direction and keep the printed rate in conditionsVerbatim."
     },
     {
       "key": "dropout_voltage",
@@ -143,20 +143,20 @@
     {
       "key": "long_term_stability",
       "name": "Long-term stability / drift",
-      "unit": "V",
+      "unit": "ppm",
       "group": "dynamic",
       "optional": true,
       "aliases": ["long-term stability", "long-term drift", "output voltage long-term drift", "long-term output voltage change", "aging"],
-      "hint": "Output-voltage change over an elapsed time (commonly 1000 hours). Datasheets print ppm/1000 hr; convert to the absolute output change in volts (ppm x VOUT) and keep the ppm figure and the duration in conditionsVerbatim."
+      "hint": "Fractional output-voltage change over an elapsed time (commonly 1000 hours), in ppm as printed. Note the duration (and any temperature) in conditionsVerbatim."
     },
     {
       "key": "thermal_hysteresis",
       "name": "Thermal hysteresis",
-      "unit": "V",
+      "unit": "ppm",
       "group": "dynamic",
       "optional": true,
       "aliases": ["thermal hysteresis", "output voltage hysteresis", "VOUT hysteresis", "temperature cycle hysteresis"],
-      "hint": "The residual output-voltage shift after a temperature cycle back to 25 degC. Datasheets print ppm or mV; convert to volts and note the temperature cycle in conditionsVerbatim."
+      "hint": "The residual fractional output-voltage shift after a temperature cycle back to 25 degC, in ppm (a datasheet printing 0.08% is 800 ppm). Sign is meaningful. Note the temperature cycle in conditionsVerbatim."
     },
     {
       "key": "turn_on_settling_time",

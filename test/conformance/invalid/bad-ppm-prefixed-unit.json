@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "REF-X", "manufacturer": "Y", "family": "voltage_reference" },
+  "parameters": [
+    { "key": "load_regulation", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 30 }, "unit": "ppm/mA", "sourcePage": 4 } ] }
+  ],
+  "provenance": { "verified": false }
+}

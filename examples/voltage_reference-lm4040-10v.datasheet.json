@@ -205,8 +205,8 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.012 },
-          "unit": "%",
+          "value": { "typ": 120 },
+          "unit": "ppm",
           "conditions": [
             { "param": "I_R", "value": 0.00015, "unit": "A" },
             { "param": "T_A", "value": 25, "unit": "degC" }
@@ -225,10 +225,10 @@
       "measurements": [
         {
           "limitClass": "characterized",
-          "value": { "typ": 0.08 },
-          "unit": "%",
+          "value": { "typ": 800 },
+          "unit": "ppm",
           "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
-          "conditionsVerbatim": "delta-T = -40 degC to 125 degC (0.08% of VR)",
+          "conditionsVerbatim": "delta-T = -40 degC to 125 degC (0.08% of VR = 800 ppm)",
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D"
         }

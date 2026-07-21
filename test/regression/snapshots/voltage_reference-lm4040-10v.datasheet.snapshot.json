@@ -365,9 +365,9 @@
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "typ": 0.012
+            "typ": 120
           }
         }
       ]
@@ -395,9 +395,9 @@
           "sourcePage": 34,
           "sourceTable": "Electrical Characteristics, 10 V, grades C/D",
           "stimulus": null,
-          "unit": "%",
+          "unit": "ppm",
           "value": {
-            "typ": 0.08
+            "typ": 800
           }
         }
       ]
