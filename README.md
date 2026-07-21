@@ -93,7 +93,7 @@ Reference the hosted, versioned URL from a `$ref`.
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-The [`examples/`](./examples) directory holds validated documents across all three families, including four real LDO regulators, an illustrative MOSFET, and three real voltage references (a shunt and two series parts across three manufacturers).
+The [`examples/`](./examples) directory holds validated documents across all three families: real LDO regulators (including a negative current-reference part), silicon and GaN MOSFETs, and three real voltage references (a shunt and two series parts across three manufacturers).
 
 ## Contents
 
@@ -110,9 +110,9 @@ A dictionary defines the canonical parameter keys, units, and vendor aliases for
 
 | Family | Dictionary | Parameters |
 |---|---|---|
-| `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 53, across the regulation, dropout, current, protection, rejection and noise, enable, power-good, dynamic, stability, thermal, ESD, and general groups. |
-| `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 28, across the ratings, static, capacitance, gate-charge, switching, body-diode, thermal, and general groups. |
-| `voltage_reference` | [`dictionary/voltage_reference-1.0.json`](./dictionary/voltage_reference-1.0.json) | 24, unifying series and shunt topologies across the reference, temperature, current, regulation, noise, dynamic, rejection, thermal, and general groups. |
+| `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 62, including dual-rail, soft-start/noise-reduction, and current-reference (LT304x) parameters. |
+| `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 45, covering silicon, SiC, and GaN power FETs (transconductance, output/switching charge, effective Coss, switching energy) as well as small-signal parts. |
+| `voltage_reference` | [`dictionary/voltage_reference-1.0.json`](./dictionary/voltage_reference-1.0.json) | 41, unifying series and shunt topologies, adjustable references, and temperature-sensor and heater sub-blocks. |
 
 To add a family, write a dictionary that conforms to [`dictionary/family-dictionary-1.0.schema.json`](./dictionary/family-dictionary-1.0.schema.json) and a validated example. No schema change is required.
 
@@ -123,6 +123,8 @@ The LDO dictionary was built and checked against a corpus of 39 datasheets from 
 ## Conformance and versioning
 
 The [`test/conformance/`](./test/conformance) directory holds positive fixtures that must validate and negative fixtures that must be rejected, including empty values, non-base units, an invalid `limitClass`, and missing provenance. `npm test` runs the full suite.
+
+Conformance has two layers, documented in [`CONFORMANCE.md`](./CONFORMANCE.md): portable JSON Schema validation, plus three small dictionary-driven checks a consumer implements because a family-agnostic schema cannot express them (a parameter's key is in its family dictionary; a measurement's unit matches that parameter's unit, so a temperature cannot be given in volts; a condition axis carries the right dimension). Both layers are language-agnostic — the reference runner is JavaScript, but any consumer reimplements the family checks from the dictionary JSON in a few lines.
 
 Two version axes are kept distinct. The schema version is `MAJOR.MINOR` in the filename and `$id`, for example `datasheet-1.0`. The npm package uses full semantic versioning. Several `1.0.x` package releases may ship the same `datasheet-1.0` schema.
 

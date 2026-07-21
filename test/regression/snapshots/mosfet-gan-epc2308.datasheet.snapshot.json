@@ -1,0 +1,1113 @@
+{
+  "family": "mosfet",
+  "manufacturer": "Efficient Power Conversion",
+  "mpn": "EPC2308",
+  "parameters": [
+    {
+      "aliases": [
+        "BVDSS",
+        "VDS"
+      ],
+      "group": "ratings",
+      "key": "drain_source_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 0.0002
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 150
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "continuous",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 150
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "repetitive transient, duty cycle factor <= 1%",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 180
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS"
+      ],
+      "group": "ratings",
+      "key": "gate_source_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6,
+            "min": -4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGSM"
+      ],
+      "group": "ratings",
+      "key": "pulsed_gate_source_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "repetitive transient, duty cycle factor <= 1%",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID"
+      ],
+      "group": "ratings",
+      "key": "continuous_drain_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 63
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDM"
+      ],
+      "group": "ratings",
+      "key": "pulsed_drain_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "300 us",
+              "param": "T_PULSE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 157
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 175,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS(TH)"
+      ],
+      "group": "static",
+      "key": "gate_threshold_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VDS = VGS",
+              "param": "V_DS",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 0.005
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.5,
+            "min": 0.8,
+            "typ": 1.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RDS(on)"
+      ],
+      "group": "static",
+      "key": "drain_source_on_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.006,
+            "typ": 0.0045
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDSS"
+      ],
+      "group": "static",
+      "key": "drain_source_leakage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 120
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0002,
+            "typ": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IGSS"
+      ],
+      "group": "static",
+      "key": "gate_source_leakage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.002,
+            "typ": 0.000015
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_J",
+              "unit": "degC",
+              "value": 125
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.004,
+            "typ": 0.0002
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": -4
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.001,
+            "typ": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VSD"
+      ],
+      "group": "body_diode",
+      "key": "diode_forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_S",
+              "unit": "A",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QRR"
+      ],
+      "group": "body_diode",
+      "key": "reverse_recovery_charge",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CISS"
+      ],
+      "group": "capacitance",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 2.377e-9,
+            "typ": 1.667e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COSS"
+      ],
+      "group": "capacitance",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 5.58e-10,
+            "typ": 4.01e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CRSS"
+      ],
+      "group": "capacitance",
+      "key": "reverse_transfer_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 3.1e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COSS(ER)"
+      ],
+      "group": "capacitance",
+      "key": "effective_output_capacitance_energy",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 75,
+              "min": 0,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 5.1e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COSS(TR)"
+      ],
+      "group": "capacitance",
+      "key": "effective_output_capacitance_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 75,
+              "min": 0,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 6.65e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RG"
+      ],
+      "group": "gate_charge",
+      "key": "gate_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QG"
+      ],
+      "group": "gate_charge",
+      "key": "total_gate_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "max": 1.6e-8,
+            "typ": 1.17e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QGS"
+      ],
+      "group": "gate_charge",
+      "key": "gate_source_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 4.2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QGD"
+      ],
+      "group": "gate_charge",
+      "key": "gate_drain_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QG(TH)"
+      ],
+      "group": "gate_charge",
+      "key": "gate_charge_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 3e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QOSS"
+      ],
+      "group": "gate_charge",
+      "key": "output_charge",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 75
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "max": 6.1e-8,
+            "typ": 5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJC"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Case TOP",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJB"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_board",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Case BOTTOM",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 2.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "JEDEC 51-2 PCB",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 54
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "EPC90148 evaluation board",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 23
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "G",
+      "name": "G",
+      "number": 1
+    },
+    {
+      "function": "KS",
+      "name": "S (Kelvin)",
+      "number": 2
+    },
+    {
+      "function": "D",
+      "name": "D",
+      "number": 3
+    },
+    {
+      "function": "S",
+      "name": "S",
+      "number": 4
+    },
+    {
+      "function": "D",
+      "name": "D",
+      "number": 5
+    },
+    {
+      "function": "S",
+      "name": "S",
+      "number": 6
+    },
+    {
+      "function": "D",
+      "name": "D",
+      "number": 7
+    }
+  ]
+}

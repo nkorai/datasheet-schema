@@ -1,0 +1,690 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LT3094",
+    "manufacturer": "Analog Devices",
+    "family": "ldo",
+    "polarity": "negative",
+    "description": "–20 V, 500 mA, ultralow-noise, ultrahigh-PSRR negative linear regulator with a current-reference (100 uA SET-pin) architecture. Output programmed by a single resistor, VSET = ISET x RSET, over a 0 V to –19.5 V range.",
+    "package": "12-Lead MSOP (MSE) / 3mm x 3mm DFN (DD)",
+    "pinCount": 12,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "LT3094EDD#TRPBF", "package": "12-Lead (3mm x 3mm) DFN", "temperatureGrade": "-40..125", "packing": "Tape and Reel" },
+      { "orderCode": "LT3094IDD#TRPBF", "package": "12-Lead (3mm x 3mm) DFN", "temperatureGrade": "-40..125", "packing": "Tape and Reel" },
+      { "orderCode": "LT3094EMSE#TRPBF", "package": "12-Lead MSOP", "temperatureGrade": "-40..125", "packing": "Tape and Reel" },
+      { "orderCode": "LT3094IMSE#TRPBF", "package": "12-Lead MSOP", "temperatureGrade": "-40..125", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "IN", "function": "IN", "type": "power", "description": "Input supply (negative rail). Exposed pad (pin 13) is also IN.", "sourcePage": 15 },
+    { "number": 2, "name": "IN", "function": "IN", "type": "power", "sourcePage": 15 },
+    { "number": 3, "name": "EN/UV", "function": "EN", "type": "digital_in", "description": "Bidirectional enable / UVLO. Turns on above +1.26 V or below –1.26 V relative to GND. Tie to IN if unused.", "sourcePage": 15 },
+    { "number": 4, "name": "PG", "function": "PG", "type": "digital_out", "description": "Open-collector power-good flag. Pulls low when PGFB is between 0 V and –300 mV.", "sourcePage": 15 },
+    { "number": 5, "name": "PGFB", "function": "PGFB", "type": "analog", "description": "Power-good feedback and fast-start-up input. Divider between OUT, PGFB and GND sets the PG threshold.", "sourcePage": 15 },
+    { "number": 6, "name": "ILIM", "function": "ILIM", "type": "analog", "description": "Current-limit programming pin. Resistor to GND sets the limit at a nominal 3.75 A*kohm scale factor.", "sourcePage": 15 },
+    { "number": 7, "name": "VIOC", "function": "VIOC", "type": "analog", "description": "Voltage for input-to-output control. Tracks an upstream supply to hold the LT3094 differential constant.", "sourcePage": 15 },
+    { "number": 8, "name": "SET", "function": "ADJ", "type": "analog", "description": "Inverting error-amp input and regulation setpoint. Sinks a precise 100 uA; external RSET from SET to GND sets VOUT = ISET x RSET. A SET-to-GND cap (CSET) lowers noise and improves PSRR.", "sourcePage": 15 },
+    { "number": 9, "name": "GND", "function": "GND", "type": "power", "sourcePage": 15 },
+    { "number": 10, "name": "OUTS", "function": "SENSE", "type": "analog", "description": "Output sense; noninverting error-amp input. Kelvin-connect to the output capacitor and load.", "sourcePage": 15 },
+    { "number": 11, "name": "OUT", "function": "OUT", "type": "power", "sourcePage": 15 },
+    { "number": 12, "name": "OUT", "function": "OUT", "type": "power", "sourcePage": 15 }
+  ],
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage range",
+      "group": "regulation",
+      "aliases": ["VIN range", "IN pin voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -22, "max": 0.3 },
+          "unit": "V",
+          "conditionsVerbatim": "IN pin voltage with respect to GND pin: –22V, 0.3V",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": -20, "max": -2.3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ILOAD = 500mA (over the full operating temperature range)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_range",
+      "name": "Adjustable output voltage range",
+      "group": "regulation",
+      "aliases": ["VOUT range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -19.5, "max": 0 },
+          "unit": "V",
+          "conditionsVerbatim": "Output voltage range is from zero to –19.5V (VSET = ISET x RSET)",
+          "sourcePage": 15,
+          "sourceTable": "Pin Functions"
+        }
+      ]
+    },
+    {
+      "key": "reference_current",
+      "name": "SET pin current",
+      "group": "regulation",
+      "aliases": ["ISET", "SET pin current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9.9e-05, "typ": 0.0001, "max": 0.000101 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": -2.3, "unit": "V" },
+            { "param": "I_LOAD", "value": -0.001, "unit": "A" },
+            { "param": "V_OUT", "value": -1.5, "unit": "V" },
+            { "param": "T_J", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VIN = –2.3V, ILOAD = 1mA, VOUT = –1.5V; +-1% initial accuracy. The defining current-reference spec: VOUT = ISET x RSET.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "output_offset_voltage",
+      "name": "Output offset voltage",
+      "group": "regulation",
+      "aliases": ["VOS", "VOUT – VSET", "buffer offset"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.001, "max": 0.001 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": -2.3, "unit": "V" },
+            { "param": "I_LOAD", "value": -0.001, "unit": "A" },
+            { "param": "V_OUT", "value": -1.5, "unit": "V" },
+            { "param": "T_J", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VOS (VOUT – VSET), VIN = –2.3V, ILOAD = 1mA, VOUT = –1.5V (Note 9: OUTS ties directly to OUT). +-2mV over the full temperature range.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "group": "dropout",
+      "aliases": ["VDO", "dropout"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.225, "max": 0.275 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.05, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ILOAD = 50mA (Note 10: measured at 1% out of regulation)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.23, "max": 0.28 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.1, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ILOAD = 100mA (Note 10)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.235, "max": 0.41 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ILOAD = 500mA (Note 10)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "GND pin current",
+      "group": "current",
+      "aliases": ["ground current", "GND pin current", "IQ"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00235 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_LOAD", "value": -1e-05, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(NOMINAL), ILOAD = 10uA (Note 11: worst-case, tested in dropout)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0024, "max": 0.004 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.001, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(NOMINAL), ILOAD = 1mA (Note 11)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0031, "max": 0.0055 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.05, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(NOMINAL), ILOAD = 50mA (Note 11)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0038, "max": 0.0065 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.1, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(NOMINAL), ILOAD = 100mA (Note 11)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.012, "max": 0.023 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VIN = VOUT(NOMINAL), ILOAD = 500mA (Note 11)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Quiescent current in shutdown",
+      "group": "current",
+      "aliases": ["ISHDN", "shutdown current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e-06, "max": 1e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0, "unit": "V" },
+            { "param": "V_IN", "value": -6, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VEN/UV = 0V, VIN = –6V, VPG = Open",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "current_limit",
+      "name": "Internal current limit",
+      "group": "current",
+      "aliases": ["ILIM", "internal current limit"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.55, "typ": 0.75 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": -2.3, "unit": "V" },
+            { "param": "V_OUT", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIN = –2.3V, VOUT = 0V (Note 14: foldback for VOUT – VIN > 7V)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.425 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": -12, "unit": "V" },
+            { "param": "V_OUT", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIN = –12V, VOUT = 0V (Note 14)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.04, "typ": 0.085, "max": 0.16 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": -20, "unit": "V" },
+            { "param": "V_OUT", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIN = –20V, VOUT = 0V (Note 14: foldback active, VOUT – VIN differential = 20V)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "psrr",
+      "name": "Ripple rejection",
+      "group": "rejection_noise",
+      "aliases": ["PSRR", "ripple rejection", "power supply ripple rejection"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 108 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 120, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-06, "unit": "F" },
+            { "param": "HEADROOM", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "min": -18, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VRIPPLE = 500mVP-P, fRIPPLE = 120Hz, ILOAD = 500mA, COUT = 10uF, CSET = 4.7uF, VIN – VOUT = 2V (Avg), –18V <= VOUT <= –1.5V",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 94 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "HEADROOM", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "min": -18, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "fRIPPLE = 10kHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VIN – VOUT = 2V (Avg), –18V <= VOUT <= –1.5V",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 75 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "HEADROOM", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "min": -18, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "fRIPPLE = 100kHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VIN – VOUT = 2V (Avg), –18V <= VOUT <= –1.5V",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 74 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 1000000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "HEADROOM", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "min": -18, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "fRIPPLE = 1MHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VIN – VOUT = 2V (Avg), –18V <= VOUT <= –1.5V (74dB ultrahigh PSRR headline)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 28 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 10000000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "HEADROOM", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "min": -18, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "fRIPPLE = 10MHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VIN – VOUT = 2V (Avg), –18V <= VOUT <= –1.5V",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_rms",
+      "name": "Output RMS noise",
+      "group": "rejection_noise",
+      "aliases": ["output voltage noise", "RMS noise", "integrated RMS output noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-07 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 100000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-06, "unit": "F" },
+            { "param": "V_OUT", "min": -19.5, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "BW = 10Hz to 100kHz, ILOAD = 500mA, COUT = 10uF, CSET = 4.7uF, –19.5V <= VOUT <= –1.5V (0.8uVRMS ultralow-noise headline)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.8e-06 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 100000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-06, "unit": "F" },
+            { "param": "V_OUT", "min": -1.5, "max": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "BW = 10Hz to 100kHz, ILOAD = 500mA, COUT = 10uF, CSET = 4.7uF, –1.5V <= VOUT <= 0V",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e-06 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "BW_LOW", "value": 10, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 100000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "V_OUT", "value": -3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "BW = 10Hz to 100kHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VOUT = –3.3V",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output noise spectral density",
+      "group": "rejection_noise",
+      "aliases": ["spot noise", "noise density"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.2e-09 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "V_OUT", "min": -19.5, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Frequency = 10kHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, –19.5V <= VOUT <= –1.5V (2.2nV/sqrtHz ultralow spot-noise headline)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-09 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "V_OUT", "min": -1.5, "max": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Frequency = 10kHz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, –1.5V <= VOUT <= 0V",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-08 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 10, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-06, "unit": "F" },
+            { "param": "V_OUT", "min": -19.5, "max": -1.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Frequency = 10Hz, ILOAD = 500mA, COUT = 10uF, CSET = 4.7uF, –19.5V <= VOUT <= –1.5V",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-07 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 10, "unit": "Hz" },
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" },
+            { "param": "C_OUT", "value": 1e-05, "unit": "F" },
+            { "param": "C_SET", "value": 4.7e-07, "unit": "F" },
+            { "param": "V_OUT", "value": -3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Frequency = 10Hz, ILOAD = 500mA, COUT = 10uF, CSET = 0.47uF, VOUT = –3.3V",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "noise_reduction_capacitance",
+      "name": "SET-pin bypass capacitance",
+      "group": "stability",
+      "aliases": ["CSET", "SET pin bypass capacitor", "reference bypass capacitor"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "typ": 4.7e-06 },
+          "unit": "F",
+          "conditionsVerbatim": "Capacitor from SET to GND (CSET). 4.7uF bypasses the RSET thermal noise and the reference-current noise for lowest output noise and best low-frequency PSRR; 0.47uF trades some noise for faster start-up. Axis C_SET on the noise and PSRR specs (Note 12).",
+          "sourcePage": 15,
+          "sourceTable": "Pin Functions"
+        }
+      ]
+    },
+    {
+      "key": "en_high_threshold",
+      "name": "EN/UV positive turn-on threshold",
+      "group": "enable",
+      "aliases": ["VIH(EN)", "EN/UV pin threshold", "positive EN/UV trip point"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.2, "typ": 1.26, "max": 1.33 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": -2.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Positive EN/UV Trip Point Rising (Turn-On), VIN = –2.3V, 200mV hysteresis. The pin is bidirectional; it also turns on at the negative trip point –1.26V (typ) below GND.",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_threshold",
+      "name": "Minimum IN pin voltage (UVLO rising)",
+      "group": "protection",
+      "aliases": ["UVLO", "under-voltage lockout", "minimum IN pin voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -2.3, "max": -1.8 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_LOAD", "value": -0.5, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ILOAD = 500mA, VIN UVLO Rising (Note 8)",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_hysteresis",
+      "name": "VIN UVLO hysteresis",
+      "group": "protection",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.13 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN UVLO Hysteresis = 130mV",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown",
+      "group": "protection",
+      "aliases": ["TSD", "thermal shutdown"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 167 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ Rising",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_hysteresis",
+      "name": "Thermal shutdown hysteresis",
+      "group": "protection",
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8 },
+          "unit": "degC",
+          "conditionsVerbatim": "Thermal shutdown hysteresis",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJA", "theta-JA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 34 },
+          "unit": "degC",
+          "conditions": [
+            { "param": "PACKAGE", "note": "12-Lead 3mm x 3mm DFN (DD)" }
+          ],
+          "conditionsVerbatim": "DD Package thetaJA = 34degC/W (MSE package: 33degC/W). Value in degC per watt.",
+          "sourcePage": 3,
+          "sourceTable": "Pin Configuration"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJC", "theta-JC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.5 },
+          "unit": "degC",
+          "conditions": [
+            { "param": "PACKAGE", "note": "12-Lead 3mm x 3mm DFN (DD)" }
+          ],
+          "conditionsVerbatim": "DD Package thetaJC = 5.5degC/W (MSE package: 8degC/W). Value in degC per watt.",
+          "sourcePage": 3,
+          "sourceTable": "Pin Configuration"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "E-, I-Grades operating junction temperature range (Note 3)",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["TSTG", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Range –65degC to 150degC",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "Rev 0",
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/3094fa.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "Negative-rail LDO: input, output, and their conditions are negative numbers, with min the more-negative bound. Differentials (dropout, hysteresis, thermal resistance, noise) are stored as positive magnitudes.",
+    "Current-reference architecture: reference_current (ISET = 100 uA) and output_offset_voltage (VOS) are the defining accuracy specs, in place of reference_voltage / output_voltage_accuracy.",
+    "Noise and PSRR are conditioned on the SET-pin bypass capacitor via the C_SET axis (4.7 uF for lowest noise, 0.47 uF for faster start-up)."
+  ]
+}

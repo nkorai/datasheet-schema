@@ -51,6 +51,10 @@
         "description": { "type": "string" },
         "package": { "description": "Package designator as printed, for example SOT-23-5.", "type": "string" },
         "pinCount": { "type": "integer", "minimum": 1 },
+        "polarity": {
+          "description": "The rail polarity of a regulator or reference, declared so a consumer never has to infer it from the sign of extracted values. positive is the default and MAY be omitted; negative marks a negative-rail part (a negative LDO or reference) whose output, input, and their conditions are negative numbers. When negative, min and max of a range keep numeric ordering (min is the more-negative bound), so an input range of -20 V to -2.3 V has min -20, max -2.3. bipolar is for a dual-rail or tracking part.",
+          "enum": ["positive", "negative", "bipolar"]
+        },
         "lifecycle": { "enum": ["active", "nrnd", "obsolete", "unknown"] },
         "msl": { "description": "Moisture sensitivity level, for example MSL1.", "type": "string" },
         "temperatureGrade": {
@@ -265,7 +269,7 @@
       "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate. The fractional-rate family ppm, ppm/V, and ppm/A captures dimensionless drift (long-term stability, thermal hysteresis) and the per-volt/per-amp regulation rates that precision references and other parts specify, alongside ppm/degC.",
       "type": "string",
       "enum": [
-        "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C", "J",
+        "V", "A", "Hz", "degC", "ohm", "F", "s", "W", "C", "J", "S",
         "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz"
       ]
     }

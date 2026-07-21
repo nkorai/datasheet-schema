@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "EPC2308",
+    "manufacturer": "Efficient Power Conversion",
+    "family": "mosfet",
+    "package": "QFN 3x5 mm (thermally enhanced, exposed top)",
+    "pinCount": 7,
+    "msl": "MSL1",
+    "temperatureGrade": "-40..150",
+    "description": "150 V, 6 mOhm (max) enhancement-mode eGaN power FET in a thermally enhanced 3 x 5 mm QFN with exposed top. Gallium-nitride lateral device with a majority-carrier reverse-conduction path: it has no intrinsic body diode (zero reverse-recovery charge) and reverse conduction is gate-voltage dependent. Values transcribed from the EPC2308 datasheet, revised April 29, 2026."
+  },
+  "pinout": [
+    { "number": 1, "name": "G", "function": "G", "type": "digital_in", "description": "Gate. Drive ON = 5 V typ, OFF = 0 V; negative gate voltage not required.", "sourcePage": 5 },
+    { "number": 2, "name": "S (Kelvin)", "function": "KS", "type": "power", "description": "Source Kelvin / gate-driver return. A via at this pad closest to the gate provides the gate-driver Kelvin connection.", "sourcePage": 5 },
+    { "number": 3, "name": "D", "function": "D", "type": "power", "sourcePage": 5 },
+    { "number": 4, "name": "S", "function": "S", "type": "power", "sourcePage": 5 },
+    { "number": 5, "name": "D", "function": "D", "type": "power", "sourcePage": 5 },
+    { "number": 6, "name": "S", "function": "S", "type": "power", "sourcePage": 5 },
+    { "number": 7, "name": "D", "function": "D", "type": "power", "description": "The exposed top of the FET is electrically connected to source.", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "drain_source_voltage",
+      "name": "Drain-to-source voltage",
+      "group": "ratings",
+      "aliases": ["VDS", "BVDSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "min": 150 }, "unit": "V",
+          "conditions": [ { "param": "V_GS", "value": 0, "unit": "V" }, { "param": "I_D", "value": 0.0002, "unit": "A" } ],
+          "conditionsVerbatim": "BVDSS: VGS = 0 V, ID = 200 uA", "sourcePage": 1 },
+        { "limitClass": "absolute_max", "value": { "max": 150 }, "unit": "V",
+          "conditions": [ { "param": "MODE", "note": "continuous" } ],
+          "conditionsVerbatim": "Drain-to-Source Voltage (Continuous)", "sourcePage": 1 },
+        { "limitClass": "absolute_max", "value": { "max": 180 }, "unit": "V",
+          "conditions": [ { "param": "MODE", "note": "repetitive transient, duty cycle factor <= 1%" } ],
+          "conditionsVerbatim": "Drain-to-Source Voltage (Repetitive Transient) (1)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "gate_source_voltage",
+      "name": "Gate-to-source voltage",
+      "group": "ratings",
+      "aliases": ["VGS"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "min": -4, "max": 6 }, "unit": "V",
+          "conditionsVerbatim": "Gate-to-Source Voltage: +6 V / -4 V", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "pulsed_gate_source_voltage",
+      "name": "Gate-to-source voltage (repetitive transient)",
+      "group": "ratings",
+      "aliases": ["VGSM"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 7 }, "unit": "V",
+          "conditions": [ { "param": "MODE", "note": "repetitive transient, duty cycle factor <= 1%" } ],
+          "conditionsVerbatim": "Gate-to-Source Voltage (Repetitive Transient) (1)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "continuous_drain_current",
+      "name": "Continuous drain current",
+      "group": "ratings",
+      "aliases": ["ID"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 63 }, "unit": "A",
+          "conditions": [ { "param": "T_J", "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "Continuous (TJ <= 125 degC)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "pulsed_drain_current",
+      "name": "Pulsed drain current",
+      "group": "ratings",
+      "aliases": ["IDM"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "max": 157 }, "unit": "A",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" }, { "param": "T_PULSE", "note": "300 us" } ],
+          "conditionsVerbatim": "Pulsed (25 degC, TPULSE = 300 us)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature",
+      "group": "general",
+      "aliases": ["TJ"],
+      "measurements": [
+        { "limitClass": "recommended", "value": { "min": -40, "max": 150 }, "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature: -40 to 150 degC", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature",
+      "group": "general",
+      "aliases": ["Tstg"],
+      "measurements": [
+        { "limitClass": "absolute_max", "value": { "min": -55, "max": 175 }, "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature: -55 to 175 degC", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "gate_threshold_voltage",
+      "name": "Gate threshold voltage",
+      "group": "static",
+      "aliases": ["VGS(TH)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "min": 0.8, "typ": 1.2, "max": 2.5 }, "unit": "V",
+          "conditions": [ { "param": "V_DS", "note": "VDS = VGS" }, { "param": "I_D", "value": 0.005, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = VGS, ID = 5 mA", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "drain_source_on_resistance",
+      "name": "Drain-source on-resistance",
+      "group": "static",
+      "aliases": ["RDS(on)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.0045, "max": 0.006 }, "unit": "ohm",
+          "conditions": [ { "param": "V_GS", "value": 5, "unit": "V" }, { "param": "I_D", "value": 15, "unit": "A" } ],
+          "conditionsVerbatim": "VGS = 5 V, ID = 15 A", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "drain_source_leakage",
+      "name": "Drain-source leakage",
+      "group": "static",
+      "aliases": ["IDSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.00001, "max": 0.0002 }, "unit": "A",
+          "conditions": [ { "param": "V_GS", "value": 0, "unit": "V" }, { "param": "V_DS", "value": 120, "unit": "V" } ],
+          "conditionsVerbatim": "VGS = 0 V, VDS = 120 V", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "gate_source_leakage",
+      "name": "Gate-source leakage",
+      "group": "static",
+      "aliases": ["IGSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.000015, "max": 0.002 }, "unit": "A",
+          "conditions": [ { "param": "V_GS", "value": 5, "unit": "V" }, { "param": "T_J", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "Gate-to-Source Forward Leakage: VGS = 5 V", "sourcePage": 1 },
+        { "limitClass": "characterized", "value": { "typ": 0.0002, "max": 0.004 }, "unit": "A",
+          "conditions": [ { "param": "V_GS", "value": 5, "unit": "V" }, { "param": "T_J", "value": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "Gate-to-Source Forward Leakage#: VGS = 5 V, TJ = 125 degC (defined by design)", "sourcePage": 1 },
+        { "limitClass": "characterized", "value": { "typ": 0.0001, "max": 0.001 }, "unit": "A",
+          "conditions": [ { "param": "V_GS", "value": -4, "unit": "V" } ],
+          "conditionsVerbatim": "Gate-to-Source Reverse Leakage: VGS = -4 V", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "diode_forward_voltage",
+      "name": "Source-drain (reverse-conduction) voltage",
+      "group": "body_diode",
+      "aliases": ["VSD"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1.5 }, "unit": "V",
+          "conditions": [ { "param": "I_S", "value": 0.5, "unit": "A" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VSD Source-Drain Forward Voltage#: VGS = 0 V, IS = 0.5 A (defined by design). GaN FET has no intrinsic body diode; reverse conduction is through the channel and is gate-voltage dependent (a more negative VGS raises VSD). Figure 8 note: negative gate drive voltage increases the reverse drain-source voltage; EPC recommends 0 V for OFF.", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "reverse_recovery_charge",
+      "name": "Source-drain recovery charge",
+      "group": "body_diode",
+      "aliases": ["QRR"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0 }, "unit": "C",
+          "conditionsVerbatim": "QRR Source-Drain Recovery Charge = 0. A GaN FET is a majority-carrier device with no body diode, so reverse-recovery charge is zero.", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "group": "capacitance",
+      "aliases": ["CISS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1.667e-9, "max": 2.377e-9 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 75 V, VGS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "group": "capacitance",
+      "aliases": ["COSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 4.01e-10, "max": 5.58e-10 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 75 V, VGS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "reverse_transfer_capacitance",
+      "name": "Reverse transfer capacitance",
+      "group": "capacitance",
+      "aliases": ["CRSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 3.1e-12 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VDS = 75 V, VGS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "effective_output_capacitance_energy",
+      "name": "Effective output capacitance, energy related",
+      "group": "capacitance",
+      "aliases": ["COSS(ER)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 5.1e-10 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "min": 0, "max": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "COSS(ER): VDS = 0 to 75 V, VGS = 0 V. A fixed capacitance that gives the same stored energy as COSS while VDS rises from 0 to 50% BVDSS.", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "effective_output_capacitance_time",
+      "name": "Effective output capacitance, time related",
+      "group": "capacitance",
+      "aliases": ["COSS(TR)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 6.65e-10 }, "unit": "F",
+          "conditions": [ { "param": "V_DS", "min": 0, "max": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "COSS(TR): VDS = 0 to 75 V, VGS = 0 V. A fixed capacitance that gives the same charging time as COSS while VDS rises from 0 to 50% BVDSS.", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "gate_resistance",
+      "name": "Gate resistance",
+      "group": "gate_charge",
+      "aliases": ["RG"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.4 }, "unit": "ohm",
+          "conditionsVerbatim": "RG Gate Resistance", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "total_gate_charge",
+      "name": "Total gate charge",
+      "group": "gate_charge",
+      "aliases": ["QG"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1.17e-8, "max": 1.6e-8 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "V_GS", "value": 5, "unit": "V" }, { "param": "I_D", "value": 15, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 75 V, VGS = 5 V, ID = 15 A", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "gate_source_charge",
+      "name": "Gate-to-source charge",
+      "group": "gate_charge",
+      "aliases": ["QGS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 4.2e-9 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "I_D", "value": 15, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 75 V, ID = 15 A", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "gate_drain_charge",
+      "name": "Gate-to-drain charge",
+      "group": "gate_charge",
+      "aliases": ["QGD"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 1e-9 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "I_D", "value": 15, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 75 V, ID = 15 A", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "gate_charge_threshold",
+      "name": "Gate charge at threshold",
+      "group": "gate_charge",
+      "aliases": ["QG(TH)"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 3e-9 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "I_D", "value": 15, "unit": "A" } ],
+          "conditionsVerbatim": "VDS = 75 V, ID = 15 A", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "output_charge",
+      "name": "Output charge",
+      "group": "gate_charge",
+      "aliases": ["QOSS"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 5.0e-8, "max": 6.1e-8 }, "unit": "C",
+          "conditions": [ { "param": "V_DS", "value": 75, "unit": "V" }, { "param": "V_GS", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "QOSS Output Charge: VDS = 75 V, VGS = 0 V", "sourcePage": 2 }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction to case",
+      "group": "thermal",
+      "aliases": ["RthetaJC"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 0.5 }, "unit": "degC/W",
+          "conditions": [ { "param": "BOARD", "note": "Case TOP" } ],
+          "conditionsVerbatim": "RthetaJC Thermal Resistance, Junction-to-Case (Case TOP)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_board",
+      "name": "Thermal resistance, junction to board",
+      "group": "thermal",
+      "aliases": ["RthetaJB"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 2.8 }, "unit": "degC/W",
+          "conditions": [ { "param": "BOARD", "note": "Case BOTTOM" } ],
+          "conditionsVerbatim": "RthetaJB Thermal Resistance, Junction-to-Board (Case BOTTOM)", "sourcePage": 1 }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "group": "thermal",
+      "aliases": ["RthetaJA"],
+      "measurements": [
+        { "limitClass": "characterized", "value": { "typ": 54 }, "unit": "degC/W",
+          "conditions": [ { "param": "BOARD", "note": "JEDEC 51-2 PCB" } ],
+          "conditionsVerbatim": "RthetaJA_JEDEC Thermal Resistance, Junction-to-Ambient (using JEDEC 51-2 PCB)", "sourcePage": 1 },
+        { "limitClass": "characterized", "value": { "typ": 23 }, "unit": "degC/W",
+          "conditions": [ { "param": "BOARD", "note": "EPC90148 evaluation board" } ],
+          "conditionsVerbatim": "RthetaJA_EVB Thermal Resistance, Junction-to-Ambient (EPC90148 EVB)", "sourcePage": 1 }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "15583502eea8f22e47ed43ceaa1af5017a5a2b0ce188bf90b18dd5d3aa137346",
+    "sourceUrl": "https://epc-co.com/epc/Portals/0/epc/documents/datasheets/EPC2308_datasheet.pdf",
+    "datasheetRevision": "Revised April 29, 2026",
+    "extractionMethod": "llm:claude-opus-4-8",
+    "confidence": 0.9,
+    "verified": false
+  },
+  "notes": [
+    "EPC2308: 150 V, 6 mOhm (max) enhancement-mode eGaN power FET in a 3 x 5 mm thermally enhanced QFN with exposed top. Values transcribed from the EPC2308 datasheet (revised April 29, 2026): static and maximum-ratings and thermal tables on page 1, dynamic characteristics on page 2, pin configuration (Figure 14) on page 5.",
+    "GaN reverse conduction: this device has no intrinsic body diode. diode_forward_voltage (VSD) is the third-quadrant channel-conduction voltage and is gate-voltage dependent, carried here with its V_GS condition; reverse_recovery_charge is zero.",
+    "All values normalized to base SI: mOhm to ohm, mA/uA to A, pF to F, nC to C. Parameters marked '#' in the datasheet are defined by design and not production tested (noted in conditionsVerbatim). Pin 2 is the source Kelvin / gate-driver return (function KS); the exposed top of the FET is connected to source."
+  ]
+}

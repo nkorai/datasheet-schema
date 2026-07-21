@@ -1,8 +1,8 @@
 {
   "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
   "family": "mosfet",
-  "dictionaryVersion": "1.0",
-  "description": "Canonical parameter dictionary for discrete power MOSFETs, covering enhancement-mode N-channel and P-channel devices. Demonstrates that the datasheet schema is family-agnostic: the same measurement envelope, condition model, and provenance serve a discrete transistor as well as a linear regulator. Condition axes for this family include V_GS, V_DS, I_D, T_J, and T_C. Aliases normalize the printed datasheet symbols.",
+  "dictionaryVersion": "1.1",
+  "description": "Canonical parameter dictionary for discrete power and small-signal MOSFETs, covering enhancement-mode N-channel and P-channel silicon devices as well as SiC and GaN power FETs. Demonstrates that the datasheet schema is family-agnostic: the same measurement envelope, condition model, and provenance serve a discrete transistor as well as a linear regulator. Condition axes for this family include V_GS, V_DS, I_D, I_S, I_G, DI_DT, T_J, T_C, and T_SP; the Kelvin/driver-source pin uses function KS. Version 1.1 adds transconductance (unit S), the output/switching charge and effective-Coss / switching-energy family (Qoss, Qg(th), Qsw, Eon, Eoff, Eoss, Coss(er/tr)), body-diode forward current and peak reverse-recovery current, drain-gate and pulsed gate-source ratings, lumped turn-on/off times, and junction-to-board thermal resistance; and corrects the source-drain (diode_forward_voltage) semantics so it does not assert an intrinsic body diode on GaN parts. Aliases normalize the printed datasheet symbols.",
   "parameters": [
     {
       "key": "drain_source_voltage",
@@ -176,11 +176,11 @@
     },
     {
       "key": "diode_forward_voltage",
-      "name": "Body-diode forward voltage",
+      "name": "Source-drain (reverse-conduction) voltage",
       "unit": "V",
       "group": "body_diode",
-      "aliases": ["VSD", "diode forward voltage", "source-drain diode voltage"],
-      "hint": "Forward voltage of the intrinsic body diode at a stated forward current and T_J."
+      "aliases": ["VSD", "diode forward voltage", "source-drain diode voltage", "source-drain voltage", "reverse conduction voltage", "third-quadrant voltage"],
+      "hint": "The source-to-drain voltage in reverse conduction at a stated current and T_J. For a silicon or SiC MOSFET this is the intrinsic body-diode forward voltage. A GaN FET has NO intrinsic body diode: reverse conduction is through the channel and is gate-voltage dependent, so give the gate condition (a more negative V_GS raises VSD) and expect reverse_recovery_charge = 0. Do not assume a body diode exists for every part in this family."
     },
     {
       "key": "reverse_recovery_time",
@@ -229,6 +229,159 @@
       "group": "general",
       "aliases": ["Tstg", "storage temperature"],
       "hint": "Absolute-maximum storage temperature range."
+    },
+    {
+      "key": "transconductance",
+      "name": "Forward transconductance",
+      "unit": "S",
+      "group": "static",
+      "optional": true,
+      "aliases": ["gfs", "gm", "forward transconductance", "transconductance"],
+      "hint": "Forward transconductance dID/dVGS at a stated VDS and ID, in siemens (A/V). A 280 mS value is 0.28 S."
+    },
+    {
+      "key": "output_charge",
+      "name": "Output charge",
+      "unit": "C",
+      "group": "gate_charge",
+      "optional": true,
+      "aliases": ["Qoss", "output charge", "Qoss(er)"],
+      "hint": "Charge stored in the output capacitance Coss when VDS swings to the rated voltage. A headline hard-switching loss figure. Store the charge (C); a 213 nC value is 2.13e-07."
+    },
+    {
+      "key": "gate_charge_threshold",
+      "name": "Gate charge at threshold",
+      "unit": "C",
+      "group": "gate_charge",
+      "optional": true,
+      "aliases": ["Qg(th)", "gate charge at threshold", "Qgth"],
+      "hint": "Gate charge delivered to reach the gate threshold voltage."
+    },
+    {
+      "key": "switching_charge",
+      "name": "Switching charge",
+      "unit": "C",
+      "group": "gate_charge",
+      "optional": true,
+      "aliases": ["Qsw", "switching charge"],
+      "hint": "Gate charge from threshold through the Miller plateau, the charge that dominates the switching transition."
+    },
+    {
+      "key": "gate_plateau_voltage",
+      "name": "Gate plateau (Miller) voltage",
+      "unit": "V",
+      "group": "gate_charge",
+      "optional": true,
+      "aliases": ["Vplateau", "Miller plateau voltage", "gate plateau voltage", "Vgp"],
+      "hint": "The gate-source Miller-plateau voltage at a stated ID, distinct from the gate threshold. Drives gate-drive and dead-time design."
+    },
+    {
+      "key": "switching_energy_on",
+      "name": "Turn-on switching energy",
+      "unit": "J",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["Eon", "turn-on switching energy"],
+      "hint": "Energy dissipated per turn-on transition at a stated VDS, ID, and gate drive. The dominant loss metric for hard-switched SiC and Si parts."
+    },
+    {
+      "key": "switching_energy_off",
+      "name": "Turn-off switching energy",
+      "unit": "J",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["Eoff", "turn-off switching energy"],
+      "hint": "Energy dissipated per turn-off transition at a stated VDS, ID, and gate drive."
+    },
+    {
+      "key": "output_capacitance_stored_energy",
+      "name": "Output-capacitance stored energy",
+      "unit": "J",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Eoss", "Coss stored energy", "output capacitance energy"],
+      "hint": "Energy stored in Coss at the rated VDS, the soft-switching loss figure of merit."
+    },
+    {
+      "key": "effective_output_capacitance_energy",
+      "name": "Effective output capacitance, energy-related",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Coss(er)", "Co(er)", "effective output capacitance energy related"],
+      "hint": "The fixed capacitance that stores the same energy as the nonlinear Coss over a 0-to-rated VDS swing. Distinct from the small-signal Coss."
+    },
+    {
+      "key": "effective_output_capacitance_time",
+      "name": "Effective output capacitance, time-related",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Coss(tr)", "Co(tr)", "effective output capacitance time related"],
+      "hint": "The fixed capacitance that gives the same charging time as the nonlinear Coss over a 0-to-rated VDS swing."
+    },
+    {
+      "key": "body_diode_forward_current",
+      "name": "Source-drain (body-diode) forward current",
+      "unit": "A",
+      "group": "body_diode",
+      "optional": true,
+      "aliases": ["IS", "ISM", "body diode current", "source-drain current", "reverse-conduction current", "diode continuous forward current"],
+      "hint": "Continuous (and, as a second measurement, pulsed) reverse/third-quadrant current rating of the source-drain path or body diode. Present even on GaN parts, which conduct in reverse through the channel."
+    },
+    {
+      "key": "peak_reverse_recovery_current",
+      "name": "Peak reverse-recovery current",
+      "unit": "A",
+      "group": "body_diode",
+      "optional": true,
+      "aliases": ["Irrm", "peak reverse recovery current"],
+      "hint": "Peak body-diode reverse-recovery current, specified with a di/dt condition (axis DI_DT, unit A/us). Zero/not-applicable for GaN."
+    },
+    {
+      "key": "drain_gate_voltage",
+      "name": "Drain-gate voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["VDGR", "drain-gate voltage"],
+      "hint": "Absolute-maximum drain-to-gate voltage at a stated gate-source resistance, distinct from VDS and VGS. Common on small-signal parts."
+    },
+    {
+      "key": "pulsed_gate_source_voltage",
+      "name": "Pulsed gate-source voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["VGSM", "pulsed gate-source voltage", "transient gate-source voltage"],
+      "hint": "Peak/transient gate-source voltage rating, distinct from the continuous gate_source_voltage. Store as absolute_max with min and max."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["ton", "turn-on time"],
+      "hint": "Lumped turn-on time, when a part specifies it instead of the separate turn_on_delay_time and rise_time (common on small-signal MOSFETs)."
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["toff", "turn-off time"],
+      "hint": "Lumped turn-off time, when a part specifies it instead of the separate turn_off_delay_time and fall_time."
+    },
+    {
+      "key": "thermal_resistance_junction_board",
+      "name": "Junction-to-board thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJB", "theta-JB", "junction-to-board thermal resistance", "RthJB", "RthJSP", "junction-to-solder-point"],
+      "hint": "Thermal resistance from junction to board (or solder point for a leaded SMD package), a primary heat path for dual-side-cooled and leadless parts."
     }
   ]
 }

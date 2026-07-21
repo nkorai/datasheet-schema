@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LDO-NEG-X", "manufacturer": "Y", "family": "ldo", "polarity": "negative" },
+  "parameters": [
+    { "key": "output_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "min": -5.05, "typ": -5.0, "max": -4.95 }, "unit": "V",
+        "conditions": [ { "param": "V_IN", "min": -20, "max": -5.2, "unit": "V" } ], "sourcePage": 3 } ] },
+    { "key": "dropout_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.235 }, "unit": "V",
+        "conditions": [ { "param": "I_LOAD", "value": 0.5, "unit": "A" } ], "sourcePage": 4 } ] }
+  ],
+  "provenance": { "verified": false }
+}

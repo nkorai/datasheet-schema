@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "X", "manufacturer": "Y", "family": "ldo", "polarity": "reversed" },
+  "parameters": [
+    { "key": "output_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 3.3 }, "unit": "V", "sourcePage": 5 } ] }
+  ],
+  "provenance": { "verified": false }
+}

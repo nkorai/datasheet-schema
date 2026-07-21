@@ -1,7 +1,7 @@
 {
   "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
   "family": "ldo",
-  "dictionaryVersion": "1.2",
+  "dictionaryVersion": "1.3",
   "description": "Canonical parameter dictionary for low-dropout linear regulators (LDOs). Validated against a 39-datasheet, 20-manufacturer, 916-page corpus (see spec/v1.0/parameter-frequency-analysis.txt) and cross-checked with manufacturer parameter glossaries. Aliases normalize cross-vendor naming. Version 1.1 adds the rated output current and the operating and storage temperature ranges. Version 1.2 removes the unusable has_active_discharge capability flag (a boolean has no base-SI unit and so could never appear in a measurement); the capability is signalled by the presence of active_discharge_resistance.",
   "parameters": [
     {
@@ -562,6 +562,88 @@
         "storage temperature"
       ],
       "hint": "The absolute-maximum storage temperature range. Store as absolute_max limitClass, with min and max in the value."
+    },
+    {
+      "key": "noise_reduction_capacitance",
+      "name": "Noise-reduction capacitance",
+      "unit": "F",
+      "group": "stability",
+      "optional": true,
+      "aliases": ["CNR", "CNR/SS", "noise reduction capacitor", "noise-reduction capacitance", "reference bypass capacitor"],
+      "hint": "The capacitor on the NR/BYP/SS pin that sets the reference noise floor (and, on parts where the pin is shared, the soft-start ramp). Low-noise LDO noise and PSRR specs are conditioned on it (axis C_NR), so record its value."
+    },
+    {
+      "key": "feed_forward_capacitance",
+      "name": "Feed-forward capacitance",
+      "unit": "F",
+      "group": "stability",
+      "optional": true,
+      "aliases": ["CFF", "feed-forward capacitor", "feedforward capacitance"],
+      "hint": "The feed-forward capacitor across the top feedback resistor that improves PSRR and noise on an adjustable LDO. Conditions PSRR/noise (axis C_FF)."
+    },
+    {
+      "key": "soft_start_current",
+      "name": "Soft-start charging current",
+      "unit": "A",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["INR/SS", "ISS", "soft-start current", "soft-start charging current"],
+      "hint": "The current that charges the soft-start (NR/SS) capacitor and sets the start-up ramp time together with C_NR. Distinct from startup_time (the resulting time)."
+    },
+    {
+      "key": "pg_hysteresis",
+      "name": "Power-good hysteresis",
+      "unit": "%",
+      "altUnits": ["V"],
+      "group": "power_good",
+      "optional": true,
+      "aliases": ["VHYS(PG)", "power-good hysteresis", "PG hysteresis"],
+      "hint": "Hysteresis on the power-good threshold, as a percentage of Vout or an absolute voltage."
+    },
+    {
+      "key": "pg_leakage_current",
+      "name": "Power-good leakage current",
+      "unit": "A",
+      "group": "power_good",
+      "optional": true,
+      "aliases": ["Ilkg(PG)", "PG leakage current", "power-good leakage"],
+      "hint": "Open-drain power-good off-state leakage current at a stated pin voltage."
+    },
+    {
+      "key": "bias_supply_voltage_range",
+      "name": "Bias supply voltage range",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["VBIAS", "bias supply voltage", "bias rail voltage"],
+      "hint": "Dual-rail LDOs: the operating voltage range of the separate BIAS rail that powers the internal circuitry, distinct from input_voltage_range (the power input VIN)."
+    },
+    {
+      "key": "bias_pin_current",
+      "name": "Bias pin current",
+      "unit": "A",
+      "group": "current",
+      "optional": true,
+      "aliases": ["IBIAS", "bias pin current", "bias rail current"],
+      "hint": "Dual-rail LDOs: the current drawn from the BIAS rail, distinct from quiescent_current (the GND-pin current on the VIN rail)."
+    },
+    {
+      "key": "reference_current",
+      "name": "Reference current",
+      "unit": "A",
+      "group": "regulation",
+      "optional": true,
+      "aliases": ["ISET", "SET pin current", "reference current", "setpoint current"],
+      "hint": "Current-reference-architecture LDOs (e.g. LT304x): the precision current sourced from the SET pin that, with an external RSET, sets the output (VOUT = ISET x RSET). The defining spec of these parts; distinct from reference_voltage."
+    },
+    {
+      "key": "output_offset_voltage",
+      "name": "Output offset voltage",
+      "unit": "V",
+      "group": "regulation",
+      "optional": true,
+      "aliases": ["VOS", "output offset voltage", "buffer offset"],
+      "hint": "Current-reference LDOs: the offset (VOUT - VSET) of the unity-gain output buffer, the absolute accuracy spec of these parts. Distinct from output_voltage_accuracy (a percentage)."
     }
   ]
 }

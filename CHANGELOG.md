@@ -2,6 +2,18 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.7.0]
+
+Extends the `ldo` and `mosfet` families from the same gap-analysis method applied to eight real manufacturer datasheets (silicon/SiC/GaN MOSFETs; low-noise, dual-rail, current-reference, and negative LDOs). All eight fit the envelope with additive vocabulary; unanimously no separate GaN/SiC family. Also adds a consumer conformance guide.
+
+### Added
+- `CONFORMANCE.md`: the consumer's two-layer conformance checklist — portable JSON Schema (Layer 1) plus the three dictionary-driven family checks a consumer reimplements because a family-agnostic schema cannot express them (key membership, unit scoping, condition-axis dimension), with language-agnostic pseudocode and the driving dictionary field for each. Spec §10, README, and CLAUDE.md point to it.
+- `component.polarity` (`positive` | `negative` | `bipolar`, optional): declares a negative-rail regulator/reference so a consumer never infers rail sign from the sign of extracted values; on a negative part a range keeps numeric ordering (`min` is the more-negative bound). Fixtures `valid/negative-polarity.json`, `invalid/bad-polarity.json`. Demonstrated by a real negative LDO example.
+- Unit `S` (siemens, transconductance = A/V).
+- `mosfet` dictionary → 45 parameters (v1.1), covering silicon, SiC, and GaN power FETs plus small-signal parts: `transconductance` (S), `output_charge` (Qoss), `switching_energy_on`/`_off`, `output_capacitance_stored_energy` (Eoss), `effective_output_capacitance_energy`/`_time` (Coss er/tr), `gate_charge_threshold`, `switching_charge`, `gate_plateau_voltage`, `body_diode_forward_current`, `peak_reverse_recovery_current`, `drain_gate_voltage`, `pulsed_gate_source_voltage`, `turn_on_time`/`turn_off_time`, `thermal_resistance_junction_board`. **Correctness fix:** `diode_forward_voltage` no longer asserts an intrinsic body diode — it is now the source-drain/reverse-conduction voltage, gate-dependent, with a note that GaN conducts in reverse through the channel (Qrr = 0). Pin function `KS` (Kelvin/driver source); axes `I_S`, `I_G`, `DI_DT`, `T_SP`.
+- `ldo` dictionary → 62 parameters (v1.3): `noise_reduction_capacitance`, `feed_forward_capacitance`, `soft_start_current`, `pg_hysteresis`, `pg_leakage_current`, dual-rail `bias_supply_voltage_range`/`bias_pin_current`, and current-reference `reference_current` (ISET) and `output_offset_voltage` (VOS). Pin functions `NR`/`SS`/`ILIM`/`PGFB`/`BIAS`/`VSET`; axes `C_NR`/`C_FF`/`C_SET`/`R_ILIM`.
+- Two real examples: a GaN FET (`mosfet-gan-epc2308`, exercising the reverse-conduction fix, Qoss, effective Coss, junction-to-board resistance, the `KS` pin) and a negative current-reference LDO (`ldo-lt3094-negative`, exercising `polarity: negative`, `reference_current`, `output_offset_voltage`, the `C_SET` axis).
+
 ## [1.6.0]
 
 Driven by a gap analysis extracting ten real manufacturer voltage-reference datasheets (TI, ADI, Renesas, Microchip — not via any pre-normalized source) into the schema and recording what did not fit. Eleven of twelve parts fit with additive vocabulary only; the sole structural case (the ovenized multi-block LTZ1000) is documented as an out-of-scope limitation rather than driving a re-architecture.

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "FET-X", "manufacturer": "Y", "family": "mosfet" },
+  "parameters": [
+    { "key": "transconductance", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.28, "min": 0.14 }, "unit": "S",
+        "conditions": [ { "param": "V_DS", "value": 10, "unit": "V" }, { "param": "I_D", "value": 100, "unit": "A" } ], "sourcePage": 4 } ] }
+  ],
+  "provenance": { "verified": false }
+}

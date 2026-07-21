@@ -49,6 +49,10 @@ export interface ComponentIdentity {
    */
   package?: string;
   pinCount?: number;
+  /**
+   * The rail polarity of a regulator or reference, declared so a consumer never has to infer it from the sign of extracted values. positive is the default and MAY be omitted; negative marks a negative-rail part (a negative LDO or reference) whose output, input, and their conditions are negative numbers. When negative, min and max of a range keep numeric ordering (min is the more-negative bound), so an input range of -20 V to -2.3 V has min -20, max -2.3. bipolar is for a dual-rail or tracking part.
+   */
+  polarity?: 'positive' | 'negative' | 'bipolar';
   lifecycle?: 'active' | 'nrnd' | 'obsolete' | 'unknown';
   /**
    * Moisture sensitivity level, for example MSL1.
