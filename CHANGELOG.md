@@ -2,6 +2,16 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.9.0]
+
+Adds the **`op_amp`** family, the fourth family and the first pure-analog IC family, built from a 20-datasheet corpus (TI/ADI/Microchip) spanning general-purpose, precision/zero-drift, ultra-low-noise, high-speed voltage- and current-feedback, and femtoampere electrometer parts. Every part fit the envelope with additive vocabulary.
+
+### Added
+- `op_amp` dictionary ([`dictionary/op_amp-1.0.json`](dictionary/op_amp-1.0.json), 59 parameters, 222 aliases): offset/drift/bias, CMRR/PSRR, open-loop gain (and `transimpedance_gain` in ohms for current-feedback parts), GBW/slew/phase-margin/settling, the noise trio (voltage density, current density, and integrated pp/rms via `statistic`), THD/IMD/crosstalk, output swing-from-rail, supply/quiescent, an electrometer `guard_buffer` sub-block, thermal, and ESD. Two modeling conventions baked into the hints: input impedance printed as "R parallel C" splits into an `input_resistance` and an `input_capacitance` parameter; a rail-relative spec is stored as the headroom magnitude from the rail with the printed form in `conditionsVerbatim`.
+- Three units the corpus required (additive; every previously valid document stays valid): `A/sqrtHz` (input current-noise density, the current analog of `V/sqrtHz`), `deg` (phase margin), and `A/degC` (input bias/offset-current drift). Positive fixture `valid/opamp-units.json`.
+- Two real op-amp examples: `opamp-opa1612` (precision audio, exercising `A/sqrtHz` current noise, the `statistic` field, THD/IMD, PSRR in `V/V`, split input impedance) and `opamp-ada4530-1` (femtoampere electrometer, exercising the `GUARD` pin, the `guard_buffer` sub-block, femtoampere bias, and `deg` phase margin).
+- Recommended pin functions `IN_P`/`IN_N`/`VS_POS`/`VS_NEG`/`NULL`/`COMP`/`PD`/`GUARD` and condition axes `V_CM`/`R_L`/`A_V`/`C_L`/`R_S` (spec §5, §7.1). The regression condition-axis dimension check now also enforces `R_*`→ohm.
+
 ## [1.8.0]
 
 ### Changed

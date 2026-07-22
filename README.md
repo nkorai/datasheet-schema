@@ -51,7 +51,7 @@ The schema has three elements.
 
 1. Measurement. Every value is an object of `value` (with `min`, `typ`, `nom`, `max`), `unit`, `conditions`, and provenance fields. The `conditions` field is a first-class, typed list of axes.
 2. limitClass. One of `absolute_max`, `recommended`, or `characterized`. A single field replaces the separate datasheet tables and records whether a value is a stress limit, an operating range, or a guaranteed characteristic. A consumer must not treat an absolute-maximum value as an operating value.
-3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Three families are included, an LDO regulator, a discrete power MOSFET, and a precision voltage reference, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND, a transistor's G, D, S, and a shunt reference's CATHODE, ANODE. Adding a family requires only a new dictionary, not a schema change.
+3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Four families are included, an LDO regulator, a discrete power MOSFET, a precision voltage reference, and an operational amplifier, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND, a transistor's G, D, S, a shunt reference's CATHODE, ANODE, and an op-amp's IN_P, IN_N, VS_POS, VS_NEG. Adding a family requires only a new dictionary, not a schema change.
 
 The schema reuses established vocabulary, including IEC 61360 level roles, an Octopart-style identity envelope, and base-SI units. It adds the conditioned value and provenance that those sources omit.
 
@@ -95,7 +95,7 @@ Reference the hosted, versioned URL from a `$ref`.
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-The [`examples/`](./examples) directory holds validated documents across all three families: real LDO regulators (including a negative current-reference part), silicon and GaN MOSFETs, and three real voltage references (a shunt and two series parts across three manufacturers).
+The [`examples/`](./examples) directory holds validated documents across all four families: real LDO regulators (including a negative current-reference part), silicon and GaN MOSFETs, three real voltage references (a shunt and two series parts), and op-amps (a precision audio part and a femtoampere electrometer with its guard buffer).
 
 ## Contents
 
@@ -115,6 +115,7 @@ A dictionary defines the canonical parameter keys, units, and vendor aliases for
 | `ldo` | [`dictionary/ldo-1.0.json`](./dictionary/ldo-1.0.json) | 62, including dual-rail, soft-start/noise-reduction, and current-reference (LT304x) parameters. |
 | `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 45, covering silicon, SiC, and GaN power FETs (transconductance, output/switching charge, effective Coss, switching energy) as well as small-signal parts. |
 | `voltage_reference` | [`dictionary/voltage_reference-1.0.json`](./dictionary/voltage_reference-1.0.json) | 41, unifying series and shunt topologies, adjustable references, and temperature-sensor and heater sub-blocks. |
+| `op_amp` | [`dictionary/op_amp-1.0.json`](./dictionary/op_amp-1.0.json) | 59, synthesized from a 20-datasheet corpus spanning general-purpose, precision/zero-drift, ultra-low-noise, high-speed voltage- and current-feedback, and femtoampere electrometer parts. |
 
 To add a family, write a dictionary that conforms to [`dictionary/family-dictionary-1.0.schema.json`](./dictionary/family-dictionary-1.0.schema.json) and a validated example. No schema change is required.
 

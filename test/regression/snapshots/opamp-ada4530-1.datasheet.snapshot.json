@@ -1,0 +1,1680 @@
+{
+  "family": "op_amp",
+  "manufacturer": "Analog Devices",
+  "mpn": "ADA4530-1ARZ",
+  "parameters": [
+    {
+      "aliases": [
+        "IB",
+        "input bias current"
+      ],
+      "group": "input_bias",
+      "key": "input_bias_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": 50,
+              "min": null,
+              "note": null,
+              "param": "RH",
+              "unit": "%",
+              "value": null
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-14,
+            "min": -2e-14,
+            "typ": 1e-15
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            },
+            {
+              "max": 50,
+              "min": null,
+              "note": null,
+              "param": "RH",
+              "unit": "%",
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-14,
+            "min": -2e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            },
+            {
+              "max": 50,
+              "min": null,
+              "note": null,
+              "param": "RH",
+              "unit": "%",
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2.5e-13,
+            "min": -2.5e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOS",
+        "los"
+      ],
+      "group": "offset",
+      "key": "input_offset_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": 50,
+              "min": null,
+              "note": null,
+              "param": "RH",
+              "unit": "%",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-14,
+            "min": -2e-14,
+            "typ": 1e-15
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            },
+            {
+              "max": 50,
+              "min": null,
+              "note": null,
+              "param": "RH",
+              "unit": "%",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1.5e-13,
+            "min": -1.5e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOS",
+        "Vos"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.00004,
+            "min": -0.00004,
+            "typ": 0.000008
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 1.5,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.00005,
+            "min": -0.00005,
+            "typ": 0.000009
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 0,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.0003,
+            "min": -0.0003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVOS/AT",
+        "dVOS/dT"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": 0,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "max": 5e-7,
+            "min": -5e-7,
+            "typ": 1.3e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 0,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "max": 0.0000028,
+            "min": -0.0000028,
+            "typ": -7e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IVR",
+        "input voltage range"
+      ],
+      "group": "input",
+      "key": "common_mode_input_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 8.5,
+            "min": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR"
+      ],
+      "group": "rejection",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 1.5,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 105,
+            "typ": 114
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 1.5,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 100
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 0,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 87
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSRR"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 16,
+              "min": 4.5,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 130,
+            "typ": 150
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 16,
+              "min": 4.5,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 130
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVO",
+        "Avo",
+        "large-signal voltage gain"
+      ],
+      "group": "gain",
+      "key": "open_loop_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 2000
+            },
+            {
+              "max": 9.5,
+              "min": 0.5,
+              "note": null,
+              "param": "V_OUT",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 125,
+            "typ": 150
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 2000
+            },
+            {
+              "max": 9.5,
+              "min": 0.5,
+              "note": null,
+              "param": "V_OUT",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RIN",
+        "input resistance"
+      ],
+      "group": "input",
+      "key": "input_resistance_common_mode",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 100000000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CIN",
+        "input capacitance"
+      ],
+      "group": "input",
+      "key": "input_capacitance_common_mode",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 8e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOH",
+        "VOL",
+        "output swing from rail"
+      ],
+      "group": "output",
+      "key": "output_voltage_swing",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "high rail (V+)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.04,
+            "typ": 0.03
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "low rail (V-)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.04,
+            "typ": 0.015
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 2000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "low rail (V-)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.17,
+            "typ": 0.07
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISC",
+        "Isc"
+      ],
+      "group": "output",
+      "key": "short_circuit_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "source",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.015
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "sink",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": -0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISY",
+        "supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0013,
+            "typ": 0.0009
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SR"
+      ],
+      "group": "dynamic",
+      "key": "slew_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "A_V",
+              "unit": "V/V",
+              "value": 1
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/us",
+          "value": {
+            "typ": 1.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GBP"
+      ],
+      "group": "dynamic",
+      "key": "gain_bandwidth_product",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "A_V",
+              "unit": "V/V",
+              "value": 100
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 2000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PM",
+        "phase margin"
+      ],
+      "group": "dynamic",
+      "key": "phase_margin",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "A_V",
+              "unit": "V/V",
+              "value": 1
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "typ": 62
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "0.1 Hz to 10 Hz noise",
+        "en p-p"
+      ],
+      "group": "noise",
+      "key": "input_voltage_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.000004
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "eN",
+        "en"
+      ],
+      "group": "noise",
+      "key": "input_voltage_noise_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 8e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 1.6e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 1.4e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IN",
+        "iN",
+        "in"
+      ],
+      "group": "noise",
+      "key": "input_current_noise_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 0.1
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A/sqrtHz",
+          "value": {
+            "typ": 7e-17
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGOS",
+        "guard offset voltage"
+      ],
+      "group": "guard_buffer",
+      "key": "guard_offset_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 1.5,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.0001,
+            "typ": 0.000015
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 8.5,
+              "min": 0.1,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.00015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ZGOUT",
+        "guard output impedance"
+      ],
+      "group": "guard_buffer",
+      "key": "guard_output_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VSY",
+        "supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 16,
+            "min": 4.5
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 17
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "input voltage"
+      ],
+      "group": "general",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "input current"
+      ],
+      "group": "general",
+      "key": "input_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VID"
+      ],
+      "group": "general",
+      "key": "differential_input_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.7,
+            "min": -0.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJA",
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "8-Lead SOIC, standard 4-layer JEDEC board",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Table 5. Thermal Resistance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 122
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJC",
+        "theta-JC"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "8-Lead SOIC",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Table 5. Thermal Resistance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 41
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CDM",
+        "FICDM"
+      ],
+      "group": "general",
+      "key": "esd_cdm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1250
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "IN_P",
+      "name": "+IN",
+      "number": 1
+    },
+    {
+      "function": "GUARD",
+      "name": "GRD",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "IC",
+      "number": 3
+    },
+    {
+      "function": "VS_NEG",
+      "name": "V-",
+      "number": 4
+    },
+    {
+      "function": "VS_POS",
+      "name": "V+",
+      "number": 5
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 6
+    },
+    {
+      "function": "GUARD",
+      "name": "GRD",
+      "number": 7
+    },
+    {
+      "function": "IN_N",
+      "name": "-IN",
+      "number": 8
+    }
+  ]
+}

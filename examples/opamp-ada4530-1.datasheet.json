@@ -1,0 +1,749 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "ADA4530-1ARZ",
+    "manufacturer": "Analog Devices",
+    "family": "op_amp",
+    "polarity": "bipolar",
+    "description": "Femtoampere input-bias-current electrometer operational amplifier with an integrated guard buffer. Single CMOS amplifier, rail-to-rail output, input range includes the negative rail. Specified single-supply 4.5 V to 16 V (also usable dual +/-2.25 V to +/-8 V). Values below are the 10 V nominal table (VSY = 10 V), the middle of the three specified supplies (also specified at 4.5 V and 16 V).",
+    "package": "SOIC-8",
+    "pinCount": 8,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "ADA4530-1ARZ", "package": "SOIC-8", "temperatureGrade": "-40..125", "packing": "Tube" },
+      { "orderCode": "ADA4530-1ARZ-R7", "package": "SOIC-8", "temperatureGrade": "-40..125", "packing": "Reel, 1000" },
+      { "orderCode": "ADA4530-1ARZ-RL", "package": "SOIC-8", "temperatureGrade": "-40..125", "packing": "Reel, 2500" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "+IN", "function": "IN_P", "type": "analog", "description": "Noninverting input.", "sourcePage": 10 },
+    { "number": 2, "name": "GRD", "function": "GUARD", "type": "analog", "description": "Guard. Driven by the integrated guard buffer to the noninverting-input voltage.", "sourcePage": 10 },
+    { "number": 3, "name": "IC", "function": "NC", "description": "Internal connection. This pin must be connected to V- or left unconnected.", "sourcePage": 10 },
+    { "number": 4, "name": "V-", "function": "VS_NEG", "type": "power", "description": "Negative supply voltage.", "sourcePage": 10 },
+    { "number": 5, "name": "V+", "function": "VS_POS", "type": "power", "description": "Positive supply voltage.", "sourcePage": 10 },
+    { "number": 6, "name": "OUT", "function": "OUT", "type": "analog", "description": "Output.", "sourcePage": 10 },
+    { "number": 7, "name": "GRD", "function": "GUARD", "type": "analog", "description": "Guard. Second guard pin, tied to the same guard-buffer output as pin 2.", "sourcePage": 10 },
+    { "number": 8, "name": "-IN", "function": "IN_N", "type": "analog", "description": "Inverting input.", "sourcePage": 10 }
+  ],
+  "parameters": [
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "group": "input_bias",
+      "aliases": ["IB", "input bias current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-15, "min": -2e-14, "max": 2e-14 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" }, { "param": "RH", "max": 50, "unit": "%" } ],
+          "conditionsVerbatim": "RH < 50%; typ < 1 fA, max +/-20 fA at TA = 25 degC",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "guarantee": "production_tested"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -2e-14, "max": 2e-14 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }, { "param": "RH", "max": 50, "unit": "%" } ],
+          "conditionsVerbatim": "-40 degC < TA < +85 degC, RH < 50%; max +/-20 fA",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "guarantee": "by_characterization"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -2.5e-13, "max": 2.5e-13 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }, { "param": "RH", "max": 50, "unit": "%" } ],
+          "conditionsVerbatim": "-40 degC < TA < +125 degC, RH < 50%; max +/-250 fA",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "group": "offset",
+      "aliases": ["IOS", "los"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-15, "min": -2e-14, "max": 2e-14 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" }, { "param": "RH", "max": 50, "unit": "%" } ],
+          "conditionsVerbatim": "RH < 50%; typ < 1 fA, max +/-20 fA at TA = 25 degC",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1.5e-13, "max": 1.5e-13 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }, { "param": "RH", "max": 50, "unit": "%" } ],
+          "conditionsVerbatim": "-40 degC < TA < +125 degC, RH < 50%; max +/-150 fA",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "group": "offset",
+      "aliases": ["VOS", "Vos"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-6, "min": -4e-5, "max": 4e-5 },
+          "unit": "V",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" }, { "param": "V_CM", "value": 5, "unit": "V" } ],
+          "conditionsVerbatim": "VCM = Vsy/2 = 5 V, TA = 25 degC; typ +8 uV, max +/-40 uV",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics",
+          "guarantee": "production_tested"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9e-6, "min": -5e-5, "max": 5e-5 },
+          "unit": "V",
+          "conditions": [ { "param": "V_CM", "min": 1.5, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 1.5 V to 8.5 V; typ +9 uV, max +/-50 uV",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -3e-4, "max": 3e-4 },
+          "unit": "V",
+          "conditions": [ { "param": "V_CM", "min": 0, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 0 V to 8.5 V; max +/-300 uV",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "group": "offset",
+      "aliases": ["dVOS/dT", "AVOS/AT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.3e-7, "min": -5e-7, "max": 5e-7 },
+          "unit": "V/degC",
+          "conditions": [ { "param": "T_A", "min": 0, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "0 degC < TA < 125 degC; typ +0.13 uV/degC, max +/-0.5 uV/degC",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -7e-7, "min": -2.8e-6, "max": 2.8e-6 },
+          "unit": "V/degC",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 0, "unit": "degC" } ],
+          "conditionsVerbatim": "-40 degC < TA < 0 degC; typ -0.7 uV/degC, max +/-2.8 uV/degC",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage range",
+      "group": "input",
+      "aliases": ["IVR", "input voltage range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0, "max": 8.5 },
+          "unit": "V",
+          "conditionsVerbatim": "Input voltage range (IVR); includes the negative rail. 0 V to 8.5 V on a 10 V supply",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 105, "typ": 114 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_CM", "min": 1.5, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 1.5 V to 8.5 V, TA = 25 degC; min 105 dB, typ 114 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 100 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_CM", "min": 1.5, "max": 8.5, "unit": "V" }, { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 1.5 V to 8.5 V, -40 degC < TA < +125 degC; min 100 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 87 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_CM", "min": 0, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 0 V to 8.5 V; min 87 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 130, "typ": 150 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_S", "min": 4.5, "max": 16, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VSY = 4.5 V to 16 V, TA = 25 degC; min 130 dB, typ 150 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 130 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_S", "min": 4.5, "max": 16, "unit": "V" }, { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "VSY = 4.5 V to 16 V, -40 degC < TA < +125 degC; min 130 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "open_loop_gain",
+      "name": "Large-signal (open-loop) voltage gain",
+      "group": "gain",
+      "aliases": ["AVO", "Avo", "large-signal voltage gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 125, "typ": 150 },
+          "unit": "dB",
+          "conditions": [ { "param": "R_L", "value": 2000, "unit": "ohm" }, { "param": "V_OUT", "min": 0.5, "max": 9.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "RL = 2 kohm to VCM, VOUT = 0.5 V to 9.5 V, TA = 25 degC; min 125 dB, typ 150 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 125 },
+          "unit": "dB",
+          "conditions": [ { "param": "R_L", "value": 2000, "unit": "ohm" }, { "param": "V_OUT", "min": 0.5, "max": 9.5, "unit": "V" }, { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "RL = 2 kohm, -40 degC < TA < +125 degC; min 125 dB",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "input_resistance_common_mode",
+      "name": "Common-mode input resistance",
+      "group": "input",
+      "aliases": ["RIN", "input resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e14 },
+          "unit": "ohm",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "RIN, -40 degC < TA < +125 degC; typ > 100 TOhm (parallel-C split into input_capacitance_common_mode)",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance_common_mode",
+      "name": "Common-mode input capacitance",
+      "group": "input",
+      "aliases": ["CIN", "input capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-12 },
+          "unit": "F",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "CIN; typ 8 pF (the C of the printed R||C input impedance)",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_swing",
+      "name": "Output voltage swing (headroom from rail)",
+      "group": "output",
+      "aliases": ["VOH", "VOL", "output swing from rail"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03, "max": 0.04 },
+          "unit": "V",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" }, { "param": "DIRECTION", "note": "high rail (V+)" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VOH, RL = 10 kohm to VCM; min 9.96 V, typ 9.97 V (headroom from V+ = 10 V: typ 30 mV, worst-case 40 mV)",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.015, "max": 0.04 },
+          "unit": "V",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" }, { "param": "DIRECTION", "note": "low rail (V-)" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VOL, RL = 10 kohm to VCM; typ 15 mV, max 40 mV above V-",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.07, "max": 0.17 },
+          "unit": "V",
+          "conditions": [ { "param": "R_L", "value": 2000, "unit": "ohm" }, { "param": "DIRECTION", "note": "low rail (V-)" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VOL, RL = 2 kohm to VCM; typ 70 mV, max 170 mV above V-",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "group": "output",
+      "aliases": ["ISC", "Isc"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.015 },
+          "unit": "A",
+          "conditions": [ { "param": "DIRECTION", "note": "source" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "ISC, source; typ 15 mA",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -0.03 },
+          "unit": "A",
+          "conditions": [ { "param": "DIRECTION", "note": "sink" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "ISC, sink; typ -30 mA",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent (supply) current",
+      "group": "power_supply",
+      "aliases": ["ISY", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9e-4, "max": 1.3e-3 },
+          "unit": "A",
+          "conditions": [ { "param": "I_OUT", "value": 0, "unit": "A" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "IOUT = 0 mA, TA = 25 degC; typ 0.9 mA, max 1.3 mA",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "production_tested"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.5e-3 },
+          "unit": "A",
+          "conditions": [ { "param": "I_OUT", "value": 0, "unit": "A" }, { "param": "T_A", "min": -40, "max": 125, "unit": "degC" } ],
+          "conditionsVerbatim": "IOUT = 0 mA, -40 degC < TA < +125 degC; max 1.5 mA",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "slew_rate",
+      "name": "Slew rate",
+      "group": "dynamic",
+      "aliases": ["SR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4 },
+          "unit": "V/us",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" }, { "param": "C_L", "value": 1e-11, "unit": "F" }, { "param": "A_V", "value": 1, "unit": "V/V" } ],
+          "conditionsVerbatim": "RL = 10 kohm, CL = 10 pF, AV = 1; typ 1.4 V/us",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "gain_bandwidth_product",
+      "name": "Gain-bandwidth product",
+      "group": "dynamic",
+      "aliases": ["GBP"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e6 },
+          "unit": "Hz",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" }, { "param": "C_L", "value": 1e-11, "unit": "F" }, { "param": "A_V", "value": 100, "unit": "V/V" } ],
+          "conditionsVerbatim": "VIN = 10 mV rms, RL = 10 kohm, CL = 10 pF, AV = 100; typ 2 MHz",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "phase_margin",
+      "name": "Phase margin",
+      "group": "dynamic",
+      "aliases": ["PM", "phase margin"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 62 },
+          "unit": "deg",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" }, { "param": "C_L", "value": 1e-11, "unit": "F" }, { "param": "A_V", "value": 1, "unit": "V/V" } ],
+          "conditionsVerbatim": "VIN = 10 mV rms, RL = 10 kohm, CL = 10 pF, AV = 1; typ 62 degrees",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_noise",
+      "name": "Peak-to-peak input voltage noise",
+      "group": "noise",
+      "aliases": ["en p-p", "0.1 Hz to 10 Hz noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-6 },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [ { "param": "BW_LOW", "value": 0.1, "unit": "Hz" }, { "param": "BW_HIGH", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 0.1 Hz to 10 Hz; typ 4 uV p-p",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_noise_density",
+      "name": "Input voltage noise density",
+      "group": "noise",
+      "aliases": ["eN", "en"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-8 },
+          "unit": "V/sqrtHz",
+          "conditions": [ { "param": "F", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 10 Hz; typ 80 nV/sqrtHz",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.6e-8 },
+          "unit": "V/sqrtHz",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 1 kHz; typ 16 nV/sqrtHz",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4e-8 },
+          "unit": "V/sqrtHz",
+          "conditions": [ { "param": "F", "value": 10000, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 10 kHz; typ 14 nV/sqrtHz",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "input_current_noise_density",
+      "name": "Input current noise density",
+      "group": "noise",
+      "aliases": ["iN", "in", "IN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-17 },
+          "unit": "A/sqrtHz",
+          "conditions": [ { "param": "F", "value": 0.1, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 0.1 Hz; typ 0.07 fA/sqrtHz",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "guard_offset_voltage",
+      "name": "Guard-buffer offset voltage",
+      "group": "guard_buffer",
+      "aliases": ["VGOS", "guard offset voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-5, "max": 1e-4 },
+          "unit": "V",
+          "conditions": [ { "param": "V_CM", "min": 1.5, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VGOS = guard output minus noninverting input; VCM = 1.5 V to 8.5 V; typ 15 uV, max 100 uV",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.5e-4 },
+          "unit": "V",
+          "conditions": [ { "param": "V_CM", "min": 0.1, "max": 8.5, "unit": "V" }, { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "VCM = 0.1 V to 8.5 V; max 150 uV",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)"
+        }
+      ]
+    },
+    {
+      "key": "guard_output_impedance",
+      "name": "Guard-buffer output impedance",
+      "group": "guard_buffer",
+      "aliases": ["ZGOUT", "guard output impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1000 },
+          "unit": "ohm",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "ZGOUT; typ 1 kohm",
+          "sourcePage": 6,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power_supply",
+      "aliases": ["VSY", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.5, "max": 16 },
+          "unit": "V",
+          "conditionsVerbatim": "Operating supply voltage 4.5 V to 16 V (single supply; +/-2.25 V to +/-8 V dual)",
+          "sourcePage": 4,
+          "sourceTable": "Table 2. 10 V Nominal Electrical Characteristics"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 17 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage, absolute maximum 17 V",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage (absolute maximum)",
+      "group": "general",
+      "aliases": ["input voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.3 },
+          "unit": "V",
+          "conditionsVerbatim": "Input voltage abs max = (V-) - 0.3 V to (V+) + 0.3 V; stored as 0.3 V of headroom past either rail (clamp-diode limit, limit input current to 10 mA)",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "input_current",
+      "name": "Input pin current (absolute maximum)",
+      "group": "general",
+      "aliases": ["input current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.01 },
+          "unit": "A",
+          "conditionsVerbatim": "Input current 10 mA; clamp-diode limit when an input exceeds a rail by 0.3 V",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "differential_input_voltage",
+      "name": "Differential input voltage (absolute maximum)",
+      "group": "general",
+      "aliases": ["VID"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.7, "max": 0.7 },
+          "unit": "V",
+          "conditionsVerbatim": "Differential input voltage +/-0.7 V",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["theta-JA", "RthetaJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 122 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "PACKAGE", "note": "8-Lead SOIC, standard 4-layer JEDEC board" } ],
+          "conditionsVerbatim": "theta-JA, 8-lead SOIC, standard 4-layer JEDEC board; 122 degC/W",
+          "sourcePage": 9,
+          "sourceTable": "Table 5. Thermal Resistance"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "group": "thermal",
+      "aliases": ["theta-JC", "RthetaJC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 41 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "PACKAGE", "note": "8-Lead SOIC" } ],
+          "conditionsVerbatim": "theta-JC, 8-lead SOIC; 41 degC/W",
+          "sourcePage": 9,
+          "sourceTable": "Table 5. Thermal Resistance"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range -40 degC to +125 degC (listed under Absolute Maximum Ratings, semantically the specified operating range)",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "thermal",
+      "aliases": ["TJ"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature range -65 degC to +150 degC",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range -65 degC to +150 degC",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human body model (HBM), ESDA/JEDEC JS-001-2012; 4 kV",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["FICDM", "CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1250 },
+          "unit": "V",
+          "conditionsVerbatim": "Field-induced charged device model (FICDM), JESD22-C101-E; 1.25 kV",
+          "sourcePage": 9,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4530-1.pdf",
+    "datasheetRevision": "Rev. C (representative extraction via datasheets.md, normalized to base-SI; not a verbatim transcription)",
+    "extractionMethod": "llm:datasheets.md",
+    "verified": true
+  }
+}

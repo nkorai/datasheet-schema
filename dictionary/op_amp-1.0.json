@@ -1,0 +1,558 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "op_amp",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for operational amplifiers, synthesized from a 20-datasheet corpus spanning general-purpose/audio (TL072, NE5532, LM358), precision and zero-drift (OPA277, OPA189, ADA4522), JFET/CMOS (LF356, OPA627, OPA827, OPA320, TLV9062, MCP6002), ultra-low-noise (LT1028, AD797, LMH6629), high-speed voltage- and current-feedback (OPA855, THS3491), and femtoampere electrometer (LMP7721, ADA4530-1) parts across TI, Analog Devices and Microchip. Covers voltage-feedback and current-feedback topologies; current-feedback parts have asymmetric inverting/non-inverting input specs and a transimpedance (ohm) open-loop gain. Condition axes for this family: V_S, V_CM, R_L, R_S, C_L, A_V, F, T_A, T_J, plus R_F/R_G for current-feedback parts. Pin functions: IN_P/IN_N (inputs), VS_POS/VS_NEG (dual supply), NULL (offset trim), COMP (compensation), PD (power-down), GUARD (electrometer guard buffer). Two modeling conventions the corpus made universal: input impedance printed as 'R parallel C' is split into an input_resistance and an input_capacitance parameter; a rail-relative spec (common-mode range, output swing 'from the rail') is stored as the headroom magnitude from the rail with the printed form in conditionsVerbatim. Set component.polarity to bipolar for a dual-supply part. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "unit": "V",
+      "group": "offset",
+      "aliases": ["VOS", "Vos", "VIO", "Vio", "input offset voltage", "offset voltage"],
+      "hint": "Differential input offset, at T_A = 25 degC unless a temperature range is given. Often specified as a +/- magnitude; store as min = -X, max = +X. Grade suffixes set this number; use one document per grade."
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "unit": "V/degC",
+      "group": "offset",
+      "aliases": ["dVOS/dT", "TCVOS", "offset voltage drift", "offset drift", "average TC of VOS", "TCVos"],
+      "hint": "Temperature coefficient of the input offset voltage. The zero-drift/chopper parts (OPA189, ADA4522) put their headline here (a few nV/degC)."
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "unit": "A",
+      "group": "offset",
+      "aliases": ["IOS", "Ios", "IIO", "input offset current"],
+      "hint": "Difference of the two input bias currents. Often array over T_A. Symmetric +/- values map to min/max."
+    },
+    {
+      "key": "input_offset_current_drift",
+      "name": "Input offset current drift",
+      "unit": "A/degC",
+      "group": "offset",
+      "optional": true,
+      "aliases": ["dIOS/dT", "TCIOS", "offset current drift"],
+      "hint": "Temperature coefficient of the input offset current (the current analog of V/degC)."
+    },
+    {
+      "key": "long_term_offset_drift",
+      "name": "Long-term offset drift",
+      "unit": "V",
+      "group": "offset",
+      "optional": true,
+      "aliases": ["long-term drift", "VOS long-term stability", "offset aging"],
+      "hint": "Offset-voltage change over an elapsed time. Datasheets print uV/1000 hr or uV/month; store the absolute change in volts and keep the rate and duration in conditionsVerbatim."
+    },
+    {
+      "key": "offset_temperature_hysteresis",
+      "name": "Offset temperature hysteresis",
+      "unit": "V",
+      "group": "offset",
+      "optional": true,
+      "aliases": ["thermal hysteresis", "VOS hysteresis", "temperature cycle hysteresis"],
+      "hint": "Residual offset shift after a temperature cycle back to 25 degC."
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "unit": "A",
+      "group": "input_bias",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IB", "Ib", "IIB", "Ibias", "input bias current"],
+      "hint": "Average input bias current, strongly temperature-dependent for JFET/CMOS parts, so one measurement per T_A point. Femtoampere on electrometer parts. For a current-feedback amplifier the two inputs differ; use input_bias_current_inverting/_noninverting instead."
+    },
+    {
+      "key": "input_bias_current_drift",
+      "name": "Input bias current drift",
+      "unit": "A/degC",
+      "group": "input_bias",
+      "optional": true,
+      "aliases": ["dIB/dT", "TCIB", "bias current drift"],
+      "hint": "Temperature coefficient of the input bias current (common on high-speed bipolar parts)."
+    },
+    {
+      "key": "input_bias_current_noninverting",
+      "name": "Non-inverting input bias current",
+      "unit": "A",
+      "group": "input_bias",
+      "optional": true,
+      "aliases": ["IB+", "IBP", "non-inverting input bias current"],
+      "hint": "Current-feedback amplifiers only: the (buffer) non-inverting input bias current, distinct from the inverting input."
+    },
+    {
+      "key": "input_bias_current_inverting",
+      "name": "Inverting input bias current",
+      "unit": "A",
+      "group": "input_bias",
+      "optional": true,
+      "aliases": ["IB-", "IBN", "inverting input bias current"],
+      "hint": "Current-feedback amplifiers only: the inverting (feedback-node) input bias current."
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage range",
+      "unit": "V",
+      "group": "input",
+      "aliases": ["VCM", "VICR", "CMVR", "IVR", "input voltage range", "common-mode voltage range"],
+      "hint": "The input common-mode range over which the amplifier is specified. Frequently rail-relative (e.g. (V-)+2 to (V+)-2); store the headroom from each rail and preserve the printed form in conditionsVerbatim."
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "rejection",
+      "array": true,
+      "conditionAxis": "V_CM",
+      "aliases": ["CMRR", "CMR", "common-mode rejection", "kCMR"],
+      "hint": "Rejection of a common-mode input, tested over a stated V_CM range. Usually dB; some vendors give it as a uV/V ratio (V/V)."
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "rejection",
+      "aliases": ["PSRR", "PSR", "kSVR", "SVRR", "supply-voltage rejection", "ripple rejection"],
+      "hint": "Rejection of a supply change. dB for most parts; precision/zero-drift parts (OPA189) often spec it as an offset shift in uV/V (V/V). Split PSRR+ and PSRR- into two measurements with a DIRECTION note when given separately."
+    },
+    {
+      "key": "input_resistance_differential",
+      "name": "Differential input resistance",
+      "unit": "ohm",
+      "group": "input",
+      "optional": true,
+      "aliases": ["RID", "Rin diff", "differential input resistance", "ZID"],
+      "hint": "Resistance between the two inputs. When printed as 'R parallel C', store the R here and the C in input_capacitance_differential."
+    },
+    {
+      "key": "input_resistance_common_mode",
+      "name": "Common-mode input resistance",
+      "unit": "ohm",
+      "group": "input",
+      "optional": true,
+      "aliases": ["RIC", "Rin cm", "common-mode input resistance", "ZIC"],
+      "hint": "Resistance from either input to the supplies. Over 100 TOhm on electrometer parts. Split from any parallel capacitance."
+    },
+    {
+      "key": "input_capacitance_differential",
+      "name": "Differential input capacitance",
+      "unit": "F",
+      "group": "input",
+      "optional": true,
+      "aliases": ["CID", "Cin diff", "differential input capacitance"],
+      "hint": "Capacitance between the inputs; the C of a printed 'R parallel C' input-impedance cell."
+    },
+    {
+      "key": "input_capacitance_common_mode",
+      "name": "Common-mode input capacitance",
+      "unit": "F",
+      "group": "input",
+      "optional": true,
+      "aliases": ["CIC", "Cin cm", "common-mode input capacitance"],
+      "hint": "Capacitance from either input to the supplies."
+    },
+    {
+      "key": "open_loop_gain",
+      "name": "Open-loop voltage gain",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "gain",
+      "array": true,
+      "conditionAxis": "R_L",
+      "aliases": ["AOL", "AVOL", "Avol", "AVD", "large-signal voltage gain", "open-loop gain", "DC gain"],
+      "hint": "Large-signal DC open-loop gain, swept over load resistance and output-swing range. dB or the dimensionless V/V (a V/mV or V/uV figure normalizes to V/V). For a current-feedback amplifier the open-loop gain is a transimpedance in ohms; use transimpedance_gain instead."
+    },
+    {
+      "key": "transimpedance_gain",
+      "name": "Open-loop transimpedance gain",
+      "unit": "ohm",
+      "group": "gain",
+      "optional": true,
+      "aliases": ["ZOL", "transimpedance", "transresistance", "open-loop transimpedance"],
+      "hint": "Current-feedback amplifiers only: the open-loop transimpedance (output voltage per inverting-input error current), in ohms (megohms). Replaces open_loop_gain for a CFA."
+    },
+    {
+      "key": "gain_bandwidth_product",
+      "name": "Gain-bandwidth product",
+      "unit": "Hz",
+      "group": "dynamic",
+      "aliases": ["GBW", "GBWP", "GBP", "gain-bandwidth product", "unity-gain bandwidth"],
+      "hint": "Gain-bandwidth product (voltage-feedback parts). Note the gain the amplifier must be stable at (A_V) in a condition, since decompensated parts (LT1028, OPA855) only specify it at a minimum gain."
+    },
+    {
+      "key": "slew_rate",
+      "name": "Slew rate",
+      "unit": "V/us",
+      "group": "dynamic",
+      "aliases": ["SR", "slew rate"],
+      "hint": "Output slew rate at a stated gain and step. Rising and falling can differ; use two measurements with a DIRECTION note when given separately."
+    },
+    {
+      "key": "phase_margin",
+      "name": "Phase margin",
+      "unit": "deg",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["PM", "phase margin", "Om", "phi-m"],
+      "hint": "Phase margin at unity gain (or the minimum stable gain), in degrees. Note the load capacitance C_L in a condition."
+    },
+    {
+      "key": "small_signal_bandwidth",
+      "name": "Small-signal bandwidth",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["SSBW", "-3 dB bandwidth", "small-signal bandwidth", "f-3dB", "closed-loop bandwidth"],
+      "hint": "Small-signal -3 dB bandwidth at a stated closed-loop gain and small output amplitude. Common on high-speed parts."
+    },
+    {
+      "key": "large_signal_bandwidth",
+      "name": "Large-signal / full-power bandwidth",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["LSBW", "full-power bandwidth", "FPBW", "power bandwidth", "large-signal bandwidth"],
+      "hint": "Bandwidth at a large (full-scale) output swing; slew-rate limited. Note the output amplitude."
+    },
+    {
+      "key": "settling_time",
+      "name": "Settling time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "ACCURACY",
+      "aliases": ["tS", "ts", "settling time"],
+      "hint": "Time to settle within a stated error band (0.1 %, 0.01 %, 16-bit) after a step. One measurement per error band; note the step size and gain."
+    },
+    {
+      "key": "overload_recovery_time",
+      "name": "Overload recovery time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["tOR", "overload recovery", "overdrive recovery time"],
+      "hint": "Time to recover from an input overdrive that saturates the output."
+    },
+    {
+      "key": "rise_fall_time",
+      "name": "Rise / fall time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["tr", "tf", "rise time", "fall time"],
+      "hint": "10-90 % edge time for a small step (high-speed parts). Rising/falling separable via a DIRECTION note."
+    },
+    {
+      "key": "input_voltage_noise",
+      "name": "Input voltage noise (band)",
+      "unit": "V",
+      "group": "noise",
+      "array": true,
+      "conditionAxis": "BW_HIGH",
+      "aliases": ["en p-p", "input voltage noise", "0.1 Hz to 10 Hz noise", "wideband noise"],
+      "hint": "Integrated input-referred voltage noise over a bandwidth (usually 0.1 Hz to 10 Hz peak-to-peak, or a wideband RMS figure). Set the statistic field to peak_to_peak or rms and give BW_LOW/BW_HIGH."
+    },
+    {
+      "key": "input_voltage_noise_density",
+      "name": "Input voltage noise density",
+      "unit": "V/sqrtHz",
+      "group": "noise",
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["en", "eN", "voltage noise density", "voltage noise spectral density"],
+      "hint": "Input-referred voltage noise spectral density; one measurement per frequency. The 1/f region and the flat (broadband) floor are separate points on the same key."
+    },
+    {
+      "key": "input_current_noise_density",
+      "name": "Input current noise density",
+      "unit": "A/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["in", "iN", "current noise density", "current noise spectral density"],
+      "hint": "Input-referred current noise spectral density (A/sqrtHz), the current analog of en. For a current-feedback amplifier the inverting and non-inverting inputs differ; capture both with a note."
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion (+ noise)",
+      "unit": "dB",
+      "altUnits": ["%"],
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["THD", "THD+N", "total harmonic distortion", "distortion"],
+      "hint": "Harmonic distortion, per frequency, at a stated output amplitude, gain and load. Audio parts give it in % or dB; high-speed parts give HD2/HD3 relative to the carrier (store as dB, note 'dBc' in conditionsVerbatim)."
+    },
+    {
+      "key": "second_harmonic_distortion",
+      "name": "Second-harmonic distortion",
+      "unit": "dB",
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["HD2", "2nd harmonic distortion", "second harmonic"],
+      "hint": "High-speed parts: 2nd-harmonic distortion relative to the carrier (dBc), per frequency and output amplitude."
+    },
+    {
+      "key": "third_harmonic_distortion",
+      "name": "Third-harmonic distortion",
+      "unit": "dB",
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["HD3", "3rd harmonic distortion", "third harmonic"],
+      "hint": "High-speed parts: 3rd-harmonic distortion relative to the carrier (dBc), per frequency and output amplitude."
+    },
+    {
+      "key": "intermodulation_distortion",
+      "name": "Intermodulation distortion",
+      "unit": "dB",
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["IMD", "IMD3", "IMD2", "intermodulation distortion", "SMPTE", "CCIF"],
+      "hint": "Two-tone intermodulation distortion, per center frequency; note the tone spacing and amplitudes."
+    },
+    {
+      "key": "channel_separation",
+      "name": "Channel separation (crosstalk)",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["crosstalk", "channel separation", "amplifier-to-amplifier isolation"],
+      "hint": "Multi-amplifier parts: isolation between channels, per frequency."
+    },
+    {
+      "key": "emi_rejection_ratio",
+      "name": "EMI rejection ratio",
+      "unit": "dB",
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["EMIRR", "EMI rejection ratio"],
+      "hint": "Rejection of RF interference at an input, per frequency; note the RF power level."
+    },
+    {
+      "key": "output_voltage_swing",
+      "name": "Output voltage swing",
+      "unit": "V",
+      "group": "output",
+      "array": true,
+      "conditionAxis": "R_L",
+      "aliases": ["VO", "VOM", "VOH", "VOL", "output voltage swing", "maximum output swing", "output swing from rail"],
+      "hint": "Maximum output swing, swept over load resistance. For a rail-to-rail part this is the headroom from each rail (e.g. 25 mV from V+), not an absolute voltage; store the headroom magnitude and preserve the printed rail-relative form in conditionsVerbatim, with a DIRECTION note for the high vs low rail."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "unit": "A",
+      "group": "output",
+      "aliases": ["ISC", "Isc", "short-circuit current", "output short-circuit current"],
+      "hint": "Current into an output short. Source and sink can differ; use one measurement per direction with a DIRECTION note."
+    },
+    {
+      "key": "output_current",
+      "name": "Output current",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": ["IOUT", "IO", "output current", "linear output current"],
+      "hint": "Specified linear output drive current (distinct from the short-circuit current). High-power parts (THS3491) spec several hundred mA."
+    },
+    {
+      "key": "open_loop_output_impedance",
+      "name": "Open-loop output impedance",
+      "unit": "ohm",
+      "group": "output",
+      "optional": true,
+      "aliases": ["ZO", "RO", "Zout", "open-loop output impedance", "closed-loop output impedance"],
+      "hint": "Output impedance at a stated frequency; open-loop or closed-loop as noted."
+    },
+    {
+      "key": "capacitive_load_drive",
+      "name": "Capacitive load drive",
+      "unit": "F",
+      "group": "output",
+      "optional": true,
+      "aliases": ["CLOAD", "CL", "capacitive load drive", "stable capacitive load"],
+      "hint": "The capacitive load the amplifier drives with a stated overshoot/phase margin."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "unit": "V",
+      "group": "power_supply",
+      "aliases": ["VS", "VDD", "VCC", "supply voltage", "operating supply voltage"],
+      "hint": "The total supply voltage (V+ minus V-) range: recommended for the operating range, absolute_max for the stress limit. A dual-supply part states it as a +/- magnitude."
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent current",
+      "unit": "A",
+      "group": "power_supply",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IQ", "Iq", "ISY", "ICC", "IDD", "quiescent current", "supply current"],
+      "hint": "Supply current with no load, per amplifier (note when the datasheet gives it per channel vs total). Often array over T_A."
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown supply current",
+      "unit": "A",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["IQSD", "shutdown current", "power-down supply current", "disabled supply current"],
+      "hint": "Supply current when the amplifier is disabled via its power-down pin."
+    },
+    {
+      "key": "enable_threshold_voltage",
+      "name": "Enable / power-down threshold voltage",
+      "unit": "V",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["VIH", "VIL", "enable threshold", "disable threshold", "PD threshold"],
+      "hint": "Logic thresholds of the enable/power-down (PD) pin. Use min for the guaranteed-on level and max for the guaranteed-off level, or one measurement per level."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on / turn-off time",
+      "unit": "s",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["tON", "tOFF", "enable time", "disable time", "turn-on time", "turn-off time"],
+      "hint": "Enable/disable delay of the power-down pin; use a DIRECTION note for on vs off."
+    },
+    {
+      "key": "guard_offset_voltage",
+      "name": "Guard-buffer offset voltage",
+      "unit": "V",
+      "group": "guard_buffer",
+      "optional": true,
+      "aliases": ["VGOS", "guard offset voltage"],
+      "hint": "Electrometer parts with an integrated guard buffer (ADA4530-1): the guard-output-minus-input offset. The guard buffer is a specified second amplifier; group its parameters under guard_buffer."
+    },
+    {
+      "key": "guard_output_impedance",
+      "name": "Guard-buffer output impedance",
+      "unit": "ohm",
+      "group": "guard_buffer",
+      "optional": true,
+      "aliases": ["ZGOUT", "guard output impedance"],
+      "hint": "Output impedance of the integrated guard buffer."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "array": true,
+      "conditionAxis": "PACKAGE",
+      "aliases": ["RthetaJA", "theta-JA", "RthJA", "junction-to-ambient thermal resistance"],
+      "hint": "Per-package junction-to-ambient thermal resistance."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJC", "theta-JC", "RthJC", "junction-to-case thermal resistance"],
+      "hint": "Per-package junction-to-case thermal resistance (top)."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["PD", "PDISS", "power dissipation", "internal power dissipation"],
+      "hint": "Absolute-maximum internal power dissipation, package-dependent."
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage (absolute maximum)",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["input voltage", "VIN abs max", "input common-mode abs max"],
+      "hint": "Absolute-maximum voltage at an input. Frequently rail-relative ((V-)-0.5 to (V+)+0.5); keep the printed form in conditionsVerbatim."
+    },
+    {
+      "key": "differential_input_voltage",
+      "name": "Differential input voltage (absolute maximum)",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["VID", "differential input voltage"],
+      "hint": "Absolute-maximum voltage between the two inputs; small on parts with input clamp diodes."
+    },
+    {
+      "key": "input_current",
+      "name": "Input current (absolute maximum)",
+      "unit": "A",
+      "group": "general",
+      "optional": true,
+      "aliases": ["input pin current", "IIN abs max"],
+      "hint": "Absolute-maximum current into an input pin (clamp-diode limit)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": ["TA", "operating temperature", "operating free-air temperature"],
+      "hint": "Specified operating temperature range (recommended), or the wider absolute-maximum operating range."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["TJ", "junction temperature", "maximum junction temperature"],
+      "hint": "Absolute-maximum junction temperature."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Absolute-maximum storage temperature range."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM", "HBM", "human body model"],
+      "hint": "ESD withstand, human body model. Store as absolute_max."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM", "CDM", "charged device model", "FICDM"],
+      "hint": "ESD withstand, charged device model (or field-induced CDM). Store as absolute_max."
+    }
+  ]
+}

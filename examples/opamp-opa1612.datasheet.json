@@ -1,0 +1,762 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "OPA1612AID",
+    "manufacturer": "Texas Instruments",
+    "family": "op_amp",
+    "description": "SoundPlus dual bipolar-input audio operational amplifier: 1.1 nV/sqrtHz noise, 0.000015% THD+N at 1 kHz, 40 MHz GBW, 27 V/us slew rate, rail-to-rail output, +/-2.25 V to +/-18 V dual supply, SOIC-8.",
+    "package": "SOIC-8",
+    "pinCount": 8,
+    "polarity": "bipolar",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "OPA1612AID", "package": "SOIC-8", "temperatureGrade": "-40..85", "packing": "Tube" },
+      { "orderCode": "OPA1612AIDR", "package": "SOIC-8", "temperatureGrade": "-40..85", "packing": "Tape and reel" },
+      { "orderCode": "OPA1612AIDRG", "package": "SON-8 (DRG)", "temperatureGrade": "-40..85", "packing": "Tape and reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "OUT A", "function": "OUT", "type": "analog", "description": "Output, channel A.", "sourcePage": 3 },
+    { "number": 2, "name": "-IN A", "function": "IN_N", "type": "analog", "description": "Inverting input, channel A.", "sourcePage": 3 },
+    { "number": 3, "name": "+IN A", "function": "IN_P", "type": "analog", "description": "Noninverting input, channel A.", "sourcePage": 3 },
+    { "number": 4, "name": "V-", "function": "VS_NEG", "type": "power", "description": "Negative (lowest) power supply.", "sourcePage": 3 },
+    { "number": 5, "name": "+IN B", "function": "IN_P", "type": "analog", "description": "Noninverting input, channel B.", "sourcePage": 3 },
+    { "number": 6, "name": "-IN B", "function": "IN_N", "type": "analog", "description": "Inverting input, channel B.", "sourcePage": 3 },
+    { "number": 7, "name": "OUT B", "function": "OUT", "type": "analog", "description": "Output, channel B.", "sourcePage": 3 },
+    { "number": 8, "name": "V+", "function": "VS_POS", "type": "power", "description": "Positive (highest) power supply.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "group": "offset",
+      "aliases": ["VOS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.0005, "max": 0.0005 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_S", "value": 15, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VS = +/-15 V; +/-100 uV typ, +/-500 uV max",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "group": "offset",
+      "aliases": ["dVOS/dT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000001, "max": 0.000004 },
+          "unit": "V/degC",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 85, "unit": "degC" } ],
+          "conditionsVerbatim": "VOS over temperature, TA = -40 degC to +85 degC (1 uV/degC typ, 4 uV/degC max). Specified by design and characterization.",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "group": "input_bias",
+      "aliases": ["IB"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.00000025, "max": 0.00000025 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CM", "value": 0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VCM = 0 V; +/-60 nA typ, +/-250 nA max (SOIC-8). DRG (SON-8) package only: +/-300 nA max.",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.00000035 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CM", "value": 0, "unit": "V" },
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IB over temperature, TA = -40 degC to +85 degC (350 nA max). Specified by design and characterization.",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "group": "offset",
+      "aliases": ["IOS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.000000175, "max": 0.000000175 },
+          "unit": "A",
+          "conditions": [ { "param": "V_CM", "value": 0, "unit": "V" } ],
+          "conditionsVerbatim": "VCM = 0 V; +/-25 nA typ, +/-175 nA max",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_noise",
+      "name": "Input voltage noise (band)",
+      "group": "noise",
+      "aliases": ["en p-p", "input voltage noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000012 },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [
+            { "param": "BW_LOW", "value": 20, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 20000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "f = 20 Hz to 20 kHz, 1.2 uVPP",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_noise_density",
+      "name": "Input voltage noise density",
+      "group": "noise",
+      "aliases": ["en"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000000002 },
+          "unit": "V/sqrtHz",
+          "statistic": "rms",
+          "conditions": [ { "param": "F", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 10 Hz (2 nV/sqrtHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000000015 },
+          "unit": "V/sqrtHz",
+          "statistic": "rms",
+          "conditions": [ { "param": "F", "value": 100, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 100 Hz (1.5 nV/sqrtHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000000011, "max": 0.0000000015 },
+          "unit": "V/sqrtHz",
+          "statistic": "rms",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 1 kHz (1.1 nV/sqrtHz typ, 1.5 nV/sqrtHz max)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_current_noise_density",
+      "name": "Input current noise density",
+      "group": "noise",
+      "aliases": ["in"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000000000003 },
+          "unit": "A/sqrtHz",
+          "statistic": "rms",
+          "conditions": [ { "param": "F", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 10 Hz (3 pA/sqrtHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000000000017 },
+          "unit": "A/sqrtHz",
+          "statistic": "rms",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "f = 1 kHz (1.7 pA/sqrtHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion + noise",
+      "group": "distortion",
+      "aliases": ["THD+N"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -136 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "G = +1, f = 1 kHz, VO = 3 VRMS, BW = 80 kHz; 0.000015% (-136 dB)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "intermodulation_distortion",
+      "name": "Intermodulation distortion",
+      "group": "distortion",
+      "aliases": ["IMD", "SMPTE", "CCIF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -136 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "note": "SMPTE/DIN two-tone, 4:1 (60 Hz and 7 kHz)" } ],
+          "conditionsVerbatim": "SMPTE/DIN two-tone, 4:1 (60 Hz and 7 kHz), G = +1, VO = 3 VRMS; 0.000015% (-136 dB)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -138 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "note": "DIM 30: 3 kHz square wave and 15 kHz sine wave" } ],
+          "conditionsVerbatim": "DIM 30 (3-kHz square wave and 15-kHz sine wave), G = +1, VO = 3 VRMS; 0.000012% (-138 dB)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -142 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "note": "CCIF twin-tone (19 kHz and 20 kHz)" } ],
+          "conditionsVerbatim": "CCIF twin-tone (19 kHz and 20 kHz), G = +1, VO = 3 VRMS; 0.000008% (-142 dB)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "channel_separation",
+      "name": "Channel separation (crosstalk)",
+      "group": "distortion",
+      "aliases": ["crosstalk", "channel separation (dual)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -130 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "Channel separation (dual), f = 1 kHz (-130 dB)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "gain_bandwidth_product",
+      "name": "Gain-bandwidth product",
+      "group": "dynamic",
+      "aliases": ["GBW"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 40000000 },
+          "unit": "Hz",
+          "conditions": [ { "param": "A_V", "value": 1, "unit": "V/V" } ],
+          "conditionsVerbatim": "G = 1 (40 MHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 80000000 },
+          "unit": "Hz",
+          "conditions": [ { "param": "A_V", "value": 100, "unit": "V/V" } ],
+          "conditionsVerbatim": "G = 100 (80 MHz)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "slew_rate",
+      "name": "Slew rate",
+      "group": "dynamic",
+      "aliases": ["SR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 27 },
+          "unit": "V/us",
+          "conditions": [ { "param": "A_V", "value": -1, "unit": "V/V" } ],
+          "conditionsVerbatim": "G = -1 (27 V/us)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "large_signal_bandwidth",
+      "name": "Full-power bandwidth",
+      "group": "dynamic",
+      "aliases": ["full-power bandwidth", "FPBW"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "VO = 1 VPP (4 MHz); full-power bandwidth = SR / (2*pi*VP)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "overload_recovery_time",
+      "name": "Overload recovery time",
+      "group": "dynamic",
+      "aliases": ["overload recovery time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000005 },
+          "unit": "s",
+          "conditions": [ { "param": "A_V", "value": -10, "unit": "V/V" } ],
+          "conditionsVerbatim": "G = -10 (500 ns)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage range",
+      "group": "input",
+      "aliases": ["VCM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2 },
+          "unit": "V",
+          "conditions": [ { "param": "HEADROOM", "note": "headroom from each rail, symmetric" } ],
+          "conditionsVerbatim": "(V-) + 2 V to (V+) - 2 V; stored as 2 V headroom from each rail",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 110, "typ": 120 },
+          "unit": "dB",
+          "conditions": [ { "param": "V_CM", "note": "(V-) + 2 V <= VCM <= (V+) - 2 V" } ],
+          "conditionsVerbatim": "(V-) + 2 V <= VCM <= (V+) - 2 V (110 dB min, 120 dB typ)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0000001, "max": 0.000001 },
+          "unit": "V/V",
+          "conditions": [ { "param": "V_S", "min": 4.5, "max": 36, "unit": "V" } ],
+          "conditionsVerbatim": "VS = +/-2.25 V to +/-18 V; 0.1 uV/V typ, 1 uV/V max (expressed as an input-referred offset shift per volt of supply)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_resistance_differential",
+      "name": "Differential input resistance",
+      "group": "input",
+      "aliases": ["RID"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Differential input impedance printed as 20 kohm || 8 pF; resistance term",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance_differential",
+      "name": "Differential input capacitance",
+      "group": "input",
+      "aliases": ["CID"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000000000008 },
+          "unit": "F",
+          "conditionsVerbatim": "Differential input impedance printed as 20 kohm || 8 pF; capacitance term",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_resistance_common_mode",
+      "name": "Common-mode input resistance",
+      "group": "input",
+      "aliases": ["RIC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1000000000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Common-mode input impedance printed as 10^9 ohm || 2 pF; resistance term (1 Gohm)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance_common_mode",
+      "name": "Common-mode input capacitance",
+      "group": "input",
+      "aliases": ["CIC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.000000000002 },
+          "unit": "F",
+          "conditionsVerbatim": "Common-mode input impedance printed as 10^9 ohm || 2 pF; capacitance term",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V"
+        }
+      ]
+    },
+    {
+      "key": "open_loop_gain",
+      "name": "Open-loop voltage gain",
+      "group": "gain",
+      "aliases": ["AOL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 114, "typ": 130 },
+          "unit": "dB",
+          "conditions": [ { "param": "R_L", "value": 10000, "unit": "ohm" } ],
+          "conditionsVerbatim": "(V-) + 0.2 V <= VO <= (V+) - 0.2 V, RL = 10 kohm (114 dB min, 130 dB typ)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 110, "typ": 114 },
+          "unit": "dB",
+          "conditions": [ { "param": "R_L", "value": 2000, "unit": "ohm" } ],
+          "conditionsVerbatim": "(V-) + 0.6 V <= VO <= (V+) - 0.6 V, RL = 2 kohm (110 dB min, 114 dB typ)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_swing",
+      "name": "Output voltage swing",
+      "group": "output",
+      "aliases": ["VOUT", "output swing from rail"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "R_L", "value": 10000, "unit": "ohm" },
+            { "param": "HEADROOM", "note": "from each rail (high and low)" }
+          ],
+          "conditionsVerbatim": "RL = 10 kohm, AOL >= 114 dB: (V-) + 0.2 V to (V+) - 0.2 V; stored as 0.2 V headroom from each rail",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "R_L", "value": 2000, "unit": "ohm" },
+            { "param": "HEADROOM", "note": "from each rail (high and low)" }
+          ],
+          "conditionsVerbatim": "RL = 2 kohm, AOL >= 110 dB: (V-) + 0.6 V to (V+) - 0.6 V; stored as 0.6 V headroom from each rail",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        }
+      ]
+    },
+    {
+      "key": "output_current",
+      "name": "Output current",
+      "group": "output",
+      "aliases": ["IOUT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03 },
+          "unit": "A",
+          "conditionsVerbatim": "High output drive capability of +/-30 mA (Features / Description)",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "group": "output",
+      "aliases": ["ISC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.055 },
+          "unit": "A",
+          "conditions": [ { "param": "DIRECTION", "note": "sourcing" } ],
+          "conditionsVerbatim": "ISC = +55 mA (sourcing). Short-circuit to VS/2, one amplifier per package.",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -0.062 },
+          "unit": "A",
+          "conditions": [ { "param": "DIRECTION", "note": "sinking" } ],
+          "conditionsVerbatim": "ISC = -62 mA (sinking). Short-circuit to VS/2, one amplifier per package.",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power_supply",
+      "aliases": ["VS"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.5, "max": 36 },
+          "unit": "V",
+          "conditionsVerbatim": "Specified voltage VS = +/-2.25 V to +/-18 V (total supply V+ - V- = 4.5 V to 36 V)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics / Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 40 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage VS = (V+) - (V-), 40 V absolute maximum",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent current (per channel)",
+      "group": "power_supply",
+      "aliases": ["IQ"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0036, "max": 0.0045 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_OUT", "value": 0, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Per channel, IOUT = 0 A; 3.6 mA typ, 4.5 mA max",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.0055 },
+          "unit": "A",
+          "conditions": [ { "param": "T_A", "min": -40, "max": 85, "unit": "degC" } ],
+          "conditionsVerbatim": "IQ over temperature, TA = -40 degC to +85 degC (5.5 mA max). Specified by design and characterization.",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["TA", "specified range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Specified temperature range -40 degC to +85 degC",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics / Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating range (functional) -55 degC to +125 degC",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "thermal",
+      "aliases": ["TJ"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 200 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature (TJ) 200 degC",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range -65 degC to +150 degC",
+          "sourcePage": 4,
+          "sourceTable": "Handling Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["theta-JA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 150 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "PACKAGE", "note": "SOIC-8 (D)" } ],
+          "conditionsVerbatim": "Thermal resistance, SOIC-8 (150 degC/W)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics: VS = +/-2.25 V to +/-18 V (continued)"
+        }
+      ]
+    },
+    {
+      "key": "input_current",
+      "name": "Input current (absolute maximum)",
+      "group": "general",
+      "aliases": ["input pin current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.01, "max": 0.01 },
+          "unit": "A",
+          "conditionsVerbatim": "Input current, all pins except power-supply pins, +/-10 mA",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 3000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human body model (HBM), per ANSI/ESDA/JEDEC JS-001, all pins: +/-3000 V",
+          "sourcePage": 4,
+          "sourceTable": "Handling Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1000 },
+          "unit": "V",
+          "conditionsVerbatim": "Charged device model (CDM), per JEDEC JESD22-C101, all pins: +/-1000 V",
+          "sourcePage": 4,
+          "sourceTable": "Handling Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/opa1612.pdf",
+    "datasheetRevision": "SBOS450C - JULY 2009 - REVISED AUGUST 2014",
+    "publishedDate": "2014-08",
+    "extractionMethod": "llm:claude (from the TI OPA1611/OPA1612 datasheet, normalized to base-SI; not a verbatim transcription)",
+    "verified": true
+  }
+}

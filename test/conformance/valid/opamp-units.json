@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "OPA-X", "manufacturer": "Y", "family": "op_amp", "polarity": "bipolar" },
+  "parameters": [
+    { "key": "input_current_noise_density", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 1.65e-13 }, "unit": "A/sqrtHz", "statistic": "rms",
+        "conditions": [ { "param": "F", "value": 1000, "unit": "Hz" } ], "sourcePage": 9 } ] },
+    { "key": "phase_margin", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 55 }, "unit": "deg",
+        "conditions": [ { "param": "C_L", "value": 5e-11, "unit": "F" } ], "sourcePage": 8 } ] },
+    { "key": "input_bias_current_drift", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": -8e-9 }, "unit": "A/degC",
+        "conditions": [ { "param": "T_J", "min": -40, "max": 125, "unit": "degC" } ], "sourcePage": 6 } ] }
+  ],
+  "provenance": { "verified": false }
+}

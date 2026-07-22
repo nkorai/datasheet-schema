@@ -100,7 +100,7 @@ when extending anything.
 |---|---|
 | `schema/datasheet-1.0.schema.json` | **The normative artifact.** Self-contained, no external `$ref`. Where prose and this disagree, this governs. |
 | `dictionary/family-dictionary-1.0.schema.json` | Meta-schema every family dictionary validates against. |
-| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (62 params), `mosfet` (45), `voltage_reference` (41). |
+| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (62 params), `mosfet` (45), `voltage_reference` (41), `op_amp` (59). |
 | `spec/v1.0/datasheet-spec.md` | Human-readable normative spec (RFC-2119 language). |
 | `CONFORMANCE.md` | The consumer's checklist: Layer 1 (portable JSON Schema) + Layer 2 (the 3 dictionary-driven family checks any consumer reimplements — key membership, unit scoping, axis dimension). Point adopters here. |
 | `spec/v1.0/*.txt` | Corpus evidence: parameter-frequency analysis over the 39-datasheet LDO corpus. |
@@ -210,12 +210,12 @@ URLs that `$id` resolves to). The Pages job runs on push; the npm job does not.
 
 ## Conventions (quick reference)
 
-- **Unit enum (closed):** `V A Hz degC ohm F s W C J S dB V/V % ppm ppm/degC ppm/V ppm/A V/degC degC/W K/W V/us A/us V/sqrtHz`. No SI prefixes (a real per-mA/uV rate becomes `ppm/A` or `ohm`, never `ppm/mA`). `S` is siemens (transconductance = A/V).
+- **Unit enum (closed):** `V A Hz degC ohm F s W C J S deg dB V/V % ppm ppm/degC ppm/V ppm/A V/degC A/degC degC/W K/W V/us A/us V/sqrtHz A/sqrtHz`. No SI prefixes (a real per-mA/uV rate becomes `ppm/A` or `ohm`, never `ppm/mA`). `S` is siemens (transconductance = A/V), `deg` is phase-margin degrees, `A/sqrtHz` is current-noise density.
 - **`component.polarity`** (`positive` | `negative` | `bipolar`, optional, default positive): declare a negative-rail regulator/reference so a consumer never infers rail sign from the sign of numbers. On a negative part, ranges keep numeric ordering (`min` is the more-negative bound); differential magnitudes (dropout, headroom, offset) stay positive.
 - **Unit scoping (dimension safety):** the enum is family-agnostic, so the core schema can't know `output_voltage` is volts. Each dictionary parameter declares its canonical `unit` plus, for genuinely multi-unit params (line/load regulation, drift, hysteresis, accuracy), an `altUnits` list. `scripts/validate.mjs` **rejects** any measurement whose unit isn't the param's `unit`/`altUnits` (temperature in volts fails), and `scripts/regression.mjs` checks numeric conditions on well-known axes carry the right dimension (`T_*`→degC, `V_*`→V, `I_*`→A, `F/BW_*`→Hz, `C_*`→F). Negative fixtures live in `test/conformance/dictionary-invalid/`.
 - **Parameter key:** `^[a-z][a-z0-9_]*$` (snake_case).
 - **Pin function:** `^[A-Z][A-Z0-9_]*$` (open uppercase vocab).
-- **Condition axis `param` vocab:** `T_J T_A T_C T_SP V_IN V_OUT V_EN V_S V_GS V_DS I_OUT I_LOAD I_R I_C I_D I_S I_G F DI_DT C_OUT C_IN C_NR C_FF C_SET ESR R_ILIM HEADROOM RIPPLE BW_LOW BW_HIGH C_OUT_TYPE PACKAGE BOARD DIRECTION` (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes like `DIRECTION`=source/sink/shunt). The dimension check in `regression.mjs` enforces `T_*`→degC, `V_*`→V, `I_*`→A, `F`/`BW_*`→Hz, `C_*`→F; other axes (e.g. `DI_DT`=A/us, `R_ILIM`=ohm) are unconstrained.
+- **Condition axis `param` vocab:** `T_J T_A T_C T_SP V_IN V_OUT V_EN V_S V_CM V_GS V_DS I_OUT I_LOAD I_R I_C I_D I_S I_G F DI_DT C_OUT C_IN C_NR C_FF C_SET C_L ESR R_L R_S R_F R_G R_ILIM A_V ACCURACY HEADROOM RIPPLE BW_LOW BW_HIGH C_OUT_TYPE PACKAGE BOARD DIRECTION` (op-amps add V_CM, R_L, A_V, C_L, R_S) (extensible; a `unit` is required whenever a numeric `value`/`min`/`max` is present, omitted for note-only axes like `DIRECTION`=source/sink/shunt). The dimension check in `regression.mjs` enforces `T_*`→degC, `V_*`→V, `I_*`→A, `R_*`→ohm, `F`/`BW_*`→Hz, `C_*`→F; other axes (e.g. `DI_DT`=A/us, `A_V`=dimensionless) are unconstrained.
 - **`limitClass`:** `absolute_max` | `recommended` | `characterized`.
 - **Measurement optional fields:** `statistic` (`rms` | `peak_to_peak` | `peak` | `mean`) distinguishes a p-p from an RMS figure of the same quantity; `guarantee` (`production_tested` | `by_design` | `by_characterization` | `typical`) — the datasheet's basis, independent of `limitClass`; `review` (`unchecked` | `confirmed` | `edited`) and per-value `confidence` (0–1) — advisory extraction metadata, **not** the `verified` flag. The regression snapshot tracks `statistic` and `guarantee` (facts), not `review`/`confidence` (advisory).
 - **Top-level required:** `schemaVersion` `component` `parameters` `provenance`.

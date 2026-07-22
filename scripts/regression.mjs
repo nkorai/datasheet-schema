@@ -114,6 +114,7 @@ const expectedAxisUnit = (param) => {
     if (param.startsWith('I_')) return 'A';
     if (param.startsWith('C_') && param !== 'C_OUT_TYPE') return 'F';
     if (param.startsWith('F_')) return 'Hz';
+    if (param.startsWith('R_')) return 'ohm';
     return null; // unknown axis: not enforced
 };
 
