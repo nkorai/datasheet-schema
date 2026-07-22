@@ -37,8 +37,11 @@ jobs:
       - run: npx npm@11 publish --access public --provenance
 
   pages:
-    # Deploys on push and on dispatch. Does not depend on the npm job, so the
-    # site updates on a documentation push without republishing the package.
+    # Deploys on push only. A release is always "push the commit, then dispatch
+    # publish"; the push already redeploys the site, so gating this to push
+    # avoids a second, concurrent Pages deploy of the same commit on the manual
+    # npm dispatch (which the Pages API rejects as an in-progress deployment).
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     environment: github-pages
     steps:
