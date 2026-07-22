@@ -1,0 +1,1017 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LM5116MH",
+    "manufacturer": "Texas Instruments",
+    "family": "dc_dc",
+    "description": "Wide-range (6 to 100 V) synchronous buck controller with emulated peak current-mode control. Drives external high-side and low-side N-channel MOSFETs; populates the gate-driver, current-sense-threshold, internal-bias-regulator, and voltage-mode error-amplifier keys rather than integrated-FET on-resistance.",
+    "polarity": "positive",
+    "package": "HTSSOP-20",
+    "pinCount": 20,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      {
+        "orderCode": "LM5116MH/NOPB",
+        "package": "HTSSOP-20 (PWP)",
+        "packing": "Tube"
+      },
+      {
+        "orderCode": "LM5116MHX/NOPB",
+        "package": "HTSSOP-20 (PWP)",
+        "packing": "Tape and Reel"
+      }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "VIN", "function": "IN", "type": "power", "description": "Chip supply, input-voltage monitor, and input to the VCC regulator.", "sourcePage": 3 },
+    { "number": 2, "name": "UVLO", "function": "UVLO", "type": "analog", "description": "Programmable line undervoltage-lockout input; 5 uA pull-up when EN is high.", "sourcePage": 4 },
+    { "number": 3, "name": "RT/SYNC", "function": "RT", "type": "analog", "description": "Oscillator timing resistor to AGND (50 kHz to 1 MHz); accepts an external sync clock.", "sourcePage": 3 },
+    { "number": 4, "name": "EN", "function": "EN", "type": "digital_in", "description": "Enable. Below 0.5 V the part draws < 10 uA; pull above 3.3 V for normal operation.", "sourcePage": 3 },
+    { "number": 5, "name": "RAMP", "function": "RAMP", "type": "analog", "description": "Emulated-ramp capacitor to AGND; sets the current-mode ramp slope.", "sourcePage": 3 },
+    { "number": 6, "name": "AGND", "function": "GND", "type": "power", "description": "Analog ground; tie to PGND through the exposed pad.", "sourcePage": 3 },
+    { "number": 7, "name": "SS", "function": "SS", "type": "analog", "description": "Soft-start capacitor charged by an internal 10 uA source.", "sourcePage": 3 },
+    { "number": 8, "name": "FB", "function": "FB", "type": "analog", "description": "Feedback to the error-amp inverting input; regulates to 1.215 V.", "sourcePage": 3 },
+    { "number": 9, "name": "COMP", "function": "COMP", "type": "analog", "description": "Error-amplifier output; loop compensation network to FB.", "sourcePage": 3 },
+    { "number": 10, "name": "VOUT", "function": "SENSE", "type": "analog", "description": "Output-voltage monitor for the emulated ramp; connect directly to the regulated output.", "sourcePage": 3 },
+    { "number": 11, "name": "DEMB", "function": "DEMB", "type": "analog", "description": "Diode-emulation / low-side source monitor.", "sourcePage": 3 },
+    { "number": 12, "name": "CS", "function": "CS", "type": "analog", "description": "Current-sense amplifier positive input (top of Rsense or LS-FET drain).", "sourcePage": 3 },
+    { "number": 13, "name": "CSG", "function": "CSG", "type": "analog", "description": "Current-sense amplifier ground input (bottom of Rsense or LS-FET source).", "sourcePage": 3 },
+    { "number": 14, "name": "PGND", "function": "GND", "type": "power", "description": "Power ground; tie to AGND through the exposed pad.", "sourcePage": 3 },
+    { "number": 15, "name": "LO", "function": "LO", "type": "digital_out", "description": "Low-side MOSFET gate drive.", "sourcePage": 3 },
+    { "number": 16, "name": "VCC", "function": "VCC", "type": "power", "description": "Internal bias/gate-drive regulator output; decouple locally to PGND.", "sourcePage": 4 },
+    { "number": 17, "name": "VCCX", "function": "VCCX", "type": "power", "description": "Optional external VCC supply; above 4.5 V it takes over from the internal regulator.", "sourcePage": 4 },
+    { "number": 18, "name": "HB", "function": "HB", "type": "power", "description": "High-side bootstrap gate-drive supply.", "sourcePage": 3 },
+    { "number": 19, "name": "HO", "function": "HO", "type": "digital_out", "description": "High-side MOSFET gate drive.", "sourcePage": 3 },
+    { "number": 20, "name": "SW", "function": "SW", "type": "analog", "description": "Switch node; bootstrap capacitor negative terminal and HS-FET source.", "sourcePage": 3 },
+    { "number": 21, "name": "EP", "function": "PAD", "type": "thermal", "description": "Exposed die-attach pad; solder to the ground plane.", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage (VIN)",
+      "group": "power_supply",
+      "aliases": ["VIN"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.3, "max": 100 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN to GND",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 6, "max": 100 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN, over operating free-air temperature range",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "VIN operating (bias) current",
+      "group": "power_supply",
+      "aliases": ["IBIAS", "IBIASX", "VIN operating current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.005, "max": 0.007 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CCX", "value": 0, "unit": "V" },
+            { "param": "V_IN", "value": 48, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IBIAS, VCCX = 0 V, VIN = 48 V, no load on LO and HO",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0059, "max": 0.008 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CCX", "value": 0, "unit": "V" },
+            { "param": "V_IN", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IBIAS, VCCX = 0 V, VIN = 100 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0012, "max": 0.0017 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CCX", "value": 5, "unit": "V" },
+            { "param": "V_IN", "value": 48, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IBIASX, VCCX = 5 V (external bias), VIN = 48 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0016, "max": 0.0023 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CCX", "value": 5, "unit": "V" },
+            { "param": "V_IN", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IBIASX, VCCX = 5 V (external bias), VIN = 100 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "name": "VIN shutdown current",
+      "group": "power_supply",
+      "aliases": ["ISTDBY", "VIN shutdown current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-06, "max": 1e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0, "unit": "V" },
+            { "param": "V_IN", "value": 48, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN = 0 V, VIN = 48 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0, "unit": "V" },
+            { "param": "V_IN", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN = 0 V, VIN = 100 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_voltage",
+      "name": "FB reference voltage",
+      "group": "reference",
+      "aliases": ["VREF", "VFB", "FB reference voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.195, "typ": 1.215, "max": 1.231 },
+          "unit": "V",
+          "conditionsVerbatim": "Measured at FB pin, FB = COMP",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "feedback_bias_current",
+      "name": "FB input bias current",
+      "group": "reference",
+      "aliases": ["FB input bias current", "IFB"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-08, "max": 5e-07 },
+          "unit": "A",
+          "conditionsVerbatim": "FB = 2 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "current_sense_threshold",
+      "name": "Cycle-by-cycle current-sense threshold (CSG - CS)",
+      "group": "current_limit",
+      "aliases": ["VCS(TH)", "VCS(THX)", "cycle-by-cycle sense voltage threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.094, "typ": 0.11, "max": 0.126 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CCX", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCS(TH), VCCX = 0 V, RAMP = 0 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.105, "typ": 0.122, "max": 0.139 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CCX", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCS(THX), VCCX = 5 V, RAMP = 0 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "switching_frequency",
+      "name": "Oscillator frequency",
+      "group": "switching",
+      "aliases": ["fSW", "fOSC", "oscillator frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 180000, "typ": 200000, "max": 220000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "R_T", "value": 16000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Frequency 1, RT = 16 kOhm",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 480000, "typ": 535000, "max": 590000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "R_T", "value": 5000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Frequency 2, RT = 5 kOhm",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "min_on_time",
+      "name": "Minimum HO on-time",
+      "group": "switching",
+      "aliases": ["tON(min)", "minimum HO on-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_IN", "value": 80, "unit": "V" },
+            { "param": "C_RAMP", "value": 5e-11, "unit": "F", "note": "CRAMP = 50 pF" }
+          ],
+          "conditionsVerbatim": "tON(min), VIN = 80 V, CRAMP = 50 pF",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dead_time",
+      "name": "Adaptive gate-drive dead time",
+      "group": "switching",
+      "aliases": ["dead time", "cross-conduction delay"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.5e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "LO fall to HO rise delay" },
+            { "param": "C_L", "value": 0, "unit": "F", "note": "C-load = 0" }
+          ],
+          "conditionsVerbatim": "LO Fall to HO Rise Delay, C-load = 0",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "HO fall to LO rise delay" },
+            { "param": "C_L", "value": 0, "unit": "F", "note": "C-load = 0" }
+          ],
+          "conditionsVerbatim": "HO Fall to LO Rise Delay, C-load = 0",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_dc_gain",
+      "name": "Error-amplifier DC gain",
+      "group": "error_amplifier",
+      "aliases": ["AOL", "DC gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 80 },
+          "unit": "dB",
+          "conditionsVerbatim": "DC gain",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_bandwidth",
+      "name": "Error-amplifier unity-gain bandwidth",
+      "group": "error_amplifier",
+      "aliases": ["fBW", "unity gain bandwidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Unity gain bandwidth",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_output_current",
+      "name": "COMP sink/source current",
+      "group": "error_amplifier",
+      "aliases": ["COMP sink/source current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.003 },
+          "unit": "A",
+          "conditionsVerbatim": "COMP sink/source current",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_source_current",
+      "name": "Peak gate-driver source current",
+      "group": "gate_driver",
+      "aliases": ["IOHL", "IOHH", "peak source current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO (low-side)" }
+          ],
+          "conditionsVerbatim": "IOHL, Peak LO Source Current, VLO = 0 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO (high-side)" }
+          ],
+          "conditionsVerbatim": "IOHH, Peak HO Source Current, VHO = 0 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_sink_current",
+      "name": "Peak gate-driver sink current",
+      "group": "gate_driver",
+      "aliases": ["IOLL", "IOLH", "peak sink current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO (low-side)" }
+          ],
+          "conditionsVerbatim": "IOLL, Peak LO Sink Current, VLO = VCC",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.2 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO (high-side)" }
+          ],
+          "conditionsVerbatim": "IOLH, Peak HO Sink Current, VHO = VCC",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_output_voltage",
+      "name": "Gate-driver output voltage (low state / high-state drop from rail)",
+      "group": "gate_driver",
+      "aliases": ["VOLL", "VOHL", "VOLH", "VOHH", "driver output voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.08, "max": 0.17 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO low-state output voltage" },
+            { "param": "I_LOAD", "value": 0.1, "unit": "A", "note": "ILO = 100 mA" }
+          ],
+          "conditionsVerbatim": "VOLL, LO Low-state Output Voltage, ILO = 100 mA",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO high-state drop below VCC (VCC - VLO)" },
+            { "param": "I_LOAD", "value": -0.1, "unit": "A", "note": "ILO = -100 mA" }
+          ],
+          "conditionsVerbatim": "VOHL, LO High-state Output Voltage, ILO = -100 mA, VOHL = VCC - VLO",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.17, "max": 0.27 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO low-state output voltage" },
+            { "param": "I_LOAD", "value": 0.1, "unit": "A", "note": "IHO = 100 mA" }
+          ],
+          "conditionsVerbatim": "VOLH, HO Low-state Output Voltage, IHO = 100 mA",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.45 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO high-state drop below HB (VHB - VHO)" },
+            { "param": "I_LOAD", "value": -0.1, "unit": "A", "note": "IHO = -100 mA" }
+          ],
+          "conditionsVerbatim": "VOHH, HO High-state Output Voltage, IHO = -100 mA, VOHH = VHB - VHO",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_rise_fall_time",
+      "name": "Gate-driver rise / fall time",
+      "group": "gate_driver",
+      "aliases": ["LO rise time", "LO fall time", "HO rise time", "HO fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.8e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO rise" },
+            { "param": "C_L", "value": 1e-09, "unit": "F", "note": "C-load = 1000 pF" }
+          ],
+          "conditionsVerbatim": "LO Rise Time, C-load = 1000 pF",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "LO fall" },
+            { "param": "C_L", "value": 1e-09, "unit": "F", "note": "C-load = 1000 pF" }
+          ],
+          "conditionsVerbatim": "LO Fall Time, C-load = 1000 pF",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO rise" },
+            { "param": "C_L", "value": 1e-09, "unit": "F", "note": "C-load = 1000 pF" }
+          ],
+          "conditionsVerbatim": "HO Rise Time, C-load = 1000 pF",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.3e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "HO fall" },
+            { "param": "C_L", "value": 1e-09, "unit": "F", "note": "C-load = 1000 pF" }
+          ],
+          "conditionsVerbatim": "HO High-side Fall Time, C-load = 1000 pF",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "bootstrap_uvlo",
+      "name": "HB-to-SW undervoltage threshold",
+      "group": "gate_driver",
+      "aliases": ["HB to SW undervoltage", "bootstrap UVLO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3 },
+          "unit": "V",
+          "conditionsVerbatim": "HB to SW undervoltage",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_voltage",
+      "name": "VCC regulation voltage",
+      "group": "internal_regulator",
+      "aliases": ["VCC(REG)", "VCC regulation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 7.1, "typ": 7.4, "max": 7.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": 48, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCC Regulation, VIN = 48 V (default)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5, "typ": 5.9, "max": 6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": 6, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCC Regulation, VIN = 6 V (dropout)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_uvlo",
+      "name": "VCC undervoltage threshold",
+      "group": "internal_regulator",
+      "aliases": ["VCC undervoltage threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.3, "typ": 4.5, "max": 4.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "VCC rising" }
+          ],
+          "conditionsVerbatim": "VCC Undervoltage Threshold, VCC Rising",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "external_bias_switchover_threshold",
+      "name": "VCCX switch threshold",
+      "group": "internal_regulator",
+      "aliases": ["VCCX Switch Threshold", "external bias threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.3, "typ": 4.5, "max": 4.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "VCCX rising" }
+          ],
+          "conditionsVerbatim": "VCCX Switch Threshold, VCCX Rising",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_current",
+      "name": "Soft-start current source",
+      "group": "soft_start",
+      "aliases": ["ISS", "SS current source"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 8e-06, "typ": 1.1e-05, "max": 1.4e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SS", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SS Current Source, SS = 0 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_threshold",
+      "name": "EN input threshold",
+      "group": "enable",
+      "aliases": ["VIH min", "VIL max", "EN input threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising (EN input high threshold, VIH min)" }
+          ],
+          "conditionsVerbatim": "VIH min, EN Input High Threshold",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "falling (EN input low threshold, VIL max)" }
+          ],
+          "conditionsVerbatim": "VIL max, EN Input Low Threshold",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_input_current",
+      "name": "EN input bias current",
+      "group": "enable",
+      "aliases": ["EN input bias current", "IEN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -7.5e-06, "typ": -3e-06, "max": 1e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN Input Bias Current, VEN = 3 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1e-06, "typ": 0, "max": 1e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN Input Bias Current, VEN = 0.5 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-05, "max": 9e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN Input Bias Current, VEN = 100 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_threshold",
+      "name": "UVLO standby threshold",
+      "group": "protection",
+      "aliases": ["UVLO Standby Threshold", "VIN UVLO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.17, "typ": 1.215, "max": 1.262 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "UVLO rising" }
+          ],
+          "conditionsVerbatim": "UVLO Standby Threshold, UVLO Rising",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_hysteresis",
+      "name": "UVLO threshold hysteresis",
+      "group": "protection",
+      "aliases": ["UVLO Threshold Hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.1 },
+          "unit": "V",
+          "conditionsVerbatim": "UVLO Threshold Hysteresis",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown threshold",
+      "group": "protection",
+      "aliases": ["TSD", "thermal shutdown"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 170 },
+          "unit": "degC",
+          "conditionsVerbatim": "Thermal Shutdown, Rising",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_hysteresis",
+      "name": "Thermal shutdown hysteresis",
+      "group": "protection",
+      "aliases": ["Thermal Shutdown Hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 15 },
+          "unit": "degC",
+          "conditionsVerbatim": "Thermal Shutdown Hysteresis",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJA", "RθJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 40.6 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "PWP (HTSSOP-20), JEDEC standard board" }
+          ],
+          "conditionsVerbatim": "RθJA, Junction-to-ambient thermal resistance, PWP (HTSSOP) 20 pins",
+          "sourcePage": 6,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature, over operating free-air temperature range",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "general",
+      "aliases": ["TJ", "maximum junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature",
+          "sourcePage": 5,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "group": "general",
+      "aliases": ["ESD HBM", "V(ESD) HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 2000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human-body model (HBM), per ANSI/ESDA/JEDEC JS-001; ±2 kV all pins except VIN (±1.5 kV)",
+          "sourcePage": 5,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged-device model",
+      "group": "general",
+      "aliases": ["ESD CDM", "V(ESD) CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 750 },
+          "unit": "V",
+          "conditionsVerbatim": "Charged-device model (CDM), per JEDEC JESD22-C101; ±750 V",
+          "sourcePage": 5,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "min_off_time",
+      "name": "Minimum off-time",
+      "group": "switching",
+      "aliases": ["tOFF(min)", "tHO(OFF)", "forced HO off-time", "minimum off-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.2e-07, "typ": 4.5e-07, "max": 5.8e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_T", "value": 16000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Forced HO Off-time tHO(OFF), RT=16 kOhm (sets max duty cycle)",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "hiccup_time",
+      "name": "Hiccup restart time",
+      "group": "protection",
+      "aliases": ["hiccup time", "restart time", "fault off time", "current limit fault timer"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00128 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_T", "value": 16000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Current Limit Fault Timer, 256 clock cycles at RT=16 kOhm",
+          "sourcePage": 8,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "ramp_current",
+      "name": "Emulated-ramp generator current",
+      "group": "switching",
+      "aliases": ["ramp current", "IRAMP", "emulated-ramp current", "ramp generator current", "IR1", "IR2"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.35e-04, "typ": 2.85e-04, "max": 3.35e-04 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": 60, "unit": "V" },
+            { "param": "V_OUT", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IR1 RAMP current, VIN=60 V, VOUT=10 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.1e-05, "typ": 2.8e-05, "max": 3.5e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_IN", "value": 10, "unit": "V" },
+            { "param": "V_OUT", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IR2 RAMP current, VIN=10 V, VOUT=10 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "zero_cross_threshold",
+      "name": "Zero-cross / zero-current detector threshold",
+      "group": "current_limit",
+      "aliases": ["IZC", "zero-cross threshold", "zero-current detector threshold", "SW zero cross threshold", "diode-emulation threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -0.006 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "SW falling" }
+          ],
+          "conditionsVerbatim": "SW Zero Cross Threshold (diode emulation), -6 mV",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_current_limit",
+      "name": "Internal regulator (VCC) current limit",
+      "group": "internal_regulator",
+      "aliases": ["VCC current limit", "VCC sourcing current limit", "INTVCC current limit", "bias regulator current limit"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.015, "typ": 0.026 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CC", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCC Sourcing Current Limit, VCC=0 V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "external_bias_switchover_hysteresis",
+      "name": "External bias switchover hysteresis",
+      "group": "internal_regulator",
+      "aliases": ["VCCX switchover hysteresis", "external bias switchover hysteresis", "EXTVCC switchover hysteresis", "VCCX Switch Hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.25 },
+          "unit": "V",
+          "conditionsVerbatim": "VCCX Switch Hysteresis, 250 mV",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_threshold",
+      "name": "Soft-start switching-start threshold",
+      "group": "soft_start",
+      "aliases": ["SS threshold", "soft-start threshold", "switching-start threshold", "SS switching threshold", "diode-emulation ramp disable threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "SS rising" }
+          ],
+          "conditionsVerbatim": "SS Diode-Emulation Ramp Disable Threshold, SS rising",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "db7d7871e4634126634c2a2e10319a1d9c2de243557df3e05b3e51943575413f",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/lm5116.pdf",
+    "datasheetRevision": "SNVS499I - FEBRUARY 2007 - REVISED NOVEMBER 2023",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

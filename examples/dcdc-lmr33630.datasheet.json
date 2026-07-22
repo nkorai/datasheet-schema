@@ -1,0 +1,1054 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LMR33630",
+    "manufacturer": "Texas Instruments",
+    "family": "dc_dc",
+    "description": "SIMPLE SWITCHER 3.8-V to 36-V, 3-A synchronous step-down (buck) converter with integrated high-side and low-side power MOSFETs, peak-current-mode control, precision enable, and power-good flag. Adjustable output 1 V to 24 V. Available in 400-kHz (A), 1.4-MHz (B), and 2.1-MHz (C) frequency options and in HSOIC-8 (DDA) and VQFN-12 (RNX) packages.",
+    "package": "HSOIC (DDA-8) / VQFN (RNX-12)",
+    "pinCount": 8,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "LMR33630ADDA", "package": "HSOIC (DDA-8)", "packing": "Tube / Tape and Reel" },
+      { "orderCode": "LMR33630BDDA", "package": "HSOIC (DDA-8)", "packing": "Tube / Tape and Reel" },
+      { "orderCode": "LMR33630CDDA", "package": "HSOIC (DDA-8)", "packing": "Tube / Tape and Reel" },
+      { "orderCode": "LMR33630ARNX", "package": "VQFN (RNX-12)", "packing": "Tape and Reel" },
+      { "orderCode": "LMR33630BRNX", "package": "VQFN (RNX-12)", "packing": "Tape and Reel" },
+      { "orderCode": "LMR33630CRNX", "package": "VQFN (RNX-12)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "PGND", "function": "PGND", "type": "power", "description": "Power ground terminal.", "sourcePage": 5 },
+    { "number": 2, "name": "VIN", "function": "IN", "type": "power", "description": "Input supply to regulator.", "sourcePage": 5 },
+    { "number": 3, "name": "EN", "function": "EN", "type": "digital_in", "description": "Precision enable input. High = ON, low = OFF. Do not float.", "sourcePage": 5 },
+    { "number": 4, "name": "PG", "function": "PG", "type": "digital_out", "description": "Open-drain power-good flag output.", "sourcePage": 5 },
+    { "number": 5, "name": "FB", "function": "FB", "type": "analog", "description": "Feedback input; connect to the feedback divider tap.", "sourcePage": 5 },
+    { "number": 6, "name": "VCC", "function": "VCC", "type": "power", "description": "Internal 5-V LDO output; supply to internal control circuits. Bypass 1 uF to GND.", "sourcePage": 5 },
+    { "number": 7, "name": "BOOT", "function": "BOOT", "type": "power", "description": "Bootstrap supply for the internal high-side driver; 100-nF cap to SW.", "sourcePage": 5 },
+    { "number": 8, "name": "SW", "function": "SW", "type": "power", "description": "Regulator switch node; connect to the power inductor.", "sourcePage": 5 },
+    { "number": 9, "name": "AGND / Thermal Pad", "function": "AGND", "type": "thermal", "description": "Analog ground and thermal pad. All electrical parameters are measured with respect to this pin. Must be soldered to the ground plane.", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage",
+      "group": "power_supply",
+      "aliases": ["VIN", "VIN to PGND"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.3, "max": 38 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN to PGND",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.8, "max": 36 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN to PGND, over the recommended operating temperature range of -40 to 125 degC",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_range",
+      "name": "Adjustable output voltage",
+      "group": "power_supply",
+      "aliases": ["VOUT"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1, "max": 24 },
+          "unit": "V",
+          "conditionsVerbatim": "Adjustable output voltage VOUT; max may be extended to 95% of VIN (contact TI)",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "reference_voltage",
+      "name": "Feedback (reference) voltage",
+      "group": "reference",
+      "aliases": ["VFB", "feedback voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.985, "typ": 1.0, "max": 1.015 },
+          "unit": "V",
+          "conditions": [
+            { "param": "MODE", "note": "ADJ (adjustable) option" }
+          ],
+          "conditionsVerbatim": "VFB, feedback voltage, ADJ option, TJ = -40 to 125 degC",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "feedback_bias_current",
+      "name": "Feedback input current",
+      "group": "reference",
+      "aliases": ["IFB", "current into FB pin"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-10, "max": 5e-08 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_FB", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IFB, current into FB pin, FB = 1 V, ADJ option",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "high_side_on_resistance",
+      "name": "High-side MOSFET on-resistance",
+      "group": "power_switch",
+      "aliases": ["RDS-ON-HS", "RDS(on) HS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.075, "max": 0.145 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "PACKAGE", "note": "VQFN (RNX-12)" }
+          ],
+          "conditionsVerbatim": "RDS-ON-HS, high-side MOSFET on-resistance, RNX package",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.095, "max": 0.16 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "PACKAGE", "note": "HSOIC (DDA-8)" }
+          ],
+          "conditionsVerbatim": "RDS-ON-HS, high-side MOSFET on-resistance, DDA package",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "low_side_on_resistance",
+      "name": "Low-side MOSFET on-resistance",
+      "group": "power_switch",
+      "aliases": ["RDS-ON-LS", "RDS(on) LS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.05, "max": 0.095 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "PACKAGE", "note": "VQFN (RNX-12)" }
+          ],
+          "conditionsVerbatim": "RDS-ON-LS, low-side MOSFET on-resistance, RNX package",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.066, "max": 0.11 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "PACKAGE", "note": "HSOIC (DDA-8)" }
+          ],
+          "conditionsVerbatim": "RDS-ON-LS, low-side MOSFET on-resistance, DDA package",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "high_side_current_limit",
+      "name": "High-side (peak) current limit",
+      "group": "current_limit",
+      "aliases": ["ISC", "high-side current limit"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.85, "typ": 4.5, "max": 5.05 },
+          "unit": "A",
+          "conditionsVerbatim": "ISC, high-side current limit, tested open loop in production",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "low_side_current_limit",
+      "name": "Low-side (valley) current limit",
+      "group": "current_limit",
+      "aliases": ["ILIMIT", "low-side current limit"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.9, "typ": 3.5, "max": 4.1 },
+          "unit": "A",
+          "conditionsVerbatim": "ILIMIT, low-side (valley) current limit, tested open loop in production",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "switching_frequency",
+      "name": "Switching frequency",
+      "group": "switching",
+      "aliases": ["fSW", "oscillator frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 340000, "typ": 400000, "max": 460000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "OPTION", "note": "A version (400-kHz frequency option), DDA and RNX" }
+          ],
+          "conditionsVerbatim": "fSW, A Version, 400 kHz",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1200000, "typ": 1400000, "max": 1600000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "OPTION", "note": "B version (1.4-MHz frequency option), DDA and RNX" }
+          ],
+          "conditionsVerbatim": "fSW, B Version, 1.4 MHz",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1800000, "typ": 2100000, "max": 2400000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "OPTION", "note": "C version (2.1-MHz frequency option), DDA package" }
+          ],
+          "conditionsVerbatim": "fSW, C Version, DDA package, 2.1 MHz",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1800000, "typ": 2100000, "max": 2300000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "OPTION", "note": "C version, RNX package" }
+          ],
+          "conditionsVerbatim": "fSW, C Version, RNX package, 2.1 MHz",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_time",
+      "name": "Internal soft-start time",
+      "group": "soft_start",
+      "aliases": ["tSS", "internal soft-start time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.0029, "typ": 0.004, "max": 0.006 },
+          "unit": "s",
+          "conditions": [
+            { "param": "C_SS", "note": "internal (fixed) soft start" }
+          ],
+          "conditionsVerbatim": "tSS, internal soft-start time",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_threshold",
+      "name": "Enable threshold voltage",
+      "group": "enable",
+      "aliases": ["VEN-H", "VEN-VCC-H", "VEN-VCC-L", "precision enable"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.2, "typ": 1.231, "max": 1.26 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "VEN-H, EN input level required to start switching, rising threshold",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "VEN-VCC-H, EN input level required to turn on internal LDO, rising threshold",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "falling" }
+          ],
+          "conditionsVerbatim": "VEN-VCC-L, EN input level required to turn off internal LDO, falling threshold",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_hysteresis",
+      "name": "Enable hysteresis",
+      "group": "enable",
+      "aliases": ["VEN-HYS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.1 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "hysteresis below VEN-H, falling" }
+          ],
+          "conditionsVerbatim": "VEN-HYS, hysteresis below VEN-H; falling",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_input_current",
+      "name": "Enable input leakage current",
+      "group": "enable",
+      "aliases": ["ILKG-EN", "enable input leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-10 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "ILKG-EN, enable input leakage current, VEN = 3.3 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_threshold",
+      "name": "Input UVLO threshold (via internal VCC LDO)",
+      "group": "protection",
+      "aliases": ["VCC UVLO", "internal LDO UVLO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "UVLO sensed on the internal LDO output (VCC): device is ready to start when VCC reaches about 3.7 V (rising). Because the LDO is in dropout during this transition, this roughly represents the input voltage. Approximate value from Section 8.3.4.",
+          "guarantee": "typical",
+          "confidence": 0.5,
+          "sourcePage": 15,
+          "sourceTable": "Undervoltage Lockout and Thermal Shutdown"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "falling" }
+          ],
+          "conditionsVerbatim": "UVLO sensed on the internal LDO output (VCC): device shuts down when VCC falls below about 3 V (falling). Approximate value from Section 8.3.4.",
+          "guarantee": "typical",
+          "confidence": 0.5,
+          "sourcePage": 15,
+          "sourceTable": "Undervoltage Lockout and Thermal Shutdown"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_voltage",
+      "name": "Internal LDO (VCC) output voltage",
+      "group": "internal_regulator",
+      "aliases": ["VCC", "internal 5-V LDO output"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.75, "typ": 5.0, "max": 5.25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "min": 6, "max": 36, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VCC, internal LDO output voltage appearing at the VCC pin, 6 V <= VIN <= 36 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "bootstrap_uvlo",
+      "name": "Bootstrap UVLO threshold",
+      "group": "gate_driver",
+      "aliases": ["VBOOT-UVLO", "BOOT-SW UVLO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.2 },
+          "unit": "V",
+          "conditionsVerbatim": "VBOOT-UVLO, bootstrap voltage undervoltage lockout threshold (BOOT to SW); low-side FET turns on to recharge CBOOT below this",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "min_on_time",
+      "name": "Minimum switch on-time",
+      "group": "switching",
+      "aliases": ["tON-MIN", "minimum controllable on-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 6.8e-08, "max": 8e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "PACKAGE", "note": "VQFN (RNX-12)" }
+          ],
+          "conditionsVerbatim": "tON-MIN, minimum switch on-time, RNX package",
+          "sourcePage": 8,
+          "sourceTable": "Timing Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 7.5e-08, "max": 1.08e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "PACKAGE", "note": "HSOIC (DDA-8)" }
+          ],
+          "conditionsVerbatim": "tON-MIN, minimum switch on-time, DDA package",
+          "sourcePage": 8,
+          "sourceTable": "Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "min_off_time",
+      "name": "Minimum switch off-time",
+      "group": "switching",
+      "aliases": ["tOFF-MIN", "minimum off-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 5.2e-08, "max": 7e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "PACKAGE", "note": "VQFN (RNX-12)" }
+          ],
+          "conditionsVerbatim": "tOFF-MIN, minimum switch off-time, RNX package",
+          "sourcePage": 8,
+          "sourceTable": "Timing Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 5.0e-08, "max": 8.5e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "PACKAGE", "note": "HSOIC (DDA-8)" }
+          ],
+          "conditionsVerbatim": "tOFF-MIN, minimum switch off-time, DDA package",
+          "sourcePage": 8,
+          "sourceTable": "Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dead_time",
+      "name": "Switch-node dead time",
+      "group": "switching",
+      "aliases": ["tD", "switch voltage dead time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-09 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "switch voltage dead time" }
+          ],
+          "conditionsVerbatim": "tD, switch voltage dead time",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "max_duty_cycle",
+      "name": "Maximum switch duty cycle",
+      "group": "switching",
+      "aliases": ["DMAX", "maximum switch duty cycle"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 98 },
+          "unit": "%",
+          "conditions": [
+            { "param": "V_IN", "value": 12, "unit": "V" },
+            { "param": "V_OUT", "value": 12, "unit": "V" },
+            { "param": "I_OUT", "value": 1, "unit": "A" }
+          ],
+          "conditionsVerbatim": "DMAX, maximum switch duty cycle, VIN = VOUT = 12 V, IOUT = 1 A (frequency folds back in dropout)",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_good_threshold",
+      "name": "Power-good threshold",
+      "group": "monitor",
+      "aliases": ["VPG-HIGH-UP", "VPG-HIGH-DN", "VPG-LOW-UP", "VPG-LOW-DN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 105, "typ": 107, "max": 110 },
+          "unit": "%",
+          "conditions": [
+            { "param": "DIRECTION", "note": "upper (overvoltage) threshold, rising" }
+          ],
+          "conditionsVerbatim": "VPG-HIGH-UP, power-good upper threshold - rising, % of FB voltage",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 103, "typ": 105, "max": 108 },
+          "unit": "%",
+          "conditions": [
+            { "param": "DIRECTION", "note": "upper (overvoltage) threshold, falling" }
+          ],
+          "conditionsVerbatim": "VPG-HIGH-DN, power-good upper threshold - falling, % of FB voltage",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 92, "typ": 94, "max": 97 },
+          "unit": "%",
+          "conditions": [
+            { "param": "DIRECTION", "note": "lower (undervoltage) threshold, rising" }
+          ],
+          "conditionsVerbatim": "VPG-LOW-UP, power-good lower threshold - rising, % of FB voltage",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 90, "typ": 92, "max": 95 },
+          "unit": "%",
+          "conditions": [
+            { "param": "DIRECTION", "note": "lower (undervoltage) threshold, falling" }
+          ],
+          "conditionsVerbatim": "VPG-LOW-DN, power-good lower threshold - falling, % of FB voltage",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_good_delay",
+      "name": "Power-good glitch filter delay",
+      "group": "monitor",
+      "aliases": ["tPG", "power-good glitch filter delay"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-05, "max": 0.00017 },
+          "unit": "s",
+          "conditionsVerbatim": "tPG, power-good glitch filter delay",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_good_output_low_voltage",
+      "name": "Power-good logic low output voltage",
+      "group": "monitor",
+      "aliases": ["VPG", "PG logic low output"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_IN", "value": 2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VPG, PG logic low output, IPG = 50 uA, EN = 0 V, VIN = 2 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent current",
+      "group": "power_supply",
+      "aliases": ["IQ", "ISUPPLY", "non-switching input current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.4e-05, "max": 3.4e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "non-switching (open loop), measured at VIN pin" },
+            { "param": "V_FB", "value": 1.2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IQ, non-switching input current; measured at VIN pin, VFB = 1.2 V",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.5e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "in regulation (auto/PFM at light load)" },
+            { "param": "V_IN", "value": 12, "unit": "V" },
+            { "param": "V_OUT", "value": 3.3, "unit": "V" },
+            { "param": "I_OUT", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ISUPPLY, input supply current when in regulation, VIN = 12 V, VOUT = 3.3 V, IOUT = 0 A, RFBT = 1 Mohm",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown quiescent current",
+      "group": "power_supply",
+      "aliases": ["ISD", "shutdown quiescent current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-06, "max": 1e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "ISD, shutdown quiescent current; measured at VIN pin, EN = 0",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "hiccup_time",
+      "name": "Hiccup restart time",
+      "group": "protection",
+      "aliases": ["tHC", "time between current-limit hiccup burst"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.094 },
+          "unit": "s",
+          "conditionsVerbatim": "tHC, time between current-limit hiccup burst",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown temperature",
+      "group": "protection",
+      "aliases": ["TSD", "thermal shutdown temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 165 },
+          "unit": "degC",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising (shutdown)" }
+          ],
+          "conditionsVerbatim": "TSD, thermal shutdown temperature, shutdown (rising)",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_shutdown_recovery",
+      "name": "Thermal shutdown recovery temperature",
+      "group": "protection",
+      "aliases": ["TSD recovery", "thermal shutdown recovery"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 148 },
+          "unit": "degC",
+          "conditionsVerbatim": "TSD recovery (falling) temperature, 148 degC",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJA", "RtJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 42.9 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "DDA (HSOIC, 8 pins), JESD 51-7 4-layer JEDEC board" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, DDA (HSOIC); comparison only",
+          "sourcePage": 7,
+          "sourceTable": "Thermal Information"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 72.5 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "RNX (VQFN, 12 pins), JESD 51-7 4-layer JEDEC board" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, RNX (VQFN); comparison only",
+          "sourcePage": 7,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    },
+    {
+      "key": "recommended_inductance",
+      "name": "Recommended inductance",
+      "group": "external_components",
+      "aliases": ["L", "recommended inductor"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 6.8e-06 },
+          "unit": "H",
+          "conditions": [
+            { "param": "F_SW", "value": 400000, "unit": "Hz" },
+            { "param": "V_OUT", "value": 3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Typical external component values: fSW = 400 kHz, VOUT = 3.3 V, L = 6.8 uH",
+          "sourcePage": 20,
+          "sourceTable": "Typical External Component Values"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 8e-06 },
+          "unit": "H",
+          "conditions": [
+            { "param": "F_SW", "value": 400000, "unit": "Hz" },
+            { "param": "V_OUT", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Typical external component values: fSW = 400 kHz, VOUT = 5 V, L = 8 uH",
+          "sourcePage": 20,
+          "sourceTable": "Typical External Component Values"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 1.5e-06 },
+          "unit": "H",
+          "conditions": [
+            { "param": "F_SW", "value": 2100000, "unit": "Hz" },
+            { "param": "V_OUT", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Typical external component values: fSW = 2100 kHz, VOUT = 5 V, L = 1.5 uH",
+          "sourcePage": 20,
+          "sourceTable": "Typical External Component Values"
+        }
+      ]
+    },
+    {
+      "key": "recommended_output_capacitance",
+      "name": "Recommended output capacitance",
+      "group": "external_components",
+      "aliases": ["COUT", "recommended output capacitor"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 8.8e-05 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F_SW", "value": 400000, "unit": "Hz" },
+            { "param": "V_OUT", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Typical external component values: fSW = 400 kHz, VOUT = 5 V, COUT = 4 x 22 uF (rated capacitance)",
+          "sourcePage": 20,
+          "sourceTable": "Typical External Component Values"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 4.4e-05 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F_SW", "value": 2100000, "unit": "Hz" },
+            { "param": "V_OUT", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Typical external component values: fSW = 2100 kHz, VOUT = 5 V, COUT = 2 x 22 uF (rated capacitance)",
+          "sourcePage": 20,
+          "sourceTable": "Typical External Component Values"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating junction temperature (TJ) range over which limits apply",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "general",
+      "aliases": ["TJ"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, junction temperature; operating above 125 degC degrades device lifetime",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["ESD HBM", "V(ESD) HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 2500 },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic discharge, human-body model (HBM), +/-2500 V, ANSI/ESDA/JEDEC JS-001",
+          "sourcePage": 6,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["ESD CDM", "V(ESD) CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 750 },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic discharge, charged-device model (CDM), +/-750 V, JEDEC JS-002",
+          "sourcePage": 6,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "max_on_time",
+      "name": "Maximum switch on-time",
+      "group": "switching",
+      "aliases": ["tON-MAX", "maximum switch on-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 7e-06, "max": 9e-06 },
+          "unit": "s",
+          "conditionsVerbatim": "tON-MAX, maximum switch on-time",
+          "sourcePage": 8,
+          "sourceTable": "Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "minimum_peak_current",
+      "name": "Minimum peak inductor current",
+      "group": "current_limit",
+      "aliases": ["IPEAK-MIN", "minimum peak inductor current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.69 },
+          "unit": "A",
+          "conditionsVerbatim": "IPEAK-MIN, minimum peak inductor current",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "zero_cross_threshold",
+      "name": "Zero-current detector threshold",
+      "group": "current_limit",
+      "aliases": ["IZC", "zero-current detector threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -0.106 },
+          "unit": "A",
+          "conditionsVerbatim": "IZC, zero-current detector threshold",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_good_output_resistance",
+      "name": "Power-good output on-resistance",
+      "group": "monitor",
+      "aliases": ["RPG", "PG RDS(on)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 76, "max": 150 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_EN", "value": 4, "unit": "V" }
+          ],
+          "conditionsVerbatim": "RPG, PG RDS(on), VEN=4 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 35, "max": 60 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_EN", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "RPG, PG RDS(on), VEN=0 V",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "group": "power_supply",
+      "aliases": ["VDROP", "dropout voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.15 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": 1, "unit": "A" },
+            { "param": "V_OUT", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VDROP, dropout voltage, VOUT=5 V, IOUT=1 A",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_trip_threshold",
+      "name": "Short-circuit hiccup trip threshold",
+      "group": "protection",
+      "aliases": ["VHC", "FB voltage to trip short-circuit hiccup"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.4 },
+          "unit": "V",
+          "conditionsVerbatim": "VHC, FB voltage to trip short-circuit hiccup",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "name": "Output voltage accuracy",
+      "group": "power_supply",
+      "aliases": ["VOUT accuracy", "output voltage accuracy"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1.5, "max": 2.5 },
+          "unit": "%",
+          "conditions": [
+            { "param": "V_OUT", "value": 3.3, "unit": "V" },
+            { "param": "I_OUT", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOUT accuracy, 3.3 V, 0 A load, -1.5% / +2.5%",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1.5, "max": 1.5 },
+          "unit": "%",
+          "conditions": [
+            { "param": "V_OUT", "value": 3.3, "unit": "V" },
+            { "param": "I_OUT", "value": 3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOUT accuracy, 3.3 V, 1 A to max load, +/-1.5%",
+          "sourcePage": 9,
+          "sourceTable": "System Characteristics"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SNVSAN3F - AUGUST 2017 - REVISED NOVEMBER 2020",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/lmr33630.pdf",
+    "publishedDate": "November 2020",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

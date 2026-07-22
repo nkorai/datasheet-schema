@@ -1,0 +1,882 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "dc_dc",
+  "dictionaryVersion": "1.1",
+  "description": "Canonical parameter dictionary for switching DC-DC regulators, synthesized from a 20-datasheet corpus (TI, Analog Devices, MPS, Richtek, Aerosemi) spanning FOUR sub-shapes that share one measurement envelope: (1) monolithic converters with integrated FETs (buck LM2596/TPS54560/LMR33630/TPS563201/MP2315/LMR51430/TPS62840; boost MT3608/LM2577/TPS61023/TPS61088; buck-boost RT6150/TPS63020/LTC3113) which populate switch on-resistance, current limits, and switching keys; (2) controllers driving external FETs (LM5116/LM25116/TPS40057/LTC3891) which populate gate-driver (peak source/sink current OR pull-up/pull-down resistance), current-sense-threshold, internal-regulator, and emulated-ramp keys instead; (3) power modules with integrated inductor (LMZ31710) which populate efficiency, ripple, transient-response, and setpoint-tolerance keys; and (4) isolated primary-side-sensing flyback controllers (LT3748) which have no VOUT pin and no feedback divider - output voltage is inferred from the primary flyback pulse via an RFB/RREF resistor ratio times the transformer turns ratio - and populate the flyback-feedback keys (tc_current, flyback_comparator_trip_current, transformer_turns_ratio, leakage_inductance) plus boundary/critical-conduction-mode timers (max_on_time, max_off_time, max_discontinuous_off_time). A part's sub_type selects which optional keys apply; the core switching/reference/protection keys are common. The error amplifier appears in two idioms: transconductance (unit S, gm-controllers) OR DC gain (dB or V/V) plus unity-gain bandwidth (voltage-mode) - a part populates one. Condition axes for this family: V_IN, V_OUT, V_FB, V_SW, V_CC, V_CCX, V_SS, V_EN, V_C (compensation/control voltage), V_SENSE, V_RREF, F_SW, R_T, R_ILIM, R_TC, C_SS, C_RAMP, DUTY, MODE (PFM/PWM/pass-through/boundary, note-only), SWITCH (buck-boost H-bridge switch A/B/C/D, note-only), DRIVER (gate-driver HO/LO or TG/BG, note-only), DIRECTION (rising/falling/source/sink, note-only), N_PS (transformer turns ratio, note-only), PACKAGE, T_J, T_A. Pin functions include SW/SW1/SW2 (switch node[s]), BOOT/BST/HB (bootstrap), TG/BG/HO/LO/GATE (gate drives), COMP/ITH (compensation), SS, RT/FREQ (timing/sync), VCC/VCCX/EXTVCC (internal + external bias), CS/CSG/SENSE (current sense), SENSE_P/SENSE_N (differential sense pair), PGND/AGND/SGND (split grounds), PVIN (power vs bias input), ILIM, MODE/SYNC, PG, and the flyback-specific TC/RREF/RFB (temperature-comp, reference, and primary-flyback-feedback resistors). Base-SI throughout; the inductance unit H is used for a recommended or integrated inductor and for transformer primary/leakage inductance. Line/load regulation follows the LDO convention: absolute V by default, with %, V/V, or ppm/V (line) and % or ohm (load) permitted. A dimensionless ratio (turns ratio, current-limit range ratio) uses V/V. Rail-relative specs (a gate-drive output stated as a drop from an internal rail, a power-good or OVP window as a percent of the setpoint) are stored as the magnitude with the printed form in conditionsVerbatim. Efficiency, line/load regulation, and dropout are frequently graph-only on cheaper parts; keep them optional. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage range",
+      "unit": "V",
+      "group": "power_supply",
+      "aliases": ["VIN", "input voltage", "supply voltage", "operating input voltage", "PVIN"],
+      "hint": "The operating input-voltage range (recommended), and/or the absolute-maximum input voltage, distinguished by limitClass. A module or split-rail controller may separate the power input (PVIN) from the bias input (VIN); note which in conditionsVerbatim."
+    },
+    {
+      "key": "output_voltage_range",
+      "name": "Output voltage range",
+      "unit": "V",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["VOUT", "output voltage", "adjustable output voltage", "output voltage setting range"],
+      "hint": "The settable output-voltage range for an adjustable part (set by an external FB divider). A fixed-output variant pins one value; use component.orderingVariants.outputVoltageV for that."
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent current",
+      "unit": "A",
+      "group": "power_supply",
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["IQ", "Iq", "quiescent current", "operating current", "non-switching supply current", "IBIAS", "operating quiescent current"],
+      "hint": "Non-switching operating supply current, a headline spec for low-IQ parts (nanoamps on nano-power buck). Strongly mode-dependent (PFM vs forced-PWM vs not-switching); give a MODE note and one measurement per mode. Distinguish current into VIN vs VOUT when both are given."
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown current",
+      "unit": "A",
+      "group": "power_supply",
+      "aliases": ["ISD", "shutdown current", "disabled supply current", "standby current"],
+      "hint": "Supply current with the part disabled (EN low)."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "Reference / feedback voltage",
+      "unit": "V",
+      "group": "reference",
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["VREF", "VFB", "feedback voltage", "reference voltage", "FB threshold"],
+      "hint": "The internal reference the feedback divider regulates to. Can differ slightly between PWM and PFM modes (give a MODE note). For a resistor-programmed (R2D) part the reference is not directly tabulated; capture the set output under output_voltage_range instead."
+    },
+    {
+      "key": "feedback_bias_current",
+      "name": "Feedback input current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["IFB", "FB bias current", "feedback leakage current", "FB input current", "error-amp input bias current"],
+      "hint": "Bias/leakage current into the feedback pin, which sets the divider error."
+    },
+    {
+      "key": "tc_current",
+      "name": "Temperature-compensation current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "R_TC",
+      "aliases": ["ITC", "TC current", "temperature-compensation current", "output diode VF compensation current"],
+      "hint": "Isolated flyback (primary-side sensing): current sourced from the TC pin into the RREF node to cancel the output rectifier's forward-voltage temperature drift (ITC = VTC / RTC). Set by an external RTC resistor (array over R_TC)."
+    },
+    {
+      "key": "flyback_comparator_trip_current",
+      "name": "Flyback sampling-comparator trip current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["flyback comparator trip current", "sampling comparator trip current", "RFB trip current"],
+      "hint": "Isolated flyback (primary-side sensing): the current into the RFB (primary-flyback-feedback) pin at which the sampling comparator trips, which - with RREF and the transformer turns ratio - sets the regulated output voltage. These parts have no feedback divider and no VOUT pin."
+    },
+    {
+      "key": "high_side_on_resistance",
+      "name": "High-side switch on-resistance",
+      "unit": "ohm",
+      "group": "power_switch",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_IN",
+      "aliases": ["RDS(on) HS", "high-side RDSON", "HS switch on-resistance", "rectifier on-resistance", "switch on-resistance"],
+      "hint": "On-resistance of the integrated high-side FET (monolithic converters only; a controller drives external FETs and omits this). Package- and gate-drive-dependent, so note VBST-VSW or VCC. For a boost the high-side FET is the rectifier - alias both namings."
+    },
+    {
+      "key": "low_side_on_resistance",
+      "name": "Low-side switch on-resistance",
+      "unit": "ohm",
+      "group": "power_switch",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_IN",
+      "aliases": ["RDS(on) LS", "low-side RDSON", "LS switch on-resistance", "synchronous rectifier on-resistance", "main switch on-resistance"],
+      "hint": "On-resistance of the integrated low-side (synchronous rectifier) FET. For a boost the low-side FET is the main switch."
+    },
+    {
+      "key": "switch_saturation_voltage",
+      "name": "Switch saturation voltage",
+      "unit": "V",
+      "group": "power_switch",
+      "optional": true,
+      "aliases": ["VSAT", "saturation voltage", "switch saturation voltage"],
+      "hint": "Non-synchronous converters with a bipolar (BJT) power switch: the switch saturation voltage at a stated current, in place of an RDS(on)."
+    },
+    {
+      "key": "switch_leakage_current",
+      "name": "Switch leakage current",
+      "unit": "A",
+      "group": "power_switch",
+      "optional": true,
+      "aliases": ["switch leakage", "SW leakage current", "output leakage current"],
+      "hint": "Off-state leakage of the power switch / switch node at a stated switch-node voltage."
+    },
+    {
+      "key": "high_side_current_limit",
+      "name": "High-side (peak) current limit",
+      "unit": "A",
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["ILIM", "peak current limit", "high-side current limit", "switch current limit", "HS current limit"],
+      "hint": "Peak (high-side or main-switch) current limit. May be mode-dependent (PFM vs FPWM) or externally programmed by an ILIM resistor; note the condition."
+    },
+    {
+      "key": "low_side_current_limit",
+      "name": "Low-side (valley) current limit",
+      "unit": "A",
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["valley current limit", "low-side current limit", "LS current limit"],
+      "hint": "Valley (low-side) current limit for a synchronous converter."
+    },
+    {
+      "key": "negative_current_limit",
+      "name": "Negative current limit",
+      "unit": "A",
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["negative current limit", "reverse current limit", "sink current limit"],
+      "hint": "Reverse (sink) current limit in forced-PWM mode."
+    },
+    {
+      "key": "current_sense_threshold",
+      "name": "Current-sense threshold voltage",
+      "unit": "V",
+      "group": "current_limit",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CCX",
+      "aliases": ["VCS(TH)", "current-sense threshold", "cycle-by-cycle sense threshold", "current-limit sense voltage"],
+      "hint": "Controllers only: the cycle-by-cycle current-limit threshold as a sense voltage across the external sense element (the limit current is set externally by Rsense). Not a current."
+    },
+    {
+      "key": "overcurrent_threshold",
+      "name": "Overcurrent / short-circuit threshold",
+      "unit": "V",
+      "altUnits": ["A"],
+      "group": "current_limit",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_C",
+      "aliases": ["overcurrent threshold", "OCP threshold", "short-circuit current threshold", "current-limit fault threshold", "hiccup current threshold"],
+      "hint": "A hard overcurrent/short-circuit fault threshold distinct from the cycle-by-cycle limit: a sense voltage across the external sense element (V) on a controller, or an absolute current (A) on a monolithic part. May be a fixed multiple of the current-limit threshold; note the V_C or ratio."
+    },
+    {
+      "key": "sense_input_bias_current",
+      "name": "Current-sense input bias current",
+      "unit": "A",
+      "group": "current_limit",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_SENSE",
+      "aliases": ["SENSE input bias current", "current-sense input current", "CS input bias current", "ISENSE bias", "sense pin bias current"],
+      "hint": "Bias/leakage current into a current-sense input (SENSE, CS/CSG). Loads the external sense element and shifts the effective limit; often specified at a stated sense-pin voltage (array over V_SENSE)."
+    },
+    {
+      "key": "sense_threshold_ratio",
+      "name": "Current-limit threshold range ratio",
+      "unit": "V/V",
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["sense threshold ratio", "max-to-min current-limit ratio", "current-limit range ratio"],
+      "hint": "Dimensionless ratio (V/V) of the maximum to minimum current-sense threshold as the control/compensation voltage is swept, on a part whose current limit is set by VC. A guaranteed table row on some current-mode controllers, not a derived quantity."
+    },
+    {
+      "key": "minimum_peak_current",
+      "name": "Minimum peak inductor current",
+      "unit": "A",
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["IPEAK-MIN", "minimum peak current", "minimum peak inductor current", "min switch peak current"],
+      "hint": "The minimum controllable peak inductor (switch) current per cycle, which with the minimum on-time bounds the smallest deliverable pulse and sets light-load behavior."
+    },
+    {
+      "key": "zero_cross_threshold",
+      "name": "Zero-cross / zero-current detector threshold",
+      "unit": "A",
+      "altUnits": ["V"],
+      "group": "current_limit",
+      "optional": true,
+      "aliases": ["IZC", "zero-cross threshold", "zero-current detector threshold", "SW zero cross threshold", "diode-emulation threshold"],
+      "hint": "The threshold at which the synchronous rectifier turns off in discontinuous/diode-emulation mode, as an inductor current (A) or an equivalent switch-node sense voltage (V). Usually slightly negative."
+    },
+    {
+      "key": "switching_frequency",
+      "name": "Switching frequency",
+      "unit": "Hz",
+      "group": "switching",
+      "array": true,
+      "conditionAxis": "R_T",
+      "aliases": ["fSW", "fOSC", "oscillator frequency", "switching frequency"],
+      "hint": "The switching (oscillator) frequency. Programmable parts give it vs the RT resistor (array over R_T) or as frequency-option variants; a fixed part gives one value. Give the RT value or the option in a condition."
+    },
+    {
+      "key": "sync_frequency_range",
+      "name": "Synchronization frequency range",
+      "unit": "Hz",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["fSYNC", "sync frequency range", "external clock frequency"],
+      "hint": "The range over which an external clock on the SYNC/RT pin can set the switching frequency."
+    },
+    {
+      "key": "min_on_time",
+      "name": "Minimum on-time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": ["tON(min)", "minimum on-time", "minimum controllable on-time"],
+      "hint": "Minimum controllable high-side on-time, which sets the maximum step-down ratio at a given frequency."
+    },
+    {
+      "key": "min_off_time",
+      "name": "Minimum off-time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tOFF(min)", "minimum off-time"],
+      "hint": "Minimum off-time, which bounds the maximum duty cycle in dropout."
+    },
+    {
+      "key": "max_on_time",
+      "name": "Maximum on-time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tON(max)", "maximum on-time", "maximum controllable on-time", "on-time watchdog"],
+      "hint": "Maximum high-side (or main-switch) on-time, often an internal watchdog/restart timer on boundary-mode and isolated controllers that lack a fixed clock."
+    },
+    {
+      "key": "max_off_time",
+      "name": "Maximum off-time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tOFF(max)", "maximum off-time", "restart timer", "off-time watchdog"],
+      "hint": "Maximum off-time / restart timer that forces a switching cycle after an idle interval, on boundary-mode and isolated controllers. On a monolithic buck a 'forced off-time' that sets the maximum duty cycle also belongs here; note it."
+    },
+    {
+      "key": "max_discontinuous_off_time",
+      "name": "Maximum discontinuous off-time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["maximum discontinuous off-time", "DCM off-time", "boundary-mode off-time", "discontinuous restart time"],
+      "hint": "Boundary/critical-conduction-mode controllers: the maximum off-time in discontinuous operation before a new cycle is initiated (distinct from the absolute restart timer)."
+    },
+    {
+      "key": "ramp_current",
+      "name": "Emulated-ramp generator current",
+      "unit": "A",
+      "group": "switching",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_IN",
+      "aliases": ["ramp current", "IRAMP", "emulated-ramp current", "ramp generator current", "IR1", "IR2"],
+      "hint": "Emulated peak-current-mode controllers: the current that charges the external RAMP capacitor to synthesize the inductor-current ramp. Often specified at two (V_IN, V_OUT) operating points that bracket the slope; one measurement per point."
+    },
+    {
+      "key": "max_duty_cycle",
+      "name": "Maximum duty cycle",
+      "unit": "%",
+      "group": "switching",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_SW",
+      "aliases": ["DMAX", "maximum duty cycle", "max duty cycle"],
+      "hint": "Maximum duty cycle. 100% signals a non-synchronous / low-dropout-capable part. May be frequency-dependent."
+    },
+    {
+      "key": "dead_time",
+      "name": "Dead time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DIRECTION",
+      "aliases": ["tD", "dead time", "anti-cross-conduction delay"],
+      "hint": "Switch-node dead time between high-side and low-side conduction. Often two directional values (LO-fall-to-HO-rise and HO-fall-to-LO-rise); use a DIRECTION note."
+    },
+    {
+      "key": "error_amp_transconductance",
+      "name": "Error-amplifier transconductance",
+      "unit": "S",
+      "group": "error_amplifier",
+      "optional": true,
+      "aliases": ["gm", "gmEA", "GEA", "error-amp transconductance", "GM"],
+      "hint": "Transconductance-amplifier controllers/converters: the error-amp gm in siemens (a printed uA/V or umho is siemens). A voltage-mode part instead specifies error_amp_dc_gain and error_amp_bandwidth; a part populates one idiom."
+    },
+    {
+      "key": "error_amp_dc_gain",
+      "name": "Error-amplifier DC gain",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "error_amplifier",
+      "optional": true,
+      "aliases": ["AOL", "AVOL", "error-amp open-loop gain", "error-amp DC gain"],
+      "hint": "Voltage-mode error amplifiers: open-loop DC gain, paired with error_amp_bandwidth. Store in dB, or as a dimensionless V/V ratio when the datasheet prints it that way (do not convert and lose the printed form; keep it in conditionsVerbatim)."
+    },
+    {
+      "key": "error_amp_bandwidth",
+      "name": "Error-amplifier unity-gain bandwidth",
+      "unit": "Hz",
+      "group": "error_amplifier",
+      "optional": true,
+      "aliases": ["GBW", "error-amp unity-gain bandwidth", "error-amp bandwidth"],
+      "hint": "Unity-gain bandwidth of a voltage-mode error amplifier."
+    },
+    {
+      "key": "error_amp_output_current",
+      "name": "Error-amplifier output current",
+      "unit": "A",
+      "group": "error_amplifier",
+      "optional": true,
+      "aliases": ["COMP source current", "COMP sink current", "error-amp output current", "IOH", "IOL"],
+      "hint": "COMP-pin source/sink drive current; use one measurement per direction with a DIRECTION note when given separately."
+    },
+    {
+      "key": "gate_driver_source_current",
+      "name": "Gate-driver peak source current",
+      "unit": "A",
+      "group": "gate_driver",
+      "optional": true,
+      "aliases": ["IOHL", "IOHH", "gate-drive source current", "peak source current", "driver source current"],
+      "hint": "Controllers only: peak source current of a gate-driver output (HO/LO or HDRV/LDRV); note which driver."
+    },
+    {
+      "key": "gate_driver_sink_current",
+      "name": "Gate-driver peak sink current",
+      "unit": "A",
+      "group": "gate_driver",
+      "optional": true,
+      "aliases": ["IOLL", "IOLH", "gate-drive sink current", "peak sink current", "driver sink current"],
+      "hint": "Controllers only: peak sink current of a gate-driver output; note which driver."
+    },
+    {
+      "key": "gate_driver_output_voltage",
+      "name": "Gate-driver output voltage (drop)",
+      "unit": "V",
+      "group": "gate_driver",
+      "optional": true,
+      "aliases": ["VOHL", "VOLL", "VOHH", "VOLH", "driver output voltage", "gate-drive output voltage"],
+      "hint": "Controllers only: gate-driver output low voltage, or the high-side/low-side output drop below its rail (VOH given as VBP10-VLDRV etc.). Store the drop magnitude and keep the relative-to-rail form in conditionsVerbatim."
+    },
+    {
+      "key": "gate_driver_rise_fall_time",
+      "name": "Gate-driver rise / fall time",
+      "unit": "s",
+      "group": "gate_driver",
+      "optional": true,
+      "aliases": ["driver rise time", "driver fall time", "tRISE", "tFALL"],
+      "hint": "Controllers only: gate-driver output rise/fall time at a stated gate load capacitance (a C_L condition). One measurement per edge/driver."
+    },
+    {
+      "key": "gate_driver_pullup_resistance",
+      "name": "Gate-driver pull-up resistance",
+      "unit": "ohm",
+      "group": "gate_driver",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DRIVER",
+      "aliases": ["driver pull-up resistance", "gate-drive pull-up resistance", "pull-up on-resistance", "TG pull-up resistance", "BG pull-up resistance", "high-side driver Ron"],
+      "hint": "Controllers only: gate-driver output pull-up (source) on-resistance, the resistance idiom for driver strength used in place of a peak source current. One measurement per driver (a DRIVER note: TG/HO or BG/LO)."
+    },
+    {
+      "key": "gate_driver_pulldown_resistance",
+      "name": "Gate-driver pull-down resistance",
+      "unit": "ohm",
+      "group": "gate_driver",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DRIVER",
+      "aliases": ["driver pull-down resistance", "gate-drive pull-down resistance", "pull-down on-resistance", "TG pull-down resistance", "BG pull-down resistance", "low-side driver Ron"],
+      "hint": "Controllers only: gate-driver output pull-down (sink) on-resistance, used in place of a peak sink current. One measurement per driver (a DRIVER note: TG/HO or BG/LO)."
+    },
+    {
+      "key": "bootstrap_uvlo",
+      "name": "Bootstrap undervoltage threshold",
+      "unit": "V",
+      "group": "gate_driver",
+      "optional": true,
+      "aliases": ["HB-SW UVLO", "boot UVLO", "bootstrap UVLO", "BST-SW undervoltage"],
+      "hint": "The bootstrap (high-side gate-drive supply) undervoltage-lockout threshold, referenced to the switch node."
+    },
+    {
+      "key": "internal_regulator_voltage",
+      "name": "Internal regulator (VCC) voltage",
+      "unit": "V",
+      "group": "internal_regulator",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_IN",
+      "aliases": ["VCC", "VCC regulation voltage", "BP5", "BP10", "internal LDO output", "gate-drive supply"],
+      "hint": "The internal bias/gate-drive regulator (VCC, or BP5/BP10 on some parts) output voltage. Drops out at low VIN, so note VIN."
+    },
+    {
+      "key": "internal_regulator_uvlo",
+      "name": "Internal regulator (VCC) UVLO",
+      "unit": "V",
+      "group": "internal_regulator",
+      "optional": true,
+      "aliases": ["VCC UVLO", "VCC undervoltage threshold"],
+      "hint": "Undervoltage-lockout threshold on the internal VCC regulator (distinct from the line UVLO)."
+    },
+    {
+      "key": "external_bias_switchover_threshold",
+      "name": "External bias switchover threshold",
+      "unit": "V",
+      "group": "internal_regulator",
+      "optional": true,
+      "aliases": ["VCCX switchover threshold", "external bias threshold"],
+      "hint": "Controllers with a VCCX external-bias input: the threshold at which the part switches from the internal VCC regulator to the external bias rail (for efficiency)."
+    },
+    {
+      "key": "internal_regulator_dropout",
+      "name": "Internal regulator (VCC) dropout voltage",
+      "unit": "V",
+      "group": "internal_regulator",
+      "optional": true,
+      "aliases": ["VCC dropout", "INTVCC dropout", "bias regulator dropout", "internal LDO dropout"],
+      "hint": "The VIN-to-VCC dropout of the internal bias/gate-drive regulator at a stated VCC load current; sets the minimum VIN at which the drivers stay in regulation."
+    },
+    {
+      "key": "external_bias_switchover_hysteresis",
+      "name": "External bias switchover hysteresis",
+      "unit": "V",
+      "group": "internal_regulator",
+      "optional": true,
+      "aliases": ["VCCX switchover hysteresis", "external bias switchover hysteresis", "EXTVCC switchover hysteresis"],
+      "hint": "Hysteresis on the VCCX/EXTVCC external-bias switchover threshold."
+    },
+    {
+      "key": "internal_regulator_current_limit",
+      "name": "Internal regulator (VCC) current limit",
+      "unit": "A",
+      "group": "internal_regulator",
+      "optional": true,
+      "aliases": ["VCC current limit", "VCC sourcing current limit", "INTVCC current limit", "bias regulator current limit"],
+      "hint": "The current-limit (sourcing capability) of the internal VCC bias regulator, which bounds the total gate-drive charge the part can supply."
+    },
+    {
+      "key": "soft_start_time",
+      "name": "Soft-start time",
+      "unit": "s",
+      "group": "soft_start",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "C_SS",
+      "aliases": ["tSS", "soft-start time", "soft-start period", "slow-start time"],
+      "hint": "Output ramp time at start-up. Fixed internally on some parts, or set by an external soft-start cap (array over C_SS)."
+    },
+    {
+      "key": "soft_start_current",
+      "name": "Soft-start charging current",
+      "unit": "A",
+      "group": "soft_start",
+      "optional": true,
+      "aliases": ["ISS", "soft-start current", "SS source current"],
+      "hint": "The current that charges the external soft-start capacitor to set the ramp."
+    },
+    {
+      "key": "soft_start_threshold",
+      "name": "Soft-start switching-start threshold",
+      "unit": "V",
+      "group": "soft_start",
+      "optional": true,
+      "aliases": ["SS threshold", "soft-start threshold", "switching-start threshold", "SS switching threshold"],
+      "hint": "The soft-start pin voltage at which switching begins (an initial offset the SS capacitor must charge through before the output ramps)."
+    },
+    {
+      "key": "soft_start_reset_current",
+      "name": "Soft-start reset (discharge) current",
+      "unit": "A",
+      "group": "soft_start",
+      "optional": true,
+      "aliases": ["SS reset current", "soft-start discharge current", "SS pull-down current", "SS fault reset current"],
+      "hint": "The current that discharges the external soft-start capacitor on a fault/restart, which sets the re-start interval."
+    },
+    {
+      "key": "enable_threshold",
+      "name": "Enable threshold voltage",
+      "unit": "V",
+      "group": "enable",
+      "array": true,
+      "conditionAxis": "DIRECTION",
+      "aliases": ["VEN", "enable threshold", "EN rising threshold", "EN falling threshold", "inhibit threshold", "shutdown threshold"],
+      "hint": "Enable-pin threshold(s). A precision-enable part gives separate rising and falling values (use DIRECTION); an active-low SHDN part inverts the sense (note it)."
+    },
+    {
+      "key": "enable_hysteresis",
+      "name": "Enable hysteresis",
+      "unit": "V",
+      "group": "enable",
+      "optional": true,
+      "aliases": ["EN hysteresis", "enable hysteresis"],
+      "hint": "Hysteresis on the enable threshold (voltage or via a hysteresis current, noted separately)."
+    },
+    {
+      "key": "enable_input_current",
+      "name": "Enable input current",
+      "unit": "A",
+      "group": "enable",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_EN",
+      "aliases": ["IEN", "EN input current", "enable pin current", "enable leakage current"],
+      "hint": "Current into the enable pin, often specified at two pin voltages (above/below threshold); one measurement per V_EN point."
+    },
+    {
+      "key": "uvlo_hysteresis_current",
+      "name": "UVLO / enable hysteresis current",
+      "unit": "A",
+      "group": "enable",
+      "optional": true,
+      "aliases": ["UVLO hysteresis current", "EN hysteresis current", "enable hysteresis current", "UVLO pull-down current"],
+      "hint": "Parts that program UVLO with a resistor divider set hysteresis with a switched pull-down/pull-up current (rather than a voltage) at the threshold; capture it here (enable_hysteresis stays the voltage idiom)."
+    },
+    {
+      "key": "uvlo_threshold",
+      "name": "Input UVLO threshold",
+      "unit": "V",
+      "group": "protection",
+      "array": true,
+      "conditionAxis": "DIRECTION",
+      "aliases": ["UVLO", "VIN UVLO", "undervoltage lockout", "input undervoltage threshold"],
+      "hint": "Line (input) undervoltage-lockout threshold; give the rising and falling values via DIRECTION. On a controller this may be an externally programmed threshold via a UVLO pin resistor."
+    },
+    {
+      "key": "uvlo_hysteresis",
+      "name": "Input UVLO hysteresis",
+      "unit": "V",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["UVLO hysteresis", "input UVLO hysteresis"],
+      "hint": "Hysteresis on the input UVLO threshold."
+    },
+    {
+      "key": "overvoltage_protection_threshold",
+      "name": "Output overvoltage-protection threshold",
+      "unit": "V",
+      "altUnits": ["%"],
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DIRECTION",
+      "aliases": ["OVP", "output overvoltage threshold", "VOVP", "feedback overvoltage threshold"],
+      "hint": "Output overvoltage-protection threshold (common on boost/buck-boost). May be an absolute voltage (V) or a percent of the reference/setpoint (%); store the percent when the datasheet states it that way, mirroring power_good_threshold."
+    },
+    {
+      "key": "thermal_shutdown_threshold",
+      "name": "Thermal shutdown threshold",
+      "unit": "degC",
+      "group": "protection",
+      "aliases": ["TSD", "thermal shutdown", "OTP", "overtemperature threshold"],
+      "hint": "Junction temperature at which the part shuts down (rising)."
+    },
+    {
+      "key": "thermal_shutdown_hysteresis",
+      "name": "Thermal shutdown hysteresis",
+      "unit": "degC",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["TSD hysteresis", "thermal shutdown hysteresis"],
+      "hint": "Temperature drop below the shutdown threshold before the part recovers."
+    },
+    {
+      "key": "thermal_shutdown_recovery",
+      "name": "Thermal shutdown recovery temperature",
+      "unit": "degC",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["thermal shutdown recovery", "TSD recovery temperature", "thermal restart temperature"],
+      "hint": "The (falling) junction temperature at which the part restarts after a thermal shutdown, when the datasheet tabulates the recovery point directly instead of a hysteresis. Prefer capturing this tabulated value over subtracting to synthesize a hysteresis."
+    },
+    {
+      "key": "short_circuit_trip_threshold",
+      "name": "Short-circuit (hiccup) trip threshold",
+      "unit": "V",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["VHC", "short-circuit trip threshold", "hiccup FB threshold", "short-circuit hiccup threshold"],
+      "hint": "The feedback-voltage threshold below which a persistent-overload hiccup mode is entered (distinct from the cycle-by-cycle current limit)."
+    },
+    {
+      "key": "hiccup_time",
+      "name": "Hiccup restart time",
+      "unit": "s",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["hiccup time", "restart time", "fault off time"],
+      "hint": "Off/wait time between hiccup restart attempts during a persistent short-circuit fault."
+    },
+    {
+      "key": "power_good_threshold",
+      "name": "Power-good threshold",
+      "unit": "%",
+      "altUnits": ["V"],
+      "group": "monitor",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DIRECTION",
+      "aliases": ["PG threshold", "power-good threshold", "PGOOD window", "VPG"],
+      "hint": "Power-good comparator threshold(s), usually as a percent of the reference/setpoint (upper OV and lower UV, each rising and falling). Store the percent; a part that gives an absolute voltage may use V."
+    },
+    {
+      "key": "power_good_delay",
+      "name": "Power-good deglitch delay",
+      "unit": "s",
+      "group": "monitor",
+      "optional": true,
+      "aliases": ["PG delay", "power-good glitch filter", "tPG"],
+      "hint": "Deglitch/filter delay on the power-good signal."
+    },
+    {
+      "key": "power_good_output_low_voltage",
+      "name": "Power-good output-low voltage",
+      "unit": "V",
+      "group": "monitor",
+      "optional": true,
+      "aliases": ["VPG low", "PG output low voltage", "PGOOD VOL"],
+      "hint": "Open-drain power-good output-low voltage at a stated sink current."
+    },
+    {
+      "key": "power_good_leakage_current",
+      "name": "Power-good leakage current",
+      "unit": "A",
+      "group": "monitor",
+      "optional": true,
+      "aliases": ["PG leakage current", "power-good leakage"],
+      "hint": "Open-drain power-good off-state leakage current."
+    },
+    {
+      "key": "power_good_output_resistance",
+      "name": "Power-good output on-resistance",
+      "unit": "ohm",
+      "group": "monitor",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_EN",
+      "aliases": ["RPG", "power-good RDSon", "PG output on-resistance", "PGOOD pull-down resistance"],
+      "hint": "Open-drain power-good output on-resistance (an alternative to a stated output-low voltage). May differ enabled vs disabled (array over V_EN)."
+    },
+    {
+      "key": "efficiency",
+      "name": "Efficiency",
+      "unit": "%",
+      "group": "performance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": ["eta", "efficiency"],
+      "hint": "Conversion efficiency. Usually a graph (out of scope); capture only tabulated points, one measurement per (V_IN, V_OUT, F_SW, I_OUT) operating point. Common on modules and some converters, absent on many."
+    },
+    {
+      "key": "dropout_voltage",
+      "name": "Dropout voltage",
+      "unit": "V",
+      "group": "performance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": ["VDROP", "dropout voltage", "VIN-VOUT dropout", "input-to-output differential"],
+      "hint": "The minimum input-to-output differential at which the converter maintains regulation (a low-dropout / 100%-duty-capable buck), at a stated load current and output voltage. Distinct from max_duty_cycle."
+    },
+    {
+      "key": "line_regulation",
+      "name": "Line regulation",
+      "unit": "V",
+      "altUnits": ["%", "V/V", "ppm/V"],
+      "group": "performance",
+      "optional": true,
+      "aliases": ["line regulation", "dVOUT/dVIN", "reference line regulation"],
+      "hint": "Output (or reference) change over the input-voltage range, as absolute volts, a percent of Vout, a normalized V/V, or ppm/V for a reference-grade line regulation. Often graph-only; capture only tabulated values."
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "unit": "V",
+      "altUnits": ["%", "ohm"],
+      "group": "performance",
+      "optional": true,
+      "aliases": ["load regulation", "dVOUT/dIOUT"],
+      "hint": "Output change over the load range, as absolute volts, a percent of Vout, or an effective ohm (dVout/dIout). Often graph-only."
+    },
+    {
+      "key": "output_voltage_accuracy",
+      "name": "Output voltage accuracy",
+      "unit": "%",
+      "group": "performance",
+      "optional": true,
+      "aliases": ["setpoint tolerance", "output voltage accuracy", "reference accuracy", "total output voltage variation"],
+      "hint": "Setpoint accuracy / total output-voltage variation as a percent (module-level parts combine setpoint, line, load, and temperature)."
+    },
+    {
+      "key": "output_voltage_ripple",
+      "name": "Output voltage ripple",
+      "unit": "V",
+      "group": "performance",
+      "optional": true,
+      "aliases": ["output ripple", "Vpp ripple", "output voltage ripple"],
+      "hint": "Peak-to-peak output ripple (set statistic to peak_to_peak) over a stated measurement bandwidth. Module-level."
+    },
+    {
+      "key": "transient_recovery_time",
+      "name": "Load-transient recovery time",
+      "unit": "s",
+      "group": "performance",
+      "optional": true,
+      "aliases": ["transient recovery time", "settling time", "recovery time"],
+      "hint": "Recovery time after a load step (use the stimulus field for the step). Module-level."
+    },
+    {
+      "key": "transient_deviation",
+      "name": "Load-transient voltage deviation",
+      "unit": "V",
+      "group": "performance",
+      "optional": true,
+      "aliases": ["transient deviation", "overshoot", "undershoot", "output voltage deviation"],
+      "hint": "Peak output over/undershoot for a stated load step. Module-level."
+    },
+    {
+      "key": "recommended_inductance",
+      "name": "Recommended / integrated inductance",
+      "unit": "H",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["L", "inductance", "recommended inductor", "effective inductance"],
+      "hint": "The recommended external inductance range (in a guaranteed Recommended-Operating table), or the integrated inductance of a module. Base-SI henries: 2.2 uH is 2.2e-06."
+    },
+    {
+      "key": "transformer_turns_ratio",
+      "name": "Transformer turns ratio",
+      "unit": "V/V",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["turns ratio", "NPS", "NP:NS", "primary-to-secondary turns ratio", "NPRI:NSEC"],
+      "hint": "Isolated (flyback/forward) topologies: the recommended transformer primary-to-secondary turns ratio, a dimensionless value (V/V). Enters the output-voltage equation and every voltage-stress calculation; belongs to the external transformer, so capture the recommended value(s)."
+    },
+    {
+      "key": "leakage_inductance",
+      "name": "Transformer leakage inductance",
+      "unit": "H",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["leakage inductance", "LLEAK", "primary leakage inductance"],
+      "hint": "Isolated topologies: the recommended/maximum transformer primary leakage inductance, which sets the snubber requirement and switch voltage stress. Base-SI henries."
+    },
+    {
+      "key": "recommended_input_capacitance",
+      "name": "Recommended input capacitance",
+      "unit": "F",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["CIN", "input capacitance", "recommended input capacitor"],
+      "hint": "The recommended/required input capacitance."
+    },
+    {
+      "key": "recommended_output_capacitance",
+      "name": "Recommended output capacitance",
+      "unit": "F",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["COUT", "output capacitance", "recommended output capacitor"],
+      "hint": "The recommended output capacitance range."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Bias/decoupling capacitance",
+      "unit": "F",
+      "group": "external_components",
+      "optional": true,
+      "aliases": ["CVCC", "CBOOT", "bias capacitor", "decoupling capacitance"],
+      "hint": "A required decoupling/bootstrap capacitance (VCC bypass, bootstrap cap)."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "array": true,
+      "conditionAxis": "PACKAGE",
+      "aliases": ["RthetaJA", "theta-JA", "RthJA", "junction-to-ambient thermal resistance"],
+      "hint": "Per-package (and board) junction-to-ambient thermal resistance."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJC", "theta-JC", "RthJC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance (top)."
+    },
+    {
+      "key": "thermal_resistance_junction_board",
+      "name": "Junction-to-board thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthetaJB", "theta-JB", "RthJB", "junction-to-board thermal resistance"],
+      "hint": "Junction-to-board thermal resistance."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["PD", "power dissipation", "maximum power dissipation"],
+      "hint": "Maximum internal power dissipation (module-level, or an absolute-maximum row)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TA", "operating temperature", "operating junction temperature", "operating free-air temperature"],
+      "hint": "Specified operating (junction or free-air) temperature range."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["TJ", "junction temperature", "maximum junction temperature"],
+      "hint": "Absolute-maximum junction temperature."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Absolute-maximum storage temperature range."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM", "HBM", "human body model"],
+      "hint": "ESD withstand, human body model. Store as absolute_max."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM", "CDM", "charged device model", "FICDM"],
+      "hint": "ESD withstand, charged device model. Store as absolute_max."
+    }
+  ]
+}

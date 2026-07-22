@@ -1,0 +1,766 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LT3748",
+    "manufacturer": "Analog Devices",
+    "family": "dc_dc",
+    "description": "Isolated, no-opto, primary-side-sensing boundary-mode flyback controller. The part has NO VOUT pin and NO feedback divider: the output voltage is inferred from the primary-side flyback pulse sampled on the RFB pin, set by the RFB/RREF resistor ratio times the transformer primary-to-secondary turns ratio. Drives an external N-channel power MOSFET; populates the flyback-feedback keys (tc_current, flyback_comparator_trip_current) and the boundary/critical-conduction-mode timers (max_on_time, max_off_time, max_discontinuous_off_time) rather than any VOUT-divider reference.",
+    "polarity": "positive",
+    "package": "MSOP-16(12)",
+    "pinCount": 16,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..150",
+    "orderingVariants": [
+      { "orderCode": "LT3748EMS#PBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..125", "packing": "Tube" },
+      { "orderCode": "LT3748EMS#TRPBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..125", "packing": "Tape and Reel" },
+      { "orderCode": "LT3748IMS#PBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..125", "packing": "Tube" },
+      { "orderCode": "LT3748IMS#TRPBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..125", "packing": "Tape and Reel" },
+      { "orderCode": "LT3748HMS#PBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..150", "packing": "Tube" },
+      { "orderCode": "LT3748HMS#TRPBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-40..150", "packing": "Tape and Reel" },
+      { "orderCode": "LT3748MPMS#PBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-55..150", "packing": "Tube" },
+      { "orderCode": "LT3748MPMS#TRPBF", "package": "MSOP-16(12) (MS16)", "temperatureGrade": "-55..150", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "VIN", "function": "IN", "type": "power", "description": "Chip supply and input to the INTVCC regulator. Operating range 5 V to 100 V.", "sourcePage": 8 },
+    { "number": 3, "name": "EN/UVLO", "function": "EN", "type": "analog", "description": "Combined enable and precision undervoltage-lockout input; 1.223 V rising threshold with a switched hysteresis current. Below the falling threshold the part shuts down.", "sourcePage": 8 },
+    { "number": 5, "name": "INTVCC", "function": "VCC", "type": "power", "description": "Internal 7 V bias/gate-drive regulator output; may be overdriven by a third transformer winding (4.5 V to 20 V) for efficiency. Decouple locally.", "sourcePage": 8 },
+    { "number": 6, "name": "GATE", "function": "GATE", "type": "digital_out", "description": "Gate drive for the external N-channel power MOSFET, swinging between GND and INTVCC.", "sourcePage": 8 },
+    { "number": 7, "name": "SENSE", "function": "SENSE", "type": "analog", "description": "Current-sense input across the external source-sense resistor; sets the peak switch current cycle by cycle.", "sourcePage": 8 },
+    { "number": 8, "name": "GND", "function": "GND", "type": "power", "description": "Device ground.", "sourcePage": 8 },
+    { "number": 9, "name": "GND", "function": "GND", "type": "power", "description": "Device ground.", "sourcePage": 8 },
+    { "number": 10, "name": "SS", "function": "SS", "type": "analog", "description": "Soft-start capacitor charged by an internal source; a fault resets it.", "sourcePage": 8 },
+    { "number": 11, "name": "VC", "function": "COMP", "type": "analog", "description": "Error-amplifier output and loop-compensation node; its voltage sets the current-sense threshold cycle by cycle.", "sourcePage": 8 },
+    { "number": 12, "name": "TC", "function": "TC", "type": "analog", "description": "Temperature-compensation pin. An external RTC resistor sets a current (ITC = 0.55 V / RTC) into the RREF node to cancel the output rectifier's forward-voltage temperature drift.", "sourcePage": 8 },
+    { "number": 14, "name": "RREF", "function": "RREF", "type": "analog", "description": "Bandgap-referenced pin; the external RREF resistor sets the reference current for the primary-side output-voltage sensing.", "sourcePage": 8 },
+    { "number": 16, "name": "RFB", "function": "RFB", "type": "analog", "description": "Primary-flyback-feedback pin. The external RFB resistor samples the primary flyback voltage; with RREF and the transformer turns ratio it sets the regulated output. This is NOT a VOUT divider tap - the part has no VOUT pin.", "sourcePage": 8 }
+  ],
+  "parameters": [
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage (VIN)",
+      "group": "power_supply",
+      "aliases": ["VIN", "input supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 5, "max": 100 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN operating range",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 100 },
+          "unit": "V",
+          "conditionsVerbatim": "VIN, RFB absolute maximum voltage",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Supply current",
+      "group": "power_supply",
+      "aliases": ["IQ", "IVIN", "operating supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0013, "max": 0.00175 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "enabled, not switching" }
+          ],
+          "conditionsVerbatim": "VIN supply current, enabled, not switching",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0003, "max": 0.00045 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "INTVCC overdriven by third winding" },
+            { "param": "V_CC", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIN supply current, INTVCC overdriven, VINTVCC = 10 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown current",
+      "group": "power_supply",
+      "aliases": ["ISD", "shutdown supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 0.2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VEN/UVLO = 0.2 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_voltage",
+      "name": "INTVCC regulation voltage",
+      "group": "internal_regulator",
+      "aliases": ["INTVCC", "VINTVCC", "internal regulator output"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 6.8, "typ": 7.0, "max": 7.2 },
+          "unit": "V",
+          "conditionsVerbatim": "INTVCC regulation voltage",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.5, "max": 20 },
+          "unit": "V",
+          "conditionsVerbatim": "INTVCC operating range when overdriven by a third winding",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_dropout",
+      "name": "INTVCC dropout voltage",
+      "group": "internal_regulator",
+      "aliases": ["INTVCC dropout", "VIN-to-INTVCC dropout"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_CC", "value": 0.01, "unit": "A", "note": "IINTVCC = 10 mA" },
+            { "param": "V_IN", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "INTVCC dropout, IINTVCC = 10 mA, VIN = 5 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_regulator_uvlo",
+      "name": "INTVCC undervoltage lockout",
+      "group": "internal_regulator",
+      "aliases": ["INTVCC UVLO", "INTVCC undervoltage threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.45, "typ": 3.6, "max": 3.75 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "falling" }
+          ],
+          "conditionsVerbatim": "INTVCC undervoltage lockout, falling",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_threshold",
+      "name": "EN/UVLO threshold voltage",
+      "group": "enable",
+      "aliases": ["VEN", "EN/UVLO threshold", "enable threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.19, "typ": 1.223, "max": 1.25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "EN/UVLO threshold (combined enable and precision UVLO pin), rising",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "uvlo_hysteresis_current",
+      "name": "EN/UVLO hysteresis current",
+      "group": "enable",
+      "aliases": ["EN/UVLO hysteresis current", "UVLO pull-down current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.9e-06, "typ": 2.4e-06, "max": 2.9e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "EN/UVLO hysteresis current, VEN/UVLO = 1 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_current",
+      "name": "Soft-start charging current",
+      "group": "soft_start",
+      "aliases": ["ISS", "SS pull-up current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SS", "value": 0.4, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Soft-start charging current, VSS = 0.4 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_threshold",
+      "name": "Soft-start switching-start threshold",
+      "group": "soft_start",
+      "aliases": ["SS threshold", "soft-start threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.65 },
+          "unit": "V",
+          "conditionsVerbatim": "Soft-start threshold",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "soft_start_reset_current",
+      "name": "Soft-start reset (discharge) current",
+      "group": "soft_start",
+      "aliases": ["SS reset current", "soft-start discharge current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.003 },
+          "unit": "A",
+          "conditionsVerbatim": "Soft-start reset current",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "current_sense_threshold",
+      "name": "Current-sense threshold (SENSE)",
+      "group": "current_limit",
+      "aliases": ["VSENSE", "current-limit sense voltage", "VC-programmed sense threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.090, "typ": 0.100, "max": 0.110 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_C", "value": 2.2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Maximum current-sense threshold (current limit), VC = 2.2 V, over temperature",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.015 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_C", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Minimum current-sense threshold, VC = 0 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "sense_threshold_ratio",
+      "name": "Current-sense threshold range ratio",
+      "group": "current_limit",
+      "aliases": ["sense threshold ratio", "max-to-min current-limit ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5.2, "typ": 6.6, "max": 8.2 },
+          "unit": "V/V",
+          "conditionsVerbatim": "Ratio of maximum to minimum SENSE threshold as VC is swept",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "overcurrent_threshold",
+      "name": "SENSE overcurrent threshold",
+      "group": "current_limit",
+      "aliases": ["overcurrent threshold", "SENSE overcurrent threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.115, "typ": 0.130, "max": 0.145 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_C", "value": 2.2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SENSE overcurrent threshold (~130% of ILIM max), resets SS, VC = 2.2 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "sense_input_bias_current",
+      "name": "SENSE input bias current",
+      "group": "current_limit",
+      "aliases": ["SENSE input bias current", "ISENSE bias"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e-05, "typ": 1.5e-05, "max": 2e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SENSE", "value": 0.010, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SENSE input bias current, VSENSE = 10 mV",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_voltage",
+      "name": "RREF bandgap reference voltage",
+      "group": "reference",
+      "aliases": ["VREF", "RREF reference voltage", "bandgap reference"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.195, "typ": 1.223, "max": 1.245 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_C", "value": 1.1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "RREF bandgap reference voltage, VC = 1.1 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "line_regulation",
+      "name": "RREF line regulation",
+      "group": "performance",
+      "aliases": ["line regulation", "reference line regulation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 50, "max": 250 },
+          "unit": "ppm/V",
+          "conditionsVerbatim": "RREF line regulation, 5 V < VIN < 100 V (0.005 %/V typ, 0.025 %/V max)",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "feedback_bias_current",
+      "name": "RREF pin bias current",
+      "group": "reference",
+      "aliases": ["IRREF", "RREF pin bias current", "reference input current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.5e-08, "max": 5e-07 },
+          "unit": "A",
+          "conditionsVerbatim": "RREF pin bias current",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "tc_current",
+      "name": "Temperature-compensation current (TC)",
+      "group": "reference",
+      "aliases": ["ITC", "TC current", "output diode VF compensation current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.75e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "R_TC", "value": 20000, "unit": "ohm", "note": "RTC = 20k" }
+          ],
+          "conditionsVerbatim": "ITC = 0.55 V / RTC, RTC = 20k",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "flyback_comparator_trip_current",
+      "name": "Flyback sampling-comparator trip current (RFB)",
+      "group": "reference",
+      "aliases": ["flyback comparator trip current", "RFB trip current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-05 },
+          "unit": "A",
+          "conditionsVerbatim": "Flyback sampling comparator trip current into RFB, RREF = 6.04k",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_dc_gain",
+      "name": "Error-amplifier DC voltage gain",
+      "group": "error_amplifier",
+      "aliases": ["AV", "error-amp voltage gain", "error-amp DC gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 115 },
+          "unit": "V/V",
+          "conditionsVerbatim": "Error-amplifier voltage gain 115 V/V (~41 dB)",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_transconductance",
+      "name": "Error-amplifier transconductance",
+      "group": "error_amplifier",
+      "aliases": ["gm", "error-amp transconductance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.55e-04 },
+          "unit": "S",
+          "conditionsVerbatim": "Error-amplifier transconductance, 155 umho",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "error_amp_output_current",
+      "name": "Error-amplifier (VC) output current",
+      "group": "error_amplifier",
+      "aliases": ["VC source current", "VC sink current", "error-amp output current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -4.5e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DIRECTION", "note": "source" },
+            { "param": "V_C", "value": 1.1, "unit": "V" },
+            { "param": "V_RREF", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Error-amp VC source current, VC = 1.1 V, VRREF = 0.5 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.8e-05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "DIRECTION", "note": "sink" },
+            { "param": "V_C", "value": 1.1, "unit": "V" },
+            { "param": "V_RREF", "value": 2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Error-amp VC sink current, VC = 1.1 V, VRREF = 2 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "min_on_time",
+      "name": "Minimum on-time",
+      "group": "switching",
+      "aliases": ["tON(min)", "minimum switch on-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.5e-07 },
+          "unit": "s",
+          "conditionsVerbatim": "Minimum on-time",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "min_off_time",
+      "name": "Minimum off-time",
+      "group": "switching",
+      "aliases": ["tOFF(min)", "minimum switch off-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.0e-07 },
+          "unit": "s",
+          "conditionsVerbatim": "Minimum off-time",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "max_on_time",
+      "name": "Maximum on-time",
+      "group": "switching",
+      "aliases": ["tON(max)", "maximum on-time watchdog"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.5e-05 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_SENSE", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Maximum on-time, VSENSE = 0",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "max_off_time",
+      "name": "Maximum off-time (restart timer)",
+      "group": "switching",
+      "aliases": ["tOFF(max)", "restart timer", "maximum off-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.5e-05 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_RREF", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Maximum off-time, VRREF = 0.5 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "max_discontinuous_off_time",
+      "name": "Maximum discontinuous off-time",
+      "group": "switching",
+      "aliases": ["maximum discontinuous off-time", "boundary-mode off-time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.4e-05 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_C", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Maximum discontinuous off-time, VC = 0",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_rise_fall_time",
+      "name": "GATE driver rise / fall time",
+      "group": "gate_driver",
+      "aliases": ["GATE rise time", "GATE fall time", "tRISE", "tFALL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.6e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE rise" },
+            { "param": "C_L", "value": 3.3e-09, "unit": "F", "note": "CL = 3.3 nF" }
+          ],
+          "conditionsVerbatim": "GATE rise time, CL = 3.3 nF",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.6e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE fall" },
+            { "param": "C_L", "value": 3.3e-09, "unit": "F", "note": "CL = 3.3 nF" }
+          ],
+          "conditionsVerbatim": "GATE fall time, CL = 3.3 nF",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_output_voltage",
+      "name": "GATE driver output voltage",
+      "group": "gate_driver",
+      "aliases": ["VOL", "VOH", "GATE output voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.05 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE low output voltage" }
+          ],
+          "conditionsVerbatim": "GATE low output voltage",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.05 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE high, drop below INTVCC (VGATE = VINTVCC - 0.05 V)" }
+          ],
+          "conditionsVerbatim": "GATE high output voltage, drop below INTVCC = VINTVCC - 0.05 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_source_current",
+      "name": "GATE driver peak source current",
+      "group": "gate_driver",
+      "aliases": ["gate-drive source current", "average gate-drive current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9 },
+          "unit": "A",
+          "statistic": "mean",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE (external MOSFET gate)" }
+          ],
+          "conditionsVerbatim": "Average gate-drive source current (front-page headline)",
+          "sourcePage": 1,
+          "sourceTable": "Features"
+        }
+      ]
+    },
+    {
+      "key": "gate_driver_sink_current",
+      "name": "GATE driver peak sink current",
+      "group": "gate_driver",
+      "aliases": ["gate-drive sink current", "average gate-drive current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9 },
+          "unit": "A",
+          "statistic": "mean",
+          "conditions": [
+            { "param": "DRIVER", "note": "GATE (external MOSFET gate)" }
+          ],
+          "conditionsVerbatim": "Average gate-drive sink current (front-page headline)",
+          "sourcePage": 1,
+          "sourceTable": "Features"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["ThetaJA", "RthJA", "junction-to-ambient thermal resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 90 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "MSOP-16(12) (MS16)" }
+          ],
+          "conditionsVerbatim": "Thermal resistance junction-to-ambient, MSOP package",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "general",
+      "aliases": ["TJ", "maximum junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating junction temperature range (absolute maximum)",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating junction temperature range, MP grade (LT3748MPMS)",
+          "sourcePage": 2,
+          "sourceTable": "Order Information"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/LT3748.pdf",
+    "datasheetRevision": "3748fb",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

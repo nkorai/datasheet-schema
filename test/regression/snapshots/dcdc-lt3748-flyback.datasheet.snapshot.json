@@ -1,0 +1,1326 @@
+{
+  "family": "dc_dc",
+  "manufacturer": "Analog Devices",
+  "mpn": "LT3748",
+  "parameters": [
+    {
+      "aliases": [
+        "VIN",
+        "input supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 100,
+            "min": 5
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "IVIN",
+        "operating supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "enabled, not switching",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00175,
+            "typ": 0.0013
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "INTVCC overdriven by third winding",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00045,
+            "typ": 0.0003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISD",
+        "shutdown supply current"
+      ],
+      "group": "power_supply",
+      "key": "shutdown_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 0.2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INTVCC",
+        "VINTVCC",
+        "internal regulator output"
+      ],
+      "group": "internal_regulator",
+      "key": "internal_regulator_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7.2,
+            "min": 6.8,
+            "typ": 7
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 20,
+            "min": 4.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INTVCC dropout",
+        "VIN-to-INTVCC dropout"
+      ],
+      "group": "internal_regulator",
+      "key": "internal_regulator_dropout",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "IINTVCC = 10 mA",
+              "param": "I_CC",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INTVCC UVLO",
+        "INTVCC undervoltage threshold"
+      ],
+      "group": "internal_regulator",
+      "key": "internal_regulator_uvlo",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "falling",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.75,
+            "min": 3.45,
+            "typ": 3.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "EN/UVLO threshold",
+        "VEN",
+        "enable threshold"
+      ],
+      "group": "enable",
+      "key": "enable_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "rising",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.25,
+            "min": 1.19,
+            "typ": 1.223
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "EN/UVLO hysteresis current",
+        "UVLO pull-down current"
+      ],
+      "group": "enable",
+      "key": "uvlo_hysteresis_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0000029,
+            "min": 0.0000019,
+            "typ": 0.0000024
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISS",
+        "SS pull-up current"
+      ],
+      "group": "soft_start",
+      "key": "soft_start_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_SS",
+              "unit": "V",
+              "value": 0.4
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SS threshold",
+        "soft-start threshold"
+      ],
+      "group": "soft_start",
+      "key": "soft_start_threshold",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SS reset current",
+        "soft-start discharge current"
+      ],
+      "group": "soft_start",
+      "key": "soft_start_reset_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VC-programmed sense threshold",
+        "VSENSE",
+        "current-limit sense voltage"
+      ],
+      "group": "current_limit",
+      "key": "current_sense_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 2.2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.11,
+            "min": 0.09,
+            "typ": 0.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "max-to-min current-limit ratio",
+        "sense threshold ratio"
+      ],
+      "group": "current_limit",
+      "key": "sense_threshold_ratio",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 8.2,
+            "min": 5.2,
+            "typ": 6.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SENSE overcurrent threshold",
+        "overcurrent threshold"
+      ],
+      "group": "current_limit",
+      "key": "overcurrent_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 2.2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.145,
+            "min": 0.115,
+            "typ": 0.13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISENSE bias",
+        "SENSE input bias current"
+      ],
+      "group": "current_limit",
+      "key": "sense_input_bias_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_SENSE",
+              "unit": "V",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00002,
+            "min": 0.00001,
+            "typ": 0.000015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RREF reference voltage",
+        "VREF",
+        "bandgap reference"
+      ],
+      "group": "reference",
+      "key": "reference_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 1.1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.245,
+            "min": 1.195,
+            "typ": 1.223
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "line regulation",
+        "reference line regulation"
+      ],
+      "group": "performance",
+      "key": "line_regulation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/V",
+          "value": {
+            "max": 250,
+            "typ": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IRREF",
+        "RREF pin bias current",
+        "reference input current"
+      ],
+      "group": "reference",
+      "key": "feedback_bias_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-7,
+            "typ": 3.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ITC",
+        "TC current",
+        "output diode VF compensation current"
+      ],
+      "group": "reference",
+      "key": "tc_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "RTC = 20k",
+              "param": "R_TC",
+              "unit": "ohm",
+              "value": 20000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0000275
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RFB trip current",
+        "flyback comparator trip current"
+      ],
+      "group": "reference",
+      "key": "flyback_comparator_trip_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AV",
+        "error-amp DC gain",
+        "error-amp voltage gain"
+      ],
+      "group": "error_amplifier",
+      "key": "error_amp_dc_gain",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "typ": 115
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "error-amp transconductance",
+        "gm"
+      ],
+      "group": "error_amplifier",
+      "key": "error_amp_transconductance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "S",
+          "value": {
+            "typ": 0.000155
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VC sink current",
+        "VC source current",
+        "error-amp output current"
+      ],
+      "group": "error_amplifier",
+      "key": "error_amp_output_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "source",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 1.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_RREF",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": -0.000045
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "sink",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 1.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_RREF",
+              "unit": "V",
+              "value": 2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000048
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "minimum switch on-time",
+        "tON(min)"
+      ],
+      "group": "switching",
+      "key": "min_on_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 2.5e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "minimum switch off-time",
+        "tOFF(min)"
+      ],
+      "group": "switching",
+      "key": "min_off_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 7e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "maximum on-time watchdog",
+        "tON(max)"
+      ],
+      "group": "switching",
+      "key": "max_on_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_SENSE",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000055
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "maximum off-time",
+        "restart timer",
+        "tOFF(max)"
+      ],
+      "group": "switching",
+      "key": "max_off_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_RREF",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000055
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "boundary-mode off-time",
+        "maximum discontinuous off-time"
+      ],
+      "group": "switching",
+      "key": "max_discontinuous_off_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_C",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000024
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GATE fall time",
+        "GATE rise time",
+        "tFALL",
+        "tRISE"
+      ],
+      "group": "gate_driver",
+      "key": "gate_driver_rise_fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE rise",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "CL = 3.3 nF",
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.3e-9
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.6e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE fall",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "CL = 3.3 nF",
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.3e-9
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.6e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GATE output voltage",
+        "VOH",
+        "VOL"
+      ],
+      "group": "gate_driver",
+      "key": "gate_driver_output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE low output voltage",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.05
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE high, drop below INTVCC (VGATE = VINTVCC - 0.05 V)",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "average gate-drive current",
+        "gate-drive source current"
+      ],
+      "group": "gate_driver",
+      "key": "gate_driver_source_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE (external MOSFET gate)",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "statistic": "mean",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 1.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "average gate-drive current",
+        "gate-drive sink current"
+      ],
+      "group": "gate_driver",
+      "key": "gate_driver_sink_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GATE (external MOSFET gate)",
+              "param": "DRIVER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "statistic": "mean",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 1.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA",
+        "ThetaJA",
+        "junction-to-ambient thermal resistance"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "MSOP-16(12) (MS16)",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 90
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "maximum junction temperature"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "operating junction temperature"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Order Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "IN",
+      "name": "VIN",
+      "number": 1
+    },
+    {
+      "function": "EN",
+      "name": "EN/UVLO",
+      "number": 3
+    },
+    {
+      "function": "VCC",
+      "name": "INTVCC",
+      "number": 5
+    },
+    {
+      "function": "GATE",
+      "name": "GATE",
+      "number": 6
+    },
+    {
+      "function": "SENSE",
+      "name": "SENSE",
+      "number": 7
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 8
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 9
+    },
+    {
+      "function": "SS",
+      "name": "SS",
+      "number": 10
+    },
+    {
+      "function": "COMP",
+      "name": "VC",
+      "number": 11
+    },
+    {
+      "function": "TC",
+      "name": "TC",
+      "number": 12
+    },
+    {
+      "function": "RREF",
+      "name": "RREF",
+      "number": 14
+    },
+    {
+      "function": "RFB",
+      "name": "RFB",
+      "number": 16
+    }
+  ]
+}

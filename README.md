@@ -51,7 +51,7 @@ The schema has three elements.
 
 1. Measurement. Every value is an object of `value` (with `min`, `typ`, `nom`, `max`), `unit`, `conditions`, and provenance fields. The `conditions` field is a first-class, typed list of axes.
 2. limitClass. One of `absolute_max`, `recommended`, or `characterized`. A single field replaces the separate datasheet tables and records whether a value is a stress limit, an operating range, or a guaranteed characteristic. A consumer must not treat an absolute-maximum value as an operating value.
-3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Four families are included, an LDO regulator, a discrete power MOSFET, a precision voltage reference, and an operational amplifier, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND, a transistor's G, D, S, a shunt reference's CATHODE, ANODE, and an op-amp's IN_P, IN_N, VS_POS, VS_NEG. Adding a family requires only a new dictionary, not a schema change.
+3. Envelope and dictionaries. The parameter shape is family-agnostic. A family dictionary supplies the canonical keys, units, and vendor aliases, so that `psrr`, `ripple rejection`, and `power supply ripple rejection` map to one key. Five families are included, an LDO regulator, a discrete power MOSFET, a precision voltage reference, an operational amplifier, and a switching (DC-DC) regulator, which share one measurement envelope, condition model, and provenance record. A pin function is likewise an open uppercase vocabulary, so the same `pinout` structure carries a regulator's IN, OUT, GND, a transistor's G, D, S, a shunt reference's CATHODE, ANODE, and an op-amp's IN_P, IN_N, VS_POS, VS_NEG. Adding a family requires only a new dictionary, not a schema change.
 
 The schema reuses established vocabulary, including IEC 61360 level roles, an Octopart-style identity envelope, and base-SI units. It adds the conditioned value and provenance that those sources omit.
 
@@ -95,7 +95,7 @@ Reference the hosted, versioned URL from a `$ref`.
 https://nkorai.github.io/datasheet-schema/schema/datasheet-1.0.schema.json
 ```
 
-The [`examples/`](./examples) directory holds validated documents across all four families: real LDO regulators (including a negative current-reference part), silicon and GaN MOSFETs, three real voltage references (a shunt and two series parts), and op-amps (a precision audio part and a femtoampere electrometer with its guard buffer).
+The [`examples/`](./examples) directory holds validated documents across all five families: real LDO regulators (including a negative current-reference part), silicon and GaN MOSFETs, three real voltage references (a shunt and two series parts), op-amps (a precision audio part and a femtoampere electrometer with its guard buffer), and switching regulators (a monolithic synchronous buck, a wide-Vin external-FET buck controller, and an isolated primary-side-sensing flyback controller).
 
 ## Contents
 
@@ -116,6 +116,7 @@ A dictionary defines the canonical parameter keys, units, and vendor aliases for
 | `mosfet` | [`dictionary/mosfet-1.0.json`](./dictionary/mosfet-1.0.json) | 45, covering silicon, SiC, and GaN power FETs (transconductance, output/switching charge, effective Coss, switching energy) as well as small-signal parts. |
 | `voltage_reference` | [`dictionary/voltage_reference-1.0.json`](./dictionary/voltage_reference-1.0.json) | 41, unifying series and shunt topologies, adjustable references, and temperature-sensor and heater sub-blocks. |
 | `op_amp` | [`dictionary/op_amp-1.0.json`](./dictionary/op_amp-1.0.json) | 59, synthesized from a 20-datasheet corpus spanning general-purpose, precision/zero-drift, ultra-low-noise, high-speed voltage- and current-feedback, and femtoampere electrometer parts. |
+| `dc_dc` | [`dictionary/dc_dc-1.0.json`](./dictionary/dc_dc-1.0.json) | 92, from a 20-datasheet corpus covering monolithic buck/boost/buck-boost converters, external-FET controllers (peak-current or pull-up/pull-down-resistance gate drive), an integrated-inductor power module, and isolated primary-side-sensing flyback controllers (no VOUT pin — output inferred from the flyback pulse via an RFB/RREF ratio and the transformer turns ratio), under one envelope selected by sub-type. |
 
 To add a family, write a dictionary that conforms to [`dictionary/family-dictionary-1.0.schema.json`](./dictionary/family-dictionary-1.0.schema.json) and a validated example. No schema change is required.
 

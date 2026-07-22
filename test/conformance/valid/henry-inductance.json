@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "BUCK-X", "manufacturer": "Y", "family": "dc_dc" },
+  "parameters": [
+    { "key": "recommended_inductance", "measurements": [
+      { "limitClass": "recommended", "value": { "min": 3.7e-7, "nom": 1e-6, "max": 2.9e-6 }, "unit": "H" } ] },
+    { "key": "switching_frequency", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 1200000 }, "unit": "Hz", "sourcePage": 3 } ] }
+  ],
+  "provenance": { "verified": false }
+}
