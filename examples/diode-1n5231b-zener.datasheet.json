@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "1N5231B",
+    "manufacturer": "Central Semiconductor",
+    "family": "diode",
+    "description": "Silicon Zener (voltage-regulator) diode, 5.1 V nominal at IZT = 20 mA, +/-5% tolerance (B suffix), 500 mW in a DO-35 axial glass package. This document describes the 5.1 V grade (1N5231B) of the 1N5221B-1N5278B series; each Zener grade is a distinct orderable part with its own VZ and is emitted as its own document, so no measurement is ambiguous about which grade it applies to.",
+    "package": "DO-35 (DO-204AH)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-65..200",
+    "orderingVariants": [
+      { "orderCode": "1N5231B", "packing": "Bulk" },
+      { "orderCode": "1N5231B TR", "packing": "Tape and Reel" },
+      { "orderCode": "1N5231B PBFREE", "packing": "Bulk, Pb-free (Pb) plating" },
+      { "orderCode": "1N5231B TR PBFREE", "packing": "Tape and Reel, Pb-free (Pb) plating" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "ANODE", "function": "ANODE", "type": "passive", "description": "Anode terminal (unbanded lead). Positive terminal in forward conduction; the more-negative terminal when the diode is reverse-biased into Zener breakdown.", "sourcePage": 2 },
+    { "number": 2, "name": "CATHODE", "function": "CATHODE", "type": "passive", "description": "Cathode terminal, identified by the band at this end of the DO-35 body. The regulated (more-positive) terminal in Zener operation.", "sourcePage": 2 }
+  ],
+  "parameters": [
+    {
+      "key": "zener_voltage",
+      "name": "Zener (breakdown) voltage",
+      "group": "protection",
+      "aliases": ["VZ", "VZ @ IZT", "zener voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.845, "nom": 5.1, "max": 5.355 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_Z", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VZ @ IZT, IZT = 20 mA; 5.1 V nominal, min 4.845 V / max 5.355 V (B suffix, +/-5% tolerance)",
+          "guarantee": "production_tested",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "zener_impedance",
+      "name": "Zener dynamic impedance",
+      "group": "protection",
+      "aliases": ["ZZT", "ZZK", "ZZ", "maximum Zener impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 17 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_Z", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ZZT @ IZT, IZT = 20 mA",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1600 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_Z", "value": 0.00025, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ZZK @ IZK, IZK = 0.25 mA (knee current)",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_leakage_current",
+      "name": "Reverse leakage current",
+      "group": "leakage",
+      "aliases": ["IR", "IR @ VR", "maximum reverse current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 2.0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IR @ VR, IR = 5.0 uA max at VR = 2.0 V",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "breakdown_voltage_temperature_coefficient",
+      "name": "Breakdown-voltage temperature coefficient",
+      "group": "protection",
+      "aliases": ["temperature coefficient", "TCVZ", "%/degC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -300, "max": 300 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "temperature coefficient +/-0.030 %/degC = +/-300 ppm/degC (the printed %/degC converts x10000)",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "max_zener_current",
+      "name": "Maximum Zener current",
+      "group": "protection",
+      "aliases": ["IZM", "maximum Zener current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.098 },
+          "unit": "A",
+          "conditionsVerbatim": "IZM not tabulated for this series; derived as PD / VZ = 500 mW / 5.1 V ~ 0.098 A at TL = 75 degC. Advisory - a real design must derate for lead temperature.",
+          "guarantee": "by_design",
+          "confidence": 0.5,
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "group": "thermal",
+      "aliases": ["PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.5 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_L", "value": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Power Dissipation PD = 500 mW (TL = 75 degC)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "group": "general",
+      "aliases": ["TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 200 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating and Storage Junction Temperature TJ, Tstg = -65 to +200 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 200 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating and Storage Junction Temperature TJ, Tstg = -65 to +200 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "029f4c1c6ac1f43f10d5ab0fb275a9754a2f2f69d8a4fee6f91196a31bf02708",
+    "sourceUrl": "https://my.centralsemi.com/datasheets/1N5221B-5281B.PDF",
+    "datasheetRevision": "R5 (8-May 2020)",
+    "publishedDate": "2020-05-08",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

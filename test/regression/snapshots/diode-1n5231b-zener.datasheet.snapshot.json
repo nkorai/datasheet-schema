@@ -1,0 +1,270 @@
+{
+  "family": "diode",
+  "manufacturer": "Central Semiconductor",
+  "mpn": "1N5231B",
+  "parameters": [
+    {
+      "aliases": [
+        "VZ",
+        "VZ @ IZT",
+        "zener voltage"
+      ],
+      "group": "protection",
+      "key": "zener_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_Z",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.355,
+            "min": 4.845,
+            "nom": 5.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ZZ",
+        "ZZK",
+        "ZZT",
+        "maximum Zener impedance"
+      ],
+      "group": "protection",
+      "key": "zener_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_Z",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 17
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_Z",
+              "unit": "A",
+              "value": 0.00025
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 1600
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "IR @ VR",
+        "maximum reverse current"
+      ],
+      "group": "leakage",
+      "key": "reverse_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "%/degC",
+        "TCVZ",
+        "temperature coefficient"
+      ],
+      "group": "protection",
+      "key": "breakdown_voltage_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 300,
+            "min": -300
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IZM",
+        "maximum Zener current"
+      ],
+      "group": "protection",
+      "key": "max_zener_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_design",
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.098
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_L",
+              "unit": "degC",
+              "value": 75
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "junction temperature"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 200
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 200,
+            "min": -65
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "ANODE",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "CATHODE",
+      "number": 2
+    }
+  ]
+}

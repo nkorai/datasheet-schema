@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "1N4007",
+    "manufacturer": "Vishay",
+    "family": "diode",
+    "description": "General-purpose plastic silicon rectifier, 1000 V, 1.0 A average, in a DO-41 axial package. Highest-voltage grade of the 1N4001-1N4007 series; for rectification in power supplies, inverters, converters, and freewheeling applications. Low forward voltage drop, low leakage, high forward surge capability.",
+    "package": "DO-41 (DO-204AL)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-50..150",
+    "orderingVariants": [
+      { "orderCode": "1N4007-E3/54", "package": "DO-41 (DO-204AL)", "packing": "13-inch paper tape and reel" },
+      { "orderCode": "1N4007-E3/73", "package": "DO-41 (DO-204AL)", "packing": "Ammo pack" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "power", "description": "Anode terminal. Forward current flows anode to cathode.", "sourcePage": 1 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "power", "description": "Cathode terminal, marked by the color band on the body.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "reverse_voltage_repetitive_peak",
+      "name": "Maximum repetitive peak reverse voltage",
+      "group": "reverse_voltage",
+      "aliases": ["VRRM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1000 },
+          "unit": "V",
+          "conditionsVerbatim": "VRRM, maximum repetitive peak reverse voltage",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage_dc",
+      "name": "Maximum DC blocking voltage",
+      "group": "reverse_voltage",
+      "aliases": ["VDC", "VR"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1000 },
+          "unit": "V",
+          "conditionsVerbatim": "VDC, maximum DC blocking voltage",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage_rms",
+      "name": "Maximum RMS voltage",
+      "group": "reverse_voltage",
+      "aliases": ["VRMS"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 700 },
+          "unit": "V",
+          "conditionsVerbatim": "VRMS, maximum RMS voltage",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_current_average",
+      "name": "Maximum average forward rectified current",
+      "group": "forward_current",
+      "aliases": ["IF(AV)"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.0 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IF(AV), maximum average forward rectified current, 0.375 in (9.5 mm) lead length at TA = 75 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_surge_current",
+      "name": "Peak forward surge current",
+      "group": "forward_current",
+      "aliases": ["IFSM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 30 },
+          "unit": "A",
+          "conditions": [
+            { "param": "WAVEFORM", "note": "8.3 ms single half-sine, superimposed on rated load" }
+          ],
+          "conditionsVerbatim": "IFSM, peak forward surge current, 8.3 ms single half sine-wave superimposed on rated load",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "fusing_rating_i2t",
+      "name": "Rating for fusing (I-squared-t)",
+      "group": "forward_current",
+      "aliases": ["I2t"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 3.7 },
+          "unit": "A2s",
+          "conditions": [
+            { "param": "WAVEFORM", "note": "t < 8.3 ms" }
+          ],
+          "conditionsVerbatim": "I2t, rating for fusing (t < 8.3 ms)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Maximum instantaneous forward voltage",
+      "group": "forward_voltage",
+      "aliases": ["VF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.1 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 1.0, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VF, maximum instantaneous forward voltage at IF = 1.0 A, TA = 25 degC",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_leakage_current",
+      "name": "Maximum DC reverse current at rated DC blocking voltage",
+      "group": "leakage",
+      "aliases": ["IR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 1000, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR, maximum DC reverse current at rated DC blocking voltage, TA = 25 degC",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 1000, "unit": "V" },
+            { "param": "T_A", "value": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR, maximum DC reverse current at rated DC blocking voltage, TA = 125 degC",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current_full_cycle_avg",
+      "name": "Maximum full load reverse current, full cycle average",
+      "group": "leakage",
+      "aliases": ["IR(AV)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_L", "value": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR(AV), maximum full load reverse current, full cycle average, 0.375 in (9.5 mm) lead length, TL = 75 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_capacitance",
+      "name": "Typical junction capacitance",
+      "group": "dynamic",
+      "aliases": ["CJ"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 4, "unit": "V" },
+            { "param": "F", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "CJ, typical junction capacitance, 4.0 V, 1 MHz",
+          "guarantee": "typical",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Typical thermal resistance, junction to ambient",
+      "group": "thermal",
+      "aliases": ["RthJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 50 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthJA, typical thermal resistance from junction to ambient at 0.375 in (9.5 mm) lead length, PCB mounted",
+          "guarantee": "typical",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_lead",
+      "name": "Typical thermal resistance, junction to lead",
+      "group": "thermal",
+      "aliases": ["RthJL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 25 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthJL, typical thermal resistance from junction to lead",
+          "guarantee": "typical",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Maximum junction temperature",
+      "group": "general",
+      "aliases": ["TJ"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ max., maximum junction temperature",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -50, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, operating junction and storage temperature range, -50 to +150 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["TSTG"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -50, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TSTG, operating junction and storage temperature range, -50 to +150 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "Rev. 29-Apr-2020, Document Number 88503",
+    "sourceUrl": "https://www.vishay.com/docs/88503/1n4001.pdf",
+    "publishedDate": "29-Apr-2020",
+    "datasheetSha256": "56a77c6615c90c11993d37d94e67f335cf3a2d1fe00f25d2a1a4833834356d07",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

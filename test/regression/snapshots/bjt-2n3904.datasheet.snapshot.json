@@ -1,0 +1,1211 @@
+{
+  "family": "bjt",
+  "manufacturer": "onsemi",
+  "mpn": "2N3904",
+  "parameters": [
+    {
+      "aliases": [
+        "BVCEO",
+        "V(BR)CEO",
+        "VCEO"
+      ],
+      "group": "breakdown",
+      "key": "collector_emitter_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 40
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V(BR)CBO",
+        "VCBO"
+      ],
+      "group": "breakdown",
+      "key": "collector_base_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 60
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V(BR)EBO",
+        "VEBO"
+      ],
+      "group": "breakdown",
+      "key": "emitter_base_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IC",
+        "IC(cont)"
+      ],
+      "group": "ratings",
+      "key": "collector_current_continuous",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "total device dissipation"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.625
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "beta",
+        "hFE"
+      ],
+      "group": "current_gain",
+      "key": "dc_current_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "min": 40
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "min": 70
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 300,
+            "min": 100
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.05
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "min": 60
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "min": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCE(sat)",
+        "VCEsat"
+      ],
+      "group": "saturation",
+      "key": "collector_emitter_saturation_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.05
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.005
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VBE(sat)",
+        "VBEsat"
+      ],
+      "group": "saturation",
+      "key": "base_emitter_saturation_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.85,
+            "min": 0.65
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.05
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.005
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.95
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "current gain-bandwidth product",
+        "fT"
+      ],
+      "group": "dynamic",
+      "key": "transition_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 20
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 100 MHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "min": 300000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cob",
+        "Cobo"
+      ],
+      "group": "dynamic",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CB",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 MHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 4e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cib",
+        "Cibo"
+      ],
+      "group": "dynamic",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EB",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 MHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 8e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICEX",
+        "collector cutoff current"
+      ],
+      "group": "leakage",
+      "key": "collector_emitter_cutoff_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 30
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IBL",
+        "base cutoff current"
+      ],
+      "group": "leakage",
+      "key": "base_cutoff_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 30
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "hfe",
+        "small-signal current gain"
+      ],
+      "group": "small_signal_h",
+      "key": "small_signal_current_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 kHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 400,
+            "min": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "hie",
+        "small-signal input impedance"
+      ],
+      "group": "small_signal_h",
+      "key": "small_signal_input_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 kHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 10000,
+            "min": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "hoe",
+        "small-signal output admittance"
+      ],
+      "group": "small_signal_h",
+      "key": "small_signal_output_admittance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 kHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "S",
+          "value": {
+            "max": 0.00004,
+            "min": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "hre",
+        "reverse voltage transfer ratio"
+      ],
+      "group": "small_signal_h",
+      "key": "reverse_voltage_transfer_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency f = 1.0 kHz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 0.0008,
+            "min": 0.00005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NF",
+        "noise figure"
+      ],
+      "group": "noise",
+      "key": "noise_figure",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_S",
+              "unit": "ohm",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delay time",
+        "td"
+      ],
+      "group": "switching",
+      "key": "turn_on_delay_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 3.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "switching",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 3.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "storage time",
+        "ts"
+      ],
+      "group": "switching",
+      "key": "storage_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 2e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "tf"
+      ],
+      "group": "switching",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Rth(j-a)",
+        "RthJA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "max": 200
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "junction temperature"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tamb",
+        "operating temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "EMITTER",
+      "name": "E",
+      "number": 1
+    },
+    {
+      "function": "BASE",
+      "name": "B",
+      "number": 2
+    },
+    {
+      "function": "COLLECTOR",
+      "name": "C",
+      "number": 3
+    }
+  ]
+}

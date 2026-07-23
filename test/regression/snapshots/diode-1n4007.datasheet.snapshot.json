@@ -1,0 +1,469 @@
+{
+  "family": "diode",
+  "manufacturer": "Vishay",
+  "mpn": "1N4007",
+  "parameters": [
+    {
+      "aliases": [
+        "VRRM"
+      ],
+      "group": "reverse_voltage",
+      "key": "reverse_voltage_repetitive_peak",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDC",
+        "VR"
+      ],
+      "group": "reverse_voltage",
+      "key": "reverse_voltage_dc",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VRMS"
+      ],
+      "group": "reverse_voltage",
+      "key": "reverse_voltage_rms",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 700
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF(AV)"
+      ],
+      "group": "forward_current",
+      "key": "forward_current_average",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 75
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFSM"
+      ],
+      "group": "forward_current",
+      "key": "forward_surge_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "8.3 ms single half-sine, superimposed on rated load",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I2t"
+      ],
+      "group": "forward_current",
+      "key": "fusing_rating_i2t",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "t < 8.3 ms",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A2s",
+          "value": {
+            "max": 3.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF"
+      ],
+      "group": "forward_voltage",
+      "key": "forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR"
+      ],
+      "group": "leakage",
+      "key": "reverse_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000005
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 125
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR(AV)"
+      ],
+      "group": "leakage",
+      "key": "reverse_current_full_cycle_avg",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_L",
+              "unit": "degC",
+              "value": 75
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CJ"
+      ],
+      "group": "dynamic",
+      "key": "junction_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 4
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 1.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJL"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_lead",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TSTG"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -50
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "Anode",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 2
+    }
+  ]
+}

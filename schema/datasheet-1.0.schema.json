@@ -266,11 +266,11 @@
 
     "unit": {
       "title": "Unit",
-      "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate. The fractional-rate family ppm, ppm/V, and ppm/A captures dimensionless drift (long-term stability, thermal hysteresis) and the per-volt/per-amp regulation rates that precision references and other parts specify, alongside ppm/degC.",
+      "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate. The fractional-rate family ppm, ppm/V, and ppm/A captures dimensionless drift (long-term stability, thermal hysteresis) and the per-volt/per-amp regulation rates that precision references and other parts specify, alongside ppm/degC. A2s is ampere-squared-seconds, the I-squared-t fusing rating a rectifier publishes for fuse coordination.",
       "type": "string",
       "enum": [
         "V", "A", "Hz", "degC", "ohm", "F", "H", "s", "W", "C", "J", "S", "deg",
-        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "A/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz", "A/sqrtHz"
+        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "A/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz", "A/sqrtHz", "A2s"
       ]
     }
   }

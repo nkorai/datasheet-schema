@@ -1,0 +1,540 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "bjt",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for bipolar junction transistors, synthesized from a real-datasheet corpus (onsemi, Nexperia, Infineon, NXP, ST, Diotec, Central Semiconductor, MCC) spanning six sub-shapes that share one measurement envelope: (1) small-signal / general-purpose (2N3904/06, BC547/57, 2N2222A); (2) power (TIP31C/32C, MJE3055/2955T, 2N3055, D44H11); (3) Darlington (TIP120) which additionally populate internal_resistor_1/2 and clamp_diode_forward_voltage; (4) RF / high-frequency (2N5109, BFR93A, BFU550) which populate transition/maximum-oscillation frequency, the RF gain family (power_gain_insertion/maximum, associated_gain), noise_figure, and output_power_1db_compression/third_order_intercept; (5) fast switching (2N2369A) which populate the switching-time keys; and (6) digital / bias-resistor transistors (DTC114E) which populate internal_resistor_1/2/ratio and on/off_state_input_voltage. A part's sub_type selects which optional keys apply; the breakdown voltages, dc_current_gain, saturation voltages, cutoff currents, capacitances, power/thermal, and temperature keys are common. component.polarity carries the transistor type: NPN is 'positive', PNP is 'negative' - store magnitudes, never let a datasheet's leading minus signs on a PNP leak into the numbers. A breakdown voltage that appears both as an absolute-maximum rating (VCEO) and as a characterized value at a test current (BVCEO at IC) is ONE key distinguished by limitClass, not two containers. A gain bin (BC547A/B/C) is one grade per document. dc_current_gain (hFE) and every condition-swept spec is array:true - never collapse the I_C sweep into one row. Condition axes for this family: V_CE, V_CB, V_EB (junction bias voltages), I_C, I_B, I_E (terminal currents), F (frequency, for fT/gain/noise/S-parameter spot values), R_BE (base-emitter termination), R_S/R_G (noise source resistance), T_J, T_A, T_C, T_SP. Pin functions are BASE, COLLECTOR, EMITTER (the tab/case of a TO-220/TO-3 power part is the COLLECTOR; a digital transistor's input/output pins are electrically BASE-via-R1 / COLLECTOR - keep the electrical identity and model the network as internal_resistor keys). Base-SI throughout; the dimensionless current gain hFE and the resistor ratio use V/V; RF output power printed in dBm converts to W (P[W]=10^((dBm-30)/10)) with the dBm figure kept in conditionsVerbatim; small-signal h-parameters use ohm (hie), S (hoe), and V/V (hfe, hre). Safe-operating-area and full S-parameter matrices are graph/file-only and out of scope; capture the tabulated scalar figures. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "collector_emitter_breakdown_voltage",
+      "name": "Collector-emitter breakdown / sustaining voltage",
+      "unit": "V",
+      "group": "breakdown",
+      "aliases": ["VCEO", "V(BR)CEO", "BVCEO", "VCEO(sus)", "collector-emitter breakdown voltage", "collector-emitter sustaining voltage"],
+      "hint": "Collector-emitter voltage with the base open. The same key carries the absolute_max rating (VCEO) and the characterized breakdown (BVCEO at a stated I_C, I_B=0), distinguished by limitClass. On a PNP store the magnitude."
+    },
+    {
+      "key": "collector_emitter_breakdown_voltage_shorted",
+      "name": "Collector-emitter breakdown, base terminated",
+      "unit": "V",
+      "group": "breakdown",
+      "optional": true,
+      "aliases": ["VCES", "BVCES", "VCER", "BVCER", "VCER(sus)", "collector-emitter breakdown base shorted", "collector-emitter breakdown base resistor"],
+      "hint": "Collector-emitter breakdown with the base-emitter shorted (VCES) or resistor-terminated (VCER at a stated R_BE) - higher than VCEO. Absolute_max rating or characterized value, per limitClass."
+    },
+    {
+      "key": "collector_base_breakdown_voltage",
+      "name": "Collector-base breakdown voltage",
+      "unit": "V",
+      "group": "breakdown",
+      "aliases": ["VCBO", "V(BR)CBO", "BVCBO", "collector-base breakdown voltage"],
+      "hint": "Collector-base voltage with the emitter open. Absolute_max (VCBO) and/or characterized (BVCBO at a small I_C, I_E=0), per limitClass."
+    },
+    {
+      "key": "emitter_base_breakdown_voltage",
+      "name": "Emitter-base breakdown voltage",
+      "unit": "V",
+      "group": "breakdown",
+      "aliases": ["VEBO", "V(BR)EBO", "BVEBO", "emitter-base breakdown voltage"],
+      "hint": "Emitter-base voltage with the collector open - typically low (4-7 V); exceeding it degrades hFE. Absolute_max (VEBO) and/or characterized (BVEBO at a small I_E), per limitClass."
+    },
+    {
+      "key": "collector_current_continuous",
+      "name": "Continuous collector current",
+      "unit": "A",
+      "group": "ratings",
+      "aliases": ["IC", "IC(cont)", "continuous collector current", "collector current", "IO"],
+      "hint": "Maximum continuous (DC) collector current (absolute_max). On a digital transistor this is also the output current IO."
+    },
+    {
+      "key": "collector_current_peak",
+      "name": "Peak collector current",
+      "unit": "A",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["ICM", "ICP", "IC(pulse)", "peak collector current", "pulsed collector current"],
+      "hint": "Maximum peak/pulsed collector current at a stated pulse width (absolute_max)."
+    },
+    {
+      "key": "base_current",
+      "name": "Base current",
+      "unit": "A",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["IB", "IBB", "base current"],
+      "hint": "Maximum continuous base current (absolute_max)."
+    },
+    {
+      "key": "base_current_peak",
+      "name": "Peak base current",
+      "unit": "A",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["IBM", "peak base current"],
+      "hint": "Maximum peak/pulsed base current (absolute_max)."
+    },
+    {
+      "key": "emitter_current_peak",
+      "name": "Peak emitter current",
+      "unit": "A",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["IEM", "peak emitter current"],
+      "hint": "Maximum peak emitter current (absolute_max)."
+    },
+    {
+      "key": "input_voltage",
+      "name": "Input voltage (digital transistor)",
+      "unit": "V",
+      "group": "digital",
+      "optional": true,
+      "aliases": ["VI", "input voltage"],
+      "hint": "Digital (bias-resistor) transistor: the maximum input voltage (into the series R1), often asymmetric positive/negative (absolute_max)."
+    },
+    {
+      "key": "dc_current_gain",
+      "name": "DC current gain (hFE)",
+      "unit": "V/V",
+      "group": "current_gain",
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["hFE", "HFE", "beta", "DC current gain", "forward current transfer ratio", "GI"],
+      "hint": "DC current gain, dimensionless (unit V/V), swept over I_C at a fixed V_CE (array over I_C, one measurement per point; hold V_CE in the conditions). A Darlington reaches ~1000; a digital transistor's GI is the DC current transfer ratio. The min/max spread at a point is what a gain bin buys."
+    },
+    {
+      "key": "collector_emitter_saturation_voltage",
+      "name": "Collector-emitter saturation voltage",
+      "unit": "V",
+      "group": "saturation",
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["VCE(sat)", "VCEsat", "collector-emitter saturation voltage"],
+      "hint": "Collector-emitter saturation voltage at a stated collector current and forcing base current (array over I_C, with I_B in the conditions). A Darlington's is higher (extra junction). One measurement per (I_C, I_B) point."
+    },
+    {
+      "key": "base_emitter_saturation_voltage",
+      "name": "Base-emitter saturation voltage",
+      "unit": "V",
+      "group": "saturation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["VBE(sat)", "VBEsat", "base-emitter saturation voltage"],
+      "hint": "Base-emitter voltage in saturation at a stated I_C and forcing I_B (array over I_C)."
+    },
+    {
+      "key": "base_emitter_on_voltage",
+      "name": "Base-emitter on voltage",
+      "unit": "V",
+      "group": "saturation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["VBE(on)", "VBE", "base-emitter on voltage"],
+      "hint": "Base-emitter forward voltage in the active region at a stated I_C and V_CE (array over I_C). A Darlington's is ~2x (two stacked junctions)."
+    },
+    {
+      "key": "collector_base_cutoff_current",
+      "name": "Collector-base cutoff current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CB",
+      "aliases": ["ICBO", "collector-base cutoff current", "collector cutoff current emitter open"],
+      "hint": "Collector-base leakage with the emitter open, at a stated V_CB (array over V_CB, and T_J - rises with temperature)."
+    },
+    {
+      "key": "collector_emitter_cutoff_current",
+      "name": "Collector-emitter cutoff current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CE",
+      "aliases": ["ICEO", "ICES", "ICEX", "ICEV", "collector-emitter cutoff current", "collector leakage current"],
+      "hint": "Collector-emitter leakage at a stated V_CE, with the base open (ICEO), shorted (ICES), or reverse-biased (ICEX/ICEV) - note the base condition. Array over V_CE and T_J."
+    },
+    {
+      "key": "emitter_base_cutoff_current",
+      "name": "Emitter-base cutoff current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_EB",
+      "aliases": ["IEBO", "emitter-base cutoff current", "emitter cutoff current"],
+      "hint": "Emitter-base leakage with the collector open, at a stated V_EB."
+    },
+    {
+      "key": "base_cutoff_current",
+      "name": "Base cutoff current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CE",
+      "aliases": ["IBL", "base cutoff current"],
+      "hint": "Base-terminal leakage with the collector-emitter biased and the base-emitter reverse-biased (V_CE, V_EB(off) in the conditions) - a distinct OFF-characteristic row from the collector cutoff on some small-signal parts."
+    },
+    {
+      "key": "transition_frequency",
+      "name": "Transition frequency (gain-bandwidth product)",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["fT", "current gain-bandwidth product", "GBW", "transition frequency"],
+      "hint": "The frequency at which the small-signal current gain falls to unity, at a stated I_C and V_CE (array over I_C, measured at a high test frequency). Spans MHz (jellybean) to tens of GHz (microwave)."
+    },
+    {
+      "key": "maximum_oscillation_frequency",
+      "name": "Maximum oscillation frequency",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["fmax", "maximum oscillation frequency"],
+      "hint": "RF: the frequency at which the maximum available power gain falls to unity. Often graph-derived rather than tabulated."
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output (collector-base) capacitance",
+      "unit": "F",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CB",
+      "aliases": ["Cobo", "Cob", "Ccb", "output capacitance", "collector capacitance"],
+      "hint": "Common-base output (collector-base) capacitance at a stated V_CB (array over V_CB) and test frequency, emitter open. The dominant Miller-feedback capacitance."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (emitter-base) capacitance",
+      "unit": "F",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_EB",
+      "aliases": ["Cibo", "Cib", "Ceb", "input capacitance"],
+      "hint": "Common-base input (emitter-base) capacitance at a stated V_EB and test frequency, collector open."
+    },
+    {
+      "key": "feedback_capacitance",
+      "name": "Feedback (reverse) capacitance",
+      "unit": "F",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_CE",
+      "aliases": ["Cre", "Crb", "feedback capacitance", "reverse transfer capacitance"],
+      "hint": "RF: the reverse (feedback) capacitance at a stated bias - sets the internal feedback that limits stable gain."
+    },
+    {
+      "key": "collector_emitter_capacitance",
+      "name": "Collector-emitter capacitance",
+      "unit": "F",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["Cce", "collector-emitter capacitance"],
+      "hint": "RF: collector-emitter capacitance at a stated V_CE and frequency."
+    },
+    {
+      "key": "turn_on_delay_time",
+      "name": "Turn-on delay time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["td", "delay time", "turn-on delay time"],
+      "hint": "Switching: delay from the input edge to the start of collector-current rise, at stated drive currents."
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tr", "rise time"],
+      "hint": "Switching: collector-current 10-90% rise time."
+    },
+    {
+      "key": "storage_time",
+      "name": "Storage time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["ts", "storage time"],
+      "hint": "Switching: delay from turn-off drive to the start of collector-current fall (stored-charge removal); dominates a saturated BJT's turn-off."
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tf", "fall time"],
+      "hint": "Switching: collector-current 90-10% fall time."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["ton", "turn-on time"],
+      "hint": "Switching: aggregate turn-on time (delay + rise) when the components are not tabulated separately."
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["toff", "turn-off time"],
+      "hint": "Switching: aggregate turn-off time (storage + fall)."
+    },
+    {
+      "key": "small_signal_current_gain",
+      "name": "Small-signal current gain (hfe)",
+      "unit": "V/V",
+      "group": "small_signal_h",
+      "optional": true,
+      "aliases": ["h_fe", "small-signal current gain", "small-signal forward current gain", "AC current gain"],
+      "hint": "Small-signal forward current gain (the AC h-parameter hfe) at a stated V_CE, I_C, and frequency (dimensionless, V/V). Note: a bare 'hfe' in extracted text is case-ambiguous with the DC hFE (dc_current_gain), which owns that token; this key is the small-signal AC parameter."
+    },
+    {
+      "key": "small_signal_input_impedance",
+      "name": "Small-signal input impedance (hie)",
+      "unit": "ohm",
+      "group": "small_signal_h",
+      "optional": true,
+      "aliases": ["hie", "small-signal input impedance"],
+      "hint": "Common-emitter small-signal input impedance at a stated bias and frequency."
+    },
+    {
+      "key": "small_signal_output_admittance",
+      "name": "Small-signal output admittance (hoe)",
+      "unit": "S",
+      "group": "small_signal_h",
+      "optional": true,
+      "aliases": ["hoe", "small-signal output admittance"],
+      "hint": "Common-emitter small-signal output admittance (siemens) at a stated bias and frequency."
+    },
+    {
+      "key": "reverse_voltage_transfer_ratio",
+      "name": "Reverse voltage transfer ratio (hre)",
+      "unit": "V/V",
+      "group": "small_signal_h",
+      "optional": true,
+      "aliases": ["hre", "reverse voltage transfer ratio"],
+      "hint": "Common-emitter reverse voltage transfer ratio (dimensionless, V/V)."
+    },
+    {
+      "key": "noise_figure",
+      "name": "Noise figure",
+      "unit": "dB",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["NF", "NFmin", "Fmin", "noise figure", "minimum noise figure"],
+      "hint": "Noise figure at a stated bias, source resistance, and frequency (array over F and/or I_C). NFmin is the minimum over source matching."
+    },
+    {
+      "key": "power_gain_insertion",
+      "name": "Insertion power gain",
+      "unit": "dB",
+      "group": "rf",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["|S21e|2", "GPE", "GUM", "insertion power gain"],
+      "hint": "RF: insertion / common-emitter power gain (|S21e|^2) at a stated frequency and bias (array over F, I_C). A tabulated spot figure; the full S-matrix is out of scope."
+    },
+    {
+      "key": "power_gain_maximum",
+      "name": "Maximum available / stable power gain",
+      "unit": "dB",
+      "group": "rf",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Gma", "Gms", "MAG", "MSG", "Gp(max)", "maximum available power gain", "maximum stable power gain"],
+      "hint": "RF: maximum available (Gma/MAG) or maximum stable (Gms/MSG) power gain at a stated frequency and bias (array over F, I_C)."
+    },
+    {
+      "key": "associated_gain",
+      "name": "Associated gain (at minimum noise figure)",
+      "unit": "dB",
+      "group": "rf",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Gass", "associated gain"],
+      "hint": "RF: the power gain obtained under the source match that yields NFmin, at a stated frequency and bias."
+    },
+    {
+      "key": "output_power_1db_compression",
+      "name": "Output power at 1 dB gain compression",
+      "unit": "W",
+      "group": "rf",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["P1dB", "PL(1dB)", "OP1dB", "output power at 1 dB compression"],
+      "hint": "RF: output power at 1 dB gain compression, at a stated frequency and bias. Convert a printed dBm to W (P=10^((dBm-30)/10)); keep the dBm figure in conditionsVerbatim."
+    },
+    {
+      "key": "output_third_order_intercept",
+      "name": "Output third-order intercept (OIP3)",
+      "unit": "W",
+      "group": "rf",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["OIP3", "IP3", "IP3o", "output third-order intercept"],
+      "hint": "RF: output-referred third-order intercept point, at a stated frequency and bias. Convert a printed dBm to W; keep the dBm figure in conditionsVerbatim."
+    },
+    {
+      "key": "input_power_max",
+      "name": "Maximum input power (RF)",
+      "unit": "W",
+      "group": "rf",
+      "optional": true,
+      "aliases": ["Pi", "maximum input power"],
+      "hint": "RF: maximum RF input power (absolute_max). Convert a printed dBm to W; keep the dBm figure in conditionsVerbatim."
+    },
+    {
+      "key": "internal_resistor_1",
+      "name": "Internal resistor R1",
+      "unit": "ohm",
+      "group": "internal_network",
+      "optional": true,
+      "aliases": ["R1", "input series resistor", "base series resistor"],
+      "hint": "Integrated resistor R1: on a digital (bias-resistor) transistor the input series resistor from the INPUT pin to the intrinsic base; on a Darlington a base-emitter bleeder. No SI prefix - 10 kohm is 10000."
+    },
+    {
+      "key": "internal_resistor_2",
+      "name": "Internal resistor R2",
+      "unit": "ohm",
+      "group": "internal_network",
+      "optional": true,
+      "aliases": ["R2", "base-emitter shunt resistor", "base-emitter bleeder resistor"],
+      "hint": "Integrated resistor R2: the base-emitter shunt on a digital transistor, or a base-emitter bleeder on a Darlington."
+    },
+    {
+      "key": "internal_resistor_ratio",
+      "name": "Internal resistor ratio (R2/R1)",
+      "unit": "V/V",
+      "group": "internal_network",
+      "optional": true,
+      "aliases": ["R2/R1", "R1/R2", "GR", "resistor ratio"],
+      "hint": "Digital transistor: the dimensionless ratio of the two integrated resistors (sets the input-threshold behavior)."
+    },
+    {
+      "key": "clamp_diode_forward_voltage",
+      "name": "Integral clamp-diode forward voltage",
+      "unit": "V",
+      "group": "internal_network",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["clamp diode VF", "freewheeling diode forward voltage", "integral diode forward voltage"],
+      "hint": "Darlington: the forward voltage of the integral collector-emitter freewheeling/clamp diode at a stated current (often only shown in the equivalent circuit - capture a tabulated value only)."
+    },
+    {
+      "key": "on_state_input_voltage",
+      "name": "On-state input voltage threshold",
+      "unit": "V",
+      "group": "digital",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["VI(on)", "on-state input voltage"],
+      "hint": "Digital transistor: the input voltage that turns the output on to a stated collector current at a low V_CE."
+    },
+    {
+      "key": "off_state_input_voltage",
+      "name": "Off-state input voltage threshold",
+      "unit": "V",
+      "group": "digital",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": ["VI(off)", "off-state input voltage"],
+      "hint": "Digital transistor: the input voltage below which the output is off (leakage-level collector current at a stated V_CE)."
+    },
+    {
+      "key": "second_breakdown_current",
+      "name": "Second-breakdown collector current",
+      "unit": "A",
+      "group": "soa",
+      "optional": true,
+      "aliases": ["Is/b", "IS/B", "second breakdown current"],
+      "hint": "Power BJT: the forward-bias second-breakdown collector-current limit at a stated V_CE and time - the one tabular point of the otherwise graph-only safe operating area."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "array": true,
+      "conditionAxis": "T_C",
+      "aliases": ["PD", "Ptot", "PC", "PT", "total power dissipation", "collector dissipation"],
+      "hint": "Maximum total power dissipation, rated at a reference temperature (case T_C=25 C for a heatsinked power part, ambient T_A=25 C for free air). Emit one measurement per reference temperature - a consumer must not apply the case-cooled figure in free air."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJC", "Rth(j-c)", "Rth(j-mb)", "theta-JC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case (or junction-to-mounting-base) thermal resistance (power parts)."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJA", "Rth(j-a)", "theta-JA", "junction-to-ambient thermal resistance"],
+      "hint": "Junction-to-ambient thermal resistance (K/W and degC/W are identical; normalize to degC/W)."
+    },
+    {
+      "key": "thermal_resistance_junction_solderpoint",
+      "name": "Junction-to-solder-point thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJS", "Rth(j-sp)", "Rth(j-s)", "junction-to-solder-point thermal resistance"],
+      "hint": "Junction-to-solder-point thermal resistance (SMD parts characterized to the PCB pad)."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TJ", "junction temperature", "maximum junction temperature"],
+      "hint": "Maximum operating junction temperature (absolute_max)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tamb", "T_op", "operating temperature range", "operating ambient temperature range"],
+      "hint": "The operating (junction or ambient) temperature range (min/max)."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "hint": "Absolute-maximum storage temperature range (min/max)."
+    }
+  ]
+}

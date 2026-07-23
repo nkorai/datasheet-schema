@@ -1,0 +1,607 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "2N3904",
+    "manufacturer": "onsemi",
+    "family": "bjt",
+    "description": "General-purpose NPN small-signal bipolar junction transistor (sub_type small_signal). 40 V, 200 mA, 625 mW in the TO-92 package. Suited to general amplification and switching to 100 mA.",
+    "package": "TO-92",
+    "pinCount": 3,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-55..150"
+  },
+  "pinout": [
+    { "number": 1, "name": "E", "function": "EMITTER", "type": "analog", "description": "Emitter.", "sourcePage": 1 },
+    { "number": 2, "name": "B", "function": "BASE", "type": "analog", "description": "Base.", "sourcePage": 1 },
+    { "number": 3, "name": "C", "function": "COLLECTOR", "type": "analog", "description": "Collector.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "collector_emitter_breakdown_voltage",
+      "name": "Collector-emitter breakdown / sustaining voltage",
+      "group": "breakdown",
+      "aliases": ["VCEO", "V(BR)CEO", "BVCEO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 40 },
+          "unit": "V",
+          "conditionsVerbatim": "VCEO, collector-emitter voltage (base open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 40 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 0.001, "unit": "A" },
+            { "param": "I_B", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "V(BR)CEO, collector-emitter breakdown voltage, IC = 1.0 mA, IB = 0",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_base_breakdown_voltage",
+      "name": "Collector-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": ["VCBO", "V(BR)CBO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 60 },
+          "unit": "V",
+          "conditionsVerbatim": "VCBO, collector-base voltage (emitter open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_breakdown_voltage",
+      "name": "Emitter-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": ["VEBO", "V(BR)EBO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 6 },
+          "unit": "V",
+          "conditionsVerbatim": "VEBO, emitter-base voltage (collector open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_current_continuous",
+      "name": "Continuous collector current",
+      "group": "ratings",
+      "aliases": ["IC", "IC(cont)"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.2 },
+          "unit": "A",
+          "conditionsVerbatim": "IC, collector current - continuous",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total device dissipation",
+      "group": "thermal",
+      "aliases": ["PD", "total device dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.625 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "PD, total device dissipation @ TA = 25 degC (derate 5.0 mW/degC above 25 degC)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "dc_current_gain",
+      "name": "DC current gain (hFE)",
+      "group": "current_gain",
+      "aliases": ["hFE", "beta"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 40 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-4, "unit": "A" },
+            { "param": "V_CE", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "hFE, IC = 0.1 mA, VCE = 1.0 V (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 70 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-3, "unit": "A" },
+            { "param": "V_CE", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "hFE, IC = 1.0 mA, VCE = 1.0 V (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 100, "max": 300 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "V_CE", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "hFE, IC = 10 mA, VCE = 1.0 V (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 60 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "I_C", "value": 5e-2, "unit": "A" },
+            { "param": "V_CE", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "hFE, IC = 50 mA, VCE = 1.0 V (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 30 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-1, "unit": "A" },
+            { "param": "V_CE", "value": 1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "hFE, IC = 100 mA, VCE = 1.0 V (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_saturation_voltage",
+      "name": "Collector-emitter saturation voltage",
+      "group": "saturation",
+      "aliases": ["VCE(sat)", "VCEsat"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VCE(sat), IC = 10 mA, IB = 1.0 mA (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 5e-2, "unit": "A" },
+            { "param": "I_B", "value": 5e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VCE(sat), IC = 50 mA, IB = 5.0 mA (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "base_emitter_saturation_voltage",
+      "name": "Base-emitter saturation voltage",
+      "group": "saturation",
+      "aliases": ["VBE(sat)", "VBEsat"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.65, "max": 0.85 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VBE(sat), IC = 10 mA, IB = 1.0 mA (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.95 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 5e-2, "unit": "A" },
+            { "param": "I_B", "value": 5e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VBE(sat), IC = 50 mA, IB = 5.0 mA (pulsed)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - ON Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "transition_frequency",
+      "name": "Transition frequency (gain-bandwidth product)",
+      "group": "dynamic",
+      "aliases": ["fT", "current gain-bandwidth product"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.0e8 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "V_CE", "value": 20, "unit": "V" },
+            { "param": "F", "note": "test frequency f = 100 MHz" }
+          ],
+          "conditionsVerbatim": "fT, IC = 10 mA, VCE = 20 V, f = 100 MHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output (collector-base) capacitance",
+      "group": "dynamic",
+      "aliases": ["Cobo", "Cob"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 4e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_CB", "value": 5, "unit": "V" },
+            { "param": "F", "note": "test frequency f = 1.0 MHz" }
+          ],
+          "conditionsVerbatim": "Cobo, VCB = 5.0 V, IE = 0, f = 1.0 MHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (emitter-base) capacitance",
+      "group": "dynamic",
+      "aliases": ["Cibo", "Cib"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 8e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_EB", "value": 0.5, "unit": "V" },
+            { "param": "F", "note": "test frequency f = 1.0 MHz" }
+          ],
+          "conditionsVerbatim": "Cibo, VEB = 0.5 V, IC = 0, f = 1.0 MHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_cutoff_current",
+      "name": "Collector-emitter cutoff current",
+      "group": "leakage",
+      "aliases": ["ICEX", "collector cutoff current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CE", "value": 30, "unit": "V" }
+          ],
+          "conditionsVerbatim": "ICEX, VEB(off)=3 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "base_cutoff_current",
+      "name": "Base cutoff current",
+      "group": "leakage",
+      "aliases": ["IBL", "base cutoff current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CE", "value": 30, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IBL, base cutoff current, VCE=30 V, VEB(off)=3.0 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OFF Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "small_signal_current_gain",
+      "name": "Small-signal current gain (hfe)",
+      "group": "small_signal_h",
+      "aliases": ["hfe", "small-signal current gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 100, "max": 400 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 1e-3, "unit": "A" },
+            { "param": "F", "note": "test frequency f = 1.0 kHz" }
+          ],
+          "conditionsVerbatim": "hfe, VCE = 10 V, IC = 1.0 mA, f = 1.0 kHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "small_signal_input_impedance",
+      "name": "Small-signal input impedance (hie)",
+      "group": "small_signal_h",
+      "aliases": ["hie", "small-signal input impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1000, "max": 10000 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 1e-3, "unit": "A" },
+            { "param": "F", "note": "test frequency f = 1.0 kHz" }
+          ],
+          "conditionsVerbatim": "hie, VCE = 10 V, IC = 1.0 mA, f = 1.0 kHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "small_signal_output_admittance",
+      "name": "Small-signal output admittance (hoe)",
+      "group": "small_signal_h",
+      "aliases": ["hoe", "small-signal output admittance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e-6, "max": 4e-5 },
+          "unit": "S",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 1e-3, "unit": "A" },
+            { "param": "F", "note": "test frequency f = 1.0 kHz" }
+          ],
+          "conditionsVerbatim": "hoe, VCE = 10 V, IC = 1.0 mA, f = 1.0 kHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage_transfer_ratio",
+      "name": "Reverse voltage transfer ratio (hre)",
+      "group": "small_signal_h",
+      "aliases": ["hre", "reverse voltage transfer ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5e-5, "max": 8e-4 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 1e-3, "unit": "A" },
+            { "param": "F", "note": "test frequency f = 1.0 kHz" }
+          ],
+          "conditionsVerbatim": "hre, VCE = 10 V, IC = 1.0 mA, f = 1.0 kHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "noise_figure",
+      "name": "Noise figure",
+      "group": "noise",
+      "aliases": ["NF", "noise figure"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_CE", "value": 5, "unit": "V" },
+            { "param": "I_C", "value": 1e-4, "unit": "A" },
+            { "param": "R_S", "value": 1000, "unit": "ohm" },
+            { "param": "F", "value": 1e3, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "NF, VCE = 5.0 V, IC = 100 uA, RS = 1.0 kohm, f = 1.0 kHz",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Small-Signal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_delay_time",
+      "name": "Turn-on delay time",
+      "group": "switching",
+      "aliases": ["td", "delay time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.5e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3, "unit": "V" },
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "td, VCC = 3.0 V, IC = 10 mA, IB1 = 1.0 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "group": "switching",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.5e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3, "unit": "V" },
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "tr, VCC = 3.0 V, IC = 10 mA, IB1 = 1.0 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "storage_time",
+      "name": "Storage time",
+      "group": "switching",
+      "aliases": ["ts", "storage time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2.0e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3, "unit": "V" },
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "ts, VCC = 3.0 V, IC = 10 mA, IB1 = IB2 = 1.0 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "group": "switching",
+      "aliases": ["tf", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3, "unit": "V" },
+            { "param": "I_C", "value": 1e-2, "unit": "A" },
+            { "param": "I_B", "value": 1e-3, "unit": "A" }
+          ],
+          "conditionsVerbatim": "tf, VCC = 3.0 V, IC = 10 mA, IB1 = IB2 = 1.0 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthJA", "Rth(j-a)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 200 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthetaJA, thermal resistance, junction-to-ambient",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "group": "general",
+      "aliases": ["TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, operating junction temperature",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["Tamb", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating and storage junction temperature range",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature range",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "2N3904/D",
+    "sourceUrl": "https://www.onsemi.com/pub/Collateral/2N3904-D.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

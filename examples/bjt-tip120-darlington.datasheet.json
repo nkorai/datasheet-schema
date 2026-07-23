@@ -1,0 +1,621 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TIP120",
+    "manufacturer": "onsemi",
+    "family": "bjt",
+    "description": "NPN epitaxial Darlington transistor (sub_type: darlington), 60 V, 5 A, medium-power linear and switching applications. Monolithic two-stage Darlington with integrated base-emitter bias resistors R1 (~8 kohm, input stage) and R2 (~0.12 kohm, output stage), giving a very high hFE (>=1000) at the cost of an elevated VCE(sat) and a stacked-junction VBE(on) of ~2.5 V. TIP120/121/122 differ only in breakdown voltage (60/80/100 V); this document describes the TIP120 grade.",
+    "package": "TO-220",
+    "pinCount": 3,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-65..150",
+    "orderingVariants": [
+      {
+        "orderCode": "TIP120",
+        "package": "TO-220 3L (Single Gauge)",
+        "packing": "Bulk"
+      },
+      {
+        "orderCode": "TIP120TU",
+        "package": "TO-220 3L (Single Gauge)",
+        "packing": "Rail"
+      }
+    ]
+  },
+  "pinout": [
+    {
+      "number": 1,
+      "name": "Base",
+      "function": "BASE",
+      "type": "analog",
+      "description": "Base (control input) - drives the Darlington input stage through the integrated resistor R1.",
+      "sourcePage": 1
+    },
+    {
+      "number": 2,
+      "name": "Collector",
+      "function": "COLLECTOR",
+      "type": "power",
+      "description": "Collector. Electrically common with the TO-220 mounting tab.",
+      "sourcePage": 1
+    },
+    {
+      "number": 3,
+      "name": "Emitter",
+      "function": "EMITTER",
+      "type": "power",
+      "description": "Emitter (output-stage emitter of the Darlington).",
+      "sourcePage": 1
+    }
+  ],
+  "parameters": [
+    {
+      "key": "collector_emitter_breakdown_voltage",
+      "name": "Collector-emitter breakdown / sustaining voltage",
+      "group": "breakdown",
+      "aliases": [
+        "VCEO",
+        "VCEO(sus)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 60
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VCEO, Collector-Emitter Voltage, TIP120",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 60
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 0.1,
+              "unit": "A"
+            },
+            {
+              "param": "I_B",
+              "value": 0,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "VCEO(sus), Collector-Emitter Sustaining Voltage, TIP120, IC = 100 mA, IB = 0",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_base_breakdown_voltage",
+      "name": "Collector-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": [
+        "VCBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 60
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VCBO, Collector-Base Voltage, TIP120",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_breakdown_voltage",
+      "name": "Emitter-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": [
+        "VEBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 5
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VEBO, Emitter-Base Voltage",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_current_continuous",
+      "name": "Continuous collector current",
+      "group": "ratings",
+      "aliases": [
+        "IC"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 5
+          },
+          "unit": "A",
+          "conditionsVerbatim": "IC, Collector Current (DC)",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_current_peak",
+      "name": "Peak collector current",
+      "group": "ratings",
+      "aliases": [
+        "ICP",
+        "ICM"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 8
+          },
+          "unit": "A",
+          "conditionsVerbatim": "ICP, Collector Current (Pulse)",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "base_current",
+      "name": "Base current",
+      "group": "ratings",
+      "aliases": [
+        "IB"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 0.12
+          },
+          "unit": "A",
+          "conditionsVerbatim": "IB, Base Current (DC), 120 mA",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "group": "thermal",
+      "aliases": [
+        "PC",
+        "collector dissipation"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 65
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "T_C",
+              "value": 25,
+              "unit": "degC"
+            }
+          ],
+          "conditionsVerbatim": "PC, Collector Dissipation (TC = 25 degC)",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 2
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "T_A",
+              "value": 25,
+              "unit": "degC"
+            }
+          ],
+          "conditionsVerbatim": "PC, Collector Dissipation (TA = 25 degC)",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dc_current_gain",
+      "name": "DC current gain (hFE)",
+      "group": "current_gain",
+      "aliases": [
+        "hFE"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 1000
+          },
+          "unit": "V/V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 0.5,
+              "unit": "A"
+            },
+            {
+              "param": "V_CE",
+              "value": 3,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "hFE, DC Current Gain, VCE = 3 V, IC = 0.5 A (pulse test: pw <= 300 us, duty cycle <= 2%)",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 1000
+          },
+          "unit": "V/V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 3,
+              "unit": "A"
+            },
+            {
+              "param": "V_CE",
+              "value": 3,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "hFE, DC Current Gain, VCE = 3 V, IC = 3 A (pulse test: pw <= 300 us, duty cycle <= 2%)",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_saturation_voltage",
+      "name": "Collector-emitter saturation voltage",
+      "group": "saturation",
+      "aliases": [
+        "VCE(sat)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 2.0
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 3,
+              "unit": "A"
+            },
+            {
+              "param": "I_B",
+              "value": 0.012,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "VCE(sat), Collector-Emitter Saturation Voltage, IC = 3 A, IB = 12 mA (pulse test: pw <= 300 us, duty cycle <= 2%)",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 4.0
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 5,
+              "unit": "A"
+            },
+            {
+              "param": "I_B",
+              "value": 0.02,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "VCE(sat), Collector-Emitter Saturation Voltage, IC = 5 A, IB = 20 mA (pulse test: pw <= 300 us, duty cycle <= 2%)",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "base_emitter_on_voltage",
+      "name": "Base-emitter on voltage",
+      "group": "saturation",
+      "aliases": [
+        "VBE(on)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 2.5
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 3,
+              "unit": "A"
+            },
+            {
+              "param": "V_CE",
+              "value": 3,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "VBE(on), Base-Emitter On Voltage, VCE = 3 V, IC = 3 A (pulse test: pw <= 300 us, duty cycle <= 2%); ~2x a single junction (stacked Darlington)",
+          "guarantee": "production_tested",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_base_cutoff_current",
+      "name": "Collector-base cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "ICBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.0002
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_CB",
+              "value": 60,
+              "unit": "V"
+            },
+            {
+              "param": "I_E",
+              "value": 0,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "ICBO, Collector Cut-Off Current, VCB = 60 V, IE = 0, max 0.2 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_cutoff_current",
+      "name": "Collector-emitter cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "ICEO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.0005
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_CE",
+              "value": 30,
+              "unit": "V"
+            },
+            {
+              "param": "I_B",
+              "value": 0,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "ICEO, Collector Cut-Off Current, VCE = 30 V, IB = 0, max 0.5 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_cutoff_current",
+      "name": "Emitter-base cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "IEBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.002
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_EB",
+              "value": 5,
+              "unit": "V"
+            },
+            {
+              "param": "I_C",
+              "value": 0,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "IEBO, Emitter Cut-Off Current, VEB = 5 V, IC = 0, max 2 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output (collector-base) capacitance",
+      "group": "dynamic",
+      "aliases": [
+        "Cob"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 2e-10
+          },
+          "unit": "F",
+          "conditions": [
+            {
+              "param": "V_CB",
+              "value": 10,
+              "unit": "V"
+            },
+            {
+              "param": "I_E",
+              "value": 0,
+              "unit": "A"
+            },
+            {
+              "param": "F",
+              "value": 100000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "Cob, Output Capacitance, VCB = 10 V, IE = 0, f = 0.1 MHz, max 200 pF",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "internal_resistor_1",
+      "name": "Internal resistor R1",
+      "group": "internal_network",
+      "aliases": [
+        "R1"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "nom": 8000
+          },
+          "unit": "ohm",
+          "conditionsVerbatim": "R1 ~= 8 kOhm (integrated Darlington input-stage base-emitter bias resistor, from the Equivalent Circuit)",
+          "guarantee": "typical",
+          "sourcePage": 1,
+          "sourceTable": "Equivalent Circuit"
+        }
+      ]
+    },
+    {
+      "key": "internal_resistor_2",
+      "name": "Internal resistor R2",
+      "group": "internal_network",
+      "aliases": [
+        "R2"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "nom": 120
+          },
+          "unit": "ohm",
+          "conditionsVerbatim": "R2 ~= 0.12 kOhm (integrated Darlington output-stage base-emitter bias resistor, from the Equivalent Circuit)",
+          "guarantee": "typical",
+          "sourcePage": 1,
+          "sourceTable": "Equivalent Circuit"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "group": "general",
+      "aliases": [
+        "TJ"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 150
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, Junction Temperature",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": [
+        "TSTG"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "min": -65,
+            "max": 150
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "TSTG, Storage Temperature Range, -65 to 150 degC",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "TIP122/D Rev.2",
+    "sourceUrl": "https://www.onsemi.com/pdf/datasheet/tip120-d.pdf",
+    "publishedDate": "November 2017",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "R1 (~8 kohm) and R2 (~0.12 kohm) are the integrated Darlington bias resistors read from the Equivalent Circuit on page 1, given as approximate values; captured with guarantee: typical.",
+    "thermal_resistance_junction_case (RthetaJC) is NOT tabulated in this datasheet - only collector dissipation (65 W at TC=25 degC, 2 W at TA=25 degC) and TJ(max)=150 degC are given - so it is omitted rather than back-computed from PD and TJ.",
+    "clamp_diode_forward_voltage omitted: the Equivalent Circuit shows only R1/R2; no integral collector-emitter clamp-diode forward voltage is tabulated for this device.",
+    "ICEO is 0.5 mA (5e-4 A) at VCE=30 V, IB=0 per the Electrical Characteristics table (the registered brief value of 2e-3 A was not confirmed and was corrected to the datasheet figure).",
+    "Cob (output capacitance) is specified as a maximum of 200 pF (2e-10 F), recorded as value.max.",
+    "emitter_base_cutoff_current (IEBO, max 2 mA at VEB=5 V) was added from the datasheet in addition to the requested parameter list.",
+    "The onsemi document (Publication Order Number TIP122/D, November-2017 Rev.2) was confirmed against the DigiKey-hosted mirror of the onsemi PDF (SHA-256 686c2f6cd9847407dd42d82045b0153433f76ef2b6f2bc8307196a48d0eb4862); onsemi.com blocked a direct fetch (HTTP 403), so datasheetSha256 of the canonical sourceUrl bytes is omitted rather than asserted from a different file."
+  ]
+}

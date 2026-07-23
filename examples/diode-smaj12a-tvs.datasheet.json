@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "SMAJ12A",
+    "manufacturer": "Littelfuse",
+    "family": "diode",
+    "description": "12 V unidirectional 400 W (10/1000 us) transient-voltage-suppressor (TVS) diode for board-level surge and transient protection. The 'A' suffix is the unidirectional variant with tightened breakdown tolerance; the bidirectional sibling is the SMAJ12CA (component.polarity bipolar). Part of the SMAJ series (VRWM 5 V to 440 V) in the DO-214AC (SMA) surface-mount package.",
+    "package": "DO-214AC (SMA)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-55..150",
+    "orderingVariants": [
+      { "orderCode": "SMAJ12A", "package": "DO-214AC (SMA)", "packing": "Tape and Reel" },
+      { "orderCode": "SMAJ12CA", "package": "DO-214AC (SMA)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Anode terminal.", "sourcePage": 1 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Cathode terminal, marked by the band on the package.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "reverse_standoff_voltage",
+      "name": "Reverse standoff voltage",
+      "group": "reverse_voltage",
+      "aliases": ["VRWM", "working peak reverse voltage", "stand-off voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 12.0 },
+          "unit": "V",
+          "conditionsVerbatim": "VRWM, reverse stand-off voltage",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "breakdown_voltage",
+      "name": "Reverse breakdown voltage",
+      "group": "reverse_voltage",
+      "aliases": ["V(BR)", "VBR", "reverse breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 13.3, "max": 14.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_T", "value": 0.001, "unit": "A" }
+          ],
+          "conditionsVerbatim": "V(BR), breakdown voltage at IT = 1 mA",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "clamping_voltage",
+      "name": "Maximum clamping voltage",
+      "group": "protection",
+      "aliases": ["VC", "clamping voltage", "maximum clamping voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 19.9 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_PP", "value": 20.1, "unit": "A" },
+            { "param": "WAVEFORM", "note": "10/1000 us" }
+          ],
+          "conditionsVerbatim": "VC, maximum clamping voltage at IPP = 20.1 A, 10/1000 us waveform",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "peak_pulse_current",
+      "name": "Maximum peak pulse current",
+      "group": "protection",
+      "aliases": ["IPP", "IPPM", "peak pulse current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 20.1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "WAVEFORM", "note": "10/1000 us" }
+          ],
+          "conditionsVerbatim": "IPP, maximum peak pulse current, 10/1000 us waveform",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "peak_pulse_power",
+      "name": "Peak pulse power dissipation",
+      "group": "protection",
+      "aliases": ["PPPM", "PPP", "peak pulse power"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 400 },
+          "unit": "W",
+          "conditions": [
+            { "param": "WAVEFORM", "note": "10/1000 us" }
+          ],
+          "conditionsVerbatim": "PPPM, peak pulse power dissipation, 10/1000 us waveform, TA = 25 degC",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_leakage_current",
+      "name": "Reverse leakage current",
+      "group": "leakage",
+      "aliases": ["IR", "IRM", "reverse leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 12, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IR, reverse leakage current at VRWM = 12 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_surge_current",
+      "name": "Non-repetitive peak forward surge current",
+      "group": "forward_current",
+      "aliases": ["IFSM", "peak forward surge current", "surge current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 40 },
+          "unit": "A",
+          "conditions": [
+            { "param": "WAVEFORM", "note": "8.3 ms half-sine" }
+          ],
+          "conditionsVerbatim": "IFSM, peak forward surge current, 8.3 ms single half-sine-wave, unidirectional only",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "forward_voltage",
+      "aliases": ["VF", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 35, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VF, forward voltage at IF = 35 A, unidirectional only",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Steady-state power dissipation",
+      "group": "thermal",
+      "aliases": ["PD", "power dissipation", "steady state power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.0 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_L", "value": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "PM(AV), steady-state power dissipation at TL = 75 degC, lead length 9.5 mm",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthJA", "theta-JA", "junction-to-ambient thermal resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 120 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthJA, typical junction-to-ambient thermal resistance",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_lead",
+      "name": "Junction-to-lead thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthJL", "theta-JL", "junction-to-lead thermal resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 30 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthJL, typical junction-to-lead thermal resistance",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "group": "general",
+      "aliases": ["TJ", "TJmax", "operating junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, maximum junction temperature",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, operating junction temperature range",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature range",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SMAJ series, Littelfuse TVS Diode",
+    "sourceUrl": "https://www.littelfuse.com/products/tvs-diodes/surface-mount/smaj.aspx",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

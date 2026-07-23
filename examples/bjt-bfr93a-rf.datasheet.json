@@ -1,0 +1,710 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "BFR93A",
+    "manufacturer": "Infineon",
+    "family": "bjt",
+    "description": "Wideband silicon NPN RF bipolar transistor for low-noise amplifiers and oscillators through ~2 GHz, with transition frequency fT ~ 6 GHz. SOT-23 surface-mount package. Characterized for RF power gain, minimum noise figure, and small-signal S-parameter spot values at 900 MHz and 1.8 GHz.",
+    "package": "SOT-23",
+    "pinCount": 3,
+    "polarity": "positive",
+    "lifecycle": "active"
+  },
+  "pinout": [
+    {
+      "number": 1,
+      "name": "B",
+      "function": "BASE",
+      "type": "analog",
+      "description": "Base.",
+      "sourcePage": 1
+    },
+    {
+      "number": 2,
+      "name": "E",
+      "function": "EMITTER",
+      "type": "analog",
+      "description": "Emitter.",
+      "sourcePage": 1
+    },
+    {
+      "number": 3,
+      "name": "C",
+      "function": "COLLECTOR",
+      "type": "analog",
+      "description": "Collector.",
+      "sourcePage": 1
+    }
+  ],
+  "parameters": [
+    {
+      "key": "collector_base_breakdown_voltage",
+      "name": "Collector-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": [
+        "VCBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 20
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VCBO, collector-base voltage (emitter open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_breakdown_voltage_shorted",
+      "name": "Collector-emitter breakdown, base terminated",
+      "group": "breakdown",
+      "aliases": [
+        "VCES"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 20
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VCES, collector-emitter voltage (base-emitter shorted)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_breakdown_voltage",
+      "name": "Collector-emitter breakdown / sustaining voltage",
+      "group": "breakdown",
+      "aliases": [
+        "BVCEO",
+        "V(BR)CEO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 12
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VCEO, collector-emitter voltage (base open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 12
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 0.001,
+              "unit": "A"
+            },
+            {
+              "param": "I_B",
+              "value": 0,
+              "unit": "A"
+            }
+          ],
+          "conditionsVerbatim": "V(BR)CEO, IC = 1 mA, IB = 0 (base open)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_breakdown_voltage",
+      "name": "Emitter-base breakdown voltage",
+      "group": "breakdown",
+      "aliases": [
+        "VEBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 2
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VEBO, emitter-base voltage (collector open)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_current_continuous",
+      "name": "Continuous collector current",
+      "group": "ratings",
+      "aliases": [
+        "IC"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 0.09
+          },
+          "unit": "A",
+          "conditionsVerbatim": "IC, continuous collector current",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "base_current",
+      "name": "Base current",
+      "group": "ratings",
+      "aliases": [
+        "IB"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 0.009
+          },
+          "unit": "A",
+          "conditionsVerbatim": "IB, continuous base current",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "group": "thermal",
+      "aliases": [
+        "Ptot",
+        "PD"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 0.3
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "T_C",
+              "value": 111,
+              "unit": "degC",
+              "note": "solder point 111 degC"
+            }
+          ],
+          "conditionsVerbatim": "Ptot, total power dissipation, TS <= 111 degC (soldering point)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "dc_current_gain",
+      "name": "DC current gain (hFE)",
+      "group": "current_gain",
+      "aliases": [
+        "hFE"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 70,
+            "typ": 100,
+            "max": 140
+          },
+          "unit": "V/V",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 0.03,
+              "unit": "A"
+            },
+            {
+              "param": "V_CE",
+              "value": 8,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "hFE, IC = 30 mA, VCE = 8 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "transition_frequency",
+      "name": "Transition frequency (gain-bandwidth product)",
+      "group": "dynamic",
+      "aliases": [
+        "fT"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 4500000000.0,
+            "typ": 6000000000.0
+          },
+          "unit": "Hz",
+          "conditions": [
+            {
+              "param": "I_C",
+              "value": 0.03,
+              "unit": "A"
+            },
+            {
+              "param": "V_CE",
+              "value": 8,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "fT, transition frequency, IC = 30 mA, VCE = 8 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output (collector-base) capacitance",
+      "group": "dynamic",
+      "aliases": [
+        "Ccb",
+        "Cobo"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 5.4e-13,
+            "max": 8e-13
+          },
+          "unit": "F",
+          "conditions": [
+            {
+              "param": "V_CB",
+              "value": 10,
+              "unit": "V"
+            },
+            {
+              "param": "F",
+              "value": 1000000.0,
+              "unit": "Hz",
+              "note": "test frequency 1 MHz"
+            }
+          ],
+          "conditionsVerbatim": "Ccb, collector-base capacitance, VCB = 10 V, f = 1 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (emitter-base) capacitance",
+      "group": "dynamic",
+      "aliases": [
+        "Ceb",
+        "Cibo"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 1.9e-12
+          },
+          "unit": "F",
+          "conditions": [
+            {
+              "param": "V_EB",
+              "value": 0.5,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "Ceb, emitter-base capacitance, VEB = 0.5 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_capacitance",
+      "name": "Collector-emitter capacitance",
+      "group": "dynamic",
+      "aliases": [
+        "Cce"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.5e-13
+          },
+          "unit": "F",
+          "conditions": [
+            {
+              "param": "V_CE",
+              "value": 10,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "Cce, collector-emitter capacitance, VCE = 10 V",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_gain_insertion",
+      "name": "Insertion power gain",
+      "group": "rf",
+      "aliases": [
+        "|S21e|2"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 12.5
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 900000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "|S21e|^2, insertion power gain, f = 900 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 7
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 1800000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "|S21e|^2, insertion power gain, f = 1.8 GHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_gain_maximum",
+      "name": "Maximum available / stable power gain",
+      "group": "rf",
+      "aliases": [
+        "Gma",
+        "MAG"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 14.5
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 900000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "Gma, maximum available power gain, f = 900 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 9.5
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 1800000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "Gma, maximum available power gain, f = 1.8 GHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "noise_figure",
+      "name": "Noise figure",
+      "group": "noise",
+      "aliases": [
+        "NFmin",
+        "Fmin"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 1.5
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 900000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "NFmin, minimum noise figure, f = 900 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 1800000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "NFmin, minimum noise figure, f = 1.8 GHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_power_1db_compression",
+      "name": "Output power at 1 dB gain compression",
+      "group": "rf",
+      "aliases": [
+        "P1dB",
+        "P-1dB"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.00398
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 900000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "P-1dB = 6 dBm at 900 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_third_order_intercept",
+      "name": "Output third-order intercept (OIP3)",
+      "group": "rf",
+      "aliases": [
+        "IP3",
+        "OIP3"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.0316
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 900000000.0,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "IP3 = 15 dBm at 900 MHz",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_base_cutoff_current",
+      "name": "Collector-base cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "ICBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 1e-07
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_CB",
+              "value": 10,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "ICBO, collector-base cutoff current, VCB = 10 V, IE = 0",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_cutoff_current",
+      "name": "Collector-emitter cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "ICES"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.0001
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_CE",
+              "value": 20,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "ICES, collector-emitter cutoff current, VCE = 20 V, VBE = 0",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_cutoff_current",
+      "name": "Emitter-base cutoff current",
+      "group": "leakage",
+      "aliases": [
+        "IEBO"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 1e-05
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_EB",
+              "value": 2.5,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "IEBO, emitter-base cutoff current, VEB = 2.5 V",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_solderpoint",
+      "name": "Junction-to-solder-point thermal resistance",
+      "group": "thermal",
+      "aliases": [
+        "RthJS",
+        "Rth(j-s)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 130
+          },
+          "unit": "degC/W",
+          "conditionsVerbatim": "RthJS, junction-to-solder-point thermal resistance",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "group": "general",
+      "aliases": [
+        "TJ",
+        "Tj"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "max": 150
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "Tj, maximum junction temperature",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": [
+        "Tstg"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "min": -55,
+            "max": 150
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature range",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "BFR93A - Silicon NPN RF Transistor",
+    "sourceUrl": "https://www.infineon.com/dgdl/Infineon-BFR93A-DataSheet-v01_00-EN.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

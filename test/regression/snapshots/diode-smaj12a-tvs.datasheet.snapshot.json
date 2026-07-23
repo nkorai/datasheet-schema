@@ -1,0 +1,435 @@
+{
+  "family": "diode",
+  "manufacturer": "Littelfuse",
+  "mpn": "SMAJ12A",
+  "parameters": [
+    {
+      "aliases": [
+        "VRWM",
+        "stand-off voltage",
+        "working peak reverse voltage"
+      ],
+      "group": "reverse_voltage",
+      "key": "reverse_standoff_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V(BR)",
+        "VBR",
+        "reverse breakdown voltage"
+      ],
+      "group": "reverse_voltage",
+      "key": "breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_T",
+              "unit": "A",
+              "value": 0.001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 14.7,
+            "min": 13.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VC",
+        "clamping voltage",
+        "maximum clamping voltage"
+      ],
+      "group": "protection",
+      "key": "clamping_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_PP",
+              "unit": "A",
+              "value": 20.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "10/1000 us",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 19.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IPP",
+        "IPPM",
+        "peak pulse current"
+      ],
+      "group": "protection",
+      "key": "peak_pulse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "10/1000 us",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 20.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PPP",
+        "PPPM",
+        "peak pulse power"
+      ],
+      "group": "protection",
+      "key": "peak_pulse_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "10/1000 us",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 400
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "IRM",
+        "reverse leakage current"
+      ],
+      "group": "leakage",
+      "key": "reverse_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 12
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFSM",
+        "peak forward surge current",
+        "surge current"
+      ],
+      "group": "forward_current",
+      "key": "forward_surge_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "8.3 ms half-sine",
+              "param": "WAVEFORM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF",
+        "forward voltage"
+      ],
+      "group": "forward_voltage",
+      "key": "forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 35
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation",
+        "steady state power dissipation"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_L",
+              "unit": "degC",
+              "value": 75
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA",
+        "junction-to-ambient thermal resistance",
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 120
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJL",
+        "junction-to-lead thermal resistance",
+        "theta-JL"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_lead",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "TJmax",
+        "operating junction temperature"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "operating junction temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "Anode",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 2
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "RECT-X", "manufacturer": "Y", "family": "diode" },
+  "parameters": [
+    { "key": "fusing_rating_i2t", "measurements": [
+      { "limitClass": "absolute_max", "value": { "max": 3.7 }, "unit": "A2s",
+        "conditions": [ { "param": "WAVEFORM", "note": "t < 8.3 ms" } ],
+        "conditionsVerbatim": "Rating for fusing, t < 8.3 ms", "sourcePage": 1 } ] },
+    { "key": "forward_voltage", "measurements": [
+      { "limitClass": "characterized", "value": { "max": 1.1 }, "unit": "V",
+        "conditions": [ { "param": "I_F", "value": 1.0, "unit": "A" } ], "sourcePage": 2 } ]
+    }
+  ],
+  "provenance": { "verified": false }
+}

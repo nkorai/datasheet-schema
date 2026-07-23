@@ -1,0 +1,791 @@
+{
+  "family": "bjt",
+  "manufacturer": "Infineon",
+  "mpn": "BFR93A",
+  "parameters": [
+    {
+      "aliases": [
+        "VCBO"
+      ],
+      "group": "breakdown",
+      "key": "collector_base_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCES"
+      ],
+      "group": "breakdown",
+      "key": "collector_emitter_breakdown_voltage_shorted",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "BVCEO",
+        "V(BR)CEO"
+      ],
+      "group": "breakdown",
+      "key": "collector_emitter_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 12
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_B",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VEBO"
+      ],
+      "group": "breakdown",
+      "key": "emitter_base_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IC"
+      ],
+      "group": "ratings",
+      "key": "collector_current_continuous",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.09
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IB"
+      ],
+      "group": "ratings",
+      "key": "base_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "Ptot"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "solder point 111 degC",
+              "param": "T_C",
+              "unit": "degC",
+              "value": 111
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "hFE"
+      ],
+      "group": "current_gain",
+      "key": "dc_current_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.03
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 8
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 140,
+            "min": 70,
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fT"
+      ],
+      "group": "dynamic",
+      "key": "transition_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_C",
+              "unit": "A",
+              "value": 0.03
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 8
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "min": 4500000000,
+            "typ": 6000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ccb",
+        "Cobo"
+      ],
+      "group": "dynamic",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CB",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "test frequency 1 MHz",
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 8e-13,
+            "typ": 5.4e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ceb",
+        "Cibo"
+      ],
+      "group": "dynamic",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EB",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 1.9e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cce"
+      ],
+      "group": "dynamic",
+      "key": "collector_emitter_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 2.5e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "|S21e|2"
+      ],
+      "group": "rf",
+      "key": "power_gain_insertion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 900000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 12.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1800000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Gma",
+        "MAG"
+      ],
+      "group": "rf",
+      "key": "power_gain_maximum",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 900000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 14.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1800000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 9.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Fmin",
+        "NFmin"
+      ],
+      "group": "noise",
+      "key": "noise_figure",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 900000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 1.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1800000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 2.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "P-1dB",
+        "P1dB"
+      ],
+      "group": "rf",
+      "key": "output_power_1db_compression",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 900000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.00398
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IP3",
+        "OIP3"
+      ],
+      "group": "rf",
+      "key": "output_third_order_intercept",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 900000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.0316
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICBO"
+      ],
+      "group": "leakage",
+      "key": "collector_base_cutoff_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CB",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICES"
+      ],
+      "group": "leakage",
+      "key": "collector_emitter_cutoff_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CE",
+              "unit": "V",
+              "value": 20
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IEBO"
+      ],
+      "group": "leakage",
+      "key": "emitter_base_cutoff_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EB",
+              "unit": "V",
+              "value": 2.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Rth(j-s)",
+        "RthJS"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_solderpoint",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 130
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "Tj"
+      ],
+      "group": "general",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "BASE",
+      "name": "B",
+      "number": 1
+    },
+    {
+      "function": "EMITTER",
+      "name": "E",
+      "number": 2
+    },
+    {
+      "function": "COLLECTOR",
+      "name": "C",
+      "number": 3
+    }
+  ]
+}

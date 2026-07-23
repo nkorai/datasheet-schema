@@ -1,7 +1,9 @@
 /* AUTO-GENERATED. */
 export * from './datasheet.js';
 export declare const datasheetSchema: Record<string, unknown>;
+export declare const bjtDictionary: Record<string, unknown>;
 export declare const dcDcDictionary: Record<string, unknown>;
+export declare const diodeDictionary: Record<string, unknown>;
 export declare const ldoDictionary: Record<string, unknown>;
 export declare const mosfetDictionary: Record<string, unknown>;
 export declare const opAmpDictionary: Record<string, unknown>;

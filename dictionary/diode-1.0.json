@@ -1,0 +1,390 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "diode",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for discrete diodes, synthesized from a real-datasheet corpus (Vishay, onsemi, Diodes Inc, MCC, Nexperia, Littelfuse, Wolfspeed, Central Semiconductor) spanning seven sub-shapes that share one measurement envelope: (1) standard silicon rectifiers (1N4007); (2) fast/ultrafast recovery rectifiers (UF400x, MURxxx) which populate reverse_recovery_time/charge; (3) Schottky rectifiers (1N5819, SS34, MBR0520L); (4) SiC Schottky (C3D06060A) which populate total_capacitive_charge/capacitance_stored_energy and a positive forward_voltage_temperature_coefficient; (5) small-signal switching diodes (1N4148, BAV99); (6) Zener / voltage-regulator diodes (1N4733A, BZX84C, MMSZ) which populate zener_voltage/zener_impedance (both swept over I_Z, the ZZT and ZZK points) and max_zener_current; and (7) transient-voltage-suppressor (TVS) diodes (SMAJ, SMBJ, 1.5KE) which populate reverse_standoff_voltage/clamping_voltage/peak_pulse_current/peak_pulse_power. A part's sub_type selects which optional keys apply; forward_voltage, reverse_leakage_current, junction_capacitance, thermal, and temperature keys are common. One-grade-per-document is strict here: a Zener series (dozens of VZ grades) or a TVS series (dozens of standoff grades) emits one document per orderable grade (its own mpn), with orderingVariants collapsing same-grade packaging codes. A bidirectional TVS (CA suffix) is component.polarity 'bipolar' with a single symmetric set of values, never signed. A dual-diode package (BAV99) disambiguates the two dice in the pinout (ANODE1/CATHODE1/ANODE2/CATHODE2, or a shared COMMON node), not with duplicate parameter arrays. Condition axes for this family: I_F (forward current), V_R (reverse/blocking voltage), I_T (breakdown test current), I_PP (peak pulse current), I_Z (Zener/test current, carrying the IZT and IZK points), I_RR (reverse-recovery measurement current), T_J, T_A, T_C, T_L (lead temperature), F (capacitance test frequency), R_L (recovery-test load), and WAVEFORM (pulse descriptor such as 10/1000us or 8.3ms half-sine, note-only). Pin functions are ANODE, CATHODE (and ANODE1/ANODE2/CATHODE1/CATHODE2/COMMON for arrays). Base-SI throughout; a printed %/degC breakdown tempco converts to ppm/degC (x10000), a mV/degC to V/degC; the I-squared-t fusing rating uses A2s. reverse_recovery_time/charge are first-class for fast and SiC parts and expected null on standard-Si and Schottky documents. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "reverse_voltage_repetitive_peak",
+      "name": "Peak repetitive reverse voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "aliases": ["VRRM", "VRM", "peak repetitive reverse voltage", "maximum recurrent peak reverse voltage", "repetitive peak reverse voltage"],
+      "hint": "The maximum recurring reverse voltage the diode blocks each cycle. Usually an absolute_max rating; for many rectifiers it equals the DC blocking voltage numerically but is a distinct rating."
+    },
+    {
+      "key": "reverse_standoff_voltage",
+      "name": "Reverse standoff / working-peak voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "optional": true,
+      "aliases": ["VRWM", "VWM", "working peak reverse voltage", "reverse standoff voltage", "stand-off voltage"],
+      "hint": "The maximum continuous reverse voltage with no significant conduction. On a TVS this is the headline operating spec (limitClass recommended) - the clamp stays off below it; on a rectifier it is the working-peak reverse voltage."
+    },
+    {
+      "key": "reverse_voltage_dc",
+      "name": "DC blocking voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "optional": true,
+      "aliases": ["VR", "VDC", "VR(DC)", "DC blocking voltage", "maximum DC blocking voltage"],
+      "hint": "The maximum steady-state DC reverse voltage the diode blocks."
+    },
+    {
+      "key": "reverse_voltage_rms",
+      "name": "RMS reverse voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "optional": true,
+      "aliases": ["VRMS", "VR(RMS)", "maximum RMS voltage", "RMS reverse voltage"],
+      "hint": "The maximum RMS reverse voltage rating (roughly 0.7x the repetitive peak) for AC-line rectifiers."
+    },
+    {
+      "key": "reverse_voltage_surge_peak",
+      "name": "Non-repetitive peak reverse voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "optional": true,
+      "aliases": ["VRSM", "non-repetitive peak reverse voltage", "surge peak reverse voltage"],
+      "hint": "The maximum one-shot (non-repetitive) reverse voltage transient the diode survives."
+    },
+    {
+      "key": "breakdown_voltage",
+      "name": "Reverse breakdown voltage",
+      "unit": "V",
+      "group": "reverse_voltage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_T",
+      "aliases": ["V(BR)", "VBR", "V(BR)R", "BVR", "reverse breakdown voltage", "breakdown voltage"],
+      "hint": "The reverse voltage at a stated breakdown test current (I_T for a TVS, I_R for a switching diode). On a TVS this is min/max at I_T; on a switching diode a minimum at a small I_R. For a Zener the equivalent is zener_voltage."
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "unit": "V",
+      "group": "forward_voltage",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": ["VF", "VFM", "VF(on)", "VFWD", "forward voltage", "maximum instantaneous forward voltage"],
+      "hint": "Forward voltage drop at a stated forward current (array over I_F) and junction temperature. Schottky/SiC parts give lower VF; note T_J since VF has a strong tempco. One measurement per (I_F, T_J) point."
+    },
+    {
+      "key": "forward_voltage_temperature_coefficient",
+      "name": "Forward-voltage temperature coefficient",
+      "unit": "V/degC",
+      "group": "forward_voltage",
+      "optional": true,
+      "aliases": ["dVF/dT", "VF tempco", "forward voltage temperature coefficient"],
+      "hint": "Temperature coefficient of the forward voltage. Negative for silicon PN/Schottky; positive for SiC Schottky (often stated qualitatively - capture only a tabulated value)."
+    },
+    {
+      "key": "peak_forward_recovery_voltage",
+      "name": "Peak forward recovery voltage",
+      "unit": "V",
+      "group": "forward_voltage",
+      "optional": true,
+      "aliases": ["VFRM", "VFR", "peak forward recovery voltage", "forward recovery voltage"],
+      "hint": "The transient forward-voltage overshoot when the diode is switched on quickly at a stated di/dt and settling time."
+    },
+    {
+      "key": "forward_current_average",
+      "name": "Average rectified forward current",
+      "unit": "A",
+      "group": "forward_current",
+      "array": true,
+      "conditionAxis": "T_L",
+      "aliases": ["IF(AV)", "IFAV", "IO", "IAV", "average rectified forward current", "average rectified output current"],
+      "hint": "The maximum average rectified forward current, rated at a reference temperature (lead T_L for axial/SMD, case T_C for power, ambient T_A). One measurement per reference-temperature point."
+    },
+    {
+      "key": "forward_current_continuous",
+      "name": "Continuous (DC) forward current",
+      "unit": "A",
+      "group": "forward_current",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_C",
+      "aliases": ["IF", "IF(DC)", "continuous forward current", "DC forward current"],
+      "hint": "The maximum continuous DC forward current at a stated reference temperature (common on power Schottky/SiC)."
+    },
+    {
+      "key": "forward_current_repetitive_peak",
+      "name": "Repetitive peak forward current",
+      "unit": "A",
+      "group": "forward_current",
+      "optional": true,
+      "aliases": ["IFRM", "IRP", "repetitive peak forward current"],
+      "hint": "The maximum repetitive peak forward current, at a stated pulse width and reference temperature."
+    },
+    {
+      "key": "forward_surge_current",
+      "name": "Non-repetitive peak forward surge current",
+      "unit": "A",
+      "group": "forward_current",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WAVEFORM",
+      "aliases": ["IFSM", "IFM(surge)", "non-repetitive peak forward surge current", "peak forward surge current", "surge current"],
+      "hint": "The single-cycle non-repetitive peak forward surge current, meaningless without its waveform - carry the pulse shape/width (8.3 ms half-sine, tp=1 us, etc.) as a WAVEFORM note. One measurement per waveform."
+    },
+    {
+      "key": "fusing_rating_i2t",
+      "name": "I-squared-t fusing rating",
+      "unit": "A2s",
+      "group": "forward_current",
+      "optional": true,
+      "aliases": ["I2t", "I^2t", "fusing rating", "rating for fusing"],
+      "hint": "The I-squared-t rating (ampere-squared-seconds) for fuse coordination, valid below a stated pulse width (typically t < 8.3 ms)."
+    },
+    {
+      "key": "reverse_leakage_current",
+      "name": "Reverse leakage current",
+      "unit": "A",
+      "group": "leakage",
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["IR", "IRM", "IRRM", "reverse leakage current", "reverse current", "maximum DC reverse current", "peak reverse current"],
+      "hint": "Reverse (blocking) leakage current at a stated reverse voltage (array over V_R) and junction temperature. Rises steeply with T_J, especially on Schottky/SiC - one measurement per (V_R, T_J) point."
+    },
+    {
+      "key": "reverse_current_full_cycle_avg",
+      "name": "Full-cycle-average reverse current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "aliases": ["IR(AV)", "full load reverse current full cycle average", "average reverse current"],
+      "hint": "The reverse current averaged over a full conduction cycle at a stated reference temperature (rectifier thermal budgeting)."
+    },
+    {
+      "key": "reverse_recovery_time",
+      "name": "Reverse recovery time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_RR",
+      "aliases": ["trr", "reverse recovery time"],
+      "hint": "Reverse recovery time at a stated forward current, di/dt, and recovery current. First-class for fast/ultrafast rectifiers; near-zero and usually untabulated for Schottky (majority-carrier) and SiC (zero-recovery) parts."
+    },
+    {
+      "key": "reverse_recovery_charge",
+      "name": "Reverse recovery charge",
+      "unit": "C",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["Qrr", "reverse recovery charge"],
+      "hint": "Stored charge removed during reverse recovery, at a stated di/dt. Essentially zero on Schottky/SiC (a SiC part advertises 'zero reverse recovery' and gives total_capacitive_charge instead)."
+    },
+    {
+      "key": "junction_capacitance",
+      "name": "Junction / total capacitance",
+      "unit": "F",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["CJ", "CT", "Ct", "Cd", "CD", "junction capacitance", "total capacitance", "diode capacitance"],
+      "hint": "Depletion (junction) capacitance at a stated reverse voltage (array over V_R) and test frequency (note F, typically 1 MHz). Falls with reverse bias - one measurement per V_R point."
+    },
+    {
+      "key": "total_capacitive_charge",
+      "name": "Total capacitive charge",
+      "unit": "C",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["QC", "total capacitive charge"],
+      "hint": "SiC Schottky: the total charge stored in the junction capacitance to a stated reverse voltage - the switching-loss figure that replaces Qrr on a zero-recovery part."
+    },
+    {
+      "key": "capacitance_stored_energy",
+      "name": "Capacitance stored energy",
+      "unit": "J",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["EC", "capacitance stored energy"],
+      "hint": "SiC Schottky: the energy stored in the junction capacitance at a stated reverse voltage."
+    },
+    {
+      "key": "reverse_voltage_slew_rate",
+      "name": "Reverse-voltage rate of change (dV/dt)",
+      "unit": "V/us",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["dV/dt", "dVR/dt", "voltage rate of change", "reverse voltage slew rate"],
+      "hint": "The maximum reverse-voltage rate of change the diode tolerates without spurious turn-on."
+    },
+    {
+      "key": "response_time",
+      "name": "Clamping response time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["tR", "response time", "clamping response time"],
+      "hint": "TVS: the time to clamp a fast transient (often stated only in prose/app notes)."
+    },
+    {
+      "key": "clamping_voltage",
+      "name": "Maximum clamping voltage",
+      "unit": "V",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_PP",
+      "aliases": ["VC", "VCL", "clamping voltage", "maximum clamping voltage"],
+      "hint": "TVS: the peak voltage across the device at a stated peak pulse current and waveform (array over I_PP). The design-critical let-through voltage - one measurement per I_PP/waveform point."
+    },
+    {
+      "key": "peak_pulse_current",
+      "name": "Maximum peak pulse current",
+      "unit": "A",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WAVEFORM",
+      "aliases": ["IPP", "IPPM", "maximum peak pulse current", "peak pulse current"],
+      "hint": "TVS: the maximum peak pulse current for a stated surge waveform (10/1000 us, 8/20 us) - carry the WAVEFORM note. Meaningless without it."
+    },
+    {
+      "key": "peak_pulse_power",
+      "name": "Peak pulse power dissipation",
+      "unit": "W",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WAVEFORM",
+      "aliases": ["PPPM", "PPP", "peak pulse power", "peak pulse power dissipation"],
+      "hint": "TVS: the peak pulse power the device dissipates for a stated surge waveform (the headline TVS rating, e.g. 400 W at 10/1000 us). One measurement per waveform."
+    },
+    {
+      "key": "breakdown_voltage_temperature_coefficient",
+      "name": "Breakdown-voltage temperature coefficient",
+      "unit": "ppm/degC",
+      "altUnits": ["V/degC"],
+      "group": "protection",
+      "optional": true,
+      "aliases": ["alphaVZ", "TCVZ", "SZ", "alphaT", "TC(VBR)", "temperature coefficient of Zener voltage", "breakdown voltage temperature coefficient"],
+      "hint": "Temperature coefficient of the reverse breakdown (Zener VZ or TVS VBR). Store ppm/degC (a printed %/degC converts x10000); a printed absolute mV/degC uses the V/degC altUnit (converts /1000). Sign flips from negative to positive around ~5-6 V breakdown."
+    },
+    {
+      "key": "zener_voltage",
+      "name": "Zener (breakdown) voltage",
+      "unit": "V",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_Z",
+      "aliases": ["VZ", "VZT", "Vz", "zener voltage", "nominal Zener voltage", "working voltage"],
+      "hint": "Zener: the regulated breakdown voltage at the Zener test current IZT (array over I_Z). min/typ/max come from the grade tolerance (the A/B/C suffix), all at the same IZT - one grade per document."
+    },
+    {
+      "key": "zener_impedance",
+      "name": "Zener dynamic impedance",
+      "unit": "ohm",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_Z",
+      "aliases": ["ZZ", "ZZT", "ZZK", "rZ", "dynamic resistance", "dynamic impedance", "maximum Zener impedance"],
+      "hint": "Zener: small-signal impedance, intrinsically a two-point array over I_Z - ZZT at the test current IZT and ZZK at the knee current IZK (~100x higher). Never merge the two points."
+    },
+    {
+      "key": "max_zener_current",
+      "name": "Maximum Zener current",
+      "unit": "A",
+      "group": "protection",
+      "optional": true,
+      "aliases": ["IZM", "IZmax", "maximum Zener current", "maximum DC Zener current", "regulator current"],
+      "hint": "Zener: the maximum continuous DC Zener (regulator) current, set by the power rating divided by VZ."
+    },
+    {
+      "key": "zener_surge_current",
+      "name": "Non-repetitive peak Zener surge current",
+      "unit": "A",
+      "group": "protection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WAVEFORM",
+      "aliases": ["IZSM", "IZM(surge)", "non-repetitive peak reverse current", "Zener surge current"],
+      "hint": "Zener: the one-shot peak reverse (Zener) surge current at a stated pulse width."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_L",
+      "aliases": ["PD", "Ptot", "PT", "power dissipation", "total power dissipation", "device dissipation"],
+      "hint": "Maximum total power dissipation, rated at a reference temperature (lead T_L, ambient T_A, or case T_C). One measurement per reference-temperature point - a consumer must not apply a case-cooled figure in free air."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJA", "RJA", "theta-JA", "junction-to-ambient thermal resistance"],
+      "hint": "Junction-to-ambient thermal resistance (K/W and degC/W are identical; normalize to degC/W)."
+    },
+    {
+      "key": "thermal_resistance_junction_lead",
+      "name": "Junction-to-lead thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJL", "RJL", "theta-JL", "junction-to-lead thermal resistance"],
+      "hint": "Junction-to-lead thermal resistance (axial/SMD parts, at a stated lead length or mounting)."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJC", "RJC", "theta-JC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance (power packages)."
+    },
+    {
+      "key": "thermal_resistance_junction_solderpoint",
+      "name": "Junction-to-solder-point thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJS", "Rth(j-sp)", "junction-to-solder-point thermal resistance"],
+      "hint": "Junction-to-solder-point thermal resistance (SMD parts characterized to the PCB pad)."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (maximum)",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["TJ", "TJmax", "junction temperature", "operating junction temperature"],
+      "hint": "Maximum operating junction temperature (absolute_max)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["T_op", "operating temperature range", "operating junction temperature range"],
+      "hint": "The operating (junction) temperature range (min/max)."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "hint": "Absolute-maximum storage temperature range (min/max)."
+    }
+  ]
+}
