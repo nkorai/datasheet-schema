@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "UHE1H101MPD",
+    "manufacturer": "Nichicon",
+    "family": "capacitor",
+    "description": "100 uF / 50 V radial-lead aluminum electrolytic capacitor, UHE series: miniature-sized, low-impedance, high-reliability (7000 h endurance at 105 degC). Polarized. Category temperature range -40 to +105 degC. Case 8 x 11.5 mm (size code PD).",
+    "package": "radial can, 8x11.5mm",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..105",
+    "orderingVariants": [
+      { "orderCode": "UHE1H101MPD", "package": "radial can, 8x11.5mm", "packing": "Bulk" },
+      { "orderCode": "UHE1H101MPD1TD", "package": "radial can, 8x11.5mm", "packing": "Tape and Reel" },
+      { "orderCode": "UHE1H101MPD1TA", "package": "radial can, 8x11.5mm", "packing": "Ammo pack" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "+", "function": "ANODE", "type": "passive", "description": "Positive terminal (anode). Longer lead; the unmarked side of the can.", "sourcePage": 1 },
+    { "number": 2, "name": "-", "function": "CATHODE", "type": "passive", "description": "Negative terminal (cathode). Marked with the polarity stripe on the sleeve. Sustained reverse bias destroys a polarized aluminum electrolytic.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "capacitance",
+      "name": "Rated (nominal) capacitance",
+      "group": "ratings",
+      "aliases": ["C", "rated capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1.0e-4 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 120, "unit": "Hz" },
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "100 uF, measured at 120 Hz, 20 degC",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "capacitance_tolerance",
+      "name": "Capacitance tolerance",
+      "group": "ratings",
+      "aliases": ["tol", "M"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "%",
+          "conditions": [
+            { "param": "F", "value": 120, "unit": "Hz" },
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Capacitance tolerance +/-20% at 120 Hz, 20 degC (tolerance code M)",
+          "sourcePage": 1,
+          "sourceTable": "Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rated_voltage_dc",
+      "name": "Rated DC voltage",
+      "group": "ratings",
+      "aliases": ["WV", "rated voltage", "UR"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 50 },
+          "unit": "V",
+          "conditionsVerbatim": "Rated working voltage 50 V DC (voltage code 1H)",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "impedance",
+      "name": "Impedance",
+      "group": "impedance",
+      "aliases": ["Z", "|Z|"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.17 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" },
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance (max.) 0.17 ohm at 20 degC / 100 kHz",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.68 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" },
+            { "param": "T_A", "value": -10, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance (max.) 0.68 ohm at -10 degC / 100 kHz",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "impedance_ratio",
+      "name": "Low-temperature impedance ratio",
+      "group": "impedance",
+      "aliases": ["Z-ratio", "stability at low temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "T_A", "value": -25, "unit": "degC" },
+            { "param": "F", "value": 120, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Z(-25C)/Z(+20C) at 120 Hz",
+          "sourcePage": 1,
+          "sourceTable": "Stability at Low Temperature (impedance ratio, max.)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "T_A", "value": -40, "unit": "degC" },
+            { "param": "F", "value": 120, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Z(-40C)/Z(+20C) at 120 Hz",
+          "sourcePage": 1,
+          "sourceTable": "Stability at Low Temperature (impedance ratio, max.)"
+        }
+      ]
+    },
+    {
+      "key": "dissipation_factor",
+      "name": "Dissipation factor (tan delta)",
+      "group": "loss",
+      "aliases": ["DF", "tan delta", "tan d"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.10 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 120, "unit": "Hz" },
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "tan delta (max.) 0.10 at 120 Hz, 20 degC",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "ripple_current",
+      "name": "Rated ripple current",
+      "group": "ripple",
+      "aliases": ["Irms", "rated ripple", "allowable ripple current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.555 },
+          "unit": "A",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" },
+            { "param": "T_A", "value": 105, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Rated ripple 555 mArms at 105 degC / 100 kHz",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "ripple_current_frequency_factor",
+      "name": "Ripple-current frequency multiplier",
+      "group": "ripple",
+      "aliases": ["frequency coefficient", "frequency correction coefficient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.60 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 50, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Frequency coefficient of rated ripple current, 39 to 330 uF: 0.60 at 50 Hz",
+          "sourcePage": 1,
+          "sourceTable": "Frequency coefficient of rated ripple current"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.70 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 120, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Frequency coefficient of rated ripple current, 39 to 330 uF: 0.70 at 120 Hz",
+          "sourcePage": 1,
+          "sourceTable": "Frequency coefficient of rated ripple current"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.85 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 300, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Frequency coefficient of rated ripple current, 39 to 330 uF: 0.85 at 300 Hz",
+          "sourcePage": 1,
+          "sourceTable": "Frequency coefficient of rated ripple current"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.95 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Frequency coefficient of rated ripple current, 39 to 330 uF: 0.95 at 1 kHz",
+          "sourcePage": 1,
+          "sourceTable": "Frequency coefficient of rated ripple current"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1.00 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 10000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Frequency coefficient of rated ripple current, 39 to 330 uF: 1.00 at 10 kHz or more",
+          "sourcePage": 1,
+          "sourceTable": "Frequency coefficient of rated ripple current"
+        }
+      ]
+    },
+    {
+      "key": "rated_lifetime",
+      "name": "Rated lifetime (endurance / load life)",
+      "group": "reliability",
+      "aliases": ["endurance", "load life", "useful life"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.52e7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "T_A", "value": 105, "unit": "degC" },
+            { "param": "RIPPLE", "note": "at rated ripple current applied" }
+          ],
+          "conditionsVerbatim": "Endurance: 7000 hours at 105 degC (16 to 100 V, case phi.D = 8, 10), rated ripple current applied",
+          "sourcePage": 1,
+          "sourceTable": "Endurance"
+        }
+      ]
+    },
+    {
+      "key": "leakage_current",
+      "name": "Leakage current (DCL)",
+      "group": "reliability",
+      "aliases": ["Ileak", "LC", "leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_DC", "value": 50, "unit": "V" },
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "After 2 minutes' application of rated voltage at 20 degC, leakage current not more than 0.01CV (uA) = 50 uA",
+          "sourcePage": 5,
+          "sourceTable": "Rated Voltage 50V (1H) — Standard Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (category) temperature range",
+      "group": "general",
+      "aliases": ["category temperature range", "T_op"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 105 },
+          "unit": "degC",
+          "conditionsVerbatim": "Category temperature range -40 to +105 degC",
+          "sourcePage": 1,
+          "sourceTable": "Specifications"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "CAT.8100M",
+    "sourceUrl": "https://www.nichicon.co.jp/english/series_items/catalog_pdf/e-uhe.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

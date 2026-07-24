@@ -1,0 +1,680 @@
+{
+  "family": "analog_switch",
+  "manufacturer": "Vishay Siliconix",
+  "mpn": "DG419",
+  "parameters": [
+    {
+      "aliases": [
+        "RDS(on)",
+        "RON",
+        "on-resistance"
+      ],
+      "group": "switch",
+      "key": "on_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 12.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_S",
+              "unit": "A",
+              "value": -0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 35,
+            "typ": 20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 3.8
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_S",
+              "unit": "A",
+              "value": -0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Q",
+        "Qinj",
+        "charge injection"
+      ],
+      "group": "switch",
+      "key": "charge_injection",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-8
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 5e-12
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-8
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 6e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IS(off)",
+        "source off leakage",
+        "switch off leakage current"
+      ],
+      "group": "leakage",
+      "key": "source_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 15.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2.5e-10,
+            "typ": 1e-10
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 15.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID(off)",
+        "drain leakage",
+        "drain off leakage"
+      ],
+      "group": "leakage",
+      "key": "drain_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 15.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 7.5e-10,
+            "typ": 1e-10
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 15.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1.2e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tON",
+        "ton",
+        "turn-on time"
+      ],
+      "group": "switching",
+      "key": "turn_on_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 300
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.5e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 8
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.1e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tOFF",
+        "toff",
+        "turn-off time"
+      ],
+      "group": "switching",
+      "key": "turn_off_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 300
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.5e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 8
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 4e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "break-before-make time delay",
+        "tBBM",
+        "tD"
+      ],
+      "group": "switching",
+      "key": "break_before_make_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 300
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.5e-11
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 6e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 300
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 3.5e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "min": 5e-9,
+            "typ": 1.3e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIH",
+        "VIL",
+        "VINH",
+        "VINL",
+        "logic input threshold"
+      ],
+      "group": "digital",
+      "key": "logic_threshold",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control (test-condition header)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.4
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control (test-condition header)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I+",
+        "IQ",
+        "positive supply current",
+        "supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Power Supplies",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000001,
+            "typ": 1e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Power Supplies",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating supply voltage",
+        "supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "supply_voltage_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-supply operation; dual-supply operation is +/-5 V to +/-20 V",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 11,
+          "sourceTable": "Product Summary",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 40,
+            "min": 5
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 44
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating ambient temperature range",
+        "operating temperature range"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Ordering Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "D",
+      "name": "D",
+      "number": 1
+    },
+    {
+      "function": "S1",
+      "name": "S1",
+      "number": 2
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 3
+    },
+    {
+      "function": "VP",
+      "name": "V+",
+      "number": 4
+    },
+    {
+      "function": "VL",
+      "name": "VL",
+      "number": 5
+    },
+    {
+      "function": "IN",
+      "name": "IN",
+      "number": 6
+    },
+    {
+      "function": "VN",
+      "name": "V-",
+      "number": 7
+    },
+    {
+      "function": "S2",
+      "name": "S2",
+      "number": 8
+    }
+  ]
+}

@@ -1,0 +1,674 @@
+{
+  "family": "jfet",
+  "manufacturer": "onsemi",
+  "mpn": "2N5457",
+  "parameters": [
+    {
+      "aliases": [
+        "VDG",
+        "drain-gate voltage"
+      ],
+      "group": "ratings",
+      "key": "drain_gate_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS",
+        "VGSR",
+        "reverse gate-source voltage"
+      ],
+      "group": "ratings",
+      "key": "gate_source_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IGF",
+        "forward gate current"
+      ],
+      "group": "ratings",
+      "key": "forward_gate_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "total device dissipation"
+      ],
+      "group": "ratings",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.625
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V(BR)GSS",
+        "gate-source breakdown voltage"
+      ],
+      "group": "static",
+      "key": "gate_source_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_G",
+              "unit": "A",
+              "value": 0.00001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IGSS",
+        "gate leakage current",
+        "gate reverse current"
+      ],
+      "group": "static",
+      "key": "gate_reverse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VGS(off)",
+        "VP",
+        "cutoff voltage",
+        "pinch-off voltage"
+      ],
+      "group": "static",
+      "key": "gate_source_cutoff_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_D",
+              "unit": "A",
+              "value": 1e-8
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6,
+            "min": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDSS",
+        "drain saturation current",
+        "zero-gate-voltage drain current"
+      ],
+      "group": "on",
+      "key": "drain_saturation_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005,
+            "min": 0.001,
+            "typ": 0.003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "forward transfer admittance",
+        "gfs",
+        "yfs"
+      ],
+      "group": "on",
+      "key": "forward_transconductance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "S",
+          "value": {
+            "max": 0.005,
+            "min": 0.001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "gos",
+        "output admittance",
+        "yos"
+      ],
+      "group": "on",
+      "key": "output_conductance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "S",
+          "value": {
+            "max": 0.00005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ciss",
+        "common-source short-circuit input capacitance"
+      ],
+      "group": "capacitance",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 7e-12,
+            "typ": 4.5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cgd",
+        "Crss",
+        "feedback capacitance"
+      ],
+      "group": "capacitance",
+      "key": "reverse_transfer_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 3e-12,
+            "typ": 1.5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NF",
+        "spot noise figure"
+      ],
+      "group": "noise",
+      "key": "noise_figure",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DS",
+              "unit": "V",
+              "value": 15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_GS",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_S",
+              "unit": "ohm",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA",
+        "junction-to-ambient thermal resistance",
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "TO-92",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 357
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "operating junction temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "general",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "D",
+      "name": "Drain",
+      "number": 1
+    },
+    {
+      "function": "S",
+      "name": "Source",
+      "number": 2
+    },
+    {
+      "function": "G",
+      "name": "Gate",
+      "number": 3
+    }
+  ]
+}

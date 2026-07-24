@@ -1,0 +1,212 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "resistor",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for fixed resistors, synthesized from a real-datasheet corpus (Vishay, Yageo, Bourns, KOA Speer, Panasonic, TE/Holsworthy, Ohmite, Caddock, Susumu, Rohm, TT Electronics/Welwyn) spanning five sub-shapes that share one measurement envelope: (1) thick_film (general-purpose SMD chip and MELF, e.g. CRCW, RC0402/0603/0805, moderate TCR ~100-200 ppm/degC, meaningful current_noise_index and voltage_coefficient); (2) thin_film (precision, e.g. RN, PAT/TNPW, low TCR 5-50 ppm/degC, tight resistance_tolerance to 0.01%, low noise); (3) current_sense (metal-strip/metal-element shunts, e.g. WSL/WSLP, CSS, PMR, milliohm resistance, populate temperature_coefficient_element, max_current, inductance and the 4-terminal Kelvin pinout); (4) wirewound (power axial/aluminium-housed, e.g. WHS, AP/ARCOL, HS series, high rated_power with an explicit power_derating curve, low TCR, appreciable inductance); and (5) high_voltage (thick-film HV dividers/rods, e.g. Ohmite MOX, Caddock MG/USF, Vishay VR, populate max_working_voltage, max_overload_voltage, insulation_voltage, voltage_coefficient). A part's sub_type selects which optional keys apply; resistance, resistance_tolerance, rated_power, power_derating, temperature_coefficient and operating_temperature_range are common. A resistor is a non-polar 2-terminal device: pin functions are T1 and T2 (interchangeable terminals). A 4-terminal Kelvin current-sense resistor separates the force and sense paths: pin functions are I1/I2 (the force/current terminals) and S1/S2 (the sense/voltage terminals) - keep the electrical identity so a consumer routes the sense lines to the true element. Do NOT emit a component.polarity field for a resistor; polarity is meaningless for a passive two-terminal element. rated_power is rated at a reference temperature (chip parts at ambient T_A=70 degC, aluminium-housed/heatsinked parts at case/solder-point T_SP=25 degC or a stated mounting) and derates to zero at the maximum film/ambient temperature; emit one measurement per reference temperature and capture the derating curve's breakpoints rather than a single slope. temperature_coefficient is often binned - multiple ranges by tolerance grade or by resistance decade (a low-ohm bin has a looser TCR); emit one measurement per range. Base-SI throughout: milliohm shunts store the ohmic value directly (5 mohm is 0.005), noise index stays in dB, resistance_tolerance and long-term stability stay in %, ESL stores in H (nH -> 1e-9). Condition axes for this family: T_A (ambient temperature, for power derating), T_SP (solder-point/case reference temperature), V_R (applied working voltage, for the voltage coefficient), PULSE_WIDTH (single-pulse duration in seconds, for surge/pulse withstand ratings), DUTY (repetitive-pulse duty cycle). Safe-operating-area / pulse-derating graphs and full impedance-vs-frequency curves are graph-only and out of scope; capture the tabulated scalar figures and the curve breakpoints. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "resistance",
+      "name": "Nominal resistance",
+      "unit": "ohm",
+      "group": "electrical",
+      "aliases": ["R", "Rnom", "R25", "ohmic value"],
+      "hint": "The nominal ohmic value, base-SI (no SI prefix - 4.7 kohm is 4700, 5 mohm is 0.005). R25 is the value at the 25 degC reference. On a current-sense shunt this is the metal-element resistance measured Kelvin (4-terminal)."
+    },
+    {
+      "key": "resistance_tolerance",
+      "name": "Resistance tolerance",
+      "unit": "%",
+      "group": "electrical",
+      "aliases": ["tol"],
+      "hint": "The symmetric tolerance band on the nominal resistance at the 25 degC reference, in percent (0.1% thin-film, 1-5% thick-film, down to 0.01% precision). Store the magnitude; a +/-1% part is 1."
+    },
+    {
+      "key": "rated_power",
+      "name": "Rated power dissipation",
+      "unit": "W",
+      "group": "power",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["Pn", "P70", "P40", "rated dissipation"],
+      "hint": "Maximum continuous power dissipation rated at a reference temperature - emit one measurement per reference temperature (chip parts at ambient T_A=70 degC; aluminium-housed / heatsinked power parts at case/solder-point, hold that in the conditions with T_SP). P70 is the 70 degC ambient rating; a consumer must not apply a heatsinked figure in free air. One measurement per reference temp."
+    },
+    {
+      "key": "power_derating",
+      "name": "Power derating curve",
+      "unit": "%",
+      "group": "power",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["derating curve"],
+      "hint": "Percent of rated power permitted vs. ambient temperature - typically 100% up to a knee (~70 degC) then a linear taper to 0% at the maximum operating/film temperature. Capture the curve breakpoints as one measurement per temperature point (T_A on the axis), not a single slope."
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Temperature coefficient of resistance (TCR)",
+      "unit": "ppm/degC",
+      "group": "electrical",
+      "aliases": ["TCR", "TC", "alpha"],
+      "hint": "The temperature coefficient of resistance in ppm/degC. Often binned into multiple ranges by tolerance grade or by resistance decade (a low-ohm bin is looser) - emit one measurement per range with the resistance/grade in the conditions. Store the magnitude for a +/- spec."
+    },
+    {
+      "key": "temperature_coefficient_element",
+      "name": "Element (alloy) temperature coefficient",
+      "unit": "ppm/degC",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["element TCR", "alloy TCR"],
+      "hint": "Current-sense: the TCR of the resistive metal element/alloy itself (Manganin, Zeranin, NiCr foil), distinct from the terminated part TCR that includes the terminals - the number a precise shunt design uses."
+    },
+    {
+      "key": "voltage_coefficient",
+      "name": "Voltage coefficient of resistance (VCR)",
+      "unit": "ppm/V",
+      "group": "electrical",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["VCR"],
+      "hint": "The fractional change in resistance per volt of applied working voltage (ppm/V), significant on thick-film and high-voltage parts. Array over V_R (applied voltage) when specified at multiple voltages."
+    },
+    {
+      "key": "max_working_voltage",
+      "name": "Maximum working (element) voltage",
+      "unit": "V",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["Vmax", "Umax", "limiting element voltage"],
+      "hint": "The maximum continuous DC (or AC RMS) voltage across the element, the lesser of sqrt(P*R) and the rated limiting element voltage. On a high-voltage part this, not the power rating, is usually the binding limit."
+    },
+    {
+      "key": "max_overload_voltage",
+      "name": "Maximum overload voltage",
+      "unit": "V",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["Vov", "short-time overload voltage"],
+      "hint": "The maximum short-time overload voltage (typically 2-2.5x the working voltage for a few seconds, per the overload test), above the continuous working voltage."
+    },
+    {
+      "key": "insulation_voltage",
+      "name": "Insulation / dielectric withstanding voltage",
+      "unit": "V",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["Uins", "dielectric withstanding voltage", "voltage proof"],
+      "hint": "The voltage the insulation (coating/housing) withstands between the resistive element and an external conductive surface - an isolation rating, not an element rating."
+    },
+    {
+      "key": "pulse_withstand_power",
+      "name": "Peak pulse withstand power",
+      "unit": "W",
+      "group": "pulse",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "PULSE_WIDTH",
+      "aliases": ["peak pulse power"],
+      "hint": "The peak single-pulse power the part survives at a stated pulse duration - array over PULSE_WIDTH (the pulse duration in seconds), read from the pulse-derating curve. Hold repetition/DUTY in the conditions when repetitive."
+    },
+    {
+      "key": "pulse_withstand_energy",
+      "name": "Single-pulse withstand energy",
+      "unit": "J",
+      "group": "pulse",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "PULSE_WIDTH",
+      "aliases": ["pulse energy"],
+      "hint": "The single-pulse energy the part absorbs without damage at a stated pulse duration - array over PULSE_WIDTH. Common on pulse/surge-rated and wirewound parts."
+    },
+    {
+      "key": "pulse_withstand_voltage",
+      "name": "Peak pulse withstand voltage",
+      "unit": "V",
+      "group": "pulse",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "PULSE_WIDTH",
+      "aliases": ["peak pulse voltage"],
+      "hint": "The peak single-pulse voltage the part survives at a stated pulse duration - array over PULSE_WIDTH. On high-voltage and surge parts this can exceed the continuous working voltage."
+    },
+    {
+      "key": "thermal_emf",
+      "name": "Thermal EMF (Seebeck coefficient)",
+      "unit": "V/degC",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["thermal EMF", "Seebeck coefficient"],
+      "hint": "The parasitic thermoelectric voltage per degree of temperature difference across the terminals (uV/degC printed; store base-SI V/degC). Critical for precision current-sense and metrology resistors."
+    },
+    {
+      "key": "current_noise_index",
+      "name": "Current noise index",
+      "unit": "dB",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["noise index", "A3", "third-harmonic index"],
+      "hint": "Excess (current) noise index in dB, the microvolts of noise per volt of applied DC per decade of bandwidth (0 dB = 1 uV/V). Thin-film is very low/negative; thick-film is higher. The alternative linear ratio is current_noise_ratio."
+    },
+    {
+      "key": "current_noise_ratio",
+      "name": "Current noise ratio",
+      "unit": "V/V",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["A1", "current noise ratio"],
+      "hint": "Excess-noise ratio expressed linearly in uV/V (dimensionless, V/V) rather than as the dB current_noise_index; capture whichever the datasheet tabulates."
+    },
+    {
+      "key": "load_life_stability",
+      "name": "Load-life / long-term stability",
+      "unit": "%",
+      "group": "reliability",
+      "optional": true,
+      "aliases": ["load life", "endurance drift", "long-term stability"],
+      "hint": "The maximum resistance drift after the endurance/load-life test (typically 1000 h at rated power and a stated ambient), in percent. A precision-grade differentiator; hold the test duration/conditions in conditionsVerbatim."
+    },
+    {
+      "key": "max_film_temperature",
+      "name": "Maximum film / hot-spot temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["film temperature", "hot-spot temperature"],
+      "hint": "The maximum permitted resistive-film / hot-spot temperature at full rated load - the endpoint the power-derating curve returns to zero at."
+    },
+    {
+      "key": "thermal_resistance",
+      "name": "Thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["Rth"],
+      "hint": "Thermal resistance from the element to the reference (ambient, or the mounting/solder-point for a heatsinked part) - degC/W and K/W are identical, normalize to degC/W. Note the reference in the conditions."
+    },
+    {
+      "key": "max_current",
+      "name": "Maximum continuous current",
+      "unit": "A",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["Imax"],
+      "hint": "Current-sense/shunt: the maximum continuous current, the binding rating for a milliohm part (from sqrt(P/R)) rather than voltage. Hold the reference temperature/mounting in the conditions."
+    },
+    {
+      "key": "inductance",
+      "name": "Series inductance (ESL)",
+      "unit": "H",
+      "group": "electrical",
+      "optional": true,
+      "aliases": ["ESL", "series inductance"],
+      "hint": "Equivalent series inductance in henries (nH printed; store base-SI, 5 nH is 5e-9). Matters for current-sense (di/dt error) and wirewound (a non-inductive winding minimizes it) parts."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": ["operating temperature", "category temp range"],
+      "hint": "The category / operating ambient temperature range (min/max), e.g. -55 to +155 degC. The upper end is where full derating reaches zero power."
+    }
+  ]
+}

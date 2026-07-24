@@ -1,0 +1,263 @@
+{
+  "family": "inductor",
+  "manufacturer": "Wurth Elektronik",
+  "mpn": "74437349047",
+  "parameters": [
+    {
+      "aliases": [
+        "L"
+      ],
+      "group": "inductance",
+      "key": "inductance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 100000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "H",
+          "value": {
+            "nom": 0.0000047
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tol."
+      ],
+      "group": "inductance",
+      "key": "inductance_tolerance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISAT",
+        "Isat"
+      ],
+      "group": "current_rating",
+      "key": "saturation_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "|dL/L| < 10 %",
+              "param": "L_DROP",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 7.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "|dL/L| < 30 %",
+              "param": "L_DROP",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 14.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IRP",
+        "Ipp",
+        "Performance Rated Current",
+        "RP,40K"
+      ],
+      "group": "current_rating",
+      "key": "rms_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_RISE",
+              "unit": "degC",
+              "value": 40
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 6.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DCR",
+        "RDC"
+      ],
+      "group": "resistance",
+      "key": "dc_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 20
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.0308,
+            "typ": 0.028
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SRF",
+        "f res"
+      ],
+      "group": "frequency",
+      "key": "self_resonant_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 24000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Voltage",
+        "VOP"
+      ],
+      "group": "voltage",
+      "key": "rated_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 120
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Temperature"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "General Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "A",
+      "name": "A",
+      "number": 1
+    },
+    {
+      "function": "B",
+      "name": "B",
+      "number": 2
+    }
+  ]
+}

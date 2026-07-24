@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "74437349047",
+    "manufacturer": "Wurth Elektronik",
+    "family": "inductor",
+    "description": "WE-LHMI 4.7 uH shielded, metal-alloy (molded) SMT power inductor for SMPS output/energy-storage use. AEC-Q200 qualified, 125 degC Grade 1. This exemplar shows the two DISTINCT current ratings a power inductor carries: a MAGNETIC saturation limit (saturation_current, over the |dL/L| inductance-drop axis) and a THERMAL heating limit (rms_current, over the self-heating temperature-rise axis) - the usable continuous current is the lower of the two.",
+    "package": "7050 (7.0x5.0mm)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "AEC-Q200 Grade 1 (-40..125)",
+    "msl": "MSL1"
+  },
+  "pinout": [
+    { "number": 1, "name": "A", "function": "A", "type": "passive", "description": "Winding terminal A. Non-polarized 2-terminal power inductor; terminals are electrically interchangeable. Terminal A is the start of winding, marked with the dot (winding runs clockwise from here).", "sourcePage": 1 },
+    { "number": 2, "name": "B", "function": "B", "type": "passive", "description": "Winding terminal B. Non-polarized 2-terminal power inductor; terminals are electrically interchangeable (finish of winding).", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "inductance",
+      "name": "Inductance (nominal)",
+      "group": "inductance",
+      "aliases": ["L"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 4.7e-6 },
+          "unit": "H",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "L at 100 kHz / 10 mA",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "inductance_tolerance",
+      "name": "Inductance tolerance",
+      "group": "inductance",
+      "aliases": ["Tol."],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "%",
+          "conditionsVerbatim": "L-code 4R7, tolerance +/-20% (printed +20% in the electrical-properties Tol. column)",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "saturation_current",
+      "name": "Saturation current",
+      "group": "current_rating",
+      "aliases": ["ISAT", "Isat"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "L_DROP", "note": "|dL/L| < 10 %" }
+          ],
+          "conditionsVerbatim": "Saturation Current @ 10% (ISAT,10%), |dL/L| < 10 %",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 14.6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "L_DROP", "note": "|dL/L| < 30 %" }
+          ],
+          "conditionsVerbatim": "Saturation Current @ 30% (ISAT,30%), |dL/L| < 30 %",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "rms_current",
+      "name": "RMS (heating) current",
+      "group": "current_rating",
+      "aliases": ["IRP", "Performance Rated Current", "RP,40K", "Ipp"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 6.2 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_RISE", "value": 40, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Performance Rated Current (IRP,40K), delta-T = 40 K rise; test per IEC 62024-2:2020 Class C (PCB copper width 40 mm, thickness 105 um)",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "dc_resistance",
+      "name": "DC resistance (DCR)",
+      "group": "resistance",
+      "aliases": ["RDC", "DCR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.028, "max": 0.0308 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "T_A", "value": 20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "RDC @ 20 degC: 28 mOhm typ., 30.8 mOhm max.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "self_resonant_frequency",
+      "name": "Self-resonant frequency (SRF)",
+      "group": "frequency",
+      "aliases": ["f res", "SRF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.4e7 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Self Resonant Frequency (f res), 24 MHz typ.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "rated_voltage",
+      "name": "Operating voltage",
+      "group": "voltage",
+      "aliases": ["VOP", "Operating Voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 120 },
+          "unit": "V",
+          "conditionsVerbatim": "Operating Voltage (VOP), DC, 120 V max.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Properties"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["Operating Temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature -40 degC up to +125 degC (includes self-heating); ambient temperature range -40 degC up to +85 degC",
+          "sourcePage": 1,
+          "sourceTable": "General Information"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "003.000",
+    "datasheetSha256": "36668ce9127713bb98bae7ff9f1babf0258538251310da46ddade800c237863d",
+    "sourceUrl": "https://www.we-online.com/components/products/datasheet/74437349047.pdf",
+    "publishedDate": "2024-12-27",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

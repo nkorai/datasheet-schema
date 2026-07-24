@@ -1,0 +1,328 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "capacitor",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for fixed capacitors, synthesized from a real-datasheet corpus (Murata, TDK, Samsung, KEMET, Vishay, Nichicon, Panasonic, Rubycon, Wurth, AVX/Kyocera, Yageo, Nippon Chemi-Con) spanning four dielectric sub-shapes that share one measurement envelope: (1) multilayer ceramic (MLCC) - Class I (C0G/NP0) parts populate temperature_coefficient and quality_factor, Class II (X7R/X5R/Y5V) parts populate aging_rate, capacitance_vs_temperature, and the poster-child capacitance_vs_dc_bias derating; (2) aluminum electrolytic - populate ripple_current with its ripple_current_frequency_factor / ripple_current_temperature_factor, rated_lifetime (endurance/load-life over T_A), leakage_current, esr, impedance, and impedance_ratio (low-temp stability); (3) tantalum and polymer - populate voltage_derating_recommendation (category voltage), reverse_voltage_transient, esr, ripple_current, leakage_current (DCL), and failure_rate; and (4) film - populate dielectric_absorption, dv_dt_rating (pulse handling), self_resonant_frequency, and rated_voltage_ac. A part's dielectric sub-type selects which optional keys apply; capacitance, capacitance_tolerance, rated_voltage_dc, insulation_resistance / insulation_resistance_cv_product, dissipation_factor, and operating_temperature_range are common across all four. component.polarity carries the electrical polarity: an aluminum-electrolytic or tantalum part is 'positive' (polarized) - reverse_voltage_transient captures the small allowable reverse excursion; ceramic and film are non-polar (bipolar). The DC-bias derating (capacitance_vs_dc_bias) and temperature/AC characteristics are the load-bearing specs a designer cannot infer from the nominal value: an MLCC's effective capacitance can fall by more than half under its own rated bias, so it is array:true over V_DC and is frequently graph-sourced - flag the figure page in provenance. Condition axes for this family: F (frequency, for DF/ESR/impedance/ripple spot values and sweeps), T_A (ambient, for temperature characteristics, lifetime, and ripple/impedance derating), V_DC (applied DC bias, for the bias-derating sweep and leakage), V_AC (AC signal level, for the AC voltage characteristic), V_R (rated/bias voltage, for pulse dV/dt handling), RIPPLE (note-only, for applied-ripple lifetime conditions). Pin functions are POS and NEG on a polarized part, and A/B (or two unlabeled terminals) on a non-polar part. Base-SI throughout: capacitance in F (no uF/nF/pF), voltage in V, ESR/impedance/insulation-resistance in ohm, endurance/lifetime in seconds (2000 h = 7.2e6 s), the insulation-resistance*capacitance product in seconds (ohm*F = s, the classic MOhm*uF figure of merit). A dissipation factor tan(delta) is dimensionless (V/V) but is often printed as a percent (altUnits %). A FIT or %/1000h failure rate is a reciprocal-time quantity with no legal unit in the closed enum - store the magnitude in % and record the time window (per 1000 h / per 1e9 device-hours) in the conditions; never invent a rate unit. Aliases normalize the printed datasheet symbols across the four dielectric families.",
+  "parameters": [
+    {
+      "key": "capacitance",
+      "name": "Rated (nominal) capacitance",
+      "unit": "F",
+      "group": "ratings",
+      "aliases": ["C", "Cr", "Cnom", "rated capacitance", "nominal capacitance"],
+      "hint": "The rated nominal capacitance, measured at a stated frequency and AC signal level (Class II ceramics: typically 1 kHz, 1 Vrms for small values; electrolytics: 120 Hz). Base-SI farads - 10 uF is 1e-5, 100 nF is 1e-7, 22 pF is 2.2e-11. No SI prefix in the value."
+    },
+    {
+      "key": "capacitance_tolerance",
+      "name": "Capacitance tolerance",
+      "unit": "%",
+      "group": "ratings",
+      "aliases": ["tol", "cap tolerance"],
+      "hint": "The symmetric or asymmetric tolerance on the nominal capacitance (EIA letter codes: K = +/-10%, J = +/-5%, M = +/-20%, Z = +80/-20%). Store the percentage magnitude; an asymmetric range uses min/max."
+    },
+    {
+      "key": "rated_voltage_dc",
+      "name": "Rated DC voltage",
+      "unit": "V",
+      "group": "ratings",
+      "aliases": ["WV", "WVDC", "UR", "VR", "VDC", "rated voltage", "working voltage"],
+      "hint": "The maximum continuous DC working voltage (recommended/rated). The derating and DC-bias curves are all referenced to this value - capture it even when specifying via V_R condition axis on other parameters."
+    },
+    {
+      "key": "rated_voltage_ac",
+      "name": "Rated AC voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["VAC", "U_AC", "rated AC voltage"],
+      "hint": "Film/AC-rated parts: the maximum continuous AC (RMS) voltage, which falls with frequency (array over F - a 50/60 Hz rating is much higher than the high-frequency limit). Store the RMS magnitude and note peak-vs-RMS in the conditions."
+    },
+    {
+      "key": "surge_voltage",
+      "name": "Surge voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["SV", "US", "surge voltage"],
+      "hint": "The maximum non-repetitive surge voltage the part withstands for short durations (electrolytic/tantalum surge rating), often derated at high ambient (array over T_A). Higher than rated_voltage_dc."
+    },
+    {
+      "key": "dielectric_withstanding_voltage",
+      "name": "Dielectric withstanding (proof) voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["DWV", "proof voltage", "test voltage", "dielectric strength", "proof test voltage"],
+      "hint": "The voltage applied for a stated short duration (e.g. 1.5x rated for 1-5 s) that the part must survive without breakdown - a production proof test, not a continuous rating. Folds the 'proof voltage' concept into one key."
+    },
+    {
+      "key": "dissipation_factor",
+      "name": "Dissipation factor (tan delta)",
+      "unit": "V/V",
+      "group": "loss",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "altUnits": ["%"],
+      "aliases": ["DF", "tan delta", "tand", "loss tangent"],
+      "hint": "The loss tangent tan(delta), dimensionless (V/V) - frequently printed as a percent (altUnits %); 0.02 and 2% are the same figure. Measured at a stated frequency and signal level (array over F), it rises at high frequency and low temperature. The reciprocal of quality_factor for Class I parts."
+    },
+    {
+      "key": "quality_factor",
+      "name": "Quality factor (Q)",
+      "unit": "V/V",
+      "group": "loss",
+      "optional": true,
+      "aliases": ["Q"],
+      "hint": "The quality factor Q = 1/tan(delta), dimensionless (V/V). Reported for Class I (C0G/NP0) ceramic and film parts at a stated frequency; high-Q RF ceramics quote Q in the thousands."
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "unit": "ohm",
+      "group": "insulation",
+      "optional": true,
+      "aliases": ["IR", "R_ins", "insulation resistance"],
+      "hint": "The DC insulation resistance measured at a stated bias voltage and time (e.g. rated voltage for 60 s). Base-SI ohms - 10 GOhm is 1e10. For small parts the CV-normalized insulation_resistance_cv_product is the more comparable figure."
+    },
+    {
+      "key": "insulation_resistance_cv_product",
+      "name": "Insulation-resistance * capacitance product (RC / IR-C time constant)",
+      "unit": "s",
+      "group": "insulation",
+      "optional": true,
+      "aliases": ["MOhm*uF", "megohm-microfarads", "RC product", "IR-C product", "insulation time constant"],
+      "hint": "The insulation-resistance figure of merit normalized by capacitance, printed as MOhm*uF (megohm-microfarads). Because ohm*F = seconds, this IS a time constant - store it in seconds (1000 MOhm*uF = 1e9 ohm * 1e-6 F = 1000 s). Used when IR is spec'd as the smaller of a fixed resistance or a CV product."
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Temperature coefficient of capacitance",
+      "unit": "ppm/degC",
+      "group": "temperature",
+      "optional": true,
+      "aliases": ["TCC", "Tc", "tempco"],
+      "hint": "Class I (C0G/NP0) ceramic and film: the linear temperature coefficient of capacitance in ppm/degC (C0G is 0 +/-30 ppm/degC). Class II parts do not have a linear tempco - use capacitance_vs_temperature instead."
+    },
+    {
+      "key": "capacitance_vs_temperature",
+      "name": "Capacitance change vs temperature",
+      "unit": "%",
+      "group": "temperature",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["dC/C vs T", "temperature characteristic"],
+      "hint": "Class II ceramic (X7R = +/-15%, Y5V = +22/-82%) and electrolytic: the percent capacitance change from the 25 C reference across the temperature range (array over T_A, one measurement per temperature point). The EIA temperature-characteristic code (X7R etc.) belongs in component.description, not here."
+    },
+    {
+      "key": "aging_rate",
+      "name": "Capacitance aging rate",
+      "unit": "%",
+      "group": "temperature",
+      "optional": true,
+      "aliases": ["aging", "per-decade-hour"],
+      "hint": "Class II ferroelectric ceramic: the reversible capacitance loss per decade of hours (e.g. X7R -2.5%/decade), measured from a stated reference time after the last heat cycle. Store the percent-per-decade magnitude and record the reference time (e.g. 'per decade-hour, ref 1000 h') in the conditions - it is a per-log-time rate, not a total loss."
+    },
+    {
+      "key": "capacitance_vs_dc_bias",
+      "name": "Capacitance change vs DC bias",
+      "unit": "%",
+      "group": "derating",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_DC",
+      "altUnits": ["F"],
+      "aliases": ["DC bias characteristic", "bias derating"],
+      "hint": "THE poster-child MLCC spec: Class II ceramics lose effective capacitance under DC bias - a small-case X5R can drop >50% at its own rated voltage. Array over V_DC, one measurement per bias point. Store the percent change (%) or, via altUnits, the effective capacitance in F at that bias. Almost always graph-sourced - flag the figure/page in provenance."
+    },
+    {
+      "key": "capacitance_vs_ac_signal",
+      "name": "Capacitance change vs AC signal level",
+      "unit": "%",
+      "group": "derating",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_AC",
+      "aliases": ["AC voltage characteristic", "AC signal characteristic"],
+      "hint": "Class II ceramic: the percent capacitance change with applied AC (RMS) signal level (array over V_AC) at a stated frequency - a second-order derating alongside the DC-bias effect."
+    },
+    {
+      "key": "esr",
+      "name": "Equivalent series resistance",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Rs", "equivalent series resistance"],
+      "hint": "The equivalent series resistance at a stated frequency and temperature (array over F - ESR falls with frequency to a plateau, and rises sharply at low temperature for wet electrolytics). Polymer and MLCC parts quote milliohm-range ESR; store base-SI ohms (5 mOhm = 5e-3)."
+    },
+    {
+      "key": "impedance",
+      "name": "Impedance",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Z", "|Z|"],
+      "hint": "The magnitude of complex impedance |Z| at a stated frequency (array over F). Reaches its minimum (= ESR) at self_resonant_frequency, rising capacitively below and inductively above. Often specified as a max at a spot frequency (e.g. 100 kHz)."
+    },
+    {
+      "key": "impedance_ratio",
+      "name": "Low-temperature impedance ratio",
+      "unit": "V/V",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["Z-ratio", "low-temp impedance ratio", "stability factor"],
+      "hint": "Aluminum electrolytic: the dimensionless ratio of impedance at a low temperature to that at 20 C, both at the same frequency (e.g. Z(-40C)/Z(20C) <= 3). Array over T_A. A stability figure of merit for cold-temperature operation."
+    },
+    {
+      "key": "self_resonant_frequency",
+      "name": "Self-resonant frequency",
+      "unit": "Hz",
+      "group": "impedance",
+      "optional": true,
+      "aliases": ["SRF", "f0", "fres"],
+      "hint": "The frequency at which the capacitor's reactance cancels its parasitic inductance (equivalent_series_inductance) and impedance is minimum; above it the part is inductive. Set by C and ESL: f0 = 1/(2*pi*sqrt(L*C))."
+    },
+    {
+      "key": "equivalent_series_inductance",
+      "name": "Equivalent series inductance",
+      "unit": "H",
+      "group": "impedance",
+      "optional": true,
+      "aliases": ["ESL", "Ls", "parasitic inductance"],
+      "hint": "The parasitic series inductance (henries) set by geometry and termination - reverse-geometry and multi-terminal MLCCs minimize it. Base-SI henries (0.5 nH = 5e-10)."
+    },
+    {
+      "key": "ripple_current",
+      "name": "Rated ripple current",
+      "unit": "A",
+      "group": "ripple",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Iripple", "Irms", "allowable ripple", "ripple current"],
+      "hint": "Electrolytic/polymer/film: the maximum allowable RMS ripple current at a stated frequency and ambient (array over F - the rating rises with frequency toward a plateau). The reference figure is scaled by ripple_current_frequency_factor and ripple_current_temperature_factor. Store the RMS amperes."
+    },
+    {
+      "key": "ripple_current_frequency_factor",
+      "name": "Ripple-current frequency multiplier",
+      "unit": "V/V",
+      "group": "ripple",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["frequency coefficient", "freq multiplier"],
+      "hint": "The dimensionless frequency-correction coefficient applied to the reference ripple_current at other frequencies (array over F). Referenced to the datasheet's base frequency (often 100/120 Hz = 1.0)."
+    },
+    {
+      "key": "ripple_current_temperature_factor",
+      "name": "Ripple-current temperature multiplier",
+      "unit": "V/V",
+      "group": "ripple",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["temperature multiplier", "ripple derating factor"],
+      "hint": "The dimensionless temperature-correction coefficient applied to the reference ripple_current at other ambients (array over T_A) - 1.0 at the rating temperature, falling toward the max-temp limit."
+    },
+    {
+      "key": "max_power_dissipation",
+      "name": "Maximum power dissipation",
+      "unit": "W",
+      "group": "ripple",
+      "optional": true,
+      "aliases": ["Pmax", "max power dissipation"],
+      "hint": "The maximum internal power dissipation (I_ripple^2 * ESR) the part can shed at a stated ambient without exceeding its thermal limit - the physical basis of the ripple rating."
+    },
+    {
+      "key": "rated_lifetime",
+      "name": "Rated lifetime (endurance / load life)",
+      "unit": "s",
+      "group": "reliability",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["endurance", "load life", "useful life", "service life"],
+      "hint": "Electrolytic/polymer: the rated operating life at the maximum temperature with rated voltage and/or rated ripple applied. Convert hours to seconds (2000 h = 7.2e6 s, 5000 h = 1.8e7 s). Array over T_A (life roughly doubles per 10 C below max), and reuse the RIPPLE axis in conditions to note whether ripple was applied."
+    },
+    {
+      "key": "leakage_current",
+      "name": "Leakage current (DCL)",
+      "unit": "A",
+      "group": "reliability",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_DC",
+      "aliases": ["Ileak", "IL", "DCL", "LC", "leakage current"],
+      "hint": "The DC leakage current at a stated applied bias and settling time (array over V_DC), often specified as I <= k*C*V or a fixed floor. Rises with temperature and voltage; tantalum DCL is a key reliability screen. Store base-SI amperes (1 uA = 1e-6)."
+    },
+    {
+      "key": "failure_rate",
+      "name": "Failure rate",
+      "unit": "%",
+      "group": "reliability",
+      "optional": true,
+      "aliases": ["FIT", "failure rate"],
+      "hint": "A reciprocal-time reliability rate (FIT = failures per 1e9 device-hours, or %/1000h) - NO legal unit exists in the closed enum for it. Store the magnitude in % and record the time window (per 1000 h, per 1e9 device-hours) plus test bias/temperature in the conditions. Do NOT invent a rate unit."
+    },
+    {
+      "key": "voltage_derating_recommendation",
+      "name": "Recommended voltage derating (category voltage)",
+      "unit": "%",
+      "group": "reliability",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["derating", "category voltage", "Uc"],
+      "hint": "Tantalum/electrolytic: the recommended applied-voltage derating as a percent of rated_voltage_dc (e.g. use <= 50% of rated), tightening at high ambient (array over T_A). The 'category voltage' Uc is the reduced continuous voltage allowed above the rated-temperature knee."
+    },
+    {
+      "key": "reverse_voltage_transient",
+      "name": "Allowable reverse voltage (transient)",
+      "unit": "%",
+      "group": "reliability",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["reverse voltage", "transient reverse"],
+      "hint": "Polarized (tantalum/aluminum) parts: the small reverse voltage the part briefly tolerates, as a percent of rated_voltage_dc (e.g. 10% at 25 C, falling at high temperature - array over T_A). Not a continuous rating; sustained reverse bias destroys a polarized capacitor."
+    },
+    {
+      "key": "dielectric_absorption",
+      "name": "Dielectric absorption",
+      "unit": "%",
+      "group": "dielectric",
+      "optional": true,
+      "aliases": ["DA", "dielectric absorption"],
+      "hint": "Film (and precision) parts: the 'memory' effect - the percent of the original voltage that reappears across a briefly-shorted, then open, capacitor. A critical error term in sample-and-hold and integrator circuits (polypropylene ~0.01-0.05%)."
+    },
+    {
+      "key": "dv_dt_rating",
+      "name": "Voltage slew (dV/dt) rating",
+      "unit": "V/us",
+      "group": "pulse",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": ["dV/dt", "pulse rise time"],
+      "hint": "Film pulse/snubber parts: the maximum rate of voltage change the terminations and internal contacts survive (array over V_R - the dV/dt limit falls as the rated/applied voltage rises). Sets peak pulse current I = C*dV/dt."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["category temp range", "T_op", "operating temperature"],
+      "hint": "The category (operating) temperature range (min/max), e.g. -55 to +125 C. The EIA/dielectric temperature-characteristic code (X7R, C0G) belongs in component.description; this key is the numeric span."
+    }
+  ]
+}

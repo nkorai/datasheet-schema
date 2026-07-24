@@ -1,0 +1,489 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TLV3501",
+    "manufacturer": "Texas Instruments",
+    "family": "comparator",
+    "description": "4.5-ns, rail-to-rail I/O, high-speed single comparator with a push-pull CMOS output stage, an active-low shutdown pin, and 6 mV of internal input hysteresis. Beyond-the-rails input common-mode range; the rail-to-rail output directly drives CMOS or TTL. sub_type: high_speed. output stage: push_pull.",
+    "package": "SOT-23-6",
+    "pinCount": 6,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "TLV3501AIDBVR", "package": "SOT-23-6 (DBV)", "packing": "Tape and Reel" },
+      { "orderCode": "TLV3501AIDBVT", "package": "SOT-23-6 (DBV)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "-IN", "function": "IN_N", "type": "analog", "description": "Negative (inverting) input.", "sourcePage": 3 },
+    { "number": 2, "name": "V-", "function": "VS_NEG", "type": "power", "description": "Negative (lowest) power supply.", "sourcePage": 3 },
+    { "number": 3, "name": "+IN", "function": "IN_P", "type": "analog", "description": "Positive (noninverting) input.", "sourcePage": 3 },
+    { "number": 4, "name": "V+", "function": "VS_POS", "type": "power", "description": "Positive (highest) power supply.", "sourcePage": 3 },
+    { "number": 5, "name": "OUT", "function": "OUT", "type": "digital_out", "description": "Push-pull comparator output.", "sourcePage": 3 },
+    { "number": 6, "name": "SHDN", "function": "SHDN", "type": "digital_in", "description": "Shutdown. Device is enabled when SHDN is more than 1.7 V below V+, disabled when within 0.9 V of V+.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power_supply",
+      "aliases": ["VS", "specified voltage", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.7, "max": 5.5 },
+          "unit": "V",
+          "conditionsVerbatim": "VS, specified voltage, 2.7 V to 5.5 V (operating range extends down to 2.2 V)",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["TA", "operating free-air temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "TA, operating free-air temperature, -40 degC to 125 degC",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "group": "offset",
+      "aliases": ["VOS", "input offset voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.0065, "max": 0.0065 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CM", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VOS, input offset voltage, VCM = 0 V, IO = 0 mA; typ +/-1 mV, max +/-6.5 mV (average of the positive and negative switching thresholds)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "group": "offset",
+      "aliases": ["dVOS/dT", "input offset voltage vs temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-06 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dVOS/dT, input offset voltage vs temperature, TA = -40 degC to +125 degC, typ +/-5 uV/degC",
+          "guarantee": "typical",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_hysteresis",
+      "name": "Input hysteresis voltage",
+      "group": "input",
+      "aliases": ["input hysteresis", "internal hysteresis"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.006 },
+          "unit": "V",
+          "conditionsVerbatim": "Input hysteresis, 6 mV internal (built in)",
+          "guarantee": "typical",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "group": "input_bias",
+      "aliases": ["IB", "input bias current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1e-11, "max": 1e-11 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IB, input bias current, VCM = VCC/2; typ +/-2 pA, max +/-10 pA; not production tested",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "group": "offset",
+      "aliases": ["IOS", "input offset current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1e-11, "max": 1e-11 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IOS, input offset current (difference of IB+ and IB-), VCM = VCC/2; typ +/-2 pA, max +/-10 pA; not production tested",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR", "common-mode rejection ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 57, "typ": 70 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = -0.2 V to (V+) + 0.2 V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "CMRR, common-mode rejection ratio, VCM = -0.2 V to (V+) + 0.2 V, TA = 25 degC; min 57 dB, typ 70 dB",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 55 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = -0.2 V to (V+) + 0.2 V" },
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "CMRR, common-mode rejection ratio, VCM = -0.2 V to (V+) + 0.2 V, TA = -40 degC to +125 degC; min 55 dB",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR", "input offset voltage vs power supply"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-04, "max": 4e-04 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "V_S", "min": 2.7, "max": 5.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "PSRR, input offset voltage vs power supply, VS = 2.7 V to 5.5 V; typ 100 uV/V, max 400 uV/V",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (swing from positive rail)",
+      "group": "output",
+      "aliases": ["VOH", "voltage output swing from rail"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03, "max": 0.05 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": 0.001, "unit": "A" },
+            { "param": "DIRECTION", "note": "sourcing" }
+          ],
+          "conditionsVerbatim": "VOH, output-high swing from the positive rail (V+), IOUT = +1 mA; typ 30 mV, max 50 mV below V+",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (swing from negative rail)",
+      "group": "output",
+      "aliases": ["VOL", "voltage output swing from rail"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03, "max": 0.05 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": 0.001, "unit": "A" },
+            { "param": "DIRECTION", "note": "sinking" }
+          ],
+          "conditionsVerbatim": "VOL, output-low swing from the negative rail (V-), IOUT = -1 mA; typ 30 mV, max 50 mV above V-",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay",
+      "name": "Propagation delay",
+      "group": "dynamic",
+      "aliases": ["tPD", "T(pd)", "propagation delay time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.5e-09, "max": 6.4e-09 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.02, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "T(pd), propagation delay time, dVIN = 100 mV, overdrive = 20 mV, TA = 25 degC; typ 4.5 ns, max 6.4 ns",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.5e-09, "max": 1.0e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.005, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "T(pd), propagation delay time, dVIN = 100 mV, overdrive = 5 mV, TA = 25 degC; typ 7.5 ns, max 10 ns",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay_dispersion",
+      "name": "Propagation delay skew",
+      "group": "dynamic",
+      "aliases": ["dt(SKEW)", "propagation delay skew"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.0e-10 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.02, "unit": "V" }
+          ],
+          "conditionsVerbatim": "dt(SKEW), propagation delay skew (difference between delay going high and going low), dVIN = 100 mV, overdrive = 20 mV; typ 0.5 ns",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "maximum_toggle_frequency",
+      "name": "Maximum toggle frequency",
+      "group": "dynamic",
+      "aliases": ["fMAX", "maximum toggle frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8.0e07 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.05, "unit": "V" },
+            { "param": "V_S", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "fMAX, maximum toggle frequency, overdrive = 50 mV, VS = 5 V; typ 80 MHz",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_fall_time",
+      "name": "Output rise / fall time",
+      "group": "dynamic",
+      "aliases": ["tR", "tF", "rise time", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-09 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "tR, rise time, measured between 10% of VS and 90% of VS; typ 1.5 ns",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-09 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "falling" }
+          ],
+          "conditionsVerbatim": "tF, fall time, measured between 10% of VS and 90% of VS; typ 1.5 ns",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent / supply current",
+      "group": "power_supply",
+      "aliases": ["IQ", "quiescent current", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.2e-03, "max": 5.0e-03 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IQ, quiescent current, VS = 5 V, VO = High; typ 3.2 mA, max 5 mA",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown supply current",
+      "group": "power_supply",
+      "aliases": ["IQSD", "quiescent current in shutdown"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.0e-06 },
+          "unit": "A",
+          "conditionsVerbatim": "IQSD, quiescent current in shutdown; typ 2 uA",
+          "guarantee": "typical",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_threshold_voltage",
+      "name": "Shutdown (SHDN) threshold voltage",
+      "group": "power_supply",
+      "aliases": ["VL", "VH", "SHDN low threshold", "SHDN high threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "guaranteed-enabled (SHDN low) threshold" }
+          ],
+          "conditionsVerbatim": "VL, SHDN low threshold, comparator is enabled when SHDN is at (V+) - 1.7 V or lower; stored as 1.7 V of headroom below V+",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.9 },
+          "unit": "V",
+          "conditions": [
+            { "param": "DIRECTION", "note": "guaranteed-disabled (SHDN high) threshold" }
+          ],
+          "conditionsVerbatim": "VH, SHDN high threshold, comparator is disabled when SHDN is within (V+) - 0.9 V of V+; stored as 0.9 V of headroom below V+",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Shutdown turn-on / turn-off time",
+      "group": "power_supply",
+      "aliases": ["tON", "tOFF", "shutdown turnon time", "shutdown turnoff time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "turn-on (enable)" }
+          ],
+          "conditionsVerbatim": "tON, shutdown turnon time; typ 100 ns",
+          "guarantee": "typical",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0e-08 },
+          "unit": "s",
+          "conditions": [
+            { "param": "DIRECTION", "note": "turn-off (disable)" }
+          ],
+          "conditionsVerbatim": "tOFF, shutdown turnoff time; typ 30 ns",
+          "guarantee": "typical",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["ESD HBM", "V(ESD) HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 3000 },
+          "unit": "V",
+          "conditionsVerbatim": "V(ESD), human-body model (HBM), per ANSI/ESDA/JEDEC JS-001, +/-3000 V",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["ESD CDM", "V(ESD) CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 500 },
+          "unit": "V",
+          "conditionsVerbatim": "V(ESD), charged-device model (CDM), per JEDEC JESD22-C101, +/-500 V",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SBOS321E - MARCH 2005 - REVISED APRIL 2016",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/tlv3501.pdf",
+    "datasheetSha256": "b9a2a4a79441d2254c0da0ae52c41120cd65b09e928329ebc699ffed06567189",
+    "publishedDate": "April 2016",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

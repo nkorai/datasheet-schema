@@ -1,0 +1,196 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "inductor",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for inductive components, synthesized from a real-datasheet corpus (Murata, TDK, Wurth Elektronik, Coilcraft, Bourns, Vishay, TAIYO YUDEN, Fair-Rite, Laird, Sunlord) spanning four sub-shapes that share one measurement envelope: (1) power inductors (shielded/unshielded drum/molded chokes) which populate inductance, the DC-bias derating curve (inductance_vs_dc_current), saturation_current and rms_current as DISTINCT ratings, dc_resistance, self_resonant_frequency, and temperature_rise_current; (2) rf_multilayer / wirewound RF chip inductors which populate inductance, quality_factor and self_resonant_frequency prominently, ac_resistance, and rated_current; (3) ferrite_bead (chip beads) which populate impedance |Z| (typically specced at 100 MHz) plus its resistance_component and reactance_component split, rated_current, and dc_resistance - a bead is inductive below SRF and resistive (dissipative) above it, which is the whole point of the part; (4) common_mode_choke (CMC, data-line and power-line) which populate common_mode_impedance, inductance (per-winding, common-mode), rated_voltage, withstanding_voltage (hipot), and insulation_resistance between windings. A part's sub_type selects which optional keys apply. The critical modeling rule this dictionary enforces: saturation_current (a MAGNETIC limit, the DC bias at which |L| drops a stated percentage - e.g. -30%) and rms_current (a THERMAL limit, the DC current for a stated self-heating temperature rise - e.g. +40 degC) are SEPARATE keys and must never be conflated; the usable continuous current is the lower of the two. inductance is only meaningful with its measurement frequency, so put the test frequency (F) in every inductance measurement's conditions. Base-SI throughout: inductance in H (10 uH is 0.00001), no SI prefixes anywhere; the dimensionless quality factor Q uses V/V; impedance, DCR, and the bead R/X split use ohm. component.polarity is not meaningful for a passive inductor. Condition axes for this family: F (test/spot frequency, for inductance/Q/impedance/SRF/AC resistance), T_A (ambient), I_DC (DC bias current, for the saturation-derating and temp-rise curves), T_RISE (self-heating temperature rise, for the rms current rating point), L_DROP (note-only inductance-drop percentage at which a saturation current is defined). Pinout: a 2-terminal power or RF inductor and a ferrite bead have functions A and B (non-polarized, interchangeable). A common-mode choke is a 4-terminal part with functions L1_IN, L1_OUT, L2_IN, L2_OUT - the two windings are L1 (L1_IN->L1_OUT) and L2 (L2_IN->L2_OUT), and the phasing dot convention is that the *_IN pins are the dotted (same-phase) ends; preserve winding identity so a consumer wires the two lines in the correct sense. Saturation-derating and temperature-rise curves and full impedance-vs-frequency sweeps are graph-derived - capture the tabulated scalar points and the stated curve rows. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "inductance",
+      "name": "Inductance (nominal)",
+      "unit": "H",
+      "group": "inductance",
+      "aliases": ["L", "Ind", "Lnom", "nominal inductance"],
+      "hint": "Nominal inductance in henries (base-SI; 10 uH is 0.00001, 100 nH is 0.0000001). Only meaningful with its test frequency - put F in the conditions of every measurement (a 100 kHz power-inductor L and a 100 MHz RF-chip L are different measurements). For a common-mode choke this is the per-winding common-mode inductance."
+    },
+    {
+      "key": "inductance_tolerance",
+      "name": "Inductance tolerance",
+      "unit": "%",
+      "group": "inductance",
+      "aliases": ["tolerance"],
+      "hint": "Inductance tolerance as a percentage (e.g. +/-20%). Printed tolerance letter codes map here: M=+/-20%, K=+/-10%, J=+/-5%, G=+/-2%, F=+/-1%, S/N=+/-30%."
+    },
+    {
+      "key": "inductance_vs_dc_current",
+      "name": "Inductance vs DC bias current (derating curve)",
+      "unit": "H",
+      "group": "saturation",
+      "array": true,
+      "conditionAxis": "I_DC",
+      "aliases": ["L vs Idc", "DC bias derating", "saturation curve"],
+      "hint": "The inductance-vs-DC-bias derating curve: one measurement per DC-bias point (array over I_DC), each the effective inductance at that superimposed DC current and a stated test frequency. Ferromagnetic cores lose inductance as bias rises toward saturation; this curve is how a consumer picks a working current below meaningful roll-off. Hold F in the conditions."
+    },
+    {
+      "key": "saturation_current",
+      "name": "Saturation current",
+      "unit": "A",
+      "group": "current_rating",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "L_DROP",
+      "aliases": ["Isat", "Idc(sat)"],
+      "hint": "A MAGNETIC limit: the DC bias current at which the inductance has dropped by a STATED percentage from its zero-bias value (e.g. -10%, -20%, -30%) - carry the drop percentage on the L_DROP axis (note-only) and/or in conditionsVerbatim. A datasheet often lists several Isat rows at different drop criteria; emit one measurement per criterion. NEVER conflate with rms_current (a thermal limit) - the usable current is the lower of the two."
+    },
+    {
+      "key": "rms_current",
+      "name": "RMS (heating) current",
+      "unit": "A",
+      "group": "current_rating",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_RISE",
+      "aliases": ["Irms", "Irated", "IR", "Ipp", "heating current", "performance rated current"],
+      "hint": "A THERMAL limit: the DC current that produces a STATED self-heating temperature rise (e.g. +20 degC, +40 degC) - carry the rise on the T_RISE axis. A datasheet often lists rows at several rise criteria; emit one measurement per criterion. NEVER conflate with saturation_current (a magnetic limit); the usable continuous current is the lower of Isat and Irms."
+    },
+    {
+      "key": "rated_current",
+      "name": "Rated (maximum continuous) current",
+      "unit": "A",
+      "group": "current_rating",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["continuous current", "Imax"],
+      "hint": "Maximum continuous / rated current where a datasheet gives a single combined figure (common on RF chip inductors and ferrite beads) rather than splitting into distinct saturation and heating limits. May be derated over ambient temperature (array over T_A). When both a magnetic and a thermal limit are separately tabulated, use saturation_current and rms_current instead."
+    },
+    {
+      "key": "dc_resistance",
+      "name": "DC resistance (DCR)",
+      "unit": "ohm",
+      "group": "resistance",
+      "aliases": ["DCR", "Rdc", "winding resistance"],
+      "hint": "DC winding resistance in ohms (base-SI; 100 mohm is 0.1). Typically tabulated as a typ and a max. On a common-mode choke this is the per-line (per-winding) DCR."
+    },
+    {
+      "key": "ac_resistance",
+      "name": "AC resistance (ACR)",
+      "unit": "ohm",
+      "group": "resistance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Rac"],
+      "hint": "AC resistance at a stated frequency (array over F) - the effective series resistance including skin and proximity effects and core loss; rises with frequency well above the DCR. Common on RF chip inductors."
+    },
+    {
+      "key": "self_resonant_frequency",
+      "name": "Self-resonant frequency (SRF)",
+      "unit": "Hz",
+      "group": "frequency",
+      "optional": true,
+      "aliases": ["SRF", "Fres", "fr", "f0"],
+      "hint": "The frequency at which the inductor's parasitic capacitance resonates with its inductance and net reactance passes through zero; above SRF the part behaves capacitively. Usually a typ min. On a ferrite bead, SRF marks the transition from inductive to resistive behavior."
+    },
+    {
+      "key": "quality_factor",
+      "name": "Quality factor (Q)",
+      "unit": "V/V",
+      "group": "quality",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Q", "Qmin"],
+      "hint": "Quality factor Q = reactance/AC-resistance at a stated frequency (dimensionless, unit V/V); higher is lower-loss. Array over F - the datasheet gives Q at one or more spot frequencies, often a guaranteed Qmin. Prominent on RF chip inductors."
+    },
+    {
+      "key": "impedance",
+      "name": "Impedance magnitude |Z|",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Z", "|Z|", "Z@100MHz"],
+      "hint": "Ferrite bead: the impedance magnitude |Z| at a stated frequency (array over F) - the headline rating, almost always specified at 100 MHz (the |Z|@100MHz alias). The bead's job is to present this impedance to high-frequency noise; total |Z| = sqrt(R^2 + X^2) of resistance_component and reactance_component."
+    },
+    {
+      "key": "resistance_component",
+      "name": "Impedance resistance component (Rs)",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Rs"],
+      "hint": "Ferrite bead: the resistive (dissipative, real) part of the complex impedance at a stated frequency (array over F). Above SRF the bead is dominantly resistive - this component is what actually absorbs and dissipates noise energy as heat rather than reflecting it."
+    },
+    {
+      "key": "reactance_component",
+      "name": "Impedance reactance component (Xs)",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Xs"],
+      "hint": "Ferrite bead: the reactive (inductive, imaginary) part of the complex impedance at a stated frequency (array over F). Dominates below SRF; at low frequency a bead is essentially a small inductor whose reactance rises with frequency."
+    },
+    {
+      "key": "common_mode_impedance",
+      "name": "Common-mode impedance (Zcm)",
+      "unit": "ohm",
+      "group": "impedance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["Zcm", "Zc"],
+      "hint": "Common-mode choke: the common-mode impedance presented to common-mode (in-phase) currents at a stated frequency (array over F). The CMC's function is to block common-mode noise while passing the differential (signal/power) current with low impedance."
+    },
+    {
+      "key": "rated_voltage",
+      "name": "Rated voltage",
+      "unit": "V",
+      "group": "voltage",
+      "optional": true,
+      "aliases": ["rated DC voltage"],
+      "hint": "Common-mode choke (and some power inductors): the maximum rated working (DC) voltage across the part (absolute_max)."
+    },
+    {
+      "key": "withstanding_voltage",
+      "name": "Withstanding (hipot) voltage",
+      "unit": "V",
+      "group": "voltage",
+      "optional": true,
+      "aliases": ["hipot", "dielectric withstand"],
+      "hint": "Common-mode choke: the dielectric withstanding (hi-pot) voltage the isolation between windings survives for a stated time without breakdown - a safety/isolation rating, not an operating voltage."
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "unit": "ohm",
+      "group": "resistance",
+      "optional": true,
+      "aliases": ["Riso"],
+      "hint": "Common-mode choke: the insulation (isolation) resistance between the two windings at a stated test voltage - very large (megohms/gigohms; base-SI, so 100 Mohm is 100000000)."
+    },
+    {
+      "key": "temperature_rise_current",
+      "name": "Temperature-rise current curve",
+      "unit": "A",
+      "group": "temperature",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_DC",
+      "aliases": ["self-heating current", "temp-rise curve"],
+      "hint": "The self-heating (temperature-rise vs DC current) characteristic: one measurement per DC-bias point (array over I_DC), each carrying the resulting self-heating temperature rise in conditionsVerbatim. The tabulated form of the thermal-derating graph from which rms_current's stated-rise points are read."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["operating temperature", "category temp range"],
+      "hint": "The operating (ambient) temperature range (min/max), including self-heating on power parts (e.g. -40 to +125 degC)."
+    }
+  ]
+}

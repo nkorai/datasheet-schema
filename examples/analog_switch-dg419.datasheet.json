@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "DG419",
+    "manufacturer": "Vishay Siliconix",
+    "family": "analog_switch",
+    "description": "Precision CMOS SPDT (single-pole double-throw) analog switch (sub_type: switch, config: SPDT). One common terminal (D) selects between two throws (S1, S2) under a single logic-control input (IN). +/-15 V analog signal range, on-resistance 20 ohm typ, 5 pC charge injection, and guaranteed break-before-make so the two throws never momentarily short. Operates from dual supplies (+/-5 V to +/-20 V) or a single supply (+5 V to +40 V, 44 V max), with a separate logic-supply pin (VL) that makes the digital control TTL- and CMOS-compatible independent of the analog rails. Built on Vishay Siliconix's high-voltage silicon-gate (HVSG) process; each channel conducts equally in both directions when on and blocks to the supply rail when off. DG419 is the SPDT member of the DG417/DG418/DG419 family (DG417/DG418 are SPST).",
+    "package": "SOIC-8",
+    "pinCount": 8,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "DG419DY", "package": "SOIC-8 (narrow)", "packing": "Tube" },
+      { "orderCode": "DG419DY-E3", "package": "SOIC-8 (narrow)", "packing": "Tube, RoHS" },
+      { "orderCode": "DG419DY-T1", "package": "SOIC-8 (narrow)", "packing": "Tape and Reel" },
+      { "orderCode": "DG419DY-T1-E3", "package": "SOIC-8 (narrow)", "packing": "Tape and Reel, RoHS" },
+      { "orderCode": "DG419DJ", "package": "MiniDIP-8", "packing": "Tube" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "D", "function": "D", "type": "analog", "description": "Common (pole) terminal; connects to the selected throw when its switch is on. Bidirectional analog signal path.", "sourcePage": 1 },
+    { "number": 2, "name": "S1", "function": "S1", "type": "analog", "description": "Throw-1 source terminal. On (connected to D) when logic input IN = 0.", "sourcePage": 1 },
+    { "number": 3, "name": "GND", "function": "GND", "type": "power", "description": "Ground / logic reference.", "sourcePage": 1 },
+    { "number": 4, "name": "V+", "function": "VP", "type": "power", "description": "Positive analog supply rail (e.g. +15 V dual, or +12 V single).", "sourcePage": 1 },
+    { "number": 5, "name": "VL", "function": "VL", "type": "power", "description": "Separate logic supply (e.g. +5 V); sets the TTL/CMOS-compatible input threshold independent of the analog rails.", "sourcePage": 1 },
+    { "number": 6, "name": "IN", "function": "IN", "type": "digital_in", "description": "Logic control input. IN = 0 turns SW1 on (D-S1), IN = 1 turns SW2 on (D-S2). TTL/CMOS compatible.", "sourcePage": 1 },
+    { "number": 7, "name": "V-", "function": "VN", "type": "power", "description": "Negative analog supply rail (e.g. -15 V dual, or 0 V single-supply).", "sourcePage": 1 },
+    { "number": 8, "name": "S2", "function": "S2", "type": "analog", "description": "Throw-2 source terminal. On (connected to D) when logic input IN = 1.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "on_resistance",
+      "name": "Drain-source on-resistance",
+      "group": "switch",
+      "aliases": ["RDS(on)", "RON", "on-resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20, "max": 35 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_D", "value": 12.5, "unit": "V" },
+            { "param": "I_S", "value": -0.01, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "RDS(on), IS = -10 mA, VD = +/-12.5 V, V+ = 13.5 V, V- = -13.5 V, TA = 25 degC (Room); typ 20 ohm, D-suffix max 35 ohm (Full-temp max 45 ohm)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 40 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_D", "value": 3.8, "unit": "V" },
+            { "param": "I_S", "value": -0.01, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "RDS(on), single supply V+ = 12 V (V- = 0 V), IS = -10 mA, VD = 3.8 V (V+ = 10.8 V), TA = 25 degC; typ 40 ohm (on-resistance rises as the analog voltage moves toward the rail / the supply is reduced)",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "charge_injection",
+      "name": "Charge injection",
+      "group": "switch",
+      "aliases": ["Q", "Qinj", "charge injection"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-12 },
+          "unit": "C",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "C_L", "value": 1e-8, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Q = 5 pC, CL = 10 nF, Vgen = 0 V, Rgen = 0 ohm, single supply V+ = 12 V, TA = 25 degC (charge dumped onto the load at switch transition - the audio-click spec)",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-11 },
+          "unit": "C",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "C_L", "value": 1e-8, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Q = 60 pC, CL = 10 nF, Vgen = 0 V, Rgen = 0 ohm, dual supplies V+ = 15 V, V- = -15 V, VL = 5 V, TA = 25 degC (charge injection grows with the wider analog swing on dual supplies)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "source_leakage_current",
+      "name": "Switch off leakage current (source)",
+      "group": "leakage",
+      "aliases": ["IS(off)", "switch off leakage current", "source off leakage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-10, "max": 2.5e-10 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 15.5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IS(off), V+ = 16.5 V, V- = -16.5 V, VD = +/-15.5 V, VS = +/-15.5 V, TA = 25 degC (Room); typ -0.1 nA, D-suffix max +/-0.25 nA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 15.5, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IS(off) over the full operating temperature range (D suffix, -40 to +85 degC), V+ = 16.5 V, V- = -16.5 V, VS = +/-15.5 V; max +/-5 nA (leakage rises with temperature)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "drain_leakage_current",
+      "name": "Switch off leakage current (drain)",
+      "group": "leakage",
+      "aliases": ["ID(off)", "drain off leakage", "drain leakage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-10, "max": 7.5e-10 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 15.5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(off), DG419, V+ = 16.5 V, V- = -16.5 V, VD = +/-15.5 V, VS = +/-15.5 V, TA = 25 degC (Room); typ -0.1 nA, D-suffix max +/-0.75 nA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.2e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 15.5, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(off), DG419, over the full operating temperature range (D suffix, -40 to +85 degC), VD = +/-15.5 V; max +/-12 nA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "group": "switching",
+      "aliases": ["ton", "tON", "turn-on time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.1e-7 },
+          "unit": "s",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "R_L", "value": 300, "unit": "ohm" },
+            { "param": "C_L", "value": 35e-12, "unit": "F" },
+            { "param": "V_S", "value": 8, "unit": "V" }
+          ],
+          "conditionsVerbatim": "ton, RL = 300 ohm, CL = 35 pF, VS = 8 V, single supply V+ = 12 V, TA = 25 degC; typ 110 ns (Switching Time Test Circuit, Fig. 2)",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "group": "switching",
+      "aliases": ["toff", "tOFF", "turn-off time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-8 },
+          "unit": "s",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "R_L", "value": 300, "unit": "ohm" },
+            { "param": "C_L", "value": 35e-12, "unit": "F" },
+            { "param": "V_S", "value": 8, "unit": "V" }
+          ],
+          "conditionsVerbatim": "toff, RL = 300 ohm, CL = 35 pF, VS = 8 V, single supply V+ = 12 V, TA = 25 degC; typ 40 ns",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "break_before_make_time",
+      "name": "Break-before-make time delay",
+      "group": "switching",
+      "aliases": ["tD", "break-before-make time delay", "tBBM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-8 },
+          "unit": "s",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "R_L", "value": 300, "unit": "ohm" },
+            { "param": "C_L", "value": 35e-12, "unit": "F" }
+          ],
+          "conditionsVerbatim": "tD, break-before-make time delay, DG419, RL = 300 ohm, CL = 35 pF, single supply V+ = 12 V, TA = 25 degC; typ 60 ns (Break-Before-Make Test Circuit, Fig. 3)",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (unipolar supplies), Dynamic Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5e-9, "typ": 1.3e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 300, "unit": "ohm" },
+            { "param": "C_L", "value": 35e-12, "unit": "F" },
+            { "param": "V_S", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "tD, break-before-make time delay, DG419, RL = 300 ohm, CL = 35 pF, VS1 = VS2 = +/-10 V, dual supplies V+ = 15 V, V- = -15 V, TA = 25 degC; typ 13 ns, guaranteed min 5 ns (the dead time both throws are open is guaranteed to be at least 5 ns)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "logic_threshold",
+      "name": "Logic input switching threshold",
+      "group": "digital",
+      "aliases": ["VINH", "VINL", "VIH", "VIL", "logic input threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.4 },
+          "unit": "V",
+          "conditionsVerbatim": "VINH, logic '1' (input-high) threshold, min 2.4 V; VL = 5 V, TTL/CMOS compatible (input voltage above which the switch reads a logic high)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control (test-condition header)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.8 },
+          "unit": "V",
+          "conditionsVerbatim": "VINL, logic '0' (input-low) threshold, max 0.8 V; VL = 5 V, TTL/CMOS compatible (input voltage below which the switch reads a logic low)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control (test-condition header)"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Positive supply (quiescent) current",
+      "group": "power_supply",
+      "aliases": ["I+", "positive supply current", "IQ", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-9, "max": 1e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "I+ (positive supply current), V+ = 16.5 V, V- = -16.5 V, VIN = 0 V or 5 V, TA = 25 degC (Room); typ 0.001 uA (1 nA), D-suffix max 1 uA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Power Supplies"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "I+ over the full operating temperature range (D suffix, -40 to +85 degC), V+ = 16.5 V, V- = -16.5 V; max 5 uA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (dual supplies), Power Supplies"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage_range",
+      "name": "Supply voltage range",
+      "group": "power_supply",
+      "aliases": ["supply voltage", "operating supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 5, "max": 40 },
+          "unit": "V",
+          "conditions": [
+            { "param": "MODE", "note": "single-supply operation; dual-supply operation is +/-5 V to +/-20 V" }
+          ],
+          "conditionsVerbatim": "Operating supply range: single-supply +5 V to +40 V; dual-supply +/-5 V to +/-20 V (Product Summary). VL referenced likewise; separate logic supply required.",
+          "sourcePage": 11,
+          "sourceTable": "Product Summary"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 44 },
+          "unit": "V",
+          "conditionsVerbatim": "V+ (voltage referenced to V-) = 44 V absolute maximum; GND = 25 V max; VL = (GND - 0.3 V) to (V+) + 0.3 V",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["operating temperature range", "operating ambient temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating (ambient) temperature range, DG419 D suffix (DJ/DY packages): -40 degC to +85 degC",
+          "sourcePage": 2,
+          "sourceTable": "Ordering Information"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "S10-1528-Rev. G, 19-Jul-10 (Document Number 70051)",
+    "sourceUrl": "https://www.vishay.com/docs/70051/dg417.pdf",
+    "datasheetSha256": "4581bec81357d2db125cc7e4ee05c8c6c1801a67d8459d13b7573e01914453e2",
+    "publishedDate": "2010-07-19",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

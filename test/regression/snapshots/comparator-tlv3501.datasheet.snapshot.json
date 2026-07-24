@@ -1,0 +1,852 @@
+{
+  "family": "comparator",
+  "manufacturer": "Texas Instruments",
+  "mpn": "TLV3501",
+  "parameters": [
+    {
+      "aliases": [
+        "VS",
+        "specified voltage",
+        "supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 2.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating free-air temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOS",
+        "input offset voltage"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.0065,
+            "min": -0.0065
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOS/dT",
+        "input offset voltage vs temperature"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": 0.000005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "input hysteresis",
+        "internal hysteresis"
+      ],
+      "group": "input",
+      "key": "input_hysteresis",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.006
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IB",
+        "input bias current"
+      ],
+      "group": "input_bias",
+      "key": "input_bias_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-11,
+            "min": -1e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOS",
+        "input offset current"
+      ],
+      "group": "offset",
+      "key": "input_offset_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-11,
+            "min": -1e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR",
+        "common-mode rejection ratio"
+      ],
+      "group": "rejection",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = -0.2 V to (V+) + 0.2 V",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 57,
+            "typ": 70
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = -0.2 V to (V+) + 0.2 V",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSRR",
+        "input offset voltage vs power supply"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5.5,
+              "min": 2.7,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 0.0004,
+            "typ": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOH",
+        "voltage output swing from rail"
+      ],
+      "group": "output",
+      "key": "output_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "sourcing",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.05,
+            "typ": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL",
+        "voltage output swing from rail"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "sinking",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.05,
+            "typ": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T(pd)",
+        "propagation delay time",
+        "tPD"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.02
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 6.4e-9,
+            "typ": 4.5e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1e-8,
+            "typ": 7.5e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dt(SKEW)",
+        "propagation delay skew"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay_dispersion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.02
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 5e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fMAX",
+        "maximum toggle frequency"
+      ],
+      "group": "dynamic",
+      "key": "maximum_toggle_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.05
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 80000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "rise time",
+        "tF",
+        "tR"
+      ],
+      "group": "dynamic",
+      "key": "rise_fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "rising",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.5e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "falling",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.5e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "quiescent current",
+        "supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005,
+            "typ": 0.0032
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQSD",
+        "quiescent current in shutdown"
+      ],
+      "group": "power_supply",
+      "key": "shutdown_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SHDN high threshold",
+        "SHDN low threshold",
+        "VH",
+        "VL"
+      ],
+      "group": "power_supply",
+      "key": "enable_threshold_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "guaranteed-enabled (SHDN low) threshold",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 1.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "guaranteed-disabled (SHDN high) threshold",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "shutdown turnoff time",
+        "shutdown turnon time",
+        "tOFF",
+        "tON"
+      ],
+      "group": "power_supply",
+      "key": "turn_on_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "turn-on (enable)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "turn-off (disable)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 3e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD HBM",
+        "V(ESD) HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 3000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD CDM",
+        "V(ESD) CDM"
+      ],
+      "group": "general",
+      "key": "esd_cdm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 500
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "IN_N",
+      "name": "-IN",
+      "number": 1
+    },
+    {
+      "function": "VS_NEG",
+      "name": "V-",
+      "number": 2
+    },
+    {
+      "function": "IN_P",
+      "name": "+IN",
+      "number": 3
+    },
+    {
+      "function": "VS_POS",
+      "name": "V+",
+      "number": 4
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 5
+    },
+    {
+      "function": "SHDN",
+      "name": "SHDN",
+      "number": 6
+    }
+  ]
+}

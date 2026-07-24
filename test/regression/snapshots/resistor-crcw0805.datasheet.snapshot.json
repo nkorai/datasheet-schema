@@ -1,0 +1,266 @@
+{
+  "family": "resistor",
+  "manufacturer": "Vishay",
+  "mpn": "CRCW0805100KFKEA",
+  "parameters": [
+    {
+      "aliases": [
+        "R",
+        "R25"
+      ],
+      "group": "electrical",
+      "key": "resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "nom": 100000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F",
+        "tol"
+      ],
+      "group": "electrical",
+      "key": "resistance_tolerance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 1,
+            "min": -1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "P70",
+        "rated dissipation"
+      ],
+      "group": "power",
+      "key": "rated_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "derating curve"
+      ],
+      "group": "power",
+      "key": "power_derating",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 6,
+          "sourceTable": "Derating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 100
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 155
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 6,
+          "sourceTable": "Derating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "K",
+        "TCR"
+      ],
+      "group": "electrical",
+      "key": "temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Temperature Coefficient and Resistance Range",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 100,
+            "min": -100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Umax",
+        "operating voltage"
+      ],
+      "group": "electrical",
+      "key": "max_working_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Uins"
+      ],
+      "group": "electrical",
+      "key": "insulation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 200
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "film temperature"
+      ],
+      "group": "thermal",
+      "key": "max_film_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 155
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "category temp range",
+        "operating temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 155,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "T1",
+      "name": "T1",
+      "number": 1
+    },
+    {
+      "function": "T2",
+      "name": "T2",
+      "number": 2
+    }
+  ]
+}

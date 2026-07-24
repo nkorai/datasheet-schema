@@ -1,0 +1,361 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "comparator",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for voltage comparators, synthesized from a real-datasheet corpus (TI LM393/LM339/TLV3501/LMV7219/TL331, Analog Devices/Maxim MAX999/MAX9140/LT1116/LT1394, onsemi LM311, ST TS391) spanning three sub-shapes that share one measurement envelope: (1) general_purpose / low-power (LM393, LM339, LM311, TLV3011) whose headline is a modest propagation delay and micro-power supply current; (2) high_speed (TLV3501, LMV7219, MAX999, LT1394, LMH7220) whose headline is a nanosecond-scale propagation_delay, propagation_delay_dispersion, and maximum_toggle_frequency; and (3) precision (LT1097-class, LTC6752, TLV3201) whose headline is a low input_offset_voltage / drift and defined input_hysteresis. A part's sub_type selects which optional keys dominate; the input DC precision (offset, bias, CMRR, PSRR), the output stage, and the power/thermal keys are common. The output stage comes in three flavours captured by the output group: open_collector and open_drain parts populate output_low_voltage (swept over I_OUT sink current) and output_leakage_current and have no output_high_voltage (the high level is set by an external pull-up); push_pull parts populate both output_low_voltage and output_high_voltage (headroom from each rail) and short_circuit_current. Roughly 80% of the input-side vocabulary is shared verbatim with the op_amp dictionary so cross-family extraction normalizes to one key; a comparator differs by having hysteresis, a switching-time family (propagation delay, dispersion, toggle frequency), and a saturating digital output instead of a linear one. A comparator has NO closed-loop / slew / distortion / noise-density behaviour to specify - open_loop_gain is a single characterized DC figure (comparators print it as V/mV, normalize to the V/V altUnit), not a load-swept curve. Some parts integrate a voltage reference (LTC1440-class, TLV3011/3012, comparator-with-reference); its keys live in the reference group (reference_output_voltage, reference_temperature_drift, reference_line/load_regulation, reference_output_current, reference_output_noise) copied from the voltage_reference vocabulary so a downstream tool treats the on-chip datum identically to a standalone reference. component.polarity is bipolar for a dual-supply comparator; store rail-relative common-mode and output levels as the headroom magnitude from the rail with the printed form in conditionsVerbatim. Condition axes for this family: T_A, V_CM (common-mode input), V_OVERDRIVE (input overdrive voltage past the trip point - the axis the headline propagation_delay is swept over, since delay collapses as overdrive grows), C_L (output load capacitance, a co-condition on every switching-time spec), I_OUT (output sink/source current, the axis output_low_voltage is swept over), F (frequency), DIRECTION (note-only: rising / falling for an edge, source / sink for an output current) and PACKAGE (for per-package thermal resistance). Pin functions: IN_P / IN_N (non-inverting / inverting inputs), OUT (comparator output), VS_POS / VS_NEG (dual supply), GND (single-supply ground / V-), SHDN (shutdown / enable), REF (integrated-reference output), HYST (external hysteresis-programming pin), LATCH (output latch/enable strobe), NC (no connect). Base-SI throughout: a 40 ns propagation delay is 4.0e-08 s, a 2.5 mV offset is 2.5e-03 V; keep the printed symbols in aliases and the printed rail-relative / dBm / per-mA forms in conditionsVerbatim.",
+  "parameters": [
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "unit": "V",
+      "group": "offset",
+      "aliases": ["VOS", "VIO", "input offset voltage", "offset voltage"],
+      "hint": "Differential input offset - the trip-point error at the inputs, at T_A = 25 degC unless a temperature range is given. The headline for a precision comparator. Often specified as a +/- magnitude; store as min = -X, max = +X. Grade suffixes set this number; use one document per grade."
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "unit": "V/degC",
+      "group": "offset",
+      "optional": true,
+      "aliases": ["dVOS/dT", "TCVOS", "offset voltage drift", "offset drift", "average TC of VOS"],
+      "hint": "Temperature coefficient of the input offset voltage - how much the trip point moves with temperature. Precision comparators put a low uV/degC figure here."
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "unit": "A",
+      "group": "offset",
+      "optional": true,
+      "aliases": ["IOS", "IIO", "input offset current"],
+      "hint": "Difference of the two input bias currents. Often array over T_A. Symmetric +/- values map to min/max."
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "unit": "A",
+      "group": "input_bias",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IB", "IIB", "Ibias", "input bias current"],
+      "hint": "Average input bias current, temperature-dependent so one measurement per T_A point. Bipolar-input comparators (LM393) draw tens of nA; CMOS-input parts draw pA."
+    },
+    {
+      "key": "input_hysteresis",
+      "name": "Input hysteresis voltage",
+      "unit": "V",
+      "group": "input",
+      "optional": true,
+      "aliases": ["VHYS", "Vhyst", "Vhb", "hysteresis", "internal hysteresis"],
+      "hint": "Built-in input hysteresis - the difference between the rising and falling trip points that prevents output chatter near the threshold. Many high-speed parts specify a few mV of internal hysteresis; parts with a HYST pin let it be set externally (note the pin/resistor in conditionsVerbatim). Distinct from input_offset_voltage."
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage range",
+      "unit": "V",
+      "group": "input",
+      "aliases": ["VCM", "VICR", "CMVR", "IVR", "input voltage range", "common-mode voltage range"],
+      "hint": "The input common-mode range over which the comparator trips correctly. Frequently rail-relative (e.g. (V-) to (V+)-1.5, or includes a rail on a ground-sensing part); store the headroom from each rail and preserve the printed form in conditionsVerbatim."
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "rejection",
+      "array": true,
+      "conditionAxis": "V_CM",
+      "aliases": ["CMRR", "CMR", "common-mode rejection", "kCMR"],
+      "hint": "Rejection of a common-mode input, tested over a stated V_CM range. Usually dB; some vendors give it as a uV/V ratio (V/V)."
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "rejection",
+      "aliases": ["PSRR", "PSR", "kSVR", "SVRR", "supply-voltage rejection", "ripple rejection"],
+      "hint": "Rejection of a supply change referred to the input offset. dB for most parts; precision parts often spec it as an offset shift in uV/V (V/V)."
+    },
+    {
+      "key": "open_loop_gain",
+      "name": "Voltage gain (open-loop)",
+      "unit": "dB",
+      "altUnits": ["V/V"],
+      "group": "gain",
+      "optional": true,
+      "aliases": ["AOL", "AVOL", "AVD", "AV", "large-signal voltage gain", "open-loop gain", "DC gain"],
+      "hint": "Large-signal DC voltage gain - the gain from input to output before the output saturates, a single characterized figure (a comparator is not compensated for closed-loop use, so this is not a load-swept curve). Comparators print it as V/mV; a V/mV or V/uV figure normalizes to the dimensionless V/V altUnit."
+    },
+    {
+      "key": "propagation_delay",
+      "name": "Propagation delay",
+      "unit": "s",
+      "group": "dynamic",
+      "array": true,
+      "conditionAxis": "V_OVERDRIVE",
+      "aliases": ["tPD", "tPLH", "tPHL", "response time", "propagation delay"],
+      "hint": "THE headline dynamic spec of a comparator: the delay from the input crossing the trip point to the output responding. It collapses as the input overdrive grows, so emit one measurement per overdrive point (V_OVERDRIVE, e.g. 5 mV, 20 mV, 100 mV) rather than one merged range. Output load capacitance C_L is a co-condition. Low-to-high (tPLH) and high-to-low (tPHL) edges differ - separate them with a DIRECTION note (rising / falling)."
+    },
+    {
+      "key": "propagation_delay_dispersion",
+      "name": "Propagation delay dispersion",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["tSKEW", "propagation delay skew", "dispersion"],
+      "hint": "The spread in propagation delay across a range of input overdrive and/or slew rate - the timing-jitter figure that matters in a data-slicer or trigger. Note the overdrive/slew range it is measured across in conditionsVerbatim."
+    },
+    {
+      "key": "maximum_toggle_frequency",
+      "name": "Maximum toggle frequency",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["fMAX", "maximum toggle frequency"],
+      "hint": "The maximum output toggle rate the comparator sustains at a stated overdrive and load. High-speed parts spec tens to hundreds of MHz."
+    },
+    {
+      "key": "rise_fall_time",
+      "name": "Output rise / fall time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["tr", "tf", "rise time", "fall time"],
+      "hint": "10-90 % output edge time driving the stated load capacitance C_L. Rising and falling separable via a DIRECTION note."
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low (saturation) voltage",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": ["VOL", "output saturation voltage", "output low voltage"],
+      "hint": "The output-low level with the output sinking current. On an open-collector / open-drain part VOL scales with the sink current, so emit one measurement per I_OUT sink point (DIRECTION = sink). Store the low-level voltage magnitude referred to GND / V-."
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_OUT",
+      "aliases": ["VOH", "output high voltage"],
+      "hint": "Push-pull outputs only: the output-high level with the output sourcing current, stored as the headroom from the upper rail (open-collector / open-drain parts have no VOH - the high level is set by an external pull-up). One measurement per I_OUT source point (DIRECTION = source); preserve the printed rail-relative form in conditionsVerbatim."
+    },
+    {
+      "key": "output_sink_current",
+      "name": "Output sink current",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": ["ISink", "IOL", "output sink current"],
+      "hint": "The current the output can sink while holding a stated output-low voltage - the drive capability of an open-collector / open-drain (or push-pull) output."
+    },
+    {
+      "key": "output_leakage_current",
+      "name": "Output leakage current",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": ["output leakage current", "off-state leakage"],
+      "hint": "Open-collector / open-drain parts: the leakage into the high-impedance (off) output when the pull-up holds it high. Sets the maximum pull-up value for a given logic-high level."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": ["ISC", "short-circuit current"],
+      "hint": "Push-pull outputs: current into an output short. Source and sink can differ; use one measurement per direction with a DIRECTION note."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "unit": "V",
+      "group": "power_supply",
+      "aliases": ["VS", "VDD", "VCC", "supply voltage", "operating supply voltage"],
+      "hint": "The total supply voltage (V+ minus V-) range: recommended for the operating range, absolute_max for the stress limit. A dual-supply part states it as a +/- magnitude."
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent / supply current",
+      "unit": "A",
+      "group": "power_supply",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IQ", "ISY", "ICC", "IDD", "quiescent current", "supply current"],
+      "hint": "Supply current with the output in a defined state, per comparator (note when the datasheet gives it per channel vs total). Micro-power parts draw a few uA; high-speed parts several mA. Often array over T_A."
+    },
+    {
+      "key": "shutdown_current",
+      "name": "Shutdown supply current",
+      "unit": "A",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["shutdown supply current", "IQSD"],
+      "hint": "Supply current when the comparator is disabled via its shutdown / enable pin."
+    },
+    {
+      "key": "enable_threshold_voltage",
+      "name": "Enable / shutdown threshold voltage",
+      "unit": "V",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["shutdown threshold", "SHDN threshold", "VIH", "VIL"],
+      "hint": "Logic thresholds of the shutdown / enable (SHDN) pin. Use min for the guaranteed-on level and max for the guaranteed-off level, or one measurement per level."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on / turn-off (enable) time",
+      "unit": "s",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["tON", "tOFF", "enable time", "wake-up delay"],
+      "hint": "Enable / disable delay of the shutdown pin - the time from asserting enable to a valid output. Use a DIRECTION note for on vs off."
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Input voltage (absolute maximum)",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["input voltage", "VIN abs max", "input common-mode abs max"],
+      "hint": "Absolute-maximum voltage at an input. Frequently rail-relative ((V-)-0.3 to (V+)+0.3); keep the printed form in conditionsVerbatim."
+    },
+    {
+      "key": "differential_input_voltage",
+      "name": "Differential input voltage (absolute maximum)",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["VID", "differential input voltage"],
+      "hint": "Absolute-maximum voltage between the two inputs. Comparators often withstand the full supply differentially (no input clamp diodes) - a key distinction from an op-amp; capture the stated limit."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["PD", "PDISS", "power dissipation", "internal power dissipation"],
+      "hint": "Absolute-maximum internal power dissipation, package-dependent."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "array": true,
+      "conditionAxis": "PACKAGE",
+      "aliases": ["RthetaJA", "theta-JA", "RthJA", "junction-to-ambient thermal resistance"],
+      "hint": "Per-package junction-to-ambient thermal resistance."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": ["TA", "operating temperature", "operating free-air temperature"],
+      "hint": "Specified operating temperature range (recommended), or the wider absolute-maximum operating range."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["TJ", "junction temperature", "maximum junction temperature"],
+      "hint": "Absolute-maximum junction temperature."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Absolute-maximum storage temperature range."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM", "HBM", "human body model"],
+      "hint": "ESD withstand, human body model. Store as absolute_max."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM", "CDM", "charged device model", "FICDM"],
+      "hint": "ESD withstand, charged device model (or field-induced CDM). Store as absolute_max."
+    },
+    {
+      "key": "reference_output_voltage",
+      "name": "Integrated reference output voltage",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VREF", "reference output voltage", "internal reference voltage", "on-chip reference voltage", "bandgap voltage"],
+      "hint": "Comparators with an integrated reference (LTC1440-class, TLV3011/3012): the on-chip reference/datum the input is compared against or that is brought out on a REF pin. Store the nominal with min/typ/max from its initial-accuracy spec at T_A = 25 degC. Copied from the voltage_reference vocabulary so a downstream tool treats it identically to a standalone reference."
+    },
+    {
+      "key": "reference_temperature_drift",
+      "name": "Integrated reference temperature drift",
+      "unit": "ppm/degC",
+      "group": "reference",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["TCVREF", "reference temperature drift", "reference tempco", "reference temperature coefficient"],
+      "hint": "Temperature coefficient of the integrated reference output over a stated T_A range - the reference analog of ppm/degC. Give the temperature range as a T_A condition."
+    },
+    {
+      "key": "reference_line_regulation",
+      "name": "Integrated reference line regulation",
+      "unit": "ppm/V",
+      "altUnits": ["V/V"],
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference line regulation", "reference input rejection", "reference dVREF/dVIN"],
+      "hint": "Fractional change of the integrated reference output per volt of supply change, ppm/V (or V/V as printed). Keep the printed rate in conditionsVerbatim."
+    },
+    {
+      "key": "reference_load_regulation",
+      "name": "Integrated reference load regulation",
+      "unit": "ppm/A",
+      "altUnits": ["ohm"],
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference load regulation", "reference output resistance", "reference dVREF/dIload"],
+      "hint": "Fractional change of the integrated reference output per amp of load on the REF pin, ppm/A (or ohm as printed). Keep the printed rate in conditionsVerbatim."
+    },
+    {
+      "key": "reference_output_current",
+      "name": "Integrated reference output current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference output current", "reference source current", "reference load current"],
+      "hint": "The current the integrated reference (REF pin) can source while staying in regulation, distinct from the comparator's own output drive."
+    },
+    {
+      "key": "reference_output_noise",
+      "name": "Integrated reference output noise",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference output noise", "reference noise voltage", "VREF noise"],
+      "hint": "Broadband output noise of the integrated reference over a stated bandwidth, usually 0.1 Hz to 10 Hz peak-to-peak. Set the statistic field and keep the bandwidth in conditionsVerbatim (convert uVpp to volts)."
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "jfet",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for junction field-effect transistors (JFETs), covering four sub-shapes that share one measurement envelope: (1) switching JFETs used as analog switches / choppers, which populate on_resistance and the drain_gate/source_gate on/off capacitances; (2) general amplifier JFETs (2N5457/58/59, J111/112/113, MMBFJ201, BF245); (3) low_noise JFETs (2N5457, LSK170, BF862, 2SK170) which additionally populate input_voltage_noise_density and noise_figure; and (4) dual_matched pairs (2N5564-66, LSK389, LSK489, IF3602) which populate idss_match_ratio, gate_source_voltage_match, and gate_isolation_current. A JFET is a DEPLETION-mode device and MUST NOT be modeled as an enhancement-mode MOSFET: its two defining specs are the zero-gate-voltage drain (saturation) current drain_saturation_current (IDSS) and the gate-source cutoff / pinch-off voltage gate_source_cutoff_voltage (VGS(off)/VP), which together set the transconductance curve; there is no enhancement threshold and no oxide, so the gate is a real reverse-biased p-n junction (hence the gate_reverse_current leakage and the forward_gate_current rating). IDSS carries a huge grade spread and is THE grade selector - never collapse its V_DS sweep, and emit one document per orderable grade. component.polarity carries the channel type: an N-channel JFET is 'positive', a P-channel JFET is 'negative' - store magnitudes, never let a P-channel datasheet's leading minus signs on VGS(off)/IDSS/VGS leak into the numbers; note the sign convention in conditionsVerbatim. A breakdown voltage that appears both as an absolute-maximum rating (VGS) and as a characterized value at a test current (V(BR)GSS at IG) is ONE key distinguished by limitClass, not two containers. Condition axes for this family: V_DS, V_GS, V_DG (drain-gate voltage, used for gate operating leakage), I_D (drain current, the sweep axis for VGS(off), gfs, and VGS), F (frequency, for noise and capacitance spot values), V_G1_G2 (gate-to-gate differential, dual-matched isolation), and T_A. Pin functions for a single JFET are G / D / S (reuse the FET convention; source and drain are often electrically interchangeable in a symmetric JFET - keep the datasheet's labeling); a dual-matched pair uses G1 / D1 / S1 / G2 / D2 / S2. Base-SI throughout: transconductance and output conductance use S (siemens = A/V; a printed umho normalizes to S, 1000 umho = 0.001 S), voltage-noise density uses V/sqrtHz (reuse the op_amp key name for cross-family normalization), and dimensionless match ratios use V/V. Full noise/transfer curves and the transfer-characteristic graph are graph-only and out of scope; capture the tabulated scalar figures. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "drain_gate_voltage",
+      "name": "Drain-gate voltage",
+      "unit": "V",
+      "group": "ratings",
+      "aliases": ["VDG", "VDGO", "drain-gate voltage", "drain-gate voltage rating"],
+      "hint": "Maximum drain-gate voltage (absolute_max) - with the gate as the reverse-biased reference, this is the primary blocking rating of a JFET. On a P-channel part store the magnitude."
+    },
+    {
+      "key": "gate_source_voltage",
+      "name": "Gate-source voltage",
+      "unit": "V",
+      "group": "ratings",
+      "aliases": ["VGS", "VGSR", "VGSS", "gate-source voltage", "gate-source voltage rating", "reverse gate-source voltage"],
+      "hint": "Maximum reverse gate-source voltage (absolute_max) - the reverse breakdown of the gate junction. Same key carries the absolute_max rating (VGS/VGSS) and, per limitClass, a characterized breakdown; VGSR denotes the reverse rating. Store the magnitude on a P-channel part."
+    },
+    {
+      "key": "gate_drain_voltage",
+      "name": "Gate-drain voltage",
+      "unit": "V",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["VGD", "VGDS", "gate-drain voltage", "gate-drain voltage rating"],
+      "hint": "Maximum gate-drain voltage (absolute_max) where the datasheet tabulates it separately from the drain-gate rating (same junction, opposite reference). Store the magnitude on a P-channel part."
+    },
+    {
+      "key": "forward_gate_current",
+      "name": "Forward gate current",
+      "unit": "A",
+      "group": "ratings",
+      "optional": true,
+      "aliases": ["IGF", "forward gate current", "gate current"],
+      "hint": "Maximum forward gate current (absolute_max) - the current allowed into the gate p-n junction when it is forward-biased. A JFET's gate is a real diode, so this is a genuine rating, unlike a MOSFET."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "unit": "W",
+      "group": "ratings",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["PD", "PT", "Ptot", "total power dissipation", "total device dissipation", "power dissipation"],
+      "hint": "Maximum total device dissipation, rated at a reference temperature (typically ambient T_A=25 C for a small-signal JFET). Emit one measurement per reference temperature (array over T_A) - a consumer must not apply the 25 C figure at elevated ambient without derating."
+    },
+    {
+      "key": "gate_source_breakdown_voltage",
+      "name": "Gate-source breakdown voltage",
+      "unit": "V",
+      "group": "static",
+      "aliases": ["V(BR)GSS", "BVGSS", "VBRGSS", "gate-source breakdown voltage", "gate-body breakdown voltage"],
+      "hint": "Characterized gate-source breakdown at a stated small gate current with the drain shorted to the source (V(BR)GSS at IG). The reverse breakdown of the gate junction; distinct from the gate_source_voltage absolute_max rating. Store the magnitude on a P-channel part."
+    },
+    {
+      "key": "gate_reverse_current",
+      "name": "Gate reverse (leakage) current",
+      "unit": "A",
+      "group": "static",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_GS",
+      "aliases": ["IGSS", "gate reverse current", "gate leakage", "gate leakage current", "gate reverse leakage current"],
+      "hint": "Reverse gate leakage current at a stated reverse V_GS with the drain shorted to the source (array over V_GS and T_A - it roughly doubles every ~10 C). On low-noise / electrometer JFETs this is a headline sub-picoamp spec."
+    },
+    {
+      "key": "gate_operating_current",
+      "name": "Gate operating current",
+      "unit": "A",
+      "group": "static",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_DG",
+      "aliases": ["IG", "IG operating", "gate operating current", "operating gate current"],
+      "hint": "Gate leakage in the normal operating bias (drain-gate reverse-biased, drain current flowing), at a stated V_DG and I_D (array over V_DG). Lower than IGSS on some parts because self-heating differs; it is the dc bias-current a JFET input stage draws."
+    },
+    {
+      "key": "gate_source_cutoff_voltage",
+      "name": "Gate-source cutoff (pinch-off) voltage",
+      "unit": "V",
+      "group": "static",
+      "array": true,
+      "conditionAxis": "I_D",
+      "aliases": ["VGS(off)", "VGSoff", "VP", "VGS(p)", "pinch-off voltage", "cutoff voltage", "gate-source cutoff voltage", "gate-source pinch-off voltage"],
+      "hint": "THE defining spec (with IDSS): the gate-source voltage that pinches the channel off to a stated small drain current (VGS(off) at I_D, at a fixed V_DS). VP/pinch-off is the same quantity read as a magnitude. Array over the I_D test point. Wide grade spread; store the magnitude on a P-channel part."
+    },
+    {
+      "key": "gate_source_voltage_on",
+      "name": "Gate-source voltage (operating)",
+      "unit": "V",
+      "group": "static",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_D",
+      "aliases": ["VGS operating", "VGS(on)", "gate-source operating voltage", "gate-source voltage at drain current"],
+      "hint": "Gate-source voltage required to set a stated operating drain current at a fixed V_DS (array over I_D) - the point on the transfer curve between VGS(off) and IDSS. Distinct from the gate_source_voltage absolute_max rating."
+    },
+    {
+      "key": "drain_cutoff_current",
+      "name": "Drain cutoff current",
+      "unit": "A",
+      "group": "static",
+      "optional": true,
+      "aliases": ["ID(off)", "IDoff", "drain cutoff current", "drain off-state current", "drain leakage current"],
+      "hint": "Drain leakage with the channel pinched off (V_GS beyond cutoff), at a stated V_DS - the OFF-state leakage of a JFET analog switch."
+    },
+    {
+      "key": "drain_saturation_current",
+      "name": "Zero-gate-voltage drain (saturation) current",
+      "unit": "A",
+      "group": "on",
+      "array": true,
+      "conditionAxis": "V_DS",
+      "aliases": ["IDSS", "zero-gate-voltage drain current", "drain saturation current", "saturation drain current", "zero-bias drain current"],
+      "hint": "THE defining spec: the drain current with VGS=0 (gate shorted to source) at a stated V_DS in saturation (array over V_DS). Carries a huge grade spread and is the primary grade selector - emit one document per orderable grade and never collapse the V_DS sweep."
+    },
+    {
+      "key": "on_resistance",
+      "name": "Drain-source on resistance",
+      "unit": "ohm",
+      "group": "on",
+      "optional": true,
+      "aliases": ["rDS(on)", "rds", "drain-source on resistance", "channel on resistance", "static drain-source on-state resistance"],
+      "hint": "Small-signal drain-source resistance in the ohmic region at VGS=0 (or a stated V_GS) - the ON resistance of a JFET analog switch. No SI prefix; a printed value in ohms."
+    },
+    {
+      "key": "forward_transconductance",
+      "name": "Forward transconductance",
+      "unit": "S",
+      "group": "on",
+      "array": true,
+      "conditionAxis": "I_D",
+      "aliases": ["gfs", "gm", "yfs", "gm0", "gfso", "forward transconductance", "forward transfer admittance", "common-source forward transconductance"],
+      "hint": "Forward transconductance (dID/dVGS) at a stated I_D (or VGS=0 for gfs0) and V_DS, at a test frequency (array over I_D). Unit S = siemens (A/V); a printed umho / micromho normalizes to S (1000 umho = 0.001 S). yfs is the same as the small-signal transfer admittance magnitude at low frequency."
+    },
+    {
+      "key": "output_conductance",
+      "name": "Output conductance",
+      "unit": "S",
+      "group": "on",
+      "optional": true,
+      "aliases": ["gos", "yos", "goss", "output conductance", "common-source output conductance", "output admittance"],
+      "hint": "Common-source output conductance (dID/dVDS) at a stated bias and frequency (siemens). Sets the intrinsic output impedance of a JFET gain stage."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_DS",
+      "aliases": ["Ciss", "Cin", "input capacitance", "common-source short-circuit input capacitance"],
+      "hint": "Common-source short-circuit input capacitance at a stated V_DS, VGS=0, and test frequency (array over V_DS). Includes the gate-source and Miller gate-drain terms."
+    },
+    {
+      "key": "reverse_transfer_capacitance",
+      "name": "Reverse transfer (feedback) capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Crss", "Cgd", "Cdg", "reverse transfer capacitance", "feedback capacitance", "gate-drain capacitance"],
+      "hint": "Common-source short-circuit reverse-transfer (gate-drain, Miller-feedback) capacitance at a stated bias and frequency. Limits the stable high-frequency gain."
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_DS",
+      "aliases": ["Coss", "Cout", "output capacitance", "common-source output capacitance"],
+      "hint": "Common-source output (drain-source plus gate-drain) capacitance at a stated V_DS and test frequency (array over V_DS)."
+    },
+    {
+      "key": "drain_gate_on_capacitance",
+      "name": "Drain-gate on-state capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Cdg(on)", "Cdgon", "drain-gate on capacitance", "drain-gate on-state capacitance"],
+      "hint": "Switching JFET: drain-gate capacitance in the ON (conducting) state at a stated bias and frequency - sets charge injection when the switch turns off."
+    },
+    {
+      "key": "drain_gate_off_capacitance",
+      "name": "Drain-gate off-state capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Cdg(off)", "Cdgoff", "drain-gate off capacitance", "drain-gate off-state capacitance"],
+      "hint": "Switching JFET: drain-gate capacitance in the OFF (pinched-off) state at a stated reverse V_GS and frequency - sets OFF-state feedthrough."
+    },
+    {
+      "key": "source_gate_off_capacitance",
+      "name": "Source-gate off-state capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["Csg(off)", "Csgoff", "source-gate off capacitance", "source-gate off-state capacitance"],
+      "hint": "Switching JFET: source-gate capacitance in the OFF (pinched-off) state at a stated reverse V_GS and frequency."
+    },
+    {
+      "key": "input_voltage_noise_density",
+      "name": "Input voltage-noise density",
+      "unit": "V/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["en", "e_n", "voltage noise density", "input voltage noise density", "equivalent input noise voltage", "equivalent input noise voltage density"],
+      "hint": "Equivalent input voltage-noise density at a stated I_D / V_DS and frequency (array over F - JFETs have a 1/f corner, so tabulate the spot values). Unit V/sqrtHz; reuse this op_amp key name for cross-family normalization. The headline spec of a low_noise JFET."
+    },
+    {
+      "key": "noise_figure",
+      "name": "Noise figure",
+      "unit": "dB",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["NF", "NFmin", "Fmin", "noise figure", "spot noise figure", "minimum noise figure"],
+      "hint": "Noise figure at a stated bias, source resistance, and frequency (array over F). NFmin is the minimum over source matching."
+    },
+    {
+      "key": "idss_match_ratio",
+      "name": "IDSS match ratio (dual)",
+      "unit": "V/V",
+      "group": "matching",
+      "optional": true,
+      "aliases": ["IDSS ratio", "IDSS1/IDSS2", "saturation current match", "IDSS match ratio", "drain-current match ratio"],
+      "hint": "Dual-matched pair: the dimensionless ratio of the two channels' IDSS (V/V), a measure of how closely the two JFETs are matched. Often specified as a minimum (e.g. 0.95). Only meaningful on a dual part."
+    },
+    {
+      "key": "gate_source_voltage_match",
+      "name": "Gate-source voltage match (dual)",
+      "unit": "V",
+      "group": "matching",
+      "optional": true,
+      "aliases": ["VGS match", "|VGS1-VGS2|", "differential gate-source voltage", "gate-source voltage differential", "gate-source voltage match"],
+      "hint": "Dual-matched pair: the differential |VGS1 - VGS2| at a stated common drain current - the DC offset of a JFET-input differential stage. Store the magnitude."
+    },
+    {
+      "key": "gate_isolation_current",
+      "name": "Gate-to-gate isolation current (dual)",
+      "unit": "A",
+      "group": "matching",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_G1_G2",
+      "aliases": ["IG1G2", "IG1-G2", "gate-to-gate isolation current", "gate isolation current", "inter-gate leakage current"],
+      "hint": "Dual-matched pair: the leakage current between the two gates at a stated gate-to-gate differential voltage (array over V_G1_G2) - the isolation between the two matched channels."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Junction-to-case thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJC", "Rth(j-c)", "theta-JC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance (power / metal-can JFETs)."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": ["RthJA", "Rth(j-a)", "theta-JA", "junction-to-ambient thermal resistance"],
+      "hint": "Junction-to-ambient thermal resistance (K/W and degC/W are identical; normalize to degC/W)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TJ", "T_op", "operating temperature range", "operating junction temperature range"],
+      "hint": "The operating (junction or ambient) temperature range (min/max)."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "hint": "Absolute-maximum storage temperature range (min/max)."
+    }
+  ]
+}

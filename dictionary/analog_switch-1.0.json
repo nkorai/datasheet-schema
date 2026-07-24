@@ -1,0 +1,232 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "analog_switch",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for analog switches and analog multiplexers, synthesized from a real-datasheet corpus (Analog Devices/Maxim, Texas Instruments, Vishay/Siliconix, onsemi, Nexperia, Renesas/Intersil) spanning the sub-shapes that share one measurement envelope: (1) discrete switches by configuration - SPST (normally-open / normally-closed), SPDT, DPST, DPDT; (2) multiplexers / demultiplexers by fan-in - 2:1, 4:1 (dual 4:1), 8:1, 16:1; and (3) classic CMOS bilateral switches (CD4066/CD4051/CD4052/CD4053, 74HC4066/4051). A part's sub_type and channel count select which optional keys apply and how many channels the swept keys iterate; the on_resistance, leakage, capacitance, switching-time, isolation, and supply keys are common. Because source and drain are electrically interchangeable on a bilateral analog switch, both V_S (source / analog voltage) and V_D (drain / analog voltage) are legitimate condition axes and a datasheet's choice between them is preserved rather than normalized. A condition-swept spec - on_resistance versus analog voltage (the R_ON-vs-V_D curve), charge_injection versus source voltage, leakage versus terminal voltage, off_isolation and crosstalk versus frequency - is array:true with one measurement per point; never collapse the sweep into one row. Charge injection is stored in coulombs (unit C): a datasheet's picocoulomb figure (pC) multiplies by 1e-12, and the printed pC value is kept in conditionsVerbatim. Distortion (THD / THD+N) is a percentage by default with an alternate dB representation (altUnits). component.polarity is not meaningful for the analog signal (bilateral) but a negative supply rail (VEE/VSS) is normal; store leakage and charge magnitudes, keeping the datasheet's sign in conditionsVerbatim. Condition axes for this family: V_S (source / analog input voltage), V_D (drain / analog output voltage), F (frequency, for isolation / crosstalk / bandwidth / distortion spot values), T_A (ambient temperature), C_L (load capacitance), R_L (load resistance), and DIRECTION (note-only). Pin functions: S / D are the source and drain of a discrete switch (interchangeable, bilateral); COM is the multiplexer common (the shared A/output pin); the channel pins are S1..S8 or CH0..CH7 (a 4:1 mux has S1..S4 / CH0..CH3, an 8:1 has S1..S8 / CH0..CH7); A0/A1/A2 are the binary address (select) inputs; EN / INH are the enable / inhibit control; VDD / VSS / VEE / VL are the supply rails (VDD positive supply, VSS ground or negative logic reference, VEE the negative analog rail on a dual-supply mux, VL the separate logic-supply rail); SIG_IN_OUT is the bidirectional analog terminal of a CD4066-type bilateral switch when a part labels it as one pin; NC is not-connected. Base-SI throughout; the dimensionless quantities use their natural units (isolation and crosstalk in dB, distortion in %). Full S-parameter / frequency-response curves and total harmonic distortion spectra are graph-only and out of scope; capture the tabulated scalar figures. Aliases normalize the printed datasheet symbols.",
+  "parameters": [
+    {
+      "key": "on_resistance",
+      "name": "On-resistance",
+      "unit": "ohm",
+      "group": "switch",
+      "array": true,
+      "conditionAxis": "V_D",
+      "aliases": ["RON", "RDS(on)", "on-state resistance", "on resistance"],
+      "hint": "The channel resistance of a closed switch, swept over the analog (drain/source) voltage at a stated supply and current (array over V_D, one measurement per point - this is the R_ON-vs-V_analog curve). Hold the supply rails and I in the conditions. No SI prefix - 5 ohm is 5."
+    },
+    {
+      "key": "on_resistance_flatness",
+      "name": "On-resistance flatness",
+      "unit": "ohm",
+      "group": "switch",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_D",
+      "aliases": ["RON flatness", "on-resistance flatness"],
+      "hint": "The peak-to-peak variation of on_resistance over the specified analog-voltage range (R_ON(max) - R_ON(min)), at a stated supply. Array over the V_D range the flatness is quoted for; hold the supply in the conditions."
+    },
+    {
+      "key": "on_resistance_match",
+      "name": "On-resistance match between channels",
+      "unit": "ohm",
+      "group": "switch",
+      "optional": true,
+      "aliases": ["delta RON", "RON match", "on-resistance match between channels"],
+      "hint": "The channel-to-channel spread in on_resistance within one device (max minus min across channels) at a stated analog voltage and supply."
+    },
+    {
+      "key": "analog_signal_range",
+      "name": "Analog signal range",
+      "unit": "V",
+      "group": "signal",
+      "optional": true,
+      "aliases": ["analog signal range", "signal range"],
+      "hint": "The range of analog voltage the switch passes with specified behavior (often rail-to-rail: VSS/VEE to VDD). Store min/max bounds; on a dual-supply part the min may be negative."
+    },
+    {
+      "key": "charge_injection",
+      "name": "Charge injection",
+      "unit": "C",
+      "group": "switch",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_S",
+      "aliases": ["Qinj", "charge injection", "injected charge"],
+      "hint": "The charge dumped onto the load when the switch changes state, in coulombs (unit C). A datasheet's picocoulomb (pC) figure multiplies by 1e-12; keep the pC value in conditionsVerbatim. Swept over the source voltage at a stated source impedance and load capacitance (array over V_S; hold C_L, R_S)."
+    },
+    {
+      "key": "source_leakage_current",
+      "name": "Source off-leakage current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_S",
+      "aliases": ["IS(off)", "source off leakage", "source leakage"],
+      "hint": "The leakage current into the source terminal of an open switch at a stated source voltage (array over V_S, and T_A - rises sharply with temperature). Store the magnitude."
+    },
+    {
+      "key": "drain_leakage_current",
+      "name": "Drain leakage current",
+      "unit": "A",
+      "group": "leakage",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_D",
+      "aliases": ["ID(off)", "ID(on)", "channel leakage", "drain leakage"],
+      "hint": "The leakage current into the drain terminal at a stated drain voltage - open-switch drain leakage (ID(off)) or closed-switch channel leakage (ID(on)); note the switch state in the conditions. Array over V_D and T_A."
+    },
+    {
+      "key": "off_isolation",
+      "name": "Off isolation",
+      "unit": "dB",
+      "group": "isolation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["OIRR", "off isolation", "on/off ratio", "feedthrough isolation"],
+      "hint": "The attenuation from source to drain when the switch is open, at a stated frequency and load (array over F - degrades with frequency). A more-negative dB is better isolation; keep the datasheet's sign."
+    },
+    {
+      "key": "crosstalk",
+      "name": "Channel-to-channel crosstalk",
+      "unit": "dB",
+      "group": "isolation",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["XTALK", "crosstalk", "channel-to-channel crosstalk", "interchannel isolation"],
+      "hint": "The signal leakage from one channel into an adjacent channel, at a stated frequency and load (array over F). Reported as a negative dB isolation figure; keep the sign."
+    },
+    {
+      "key": "bandwidth_3db",
+      "name": "-3 dB bandwidth",
+      "unit": "Hz",
+      "group": "signal",
+      "optional": true,
+      "aliases": ["BW", "-3dB bandwidth", "bandwidth", "cutoff frequency"],
+      "hint": "The frequency at which the on-channel insertion loss reaches -3 dB, at a stated load (R_L, C_L). Set by R_ON and the switch capacitances."
+    },
+    {
+      "key": "on_capacitance",
+      "name": "On capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["CD(on)", "CS(on)", "on capacitance"],
+      "hint": "The source or drain terminal capacitance of a closed switch, at a stated bias and test frequency."
+    },
+    {
+      "key": "off_capacitance",
+      "name": "Off capacitance",
+      "unit": "F",
+      "group": "capacitance",
+      "optional": true,
+      "aliases": ["CS(off)", "CD(off)", "off capacitance"],
+      "hint": "The source or drain terminal capacitance of an open switch, at a stated bias and test frequency - sets the high-frequency feedthrough."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tON", "ton(EN)", "turn-on time"],
+      "hint": "The delay from the enable/address edge to the switch reaching its on state (typically to 90% of the final output), at a stated supply and load."
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tOFF", "toff(EN)", "turn-off time"],
+      "hint": "The delay from the enable/address edge to the switch reaching its off state (typically to 10% of the initial output), at a stated supply and load."
+    },
+    {
+      "key": "break_before_make_time",
+      "name": "Break-before-make time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tBBM", "tOPEN", "break-before-make delay"],
+      "hint": "The guaranteed dead time between one channel opening and the next closing during a select transition (both open) - prevents momentary channel shorting in a mux. At a stated supply and load."
+    },
+    {
+      "key": "transition_time",
+      "name": "Address-to-output transition time",
+      "unit": "s",
+      "group": "switching",
+      "optional": true,
+      "aliases": ["tTRANS", "transition time", "address-to-output delay"],
+      "hint": "The mux settling delay from an address change to the newly selected channel appearing at the common output, at a stated supply and load."
+    },
+    {
+      "key": "thd",
+      "name": "Total harmonic distortion",
+      "unit": "%",
+      "group": "distortion",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "altUnits": ["dB"],
+      "aliases": ["THD", "THD+N", "total harmonic distortion"],
+      "hint": "The distortion added to the passed signal (THD, or THD+N with noise), quoted as a percentage by default; a datasheet's dB figure uses altUnits (dB = 20*log10(%/100)). Swept over frequency at a stated signal level and load (array over F)."
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent supply current",
+      "unit": "A",
+      "group": "power_supply",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IQ", "ISUPPLY", "supply current", "standby current"],
+      "hint": "The static supply current with the switch in a fixed state (VDD/VEE current), at a stated supply and logic level. Array over T_A where the datasheet gives an over-temperature max; report each rail if specified separately in the conditions."
+    },
+    {
+      "key": "logic_threshold",
+      "name": "Logic input threshold",
+      "unit": "V",
+      "group": "digital",
+      "optional": true,
+      "aliases": ["VINH", "VINL", "VIH", "VIL", "logic input threshold", "control threshold"],
+      "hint": "The control-input high/low switching thresholds (VIH/VINH input-high, VIL/VINL input-low) at a stated logic supply. Store the min guaranteed VIH and the max guaranteed VIL as separate measurements distinguished in the conditions."
+    },
+    {
+      "key": "logic_input_current",
+      "name": "Logic input current",
+      "unit": "A",
+      "group": "digital",
+      "optional": true,
+      "aliases": ["IINH", "IINL", "logic input current", "address input current"],
+      "hint": "The leakage current into a control/address input at a stated logic level (IINH high, IINL low). Store the magnitude."
+    },
+    {
+      "key": "digital_input_capacitance",
+      "name": "Digital input capacitance",
+      "unit": "F",
+      "group": "digital",
+      "optional": true,
+      "aliases": ["Cin", "logic input capacitance"],
+      "hint": "The capacitance presented by a control/address input, at a stated bias and test frequency."
+    },
+    {
+      "key": "supply_voltage_range",
+      "name": "Supply voltage range",
+      "unit": "V",
+      "group": "power_supply",
+      "optional": true,
+      "aliases": ["supply voltage", "operating supply voltage"],
+      "hint": "The operating supply-voltage range. Single-supply parts quote VDD range; dual-supply parts quote the total VDD-to-VEE span (store min/max bounds and identify the rail in the conditions)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "temperature",
+      "aliases": ["Tamb", "T_op", "operating temperature range", "operating ambient temperature range"],
+      "hint": "The operating (ambient) temperature range (min/max)."
+    }
+  ]
+}

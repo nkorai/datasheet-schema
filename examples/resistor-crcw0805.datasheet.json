@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "CRCW0805100KFKEA",
+    "manufacturer": "Vishay",
+    "family": "resistor",
+    "description": "Standard thick-film chip resistor, 0805 (2012 metric) size, 100 kohm, +/-1% tolerance (F), +/-100 ppm/K temperature coefficient (K), 0.125 W rated dissipation at 70 degC (E3/lead(Pb)-free, AEC-Q200 qualified). Non-polar two-terminal device.",
+    "package": "0805",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-55..155"
+  },
+  "pinout": [
+    { "number": 1, "name": "T1", "function": "T1", "type": "passive", "description": "Terminal 1. Non-polar; interchangeable with T2.", "sourcePage": 1 },
+    { "number": 2, "name": "T2", "function": "T2", "type": "passive", "description": "Terminal 2. Non-polar; interchangeable with T1.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "resistance",
+      "name": "Nominal resistance",
+      "group": "electrical",
+      "aliases": ["R", "R25"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 100000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "100 kOhm nominal (code 100K), E96/E24 series, at 25 degC reference",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "resistance_tolerance",
+      "name": "Resistance tolerance",
+      "group": "electrical",
+      "aliases": ["tol", "F"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1, "max": 1 },
+          "unit": "%",
+          "conditionsVerbatim": "Tolerance code F = +/- 1 %",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rated_power",
+      "name": "Rated power dissipation",
+      "group": "power",
+      "aliases": ["P70", "rated dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.125 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_A", "value": 70, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Rated dissipation P70 (standard operation), at 70 degC ambient",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "power_derating",
+      "name": "Power derating curve",
+      "group": "power",
+      "aliases": ["derating curve"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 100 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 70, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Derating curve: 100 % of rated power up to 70 degC ambient",
+          "sourcePage": 6,
+          "sourceTable": "Derating"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 155, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Derating curve: linear taper to 0 % of rated power at 155 degC ambient (permissible film temperature)",
+          "sourcePage": 6,
+          "sourceTable": "Derating"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Temperature coefficient of resistance (TCR)",
+      "group": "electrical",
+      "aliases": ["TCR", "K"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -100, "max": 100 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "+/- 100 ppm/K, for +/- 1 % tolerance, 1 Ohm to 10 MOhm (TCR code K)",
+          "sourcePage": 1,
+          "sourceTable": "Temperature Coefficient and Resistance Range"
+        }
+      ]
+    },
+    {
+      "key": "max_working_voltage",
+      "name": "Maximum working (element) voltage",
+      "group": "electrical",
+      "aliases": ["Umax", "operating voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "V",
+          "conditionsVerbatim": "Operating voltage Umax. ACRMS/DC = min(sqrt(P*R), Umax = 150 V)",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "insulation_voltage",
+      "name": "Insulation / dielectric withstanding voltage",
+      "group": "electrical",
+      "aliases": ["Uins"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 200 },
+          "unit": "V",
+          "conditionsVerbatim": "Permissible voltage against ambient (insulation), 1 minute",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "max_film_temperature",
+      "name": "Maximum film / hot-spot temperature",
+      "group": "thermal",
+      "aliases": ["film temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 155 },
+          "unit": "degC",
+          "conditionsVerbatim": "Permissible film temperature, theta_F max.",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating temperature", "category temp range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 155 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range -55 degC to +155 degC",
+          "sourcePage": 1,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "Revision 14-Apr-2026, Document Number 20035",
+    "sourceUrl": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+    "datasheetSha256": "8bd274f4e603fe7bcaa4c8d37272d244784843f0245b9a2276c9cdbb23242b2f",
+    "publishedDate": "2026-04-14",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "2N5457",
+    "manufacturer": "onsemi",
+    "family": "jfet",
+    "description": "General-purpose N-channel depletion-mode junction FET for audio and low-frequency small-signal amplifier applications. Its two defining specs are the zero-gate-voltage drain (saturation) current IDSS (1 to 5 mA) and the gate-source cutoff voltage VGS(off) (-0.5 to -6.0 V). JEDEC-registered part in the 2N5457/58/59 family.",
+    "package": "TO-92",
+    "pinCount": 3,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-65..150"
+  },
+  "pinout": [
+    { "number": 1, "name": "Drain", "function": "D", "type": "passive", "description": "Drain. Source and drain are electrically interchangeable in this symmetric JFET; keep the datasheet labeling (TO-92, flat facing, pin 1 leftmost).", "sourcePage": 1 },
+    { "number": 2, "name": "Source", "function": "S", "type": "passive", "description": "Source. Interchangeable with the drain.", "sourcePage": 1 },
+    { "number": 3, "name": "Gate", "function": "G", "type": "passive", "description": "Gate. Reverse-biased p-n junction control terminal.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "drain_gate_voltage",
+      "name": "Drain-gate voltage",
+      "group": "ratings",
+      "aliases": ["VDG", "drain-gate voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 25 },
+          "unit": "V",
+          "conditionsVerbatim": "VDG, drain-gate voltage = 25 V",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "gate_source_voltage",
+      "name": "Gate-source voltage",
+      "group": "ratings",
+      "aliases": ["VGS", "VGSR", "reverse gate-source voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 25 },
+          "unit": "V",
+          "conditionsVerbatim": "VGS, gate-source voltage = -25 V (reverse rating; magnitude stored)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_gate_current",
+      "name": "Forward gate current",
+      "group": "ratings",
+      "aliases": ["IGF", "forward gate current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.010 },
+          "unit": "A",
+          "conditionsVerbatim": "IGF, forward gate current = 10 mA",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "group": "ratings",
+      "aliases": ["PD", "total device dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.625 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "PD, total device dissipation @ TA = 25 C = 625 mW (derate 5.0 mW/C above 25 C)",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "gate_source_breakdown_voltage",
+      "name": "Gate-source breakdown voltage",
+      "group": "static",
+      "aliases": ["V(BR)GSS", "gate-source breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_G", "value": 1e-5, "unit": "A" },
+            { "param": "V_DS", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "V(BR)GSS, gate-source breakdown voltage, IG = -10 uA, VDS = 0 (magnitude stored)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_reverse_current",
+      "name": "Gate reverse (leakage) current",
+      "group": "static",
+      "aliases": ["IGSS", "gate reverse current", "gate leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_GS", "value": 15, "unit": "V" },
+            { "param": "V_DS", "value": 0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IGSS, gate reverse current, VGS = -15 V, VDS = 0, TA = 25 C = -1.0 nA (magnitude stored)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2.0e-7 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_GS", "value": 15, "unit": "V" },
+            { "param": "V_DS", "value": 0, "unit": "V" },
+            { "param": "T_A", "value": 100, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IGSS, gate reverse current, VGS = -15 V, VDS = 0, TA = 100 C = -200 nA (magnitude stored)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gate_source_cutoff_voltage",
+      "name": "Gate-source cutoff (pinch-off) voltage",
+      "group": "static",
+      "aliases": ["VGS(off)", "VP", "pinch-off voltage", "cutoff voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.5, "max": 6.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "I_D", "value": 1e-8, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VGS(off), gate-source cutoff voltage, VDS = 15 V, ID = 10 nA = -0.5 to -6.0 V (magnitudes stored)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "drain_saturation_current",
+      "name": "Zero-gate-voltage drain (saturation) current",
+      "group": "on",
+      "aliases": ["IDSS", "zero-gate-voltage drain current", "drain saturation current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.0e-3, "typ": 3.0e-3, "max": 5.0e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IDSS, zero-gate-voltage drain current, VDS = 15 V, VGS = 0 = 1.0 / 3.0 / 5.0 mA (min/typ/max)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_transconductance",
+      "name": "Forward transconductance",
+      "group": "on",
+      "aliases": ["gfs", "yfs", "forward transfer admittance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.0e-3, "max": 5.0e-3 },
+          "unit": "S",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "gfs, forward transfer admittance, VDS = 15 V, VGS = 0, f = 1.0 kHz = 1000 / 5000 umho (min/max)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_conductance",
+      "name": "Output conductance",
+      "group": "on",
+      "aliases": ["gos", "yos", "output admittance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5.0e-5 },
+          "unit": "S",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "gos, output admittance, VDS = 15 V, VGS = 0, f = 1.0 kHz = 50 umho max",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "group": "capacitance",
+      "aliases": ["Ciss", "common-source short-circuit input capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.5e-12, "max": 7.0e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Ciss, input capacitance, VDS = 15 V, VGS = 0, f = 1.0 MHz = 4.5 / 7.0 pF (typ/max)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_transfer_capacitance",
+      "name": "Reverse transfer (feedback) capacitance",
+      "group": "capacitance",
+      "aliases": ["Crss", "Cgd", "feedback capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-12, "max": 3.0e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Crss, reverse transfer capacitance, VDS = 15 V, VGS = 0, f = 1.0 MHz = 1.5 / 3.0 pF (typ/max)",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "noise_figure",
+      "name": "Noise figure",
+      "group": "noise",
+      "aliases": ["NF", "spot noise figure"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_DS", "value": 15, "unit": "V" },
+            { "param": "V_GS", "value": 0, "unit": "V" },
+            { "param": "R_S", "value": 1000000, "unit": "ohm" },
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "NF, noise figure, VDS = 15 V, VGS = 0, RG = 1.0 Mohm, f = 1.0 kHz = 3.0 dB typ",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthJA", "theta-JA", "junction-to-ambient thermal resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 357 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "TO-92" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, TO-92 (357 C/W; 1/derating of 5.0 mW/C -> 200 C/W case-referenced, JA per package)",
+          "sourcePage": 1,
+          "sourceTable": "Thermal Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, operating junction temperature range = -65 to +150 C",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature range = -65 to +150 C",
+          "sourcePage": 1,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "2N5457-D",
+    "sourceUrl": "https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
