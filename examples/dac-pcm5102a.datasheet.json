@@ -1,0 +1,679 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "PCM5102A",
+    "manufacturer": "Texas Instruments",
+    "family": "dac",
+    "description": "Stereo 32-bit, 8-384 kHz delta-sigma (advanced segment-DAC) audio digital-to-analog converter (sub_type: audio). Accepts 16-/24-/32-bit PCM audio in I2S or left-justified format over a 3-wire interface (BCK/DIN/LRCK), with an integrated audio PLL that regenerates the system clock (SCK) from BCK so no external master clock is required. Directpath charge-pump technology (CPVDD, flying-cap CAPP/CAPM, negative rail VNEG) produces ground-centered 2.1 VRMS single-ended line outputs (OUTL/OUTR) driving loads down to 1 kohm with no DC-blocking capacitors. On-chip LDO (LDOO) supplies the internal 1.8 V logic rail; single-supply 3.3 V analog (AVDD)/charge-pump (CPVDD) with 1.8 V or 3.3 V digital (DVDD). Hardware-pin configuration: FMT (I2S vs left-justified), DEMP (44.1-kHz de-emphasis), FLT (normal vs low-latency filter), XSMT (soft mute). AEC-Q100 qualified (this document describes the consumer, non-Q1 PCM5102A). Pins (PW 20): CPVDD(1), CAPP(2), CPGND(3), CAPM(4), VNEG(5), OUTL(6), OUTR(7), AVDD(8), AGND(9), DEMP(10), FLT(11), SCK(12), BCK(13), DIN(14), LRCK(15), FMT(16), XSMT(17), LDOO(18), DGND(19), DVDD(20).",
+    "package": "TSSOP-20 (PW)",
+    "pinCount": 20,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..130 (junction); consumer/non-Q1",
+    "orderingVariants": [
+      { "orderCode": "PCM5102APW", "package": "TSSOP-20 (PW)", "packing": "Tube" },
+      { "orderCode": "PCM5102APWR", "package": "TSSOP-20 (PW)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "CPVDD", "function": "CPVDD", "type": "power", "description": "Charge-pump power supply, 3.3 V (referenced to CPGND).", "sourcePage": 5 },
+    { "number": 2, "name": "CAPP", "function": "CAPP", "type": "analog", "description": "Charge-pump flying-capacitor terminal for the positive rail.", "sourcePage": 5 },
+    { "number": 3, "name": "CPGND", "function": "CPGND", "type": "power", "description": "Charge-pump ground.", "sourcePage": 5 },
+    { "number": 4, "name": "CAPM", "function": "CAPM", "type": "analog", "description": "Charge-pump flying-capacitor terminal for the negative rail.", "sourcePage": 5 },
+    { "number": 5, "name": "VNEG", "function": "VNEG", "type": "power", "description": "Negative charge-pump rail terminal for decoupling, -3.3 V.", "sourcePage": 5 },
+    { "number": 6, "name": "OUTL", "function": "OUTL", "type": "analog", "description": "Analog output from DAC, left channel (ground-centered 2.1 VRMS line out).", "sourcePage": 5 },
+    { "number": 7, "name": "OUTR", "function": "OUTR", "type": "analog", "description": "Analog output from DAC, right channel (ground-centered 2.1 VRMS line out).", "sourcePage": 5 },
+    { "number": 8, "name": "AVDD", "function": "AVDD", "type": "power", "description": "Analog power supply, 3.3 V (referenced to AGND).", "sourcePage": 5 },
+    { "number": 9, "name": "AGND", "function": "AGND", "type": "power", "description": "Analog ground.", "sourcePage": 5 },
+    { "number": 10, "name": "DEMP", "function": "DEMP", "type": "digital_in", "description": "De-emphasis control for 44.1-kHz sampling rate: Off (Low) / On (High). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 11, "name": "FLT", "function": "FLT", "type": "digital_in", "description": "Filter select: normal latency (Low) / low latency (High). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 12, "name": "SCK", "function": "SCK", "type": "digital_in", "description": "System clock input (optional; the internal PLL regenerates SCK from BCK when absent). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 13, "name": "BCK", "function": "BCK", "type": "digital_in", "description": "Audio-data bit clock input. Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 14, "name": "DIN", "function": "DIN", "type": "digital_in", "description": "Audio-data input (serial). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 15, "name": "LRCK", "function": "LRCK", "type": "digital_in", "description": "Audio-data word (left/right) clock input. Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 16, "name": "FMT", "function": "FMT", "type": "digital_in", "description": "Audio format selection: I2S (Low) / left-justified (High). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 17, "name": "XSMT", "function": "XSMT", "type": "digital_in", "description": "Soft-mute control: soft mute (Low) / soft un-mute (High). Failsafe LVCMOS Schmitt-trigger.", "sourcePage": 5 },
+    { "number": 18, "name": "LDOO", "function": "LDOO", "type": "power", "description": "Internal logic-supply rail (on-chip LDO output) terminal for decoupling, or external 1.8-V supply terminal.", "sourcePage": 5 },
+    { "number": 19, "name": "DGND", "function": "DGND", "type": "power", "description": "Digital ground.", "sourcePage": 5 },
+    { "number": 20, "name": "DVDD", "function": "DVDD", "type": "power", "description": "Digital power supply, 1.8 V or 3.3 V (referenced to DGND).", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["bit depth", "audio data bit length"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 16, "nom": 24, "max": 32 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution, 16 / 24 / 32 Bits (accepts 16-, 24-, and 32-bit PCM audio data; MSB-first)",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "sample_rate",
+      "name": "Sampling frequency",
+      "group": "timing",
+      "aliases": ["fS", "sampling frequency"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 8000, "max": 384000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "fS, sampling frequency, 8 kHz to 384 kHz",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "clock_frequency",
+      "name": "System clock frequency",
+      "group": "timing",
+      "aliases": ["fSCK", "SCK", "system clock frequency"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 50000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "fSCK, system clock frequency, up to 50 MHz (clock multiples of fS: 64, 128, 192, 256, 384, 512, 768, 1024, 1152, 1536, 2048, 3072)",
+          "sourcePage": 7,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dynamic_range",
+      "name": "Dynamic range",
+      "group": "dynamic",
+      "aliases": ["DR", "dynamic range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 106, "typ": 112 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted (EIAJ)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Dynamic range, EIAJ, A-weighted, fS = 48 kHz (dBFS reference; 20-Hz HPF, 20-kHz AES17 LPF, Audio Precision System Two RMS; 10-kohm load with 470-ohm series + 2.2-nF shunt output filter)",
+          "statistic": "rms",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 112 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted (EIAJ)" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Dynamic range, EIAJ, A-weighted, fS = 96 kHz and 192 kHz (dBFS reference)",
+          "statistic": "rms",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "group": "dynamic",
+      "aliases": ["S/N", "SNR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 112 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted (EIAJ)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Signal-to-noise ratio, EIAJ, A-weighted, fS = 48 kHz (20-Hz HPF, 20-kHz AES17 LPF, RMS; 10-kohm load)",
+          "statistic": "rms",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 112 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted (EIAJ)" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Signal-to-noise ratio, EIAJ, A-weighted, fS = 96 kHz and 192 kHz",
+          "statistic": "rms",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion_plus_noise",
+      "name": "THD+N at -1 dBFS",
+      "group": "dynamic",
+      "aliases": ["THD+N", "THDN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -93, "max": -83 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "A_OUT", "note": "-1 dBFS output" },
+            { "param": "F_IN", "value": 1000, "unit": "Hz" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "THD+N at -1 dBFS, fS = 48 kHz, 1-kHz tone (dBFS reference; 20-Hz HPF, 20-kHz AES17 LPF; 10-kohm load with 470-ohm series + 2.2-nF shunt output filter). Less-negative is worse, so max = -83 dB.",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -93 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "A_OUT", "note": "-1 dBFS output" },
+            { "param": "F_IN", "value": 1000, "unit": "Hz" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "THD+N at -1 dBFS, fS = 96 kHz and 192 kHz, 1-kHz tone (dBFS reference)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "interchannel_isolation",
+      "name": "Channel separation",
+      "group": "dynamic",
+      "aliases": ["channel separation", "stereo separation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 100, "typ": 109 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Channel separation, fS = 48 kHz, EIAJ A-weighted (20-Hz HPF, 20-kHz AES17 LPF; 10-kohm load)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 109 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Channel separation, fS = 96 kHz (and 192 kHz), EIAJ A-weighted",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage",
+      "name": "Full-scale output voltage",
+      "group": "analog_output",
+      "aliases": ["VOUT", "full-scale single-ended output", "output voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.1 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditionsVerbatim": "Output voltage, 2.1 VRMS, full-scale single-ended output, ground-centered (GND center), no DC-blocking capacitor required",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Analog Output"
+        }
+      ]
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "group": "accuracy",
+      "aliases": ["gain error", "FSE"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -6, "typ": 2, "max": 6 },
+          "unit": "%",
+          "conditionsVerbatim": "Gain error, -6 / +/-2 / +6 % of FSR (typical magnitude +/-2%). Consumer/non-Q1 grade.",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Analog Output"
+        }
+      ]
+    },
+    {
+      "key": "gain_mismatch",
+      "name": "Gain mismatch, channel-to-channel",
+      "group": "accuracy",
+      "aliases": ["channel gain match", "gain mismatch, channel-to-channel"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -6, "typ": 2, "max": 6 },
+          "unit": "%",
+          "conditionsVerbatim": "Gain mismatch, channel-to-channel, -6 / +/-2 / +6 % of FSR (typical magnitude +/-2%)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Analog Output"
+        }
+      ]
+    },
+    {
+      "key": "offset_error",
+      "name": "Bipolar zero error",
+      "group": "accuracy",
+      "aliases": ["bipolar zero error", "bipolar zero-scale error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.002, "typ": 0.001, "max": 0.002 },
+          "unit": "V",
+          "conditions": [
+            { "param": "CODE", "note": "bipolar zero (mid-scale, silence)" }
+          ],
+          "conditionsVerbatim": "PCM5102 bipolar zero error, at bipolar zero, -2 / +/-1 / +2 mV (typical magnitude +/-1 mV)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Analog Output"
+        }
+      ]
+    },
+    {
+      "key": "passband",
+      "name": "Pass band",
+      "group": "filter",
+      "aliases": ["pass band", "passband edge"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 21600 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "INTERP", "note": "normal latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-1 (Normal): Pass band, 0.45 fS (= 21600 Hz at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-1: Normal"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 22560 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "INTERP", "note": "low latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-2 (Low Latency): Pass band, 0.47 fS (= 22560 Hz at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-2: Low Latency"
+        }
+      ]
+    },
+    {
+      "key": "stopband",
+      "name": "Stop band",
+      "group": "filter",
+      "aliases": ["stop band", "stopband edge"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 26400 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "INTERP", "note": "normal latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-1 (Normal): Stop band, 0.55 fS (= 26400 Hz at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-1: Normal"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 26400 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "INTERP", "note": "low latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-2 (Low Latency): Stop band, 0.55 fS (= 26400 Hz at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-2: Low Latency"
+        }
+      ]
+    },
+    {
+      "key": "stopband_attenuation",
+      "name": "Stop-band attenuation",
+      "group": "filter",
+      "aliases": ["stop-band attenuation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -60 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "INTERP", "note": "normal latency filter (8x oversampling)" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-1 (Normal): Stop-band attenuation, -60 dB",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-1: Normal"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -52 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "INTERP", "note": "low latency filter (8x oversampling)" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-2 (Low Latency): Stop-band attenuation, -52 dB",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-2: Low Latency"
+        }
+      ]
+    },
+    {
+      "key": "passband_ripple",
+      "name": "Pass-band ripple",
+      "group": "filter",
+      "aliases": ["pass-band ripple"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.02 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "INTERP", "note": "normal latency filter (8x oversampling)" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-1 (Normal): Pass-band ripple, +/-0.02 dB",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-1: Normal"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.0001 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "INTERP", "note": "low latency filter (8x oversampling)" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-2 (Low Latency): Pass-band ripple, +/-0.0001 dB",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-2: Low Latency"
+        }
+      ]
+    },
+    {
+      "key": "group_delay",
+      "name": "Group delay (delay time)",
+      "group": "filter",
+      "aliases": ["delay time", "group delay"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.1667e-4 },
+          "unit": "s",
+          "conditions": [
+            { "param": "INTERP", "note": "normal latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-1 (Normal): Delay time, 20 tS = 20 / fS (= 416.67 us at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-1: Normal"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.2917e-5 },
+          "unit": "s",
+          "conditions": [
+            { "param": "INTERP", "note": "low latency filter (8x oversampling)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Filter Characteristics-2 (Low Latency): Delay time, 3.5 tS = 3.5 / fS (= 72.9 us at fS = 48 kHz)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Filter Characteristics-2: Low Latency"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": ["AVDD", "DVDD", "CPVDD", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.0, "nom": 3.3, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "analog (AVDD)" }
+          ],
+          "conditionsVerbatim": "AVDD, analog supply voltage",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.0, "nom": 3.3, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "charge pump (CPVDD)" }
+          ],
+          "conditionsVerbatim": "CPVDD, charge-pump supply voltage",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.0, "nom": 3.3, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (DVDD), 3.3-V target" }
+          ],
+          "conditionsVerbatim": "DVDD, digital supply voltage, target DVDD = 3.3 V",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.65, "nom": 1.8, "max": 1.95 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (DVDD), 1.8-V target" }
+          ],
+          "conditionsVerbatim": "DVDD, digital supply voltage, target DVDD = 1.8 V",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.3, "max": 3.9 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "AVDD / CPVDD / DVDD" }
+          ],
+          "conditionsVerbatim": "AVDD, CPVDD, DVDD supply voltage, absolute maximum",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": ["IDD", "supply current", "operating current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.022, "max": 0.032 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "AVDD / CPVDD, 1 kHz -1 dBFS input" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IDD, AVDD / CPVDD supply current, fS = 48 kHz, input is 1 kHz -1 dBFS data (22 mA typ / 32 mA max)",
+          "sourcePage": 10,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.008, "max": 0.013 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DVDD at 3.3 V, 1 kHz -1 dBFS input" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IDD, DVDD supply current at 3.3 V, fS = 48 kHz, input is 1 kHz -1 dBFS data (8 mA typ / 13 mA max)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "power",
+      "aliases": ["power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.099, "max": 0.1485 },
+          "unit": "W",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DVDD = 3.3 V, 1 kHz -1 dBFS input" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Power dissipation, DVDD = 3.3 V, fS = 48 kHz, input is 1 kHz -1 dBFS data (99 mW typ / 148.5 mW max)",
+          "sourcePage": 10,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_down_current",
+      "name": "Power-down current",
+      "group": "power",
+      "aliases": ["standby current", "power-down current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0005, "max": 0.0008 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DVDD at 3.3 V, standby / power-down" }
+          ],
+          "conditionsVerbatim": "IDD, DVDD supply current at 3.3 V, standby (power-down mode), 0.5 mA typ / 0.8 mA max",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Operating junction temperature range",
+      "group": "general",
+      "aliases": ["TJ", "operating junction temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 130 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, operating junction temperature range",
+          "sourcePage": 6,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 130 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating junction temperature range, absolute maximum",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "general",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature",
+          "sourcePage": 6,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "group": "general",
+      "aliases": ["ESD HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human-body model (HBM), per ANSI/ESDA/JEDEC JS-001, +/-2000 V",
+          "sourcePage": 6,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged-device model",
+      "group": "general",
+      "aliases": ["ESD CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 750 },
+          "unit": "V",
+          "conditionsVerbatim": "Charged-device model (CDM), per JEDEC JESD22-C101, +/-750 V",
+          "sourcePage": 6,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "group": "general",
+      "aliases": ["RthetaJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 91.2 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "PW (TSSOP-20)" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, PW 20-pin package, 91.2 degC/W",
+          "sourcePage": 6,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SLAS859C - MAY 2012 - REVISED MAY 2015",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/pcm5102a.pdf",
+    "datasheetSha256": "d2c45343b76f8f6bbd430cedd499bd84485dccfbd5dccb5085a0cec17c47579b",
+    "publishedDate": "May 2015",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

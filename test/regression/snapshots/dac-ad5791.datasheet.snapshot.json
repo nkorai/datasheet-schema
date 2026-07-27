@@ -1,0 +1,1077 @@
+{
+  "family": "dac",
+  "manufacturer": "Analog Devices",
+  "mpn": "AD5791",
+  "parameters": [
+    {
+      "aliases": [
+        "N",
+        "bit depth",
+        "word length"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "guaranteed monotonic",
+        "monotonic"
+      ],
+      "group": "general",
+      "key": "monotonicity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INL",
+        "relative accuracy"
+      ],
+      "group": "linearity",
+      "key": "integral_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": 105,
+              "min": 0,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.95,
+            "typ": 0.24
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = 10 V, VREFN = 0 V (10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 1.43,
+            "typ": 0.48
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = 5 V, VREFN = 0 V (5 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 2.86,
+            "typ": 0.95
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DNL"
+      ],
+      "group": "linearity",
+      "key": "differential_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.95,
+            "typ": 0.48
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "EG",
+        "span error"
+      ],
+      "group": "accuracy",
+      "key": "gain_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 6,
+            "typ": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TC gain",
+        "gain drift",
+        "gain error temperature coefficient"
+      ],
+      "group": "accuracy",
+      "key": "gain_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "bipolar zero-scale error",
+        "zero-scale error"
+      ],
+      "group": "accuracy",
+      "key": "offset_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span, 20 V FSR)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.000134,
+            "typ": 0.0000019
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "offset drift",
+        "zero-scale error drift"
+      ],
+      "group": "accuracy",
+      "key": "offset_error_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FS error",
+        "full scale error"
+      ],
+      "group": "accuracy",
+      "key": "full_scale_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span, 20 V FSR)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.000134,
+            "typ": 0.0000019
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output settling time",
+        "tS"
+      ],
+      "group": "dynamic",
+      "key": "settling_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "10 V output step",
+              "param": "STEP",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "settle to 0.02% FS",
+              "param": "ACCURACY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "500-code step",
+              "param": "STEP",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "settle to +/-1 LSB",
+              "param": "ACCURACY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SR",
+        "slew rate"
+      ],
+      "group": "dynamic",
+      "key": "slew_rate",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/us",
+          "value": {
+            "typ": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GI",
+        "glitch energy",
+        "midscale glitch impulse"
+      ],
+      "group": "dynamic",
+      "key": "glitch_impulse",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 3.1e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = 10 V, VREFN = 0 V (10 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 1.7e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VREFP = 5 V, VREFN = 0 V (5 V span)",
+              "param": "V_REF",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 1.4e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "feedthrough",
+        "feedthrough charge"
+      ],
+      "group": "dynamic",
+      "key": "digital_feedthrough",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 4e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vn",
+        "output voltage noise"
+      ],
+      "group": "noise",
+      "key": "output_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_LOW",
+              "unit": "Hz",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "BW_HIGH",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.0000011
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "eN",
+        "noise spectral density"
+      ],
+      "group": "noise",
+      "key": "output_noise_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 7.5e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC output impedance",
+        "ROUT"
+      ],
+      "group": "analog_output",
+      "key": "output_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 3400
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SFDR"
+      ],
+      "group": "dynamic",
+      "key": "spurious_free_dynamic_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "THD"
+      ],
+      "group": "dynamic",
+      "key": "total_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc, second-to-fifth harmonics",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -97
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VREF range",
+        "reference input range"
+      ],
+      "group": "reference",
+      "key": "reference_input_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC input impedance",
+        "ZVREF"
+      ],
+      "group": "reference",
+      "key": "reference_input_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "typical at midscale code; code dependent",
+              "param": "CODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 5000,
+            "typ": 6600
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CREF",
+        "VREF capacitance"
+      ],
+      "group": "reference",
+      "key": "reference_input_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 1.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCC",
+        "VDD",
+        "VSS",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VDD, positive analog supply",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 16.5,
+            "min": 7.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VSS, negative analog supply",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": -2.5,
+            "min": -16.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCC, digital supply",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 2.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IO supply",
+        "IOVCC"
+      ],
+      "group": "power",
+      "key": "io_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 1.71
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICC",
+        "IDD",
+        "ISS",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal operation, all digital inputs at DGND or IOVCC",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0052,
+            "typ": 0.0042
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal operation, all digital inputs at DGND or IOVCC",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0049,
+            "typ": 0.004
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal operation, all digital inputs at DGND or IOVCC",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0009,
+            "typ": 0.0006
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AC PSRR",
+        "PSRR"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 50
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 95
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 50
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 95
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC PSRR",
+        "PSS"
+      ],
+      "group": "power",
+      "key": "power_supply_sensitivity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/V",
+          "value": {
+            "typ": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SCLK frequency",
+        "SPI clock",
+        "fSCLK"
+      ],
+      "group": "interface",
+      "key": "serial_clock_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "write mode",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Timing Characteristics (Table 4)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 35000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Absolute Maximum Ratings (Table 5)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": []
+}

@@ -1,0 +1,523 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "DAC8811",
+    "manufacturer": "Texas Instruments",
+    "family": "dac",
+    "description": "16-bit, 4-quadrant multiplying, current-output digital-to-analog converter (MDAC). sub_type: multiplying. An R-2R ladder (three MSBs segmented) whose external reference VREF is a bipolar signal input the ladder multiplies by the code; the IOUT terminal sources a current into a virtual ground and REQUIRES an external I-to-V precision op-amp closed through the on-chip matched feedback resistor RFB to produce a voltage (VOUT = -VREF to +VREF, unity transimpedance gain). Three-wire SPI (CLK, SDI, CS). Grade C (DAC8811ICDGK): INL and DNL +/-1 LSB. Pinout (8-lead VSSOP, DGK): 1 CLK, 2 SDI, 3 RFB, 4 VREF, 5 IOUT, 6 GND, 7 VDD, 8 CS.",
+    "package": "VSSOP-8",
+    "pinCount": 8,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85"
+  },
+  "pinout": [
+    { "number": 1, "name": "CLK", "function": "CLK", "type": "digital_in", "description": "Clock input; positive-edge triggered, clocks data into the shift register.", "sourcePage": 4 },
+    { "number": 2, "name": "SDI", "function": "SDI", "type": "digital_in", "description": "Serial register input; data loads MSB first, extra leading bits ignored.", "sourcePage": 4 },
+    { "number": 3, "name": "RFB", "function": "RFB", "type": "analog", "description": "Internal matching feedback resistor; connect to the external I/V op-amp output.", "sourcePage": 4 },
+    { "number": 4, "name": "VREF", "function": "VREF", "type": "analog", "description": "DAC reference (signal) input; establishes full-scale. Constant input resistance versus code.", "sourcePage": 4 },
+    { "number": 5, "name": "IOUT", "function": "IOUT", "type": "analog", "description": "DAC current output; connects to the inverting terminal of the external precision I/V op-amp.", "sourcePage": 4 },
+    { "number": 6, "name": "GND", "function": "GND", "type": "power", "description": "Analog and digital ground.", "sourcePage": 4 },
+    { "number": 7, "name": "VDD", "function": "VDD", "type": "power", "description": "Positive power supply, 2.7 V to 5.5 V.", "sourcePage": 4 },
+    { "number": 8, "name": "CS", "function": "CS", "type": "digital_in", "description": "Chip-select, active low; transfers shift-register data to the DAC register on the rising edge.", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["N", "bit depth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 16 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution, 16 bits",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "monotonicity",
+      "name": "Monotonicity",
+      "group": "general",
+      "aliases": ["monotonic", "guaranteed monotonic"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 16 },
+          "unit": "bits",
+          "conditionsVerbatim": "16-bit monotonic (DNL max +/-1 LSB guarantees monotonicity)",
+          "guarantee": "by_design",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "group": "linearity",
+      "aliases": ["INL", "relative accuracy"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 15.3 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Relative accuracy (INL), DAC8811C grade, +/-1 LSB; +/-1 LSB at 16-bit = 15.3 ppm of FSR",
+          "guarantee": "by_characterization",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "group": "linearity",
+      "aliases": ["DNL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 15.3 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Differential nonlinearity, +/-0.5 LSB typ, +/-1 LSB max (monotonic); +/-1 LSB at 16-bit = 15.3 ppm of FSR",
+          "guarantee": "by_characterization",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "full_scale_error",
+      "name": "Full-scale gain error",
+      "group": "accuracy",
+      "aliases": ["FSE", "full-scale error", "full-scale gain error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-3, "max": 4e-3 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_REF", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Full-scale gain error, all ones loaded to DAC register, VREF = 10 V; typ +/-1 mV, max +/-4 mV",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gain_drift",
+      "name": "Full-scale tempco (gain drift)",
+      "group": "accuracy",
+      "aliases": ["full-scale tempco", "gain drift", "TC gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Full-scale tempco, +/-3 ppm/degC",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_leakage_current",
+      "name": "Output leakage current",
+      "group": "analog_output",
+      "aliases": ["IOUT leakage", "off leakage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Output leakage current, Data = 0000h, TA = 25 degC, 10 nA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "note": "TMAX (+85 degC, top of the specified range)" }
+          ],
+          "conditionsVerbatim": "Output leakage current, Data = 0000h, TA = TMAX, 10 nA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "full_scale_output_current",
+      "name": "Full-scale output current",
+      "group": "analog_output",
+      "aliases": ["IOUTFS", "IFS", "output current", "full-scale output current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_REF", "value": 10, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Output current, 2 mA (2-mA full-scale current +/-20%), VREF = 10 V",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_range",
+      "name": "Reference input range (VREF)",
+      "group": "reference",
+      "aliases": ["VREF range", "reference input range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -15, "max": 15 },
+          "unit": "V",
+          "conditionsVerbatim": "VREF Range, -15 V to 15 V (bipolar signal input, 4-quadrant IOUT operation)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_resistance",
+      "name": "Reference input resistance (R-2R ladder)",
+      "group": "reference",
+      "aliases": ["VREF input resistance", "ladder resistance", "RREF", "input resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Input resistance, 5 kohm (Electrical Characteristics); R-2R ladder presents a code-independent load impedance to the external reference of 5 kohm +/-25% (Feature Description)",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "feedback_resistance",
+      "name": "Feedback resistance (RFB)",
+      "group": "reference",
+      "aliases": ["RFB", "feedback resistor"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "On-chip RFB, sized to match the ratio of the R-2R ladder (ladder = 5 kohm +/-25%); with the external I/V op-amp the output is VOUT = -VREF to +VREF (unity transimpedance gain), so RFB is ratio-matched to the 5 kohm ladder. RFB is not tabulated as a separate numeric; value inferred from the printed matched-ladder unity-gain relationship.",
+          "guarantee": "by_design",
+          "sourcePage": 11,
+          "sourceTable": "Feature Description"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_capacitance",
+      "name": "Reference input capacitance",
+      "group": "reference",
+      "aliases": ["CREF", "VREF capacitance", "input capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "CODE", "note": "code-independent (VREF presents a constant 5 kohm load versus code)" }
+          ],
+          "conditionsVerbatim": "Input capacitance (REFERENCE INPUT), 5 pF",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "group": "analog_output",
+      "aliases": ["COUT", "output cap"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "CODE", "note": "code-dependent (IOUT-terminal impedance/capacitance changes versus code)" }
+          ],
+          "conditionsVerbatim": "Output capacitance, code dependent, 50 pF",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "multiplying_bandwidth",
+      "name": "Reference multiplying bandwidth",
+      "group": "dynamic",
+      "aliases": ["multiplying bandwidth", "reference bandwidth", "BW -3 dB"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "V_REF", "value": 5, "unit": "V" },
+            { "param": "BW_POINT", "note": "-3 dB" }
+          ],
+          "conditionsVerbatim": "BW -3 dB, reference multiplying bandwidth, VREF = 5 VPP, Data = FFFFh (all ones), 10 MHz",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_feedthrough",
+      "name": "Reference feedthrough",
+      "group": "dynamic",
+      "aliases": ["multiplying feedthrough", "feedthrough error", "feed through error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": -70 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 100000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Feedthrough error VOUT/VREF, Data = 0000h, VREF = 100 mVRMS, f = 100 kHz, -70 dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "group": "dynamic",
+      "aliases": ["THD", "reference dynamics"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -105 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 1000, "unit": "Hz" },
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Total harmonic distortion, VREF = 5 VPP, Data = FFFFh (all ones), f = 1 kHz, -105 dB",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "glitch_impulse",
+      "name": "DAC glitch impulse",
+      "group": "dynamic",
+      "aliases": ["GI", "glitch energy", "DAC glitch impulse"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-9 },
+          "unit": "Vs",
+          "conditionsVerbatim": "DAC glitch impulse, VREF = 0 V to 10 V, Data = 7FFFh to 8000h to 7FFFh, 2 nV-s (printed as nV/s; volt-seconds glitch energy at the mid-scale major carry)",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "digital_feedthrough",
+      "name": "Digital feedthrough",
+      "group": "dynamic",
+      "aliases": ["feedthrough", "digital feed through"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-9 },
+          "unit": "Vs",
+          "conditions": [
+            { "param": "F_CLK", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Digital feedthrough, CS = 1 and fCLK = 1 MHz, 2 nV-s (printed as nV/s)",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output spot noise voltage",
+      "group": "noise",
+      "aliases": ["output spot noise voltage", "spot noise", "eN"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e-8 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Output spot noise voltage, f = 1 kHz, BW = 1 Hz, 12 nV/sqrtHz",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "settling_time",
+      "name": "Output voltage settling time",
+      "group": "dynamic",
+      "aliases": ["ts", "output voltage settling time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "STEP", "note": "Data = 0000h to FFFFh to 0000h (full-scale)" },
+            { "param": "ACCURACY", "note": "+/-0.1% of full-scale" }
+          ],
+          "conditionsVerbatim": "Output voltage settling time, to +/-0.1% of full-scale, Data = 0000h to FFFFh to 0000h, 0.3 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "STEP", "note": "Data = 0000h to FFFFh to 0000h (full-scale)" },
+            { "param": "ACCURACY", "note": "+/-0.0015% of full-scale" }
+          ],
+          "conditionsVerbatim": "Output voltage settling time, to +/-0.0015% of full-scale, Data = 0000h to FFFFh to 0000h, 0.5 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": ["VDD", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.7, "max": 5.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "VDD rail" }
+          ],
+          "conditionsVerbatim": "Supply voltage to GND, 2.7 V to 5.5 V",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current (IDD)",
+      "group": "power",
+      "aliases": ["IDD", "supply current", "operating current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e-6, "max": 5e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "normal operation, VDD = 4.5 V to 5.5 V, VIH = VDD and VIL = GND" }
+          ],
+          "conditionsVerbatim": "IDD (normal operation), VDD = 4.5 V to 5.5 V, VIH = VDD and VIL = GND, typ 3 uA, max 5 uA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "serial_clock_frequency",
+      "name": "Clock input frequency",
+      "group": "interface",
+      "aliases": ["fCLK", "SCLK frequency", "SPI clock", "clock input frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e7 },
+          "unit": "Hz",
+          "conditionsVerbatim": "fCLK, clock input frequency, 50 MHz (maximum serial-interface clock)",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "group": "general",
+      "aliases": ["ESD HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4000 },
+          "unit": "V",
+          "conditionsVerbatim": "V(ESD), electrostatic discharge, human body model (HBM), per ANSI/ESDA/JEDEC JS-001, +/-4000 V",
+          "sourcePage": 5,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["TA", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "All specifications -40 degC to 85 degC (Electrical Characteristics). Recommended operating ambient temperature TA: -40 degC to 125 degC.",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "491af32e06f6024090277e76680523da9676ed894ee37cfd24cd7509f58c9db6",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/dac8811.pdf",
+    "datasheetRevision": "SLAS411D - NOVEMBER 2004 - REVISED FEBRUARY 2016",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "multiplying sub_type MDAC. VREF is a bipolar signal input (-15 V to 15 V) that the R-2R ladder multiplies by the code; IOUT is a current into a virtual ground and requires an external I-to-V op-amp closed through the on-chip matched RFB. This exercises the MDAC cluster: multiplying_bandwidth, reference_input_resistance, feedback_resistance (RFB), full_scale_output_current, code-dependent output_capacitance, glitch_impulse in Vs, and reference_feedthrough in dB.",
+    "Full-scale gain error is printed in mV (typ +/-1 mV, max +/-4 mV). The dac dictionary key gain_error permits only % and ppm (no V), so this figure is carried on full_scale_error, whose altUnits include V - the datasheet names the parameter 'Full-scale gain error', which full_scale_error captures natively without an assumed full-scale-voltage conversion.",
+    "INL and DNL are printed in LSB (+/-1 LSB, DAC8811C grade). Per the dac dictionary, LSB is not a legal unit; +/-1 LSB at 16-bit = 1/65536 = 15.3 ppm of full-scale, with the printed LSB figure preserved in conditionsVerbatim.",
+    "glitch_impulse and digital_feedthrough are printed as '2 nV/s' but are the volt-second glitch/feedthrough energy (2 nV-s = 2e-9 Vs), carried in the Vs unit per the dictionary.",
+    "reference_input_resistance (5 kohm +/-25%) is explicitly code-INDEPENDENT for this part (Feature Description, p11); reference_input_capacitance (5 pF) is therefore noted code-independent on the CODE axis. output_capacitance (50 pF) IS code-dependent (IOUT-terminal impedance changes versus code, p12).",
+    "feedback_resistance (RFB) is not tabulated as a standalone numeric; 5 kohm is inferred from the printed matched-ladder relationship (RFB ratio-matched to the 5 kohm R-2R ladder giving VOUT = -VREF to +VREF unity gain, p11), and is marked guarantee by_design.",
+    "serial_clock_frequency (fCLK 50 MHz) and esd_hbm (+/-4000 V) are represented as limits (max / absolute_max) rather than typical, matching the datasheet's maximum clock rate and ESD classification level.",
+    "Page numbers are the printed DAC8811 (SLAS411D) pages, confirmed against the fetched PDF (SHA-256 491af32e...): pinout p4, Abs Max / ESD / Recommended Operating / Thermal p5, Electrical Characteristics p6, Timing Requirements p7, Detailed Description / RFB / ladder p11-12."
+  ]
+}

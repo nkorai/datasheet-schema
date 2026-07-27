@@ -1,0 +1,674 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "AD5791",
+    "manufacturer": "Analog Devices",
+    "family": "dac",
+    "description": "Single 20-bit, unbuffered voltage-output digital-to-analog converter with +/-1 LSB INL (B grade). sub_type: r2r. Segmented R-2R architecture: the 6 MSBs decode 63 matched resistors (switches E0-E62 select VREFP or VREFN) and the 14 LSBs drive a voltage-mode 14-bit R-2R ladder. Bipolar output: the span is set by a positive reference VREFP (5 V to VDD-2.5 V) and a negative reference VREFN (VSS+2.5 V to 0 V), giving an ideal transfer VOUT = (VREFP - VREFN) x D/(2^20 - 1) + VREFN, so a +/-10 V reference pair produces a +/-10 V bipolar output. Guaranteed monotonic (+/-1 LSB DNL). The reference inputs are force/sense (VREFPF/VREFPS, VREFNF/VREFNS) and require external unity-gain buffers; the DAC output is unbuffered with a 3.4 kohm output impedance and is normally driven through an external precision op amp using the on-chip RFB/INV feedback resistors. 3-wire SPI/QSPI/MICROWIRE serial interface up to 35 MHz, 1.8 V-compatible digital I/O. Wide bipolar supply up to +/-16.5 V. Pinout (20-lead TSSOP): 1 INV, 2 VOUT, 3 VREFPS, 4 VREFPF, 5 VDD, 6 RESET, 7 CLR, 8 LDAC, 9 VCC, 10 IOVCC, 11 SDO, 12 SDIN, 13 SCLK, 14 SYNC, 15 DGND, 16 VREFNF, 17 VREFNS, 18 VSS, 19 AGND, 20 RFB.",
+    "package": "TSSOP-20",
+    "pinCount": 20,
+    "polarity": "bipolar",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125"
+  },
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["N", "bit depth", "word length"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 20 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution, 20 bits",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "monotonicity",
+      "name": "Monotonicity",
+      "group": "general",
+      "aliases": ["monotonic", "guaranteed monotonic"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 20 },
+          "unit": "bits",
+          "conditionsVerbatim": "Guaranteed monotonic over the full 20-bit range (ensured by the +/-1 LSB max DNL specification)",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity (relative accuracy)",
+      "group": "linearity",
+      "aliases": ["INL", "relative accuracy"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.24, "max": 0.95 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)" },
+            { "param": "T_A", "min": 0, "max": 105, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "B version, VREFP = +10 V, VREFN = -10 V, TA = 0 degC to 105 degC: +/-0.25 LSB typ, +/-1 LSB max = +/-0.95 ppm of FSR (1 LSB = 0.954 ppm at 20-bit)",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.48, "max": 1.43 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = 10 V, VREFN = 0 V (10 V span)" }
+          ],
+          "conditionsVerbatim": "B version, VREFP = 10 V, VREFN = 0 V: +/-0.5 LSB typ, +/-1.5 LSB max = +/-1.43 ppm of FSR",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.95, "max": 2.86 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = 5 V, VREFN = 0 V (5 V span)" }
+          ],
+          "conditionsVerbatim": "B version, VREFP = 5 V, VREFN = 0 V: +/-1 LSB typ, +/-3 LSB max = +/-2.86 ppm of FSR",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "group": "linearity",
+      "aliases": ["DNL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.48, "max": 0.95 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)" }
+          ],
+          "conditionsVerbatim": "VREFP = +10 V, VREFN = -10 V: +/-0.5 LSB typ, +/-1 LSB max = +/-0.95 ppm of FSR; +/-1 LSB max ensures monotonicity, guaranteed monotonic",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "group": "accuracy",
+      "aliases": ["EG", "span error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.3, "max": 6 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)" }
+          ],
+          "conditionsVerbatim": "VREFP = +10 V, VREFN = -10 V: +/-0.3 ppm FSR typ, +/-6 ppm FSR max (specified natively in ppm of full-scale range)",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "gain_drift",
+      "name": "Gain error temperature coefficient",
+      "group": "accuracy",
+      "aliases": ["gain drift", "TC gain", "gain error temperature coefficient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.04 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Gain error temperature coefficient, +/-0.04 ppm FSR/degC",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "offset_error",
+      "name": "Zero-scale (offset) error",
+      "group": "accuracy",
+      "aliases": ["zero-scale error", "bipolar zero-scale error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9e-6, "max": 1.34e-4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span, 20 V FSR)" }
+          ],
+          "conditionsVerbatim": "Zero-scale error, VREFP = +10 V, VREFN = -10 V: +/-0.1 LSB typ, +/-7 LSB max; ideal zero-scale output is VREFNS. 1 LSB = 20 V/2^20 = 1.907e-5 V, so +/-7 LSB = +/-1.34e-4 V",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "offset_error_drift",
+      "name": "Zero-scale error temperature coefficient",
+      "group": "accuracy",
+      "aliases": ["zero-scale error drift", "offset drift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.04 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Zero-scale error temperature coefficient, +/-0.04 ppm FSR/degC",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "full_scale_error",
+      "name": "Full-scale error",
+      "group": "accuracy",
+      "aliases": ["FS error", "full scale error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9e-6, "max": 1.34e-4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span, 20 V FSR)" }
+          ],
+          "conditionsVerbatim": "Full-scale error, VREFP = +10 V, VREFN = -10 V: +/-0.1 LSB typ, +/-7 LSB max; ideal full-scale output is VREFPS - 1 LSB. 1 LSB = 20 V/2^20 = 1.907e-5 V, so +/-7 LSB = +/-1.34e-4 V. Full-scale error temperature coefficient is +/-0.02 ppm FSR/degC (no dedicated dictionary drift key, recorded here)",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "settling_time",
+      "name": "Output voltage settling time",
+      "group": "dynamic",
+      "aliases": ["tS", "output settling time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "s",
+          "conditions": [
+            { "param": "STEP", "note": "10 V output step" },
+            { "param": "ACCURACY", "note": "settle to 0.02% FS" }
+          ],
+          "conditionsVerbatim": "1 us, 10 V step to 0.02%, using the AD845 buffer in unity-gain mode",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "s",
+          "conditions": [
+            { "param": "STEP", "note": "500-code step" },
+            { "param": "ACCURACY", "note": "settle to +/-1 LSB" }
+          ],
+          "conditionsVerbatim": "1 us, 500 code step to +/-1 LSB; AD5791 in X2 gain mode, 25 pF compensation capacitor on AD797",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "slew_rate",
+      "name": "Output slew rate",
+      "group": "dynamic",
+      "aliases": ["SR", "slew rate"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 50 },
+          "unit": "V/us",
+          "conditionsVerbatim": "Output slew rate, 50 V/us (measured 10% to 90%; set by the 3.4 kohm output impedance and the capacitive load)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "glitch_impulse",
+      "name": "Midscale glitch impulse (energy)",
+      "group": "dynamic",
+      "aliases": ["GI", "glitch energy", "midscale glitch impulse"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.1e-9 },
+          "unit": "Vs",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = +10 V, VREFN = -10 V (+/-10 V span)" }
+          ],
+          "conditionsVerbatim": "Midscale glitch impulse, 3.1 nV-sec, VREFP = +10 V, VREFN = -10 V (major-carry transition; bias-compensation mode with 300 ohm/143 pF output RC)",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.7e-9 },
+          "unit": "Vs",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = 10 V, VREFN = 0 V (10 V span)" }
+          ],
+          "conditionsVerbatim": "Midscale glitch impulse, 1.7 nV-sec, VREFP = 10 V, VREFN = 0 V",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4e-9 },
+          "unit": "Vs",
+          "conditions": [
+            { "param": "V_REF", "note": "VREFP = 5 V, VREFN = 0 V (5 V span)" }
+          ],
+          "conditionsVerbatim": "Midscale glitch impulse, 1.4 nV-sec, VREFP = 5 V, VREFN = 0 V",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "digital_feedthrough",
+      "name": "Digital feedthrough",
+      "group": "dynamic",
+      "aliases": ["feedthrough", "feedthrough charge"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-10 },
+          "unit": "Vs",
+          "conditionsVerbatim": "Digital feedthrough, 0.4 nV-sec (full-scale code change on the data bus with the DAC output not updated)",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "output_noise",
+      "name": "Output voltage noise (peak-to-peak)",
+      "group": "noise",
+      "aliases": ["Vn", "output voltage noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.1e-6 },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [
+            { "param": "BW_LOW", "value": 0.1, "unit": "Hz" },
+            { "param": "BW_HIGH", "value": 10, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Output voltage noise, 1.1 uV p-p, DAC code = midscale, 0.1 Hz to 10 Hz bandwidth (includes AD8676BRZ reference-buffer noise)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output noise spectral density",
+      "group": "noise",
+      "aliases": ["eN", "noise spectral density"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.5e-9 },
+          "unit": "V/sqrtHz",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Output noise spectral density, 7.5 nV/sqrtHz at 1 kHz, DAC code = midscale (flat 7.5 nV/sqrtHz at 1 kHz, 10 kHz and 100 kHz)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "output_resistance",
+      "name": "DC output impedance (normal mode)",
+      "group": "analog_output",
+      "aliases": ["ROUT", "DC output impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3400 },
+          "unit": "ohm",
+          "conditionsVerbatim": "DC output impedance (normal mode), 3.4 kohm (equal to the DAC ladder resistance; the output is unbuffered)",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range",
+      "group": "dynamic",
+      "aliases": ["SFDR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 100 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_OUT", "value": 1000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Spurious free dynamic range, 100 dB, 1 kHz tone, 10 kHz sample rate",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "group": "dynamic",
+      "aliases": ["THD"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -97 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_OUT", "value": 1000, "unit": "Hz" },
+            { "param": "REFERENCE", "note": "dBc, second-to-fifth harmonics" }
+          ],
+          "conditionsVerbatim": "Total harmonic distortion, 97 dB, 1 kHz tone, 10 kHz sample rate (printed as a 97 dB magnitude; stored as -97 dB, second to fifth harmonics)",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_range",
+      "name": "Reference input range",
+      "group": "reference",
+      "aliases": ["VREF range", "reference input range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "VREFP input range: 5 V to VDD - 2.5 V. VREFN input range: VSS + 2.5 V to 0 V. Bipolar reference span; upper bounds are supply-relative (VDD - 2.5 V, 0 V)",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_resistance",
+      "name": "Reference DC input impedance",
+      "group": "reference",
+      "aliases": ["ZVREF", "DC input impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5000, "typ": 6600 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "CODE", "note": "typical at midscale code; code dependent" }
+          ],
+          "conditionsVerbatim": "DC input impedance, 5 kohm min / 6.6 kohm typ, VREFP and VREFN, code dependent, typical at midscale code",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_capacitance",
+      "name": "Reference input capacitance",
+      "group": "reference",
+      "aliases": ["CREF", "VREF capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-11 },
+          "unit": "F",
+          "conditionsVerbatim": "Reference input capacitance, 15 pF, VREFP and VREFN",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Analog supply voltage",
+      "group": "power",
+      "aliases": ["VDD", "VSS", "VCC", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 7.5, "max": 16.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "VDD, positive analog supply" }
+          ],
+          "conditionsVerbatim": "VDD positive analog supply, 7.5 V to 16.5 V (VDD to VSS <= 33 V). Specifications tested with VDD = 12.5 V to 16.5 V",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": -16.5, "max": -2.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "VSS, negative analog supply" }
+          ],
+          "conditionsVerbatim": "VSS negative analog supply, -16.5 V to -2.5 V (min bound VDD - 33 V). Specifications tested with VSS = -16.5 V to -12.5 V",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.7, "max": 5.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "VCC, digital supply" }
+          ],
+          "conditionsVerbatim": "VCC digital supply, 2.7 V to 5.5 V",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "io_supply_voltage",
+      "name": "Digital interface (IO) supply voltage",
+      "group": "power",
+      "aliases": ["IOVCC", "IO supply"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.71, "max": 5.5 },
+          "unit": "V",
+          "conditionsVerbatim": "IOVCC digital interface supply, 1.71 V to 5.5 V (IOVCC must not exceed VCC); sets the digital threshold levels",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": ["IDD", "ISS", "ICC", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.2e-3, "max": 5.2e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "normal operation, all digital inputs at DGND or IOVCC" }
+          ],
+          "conditionsVerbatim": "IDD (VDD rail), 4.2 mA typ, 5.2 mA max",
+          "guarantee": "by_characterization",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-3, "max": 4.9e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "normal operation, all digital inputs at DGND or IOVCC" }
+          ],
+          "conditionsVerbatim": "ISS (VSS rail), 4 mA typ, 4.9 mA max",
+          "guarantee": "by_characterization",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-4, "max": 9e-4 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "normal operation, all digital inputs at DGND or IOVCC" }
+          ],
+          "conditionsVerbatim": "ICC (VCC rail), 600 uA typ, 900 uA max",
+          "guarantee": "by_characterization",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "AC power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR", "AC PSRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 95 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 50, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "AC power supply rejection ratio, 95 dB, VDD +/-200 mV, 50 Hz/60 Hz, VSS = -15 V",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 95 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 50, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "AC power supply rejection ratio, 95 dB, VSS +/-200 mV, 50 Hz/60 Hz, VDD = 15 V",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_sensitivity",
+      "name": "DC power-supply sensitivity",
+      "group": "power",
+      "aliases": ["PSS", "DC PSRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03 },
+          "unit": "ppm/V",
+          "conditionsVerbatim": "DC power supply rejection ratio, +/-0.6 uV/V (VDD +/-10%, VSS = -15 V; and VSS +/-10%, VDD = 15 V); 0.6 uV/V referred to the 20 V FSR = 0.03 ppm/V",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Specifications (Table 3)"
+        }
+      ]
+    },
+    {
+      "key": "serial_clock_frequency",
+      "name": "Serial clock (SCLK) frequency",
+      "group": "interface",
+      "aliases": ["fSCLK", "SCLK frequency", "SPI clock"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.5e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "write mode" }
+          ],
+          "conditionsVerbatim": "Maximum SCLK frequency is 35 MHz for write mode (16 MHz for readback mode)",
+          "sourcePage": 5,
+          "sourceTable": "Timing Characteristics (Table 4)"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["TA", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range (industrial), -40 degC to +125 degC",
+          "sourcePage": 7,
+          "sourceTable": "Absolute Maximum Ratings (Table 5)"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "Rev. F",
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5791.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "sub_type: r2r. The AD5791 is a segmented voltage-mode DAC: the 6 MSBs decode 63 matched resistors (each switched to VREFP or VREFN) and the 14 LSBs drive a 14-bit R-2R ladder. component.polarity is bipolar because the output span runs VREFN to VREFP (e.g. -10 V to +10 V).",
+    "B grade (AD5791BRUZ). INL/DNL/offset/full-scale are printed in LSB in the datasheet; per the DAC dictionary LSB is not a legal unit. Linearity (INL, DNL, gain error) normalize to ppm of FSR and offset/full-scale to volts, with the printed LSB figure preserved in conditionsVerbatim. Conversion factor: 1 LSB = 1e6/2^20 = 0.9537 ppm of FSR; in volts, 1 LSB = span/2^20 (for the +/-10 V span, 20 V/2^20 = 1.907e-5 V).",
+    "glitch_impulse and digital_feedthrough carry the printed nV-sec figure in volt-seconds (Vs): 3.1 nV-sec = 3.1e-9 Vs. Midscale glitch impulse is swept over the reference span (V_REF): 3.1e-9 (+/-10 V), 1.7e-9 (10 V), 1.4e-9 (5 V) Vs.",
+    "gain_error is stored in ppm (an altUnit) because the AD5791 specifies it natively as ppm of FSR (+/-0.3 ppm typ, +/-6 ppm max at the +/-10 V span), not in LSB.",
+    "offset_error carries the datasheet's Zero-Scale Error (ideal zero-scale output = VREFNS), and full_scale_error carries the Full-Scale Error (ideal = VREFPS - 1 LSB); the DAC dictionary aliases zero-scale error onto offset_error. The zero-scale error temperature coefficient maps to offset_error_drift (ppm/degC altUnit). There is no full-scale-error drift key in the dictionary, so the +/-0.02 ppm FSR/degC full-scale TC is preserved in the full_scale_error conditionsVerbatim rather than dropped.",
+    "V_REF conditions are note-only because the AD5791 reference is a VREFP/VREFN pair (a span), not a single voltage; a numeric V_* condition would be dimension-checked against volts and could not express the pair.",
+    "reference_input_resistance holds the datasheet's code-dependent DC input impedance (5 kohm min / 6.6 kohm typ at midscale). supply_voltage arrays the three analog/digital rails (VDD, VSS, VCC) over V_SUPPLY; the digital interface rail IOVCC is the separate io_supply_voltage key. supply_current arrays IDD/ISS/ICC.",
+    "Source is the current AD5791 data sheet (Rev. F, the latest revision in the digitized copy used), which supersedes the originally-requested Rev. B; all transcribed values are from Rev. F. Page numbers follow the Rev. F layout: Specifications Table 3 spans pages 3-4, Timing Characteristics Table 4 page 5, Absolute Maximum Ratings Table 5 page 7. datasheetSha256 omitted: analog.com blocked direct PDF fetch, values transcribed from the Datasheets.md digitized copy (public component AD5791BRUZ)."
+  ]
+}

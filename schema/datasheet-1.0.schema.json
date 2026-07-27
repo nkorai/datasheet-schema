@@ -266,11 +266,11 @@
 
     "unit": {
       "title": "Unit",
-      "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate. The fractional-rate family ppm, ppm/V, and ppm/A captures dimensionless drift (long-term stability, thermal hysteresis) and the per-volt/per-amp regulation rates that precision references and other parts specify, alongside ppm/degC. A2s is ampere-squared-seconds, the I-squared-t fusing rating a rectifier publishes for fuse coordination. bits is a dimensionless base-2 count (may be fractional): a data converter's resolution and its effective/noise-free resolution and ENOB. A converter's linearity (INL/DNL) and offset/gain error use ppm (of full scale), V, or % rather than the part-relative LSB, so numbers stay comparable across parts; the printed LSB figure is preserved in conditionsVerbatim.",
+      "description": "Base-SI unit symbol. Values are normalized to base units so cross-part numeric comparison is sound. Derived units are included where a datasheet parameter requires them, for example ppm/degC for temperature coefficient and V/us for slew rate. The fractional-rate family ppm, ppm/V, and ppm/A captures dimensionless drift (long-term stability, thermal hysteresis) and the per-volt/per-amp regulation rates that precision references and other parts specify, alongside ppm/degC. A2s is ampere-squared-seconds, the I-squared-t fusing rating a rectifier publishes for fuse coordination. bits is a dimensionless base-2 count (may be fractional): a data converter's resolution and its effective/noise-free resolution and ENOB. A converter's linearity (INL/DNL) and offset/gain error use ppm (of full scale), V, or % rather than the part-relative LSB, so numbers stay comparable across parts; the printed LSB figure is preserved in conditionsVerbatim. Vs is volt-seconds, the time-integral of a voltage transient a DAC publishes as its glitch impulse and digital feedthrough (a printed nV-s is 1e-9 Vs).",
       "type": "string",
       "enum": [
         "V", "A", "Hz", "degC", "ohm", "F", "H", "s", "W", "C", "J", "S", "deg",
-        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "A/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz", "A/sqrtHz", "A2s", "bits"
+        "dB", "V/V", "%", "ppm", "ppm/degC", "ppm/V", "ppm/A", "V/degC", "A/degC", "degC/W", "K/W", "V/us", "A/us", "V/sqrtHz", "A/sqrtHz", "A2s", "bits", "Vs"
       ]
     }
   }

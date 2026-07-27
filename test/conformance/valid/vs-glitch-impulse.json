@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "DAC-X", "manufacturer": "Y", "family": "dac" },
+  "parameters": [
+    { "key": "glitch_impulse", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 2e-9 }, "unit": "Vs",
+        "conditionsVerbatim": "code-change glitch impulse, 2 nV-s, major-carry 7FFF<->8000", "sourcePage": 6 } ] },
+    { "key": "resolution", "measurements": [
+      { "limitClass": "characterized", "value": { "nom": 16 }, "unit": "bits", "sourcePage": 6 } ] }
+  ],
+  "provenance": { "verified": false }
+}

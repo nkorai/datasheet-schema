@@ -1,0 +1,1099 @@
+{
+  "family": "dac",
+  "manufacturer": "Texas Instruments",
+  "mpn": "DAC3484",
+  "parameters": [
+    {
+      "aliases": [
+        "16-bit",
+        "N"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GSPS",
+        "MSPS",
+        "fDAC",
+        "update rate"
+      ],
+      "group": "timing",
+      "key": "sample_rate",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 1250000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SFDR"
+      ],
+      "group": "dynamic",
+      "key": "spurious_free_dynamic_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 20000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "0 dBFS",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 82
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 50000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "0 dBFS",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 77
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 70000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "0 dBFS",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 72
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IMD3",
+        "two-tone imd"
+      ],
+      "group": "dynamic",
+      "key": "third_order_imd",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 30000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-12 dBFS per tone",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 81
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 50000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-12 dBFS per tone",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 79
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-12 dBFS per tone",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 77.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NSD",
+        "noise floor"
+      ],
+      "group": "dynamic",
+      "key": "noise_spectral_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "0 dBFS",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc/Hz",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -160
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 80000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "0 dBFS",
+              "param": "A_OUT",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc/Hz",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -155
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ACLR",
+        "ACPR"
+      ],
+      "group": "dynamic",
+      "key": "adjacent_channel_leakage_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1228800000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 30720000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 77
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1228800000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 153600000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 74
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "channel isolation"
+      ],
+      "group": "dynamic",
+      "key": "channel_isolation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1250000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OUT",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "dBc",
+              "param": "REFERENCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFS",
+        "IOUTFS"
+      ],
+      "group": "analog_output",
+      "key": "full_scale_output_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.03,
+            "min": 0.01,
+            "typ": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output compliance range"
+      ],
+      "group": "analog_output",
+      "key": "output_compliance_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.6,
+            "min": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ROUT",
+        "output impedance"
+      ],
+      "group": "analog_output",
+      "key": "output_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 300000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COUT"
+      ],
+      "group": "analog_output",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INL"
+      ],
+      "group": "linearity",
+      "key": "integral_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "typ": 61
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DNL"
+      ],
+      "group": "linearity",
+      "key": "differential_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "typ": 30.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FSE"
+      ],
+      "group": "accuracy",
+      "key": "gain_error",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "channel gain match"
+      ],
+      "group": "accuracy",
+      "key": "gain_mismatch",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOS"
+      ],
+      "group": "accuracy",
+      "key": "offset_error",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TC gain"
+      ],
+      "group": "accuracy",
+      "key": "gain_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VREF"
+      ],
+      "group": "reference",
+      "key": "internal_reference_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 1.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCVREF"
+      ],
+      "group": "reference",
+      "key": "internal_reference_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DACCLK frequency"
+      ],
+      "group": "timing",
+      "key": "clock_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 15,
+          "sourceTable": "Timing Requirements - Digital Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 1250000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD"
+      ],
+      "group": "power",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Mode 1, fDAC = 1.25 GSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 1.32,
+            "typ": 1.27
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Mode 3, fDAC = 625 MSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.765
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVDD",
+        "DVDD",
+        "VDD"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "AVDD, IOVDD, PLLAVDD",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.46,
+            "min": 3.14,
+            "nom": 3.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DIGVDD",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.32,
+            "min": 1.14,
+            "nom": 1.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "CLKVDD, DACVDD",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.32,
+            "min": 1.14,
+            "nom": 1.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 11,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJA"
+      ],
+      "group": "general",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "WQFN-88 (RKD)",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Thermal Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 22.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthetaJC"
+      ],
+      "group": "general",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "WQFN-88 (RKD)",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Thermal Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 7.1
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": []
+}

@@ -1,0 +1,1008 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "dac",
+  "dictionaryVersion": "1.1",
+  "description": "Canonical parameter dictionary for digital-to-analog converters, merging five architectural sub-shapes that share one measurement envelope into a single family: (1) 'string' resistor-string DACs (guaranteed-monotonic, DC-accuracy oriented, moderate speed - the linearity/accuracy and settling keys dominate); (2) 'r2r' R-2R ladder DACs (voltage- or current-output, the reference_input_resistance/ladder and gain keys apply); (3) 'multiplying' MDACs whose reference is an AC input (multiplying_bandwidth, reference_feedthrough, feedback_resistance/RFB and a four-quadrant output, swept over the reference frequency F_IN); (4) 'current_steering' RF / high-speed DACs (full_scale_output_current into a compliance voltage, sample_rate/update rate from hundreds of MSPS to GSPS, the AC-performance family SFDR/IMD3/ACLR/NSD/phase_noise swept over output frequency F_OUT, JESD204B serdes lane rates); and (5) 'audio' DACs (dynamic_range A-weighted vs unweighted via the WEIGHTING axis, THD+N vs output level A_OUT, de-emphasis, and the digital interpolation-filter passband/stopband/group_delay keys). component.sub_type selects the architecture; a part populates only the groups its architecture uses (string/r2r -> linearity + settling; multiplying -> multiplying_bandwidth/reference_feedthrough/feedback_resistance over F_IN; current_steering -> full_scale_output_current + AC-performance over F_OUT + serdes; audio -> filter + dynamic_range + THD+N), while resolution, monotonicity, the linearity/accuracy keys, the analog_output, reference, timing, power and general keys are common. Voltage-output vs current-output is a topology fork carried by WHICH key is populated - output_voltage / output_voltage_range (V) on a voltage-output part vs full_scale_output_current (A) on a current-output part - NOT by any structural difference. Resolution and monotonicity use the 'bits' unit; INL/DNL normalize to ppm (altUnits % or V), offset to V, gain error to %, and the printed LSB figure is preserved in conditionsVerbatim - LSB is NOT a legal unit. glitch_impulse and digital_feedthrough carry the printed nV-s / pV-s figure in the 'Vs' unit (a printed 1 nV-s is 1e-9 Vs); the distinct glitch_magnitude and power_on_glitch are amplitudes in V. Every dBc / dBFS / dBm-per-Hz ratio rides its reference in conditionsVerbatim and the note-only REFERENCE condition and MUST NOT be merged across references (SFDR / noise_spectral_density / third_order_imd / adjacent_channel_leakage_ratio). power_supply_sensitivity printed as %/% normalizes to ppm/V (there is no %/% unit). SerDes / lane / input data rates store the bit rate in Hz with the printed Gbps/Mbps kept in conditionsVerbatim (there is no bps unit); latency stores seconds with the cycle count / fS in conditionsVerbatim. Condition axes for this family: STEP (settling step size, note-only), ACCURACY (settling accuracy, e.g. 1 LSB / 0.01%, note-only), CODE (input code, note-only), F_OUT (output signal frequency), A_OUT (output level in dBFS or Vrms), F_IN (reference AC frequency for multiplying DACs), F_S (sample/update rate as a condition), F_CLK (clock frequency as a condition), V_REF (reference voltage), GAIN (multiplying/PGA gain), INTERP (interpolation ratio, note-only), WEIGHTING (A-weighted vs unweighted, note-only), MODE (speed/power/filter mode, note-only), REFERENCE (the dB reference convention dBc / dBFS / dBm-per-Hz, note-only), BW_POINT (-3dB / -0.1dB, note-only), R_L (load resistance), C_L (load capacitance), T_A, PACKAGE, DIRECTION (source/sink, note-only). Pin functions: VOUT / VOUTA.. voltage outputs; IOUT1 / IOUT2 / IOUTP / IOUTN complementary current outputs; RFB the MDAC feedback resistor; VREF / VREFIO / REFIN / REFOUT reference; FSADJ / BIASJ full-scale-set; VDD / AVDD / DVDD / CLKVDD supplies and GND / AGND / DGND grounds; SPI control SCLK / SDIN / SYNC / SDO / CS / LDAC / CLR; I2C control SCL / SDA / A0; high-speed DACCLKP / DACCLKN / SYSREF / SYNC plus the JESD204B serdes lanes; audio serial BCK / LRCK / MCLK / DIN. Base-SI throughout; aliases normalize the printed datasheet symbols across vendors (TI, Analog Devices, Maxim, Cirrus Logic, AKM, ESS, Microchip).",
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "unit": "bits",
+      "group": "general",
+      "aliases": ["N", "bit depth", "word length"],
+      "hint": "Number of input bits (nominal word length). Bits; fractional not applicable here."
+    },
+    {
+      "key": "monotonicity",
+      "name": "Monotonicity",
+      "unit": "bits",
+      "group": "general",
+      "aliases": ["monotonic", "guaranteed monotonic"],
+      "hint": "Resolution over which the output is guaranteed monotonic (never decreases for an increasing code). Bits. String and calibrated R-2R DACs are typically monotonic to the full resolution; capture the guaranteed-monotonic bit count."
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "unit": "ppm",
+      "group": "linearity",
+      "altUnits": ["%", "V"],
+      "aliases": ["INL"],
+      "hint": "Deviation of the transfer function from the ideal line, normalized to ppm of full-scale (altUnits % or V). NEVER use LSB - keep the printed LSB figure in conditionsVerbatim."
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "unit": "ppm",
+      "group": "linearity",
+      "optional": true,
+      "altUnits": ["%", "V"],
+      "aliases": ["DNL"],
+      "hint": "Deviation of each code step from the ideal 1-LSB size, normalized to ppm of full-scale (altUnits % or V). A DNL better than -1 LSB guarantees monotonicity. NEVER use LSB - keep the printed LSB value in conditionsVerbatim."
+    },
+    {
+      "key": "offset_error",
+      "name": "Offset error",
+      "unit": "V",
+      "group": "accuracy",
+      "altUnits": ["ppm", "%"],
+      "aliases": ["VOS", "EO", "offset error", "zero-scale error", "bipolar zero-scale error", "bipolar zero error"],
+      "hint": "Bipolar / mid-scale offset error. Canonical V; altUnits ppm or % of full-scale. On a straight unipolar DAC the zero-point error is zero_code_error; this key carries the bipolar/offset-binary offset."
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "unit": "%",
+      "group": "accuracy",
+      "altUnits": ["ppm", "V"],
+      "aliases": ["EG", "FSE", "full-scale error", "span error"],
+      "hint": "Full-scale / gain error, canonical % of full-scale (altUnits ppm; V on voltage-output DACs that print gain error in mV - keep the printed form in conditionsVerbatim). NEVER use LSB. full_scale_error is the same quantity on parts that print it separately from a mid/quarter-scale gain error."
+    },
+    {
+      "key": "gain_drift",
+      "name": "Gain drift",
+      "unit": "ppm/degC",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["gain drift", "TC gain"],
+      "hint": "Temperature coefficient of gain, ppm/degC of full-scale."
+    },
+    {
+      "key": "total_unadjusted_error",
+      "name": "Total unadjusted error",
+      "unit": "%",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["TUE"],
+      "hint": "Combined worst-case error (offset + gain + linearity) without calibration, % of full-scale."
+    },
+    {
+      "key": "offset_error_drift",
+      "name": "Offset error drift",
+      "unit": "V/degC",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["ppm/degC"],
+      "aliases": ["offset drift", "VOS drift"],
+      "hint": "Temperature coefficient of offset error. Canonical V/degC; altUnits ppm/degC of full-scale."
+    },
+    {
+      "key": "zero_code_error",
+      "name": "Zero-code error",
+      "unit": "V",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["ppm", "%"],
+      "aliases": ["ZCE", "zero code error", "zero-code error"],
+      "hint": "Output error when the input code is all-zeros (the analog output that should ideally be 0 V or the negative rail), in V (altUnits ppm or % of full-scale); keep any printed LSB figure in conditionsVerbatim. Distinct from offset_error, which is the bipolar/mid-scale offset."
+    },
+    {
+      "key": "zero_code_error_drift",
+      "name": "Zero-code error drift",
+      "unit": "V/degC",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["ppm/degC"],
+      "aliases": ["ZS error drift", "zero-code error drift"],
+      "hint": "Temperature coefficient of zero-code error, V/degC (altUnits ppm/degC of full-scale)."
+    },
+    {
+      "key": "full_scale_error",
+      "name": "Full-scale error",
+      "unit": "%",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["ppm", "V"],
+      "aliases": ["FS error", "full scale error", "full-scale voltage error"],
+      "hint": "Error at the all-ones (full-scale) code, % of full-scale (altUnits ppm or V). Closely related to gain_error - use this key only when the datasheet tabulates a distinct full-scale figure; keep any printed LSB value in conditionsVerbatim."
+    },
+    {
+      "key": "gain_mismatch",
+      "name": "Gain / full-scale mismatch (interchannel)",
+      "unit": "%",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["channel gain match", "full-scale range matching"],
+      "hint": "Channel-to-channel full-scale / gain matching on a multi-channel DAC, % of full-scale. Distinct from interchannel_gain_mismatch (a dB audio/RF figure)."
+    },
+    {
+      "key": "settling_time",
+      "name": "Output settling time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "STEP",
+      "aliases": ["tS", "output settling time", "TSETTLING"],
+      "hint": "Time for the output to settle to a stated accuracy band after a code change, s. Meaningless without both the step size and the settle band - array over STEP (full-scale, half-scale, 1-LSB step), and carry ACCURACY (e.g. 1 LSB, 0.01%, 0.1%) as a second condition. One measurement per (STEP, ACCURACY) point."
+    },
+    {
+      "key": "slew_rate",
+      "name": "Output slew rate",
+      "unit": "V/us",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["SR", "slew rate"],
+      "hint": "Maximum rate of change of the output during a large code transition, V/us."
+    },
+    {
+      "key": "glitch_impulse",
+      "name": "Glitch impulse (energy)",
+      "unit": "Vs",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["GI", "glitch energy", "code-change glitch", "glitch charge"],
+      "hint": "Net area of the code-transition glitch (the classic mid-scale major-carry glitch), in volt-seconds. A printed nV-s converts as 1 nV-s = 1e-9 Vs; keep the printed nV-s figure in conditionsVerbatim. Distinct from glitch_magnitude (the peak amplitude)."
+    },
+    {
+      "key": "glitch_magnitude",
+      "name": "Glitch magnitude",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["glitch amplitude"],
+      "hint": "Peak amplitude of the code-transition glitch, V (as opposed to its area glitch_impulse)."
+    },
+    {
+      "key": "digital_feedthrough",
+      "name": "Digital feedthrough",
+      "unit": "Vs",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["feedthrough", "feedthrough charge"],
+      "hint": "Output disturbance coupled from the digital inputs while the DAC is not being updated (LDAC held), in volt-seconds. A printed nV-s is 1e-9 Vs; keep the printed figure in conditionsVerbatim."
+    },
+    {
+      "key": "power_on_glitch",
+      "name": "Power-on glitch",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["power-on glitch magnitude"],
+      "hint": "Peak output excursion during power-up before the interface is initialized, V."
+    },
+    {
+      "key": "dac_to_dac_crosstalk",
+      "name": "DAC-to-DAC crosstalk",
+      "unit": "V",
+      "group": "dynamic",
+      "optional": true,
+      "altUnits": ["dB"],
+      "aliases": ["DC crosstalk", "channel-to-channel crosstalk", "dac-to-dac crosstalk"],
+      "hint": "Output change on one DAC channel caused by a full-scale code change on another channel, in V (altUnits dB where the datasheet gives an AC figure). channel_isolation / interchannel_isolation carry the frequency-swept AC isolation."
+    },
+    {
+      "key": "reference_crosstalk",
+      "name": "Reference crosstalk",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["crosstalk error", "reference crosstalk"],
+      "hint": "Coupling from a reference (or other input) modulation into the output, dB. Array over the reference/disturbance frequency F_IN; keep the reference level in conditionsVerbatim."
+    },
+    {
+      "key": "channel_isolation",
+      "name": "Channel isolation",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["channel isolation", "ac crosstalk"],
+      "hint": "AC isolation of one output from an aggressor on another, dB. interchannel_isolation carries the frequency-swept stereo-separation figure on audio parts."
+    },
+    {
+      "key": "interchannel_isolation",
+      "name": "Interchannel isolation (channel separation)",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["channel separation", "stereo separation", "interchannel isolation"],
+      "hint": "Stereo / interchannel separation, dB, swept over signal frequency F_IN (audio and multi-channel parts)."
+    },
+    {
+      "key": "third_order_imd",
+      "name": "Third-order intermodulation distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["IMD3", "intermodulation distortion", "two-tone imd"],
+      "hint": "Two-tone third-order intermodulation, dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBc vs dBFS) rides in conditionsVerbatim and the note-only REFERENCE condition and MUST NOT be merged across references. Keep the two tone frequencies and levels in conditionsVerbatim."
+    },
+    {
+      "key": "adjacent_channel_leakage_ratio",
+      "name": "Adjacent-channel leakage ratio",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["ACLR", "ACPR", "adjacent channel leakage"],
+      "hint": "Leakage of a modulated carrier into the adjacent channel (current_steering / RF DACs), dBc, swept over output/carrier frequency F_OUT. Store the printed signed value; the reference (dBc) rides in conditionsVerbatim and the note-only REFERENCE condition; keep the standard/bandwidth in conditionsVerbatim. Do NOT merge across references."
+    },
+    {
+      "key": "phase_noise",
+      "name": "Phase noise",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["phase noise"],
+      "hint": "Single-sideband phase noise of the reconstructed output (current_steering / RF DACs), in dBc/Hz at a stated offset frequency F from the carrier. Array over the offset frequency F; keep the carrier frequency and dBc/Hz reference in conditionsVerbatim and the note-only REFERENCE condition."
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["SNR", "S/N"],
+      "hint": "SNR of the reconstructed output (noise only, harmonics excluded), dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBFS vs dBc) rides in conditionsVerbatim and the note-only REFERENCE condition. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "signal_to_noise_and_distortion",
+      "name": "Signal-to-noise-and-distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["SINAD", "SNDR", "S/(N+D)"],
+      "hint": "SINAD of the reconstructed output (noise + harmonics), dB, swept over output frequency F_OUT. Reference in conditionsVerbatim and the note-only REFERENCE condition."
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "altUnits": ["%"],
+      "aliases": ["THD"],
+      "hint": "THD of the reconstructed output, canonical dB (altUnits % for audio parts), swept over output frequency F_OUT. Store the printed signed value; the reference (dBFS vs dBc) rides in conditionsVerbatim and the note-only REFERENCE condition. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "total_harmonic_distortion_plus_noise",
+      "name": "THD+N",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "A_OUT",
+      "altUnits": ["%"],
+      "aliases": ["THD+N", "THDN"],
+      "hint": "THD+N (audio), canonical dB (altUnits %), swept over output level A_OUT (dBFS / Vrms). Reference in conditionsVerbatim and the note-only REFERENCE condition."
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["SFDR"],
+      "hint": "SFDR - output full-scale to the largest spur, dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBc vs dBFS) rides in conditionsVerbatim and the note-only REFERENCE condition. A dBc suppression is a positive magnitude; a dBFS spur level is negative. Do NOT merge across references."
+    },
+    {
+      "key": "second_harmonic_distortion",
+      "name": "Second-harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["HD2"],
+      "hint": "Second harmonic of the reconstructed output, dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBc vs dBFS) rides in conditionsVerbatim and the note-only REFERENCE condition. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "third_harmonic_distortion",
+      "name": "Third-harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["HD3"],
+      "hint": "Third harmonic of the reconstructed output, dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBc vs dBFS) rides in conditionsVerbatim and the note-only REFERENCE condition. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "noise_spectral_density",
+      "name": "Noise spectral density",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OUT",
+      "aliases": ["NSD", "noise spectral density", "noise floor"],
+      "hint": "Output noise density (current_steering / RF DACs), typically in dBm/Hz (or dBc/Hz), unit dB, swept over output frequency F_OUT. Store the printed signed value; the reference (dBm/Hz vs dBc/Hz vs dBFS/Hz) rides in conditionsVerbatim and the note-only REFERENCE condition and MUST NOT be merged across references."
+    },
+    {
+      "key": "dynamic_range",
+      "name": "Dynamic range",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WEIGHTING",
+      "aliases": ["DR", "dynamic range"],
+      "hint": "Ratio of full-scale output to the residual noise floor with no signal (audio). Array over WEIGHTING (A-weighted vs unweighted) - do not merge the two. dB, dBFS reference in conditionsVerbatim."
+    },
+    {
+      "key": "de_emphasis_error",
+      "name": "De-emphasis error",
+      "unit": "dB",
+      "group": "filter",
+      "optional": true,
+      "aliases": ["de-emphasis error", "deemphasis error"],
+      "hint": "Deviation of the de-emphasis filter response from the ideal curve (audio), dB; keep the sample rate / curve (32/44.1/48 kHz) in conditionsVerbatim."
+    },
+    {
+      "key": "passband",
+      "name": "Passband",
+      "unit": "Hz",
+      "group": "filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "INTERP",
+      "aliases": ["passband edge"],
+      "hint": "Interpolation / reconstruction filter passband edge, Hz (audio / current_steering). Array over INTERP (interpolation ratio / filter mode). Often stated as a fraction of fS - keep that in conditionsVerbatim."
+    },
+    {
+      "key": "passband_ripple",
+      "name": "Passband ripple",
+      "unit": "dB",
+      "group": "filter",
+      "optional": true,
+      "aliases": ["passband ripple"],
+      "hint": "Peak-to-peak interpolation-filter passband ripple, dB."
+    },
+    {
+      "key": "stopband",
+      "name": "Stopband",
+      "unit": "Hz",
+      "group": "filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "INTERP",
+      "aliases": ["stopband edge"],
+      "hint": "Interpolation / reconstruction filter stopband edge, Hz. Array over INTERP."
+    },
+    {
+      "key": "stopband_attenuation",
+      "name": "Stopband attenuation",
+      "unit": "dB",
+      "group": "filter",
+      "optional": true,
+      "aliases": ["stopband attenuation"],
+      "hint": "Interpolation-filter stopband attenuation (image rejection), dB."
+    },
+    {
+      "key": "group_delay",
+      "name": "Group delay",
+      "unit": "s",
+      "group": "filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "INTERP",
+      "aliases": ["group delay"],
+      "hint": "Interpolation-filter group delay, s. Array over INTERP. Often stated in samples - convert via fS and keep the sample count in conditionsVerbatim."
+    },
+    {
+      "key": "interchannel_gain_mismatch",
+      "name": "Interchannel gain mismatch",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["gain mismatch"],
+      "hint": "Gain match between channels expressed in dB (audio / RF). The %-of-full-scale interchannel match is gain_mismatch."
+    },
+    {
+      "key": "interchannel_phase_deviation",
+      "name": "Interchannel phase deviation",
+      "unit": "deg",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["phase deviation"],
+      "hint": "Phase match between channels, in degrees."
+    },
+    {
+      "key": "output_voltage",
+      "name": "Full-scale output voltage",
+      "unit": "V",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["VOUT", "full-scale output voltage", "output voltage"],
+      "hint": "Voltage-output DACs: the full-scale output voltage, V. Populating this key (vs full_scale_output_current) is what marks a part as voltage-output; a current-output part leaves it empty."
+    },
+    {
+      "key": "output_voltage_range",
+      "name": "Output voltage range (swing)",
+      "unit": "V",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["output swing", "output voltage range"],
+      "hint": "Voltage-output DACs: the guaranteed output voltage swing (min/max), V - how close the output drives to each rail. output_headroom / output_footroom capture the rail margins."
+    },
+    {
+      "key": "output_current",
+      "name": "Output current drive",
+      "unit": "A",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["IOUT drive", "output current drive"],
+      "hint": "Voltage-output DACs: the load current the output buffer can source/sink while holding spec, A. Distinct from full_scale_output_current (the programmed full-scale current of a current-output DAC)."
+    },
+    {
+      "key": "full_scale_output_current",
+      "name": "Full-scale output current",
+      "unit": "A",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["IOUTFS", "IFS", "full-scale output current"],
+      "hint": "Current-output DACs: the full-scale output current (set by FSADJ / an external RSET), A. Populating this key (vs output_voltage) marks a part as current-output."
+    },
+    {
+      "key": "output_compliance_voltage",
+      "name": "Output compliance voltage",
+      "unit": "V",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["output compliance range", "VOUT compliance"],
+      "hint": "Current-output DACs: the allowable output-terminal voltage range over which the current output stays in spec, V."
+    },
+    {
+      "key": "output_resistance",
+      "name": "Output resistance / impedance",
+      "unit": "ohm",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["ZO", "ROUT", "output impedance", "DC output impedance"],
+      "hint": "Output resistance (voltage-output buffer) or output impedance (current-output source), ohm. No SI prefix - 10 kohm is 10000."
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "unit": "F",
+      "group": "analog_output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "CODE",
+      "aliases": ["COUT", "output cap"],
+      "hint": "Output-node capacitance, F. Code-dependent on current-output / ladder DACs (the switched ladder capacitance) - array over CODE, one measurement per stated code."
+    },
+    {
+      "key": "output_bandwidth",
+      "name": "Output bandwidth",
+      "unit": "Hz",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["output -3dB bandwidth"],
+      "hint": "Small-signal -3 dB bandwidth of the output, Hz."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "unit": "A",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["ISC", "short-circuit current"],
+      "hint": "Output short-circuit / current-limit, A."
+    },
+    {
+      "key": "load_regulation",
+      "name": "Load regulation",
+      "unit": "ohm",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["load regulation"],
+      "hint": "Change in output voltage per unit load current, expressed as an effective ohm; keep any printed mV/mA or %/mA figure in conditionsVerbatim."
+    },
+    {
+      "key": "capacitive_load_stability",
+      "name": "Capacitive load stability",
+      "unit": "F",
+      "group": "analog_output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "R_L",
+      "aliases": ["CL stability", "capacitive load", "no-oscillation load"],
+      "hint": "Maximum capacitive load the output stays stable (non-oscillating) into, F. Array over series/parallel load resistance R_L."
+    },
+    {
+      "key": "output_headroom",
+      "name": "Output headroom (to positive rail)",
+      "unit": "V",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["headroom"],
+      "hint": "Voltage-output DACs: minimum drop from the positive supply the output can reach at a stated load, V."
+    },
+    {
+      "key": "output_footroom",
+      "name": "Output footroom (to negative rail / ground)",
+      "unit": "V",
+      "group": "analog_output",
+      "optional": true,
+      "aliases": ["footroom"],
+      "hint": "Voltage-output DACs: minimum voltage above ground / the negative rail the output can reach at a stated load, V."
+    },
+    {
+      "key": "output_leakage_current",
+      "name": "Output leakage current",
+      "unit": "A",
+      "group": "analog_output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": ["IOUT leakage", "off leakage"],
+      "hint": "Output leakage current in the off / three-state condition, A. Array over ambient temperature T_A (rises with temperature)."
+    },
+    {
+      "key": "output_noise",
+      "name": "Output noise (peak-to-peak)",
+      "unit": "V",
+      "group": "noise",
+      "optional": true,
+      "aliases": ["Vn", "output noise"],
+      "hint": "Broadband output noise over a stated band, statistic peak_to_peak (carry statistic on the measurement); keep the measurement bandwidth in conditionsVerbatim. V."
+    },
+    {
+      "key": "output_noise_density",
+      "name": "Output noise spectral density",
+      "unit": "V/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "aliases": ["eN", "output noise density", "spot noise"],
+      "hint": "Output-referred voltage noise spectral density, V/sqrtHz, at a stated frequency (kept in conditionsVerbatim)."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "External reference voltage range",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VREF", "external reference range"],
+      "hint": "Allowable external reference voltage range, V. Distinct from internal_reference_voltage."
+    },
+    {
+      "key": "internal_reference_voltage",
+      "name": "Internal reference voltage",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["REFOUT", "internal reference"],
+      "hint": "On-chip reference output voltage, V."
+    },
+    {
+      "key": "internal_reference_drift",
+      "name": "Internal reference drift",
+      "unit": "ppm/degC",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference drift", "TCVREF"],
+      "hint": "Temperature coefficient of the internal reference, ppm/degC."
+    },
+    {
+      "key": "internal_reference_accuracy",
+      "name": "Internal reference accuracy",
+      "unit": "%",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference accuracy", "initial accuracy"],
+      "hint": "Initial accuracy of the internal reference, % of nominal."
+    },
+    {
+      "key": "reference_input_current",
+      "name": "Reference input current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["IREF", "reference input current"],
+      "hint": "Current drawn from an external reference, A. On a multiplying DAC this scales with the ladder resistance and code; keep the code/reference in conditionsVerbatim."
+    },
+    {
+      "key": "reference_input_range",
+      "name": "Reference input range (multiplying)",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VREF range", "reference input range"],
+      "hint": "Multiplying DACs: the allowable reference-input voltage range, including the negative/four-quadrant range, V."
+    },
+    {
+      "key": "reference_input_resistance",
+      "name": "Reference input resistance (ladder)",
+      "unit": "ohm",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VREF input resistance", "ladder resistance", "RREF", "DC input impedance"],
+      "hint": "R-2R / multiplying DACs: the DC resistance looking into the reference (ladder) input, ohm. No SI prefix. Also carries a code-dependent DC input impedance where a part states one (not only the code-independent multiplying-ladder R) - keep the code in conditionsVerbatim."
+    },
+    {
+      "key": "reference_input_resistance_match",
+      "name": "Reference input resistance matching",
+      "unit": "%",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["RREF match", "input resistance match"],
+      "hint": "Channel-to-channel matching of the reference input (ladder) resistance on a multi-channel multiplying DAC, %."
+    },
+    {
+      "key": "feedback_resistance",
+      "name": "Feedback resistance (RFB)",
+      "unit": "ohm",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["RFB", "feedback resistor"],
+      "hint": "Multiplying DACs: the on-chip feedback resistor (RFB) used with the external I-to-V op-amp, ohm - matched to the ladder so gain tracks over temperature."
+    },
+    {
+      "key": "reference_input_capacitance",
+      "name": "Reference input capacitance",
+      "unit": "F",
+      "group": "reference",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "CODE",
+      "aliases": ["CREF", "VREF capacitance"],
+      "hint": "Multiplying DACs: capacitance at the reference input, F. Code-dependent (the switched ladder presents different capacitance per code) - array over CODE."
+    },
+    {
+      "key": "reference_input_impedance",
+      "name": "Reference input impedance",
+      "unit": "ohm",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["ZVREF", "reference input impedance"],
+      "hint": "AC input impedance at the reference input, ohm."
+    },
+    {
+      "key": "reference_output_noise",
+      "name": "Reference output noise",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["ENREF"],
+      "hint": "Output noise of the internal reference over a stated band, statistic peak_to_peak (carry statistic on the measurement); keep the bandwidth in conditionsVerbatim. V."
+    },
+    {
+      "key": "multiplying_bandwidth",
+      "name": "Multiplying bandwidth",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["multiplying bandwidth", "reference bandwidth"],
+      "hint": "Multiplying DACs: the -3 dB bandwidth of the reference-to-output (multiplying) path, Hz."
+    },
+    {
+      "key": "reference_feedthrough",
+      "name": "Reference feedthrough",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["multiplying feedthrough", "feedthrough error"],
+      "hint": "Multiplying DACs: reference feedthrough to the output at zero-scale code, dB, swept over reference frequency F_IN."
+    },
+    {
+      "key": "sample_rate",
+      "name": "Sample / update rate",
+      "unit": "Hz",
+      "group": "timing",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["fDAC", "update rate", "max update rate", "MSPS", "GSPS"],
+      "hint": "Maximum conversion / update rate in Hz (1 MSPS = 1e6, 1 GSPS = 1e9). Array over MODE (interpolation / speed mode) on interpolating current_steering parts."
+    },
+    {
+      "key": "max_data_rate",
+      "name": "Maximum input data rate",
+      "unit": "Hz",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["input data rate", "LVDS input rate", "Mbps"],
+      "hint": "Maximum parallel / LVDS input data rate, Hz. A printed Mbps figure stays in Hz (1 Mbps = 1e6) - there is no bps unit; keep the printed Mbps figure in conditionsVerbatim."
+    },
+    {
+      "key": "serdes_lane_rate",
+      "name": "SerDes lane rate",
+      "unit": "Hz",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["JESD204B lane rate", "Gbps", "bit rate per lane"],
+      "hint": "High-speed serial (JESD204B) lane bit rate, Hz. A printed Gbps figure stays in Hz (1 Gbps = 1e9) - there is no bps unit; keep the printed Gbps figure in conditionsVerbatim."
+    },
+    {
+      "key": "clock_frequency",
+      "name": "DAC clock frequency",
+      "unit": "Hz",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["DACCLK frequency", "sampling clock"],
+      "hint": "The DAC sampling clock (DACCLK) input frequency, Hz. Distinct from serial_clock_frequency (the digital-interface SCLK)."
+    },
+    {
+      "key": "latency",
+      "name": "Latency",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["pipeline delay", "digital latency"],
+      "hint": "Output pipeline latency, s. Convert cycles to seconds via the clock / fS; keep the cycle count (e.g. '12 DACCLK cycles') in conditionsVerbatim. Array over MODE (interpolation mode) where the latency depends on it."
+    },
+    {
+      "key": "power_up_time",
+      "name": "Power-up time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["power-up time", "wake-up time", "power-on settling"],
+      "hint": "Time from power-up / exit-of-power-down to a valid, settled output, s."
+    },
+    {
+      "key": "aperture_delay",
+      "name": "Aperture delay",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["tAD", "aperture delay"],
+      "hint": "Delay from the sampling clock edge to the output update instant, s (current_steering parts)."
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "group": "rejection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["PSRR", "PSR"],
+      "hint": "PSRR, dB. Array over F (frequency of the supply disturbance). power_supply_sensitivity is the DC %/% figure normalized to ppm/V."
+    },
+    {
+      "key": "power_supply_sensitivity",
+      "name": "Power-supply sensitivity",
+      "unit": "ppm/V",
+      "group": "power",
+      "optional": true,
+      "aliases": ["PSS", "power supply sensitivity", "DC PSRR", "uV/V"],
+      "hint": "DC sensitivity of the full-scale output to the supply. A printed %/% figure normalizes to ppm/V (e.g. 0.001%/% = 10 ppm/V for a nominal spec) - there is no %/% unit; keep the printed %/% in conditionsVerbatim."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "unit": "V",
+      "group": "power",
+      "array": true,
+      "conditionAxis": "V_SUPPLY",
+      "aliases": ["AVDD", "DVDD", "VDD", "supply voltage"],
+      "hint": "Rail supply voltage, V. A DAC has several rails (analog AVDD, digital DVDD, clock CLKVDD) - array over V_SUPPLY, one measurement per rail. IO rail is io_supply_voltage."
+    },
+    {
+      "key": "io_supply_voltage",
+      "name": "IO supply voltage",
+      "unit": "V",
+      "group": "power",
+      "optional": true,
+      "aliases": ["OVDD", "VDRIVE", "IO supply"],
+      "hint": "Digital-interface / IO rail voltage, V (OVDD / VDRIVE)."
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "unit": "A",
+      "group": "power",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["IDD", "ICC", "IVDD", "IAVDD", "supply current", "operating current"],
+      "hint": "Operating supply current, A. Array over MODE (speed / interpolation mode); split per rail via a rail condition in conditionsVerbatim."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "power",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["PD", "power dissipation"],
+      "hint": "Total operating power, W. Array over MODE."
+    },
+    {
+      "key": "power_down_current",
+      "name": "Power-down current",
+      "unit": "A",
+      "group": "power",
+      "optional": true,
+      "aliases": ["power-down current", "shutdown current", "sleep current"],
+      "hint": "Full power-down / shutdown / sleep current, A."
+    },
+    {
+      "key": "serial_clock_frequency",
+      "name": "Serial clock frequency",
+      "unit": "Hz",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["fSCL", "SCLK frequency", "SPI clock"],
+      "hint": "Maximum serial interface clock (SPI SCLK / I2C SCL), Hz."
+    },
+    {
+      "key": "digital_input_high_voltage",
+      "name": "Digital input high voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VIH", "input high voltage", "logic high threshold"],
+      "hint": "Minimum logic-high input threshold on a digital control pin, V."
+    },
+    {
+      "key": "digital_input_low_voltage",
+      "name": "Digital input low voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VIL", "input low voltage", "logic low threshold"],
+      "hint": "Maximum logic-low input threshold on a digital control pin, V."
+    },
+    {
+      "key": "digital_output_high_voltage",
+      "name": "Digital output high voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VOH", "output high voltage"],
+      "hint": "Logic-high output voltage on a digital pin (SDO) at the specified load, V."
+    },
+    {
+      "key": "digital_output_low_voltage",
+      "name": "Digital output low voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VOL", "output low voltage"],
+      "hint": "Logic-low output voltage on a digital pin at the specified load, V."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TA", "operating temperature range"],
+      "hint": "Ambient operating temperature range, degC (min/max)."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["TJ", "maximum junction temperature"],
+      "hint": "Maximum operating / absolute-max junction temperature, degC."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Storage temperature range, degC (min/max), typically an absolute_max."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "unit": "degC/W",
+      "group": "general",
+      "optional": true,
+      "aliases": ["RthetaJA"],
+      "hint": "Junction-to-ambient thermal resistance, degC/W."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case",
+      "unit": "degC/W",
+      "group": "general",
+      "optional": true,
+      "aliases": ["RthetaJC", "theta-JC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance, degC/W."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM"],
+      "hint": "Human-body-model ESD withstand voltage, V."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged-device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM"],
+      "hint": "Charged-device-model ESD withstand voltage, V."
+    },
+    {
+      "key": "long_term_stability",
+      "name": "Long-term stability",
+      "unit": "ppm",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["V"],
+      "aliases": ["long-term stability", "output voltage long-term stability", "1000-hour drift", "aging"],
+      "hint": "Long-term output drift / aging (precision high-res parts), ppm of full-scale (altUnits V). Keep the stated hour count (e.g. 1000 h) in conditionsVerbatim."
+    },
+    {
+      "key": "full_scale_error_drift",
+      "name": "Full-scale error drift",
+      "unit": "ppm/degC",
+      "group": "accuracy",
+      "optional": true,
+      "altUnits": ["V/degC"],
+      "aliases": ["full-scale error temperature coefficient", "FS error drift", "full-scale tempco"],
+      "hint": "Temperature coefficient of the full-scale error, ppm/degC of full-scale (altUnits V/degC). Distinct from gain_drift and offset_error_drift."
+    },
+    {
+      "key": "output_noise_rms",
+      "name": "Output noise (RMS)",
+      "unit": "V",
+      "group": "noise",
+      "optional": true,
+      "aliases": ["output noise RMS", "wideband output noise", "integrated output noise"],
+      "hint": "Wideband / integrated output noise, statistic rms (carry statistic on the measurement); keep the measurement bandwidth in conditionsVerbatim. V. Distinct from the 0.1-10 Hz peak-to-peak output_noise."
+    },
+    {
+      "key": "interpolation_ratio",
+      "name": "Interpolation ratio",
+      "unit": "V/V",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["interpolation ratio", "interpolation factor", "oversampling ratio (DAC)"],
+      "hint": "Dimensionless configurable interpolation / oversampling ratio (audio / current_steering). Capture the enumerated set with the list in conditionsVerbatim (parity with the ADC oversampling_ratio)."
+    },
+    {
+      "key": "mute_attenuation",
+      "name": "Mute attenuation",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["mute attenuation", "soft-mute attenuation", "mute level"],
+      "hint": "Audio DAC mute / soft-mute attenuation, dB."
+    }
+  ]
+}

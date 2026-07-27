@@ -1,0 +1,834 @@
+{
+  "family": "dac",
+  "manufacturer": "Texas Instruments",
+  "mpn": "DAC8811",
+  "parameters": [
+    {
+      "aliases": [
+        "N",
+        "bit depth"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "guaranteed monotonic",
+        "monotonic"
+      ],
+      "group": "general",
+      "key": "monotonicity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_design",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INL",
+        "relative accuracy"
+      ],
+      "group": "linearity",
+      "key": "integral_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 15.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DNL"
+      ],
+      "group": "linearity",
+      "key": "differential_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 15.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FSE",
+        "full-scale error",
+        "full-scale gain error"
+      ],
+      "group": "accuracy",
+      "key": "full_scale_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.004,
+            "typ": 0.001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TC gain",
+        "full-scale tempco",
+        "gain drift"
+      ],
+      "group": "accuracy",
+      "key": "gain_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOUT leakage",
+        "off leakage"
+      ],
+      "group": "analog_output",
+      "key": "output_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "TMAX (+85 degC, top of the specified range)",
+              "param": "T_A",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFS",
+        "IOUTFS",
+        "full-scale output current",
+        "output current"
+      ],
+      "group": "analog_output",
+      "key": "full_scale_output_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VREF range",
+        "reference input range"
+      ],
+      "group": "reference",
+      "key": "reference_input_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 15,
+            "min": -15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RREF",
+        "VREF input resistance",
+        "input resistance",
+        "ladder resistance"
+      ],
+      "group": "reference",
+      "key": "reference_input_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 5000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RFB",
+        "feedback resistor"
+      ],
+      "group": "reference",
+      "key": "feedback_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_design",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "Feature Description",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 5000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CREF",
+        "VREF capacitance",
+        "input capacitance"
+      ],
+      "group": "reference",
+      "key": "reference_input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "code-independent (VREF presents a constant 5 kohm load versus code)",
+              "param": "CODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "COUT",
+        "output cap"
+      ],
+      "group": "analog_output",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "code-dependent (IOUT-terminal impedance/capacitance changes versus code)",
+              "param": "CODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "BW -3 dB",
+        "multiplying bandwidth",
+        "reference bandwidth"
+      ],
+      "group": "dynamic",
+      "key": "multiplying_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dB",
+              "param": "BW_POINT",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 10000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "feed through error",
+        "feedthrough error",
+        "multiplying feedthrough"
+      ],
+      "group": "dynamic",
+      "key": "reference_feedthrough",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -70
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "THD",
+        "reference dynamics"
+      ],
+      "group": "dynamic",
+      "key": "total_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -105
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DAC glitch impulse",
+        "GI",
+        "glitch energy"
+      ],
+      "group": "dynamic",
+      "key": "glitch_impulse",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "digital feed through",
+        "feedthrough"
+      ],
+      "group": "dynamic",
+      "key": "digital_feedthrough",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_CLK",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Vs",
+          "value": {
+            "typ": 2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "eN",
+        "output spot noise voltage",
+        "spot noise"
+      ],
+      "group": "noise",
+      "key": "output_noise_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/sqrtHz",
+          "value": {
+            "typ": 1.2e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "output voltage settling time",
+        "ts"
+      ],
+      "group": "dynamic",
+      "key": "settling_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Data = 0000h to FFFFh to 0000h (full-scale)",
+              "param": "STEP",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+/-0.1% of full-scale",
+              "param": "ACCURACY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 3e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Data = 0000h to FFFFh to 0000h (full-scale)",
+              "param": "STEP",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+/-0.0015% of full-scale",
+              "param": "ACCURACY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 5e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDD",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VDD rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 2.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDD",
+        "operating current",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal operation, VDD = 4.5 V to 5.5 V, VIH = VDD and VIL = GND",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000005,
+            "typ": 0.000003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SCLK frequency",
+        "SPI clock",
+        "clock input frequency",
+        "fCLK"
+      ],
+      "group": "interface",
+      "key": "serial_clock_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Timing Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 50000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "CLK",
+      "name": "CLK",
+      "number": 1
+    },
+    {
+      "function": "SDI",
+      "name": "SDI",
+      "number": 2
+    },
+    {
+      "function": "RFB",
+      "name": "RFB",
+      "number": 3
+    },
+    {
+      "function": "VREF",
+      "name": "VREF",
+      "number": 4
+    },
+    {
+      "function": "IOUT",
+      "name": "IOUT",
+      "number": 5
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 6
+    },
+    {
+      "function": "VDD",
+      "name": "VDD",
+      "number": 7
+    },
+    {
+      "function": "CS",
+      "name": "CS",
+      "number": 8
+    }
+  ]
+}

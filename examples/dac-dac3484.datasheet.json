@@ -1,0 +1,607 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "DAC3484",
+    "manufacturer": "Texas Instruments",
+    "family": "dac",
+    "description": "16-bit, 1.25-GSPS, quad-channel current-steering digital-to-analog converter (sub_type: current_steering). Four 16-bit DAC cores with complementary current outputs, on-chip 2x/4x/8x interpolation, complex mixer/QMC, inverse-sinc, and an integer-N clock-multiplying PLL. Double-data-rate LVDS parallel input bus (D[15:0]P/N with DATACLKP/N, FRAMEP/N, PARITYP/N; 1250-MSPS interleaved, 312.5-MSPS per-channel data rate) and multi-device synchronization via OSTRP/N. Pinout (88-pin 9x9 mm WQFN, RKD): complementary current outputs IOUTAP/N, IOUTBP/N, IOUTCP/N, IOUTDP/N (differential, measured across IOUTP/N with 25 ohm each to GND); differential DAC sampling clock DACCLKP/N; output-strobe sync OSTRP/N; LVDS data bus D[15:0]P/N with DATACLKP/N, FRAMEP/N, PARITYP/N, SYNCP/N; BIASJ full-scale-current set (external RSET); EXTIO/VREF 1.2-V reference I/O; PLL loop-filter LPF; CMOS SPI control SCLK/SDIO/SDO/SDENB plus ALARM, SLEEP, RESETB, TXENABLE, TESTMODE; supplies AVDD and PLLAVDD (3.3 V), DIGVDD (1.2 V), CLKVDD and DACVDD (1.2 V), IOVDD (3.3 V) and GND.",
+    "package": "WQFN-88 (RKD)",
+    "pinCount": 88,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      {
+        "orderCode": "DAC3484IRKDT",
+        "package": "WQFN-88 (RKD)",
+        "temperatureGrade": "-40..85",
+        "packing": "Tape and Reel"
+      },
+      {
+        "orderCode": "DAC3484IRKDR",
+        "package": "WQFN-88 (RKD)",
+        "temperatureGrade": "-40..85",
+        "packing": "Tape and Reel"
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["N", "16-bit"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 16 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution = 16 bits",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "sample_rate",
+      "name": "Maximum DAC update rate",
+      "group": "timing",
+      "aliases": ["fDAC", "GSPS", "MSPS", "update rate"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 1250000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "fDAC Maximum DAC rate = 1250 MSPS (1.25 GSPS)",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range",
+      "group": "dynamic",
+      "aliases": ["SFDR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 82 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 20000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "0 dBFS" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "SFDR = 82 dBc; fDAC = 1.25 GSPS, fOUT = 20 MHz, tone at 0 dBFS (0 to fDAC/2); IOUTFS = 20 mA, 4:1 transformer output, 50-ohm doubly terminated load",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 77 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 50000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "0 dBFS" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "SFDR = 77 dBc; fDAC = 1.25 GSPS, fOUT = 50 MHz, tone at 0 dBFS (0 to fDAC/2)",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 72 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 70000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "0 dBFS" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "SFDR = 72 dBc; fDAC = 1.25 GSPS, fOUT = 70 MHz, tone at 0 dBFS (0 to fDAC/2)",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "third_order_imd",
+      "name": "Third-order two-tone intermodulation distortion",
+      "group": "dynamic",
+      "aliases": ["IMD3", "two-tone imd"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 81 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 30000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "-12 dBFS per tone" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "IMD3 = 81 dBc; fDAC = 1.25 GSPS, fOUT = 30 +/- 0.5 MHz, each tone at -12 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 79 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 50000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "-12 dBFS per tone" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "IMD3 = 79 dBc; fDAC = 1.25 GSPS, fOUT = 50 +/- 0.5 MHz, each tone at -12 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 77.5 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 100000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "-12 dBFS per tone" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "IMD3 = 77.5 dBc; fDAC = 1.25 GSPS, fOUT = 100 +/- 0.5 MHz, each tone at -12 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "noise_spectral_density",
+      "name": "Noise spectral density",
+      "group": "dynamic",
+      "aliases": ["NSD", "noise floor"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -160 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 10000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "0 dBFS" },
+            { "param": "REFERENCE", "note": "dBc/Hz" }
+          ],
+          "conditionsVerbatim": "NSD = -160 dBc/Hz, 0 dBFS; fDAC = 1.25 GSPS, fOUT = 10 MHz, tone at 0 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -155 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 80000000, "unit": "Hz" },
+            { "param": "A_OUT", "note": "0 dBFS" },
+            { "param": "REFERENCE", "note": "dBc/Hz" }
+          ],
+          "conditionsVerbatim": "NSD = -155 dBc/Hz; fDAC = 1.25 GSPS, fOUT = 80 MHz, tone at 0 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "adjacent_channel_leakage_ratio",
+      "name": "Adjacent channel leakage ratio (single carrier W-CDMA)",
+      "group": "dynamic",
+      "aliases": ["ACLR", "ACPR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 77 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1228800000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 30720000, "unit": "Hz" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "ACLR = 77 dBc (adjacent channel); fDAC = 1.2288 GSPS, fOUT = 30.72 MHz; single carrier W-CDMA, 3.84-MHz BW, 5-MHz spacing centered at IF, PAR = 12 dB, TESTMODEL 1",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 74 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1228800000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 153600000, "unit": "Hz" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "ACLR = 74 dBc (adjacent channel); fDAC = 1.2288 GSPS, fOUT = 153.6 MHz; single carrier W-CDMA, 3.84-MHz BW, 5-MHz spacing centered at IF, PAR = 12 dB, TESTMODEL 1",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "channel_isolation",
+      "name": "Channel isolation",
+      "group": "dynamic",
+      "aliases": ["channel isolation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 84 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 1250000000, "unit": "Hz" },
+            { "param": "F_OUT", "value": 10000000, "unit": "Hz" },
+            { "param": "REFERENCE", "note": "dBc" }
+          ],
+          "conditionsVerbatim": "Channel isolation = 84 dBc; fDAC = 1.25 GSPS, fOUT = 10 MHz",
+          "guarantee": "typical",
+          "sourcePage": 15,
+          "sourceTable": "Electrical Characteristics - AC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "full_scale_output_current",
+      "name": "Full-scale output current",
+      "group": "analog_output",
+      "aliases": ["IOUTFS", "IFS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.01, "typ": 0.02, "max": 0.03 },
+          "unit": "A",
+          "conditionsVerbatim": "IOUTFS, full-scale output current, programmable range 10/20/30 mA (min/typ/max), set by the BIASJ external resistor (RSET ~1.28 kohm -> 30 mA)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "output_compliance_voltage",
+      "name": "Output compliance range",
+      "group": "analog_output",
+      "aliases": ["output compliance range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.5, "max": 0.6 },
+          "unit": "V",
+          "conditionsVerbatim": "Output compliance range -0.5 V to 0.6 V",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "output_resistance",
+      "name": "Output resistance",
+      "group": "analog_output",
+      "aliases": ["ROUT", "output impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 300000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Output resistance = 300 kohm (differential across IOUTP/N)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "group": "analog_output",
+      "aliases": ["COUT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-12 },
+          "unit": "F",
+          "conditionsVerbatim": "Output capacitance = 5 pF",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "group": "linearity",
+      "aliases": ["INL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 61 },
+          "unit": "ppm",
+          "conditionsVerbatim": "INL = +/-4 LSB (1 LSB = IOUTFS/2^16); +/-4 LSB / 65536 = +/-61 ppm of full-scale",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "group": "linearity",
+      "aliases": ["DNL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 30.5 },
+          "unit": "ppm",
+          "conditionsVerbatim": "DNL = +/-2 LSB (1 LSB = IOUTFS/2^16); +/-2 LSB / 65536 = +/-30.5 ppm of full-scale",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "group": "accuracy",
+      "aliases": ["FSE"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2 },
+          "unit": "%",
+          "conditionsVerbatim": "Gain error = +/-2 %FSR typ (with internal reference)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "gain_mismatch",
+      "name": "Gain mismatch (channel-to-channel)",
+      "group": "accuracy",
+      "aliases": ["channel gain match"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2 },
+          "unit": "%",
+          "conditionsVerbatim": "Gain mismatch = +/-2 %FSR typ (with internal reference)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "offset_error",
+      "name": "Offset error",
+      "group": "accuracy",
+      "aliases": ["VOS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.001 },
+          "unit": "%",
+          "conditionsVerbatim": "Offset error = +/-0.001 %FSR typ (mid-code offset)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "gain_drift",
+      "name": "Gain drift",
+      "group": "accuracy",
+      "aliases": ["TC gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 30 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Gain drift = +/-30 ppm/degC (with internal reference)",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "internal_reference_voltage",
+      "name": "Internal reference voltage",
+      "group": "reference",
+      "aliases": ["VREF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2 },
+          "unit": "V",
+          "conditionsVerbatim": "VREF Reference output voltage = 1.2 V",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "internal_reference_drift",
+      "name": "Internal reference drift",
+      "group": "reference",
+      "aliases": ["TCVREF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Reference voltage drift = +/-8 ppm/degC",
+          "sourcePage": 12,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "clock_frequency",
+      "name": "DAC clock frequency",
+      "group": "timing",
+      "aliases": ["DACCLK frequency"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 1250000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "DACCLKP/N input frequency = 1250 MHz (max)",
+          "sourcePage": 15,
+          "sourceTable": "Timing Requirements - Digital Specifications"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "power",
+      "aliases": ["PD"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.27, "max": 1.32 },
+          "unit": "W",
+          "conditions": [
+            { "param": "MODE", "note": "Mode 1, fDAC = 1.25 GSPS" }
+          ],
+          "conditionsVerbatim": "P = 1270 mW typ (1320 mW max); Mode 1: fDAC = 1.25 GSPS, 4x interpolation, mixer on, QMC on, invsinc on, PLL enabled, 20-mA FS output, IF = 200 MHz",
+          "guarantee": "typical",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.765 },
+          "unit": "W",
+          "conditions": [
+            { "param": "MODE", "note": "Mode 3, fDAC = 625 MSPS" }
+          ],
+          "conditionsVerbatim": "P = 765 mW; Mode 3: fDAC = 625 MSPS, 2x interpolation, mixer on, QMC on, invsinc off, PLL disabled, 20-mA FS output, IF = 200 MHz",
+          "guarantee": "typical",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": ["AVDD", "DVDD", "VDD"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.14, "nom": 3.3, "max": 3.46 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "AVDD, IOVDD, PLLAVDD" }
+          ],
+          "conditionsVerbatim": "AVDD, IOVDD, PLLAVDD = 3.3 V nom (3.14 to 3.46 V), all conditions",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.14, "nom": 1.2, "max": 1.32 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DIGVDD" }
+          ],
+          "conditionsVerbatim": "DIGVDD = 1.2 V nom (1.14 to 1.32 V), all conditions",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.14, "nom": 1.2, "max": 1.32 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "CLKVDD, DACVDD" }
+          ],
+          "conditionsVerbatim": "CLKVDD, DACVDD = 1.2 V nom (1.14 to 1.32 V), fDAC <= 1.25 GSPS with PLL off (or <= 1 GSPS PLL on)",
+          "sourcePage": 13,
+          "sourceTable": "Electrical Characteristics - DC Specifications"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating free-air temperature range",
+      "group": "general",
+      "aliases": ["TA"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "TA Recommended free-air temperature = -40 to 85 degC (nom 25 degC)",
+          "sourcePage": 11,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "group": "general",
+      "aliases": ["RthetaJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 22.1 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "WQFN-88 (RKD)" }
+          ],
+          "conditionsVerbatim": "RthetaJA Junction-to-ambient thermal resistance = 22.1 degC/W (WQFN-88, RKD)",
+          "sourcePage": 12,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case (top)",
+      "group": "general",
+      "aliases": ["RthetaJC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.1 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "WQFN-88 (RKD)" }
+          ],
+          "conditionsVerbatim": "RthetaJC(top) Junction-to-case (top) thermal resistance = 7.1 degC/W (WQFN-88, RKD)",
+          "sourcePage": 12,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "2d6c4c265fa9aa7d3bc549d86d9f9d02aa9f8f0773a9fdd7d601e02a352be39f",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/dac3484.pdf",
+    "datasheetRevision": "SLAS749E - MARCH 2011 - REVISED NOVEMBER 2015",
+    "publishedDate": "2015-11",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
