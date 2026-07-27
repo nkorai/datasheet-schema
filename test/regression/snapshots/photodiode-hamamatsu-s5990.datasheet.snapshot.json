@@ -1,0 +1,517 @@
+{
+  "family": "photodiode",
+  "manufacturer": "Hamamatsu",
+  "mpn": "S5990-01",
+  "parameters": [
+    {
+      "aliases": [
+        "S",
+        "photosensitivity",
+        "responsivity"
+      ],
+      "group": "optical",
+      "key": "responsivity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 9.6e-7
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A/W",
+          "value": {
+            "typ": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lambda_p",
+        "peak sensitivity wavelength"
+      ],
+      "group": "optical",
+      "key": "peak_wavelength",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 9.6e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lambda",
+        "spectral response range"
+      ],
+      "group": "optical",
+      "key": "spectral_response_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.0000011,
+            "min": 3.2e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "A",
+        "photosensitive area"
+      ],
+      "group": "mechanical",
+      "key": "photosensitive_area",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Structure",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m2",
+          "value": {
+            "typ": 0.000016
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Rie",
+        "interelectrode resistance"
+      ],
+      "group": "position",
+      "key": "interelectrode_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 0.1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 15000,
+            "min": 5000,
+            "typ": 7000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "E",
+        "position detection error"
+      ],
+      "group": "position",
+      "key": "position_detection_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 9e-7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.00015,
+            "typ": 0.00007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ist",
+        "saturation photocurrent"
+      ],
+      "group": "position",
+      "key": "saturation_photocurrent",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 9e-7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID",
+        "dark current"
+      ],
+      "group": "electrical",
+      "key": "dark_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-8,
+            "typ": 5e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "speed",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 9e-7
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ct",
+        "terminal capacitance"
+      ],
+      "group": "electrical",
+      "key": "terminal_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 7e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delta_R",
+        "position resolution"
+      ],
+      "group": "position",
+      "key": "position_resolution",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.000001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 7e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR max",
+        "reverse voltage"
+      ],
+      "group": "electrical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Topr",
+        "operating temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 60,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 80,
+            "min": -20
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE_X1",
+      "name": "Anode X1",
+      "number": 1
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    },
+    {
+      "function": "ANODE_Y1",
+      "name": "Anode Y1",
+      "number": 5
+    },
+    {
+      "function": "ANODE_X2",
+      "name": "Anode X2",
+      "number": 6
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 7
+    },
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 8
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 9
+    },
+    {
+      "function": "ANODE_Y2",
+      "name": "Anode Y2",
+      "number": 10
+    }
+  ]
+}

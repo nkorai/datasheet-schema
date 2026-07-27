@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "S1223",
+    "manufacturer": "Hamamatsu Photonics",
+    "family": "photodiode",
+    "description": "Silicon PIN photodiode for visible-to-near-IR precision photometry, in a TO-5 metal can with a borosilicate glass window. Effective photosensitive area 6.6 mm2 (2.4 x 2.8 mm active surface). Spectral response 320-1100 nm, peak sensitivity 960 nm, peak photosensitivity 0.6 A/W. Low dark current (0.1 nA typ at VR=20 V), low terminal capacitance (10 pF), and a 30 MHz cutoff frequency for high-speed response.",
+    "package": "TO-5",
+    "pinCount": 3,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..100",
+    "orderingVariants": [
+      { "orderCode": "S1223", "package": "TO-5" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Photodiode anode (p-side). Sources the photocurrent under reverse or photovoltaic bias.", "sourcePage": 3 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Photodiode cathode (n-side). Reverse bias VR is applied here (VR max 30 V).", "sourcePage": 3 },
+    { "number": 3, "name": "Case", "function": "CASE", "type": "passive", "description": "Metal TO-5 header/case. The dimensional-outline drawing marks the photosensitive-area electrode as 'Connected to case'. The datasheet does not letter the two leads (anode/cathode) nor number which lead ties to the case; the lead-to-function mapping here is nominal.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "group": "optical",
+      "aliases": ["λ", "spectral response range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.2e-7, "max": 1.1e-6 },
+          "unit": "m",
+          "conditionsVerbatim": "Spectral response range λ = 320 to 1100 nm.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "group": "optical",
+      "aliases": ["λp", "peak sensitivity wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.6e-7 },
+          "unit": "m",
+          "conditionsVerbatim": "Peak sensitivity wavelength λp = 960 nm (typ).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "responsivity",
+      "name": "Photosensitivity (responsivity)",
+      "group": "optical",
+      "aliases": ["S", "photosensitivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.6 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 9.6e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S = 0.6 A/W (typ) at λ=λp (960 nm).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.45 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 6.6e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S = 0.45 A/W (typ) at λ=660 nm.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.52 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 7.8e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S = 0.52 A/W (typ) at λ=780 nm.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.54 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 8.3e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S = 0.54 A/W (typ) at λ=830 nm.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_area",
+      "name": "Effective photosensitive area",
+      "group": "mechanical",
+      "aliases": ["effective photosensitive area", "active area"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.6e-6 },
+          "unit": "m2",
+          "conditionsVerbatim": "Effective photosensitive area = 6.6 mm2 (photosensitive area size 2.4 x 2.8 mm).",
+          "sourcePage": 1,
+          "sourceTable": "Structure"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Short-circuit current",
+      "group": "electrical",
+      "aliases": ["Isc", "short circuit current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5e-6, "typ": 6.3e-6 },
+          "unit": "A",
+          "conditionsVerbatim": "Short circuit current Isc = 5 µA (min) / 6.3 µA (typ) at 100 lx. The 100 lx illuminance stimulus is retained verbatim (lux is a photometric unit outside the base-SI enum and is not unit-normalized).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "group": "electrical",
+      "aliases": ["ID", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-10, "max": 1e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 20, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Dark current ID = 0.1 nA (typ) / 10 nA (max) at VR=20 V. The multiplicative temperature factor is stored in dark_current_temperature_factor.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "dark_current_temperature_factor",
+      "name": "Dark-current temperature factor",
+      "group": "electrical",
+      "aliases": ["TCID", "temperature coefficient of dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.15 },
+          "unit": "1",
+          "conditionsVerbatim": "Temperature coefficient of dark current TCID = 1.15 times/°C (a multiplicative factor per degC - dark current is multiplied by 1.15 for each degC rise; NOT a small additive tempco).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Cutoff frequency (bandwidth)",
+      "group": "speed",
+      "aliases": ["fc", "cutoff frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "V_R", "value": 20, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Cutoff frequency fc = 30 MHz (typ) at VR=20 V, -3 dB.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal (junction) capacitance",
+      "group": "electrical",
+      "aliases": ["Ct", "terminal capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 20, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Terminal capacitance Ct = 10 pF (typ) at VR=20 V, f=1 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "nep",
+      "name": "Noise equivalent power",
+      "group": "noise",
+      "aliases": ["NEP", "noise equivalent power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.4e-15 },
+          "unit": "W/sqrtHz",
+          "conditions": [
+            { "param": "V_R", "value": 20, "unit": "V" },
+            { "param": "LAMBDA", "value": 9.6e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Noise equivalent power NEP = 9.4 x 10-15 W/Hz1/2 (typ) at VR=20 V, λ=λp (960 nm).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics (Ta=25 °C)"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (maximum)",
+      "group": "electrical",
+      "aliases": ["VR max", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 30 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR max = 30 V (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "thermal",
+      "aliases": ["P", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "W",
+          "conditionsVerbatim": "Power dissipation P = 100 mW (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Topr", "operating temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Topr = -40 to +100 °C.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -55 to +125 °C (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "f46d11ed717a2627ec0209f325a2bdbea7ac6f7cf3c4bf6deeba0117747f312f",
+    "sourceUrl": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/s1223_series_kpin1050e.pdf",
+    "datasheetRevision": "KPIN1050E02",
+    "publishedDate": "2013-02",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

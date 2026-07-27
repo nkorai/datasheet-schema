@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "PD-SI-X", "manufacturer": "Y", "family": "photodiode" },
+  "parameters": [
+    { "key": "responsivity", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.6 }, "unit": "A/W",
+        "conditions": [ { "param": "LAMBDA", "value": 9.6e-7, "unit": "m" } ],
+        "conditionsVerbatim": "photosensitivity S = 0.6 A/W at lambda_p = 960 nm", "sourcePage": 1 } ] },
+    { "key": "nep", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 9.4e-15 }, "unit": "W/sqrtHz",
+        "conditions": [ { "param": "V_R", "value": 20, "unit": "V" } ],
+        "conditionsVerbatim": "NEP = 9.4e-15 W/Hz^1/2 at VR = 20 V, lambda_p", "sourcePage": 1 } ] },
+    { "key": "photosensitive_area", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 7.5e-6 }, "unit": "m2",
+        "conditionsVerbatim": "radiant sensitive area 7.5 mm2", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false }
+}

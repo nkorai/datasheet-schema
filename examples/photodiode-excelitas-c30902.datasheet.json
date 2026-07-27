@@ -1,0 +1,434 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "C30902EH",
+    "manufacturer": "Excelitas Technologies",
+    "family": "photodiode",
+    "description": "Silicon reach-through avalanche photodiode (APD) in a hermetic flat-glass TO-18 package, 500 um circular active area, 400-1100 nm spectral response. A double-diffused reach-through structure for low-light detection at typical avalanche gains larger than 100; recommended operating gain M = 150, at which it delivers 70-80 A/W responsivity, ~800 MHz bandwidth, and a 1.23 fW/sqrt(Hz) noise-equivalent power. Each unit is factory-tested and shipped with its own operating voltage VOP (below the 185-260 V breakdown) that yields M = 150 at 22 degC. Anode (-) and cathode (+) leads; the cathode is reverse-biased positive. All specifications at TA = 22 degC, lambda = 800 nm, M = 150 unless noted.",
+    "package": "TO-18 (hermetic, flat glass window)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "C30902EH", "package": "TO-18, flat glass window" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "ANODE", "function": "ANODE", "type": "passive", "description": "APD anode, marked ANODE (-) on the package outline. The negative bias terminal; the photocurrent return.", "sourcePage": 5 },
+    { "number": 2, "name": "CATHODE", "function": "CATHODE", "type": "passive", "description": "APD cathode, marked CATHODE (+) on the package outline. Reverse-biased positive to the per-device operating voltage VOP (below breakdown) that sets M = 150.", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "breakdown_voltage",
+      "name": "Breakdown voltage",
+      "group": "avalanche",
+      "aliases": ["VBD", "VBR", "breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 185, "typ": 225, "max": 260 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 22, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Breakdown Voltage VBD = 185 (min) / 225 (typ) / 260 (max) V at TA = 22 degC. Each device ships with a per-unit operating voltage VOP that sits below VBD and yields M = 150 at 22 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "group": "optical",
+      "aliases": ["lambda_peak", "peak responsivity", "peak wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-7 },
+          "unit": "m",
+          "conditionsVerbatim": "Peak Responsivity lambda_peak = 800 nm (typ).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters"
+        }
+      ]
+    },
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "group": "optical",
+      "aliases": ["spectral range", "delta lambda", "spectral response range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4e-7, "max": 1.1e-6 },
+          "unit": "m",
+          "conditionsVerbatim": "Spectral Range delta-lambda = 400 nm (min) to 1100 nm (max).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters"
+        }
+      ]
+    },
+    {
+      "key": "quantum_efficiency",
+      "name": "Quantum efficiency",
+      "group": "optical",
+      "aliases": ["QE", "quantum efficiency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 84 },
+          "unit": "%",
+          "conditions": [
+            { "param": "LAMBDA", "value": 8e-7, "unit": "m" },
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Quantum Efficiency QE = 84% (typ) at lambda = 800 nm, M = 150. Not directly measured; linked to the typical responsivity by QE = 1240*R / (lambda_nm * M).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters"
+        }
+      ]
+    },
+    {
+      "key": "multiplication_gain",
+      "name": "Multiplication (avalanche) gain",
+      "group": "avalanche",
+      "aliases": ["M", "recommended operating gain", "gain"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "typ": 150 },
+          "unit": "1",
+          "conditions": [
+            { "param": "T_A", "value": 22, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Recommended Operating Gain M = 150 (typ). Reached at the per-device operating voltage VOP (supplied with each unit) at TA = 22 degC; VOP is below the breakdown voltage VBD.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "responsivity",
+      "name": "Responsivity (photosensitivity)",
+      "group": "optical",
+      "aliases": ["R", "responsivity", "photosensitivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 70, "typ": 80 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 8e-7, "unit": "m" },
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Responsivity R = 70 (min) / 80 (typ) A/W at lambda = 800 nm and gain M = 150. This is the AT-GAIN (M = 150) responsivity, not the intrinsic value: the intrinsic M = 1 responsivity R0 = R/M ~ 0.53 A/W (80/150). QE = 1240*R/(lambda_nm*M) with R = 80 gives ~83%, consistent with the 84% QE spec.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "group": "speed",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-10 },
+          "unit": "s",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Rise Time / Fall Time tr/tf = 0.4 ns (typ) at M = 150, estimated by tr/f = 0.35 / f3dB.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "group": "speed",
+      "aliases": ["tf", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-10 },
+          "unit": "s",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Rise Time / Fall Time tr/tf = 0.4 ns (typ) at M = 150, estimated by tr/f = 0.35 / f3dB.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Cutoff frequency (bandwidth)",
+      "group": "speed",
+      "aliases": ["f3dB", "bandwidth", "cutoff frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e8 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Bandwidth f3dB = 800 MHz (typ) at M = 150. Responsivity is flat versus modulation frequency up to about 800 MHz.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient_breakdown_voltage",
+      "name": "Temperature coefficient of breakdown voltage",
+      "group": "avalanche",
+      "aliases": ["V/T", "dVbr/dT", "temperature coefficient of breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.5, "typ": 0.7, "max": 0.9 },
+          "unit": "V/degC",
+          "conditionsVerbatim": "Temperature Coefficient of VBD (V/T) = 0.5 (min) / 0.7 (typ) / 0.9 (max) V/degC. Positive; forces a bias-compensation loop to hold constant gain over temperature.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal (junction) capacitance",
+      "group": "electrical",
+      "aliases": ["C", "Cj", "capacitance", "terminal capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-12, "max": 1.8e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "T_A", "value": 22, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Capacitance C = 1.5 pF (typ) / 1.8 pF (max) at TA = 22 degC. Datasheet does not tabulate the measurement bias; measured at the operating voltage. See Figure 9 for capacitance vs. reverse voltage.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "group": "electrical",
+      "aliases": ["iD", "ID", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-9, "max": 1e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" },
+            { "param": "T_A", "value": 22, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Dark Current iD = 7 nA (typ) / 10 nA (max) at M = 150, TA = 22 degC. Total dark current is surface plus multiplied bulk: iD = iDS + iDB*M.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "noise_current_density",
+      "name": "Noise current density",
+      "group": "noise",
+      "aliases": ["iN", "dark noise", "noise current density"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-13, "max": 2.5e-13 },
+          "unit": "A/sqrtHz",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" }
+          ],
+          "conditionsVerbatim": "Dark Noise iN = 0.1 pA/sqrt(Hz) (typ) / 0.25 pA/sqrt(Hz) (max) at M = 150, in dark conditions.",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "nep",
+      "name": "Noise equivalent power",
+      "group": "noise",
+      "aliases": ["NEP", "noise equivalent power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.23e-15 },
+          "unit": "W/sqrtHz",
+          "conditions": [
+            { "param": "M", "value": 150, "unit": "1" },
+            { "param": "LAMBDA", "value": 8e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Noise Equivalent Power NEP = 1.23 fW/sqrt(Hz) (typ) at M = 150, lambda = 800 nm, in dark conditions, per NEP = iN / R(lambda).",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "excess_noise_k_factor",
+      "name": "Excess noise k-factor",
+      "group": "avalanche",
+      "aliases": ["keff", "k", "k-factor", "effective k factor"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.02 },
+          "unit": "1",
+          "conditionsVerbatim": "Effective ionization-rate ratio keff = 0.02 (typ), a material property of the C30902SH series. Sets the excess noise factor F(M, keff) = keff*M + (2 - 1/M)(1 - keff).",
+          "sourcePage": 3,
+          "sourceTable": "Table 4 note 3 (Dark Noise / ENF)"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_diameter",
+      "name": "Photosensitive diameter",
+      "group": "mechanical",
+      "aliases": ["useful diameter", "active diameter", "photosensitive diameter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "Useful Diameter = 0.5 mm (circular active area).",
+          "sourcePage": 2,
+          "sourceTable": "Table 2: Ordering Information"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_area",
+      "name": "Photosensitive (active) area",
+      "group": "mechanical",
+      "aliases": ["useful area", "active area", "photosensitive area"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-7 },
+          "unit": "m2",
+          "conditionsVerbatim": "Useful Area = 0.2 mm2 (circular active area).",
+          "sourcePage": 2,
+          "sourceTable": "Table 2: Ordering Information"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "thermal",
+      "aliases": ["Ptot", "total power dissipation", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.06 },
+          "unit": "W",
+          "conditionsVerbatim": "Total Power dissipation Ptot = 60 mW (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["TOp", "operating temperature", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature TOp = -40 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["TS", "Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -60, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature TS = -60 to 100 degC (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (maximum)",
+      "group": "electrical",
+      "aliases": ["IF", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.005 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward current IF = 5 mA average (absolute maximum); 50 mA single peak for 1 s (kept as the average value; peak noted here).",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current (maximum)",
+      "group": "electrical",
+      "aliases": ["IR", "reverse current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.0002 },
+          "unit": "A",
+          "conditionsVerbatim": "Reverse current IR = 200 uA average (absolute maximum); 1 mA single peak for 1 s. A stress rating, distinct from the characterized dark current.",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 200 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature 200 degC for 5 s (leads only), absolute maximum.",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "32deba680d063efd73c70acf8be123509ad5b40872d9aef7cb609fa46851aaef",
+    "sourceUrl": "https://www.excelitas.com/sites/default/files/assets/product/document/24781.pdf",
+    "datasheetRevision": "Rev.2022.02",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,708 @@
+{
+  "family": "photodiode",
+  "manufacturer": "Excelitas Technologies",
+  "mpn": "C30902EH",
+  "parameters": [
+    {
+      "aliases": [
+        "VBD",
+        "VBR",
+        "breakdown voltage"
+      ],
+      "group": "avalanche",
+      "key": "breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 22
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 260,
+            "min": 185,
+            "typ": 225
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lambda_peak",
+        "peak responsivity",
+        "peak wavelength"
+      ],
+      "group": "optical",
+      "key": "peak_wavelength",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 8e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delta lambda",
+        "spectral range",
+        "spectral response range"
+      ],
+      "group": "optical",
+      "key": "spectral_response_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.0000011,
+            "min": 4e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "QE",
+        "quantum efficiency"
+      ],
+      "group": "optical",
+      "key": "quantum_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 8e-7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1: Key parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 84
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "M",
+        "gain",
+        "recommended operating gain"
+      ],
+      "group": "avalanche",
+      "key": "multiplication_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 22
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "R",
+        "photosensitivity",
+        "responsivity"
+      ],
+      "group": "optical",
+      "key": "responsivity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 8e-7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A/W",
+          "value": {
+            "min": 70,
+            "typ": 80
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "speed",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 4e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "tf"
+      ],
+      "group": "speed",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 4e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "bandwidth",
+        "cutoff frequency",
+        "f3dB"
+      ],
+      "group": "speed",
+      "key": "cutoff_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 800000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V/T",
+        "dVbr/dT",
+        "temperature coefficient of breakdown voltage"
+      ],
+      "group": "avalanche",
+      "key": "temperature_coefficient_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "max": 0.9,
+            "min": 0.5,
+            "typ": 0.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "C",
+        "Cj",
+        "capacitance",
+        "terminal capacitance"
+      ],
+      "group": "electrical",
+      "key": "terminal_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 22
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 1.8e-12,
+            "typ": 1.5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID",
+        "dark current",
+        "iD"
+      ],
+      "group": "electrical",
+      "key": "dark_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 22
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-8,
+            "typ": 7e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dark noise",
+        "iN",
+        "noise current density"
+      ],
+      "group": "noise",
+      "key": "noise_current_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A/sqrtHz",
+          "value": {
+            "max": 2.5e-13,
+            "typ": 1e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NEP",
+        "noise equivalent power"
+      ],
+      "group": "noise",
+      "key": "nep",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "M",
+              "unit": "1",
+              "value": 150
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "LAMBDA",
+              "unit": "m",
+              "value": 8e-7
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4: Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/sqrtHz",
+          "value": {
+            "typ": 1.23e-15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "effective k factor",
+        "k",
+        "k-factor",
+        "keff"
+      ],
+      "group": "avalanche",
+      "key": "excess_noise_k_factor",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 4 note 3 (Dark Noise / ENF)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "active diameter",
+        "photosensitive diameter",
+        "useful diameter"
+      ],
+      "group": "mechanical",
+      "key": "photosensitive_diameter",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 2: Ordering Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 0.0005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "active area",
+        "photosensitive area",
+        "useful area"
+      ],
+      "group": "mechanical",
+      "key": "photosensitive_area",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 2: Ordering Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m2",
+          "value": {
+            "typ": 2e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ptot",
+        "power dissipation",
+        "total power dissipation"
+      ],
+      "group": "thermal",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TOp",
+        "operating temperature",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TS",
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -60
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "forward current"
+      ],
+      "group": "electrical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "reverse current"
+      ],
+      "group": "electrical",
+      "key": "reverse_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Table 3: Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 200
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "ANODE",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "CATHODE",
+      "number": 2
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "S5990-01",
+    "manufacturer": "Hamamatsu",
+    "family": "photodiode",
+    "description": "2-D tetra-lateral position-sensitive detector (PSD), 4x4 mm active area, ceramic SMD. A surface-mount silicone-resin-windowed 2-D PSD with a single resistive photosensitive layer and four position electrodes (X1/X2/Y1/Y2 anodes) plus a common cathode; the light spot's (x, y) coordinate is recovered from the four electrode photocurrents. Spectral response 320-1100 nm (Si), peak 960 nm, responsivity 0.6 A/W at the peak. Position detection error +/-70 um typ, position resolution 0.7 um. Tray-packed (S5990-01); the S5990-11 sibling is the reel-packed variant.",
+    "package": "Ceramic chip carrier, surface mount, 10-terminal",
+    "pinCount": 10,
+    "lifecycle": "active",
+    "temperatureGrade": "-20..60",
+    "orderingVariants": [
+      { "orderCode": "S5990-01", "package": "Ceramic chip carrier, surface mount, 10-terminal", "packing": "Tray (100 pcs max./tray)" },
+      { "orderCode": "S5990-11", "package": "Ceramic chip carrier, surface mount, 10-terminal", "packing": "Embossed tape and reel (1000 pcs/reel)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode X1", "function": "ANODE_X1", "type": "analog", "description": "X-axis position electrode 1 (anode). One end of the resistive layer's X divider; its photocurrent IX1 enters the x = LX/2 * ((IX2+IY1)-(IX1+IY2))/(sum) position formula.", "sourcePage": 3 },
+    { "number": 2, "name": "NC", "function": "NC", "type": "passive", "description": "No connection. Must be left open-circuited.", "sourcePage": 3 },
+    { "number": 3, "name": "NC", "function": "NC", "type": "passive", "description": "No connection. Must be left open-circuited.", "sourcePage": 3 },
+    { "number": 4, "name": "NC", "function": "NC", "type": "passive", "description": "No connection. Must be left open-circuited.", "sourcePage": 3 },
+    { "number": 5, "name": "Anode Y1", "function": "ANODE_Y1", "type": "analog", "description": "Y-axis position electrode 1 (anode). One end of the resistive layer's Y divider; supplies photocurrent IY1.", "sourcePage": 3 },
+    { "number": 6, "name": "Anode X2", "function": "ANODE_X2", "type": "analog", "description": "X-axis position electrode 2 (anode). Opposing end of the X divider; supplies photocurrent IX2.", "sourcePage": 3 },
+    { "number": 7, "name": "NC", "function": "NC", "type": "passive", "description": "No connection. Must be left open-circuited.", "sourcePage": 3 },
+    { "number": 8, "name": "Cathode", "function": "CATHODE", "type": "analog", "description": "Common cathode / back electrode. The reverse-bias (VR) return common to the whole detector; the four anode photocurrents sum through it.", "sourcePage": 3 },
+    { "number": 9, "name": "NC", "function": "NC", "type": "passive", "description": "No connection. Must be left open-circuited.", "sourcePage": 3 },
+    { "number": 10, "name": "Anode Y2", "function": "ANODE_Y2", "type": "analog", "description": "Y-axis position electrode 2 (anode). Opposing end of the Y divider; supplies photocurrent IY2.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "responsivity",
+      "name": "Photosensitivity (responsivity)",
+      "group": "optical",
+      "aliases": ["S", "photosensitivity", "responsivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.6 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 9.6e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S = 0.6 A/W (typ) at lambda = lambda_p (peak sensitivity wavelength 960 nm), Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "group": "optical",
+      "aliases": ["lambda_p", "peak sensitivity wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.6e-7 },
+          "unit": "m",
+          "conditionsVerbatim": "Peak sensitivity wavelength lambda_p = 960 nm (typ), Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "group": "optical",
+      "aliases": ["lambda", "spectral response range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.2e-7, "max": 1.1e-6 },
+          "unit": "m",
+          "conditionsVerbatim": "Spectral response range lambda = 320 to 1100 nm, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_area",
+      "name": "Photosensitive area",
+      "group": "mechanical",
+      "aliases": ["A", "photosensitive area"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.6e-5 },
+          "unit": "m2",
+          "conditionsVerbatim": "Photosensitive area A = 4 x 4 mm (16 mm^2).",
+          "sourcePage": 1,
+          "sourceTable": "Structure"
+        }
+      ]
+    },
+    {
+      "key": "interelectrode_resistance",
+      "name": "Interelectrode resistance",
+      "group": "position",
+      "aliases": ["Rie", "interelectrode resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5000, "typ": 7000, "max": 15000 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_R", "value": 0.1, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Interelectrode resistance Rie = 5 (min) / 7 (typ) / 15 (max) kOhm at Vb = 0.1 V, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "position_detection_error",
+      "name": "Position detection error",
+      "group": "position",
+      "aliases": ["E", "position detection error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-5, "max": 1.5e-4 },
+          "unit": "m",
+          "conditions": [
+            { "param": "LAMBDA", "value": 9e-7, "unit": "m" },
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Position detection error E = +/-70 um (typ) / +/-150 um (max) at lambda = 900 nm, VR = 5 V, light spot phi 0.2 mm, specified within a circle that is 80% of the photosensitive area. Stored as the magnitude of the +/- bound.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "saturation_photocurrent",
+      "name": "Saturation photocurrent",
+      "group": "position",
+      "aliases": ["Ist", "saturation photocurrent"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-4 },
+          "unit": "A",
+          "conditions": [
+            { "param": "LAMBDA", "value": 9e-7, "unit": "m" },
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "R_L", "value": 1000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Saturation photocurrent Ist = 500 uA (typ) at lambda = 900 nm, VR = 5 V, RL = 1 kOhm, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "group": "electrical",
+      "aliases": ["ID", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-10, "max": 1e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Dark current ID = 0.5 nA (typ) / 10 nA (max) at VR = 5 V, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "group": "speed",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "R_L", "value": 1000, "unit": "ohm" },
+            { "param": "LAMBDA", "value": 9e-7, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Rise time tr = 1 us (typ) at VR = 5 V, RL = 1 kOhm, lambda = 900 nm, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal capacitance",
+      "group": "electrical",
+      "aliases": ["Ct", "terminal capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "F", "value": 1e4, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Terminal capacitance Ct = 70 pF (typ) at VR = 5 V, f = 10 kHz, Ta = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "position_resolution",
+      "name": "Position resolution",
+      "group": "position",
+      "aliases": ["delta_R", "position resolution"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_OUT", "value": 1e-6, "unit": "A" },
+            { "param": "F", "value": 1e3, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Position resolution delta_R = 0.7 um (typ) at Io = 1 uA, B = 1 kHz, specified within a circle that is 80% of the photosensitive area, Ta = 25 degC. B is the measurement (noise) bandwidth.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (maximum)",
+      "group": "electrical",
+      "aliases": ["VR max", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 20 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR max = 20 V (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature",
+      "group": "thermal",
+      "aliases": ["Topr", "operating temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -20, "max": 60 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Topr = -20 to +60 degC. No dew condensation.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -20, "max": 80 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -20 to +80 degC (absolute maximum rating). No dew condensation.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "73abd6311f28ed91c20a6883148eb57f1aab156314da1142c5deb70cfe9f2589",
+    "sourceUrl": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/s5990-01_etc_kpsd1010e.pdf",
+    "datasheetRevision": "KPSD1010E14",
+    "publishedDate": "2026-03",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

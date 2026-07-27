@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "PD-SI-X", "manufacturer": "Y", "family": "photodiode" },
+  "parameters": [
+    { "key": "responsivity", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.6 }, "unit": "W/A", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false },
+  "notes": ["Schema-valid (W/A is a legal enum unit) but wrong dimension: a detector's responsivity is amperes of photocurrent PER incident watt (A/W), the reciprocal of a laser emitter's W/A slope efficiency. Using the emitter's W/A for a detector inverts the transfer direction. The family unit-scoping check must reject this, since photodiode's responsivity declares unit A/W."]
+}

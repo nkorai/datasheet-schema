@@ -1,0 +1,659 @@
+{
+  "family": "photodiode",
+  "manufacturer": "onsemi",
+  "mpn": "MICROFC-60035-SMT",
+  "parameters": [
+    {
+      "aliases": [
+        "VBR",
+        "V_BR",
+        "Vbr",
+        "breakdown voltage"
+      ],
+      "group": "avalanche",
+      "key": "breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 24.7,
+            "min": 24.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOP",
+        "Vop",
+        "operating voltage",
+        "overvoltage",
+        "recommended overvoltage"
+      ],
+      "group": "avalanche",
+      "key": "operating_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5,
+            "min": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lambda_p",
+        "peak sensitivity wavelength",
+        "peak wavelength"
+      ],
+      "group": "optical",
+      "key": "peak_wavelength",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 4.2e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "spectral range",
+        "spectral response range",
+        "wavelength range"
+      ],
+      "group": "optical",
+      "key": "spectral_response_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 9.5e-7,
+            "min": 3e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PDE",
+        "photon detection efficiency"
+      ],
+      "group": "sipm",
+      "key": "photon_detection_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 31
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 41
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "M",
+        "avalanche gain",
+        "gain",
+        "multiplication gain"
+      ],
+      "group": "avalanche",
+      "key": "multiplication_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 3000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID",
+        "Id",
+        "dark current"
+      ],
+      "group": "electrical",
+      "key": "dark_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00000175,
+            "typ": 6.18e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DCR",
+        "dark count rate"
+      ],
+      "group": "sipm",
+      "key": "dark_count_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 3400000,
+            "typ": 1200000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "crosstalk",
+        "optical crosstalk"
+      ],
+      "group": "sipm",
+      "key": "crosstalk",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AP",
+        "afterpulse probability",
+        "afterpulsing"
+      ],
+      "group": "sipm",
+      "key": "afterpulsing",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cd",
+        "Ct",
+        "capacitance",
+        "terminal capacitance"
+      ],
+      "group": "electrical",
+      "key": "terminal_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 21
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 3.4e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "speed",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "breakdown voltage tempco",
+        "dVbr/dT",
+        "temperature dependence of Vbr"
+      ],
+      "group": "avalanche",
+      "key": "temperature_coefficient_breakdown_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": 0.0215
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "gain tempco",
+        "temperature dependence of gain"
+      ],
+      "group": "sipm",
+      "key": "temperature_coefficient_gain",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": -8000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "A",
+        "active area",
+        "photosensitive area"
+      ],
+      "group": "mechanical",
+      "key": "photosensitive_area",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m2",
+          "value": {
+            "typ": 0.000036
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "N_cells",
+        "microcells",
+        "number of microcells"
+      ],
+      "group": "sipm",
+      "key": "number_of_microcells",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 18980
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "cell pitch",
+        "microcell pitch",
+        "microcell size"
+      ],
+      "group": "sipm",
+      "key": "microcell_size",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 0.000035
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fill factor",
+        "geometric fill factor",
+        "microcell fill factor"
+      ],
+      "group": "sipm",
+      "key": "fill_factor",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 64
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Topr",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Table 3. Package Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "maximum storage temperature",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Table 3. Package Parameters",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 105
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "max current level",
+        "maximum current"
+      ],
+      "group": "electrical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Table 4. Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "microcell recharge time",
+        "recovery time constant"
+      ],
+      "group": "sipm",
+      "key": "microcell_recovery_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Table 2. Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 9.5e-8
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "ANODE",
+      "number": 1
+    },
+    {
+      "function": "FAST",
+      "name": "FAST",
+      "number": 2
+    },
+    {
+      "function": "CATHODE",
+      "name": "CATHODE",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 5
+    }
+  ]
+}

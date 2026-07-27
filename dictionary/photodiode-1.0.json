@@ -1,0 +1,797 @@
+{
+  "family": "photodiode",
+  "dictionaryVersion": "1.1",
+  "description": "Semiconductor photodetector: a PN/PIN junction (or its avalanche, Geiger, position-sensing, or segmented variants) that converts incident light into a photocurrent. Covers silicon PIN/PN photodiodes (UV/visible/NIR), avalanche photodiodes (APD), silicon photomultipliers (SiPM/MPPC), InGaAs photodiodes (telecom NIR), position-sensitive detectors (PSD), and quadrant/segmented detectors. It reuses the LED/laser-diode optical wavelength vocabulary but INVERTED - the emitter's marquee is optical watts out per drive amp (W/A), the detector's is amps of photocurrent out per incident optical watt (A/W responsivity). Out of scope as separate families: LEDs and laser diodes (emitters, already shipped); PHOTOTRANSISTORS (a light-driven BJT whose headline is a nonlinear light current at a stated illuminance/irradiance, not an A/W responsivity); integrated ambient-light-sensor / photodiode-amplifier ICs (sensor systems with supply, output, and often digital interfaces); optocouplers (emitter+detector systems); camera image sensors / photodiode-array ICs; and solar cells (energy devices). Detectivity D* (Jones = cm.sqrtHz/W) is intentionally omitted for this Si/near-IR scope - it is derivable from NEP and area, and datasheets here lead with NEP; a future extended-IR / thermal-detector slice (2-3 um InGaAs, PbS/PbSe, pyroelectric) that makes D* its headline would need a new m.sqrtHz/W unit. Synthesized from a 20-datasheet corpus across Hamamatsu, Thorlabs, ams-OSRAM, Vishay, Excelitas, onsemi/SensL, Laser Components, First Sensor, and Marktech.",
+  "parameters": [
+    {
+      "key": "responsivity",
+      "name": "Responsivity (photosensitivity)",
+      "unit": "A/W",
+      "group": "optical",
+      "array": true,
+      "conditionAxis": "LAMBDA",
+      "aliases": [
+        "S",
+        "R",
+        "Re",
+        "Rlambda",
+        "responsivity",
+        "photosensitivity",
+        "spectral sensitivity",
+        "radiant sensitivity",
+        "current responsivity",
+        "photo sensitivity",
+        "Slambda",
+        "S(lambda)",
+        "spectral responsivity"
+      ],
+      "hint": "The photocurrent produced per watt of incident optical power, in A/W - the detector's defining spec and the literal reciprocal of a laser's W/A slope efficiency (a printed mA/mW is the identical number). Wavelength-dependent: array over the LAMBDA (wavelength) axis for the spectral-response curve, and attach the wavelength (usually the peak, or a stated line like 1550 nm) as a condition. ~0.5-0.7 A/W for a Si PIN near its peak, ~0.9-1.05 A/W for InGaAs at 1550 nm. For an APD, responsivity is quoted at a stated multiplication gain M (attach the M condition) and reaches tens of A/W; do NOT confuse the at-gain (M>1) figure with the intrinsic M=1 value."
+    },
+    {
+      "key": "quantum_efficiency",
+      "name": "Quantum efficiency",
+      "unit": "%",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "QE",
+        "quantum efficiency",
+        "quantum yield",
+        "eta"
+      ],
+      "hint": "The fraction of incident photons that generate a collected electron-hole pair, in percent (QE = responsivity x 1240 / (lambda_nm x M) x 100). ~70-90% for a good Si/InGaAs detector at its peak. Wavelength-dependent."
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "unit": "m",
+      "group": "optical",
+      "aliases": [
+        "lambda_p",
+        "lambda_peak",
+        "peak sensitivity wavelength",
+        "wavelength of peak sensitivity",
+        "wavelength of max sensitivity",
+        "peak responsivity wavelength",
+        "peak wavelength"
+      ],
+      "hint": "The wavelength of maximum responsivity, in metres (nm/um normalized: 960 nm is 9.6e-7, 1.55 um is 1.55e-6). Note `m` here is a wavelength, distinct from a physical size (photosensitive_diameter) that also uses `m` - the parameter key carries the distinction."
+    },
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "unit": "m",
+      "group": "optical",
+      "aliases": [
+        "spectral response range",
+        "spectral range",
+        "range of spectral bandwidth",
+        "wavelength range",
+        "spectral range of sensitivity",
+        "lambda_10%"
+      ],
+      "hint": "The wavelength band over which the detector responds (usually to the 10% or 50%-of-peak points), in metres - store min = short-wavelength edge, max = long-wavelength edge (320-1100 nm is min 3.2e-7 / max 1.1e-6). Set by the semiconductor bandgap (Si ~1100 nm cutoff, InGaAs ~1700 nm)."
+    },
+    {
+      "key": "cutoff_wavelength",
+      "name": "Cutoff wavelength",
+      "unit": "m",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "cutoff wavelength",
+        "cut-off wavelength",
+        "long-wavelength cutoff",
+        "lambda_c",
+        "50% cutoff wavelength"
+      ],
+      "hint": "The long-wavelength 50%-responsivity cutoff, in metres (an InGaAs part's ~1.7 um is 1.7e-6). The bandgap edge; distinct from the spectral_response_range endpoints when a part specifies it separately."
+    },
+    {
+      "key": "photosensitive_area",
+      "name": "Photosensitive (active) area",
+      "unit": "m2",
+      "group": "mechanical",
+      "optional": true,
+      "aliases": [
+        "A",
+        "photosensitive area",
+        "radiant sensitive area",
+        "active area",
+        "effective photosensitive area",
+        "sensitive area",
+        "total active area",
+        "device active area"
+      ],
+      "hint": "The active (light-sensitive) area, in square metres (mm2 normalized: 7.5 mm2 is 7.5e-6; a large-area 18x18 mm detector is 3.24e-4). A first-class selection parameter - dark current, capacitance, and NEP all scale with it. Use this when a datasheet prints the area as a scalar; for a circular detector that instead prints a diameter, use photosensitive_diameter."
+    },
+    {
+      "key": "photosensitive_diameter",
+      "name": "Photosensitive diameter",
+      "unit": "m",
+      "group": "mechanical",
+      "optional": true,
+      "aliases": [
+        "photosensitive diameter",
+        "active area diameter",
+        "active diameter",
+        "sensitive diameter",
+        "aperture diameter"
+      ],
+      "hint": "The diameter of a circular active area, in metres (um/mm normalized: 0.5 mm is 5e-4, 200 um is 2e-4). The common form for small circular Si/InGaAs detectors; a square/rectangular part uses photosensitive_area instead."
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "unit": "A",
+      "group": "electrical",
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": [
+        "ID",
+        "Id",
+        "Iro",
+        "iD",
+        "dark current",
+        "reverse dark current",
+        "I_dark"
+      ],
+      "hint": "The reverse leakage current in darkness at a stated reverse voltage (attach V_R), in amperes (nA/pA normalized: 10 nA is 1e-8). Array over V_R - it rises steeply near breakdown, and for an APD is quoted at a stated gain M (attach M). Roughly doubles every ~7-8 degC; a datasheet that prints the multiplicative temperature factor as its own row (e.g. TCID = 1.15 times/degC) stores it in dark_current_temperature_factor, not buried here. Sets the low-light detection floor."
+    },
+    {
+      "key": "shunt_resistance",
+      "name": "Shunt resistance",
+      "unit": "ohm",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "Rsh",
+        "R_sh",
+        "shunt resistance",
+        "parallel resistance",
+        "Rp",
+        "dark resistance"
+      ],
+      "hint": "The zero-bias junction (parallel) resistance, in ohms (MOhm/GOhm normalized: 125 MOhm is 1.25e8), measured at a small bias (e.g. 10 mV). A precision/low-light photovoltaic-mode spec (higher is better); general-purpose parts often omit it."
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal (junction) capacitance",
+      "unit": "F",
+      "group": "electrical",
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": [
+        "Ct",
+        "Cj",
+        "CD",
+        "C0",
+        "Cd",
+        "terminal capacitance",
+        "junction capacitance",
+        "diode capacitance",
+        "capacitance",
+        "Cpd",
+        "Cin",
+        "Ci",
+        "Cj0"
+      ],
+      "hint": "The junction capacitance at a stated reverse bias and measurement frequency (attach V_R and F), in farads (pF normalized: 70 pF is 7e-11). Falls as reverse voltage widens the depletion region (array over V_R); with the load resistance it sets the detector's bandwidth. Scales with active area."
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (maximum)",
+      "unit": "V",
+      "group": "electrical",
+      "aliases": [
+        "VR",
+        "V_R",
+        "VR max",
+        "reverse voltage",
+        "maximum reverse voltage",
+        "max bias voltage"
+      ],
+      "hint": "The absolute-maximum reverse (bias) voltage the detector operates at (limitClass absolute_max), in volts. For a PIN this is the operating bias ceiling; for an APD the recommended operating bias sits just below breakdown_voltage - store that recommended bias as operating_voltage with limitClass recommended."
+    },
+    {
+      "key": "breakdown_voltage",
+      "name": "Breakdown voltage",
+      "unit": "V",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "VBR",
+        "VBD",
+        "V_BR",
+        "BDV",
+        "V(BR)",
+        "breakdown voltage",
+        "V_BD"
+      ],
+      "hint": "The reverse voltage at avalanche breakdown (defined at a stated test current, e.g. Id = 100 uA, or by the sqrt(I)-vs-V intercept for a SiPM), in volts - the anchor an APD/SiPM operates relative to (a Si reach-through APD ~200 V, a SiPM ~25 V). Its strong temperature dependence is temperature_coefficient_breakdown_voltage."
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Recommended operating (reverse) voltage",
+      "unit": "V",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "VOP",
+        "Vop",
+        "operating voltage",
+        "recommended operating voltage",
+        "recommended reverse voltage",
+        "overvoltage",
+        "Vover",
+        "V_over",
+        "excess bias",
+        "delta_V",
+        "overvoltage bias"
+      ],
+      "hint": "The recommended reverse bias (limitClass recommended), in volts, at which an APD reaches its rated gain or a SiPM its rated overvoltage. Often binned per-unit (an APD ships with a per-device VOP giving M=150 at 25 degC); a SiPM specifies an overvoltage above breakdown_voltage - keep the 'Vbr + N V' form in conditionsVerbatim."
+    },
+    {
+      "key": "multiplication_gain",
+      "name": "Multiplication (avalanche) gain",
+      "unit": "1",
+      "group": "avalanche",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_R",
+      "aliases": [
+        "M",
+        "gain",
+        "multiplication gain",
+        "multiplication factor",
+        "avalanche gain",
+        "recommended operating gain",
+        "internal gain",
+        "gain M"
+      ],
+      "hint": "The avalanche multiplication factor M - a dimensionless number (unit 1) that scales the primary photocurrent. Array over reverse voltage (it rises steeply toward breakdown); ~100-200 for a linear-mode APD, ~1e6 for a Geiger-mode SiPM. Responsivity, dark current, and bandwidth are all quoted at a stated M."
+    },
+    {
+      "key": "gain_bandwidth_product",
+      "name": "Gain-bandwidth product",
+      "unit": "Hz",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "GBP",
+        "GBW",
+        "GBWP",
+        "gain-bandwidth product",
+        "gain bandwidth product"
+      ],
+      "hint": "The product of avalanche gain and -3 dB bandwidth, in hertz (GHz normalized) - a figure of merit for a high-speed APD (the bandwidth falls as gain rises). Some parts tabulate bandwidth per gain point instead."
+    },
+    {
+      "key": "excess_noise_factor",
+      "name": "Excess noise factor",
+      "unit": "1",
+      "group": "avalanche",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "M",
+      "aliases": [
+        "F",
+        "ENF",
+        "excess noise factor"
+      ],
+      "hint": "The excess noise factor F - a dimensionless number (unit 1) by which the avalanche multiplication adds noise beyond ideal, F = k*M + (2 - 1/M)(1 - k). Rises with gain M (array over the M axis); lower is better. Distinct from the material k-factor."
+    },
+    {
+      "key": "excess_noise_k_factor",
+      "name": "Excess noise k-factor",
+      "unit": "1",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "k",
+        "keff",
+        "k-factor",
+        "effective k factor",
+        "ionization rate ratio",
+        "kappa"
+      ],
+      "hint": "The effective ionization-rate ratio k (= beta/alpha) - a dimensionless material constant (unit 1, ~0.02 for a good Si APD, higher for InGaAs) that sets the excess_noise_factor's growth with gain. Lower k means quieter avalanche."
+    },
+    {
+      "key": "temperature_coefficient_breakdown_voltage",
+      "name": "Temperature coefficient of breakdown voltage",
+      "unit": "V/degC",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "dVbr/dT",
+        "temperature coefficient of breakdown voltage",
+        "breakdown voltage tempco",
+        "Gamma",
+        "dTVop",
+        "delta_TVop",
+        "dV/dT",
+        "temperature coefficient of operating voltage",
+        "temperature coefficient of reverse voltage for constant gain"
+      ],
+      "hint": "The drift of breakdown voltage with temperature, in V/degC (a printed mV/degC or V/K is the identical number for a delta: 21.5 mV/degC is 0.0215). Positive; it forces an APD/SiPM bias-compensation loop to hold constant gain over temperature."
+    },
+    {
+      "key": "noise_current_density",
+      "name": "Noise current density",
+      "unit": "A/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "aliases": [
+        "iN",
+        "i_n",
+        "noise current density",
+        "dark noise",
+        "spectral noise current",
+        "shot noise current",
+        "equivalent noise current"
+      ],
+      "hint": "The dark (shot) noise current spectral density, in A/sqrtHz (pA/sqrtHz normalized: 0.1 pA/sqrtHz is 1e-13). The numerator of NEP (NEP = noise_current_density / responsivity); printed mainly on APDs."
+    },
+    {
+      "key": "nep",
+      "name": "Noise equivalent power",
+      "unit": "W/sqrtHz",
+      "group": "noise",
+      "aliases": [
+        "NEP",
+        "noise equivalent power",
+        "noise-equivalent power",
+        "W/sqrt(Hz)",
+        "W/Hz1/2",
+        "noise equivalent power (NEP)"
+      ],
+      "hint": "The optical power that produces a signal equal to the noise in a 1 Hz bandwidth, in W/sqrtHz (fW/sqrtHz and pW/sqrtHz normalized: 1.1e-14 W/sqrtHz; 0.04 pW/sqrtHz is 4e-14), at a stated reverse voltage and wavelength (the peak). The detector's sensitivity floor and its headline noise figure; lower is better. Detectivity D* (Jones) is derivable from NEP and area and is not stored.",
+      "optional": true
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "unit": "s",
+      "group": "speed",
+      "optional": true,
+      "aliases": [
+        "tr",
+        "t_r",
+        "rise time",
+        "response time"
+      ],
+      "hint": "The 10%-90% output rise time at a stated reverse voltage, load resistance, and wavelength (attach V_R, R_L), in seconds (ns/us normalized: 10 ns is 1e-8). With fall_time and terminal_capacitance it sets the detector's speed; tr = 0.35 / cutoff_frequency."
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "unit": "s",
+      "group": "speed",
+      "optional": true,
+      "aliases": [
+        "tf",
+        "t_f",
+        "fall time"
+      ],
+      "hint": "The 90%-10% output fall time at a stated bias and load, in seconds (ns/us normalized). Pairs with rise_time."
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Cutoff frequency (bandwidth)",
+      "unit": "Hz",
+      "group": "speed",
+      "optional": true,
+      "aliases": [
+        "fc",
+        "f_c",
+        "f3dB",
+        "cutoff frequency",
+        "cut-off frequency",
+        "bandwidth",
+        "-3 dB bandwidth"
+      ],
+      "hint": "The -3 dB electrical bandwidth at a stated reverse voltage and load resistance (attach V_R, R_L), in hertz (MHz/GHz normalized: 500 MHz is 5e8). Set by the RC of terminal_capacitance and the load; for an APD it is quoted at a stated gain."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Short-circuit current",
+      "unit": "A",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "Isc",
+        "Ik",
+        "I_sc",
+        "short circuit current"
+      ],
+      "hint": "The photocurrent at zero bias under a stated illumination, in amperes (uA normalized). Because the illumination is heterogeneous across vendors (an irradiance in W/m2, or a photometric illuminance in lux, or a defined light source), keep the exact stimulus (e.g. '100 lx, CIE illuminant A' or 'Ee = 1 mW/cm2, 950 nm') in conditionsVerbatim - it is meaningless without it."
+    },
+    {
+      "key": "open_circuit_voltage",
+      "name": "Open-circuit voltage",
+      "unit": "V",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "Voc",
+        "Vo",
+        "VO",
+        "open circuit voltage"
+      ],
+      "hint": "The photovoltaic voltage across the unloaded junction under a stated illumination, in volts (mV normalized). Keep the illumination stimulus in conditionsVerbatim."
+    },
+    {
+      "key": "photon_detection_efficiency",
+      "name": "Photon detection efficiency",
+      "unit": "%",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "PDE",
+        "photon detection efficiency"
+      ],
+      "hint": "For a SiPM/MPPC, the probability that an incident photon at the peak wavelength produces a detected avalanche, in percent (the product of quantum efficiency, fill factor, and avalanche-trigger probability). Rises with overvoltage; quote the overvoltage in conditionsVerbatim."
+    },
+    {
+      "key": "dark_count_rate",
+      "name": "Dark count rate",
+      "unit": "Hz",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "DCR",
+        "dark count rate",
+        "dark count",
+        "dark counts",
+        "dark count rate (DCR)"
+      ],
+      "hint": "For a SiPM, the rate of thermally-triggered (dark) avalanche pulses, in hertz (kHz/MHz normalized: 1200 kHz is 1.2e6, 3.4 MHz is 3.4e6), at a stated overvoltage - the Geiger-mode analogue of a PIN's dark current, and the SiPM's noise floor."
+    },
+    {
+      "key": "crosstalk",
+      "name": "Optical crosstalk",
+      "unit": "%",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "crosstalk",
+        "optical crosstalk",
+        "crosstalk probability",
+        "Pct",
+        "optical crosstalk probability"
+      ],
+      "hint": "For a SiPM, the probability that one microcell avalanche triggers a neighbour via secondary photons, in percent - it adds correlated noise. For a quadrant/segmented detector the same key name is reused for inter-segment crosstalk (put which sense in conditionsVerbatim)."
+    },
+    {
+      "key": "afterpulsing",
+      "name": "Afterpulsing probability",
+      "unit": "%",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "afterpulsing",
+        "AP",
+        "afterpulse probability"
+      ],
+      "hint": "For a SiPM, the probability that a trapped carrier re-triggers the same microcell after the primary avalanche, in percent - correlated noise that degrades timing/counting."
+    },
+    {
+      "key": "number_of_microcells",
+      "name": "Number of microcells",
+      "unit": "1",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "number of microcells",
+        "microcells",
+        "number of pixels",
+        "N_cells"
+      ],
+      "hint": "For a SiPM, the count of Geiger microcells (unit 1, an integer) - it sets the dynamic range (a cell can only fire once per recharge). Pairs with microcell_size and fill_factor."
+    },
+    {
+      "key": "microcell_size",
+      "name": "Microcell size (pitch)",
+      "unit": "m",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "microcell size",
+        "cell pitch",
+        "microcell pitch"
+      ],
+      "hint": "For a SiPM, the microcell pitch, in metres (um normalized: 35 um is 3.5e-5) - smaller cells give more dynamic range but lower fill factor / PDE."
+    },
+    {
+      "key": "fill_factor",
+      "name": "Fill factor",
+      "unit": "%",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "fill factor",
+        "microcell fill factor",
+        "geometric fill factor"
+      ],
+      "hint": "For a SiPM, the fraction of the active area that is photosensitive (not consumed by trenches/quench resistors), in percent - a direct multiplier on PDE."
+    },
+    {
+      "key": "temperature_coefficient_gain",
+      "name": "Temperature coefficient of gain",
+      "unit": "ppm/degC",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "temperature coefficient of gain",
+        "gain tempco",
+        "temperature dependence of gain"
+      ],
+      "hint": "For a SiPM at fixed bias, the relative drift of gain with temperature - datasheets print it in %/degC; normalize to ppm/degC (x1e4: -0.8 %/degC is -8000 ppm/degC). Driven by the breakdown-voltage tempco; the reason SiPMs need bias compensation."
+    },
+    {
+      "key": "position_resolution",
+      "name": "Position resolution",
+      "unit": "m",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "position resolution",
+        "resolution",
+        "delta_R"
+      ],
+      "hint": "For a position-sensitive detector (PSD), the smallest resolvable change in the light spot's position, in metres (um normalized: 0.7 um is 7e-7), at a stated photocurrent and bandwidth. The PSD's headline spec."
+    },
+    {
+      "key": "position_detection_error",
+      "name": "Position detection error",
+      "unit": "m",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "position detection error",
+        "position non-linearity",
+        "position error",
+        "E"
+      ],
+      "hint": "For a PSD, the deviation between the detected and true spot position across the active area, in metres (um normalized: +/-150 um is 1.5e-4) - the linearity of the position readout, at a stated wavelength, bias, and spot size."
+    },
+    {
+      "key": "interelectrode_resistance",
+      "name": "Interelectrode resistance",
+      "unit": "ohm",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "interelectrode resistance",
+        "Rie",
+        "position resistance",
+        "inter-electrode resistance"
+      ],
+      "hint": "For a PSD, the resistance of the resistive position-sensing layer between opposing electrodes, in ohms (kOhm normalized: 7 kOhm is 7000) - it sets the position-signal division and the detector noise/speed."
+    },
+    {
+      "key": "saturation_photocurrent",
+      "name": "Saturation photocurrent",
+      "unit": "A",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "saturation photocurrent",
+        "Ist",
+        "saturation current"
+      ],
+      "hint": "For a PSD, the maximum photocurrent before the position readout saturates, in amperes (uA normalized), at a stated bias and load."
+    },
+    {
+      "key": "segment_gap_width",
+      "name": "Segment gap width",
+      "unit": "m",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "gap",
+        "gap width",
+        "segment gap",
+        "dead space",
+        "inter-segment gap"
+      ],
+      "hint": "For a quadrant/segmented detector, the width of the insensitive gap between adjacent segments, in metres (um normalized: 110 um is 1.1e-4) - it sets the position dead-band at the center."
+    },
+    {
+      "key": "segment_matching",
+      "name": "Segment matching (uniformity)",
+      "unit": "%",
+      "group": "position",
+      "optional": true,
+      "aliases": [
+        "segment matching",
+        "photocurrent uniformity",
+        "dark current uniformity",
+        "channel matching",
+        "responsivity matching"
+      ],
+      "hint": "For a quadrant/segmented detector, the maximum spread of photocurrent (or dark current) between segments under uniform illumination, in percent (+/-5%) - a small mismatch is what makes the null-balance position measurement accurate."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "P",
+        "PD",
+        "power dissipation",
+        "total power dissipation"
+      ],
+      "hint": "The maximum power dissipation (limitClass absolute_max), in watts (mW normalized: 100 mW is 0.1)."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "RthJA",
+        "Rth JA",
+        "thermal resistance junction to ambient"
+      ],
+      "hint": "Junction-to-ambient thermal resistance, in degC/W (or K/W). Matters for cooled/large-area detectors."
+    },
+    {
+      "key": "temperature_coefficient_responsivity",
+      "name": "Temperature coefficient of responsivity",
+      "unit": "ppm/degC",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "temperature coefficient of responsivity",
+        "responsivity tempco",
+        "temperature coefficient of photosensitivity"
+      ],
+      "hint": "The relative drift of responsivity with temperature - datasheets print it in %/degC or ppm/degC (a printed %/degC normalizes x1e4). Small near the peak, steep near the band edge (a Si part rises fast beyond ~1000 nm)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Topr",
+        "Top",
+        "operating temperature",
+        "operating temperature range"
+      ],
+      "hint": "The ambient temperature range over which the part operates (recommended), in degC. Store min/max bounds."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "hint": "The non-operating storage temperature range (limitClass absolute_max), in degC. Store min/max bounds."
+    },
+    {
+      "key": "dark_current_temperature_factor",
+      "name": "Dark-current temperature factor",
+      "unit": "1",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "TCID",
+        "delta_TID",
+        "dark current temperature factor",
+        "temperature coefficient of dark current",
+        "dark current multiplier"
+      ],
+      "hint": "The multiplicative factor by which dark current rises per degC - a dimensionless number (unit 1, ~1.03-1.15, i.e. dark current roughly doubles every 7-8 degC). Printed as its own tabulated row (TCID / delta-TID) on many Si/InGaAs detectors. Store the printed per-degC multiplier; the 'per degC' basis is kept in conditionsVerbatim (there is no 1/degC unit, and this is NOT a small additive tempco)."
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (maximum)",
+      "unit": "A",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "IF",
+        "I_F",
+        "forward current",
+        "maximum forward current"
+      ],
+      "hint": "The absolute-maximum forward current the detector survives (limitClass absolute_max), in amperes (mA/uA normalized) - a stress rating, distinct from any photocurrent. A datasheet may give an average and a single-peak value (store the average, note the peak in verbatim)."
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current (maximum)",
+      "unit": "A",
+      "group": "electrical",
+      "optional": true,
+      "aliases": [
+        "IR max",
+        "maximum reverse current",
+        "reverse current rating"
+      ],
+      "hint": "The absolute-maximum reverse current rating (limitClass absolute_max), in amperes - a stress limit, distinct from dark_current (which is the characterized leakage). Do NOT confuse the two: same symbol space, different limitClass."
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Tsol",
+        "soldering temperature",
+        "lead soldering temperature",
+        "reflow soldering temperature",
+        "peak reflow temperature"
+      ],
+      "hint": "The maximum soldering/lead temperature (limitClass absolute_max), in degC (leaded parts ~200-260 for a few seconds; a ceramic MPPC ~350 for 3 s or ~240 peak reflow) - keep the time and method (hand/reflow, JEDEC MSL) in conditionsVerbatim."
+    },
+    {
+      "key": "quench_resistor",
+      "name": "Microcell quench resistor",
+      "unit": "ohm",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "Rq",
+        "quench resistor",
+        "quenching resistance",
+        "microcell quench resistance"
+      ],
+      "hint": "For a SiPM, the resistance in series with each Geiger microcell that quenches (halts) the avalanche, in ohms (kOhm normalized: 500 kOhm is 5e5). With the microcell capacitance it sets the microcell_recovery_time."
+    },
+    {
+      "key": "microcell_recovery_time",
+      "name": "Microcell recovery time",
+      "unit": "s",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "recovery time",
+        "recovery time constant",
+        "microcell recharge time",
+        "microcell recovery time constant",
+        "tau_recovery"
+      ],
+      "hint": "For a SiPM, the recharge time constant of a fired microcell (tau = Rq x Cd), in seconds (ns normalized: 95 ns is 9.5e-8) - it bounds the maximum count rate before pile-up."
+    },
+    {
+      "key": "single_photon_time_resolution",
+      "name": "Single photon time resolution",
+      "unit": "s",
+      "group": "sipm",
+      "optional": true,
+      "aliases": [
+        "SPTR",
+        "single photon time resolution",
+        "timing resolution",
+        "transit time spread",
+        "TTS"
+      ],
+      "hint": "For a SiPM, the timing jitter (FWHM) on a single detected photon, in seconds (ps normalized: 200 ps is 2e-10) - the headline for time-of-flight / PET / LiDAR. Distinct from rise_time/fall_time (the analog pulse edges)."
+    },
+    {
+      "key": "excess_noise_index",
+      "name": "Excess noise index",
+      "unit": "1",
+      "group": "avalanche",
+      "optional": true,
+      "aliases": [
+        "x",
+        "excess noise exponent",
+        "noise exponent",
+        "excess noise index"
+      ],
+      "hint": "The exponent x in the F = M^x formulation of excess noise - a dimensionless number (unit 1, ~0.2-0.7), the common alternate to the k-factor especially on InGaAs APDs that tabulate x directly. Use excess_noise_k_factor when a part gives k instead."
+    }
+  ]
+}

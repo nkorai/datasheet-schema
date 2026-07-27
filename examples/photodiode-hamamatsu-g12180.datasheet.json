@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "G12180-010A",
+    "manufacturer": "Hamamatsu",
+    "family": "photodiode",
+    "description": "InGaAs PIN photodiode for telecom NIR (0.9-1.7 um), Ø1 mm circular photosensitive area, in a non-cooled TO-18 can with a borosilicate-glass anti-reflective window optimized for a 1.55 um peak. Peak responsivity ~1.1 A/W at 1.55 um (~0.9 A/W at 1.3 um), large shunt resistance (25-125 MOhm) for low-noise photovoltaic operation, low dark current (0.8 nA typ), and low noise-equivalent power (1.4e-14 W/sqrtHz typ). Targets laser monitors, optical power meters, and optical communications.",
+    "package": "TO-18 (Ø9.2 mm can), non-cooled, 2-lead",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..100",
+    "orderingVariants": [
+      { "orderCode": "G12180-010A", "package": "TO-18 (Ø9.2 mm can), non-cooled" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Detector anode. Photocurrent sink terminal of the InGaAs PIN junction; connect to the reverse-bias return / transimpedance-amplifier input.", "sourcePage": 6 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Detector cathode. Reverse-bias (V_R) is applied here positive relative to the anode; internally common to the TO-18 case.", "sourcePage": 6 }
+  ],
+  "parameters": [
+    {
+      "key": "responsivity",
+      "name": "Photosensitivity (responsivity)",
+      "group": "optical",
+      "aliases": ["S", "photosensitivity", "responsivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.8, "typ": 0.9 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 1.3e-6, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S at 1.3 um = 0.8 A/W (min) / 0.9 A/W (typ), element temperature Td = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.9, "typ": 1.1 },
+          "unit": "A/W",
+          "conditions": [
+            { "param": "LAMBDA", "value": 1.55e-6, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Photosensitivity S at lambda = lambda_p (peak, 1.55 um) = 0.9 A/W (min) / 1.1 A/W (typ), element temperature Td = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "group": "optical",
+      "aliases": ["lambda_p", "peak sensitivity wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.55e-6 },
+          "unit": "m",
+          "conditionsVerbatim": "Peak sensitivity wavelength lambda_p = 1.55 um (typ). Window material A is optimized for a 1.55 um peak.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "group": "optical",
+      "aliases": ["lambda", "spectral response range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9e-7, "max": 1.7e-6 },
+          "unit": "m",
+          "conditionsVerbatim": "Spectral response range lambda = 0.9 to 1.7 um (short-wavelength edge 0.9 um, long-wavelength edge 1.7 um) for the non-cooled types.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_diameter",
+      "name": "Photosensitive diameter",
+      "group": "mechanical",
+      "aliases": ["photosensitive diameter", "active diameter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-3 },
+          "unit": "m",
+          "conditionsVerbatim": "Photosensitive area Ø1 mm (circular active area, diameter 1 mm).",
+          "sourcePage": 1,
+          "sourceTable": "Structure"
+        }
+      ]
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "group": "electrical",
+      "aliases": ["ID", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-10, "max": 4e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Dark current ID = 0.8 nA (typ) / 4 nA (max) at V_R = 5 V (note *4; the table header column is V_R = 1 V but the non-cooled dark-current figures are specified at V_R = 5 V), element temperature 25 degC. The multiplicative temperature factor is stored in dark_current_temperature_factor.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dark_current_temperature_factor",
+      "name": "Dark-current temperature factor",
+      "group": "electrical",
+      "aliases": ["temperature coefficient of dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.09 },
+          "unit": "1",
+          "conditionsVerbatim": "Temperature coefficient of dark current = 1.09 times/degC (a multiplicative factor per degC, not an additive tempco).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "shunt_resistance",
+      "name": "Shunt resistance",
+      "group": "electrical",
+      "aliases": ["Rsh", "shunt resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.5e7, "typ": 1.25e8 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_R", "value": 0.01, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Shunt resistance Rsh = 25 MOhm (min) / 125 MOhm (typ) at V_R = 10 mV, element temperature 25 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal capacitance",
+      "group": "electrical",
+      "aliases": ["Ct", "terminal capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.5e-11, "max": 1.2e-10 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Terminal capacitance Ct = 55 pF (typ) / 120 pF (max) at V_R = 5 V, f = 1 MHz (note *6; the table header column is V_R = 1 V but the non-cooled capacitance figures are specified at V_R = 5 V), element temperature 25 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Cutoff frequency",
+      "group": "speed",
+      "aliases": ["fc", "cutoff frequency", "-3 dB bandwidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.5e7, "typ": 6e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "R_L", "value": 50, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Cutoff frequency fc = 25 MHz (min) / 60 MHz (typ) at V_R = 5 V, RL = 50 Ohm, -3 dB (note *5; the table header column is V_R = 1 V but the non-cooled fc figures are specified at V_R = 5 V), element temperature 25 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "nep",
+      "name": "Noise equivalent power",
+      "group": "noise",
+      "aliases": ["NEP", "noise equivalent power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4e-14, "max": 3.8e-14 },
+          "unit": "W/sqrtHz",
+          "conditions": [
+            { "param": "LAMBDA", "value": 1.55e-6, "unit": "m" }
+          ],
+          "conditionsVerbatim": "Noise equivalent power NEP = 1.4e-14 W/Hz^(1/2) (typ) / 3.8e-14 W/Hz^(1/2) (max) at lambda = lambda_p (1.55 um), element temperature 25 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical and optical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (maximum)",
+      "group": "electrical",
+      "aliases": ["VR max", "reverse voltage", "maximum reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 10 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR max = 10 V (absolute maximum, Ta = 25 degC) for G12180-010A.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Topr", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Topr = -40 to +100 degC (no dew condensation) for the non-cooled types.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -55 to +125 degC (absolute maximum, no dew condensation) for the non-cooled types.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "56e5bc1bf52382b16f785cf7a7b5344642a11987b02aa526cf9188c15cceb562",
+    "sourceUrl": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/g12180_series_kird1121e.pdf",
+    "datasheetRevision": "KIRD1121E11",
+    "publishedDate": "2024-02",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

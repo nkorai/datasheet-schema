@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "MICROFC-60035-SMT",
+    "manufacturer": "onsemi",
+    "family": "photodiode",
+    "description": "Silicon photomultiplier (SiPM), SensL C-Series, 6 x 6 mm active area with 18980 microcells at a 35 um pitch, in a 4-side tileable surface-mount (SMT) package. A Geiger-mode, single-photon-sensitive, blue-sensitive detector (peak 420 nm) with ~3e6 avalanche gain, a fast-timing output (1 ns rise time), and three terminals: anode, cathode, and a capacitively-coupled fast output. Breakdown voltage ~24.2-24.7 V, operated at 1.0-5.0 V overvoltage above Vbr; performance quoted at 2.5 V overvoltage and 21 degC unless noted.",
+    "package": "4-side tileable surface-mount (SMT / SMD), 7 x 7 mm",
+    "pinCount": 5,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "MICROFC-60035-SMT-TR1", "package": "SMT, tape" },
+      { "orderCode": "MICROFC-60035-SMT-TR", "package": "SMT, tape and reel (MOQ 3000)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "ANODE", "function": "ANODE", "type": "passive", "description": "SiPM anode (standard output). All microcell anodes are summed to this terminal; the standard anode-cathode readout is taken here.", "sourcePage": 10 },
+    { "number": 2, "name": "FAST", "function": "FAST", "type": "passive", "description": "Fast output. Capacitively coupled tap off each microcell for ultrafast timing (1 ns rise time, 3.2 ns FWHM pulse width on the 6 mm sensor).", "sourcePage": 10 },
+    { "number": 3, "name": "CATHODE", "function": "CATHODE", "type": "passive", "description": "SiPM cathode. Positive bias (Vbr + overvoltage) is applied here relative to the anode.", "sourcePage": 10 },
+    { "number": 4, "name": "NC", "function": "NC", "type": "passive", "description": "No Connect. Should be soldered to the PCB; may be tied to ground or left floating without affecting dark noise.", "sourcePage": 10 },
+    { "number": 5, "name": "NC", "function": "NC", "type": "passive", "description": "No Connect (paddle). Recommended to be left floating (not soldered) to achieve optimal soldering on pins 1-4.", "sourcePage": 10 }
+  ],
+  "parameters": [
+    {
+      "key": "breakdown_voltage",
+      "name": "Breakdown voltage (Vbr)",
+      "group": "avalanche",
+      "aliases": ["VBR", "V_BR", "Vbr", "breakdown voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 24.2, "max": 24.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Breakdown Voltage Vbr = 24.2 V (min) / 24.7 V (max) at 21 degC. Vbr is defined as the voltage intercept of a straight-line fit to a plot of sqrt(I) vs V (Note 3). Common to all C-Series sizes; datasheet prints no typ.",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters"
+        }
+      ]
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Recommended overvoltage range (above Vbr)",
+      "group": "avalanche",
+      "aliases": ["VOP", "Vop", "recommended overvoltage", "overvoltage", "operating voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.0, "max": 5.0 },
+          "unit": "V",
+          "conditionsVerbatim": "Recommended overvoltage Range = 1.0 V (min) to 5.0 V (max) above Vbr (overvoltage). The SiPM is biased at Vbr + overvoltage; consult the maximum current levels (20 mA for the 6 mm sensor) when selecting the overvoltage (Note 2).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak sensitivity wavelength",
+      "group": "optical",
+      "aliases": ["lambda_p", "peak wavelength", "peak sensitivity wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.2e-7 },
+          "unit": "m",
+          "conditionsVerbatim": "Peak Wavelength lambda_p = 420 nm. Blue-sensitive; common to all C-Series sizes.",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters"
+        }
+      ]
+    },
+    {
+      "key": "spectral_response_range",
+      "name": "Spectral response range",
+      "group": "optical",
+      "aliases": ["spectral range", "spectral response range", "wavelength range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3e-7, "max": 9.5e-7 },
+          "unit": "m",
+          "conditionsVerbatim": "Spectral Range = 300 nm (min) to 950 nm (max); the range where PDE > 1% at Vbr + 5.0 V (Note 4).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters"
+        }
+      ]
+    },
+    {
+      "key": "photon_detection_efficiency",
+      "name": "Photon detection efficiency (PDE) at peak",
+      "group": "sipm",
+      "aliases": ["PDE", "photon detection efficiency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 31 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "PDE at lambda_p (420 nm) = 31% (typ) at Vbr + 2.5 V overvoltage, 21 degC. PDE excludes afterpulsing and crosstalk contributions (Note 5).",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 41 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "PDE at lambda_p (420 nm) = 41% (typ) at Vbr + 5.0 V overvoltage, 21 degC. PDE rises with overvoltage; excludes afterpulsing and crosstalk (Note 5).",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "multiplication_gain",
+      "name": "Avalanche (multiplication) gain",
+      "group": "avalanche",
+      "aliases": ["M", "gain", "avalanche gain", "multiplication gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e6 },
+          "unit": "1",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Gain (anode to cathode readout) = 3 x 10^6 (typ) at Vbr + 2.5 V overvoltage, 21 degC. Geiger-mode gain; rises with overvoltage.",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "dark_current",
+      "name": "Dark current",
+      "group": "electrical",
+      "aliases": ["ID", "Id", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.18e-7, "max": 1.75e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Dark Current = 618 nA (typ) / 1750 nA (max) at Vbr + 2.5 V overvoltage, 21 degC (the datasheet prints only Typ and Max columns for this row). Derived from dark-count data as DC x M x q x (1 + CT) (Note 6).",
+          "sourcePage": 2,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "dark_count_rate",
+      "name": "Dark count rate (DCR)",
+      "group": "sipm",
+      "aliases": ["DCR", "dark count rate"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e6, "max": 3.4e6 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Dark Count Rate = 1200 kHz (typ) / 3400 kHz (max) at Vbr + 2.5 V overvoltage, 21 degC (the datasheet prints only Typ and Max columns). Normalized to Hz: 1200 kHz = 1.2e6 Hz, 3400 kHz = 3.4e6 Hz.",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "crosstalk",
+      "name": "Optical crosstalk",
+      "group": "sipm",
+      "aliases": ["crosstalk", "optical crosstalk"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Crosstalk = 7% (typ) at Vbr + 2.5 V overvoltage, 21 degC. Probability a microcell avalanche triggers a neighbour via secondary photons.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "afterpulsing",
+      "name": "Afterpulsing probability",
+      "group": "sipm",
+      "aliases": ["afterpulsing", "AP", "afterpulse probability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.2 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Afterpulsing = 0.2% (typ) at Vbr + 2.5 V overvoltage, 21 degC.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "terminal_capacitance",
+      "name": "Terminal capacitance (anode-cathode)",
+      "group": "electrical",
+      "aliases": ["Ct", "Cd", "terminal capacitance", "capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.4e-9 },
+          "unit": "F",
+          "conditions": [
+            { "param": "T_A", "value": 21, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Capacitance (anode-cathode) = 3400 pF (typ) at Vbr + 2.5 V overvoltage. Internal capacitance of the sensor; typically add 2-3 pF for the packaged sensor (Note 9).",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time (fast output)",
+      "group": "speed",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-9 },
+          "unit": "s",
+          "conditionsVerbatim": "Rise Time - Fast Output = 1.0 ns (typ) for the 6 mm sensor. Measured 10% to 90% of the peak amplitude (Note 7).",
+          "sourcePage": 3,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient_breakdown_voltage",
+      "name": "Temperature coefficient of breakdown voltage",
+      "group": "avalanche",
+      "aliases": ["dVbr/dT", "temperature dependence of Vbr", "breakdown voltage tempco"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0215 },
+          "unit": "V/degC",
+          "conditionsVerbatim": "Temperature dependence of Vbr = 21.5 mV/degC = 0.0215 V/degC. Positive; forces bias compensation to hold constant gain over temperature.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient_gain",
+      "name": "Temperature coefficient of gain",
+      "group": "sipm",
+      "aliases": ["temperature dependence of gain", "gain tempco"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -8000 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Temperature dependence of Gain = -0.8 %/degC = -8000 ppm/degC. Quoted as the percentage change per degree C from the measured value at 21 degC (Note 10).",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Performance Parameters (continued)"
+        }
+      ]
+    },
+    {
+      "key": "photosensitive_area",
+      "name": "Active (photosensitive) area",
+      "group": "mechanical",
+      "aliases": ["A", "active area", "photosensitive area"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.6e-5 },
+          "unit": "m2",
+          "conditionsVerbatim": "Active area = 6 x 6 mm^2 = 3.6e-5 m^2 (60035).",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters"
+        }
+      ]
+    },
+    {
+      "key": "number_of_microcells",
+      "name": "Number of microcells",
+      "group": "sipm",
+      "aliases": ["number of microcells", "N_cells", "microcells"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 18980 },
+          "unit": "1",
+          "conditionsVerbatim": "No. of microcells = 18980 (60035). Sets the dynamic range (each microcell fires once per recharge).",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters"
+        }
+      ]
+    },
+    {
+      "key": "microcell_size",
+      "name": "Microcell size (pitch)",
+      "group": "sipm",
+      "aliases": ["microcell size", "cell pitch", "microcell pitch"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.5e-5 },
+          "unit": "m",
+          "conditionsVerbatim": "Microcell size = 35 um = 3.5e-5 m (60035, the 6 mm / 35 um variant).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1. Performance Parameters"
+        }
+      ]
+    },
+    {
+      "key": "fill_factor",
+      "name": "Microcell fill factor",
+      "group": "sipm",
+      "aliases": ["fill factor", "microcell fill factor", "geometric fill factor"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 64 },
+          "unit": "%",
+          "conditionsVerbatim": "Microcell fill factor = 64% (60035). Fraction of the active area that is photosensitive; a direct multiplier on PDE.",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. General Parameters"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Recommended operating temperature range",
+      "group": "thermal",
+      "aliases": ["Topr", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Recommended operating temperature range = -40 degC to +85 degC.",
+          "sourcePage": 5,
+          "sourceTable": "Table 3. Package Parameters"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Maximum storage temperature",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature", "maximum storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 105 },
+          "unit": "degC",
+          "conditionsVerbatim": "Maximum storage temperature = +105 degC (absolute maximum). Datasheet prints only the upper bound.",
+          "sourcePage": 5,
+          "sourceTable": "Table 3. Package Parameters"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Maximum current level",
+      "group": "electrical",
+      "aliases": ["maximum current", "max current level"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.02 },
+          "unit": "A",
+          "conditionsVerbatim": "Maximum current level = 20 mA for the 6 mm sensor (absolute maximum) - the SiPM's total-current stress limit.",
+          "sourcePage": 5,
+          "sourceTable": "Table 4. Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "microcell_recovery_time",
+      "name": "Microcell recovery time constant",
+      "group": "sipm",
+      "aliases": ["recovery time constant", "microcell recharge time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.5e-8 },
+          "unit": "s",
+          "conditionsVerbatim": "Microcell recovery (recharge) time constant = 95 ns (typ), at Vbr + 2.5 V overvoltage.",
+          "sourcePage": 3,
+          "sourceTable": "Table 2. Electro-Optical Characteristics"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "82dbd17f5f640a738409051b27a1e9beed630a143707da8ee5c0fd73ba12656b",
+    "sourceUrl": "https://datasheet.lcsc.com/datasheet/pdf/9570f1b5385af05385f21fbe6bf7fa02.pdf",
+    "datasheetRevision": "MICROC-SERIES/D Rev. 6",
+    "publishedDate": "2018-11-01",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
