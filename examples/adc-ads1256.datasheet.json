@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "ADS1256",
+    "manufacturer": "Texas Instruments",
+    "family": "adc",
+    "description": "24-bit, 4th-order delta-sigma (sub_type delta_sigma) analog-to-digital converter with a chopper-stabilized input buffer, a flexible input multiplexer (four differential or eight single-ended inputs via AIN0-AIN7 and AINCOM), a low-noise programmable gain amplifier (PGA = 1, 2, 4, 8, 16, 32, 64), and a programmable digital filter. Output data rate 2.5 SPS to 30 kSPS. 5-V-tolerant SPI-compatible serial interface. Analog supply 5 V (AVDD/AGND), digital supply 1.8 V to 3.6 V (DVDD/DGND), external differential reference VREFP/VREFN (nominal 2.5 V). Pinout: analog inputs AIN0-AIN7 and AINCOM (internally muxed to AINP/AINN), reference VREFP/VREFN, supplies AVDD/DVDD/AGND/DGND, and serial control SCLK/DIN/DOUT/CS/DRDY (plus SYNC/PDWN, RESET, XTAL1/CLKIN, XTAL2, and GPIO D0/CLKOUT-D3). SSOP-28 package.",
+    "package": "SSOP-28",
+    "pinCount": 28,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85"
+  },
+  "pinout": [
+    { "number": 1, "name": "AVDD", "function": "AVDD", "type": "power", "description": "Analog power supply.", "sourcePage": 5 },
+    { "number": 2, "name": "AGND", "function": "AGND", "type": "power", "description": "Analog ground.", "sourcePage": 5 },
+    { "number": 3, "name": "VREFN", "function": "REFN", "type": "analog", "description": "Negative reference input.", "sourcePage": 5 },
+    { "number": 4, "name": "VREFP", "function": "REFP", "type": "analog", "description": "Positive reference input.", "sourcePage": 5 },
+    { "number": 5, "name": "AINCOM", "function": "AINCOM", "type": "analog", "description": "Analog input common (single-ended common).", "sourcePage": 5 },
+    { "number": 6, "name": "AIN0", "function": "AIN0", "type": "analog", "description": "Analog input 0.", "sourcePage": 5 },
+    { "number": 7, "name": "AIN1", "function": "AIN1", "type": "analog", "description": "Analog input 1.", "sourcePage": 5 },
+    { "number": 8, "name": "AIN2", "function": "AIN2", "type": "analog", "description": "Analog input 2.", "sourcePage": 5 },
+    { "number": 9, "name": "AIN3", "function": "AIN3", "type": "analog", "description": "Analog input 3.", "sourcePage": 5 },
+    { "number": 10, "name": "AIN4", "function": "AIN4", "type": "analog", "description": "Analog input 4.", "sourcePage": 5 },
+    { "number": 11, "name": "AIN5", "function": "AIN5", "type": "analog", "description": "Analog input 5.", "sourcePage": 5 },
+    { "number": 12, "name": "AIN6", "function": "AIN6", "type": "analog", "description": "Analog input 6.", "sourcePage": 5 },
+    { "number": 13, "name": "AIN7", "function": "AIN7", "type": "analog", "description": "Analog input 7.", "sourcePage": 5 },
+    { "number": 14, "name": "SYNC/PDWN", "function": "PDWN", "type": "digital_in", "description": "Synchronization / power-down input (active low).", "sourcePage": 5 },
+    { "number": 15, "name": "RESET", "function": "RESET", "type": "digital_in", "description": "Reset input (active low).", "sourcePage": 5 },
+    { "number": 16, "name": "DVDD", "function": "DVDD", "type": "power", "description": "Digital power supply.", "sourcePage": 5 },
+    { "number": 17, "name": "DGND", "function": "DGND", "type": "power", "description": "Digital ground.", "sourcePage": 5 },
+    { "number": 18, "name": "XTAL2", "function": "XTAL2", "type": "passive", "description": "Crystal oscillator connection.", "sourcePage": 5 },
+    { "number": 19, "name": "XTAL1/CLKIN", "function": "CLKIN", "type": "digital_in", "description": "Crystal oscillator connection / external clock input.", "sourcePage": 5 },
+    { "number": 20, "name": "CS", "function": "CS", "type": "digital_in", "description": "Chip select (active low).", "sourcePage": 5 },
+    { "number": 21, "name": "DRDY", "function": "DRDY", "type": "digital_out", "description": "Data ready output (active low).", "sourcePage": 5 },
+    { "number": 22, "name": "DOUT", "function": "SDO", "type": "digital_out", "description": "Serial data output.", "sourcePage": 5 },
+    { "number": 23, "name": "DIN", "function": "SDI", "type": "digital_in", "description": "Serial data input.", "sourcePage": 5 },
+    { "number": 24, "name": "SCLK", "function": "SCLK", "type": "digital_in", "description": "Serial clock input.", "sourcePage": 5 },
+    { "number": 25, "name": "D0/CLKOUT", "function": "CLKOUT", "type": "digital_out", "description": "Digital I/O 0 / clock output.", "sourcePage": 5 },
+    { "number": 26, "name": "D1", "function": "D1", "type": "digital_in", "description": "Digital I/O 1.", "sourcePage": 5 },
+    { "number": 27, "name": "D2", "function": "D2", "type": "digital_in", "description": "Digital I/O 2.", "sourcePage": 5 },
+    { "number": 28, "name": "D3", "function": "D3", "type": "digital_in", "description": "Digital I/O 3.", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["N", "bit depth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 24 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution 24 Bit; No missing codes, all data rates and PGA settings",
+          "guarantee": "by_design",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - System Performance"
+        }
+      ]
+    },
+    {
+      "key": "effective_resolution",
+      "name": "Effective resolution (ENOB, rms)",
+      "group": "noise",
+      "aliases": ["ENOB", "effective resolution"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 25.3 },
+          "unit": "bits",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 2.5, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 2, Effective Number of Bits (ENOB, rms) with Buffer On: fDATA = 2.5 SPS, PGA = 1. T = +25 C, AVDD = 5 V, DVDD = 1.8 V, VREF = 2.5 V, fCLKIN = 7.68 MHz. ENOB = ln(FSR / RMS noise) / ln(2).",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 22.2 },
+          "unit": "bits",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 2.5, "unit": "Hz" },
+            { "param": "GAIN", "value": 64, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 2, Buffer On: fDATA = 2.5 SPS, PGA = 64.",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 21.7 },
+          "unit": "bits",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 1000, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 2, Buffer On: fDATA = 1000 SPS, PGA = 1.",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 19.8 },
+          "unit": "bits",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 30000, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 2, Buffer On: fDATA = 30,000 SPS, PGA = 1.",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 16.5 },
+          "unit": "bits",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 30000, "unit": "Hz" },
+            { "param": "GAIN", "value": 64, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 2, Buffer On: fDATA = 30,000 SPS, PGA = 64.",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On"
+        }
+      ]
+    },
+    {
+      "key": "noise_free_resolution",
+      "name": "Noise-free resolution",
+      "group": "noise",
+      "aliases": ["NFR", "noise-free bits"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 23.0 },
+          "unit": "bits",
+          "statistic": "peak_to_peak",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 2.5, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 3, Noise-Free Resolution (bits) with Buffer On: fDATA = 2.5 SPS, PGA = 1. Computed as log2(FSR / peak-to-peak noise), ~2.7 bits below effective resolution.",
+          "sourcePage": 12,
+          "sourceTable": "Table 3. Noise-Free Resolution (bits) with Buffer On"
+        }
+      ]
+    },
+    {
+      "key": "input_referred_noise",
+      "name": "Input-referred noise (RMS)",
+      "group": "noise",
+      "aliases": ["Vn", "RMS noise", "input-referred noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.47e-7 },
+          "unit": "V",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 2.5, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 1, Input Referred Noise (uV, rms) with Buffer On: fDATA = 2.5 SPS, PGA = 1 -> 0.247 uVrms. Inputs shorted externally; T = +25 C, AVDD = 5 V, VREF = 2.5 V, fCLKIN = 7.68 MHz.",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0728e-5 },
+          "unit": "V",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 30000, "unit": "Hz" },
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 1, Buffer On: fDATA = 30,000 SPS, PGA = 1 -> 10.728 uVrms.",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.3e-8 },
+          "unit": "V",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "DATA_RATE", "value": 2.5, "unit": "Hz" },
+            { "param": "GAIN", "value": 64, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Table 1, Buffer On: fDATA = 2.5 SPS, PGA = 64 -> 0.033 uVrms.",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On"
+        }
+      ]
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "group": "linearity",
+      "aliases": ["INL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3, "max": 10 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" }
+          ],
+          "conditionsVerbatim": "Integral nonlinearity, differential input, PGA = 1: +/-0.0003 %FSR typ, +/-0.0010 %FSR max. 0.0010 %FSR = 10 ppm of FSR (FSR = 4*VREF/PGA).",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "GAIN", "value": 64, "unit": "V/V" }
+          ],
+          "conditionsVerbatim": "Integral nonlinearity, differential input, PGA = 64: +/-0.0007 %FSR typ = 7 ppm of FSR.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "group": "accuracy",
+      "aliases": ["EG", "FSE"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.005 },
+          "unit": "%",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Gain error after calibration, PGA = 1, buffer on: +/-0.005 %.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.03 },
+          "unit": "%",
+          "conditions": [
+            { "param": "GAIN", "value": 64, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Gain error after calibration, PGA = 64, buffer on: +/-0.03 %.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gain_drift",
+      "name": "Gain drift",
+      "group": "accuracy",
+      "aliases": ["gain drift", "TC gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.8 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" }
+          ],
+          "conditionsVerbatim": "Gain drift, PGA = 1: +/-0.8 ppm/C (PGA = 64 is also +/-0.8 ppm/C).",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "offset_drift",
+      "name": "Offset drift",
+      "group": "accuracy",
+      "aliases": ["offset drift", "TCVOS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-7 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" }
+          ],
+          "conditionsVerbatim": "Offset drift, PGA = 1: +/-100 nV/C.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-9 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "GAIN", "value": 64, "unit": "V/V" }
+          ],
+          "conditionsVerbatim": "Offset drift, PGA = 64: +/-4 nV/C.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_impedance",
+      "name": "Differential input impedance",
+      "group": "analog_input",
+      "aliases": ["Zin", "RIN", "input resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e7 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "on" }
+          ],
+          "conditionsVerbatim": "Differential input impedance, buffer on, fDATA <= 50 Hz: 80 MOhm.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e5 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "GAIN", "value": 1, "unit": "V/V" },
+            { "param": "BUFFER", "note": "off" }
+          ],
+          "conditionsVerbatim": "Differential input impedance, buffer off, PGA = 1..16: 150/PGA kOhm -> 150 kOhm at PGA = 1.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 95, "typ": 110 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 60, "unit": "Hz" },
+            { "param": "DATA_RATE", "value": 30000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Common-mode rejection, fCM = 60 Hz, fDATA = 30 kSPS: 95 min, 110 typ dB.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR", "PSR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 60, "typ": 70 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "AVDD" }
+          ],
+          "conditionsVerbatim": "AVDD power-supply rejection, +/-5% delta in AVDD: 60 min, 70 typ dB.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 100 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DVDD" }
+          ],
+          "conditionsVerbatim": "DVDD power-supply rejection, +/-10% delta in DVDD: 100 typ dB.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_voltage",
+      "name": "External reference voltage range",
+      "group": "reference",
+      "aliases": ["VREF", "external reference range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0.5, "nom": 2.5, "max": 2.6 },
+          "unit": "V",
+          "conditionsVerbatim": "Reference input voltage (VREF = VREFP - VREFN): 0.5 min, 2.5 typ (nominal), 2.6 max V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - Voltage Reference Inputs"
+        }
+      ]
+    },
+    {
+      "key": "output_data_rate",
+      "name": "Output data rate",
+      "group": "timing",
+      "aliases": ["fDATA", "SPS", "data rate"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.5, "max": 30000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "fCLKIN = 7.68 MHz" }
+          ],
+          "conditionsVerbatim": "Data rate (fDATA), fCLKIN = 7.68 MHz: 2.5 to 30,000 SPS (programmable output data rate).",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - System Performance"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": ["AVDD", "DVDD", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.75, "max": 5.25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "AVDD (analog)" }
+          ],
+          "conditionsVerbatim": "AVDD analog supply: 4.75 to 5.25 V.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.8, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "DVDD (digital)" }
+          ],
+          "conditionsVerbatim": "DVDD digital supply: 1.8 to 3.6 V.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": ["IDD", "AVDD current", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7e-3, "max": 1.0e-2 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "normal mode, PGA = 1, buffer off (AVDD rail)" }
+          ],
+          "conditionsVerbatim": "AVDD current, normal mode, PGA = 1, buffer off: 7 typ, 10 max mA.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "power",
+      "aliases": ["PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.8e-2, "max": 5.7e-2 },
+          "unit": "W",
+          "conditions": [
+            { "param": "MODE", "note": "normal mode, PGA = 1, buffer off, DVDD = 3.3 V" }
+          ],
+          "conditionsVerbatim": "Power dissipation, normal mode, PGA = 1, buffer off, DVDD = 3.3 V: 38 typ, 57 max mW.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply"
+        }
+      ]
+    },
+    {
+      "key": "power_down_current",
+      "name": "Power-down current",
+      "group": "power",
+      "aliases": ["power-down current", "sleep current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "MODE", "note": "power-down mode (per rail, AVDD and DVDD)" }
+          ],
+          "conditionsVerbatim": "AVDD and DVDD current, power-down mode: 2 uA.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (specified) temperature range",
+      "group": "general",
+      "aliases": ["TA", "specified temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Specified temperature range: -40 to +85 C (functional operating range extends to +105 C).",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Temperature Range"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SBAS288K - JUNE 2003 - REVISED SEPTEMBER 2013",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/ads1256.pdf",
+    "datasheetSha256": "9da3323db162b59329ec1a865829441ff1605279cd802fe879649b6f54e100e6",
+    "publishedDate": "September 2013",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

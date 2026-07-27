@@ -1,0 +1,4187 @@
+{
+  "family": "adc",
+  "manufacturer": "Texas Instruments",
+  "mpn": "ADS54J60",
+  "parameters": [
+    {
+      "aliases": [
+        "16-bit",
+        "N"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "GSPS",
+        "MSPS",
+        "fS",
+        "sampling rate"
+      ],
+      "group": "timing",
+      "key": "sample_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "device clock frequency",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 1000000000,
+            "min": 250000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SNR"
+      ],
+      "group": "dynamic",
+      "key": "signal_to_noise_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 70.9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 70.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 67.2,
+            "typ": 70
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 69.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 67.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 67.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 66
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 64.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SINAD",
+        "SNDR"
+      ],
+      "group": "dynamic",
+      "key": "signal_to_noise_and_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 70.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 70.4
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 67,
+            "typ": 69.8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 69.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 67.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 66
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 66.8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 65.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 64.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ENOB"
+      ],
+      "group": "dynamic",
+      "key": "effective_number_of_bits",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 11.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 11.4
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 11.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 11.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 11
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 10.9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 10.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 10.8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 10.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 10.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SFDR"
+      ],
+      "group": "dynamic",
+      "key": "spurious_free_dynamic_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 85
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 78,
+            "typ": 88
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 86
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 81
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 78
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 73
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 72
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 72
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HD2"
+      ],
+      "group": "dynamic",
+      "key": "second_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 85
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 92
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 79,
+            "typ": 95
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 86
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 81
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 81
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 76
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 72
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 68
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 72
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HD3"
+      ],
+      "group": "dynamic",
+      "key": "third_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 87
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 82,
+            "typ": 89
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 92
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 82
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 78
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 73
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 70
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 75
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "THD"
+      ],
+      "group": "dynamic",
+      "key": "total_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 83
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 83
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 74,
+            "typ": 87
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 78
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 76
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 71
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 71
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 67
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 71
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NSD",
+        "noise floor"
+      ],
+      "group": "dynamic",
+      "key": "noise_spectral_density",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -157.9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -157.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -154.2,
+            "typ": -157
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -156.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -155.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -155.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -154.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -154.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -153
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -151.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Non HD2, HD3",
+        "non-harmonic SFDR"
+      ],
+      "group": "dynamic",
+      "key": "worst_spur",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 94
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 97
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 79,
+            "typ": 93
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 95
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 95
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 91
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 85
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 90
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 90
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 96
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IL spur",
+        "SFDR_IL"
+      ],
+      "group": "dynamic",
+      "key": "interleaving_spur",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 88
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 90
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 69,
+            "typ": 87
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 230000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 85
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 270000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 84
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 300000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 82
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 370000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-1 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 82
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 470000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 79
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 79
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 720000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-6 dBFS",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "+5 dB digital gain",
+              "param": "GAIN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 75
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "channel isolation",
+        "interchannel isolation"
+      ],
+      "group": "dynamic",
+      "key": "crosstalk",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "full-scale aggressor",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IMD3"
+      ],
+      "group": "dynamic",
+      "key": "intermodulation_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "fIN1 = 185 MHz, fIN2 = 190 MHz",
+              "param": "F_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-7 dBFS per tone",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -88
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "fIN1 = 365 MHz, fIN2 = 370 MHz",
+              "param": "F_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-7 dBFS per tone",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -79
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "fIN1 = 465 MHz, fIN2 = 470 MHz",
+              "param": "F_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "-7 dBFS per tone",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -75
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FSR",
+        "VPP",
+        "full-scale"
+      ],
+      "group": "analog_input",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "differential full-scale",
+              "param": "RANGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 1.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCM",
+        "VIC"
+      ],
+      "group": "analog_input",
+      "key": "common_mode_input_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "-3dB bandwidth",
+        "FPBW",
+        "full-power bandwidth"
+      ],
+      "group": "analog_input",
+      "key": "input_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dB",
+              "param": "BW_POINT",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 1200000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RIN",
+        "Zin",
+        "input resistance"
+      ],
+      "group": "analog_input",
+      "key": "input_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 600
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CIN",
+        "input capacitance"
+      ],
+      "group": "analog_input",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 170000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 4.7e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aperture uncertainty",
+        "tj"
+      ],
+      "group": "timing",
+      "key": "aperture_jitter",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 13,
+          "sourceTable": "Timing Requirements",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.2e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVDD",
+        "AVDD3V",
+        "DVDD",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "AVDD3V, 3.0-V analog supply for the analog buffer",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.6,
+            "min": 2.85,
+            "nom": 3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "AVDD, 1.9-V analog supply",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2,
+            "min": 1.8,
+            "nom": 1.9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DVDD, 1.9-V digital supply",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2,
+            "min": 1.7,
+            "nom": 1.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOVDD",
+        "SERDES supply"
+      ],
+      "group": "power",
+      "key": "io_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.2,
+            "min": 1.1,
+            "nom": 1.15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IAVDD",
+        "IAVDD3V",
+        "IDVDD",
+        "IIOVDD",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "IAVDD3V, 3.0-V analog rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "full-scale on both channels",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.36,
+            "typ": 0.334
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "IAVDD, 1.9-V analog rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "full-scale on both channels",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.51,
+            "typ": 0.359
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "IDVDD, 1.9-V digital rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.26,
+            "typ": 0.197
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "IIOVDD, 1.15-V SERDES rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.92,
+            "typ": 0.566
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pdis",
+        "power dissipation"
+      ],
+      "group": "power",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS, 10.0 Gbps/lane",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 3.1,
+            "typ": 2.71
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "four lanes active, LMFS = 4244",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 2.8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "four lanes active, LMFS = 4222, 2X decimation",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 2.74
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "two lanes active, LMFS = 2221, 4X decimation",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 2.66
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power-down power"
+      ],
+      "group": "power",
+      "key": "power_down_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.315,
+            "typ": 0.139
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating temperature"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RtJA",
+        "RthetaJA"
+      ],
+      "group": "general",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "RMP (VQFNP), 72 pins, JEDEC standard board",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Thermal Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 22.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD HBM",
+        "V(ESD) HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 7,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD CDM",
+        "V(ESD) CDM"
+      ],
+      "group": "general",
+      "key": "esd_cdm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 7,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 500
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "AINP",
+      "name": "INAP",
+      "number": 42
+    },
+    {
+      "function": "AINN",
+      "name": "INAM",
+      "number": 41
+    },
+    {
+      "function": "AINP",
+      "name": "INBP",
+      "number": 13
+    },
+    {
+      "function": "AINN",
+      "name": "INBM",
+      "number": 14
+    },
+    {
+      "function": "CLKP",
+      "name": "CLKINP",
+      "number": 27
+    },
+    {
+      "function": "CLKN",
+      "name": "CLKINM",
+      "number": 28
+    },
+    {
+      "function": "SYSREF",
+      "name": "SYSREFP",
+      "number": 33
+    },
+    {
+      "function": "SYSREF",
+      "name": "SYSREFM",
+      "number": 34
+    },
+    {
+      "function": "SYNC",
+      "name": "SYNC",
+      "number": 63
+    },
+    {
+      "function": "VCM",
+      "name": "VCM",
+      "number": 22
+    },
+    {
+      "function": "JESD_TXP",
+      "name": "DA0P",
+      "number": 61
+    },
+    {
+      "function": "JESD_TXN",
+      "name": "DA0M",
+      "number": 62
+    },
+    {
+      "function": "JESD_TXP",
+      "name": "DB0P",
+      "number": 66
+    },
+    {
+      "function": "JESD_TXN",
+      "name": "DB0M",
+      "number": 65
+    },
+    {
+      "function": "SCLK",
+      "name": "SCLK",
+      "number": 6
+    },
+    {
+      "function": "SDI",
+      "name": "SDIN",
+      "number": 5
+    },
+    {
+      "function": "SDO",
+      "name": "SDOUT",
+      "number": 11
+    },
+    {
+      "function": "CS",
+      "name": "SEN",
+      "number": 7
+    },
+    {
+      "function": "RESET",
+      "name": "RESET",
+      "number": 48
+    },
+    {
+      "function": "PDN",
+      "name": "PDN",
+      "number": 50
+    },
+    {
+      "function": "AVDD",
+      "name": "AVDD",
+      "number": 9
+    },
+    {
+      "function": "AVDD",
+      "name": "AVDD3V",
+      "number": 10
+    },
+    {
+      "function": "DVDD",
+      "name": "DVDD",
+      "number": 8
+    },
+    {
+      "function": "OVDD",
+      "name": "IOVDD",
+      "number": 4
+    },
+    {
+      "function": "AGND",
+      "name": "AGND",
+      "number": 18
+    },
+    {
+      "function": "DGND",
+      "name": "DGND",
+      "number": 3
+    },
+    {
+      "function": "AGND",
+      "name": "GND Pad",
+      "number": 73
+    }
+  ]
+}

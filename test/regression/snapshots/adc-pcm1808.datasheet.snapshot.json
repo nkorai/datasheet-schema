@@ -1,0 +1,952 @@
+{
+  "family": "adc",
+  "manufacturer": "Texas Instruments",
+  "mpn": "PCM1808",
+  "parameters": [
+    {
+      "aliases": [
+        "audio data bit length",
+        "bit depth"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 24
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fS",
+        "sampling frequency"
+      ],
+      "group": "timing",
+      "key": "sample_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-speed (fS <= 48 kHz) and dual-speed (fS = 96 kHz)",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 96000,
+            "min": 8000,
+            "nom": 48000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DR",
+        "dynamic range"
+      ],
+      "group": "dynamic",
+      "key": "dynamic_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "A-weighted",
+              "param": "WEIGHTING",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 95,
+            "typ": 99
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "A-weighted",
+              "param": "WEIGHTING",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 96000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 101
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "S/N",
+        "SNR"
+      ],
+      "group": "dynamic",
+      "key": "signal_to_noise_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "A-weighted",
+              "param": "WEIGHTING",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 95,
+            "typ": 99
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "A-weighted",
+              "param": "WEIGHTING",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 96000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 101
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "THD+N"
+      ],
+      "group": "dynamic",
+      "key": "total_harmonic_distortion_plus_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "-0.5 dBFS input",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -87,
+            "typ": -93
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "-60 dBFS input",
+              "param": "A_IN",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -37
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "channel separation"
+      ],
+      "group": "dynamic",
+      "key": "crosstalk",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 93,
+            "typ": 97
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "pass band"
+      ],
+      "group": "digital_filter",
+      "key": "passband",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-speed, fS = 48 kHz",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 21792
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "pass-band ripple"
+      ],
+      "group": "digital_filter",
+      "key": "passband_ripple",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "stop band"
+      ],
+      "group": "digital_filter",
+      "key": "stopband",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-speed, fS = 48 kHz",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 27984
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "stop-band attenuation"
+      ],
+      "group": "digital_filter",
+      "key": "stopband_attenuation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delay time",
+        "group delay"
+      ],
+      "group": "digital_filter",
+      "key": "group_delay",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-speed, fS = 48 kHz",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.0003625
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FSR",
+        "full scale input",
+        "input voltage"
+      ],
+      "group": "analog_input",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "full scale (-0 dB), single-ended, VCC = 5 V",
+              "param": "RANGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "input impedance"
+      ],
+      "group": "analog_input",
+      "key": "input_impedance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Analog Input",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 60000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AAF -3dB",
+        "antialiasing filter frequency response"
+      ],
+      "group": "analog_input",
+      "key": "antialiasing_filter_response",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dB",
+              "param": "BW_POINT",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Analog Input",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 1300000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCC",
+        "VDD",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "analog (VCC)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 4.5,
+            "nom": 5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "digital (VDD)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.6,
+            "min": 2.7,
+            "nom": 3.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "analog (VCC)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6.5,
+            "min": -0.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "digital (VDD)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4,
+            "min": -0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICC",
+        "IDD",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "analog (ICC)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.011,
+            "typ": 0.0086
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "digital (IDD)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.008,
+            "typ": 0.0059
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "digital (IDD)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 96000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0102
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power dissipation"
+      ],
+      "group": "power",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 48000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.081,
+            "typ": 0.062
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 96000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.077
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power-down current"
+      ],
+      "group": "power",
+      "key": "power_down_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "analog (ICC)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "digital (IDD)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.00015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating ambient temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "VREF",
+      "name": "VREF",
+      "number": 1
+    },
+    {
+      "function": "AGND",
+      "name": "AGND",
+      "number": 2
+    },
+    {
+      "function": "AVDD",
+      "name": "VCC",
+      "number": 3
+    },
+    {
+      "function": "DVDD",
+      "name": "VDD",
+      "number": 4
+    },
+    {
+      "function": "DGND",
+      "name": "DGND",
+      "number": 5
+    },
+    {
+      "function": "MCLK",
+      "name": "SCKI",
+      "number": 6
+    },
+    {
+      "function": "LRCK",
+      "name": "LRCK",
+      "number": 7
+    },
+    {
+      "function": "BCK",
+      "name": "BCK",
+      "number": 8
+    },
+    {
+      "function": "SDOUT",
+      "name": "DOUT",
+      "number": 9
+    },
+    {
+      "function": "MD0",
+      "name": "MD0",
+      "number": 10
+    },
+    {
+      "function": "MD1",
+      "name": "MD1",
+      "number": 11
+    },
+    {
+      "function": "FMT",
+      "name": "FMT",
+      "number": 12
+    },
+    {
+      "function": "AINL",
+      "name": "VINL",
+      "number": 13
+    },
+    {
+      "function": "AINR",
+      "name": "VINR",
+      "number": 14
+    }
+  ]
+}

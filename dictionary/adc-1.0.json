@@ -1,0 +1,919 @@
+{
+  "$schema": "https://nkorai.github.io/datasheet-schema/dictionary/family-dictionary-1.0.schema.json",
+  "family": "adc",
+  "dictionaryVersion": "1.0",
+  "description": "Canonical parameter dictionary for analog-to-digital converters, merging five architectural sub-shapes that share one measurement envelope into a single family: (1) 'sar' successive-approximation converters (DC-accuracy + dynamic, moderate speed); (2) 'delta_sigma' oversampling converters (the 2-D input-referred noise table over DATA_RATE x GAIN is the heart of the part - effective_resolution / noise_free_resolution derive from it, and the on-chip digital_filter/rejection keys apply); (3) 'pipelined' converters (dynamic performance swept vs input frequency F_IN dominates); (4) 'rf_sampling' GSPS converters (noise_spectral_density, interleaving_spur, worst_spur, full-power input_bandwidth, aperture_jitter); and (5) 'audio' converters (dynamic_range A-weighted vs unweighted via the WEIGHTING axis, THD+N, and the digital_filter passband/stopband/group_delay keys). component.sub_type selects the architecture; a part populates only the groups its architecture uses (delta_sigma -> the noise table; pipelined/rf_sampling -> dynamic-vs-F_IN; audio -> digital_filter + dynamic_range), while resolution, sample_rate, the linearity/accuracy keys, analog_input, reference, timing, power, and thermal keys are common. Resolution and every bit-based figure (effective_number_of_bits/ENOB from SINAD, effective_resolution and noise_free_resolution from DC noise) use the 'bits' unit and permit fractional values; LSB is NOT a legal unit - INL/DNL normalize to ppm (altUnits % or V), offset to V, gain error to %, and the printed LSB figure is preserved in conditionsVerbatim. Every ratio/distortion figure in dB rides its reference (dBFS vs dBc, or a per-Hz dBFS/Hz for noise_spectral_density) in conditionsVerbatim and MUST NOT be merged across references. Full-scale input amplitudes printed as Vrms or Vpp stay in unit V with the measurement's statistic (rms / peak_to_peak) carrying the distinction, never a Vrms/Vpp unit. Condition axes for this family: F_IN (input signal frequency), F_S (sample rate as a condition), DATA_RATE (output data rate / ODR), GAIN (PGA gain), A_IN (input amplitude in dBFS or Vrms), V_REF (reference voltage), WEIGHTING (A-weighted / unweighted, note-only), OSR (oversampling ratio, note-only), MODE (power/speed mode, note-only), BUFFER (input buffer on/off, note-only), RANGE (input-range setting, note-only), PHASE (sample/hold, note-only), BW_POINT (-3dB / -0.1dB, note-only), V_SUPPLY (which rail, note-only), REFERENCE (the dB reference convention for a dynamic-performance figure - values dBFS / dBc / dBFS-per-Hz, note-only - carried alongside conditionsVerbatim on SNR/SINAD/THD/HDx/SFDR/worst_spur/NSD so a dBc suppression is never compared against a dBFS level), BW_LOW, BW_HIGH, F, T_A, PACKAGE, DIRECTION. Pin functions: AINP/AINN differential inputs, AIN0.. / AINCOM / COM multiplexed single-ended inputs; VREF / REFP / REFN / REFIO reference; AVDD / DVDD / OVDD / AGND / DGND supplies; SPI control SCLK/SDI/SDO/CS/CONVST/CNV/DRDY/BUSY; I2C control SCL/SDA/ADDR/ALERT; high-speed serdes CLKP/CLKN/SYSREF/SYNC plus JESD204 lanes; audio serial BCK/LRCK/MCLK/SDOUT. Base-SI throughout; aliases normalize the printed datasheet symbols across vendors (TI, Analog Devices, Cirrus Logic, AKM, ESS, Microchip, onsemi).",
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "unit": "bits",
+      "group": "general",
+      "aliases": ["N", "bit depth", "word length"],
+      "hint": "Number of output bits. Fractional not applicable here (this is the nominal word length); the achieved-bit figures are effective_number_of_bits / effective_resolution / noise_free_resolution."
+    },
+    {
+      "key": "no_missing_codes",
+      "name": "No missing codes",
+      "unit": "bits",
+      "group": "general",
+      "optional": true,
+      "aliases": ["NMC", "no missing codes"],
+      "hint": "Guaranteed resolution over which no output code is skipped (e.g. '16 bits, no missing codes'). Bits."
+    },
+    {
+      "key": "sample_rate",
+      "name": "Sample rate",
+      "unit": "Hz",
+      "group": "timing",
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["fS", "fSMPL", "fSAMPLE", "throughput", "max sample rate", "MSPS", "GSPS", "SPS", "conversion rate"],
+      "hint": "Aggregate sampling / throughput rate in Hz (1 MSPS = 1e6, 1 GSPS = 1e9). Array over MODE when a part offers several speed/power modes. Distinct from output_data_rate on oversampling parts."
+    },
+    {
+      "key": "output_data_rate",
+      "name": "Output data rate",
+      "unit": "Hz",
+      "group": "timing",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["ODR", "fDATA", "data rate"],
+      "hint": "Rate at which converted words are delivered (delta-sigma). On an oversampling part this differs from sample_rate by the OSR. Array over MODE (the ODR setting)."
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "unit": "ppm",
+      "group": "linearity",
+      "array": true,
+      "conditionAxis": "GAIN",
+      "altUnits": ["%", "V"],
+      "aliases": ["INL"],
+      "hint": "Deviation of the transfer function from the ideal line, normalized to ppm of full-scale (altUnits % or V). NEVER use LSB - the printed LSB figure goes in conditionsVerbatim. Array over GAIN on PGA parts."
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "unit": "ppm",
+      "group": "linearity",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "altUnits": ["%", "V"],
+      "aliases": ["DNL"],
+      "hint": "Deviation of each code width from 1 LSB, normalized to ppm of full-scale (altUnits % or V). NEVER use LSB as a unit - keep the printed LSB value in conditionsVerbatim. Array over GAIN."
+    },
+    {
+      "key": "offset_error",
+      "name": "Offset error",
+      "unit": "V",
+      "group": "accuracy",
+      "array": true,
+      "conditionAxis": "GAIN",
+      "altUnits": ["ppm", "%"],
+      "aliases": ["VOS", "EO", "offset error", "zero-scale error", "bipolar zero-scale error"],
+      "hint": "Bipolar/zero-scale offset. Canonical unit V; altUnits ppm or % of full-scale. Array over GAIN on PGA parts."
+    },
+    {
+      "key": "offset_drift",
+      "name": "Offset drift",
+      "unit": "V/degC",
+      "group": "accuracy",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "altUnits": ["ppm/degC"],
+      "aliases": ["offset drift", "TCVOS"],
+      "hint": "Temperature coefficient of offset. Canonical V/degC; altUnits ppm/degC of full-scale. Array over GAIN."
+    },
+    {
+      "key": "gain_error",
+      "name": "Gain error",
+      "unit": "%",
+      "group": "accuracy",
+      "array": true,
+      "conditionAxis": "GAIN",
+      "altUnits": ["ppm"],
+      "aliases": ["EG", "FSE", "full-scale error"],
+      "hint": "Full-scale / gain error, canonical % of full-scale (altUnits ppm). NEVER use LSB. Array over GAIN."
+    },
+    {
+      "key": "gain_drift",
+      "name": "Gain drift",
+      "unit": "ppm/degC",
+      "group": "accuracy",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "aliases": ["gain drift", "TC gain"],
+      "hint": "Temperature coefficient of gain, ppm/degC of full-scale. Array over GAIN."
+    },
+    {
+      "key": "total_unadjusted_error",
+      "name": "Total unadjusted error",
+      "unit": "%",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["TUE"],
+      "hint": "Combined worst-case error (offset + gain + linearity) without calibration, % of full-scale."
+    },
+    {
+      "key": "offset_error_matching",
+      "name": "Offset error matching",
+      "unit": "V",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["offset match"],
+      "hint": "Channel-to-channel offset matching on a multi-channel part, in V (altUnits not enumerated - keep printed ppm in conditionsVerbatim)."
+    },
+    {
+      "key": "gain_error_matching",
+      "name": "Gain error matching",
+      "unit": "%",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["gain match"],
+      "hint": "Channel-to-channel gain matching on a multi-channel part, % of full-scale."
+    },
+    {
+      "key": "long_term_gain_drift",
+      "name": "Long-term gain drift",
+      "unit": "ppm",
+      "group": "accuracy",
+      "optional": true,
+      "aliases": ["long-term drift", "1000-hr drift"],
+      "hint": "Long-term stability (e.g. 1000-hour drift), ppm of full-scale; keep the stated hour count in conditionsVerbatim."
+    },
+    {
+      "key": "input_referred_noise",
+      "name": "Input-referred noise (RMS)",
+      "unit": "V",
+      "group": "noise",
+      "array": true,
+      "conditionAxis": "DATA_RATE",
+      "altUnits": ["ppm"],
+      "aliases": ["Vn", "RMS noise", "input-referred noise"],
+      "hint": "The delta-sigma heart: RMS input-referred noise, statistic rms. This is a 2-D table swept over DATA_RATE and GAIN - emit one measurement per (DATA_RATE, GAIN) cell (conditionAxis names the primary axis DATA_RATE; carry GAIN as a second condition). Canonical V, altUnits ppm of full-scale."
+    },
+    {
+      "key": "input_referred_noise_pp",
+      "name": "Input-referred noise (peak-to-peak)",
+      "unit": "V",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DATA_RATE",
+      "altUnits": ["ppm"],
+      "aliases": ["peak-to-peak noise", "VPP"],
+      "hint": "Peak-to-peak input-referred noise, statistic peak_to_peak. Swept over DATA_RATE (and GAIN as a second condition). V."
+    },
+    {
+      "key": "noise_density",
+      "name": "Input voltage noise density",
+      "unit": "V/sqrtHz",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "aliases": ["en", "noise density"],
+      "hint": "Input-referred voltage noise spectral density (en) in V/sqrtHz. Array over GAIN. Distinct from noise_spectral_density (a dBFS/Hz figure)."
+    },
+    {
+      "key": "effective_resolution",
+      "name": "Effective resolution (RMS)",
+      "unit": "bits",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DATA_RATE",
+      "aliases": ["effective resolution", "RMS ENOB"],
+      "hint": "DC noise-based resolution = log2(full-scale / RMS input-referred noise). Bits, fractional. Swept over DATA_RATE (and GAIN). Distinct from effective_number_of_bits (an AC/SINAD figure)."
+    },
+    {
+      "key": "noise_free_resolution",
+      "name": "Noise-free resolution",
+      "unit": "bits",
+      "group": "noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "DATA_RATE",
+      "aliases": ["NFR", "noise-free bits"],
+      "hint": "Peak-to-peak noise-based resolution = log2(full-scale / peak-to-peak noise), ~2.7 bits below effective_resolution. Bits, fractional. Swept over DATA_RATE (and GAIN)."
+    },
+    {
+      "key": "effective_number_of_bits",
+      "name": "Effective number of bits",
+      "unit": "bits",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["ENOB"],
+      "hint": "Dynamic ENOB = (SINAD - 1.76)/6.02, derived from SINAD. Bits, fractional. Swept over input frequency F_IN. Keep the SINAD/A_IN conditions with the measurement."
+    },
+    {
+      "key": "dynamic_range",
+      "name": "Dynamic range",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "WEIGHTING",
+      "aliases": ["DR", "dynamic range"],
+      "hint": "Ratio of full-scale to the noise floor with no signal (audio). Array over WEIGHTING (A-weighted vs unweighted) - do not merge the two. dB (dBFS reference in conditionsVerbatim)."
+    },
+    {
+      "key": "transition_noise",
+      "name": "Transition noise",
+      "unit": "V",
+      "group": "noise",
+      "optional": true,
+      "altUnits": ["ppm"],
+      "aliases": ["transition noise"],
+      "hint": "RMS code transition (input-referred DC) noise, V (altUnits ppm of FSR); keep any printed LSB figure in conditionsVerbatim."
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["SNR", "S/N"],
+      "hint": "SNR (noise only, harmonics excluded). Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "signal_to_noise_and_distortion",
+      "name": "Signal-to-noise-and-distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["SINAD", "SNDR", "S/(N+D)"],
+      "hint": "SINAD (noise + harmonics). dB, reference in conditionsVerbatim. ENOB derives from this. Swept over F_IN."
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "altUnits": ["%"],
+      "aliases": ["THD"],
+      "hint": "THD, canonical dB (altUnits % for audio parts). Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure."
+    },
+    {
+      "key": "total_harmonic_distortion_plus_noise",
+      "name": "THD+N",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "A_IN",
+      "altUnits": ["%"],
+      "aliases": ["THD+N", "THDN"],
+      "hint": "THD+N (audio), canonical dB (altUnits %). Swept over input amplitude A_IN (dBFS). Reference in conditionsVerbatim."
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["SFDR"],
+      "hint": "SFDR - full-scale to the largest spur. dB. Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure. Swept over F_IN."
+    },
+    {
+      "key": "second_harmonic_distortion",
+      "name": "Second-harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["HD2"],
+      "hint": "Second harmonic. dB. Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure. Swept over F_IN."
+    },
+    {
+      "key": "third_harmonic_distortion",
+      "name": "Third-harmonic distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["HD3"],
+      "hint": "Third harmonic. dB. Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure. Swept over F_IN."
+    },
+    {
+      "key": "worst_spur",
+      "name": "Worst spurious",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["worst spur"],
+      "hint": "Worst non-harmonic spur (rf_sampling). dB. Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure. Swept over F_IN."
+    },
+    {
+      "key": "intermodulation_distortion",
+      "name": "Intermodulation distortion",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["IMD3"],
+      "hint": "Two-tone third-order intermodulation. dB; keep the two tone frequencies in conditionsVerbatim."
+    },
+    {
+      "key": "noise_spectral_density",
+      "name": "Noise spectral density",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["NSD", "noise spectral density", "noise floor"],
+      "hint": "Full-scale-referred noise density in dBFS/Hz (rf_sampling). Unit dB. Store the datasheet's printed signed value; the reference (dBFS vs dBc vs dBFS/Hz) rides in conditionsVerbatim and in the note-only REFERENCE condition. A dBc suppression (SFDR/HDx) is a positive magnitude; a dBFS distortion level (THD on some parts) is negative; NSD is a negative dBFS/Hz level. Do NOT compare a dBc figure against a dBFS figure. Swept over F_IN."
+    },
+    {
+      "key": "interleaving_spur",
+      "name": "Interleaving spur",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["interleaving spur", "IL spur"],
+      "hint": "Time-interleave image/offset spur (rf_sampling), typically at fS/2 +/- fIN. dB, reference in conditionsVerbatim. Swept over F_IN."
+    },
+    {
+      "key": "crosstalk",
+      "name": "Crosstalk",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["channel isolation", "interchannel isolation", "channel separation"],
+      "hint": "Channel-to-channel isolation on a multi-channel part. dB. Swept over F_IN."
+    },
+    {
+      "key": "interchannel_gain_mismatch",
+      "name": "Interchannel gain mismatch",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["gain mismatch"],
+      "hint": "Gain match between channels expressed in dB (rf_sampling/audio)."
+    },
+    {
+      "key": "interchannel_phase_deviation",
+      "name": "Interchannel phase deviation",
+      "unit": "deg",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": ["phase deviation"],
+      "hint": "Phase match between channels, in degrees."
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Full-scale input range",
+      "unit": "V",
+      "group": "analog_input",
+      "array": true,
+      "conditionAxis": "RANGE",
+      "aliases": ["FSR", "full-scale range", "full-scale input", "input voltage range"],
+      "hint": "Full-scale input range in V. A Vpp or Vrms full-scale figure stays in V with the measurement's statistic (peak_to_peak / rms) carrying the distinction - never a Vrms/Vpp unit. Array over RANGE (the input-range setting)."
+    },
+    {
+      "key": "input_impedance",
+      "name": "Input impedance",
+      "unit": "ohm",
+      "group": "analog_input",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "aliases": ["Zin", "RIN", "input resistance"],
+      "hint": "DC/AC input impedance in ohm. On delta-sigma parts it varies with GAIN (switched-cap load) - array over GAIN."
+    },
+    {
+      "key": "input_impedance_drift",
+      "name": "Input impedance drift",
+      "unit": "ppm/degC",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["input impedance drift"],
+      "hint": "Temperature coefficient of input impedance, ppm/degC."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "unit": "F",
+      "group": "analog_input",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "PHASE",
+      "aliases": ["Cin", "input capacitance"],
+      "hint": "Analog input capacitance, F. Array over PHASE (sample vs hold) when the datasheet distinguishes them."
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "unit": "A",
+      "group": "analog_input",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "GAIN",
+      "aliases": ["Ib", "input leakage", "input bias current", "ILI"],
+      "hint": "Input bias / leakage current, A. Array over GAIN. Keep the sign convention in conditionsVerbatim if the datasheet is signed."
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input range",
+      "unit": "V",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["VCM range", "common-mode input range"],
+      "hint": "Allowable input common-mode voltage range, V."
+    },
+    {
+      "key": "input_bandwidth",
+      "name": "Input bandwidth",
+      "unit": "Hz",
+      "group": "analog_input",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "BW_POINT",
+      "aliases": ["full-power bandwidth", "FPBW", "-3dB bandwidth"],
+      "hint": "Analog / full-power input bandwidth, Hz. Array over BW_POINT (-3dB vs -0.1dB)."
+    },
+    {
+      "key": "input_overvoltage",
+      "name": "Input overvoltage tolerance",
+      "unit": "V",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["overvoltage protection", "VOVP"],
+      "hint": "Input overvoltage tolerance / protection threshold, V (typically an absolute_max)."
+    },
+    {
+      "key": "sample_capacitance",
+      "name": "Sampling capacitance",
+      "unit": "F",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["CSAMPLE", "sampling capacitance"],
+      "hint": "Switched sampling capacitor value, F - sets the input driver settling requirement."
+    },
+    {
+      "key": "antialiasing_filter_response",
+      "name": "Anti-aliasing filter response",
+      "unit": "Hz",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["AAF -3dB"],
+      "hint": "On-chip anti-aliasing filter corner (-3dB), Hz."
+    },
+    {
+      "key": "excitation_current",
+      "name": "Excitation current",
+      "unit": "A",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["IDAC", "excitation current"],
+      "hint": "Programmable excitation (IDAC) current for ratiometric RTD/bridge sensing, A."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "External reference voltage range",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["VREF", "external reference range"],
+      "hint": "Allowable external reference voltage range, V. Distinct from internal_reference_voltage."
+    },
+    {
+      "key": "internal_reference_voltage",
+      "name": "Internal reference voltage",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["REFOUT", "internal reference"],
+      "hint": "On-chip reference output voltage, V."
+    },
+    {
+      "key": "internal_reference_drift",
+      "name": "Internal reference drift",
+      "unit": "ppm/degC",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference drift", "TCVREF"],
+      "hint": "Temperature coefficient of the internal reference, ppm/degC."
+    },
+    {
+      "key": "internal_reference_accuracy",
+      "name": "Internal reference accuracy",
+      "unit": "%",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["reference accuracy", "initial accuracy"],
+      "hint": "Initial accuracy of the internal reference, % of nominal."
+    },
+    {
+      "key": "reference_input_current",
+      "name": "Reference input current",
+      "unit": "A",
+      "group": "reference",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_S",
+      "aliases": ["IREF", "reference input current"],
+      "hint": "Average current drawn from an external reference, A. Scales with sample rate - array over F_S."
+    },
+    {
+      "key": "reference_input_voltage_range",
+      "name": "Reference input voltage range",
+      "unit": "V",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["REFIN range"],
+      "hint": "Allowable voltage range at the REFIN pin, V."
+    },
+    {
+      "key": "reference_turn_on_time",
+      "name": "Reference turn-on time",
+      "unit": "s",
+      "group": "reference",
+      "optional": true,
+      "aliases": ["turn-on time", "power-up time"],
+      "hint": "Internal reference power-up / settling time, s."
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "unit": "dB",
+      "group": "rejection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_IN",
+      "aliases": ["CMRR"],
+      "hint": "CMRR, dB. Array over F_IN (frequency of the common-mode disturbance)."
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "unit": "dB",
+      "group": "rejection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "V_SUPPLY",
+      "aliases": ["PSRR", "PSR"],
+      "hint": "PSRR, dB. Array over V_SUPPLY (which rail is being rejected)."
+    },
+    {
+      "key": "normal_mode_rejection",
+      "name": "Normal-mode rejection",
+      "unit": "dB",
+      "group": "rejection",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": ["NMRR", "line rejection", "50/60Hz rejection"],
+      "hint": "Normal-mode (line-frequency) rejection of the digital filter, dB. Array over F (notch frequency, 50/60 Hz)."
+    },
+    {
+      "key": "conversion_time",
+      "name": "Conversion time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["tCONV"],
+      "hint": "Time from convert-start to result ready, s."
+    },
+    {
+      "key": "acquisition_time",
+      "name": "Acquisition time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["tACQ"],
+      "hint": "Sample/acquisition (track) time, s."
+    },
+    {
+      "key": "aperture_delay",
+      "name": "Aperture delay",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["tAD", "aperture delay"],
+      "hint": "Delay from the sampling clock edge to the actual sample instant, s."
+    },
+    {
+      "key": "aperture_jitter",
+      "name": "Aperture jitter",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["tAJ", "aperture jitter", "aperture uncertainty", "jitter"],
+      "hint": "RMS sampling-instant uncertainty, s - limits SNR at high F_IN on rf_sampling parts."
+    },
+    {
+      "key": "settling_time",
+      "name": "Settling time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["settling time", "startup time"],
+      "hint": "Filter/channel settling or startup time after a configuration change, s."
+    },
+    {
+      "key": "latency",
+      "name": "Latency",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["pipeline latency"],
+      "hint": "Output latency (pipelined/delta-sigma). Convert cycles to seconds via the clock/fS; keep the cycle count (e.g. '12 clock cycles') in conditionsVerbatim."
+    },
+    {
+      "key": "serial_clock_frequency",
+      "name": "Serial clock frequency",
+      "unit": "Hz",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["fSCL", "SCLK frequency", "SPI clock"],
+      "hint": "Maximum serial interface clock (SPI SCLK / I2C SCL), Hz."
+    },
+    {
+      "key": "passband",
+      "name": "Passband",
+      "unit": "Hz",
+      "group": "digital_filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["passband edge"],
+      "hint": "Digital filter passband edge, Hz (audio). Array over MODE (filter/OSR mode). Often stated as a fraction of ODR - keep that in conditionsVerbatim."
+    },
+    {
+      "key": "passband_ripple",
+      "name": "Passband ripple",
+      "unit": "dB",
+      "group": "digital_filter",
+      "optional": true,
+      "aliases": ["passband ripple"],
+      "hint": "Peak-to-peak digital filter passband ripple, dB."
+    },
+    {
+      "key": "stopband",
+      "name": "Stopband",
+      "unit": "Hz",
+      "group": "digital_filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["stopband edge"],
+      "hint": "Digital filter stopband edge, Hz. Array over MODE."
+    },
+    {
+      "key": "stopband_attenuation",
+      "name": "Stopband attenuation",
+      "unit": "dB",
+      "group": "digital_filter",
+      "optional": true,
+      "aliases": ["stopband attenuation"],
+      "hint": "Digital filter stopband attenuation, dB."
+    },
+    {
+      "key": "group_delay",
+      "name": "Group delay",
+      "unit": "s",
+      "group": "digital_filter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["group delay"],
+      "hint": "Digital filter group delay, s. Array over MODE. Often stated in samples - convert via ODR and keep the sample count in conditionsVerbatim."
+    },
+    {
+      "key": "hpf_corner_frequency",
+      "name": "High-pass filter corner",
+      "unit": "Hz",
+      "group": "digital_filter",
+      "optional": true,
+      "aliases": ["HPF corner"],
+      "hint": "DC-blocking high-pass filter corner frequency, Hz (audio)."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "unit": "V",
+      "group": "power",
+      "array": true,
+      "conditionAxis": "V_SUPPLY",
+      "aliases": ["AVDD", "DVDD", "VDD", "supply voltage"],
+      "hint": "Rail supply voltage, V. A part has several rails (analog AVDD, digital DVDD) - array over V_SUPPLY, one measurement per rail. IO rail is io_supply_voltage."
+    },
+    {
+      "key": "io_supply_voltage",
+      "name": "IO supply voltage",
+      "unit": "V",
+      "group": "power",
+      "optional": true,
+      "aliases": ["OVDD", "VDRIVE", "IO supply"],
+      "hint": "Digital-interface / IO rail voltage, V (OVDD / VDRIVE)."
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "unit": "A",
+      "group": "power",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["IDD", "ICC", "IVDD", "IAVDD", "supply current", "operating current"],
+      "hint": "Operating supply current, A. Array over MODE (speed/power mode); split per rail via a rail condition in conditionsVerbatim."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "power",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "MODE",
+      "aliases": ["PD", "power dissipation"],
+      "hint": "Total operating power, W. Array over MODE."
+    },
+    {
+      "key": "standby_current",
+      "name": "Standby current",
+      "unit": "A",
+      "group": "power",
+      "optional": true,
+      "aliases": ["standby current"],
+      "hint": "Standby (retention, oscillator running) supply current, A."
+    },
+    {
+      "key": "power_down_current",
+      "name": "Power-down current",
+      "unit": "A",
+      "group": "power",
+      "optional": true,
+      "aliases": ["power-down current", "shutdown current", "sleep current"],
+      "hint": "Full power-down / shutdown / sleep current, A."
+    },
+    {
+      "key": "power_down_dissipation",
+      "name": "Power-down dissipation",
+      "unit": "W",
+      "group": "power",
+      "optional": true,
+      "aliases": ["power-down power"],
+      "hint": "Power-down mode power dissipation, W."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "general",
+      "aliases": ["TA", "operating temperature range"],
+      "hint": "Ambient operating temperature range, degC (min/max)."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "unit": "degC/W",
+      "group": "general",
+      "optional": true,
+      "aliases": ["RthetaJA"],
+      "hint": "Junction-to-ambient thermal resistance, degC/W."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD HBM"],
+      "hint": "Human-body-model ESD withstand voltage, V."
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged-device model",
+      "unit": "V",
+      "group": "general",
+      "optional": true,
+      "aliases": ["ESD CDM"],
+      "hint": "Charged-device-model ESD withstand voltage, V."
+    },
+    {
+      "key": "pga_gain",
+      "name": "PGA gain",
+      "unit": "V/V",
+      "group": "analog_input",
+      "optional": true,
+      "aliases": ["PGA", "programmable gain", "gain setting"],
+      "hint": "The enumerated PGA gain set the part offers; capture the set as min/max or one measurement per gain, with the list in conditionsVerbatim. Dimensionless V/V. Distinct from the GAIN condition axis (which selects a gain on other parameters)."
+    },
+    {
+      "key": "oversampling_ratio",
+      "name": "Oversampling ratio",
+      "unit": "V/V",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["OSR", "oversampling ratio"],
+      "hint": "Dimensionless oversampling count (V/V); the configurable OSR set. Capture the set as min/max or one measurement per setting, with the list in conditionsVerbatim."
+    },
+    {
+      "key": "input_clock_frequency",
+      "name": "Input clock frequency",
+      "unit": "Hz",
+      "group": "timing",
+      "optional": true,
+      "aliases": ["fCLKIN", "device clock", "sampling clock", "master clock frequency"],
+      "hint": "The conversion / sampling clock input, Hz. Distinct from serial_clock_frequency (the digital-interface SCLK)."
+    },
+    {
+      "key": "digital_input_high_voltage",
+      "name": "Digital input high voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VIH", "input high voltage", "logic high threshold"],
+      "hint": "Minimum logic-high input threshold on a digital control pin, V."
+    },
+    {
+      "key": "digital_input_low_voltage",
+      "name": "Digital input low voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VIL", "input low voltage", "logic low threshold"],
+      "hint": "Maximum logic-low input threshold on a digital control pin, V."
+    },
+    {
+      "key": "digital_output_high_voltage",
+      "name": "Digital output high voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VOH", "output high voltage"],
+      "hint": "Logic-high output voltage on a digital pin at the specified load, V."
+    },
+    {
+      "key": "digital_output_low_voltage",
+      "name": "Digital output low voltage",
+      "unit": "V",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["VOL", "output low voltage"],
+      "hint": "Logic-low output voltage on a digital pin at the specified load, V."
+    },
+    {
+      "key": "digital_input_leakage",
+      "name": "Digital input leakage current",
+      "unit": "A",
+      "group": "interface",
+      "optional": true,
+      "aliases": ["digital input leakage", "IIL", "input leakage current"],
+      "hint": "Leakage current into a digital input pin, A."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["Tstg", "storage temperature"],
+      "hint": "Storage temperature range, degC (min/max), typically an absolute_max."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "unit": "degC",
+      "group": "general",
+      "optional": true,
+      "aliases": ["TJ", "maximum junction temperature"],
+      "hint": "Maximum operating / absolute-max junction temperature, degC."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case",
+      "unit": "degC/W",
+      "group": "general",
+      "optional": true,
+      "aliases": ["RthetaJC", "theta-JC", "junction-to-case thermal resistance"],
+      "hint": "Junction-to-case thermal resistance, degC/W."
+    }
+  ]
+}

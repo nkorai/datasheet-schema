@@ -1,0 +1,567 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LTC2378-20",
+    "manufacturer": "Analog Devices",
+    "family": "adc",
+    "description": "20-bit, 1-Msps, low-noise, fully-differential successive-approximation (SAR) ADC with no pipeline latency (each conversion is independent). sub_type: sar. Fully-differential +/-VREF input (differential full-scale span 2 x VREF). Linearity and DC-accuracy specifications are printed natively in ppm of full-scale rather than LSB. Pinout (16-lead MSOP): analog inputs IN+ / IN-; external reference REF; analog supply VDD; digital I/O supply OVDD; GND; convert-start CNV; BUSY status; serial-clock SCK; serial-data-out SDO; RDL/SDI read-low / chain data-in; CHAIN mode select.",
+    "package": "MSOP-16",
+    "pinCount": 16,
+    "polarity": "bipolar",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125"
+  },
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["N", "bit depth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 20 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution, 20 bits",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "integral_nonlinearity",
+      "name": "Integral nonlinearity",
+      "group": "linearity",
+      "aliases": ["INL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.5, "max": 2 },
+          "unit": "ppm",
+          "conditionsVerbatim": "INL, integral nonlinearity, ppm of FSR",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "differential_nonlinearity",
+      "name": "Differential nonlinearity",
+      "group": "linearity",
+      "aliases": ["DNL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.2, "max": 0.5 },
+          "unit": "ppm",
+          "conditionsVerbatim": "DNL, differential nonlinearity, ppm of FSR; guaranteed no missing codes",
+          "guarantee": "by_characterization",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "offset_error",
+      "name": "Offset (bipolar zero-scale) error",
+      "group": "accuracy",
+      "aliases": ["bipolar zero-scale error", "zero-scale error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 13 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Bipolar zero-scale error, ppm of FSR",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "offset_drift",
+      "name": "Offset (zero-scale) error drift",
+      "group": "accuracy",
+      "aliases": ["bipolar zero-scale error drift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.007 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Bipolar zero-scale error drift, 0.007 ppm/degC (7 ppb/degC of FSR)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gain_error",
+      "name": "Full-scale (gain) error",
+      "group": "accuracy",
+      "aliases": ["FSE", "full-scale error"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 100 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Full-scale error, ppm of FSR",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "gain_drift",
+      "name": "Full-scale (gain) error drift",
+      "group": "accuracy",
+      "aliases": ["full-scale error drift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.05 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Full-scale error drift, 0.05 ppm/degC of FSR",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "transition_noise",
+      "name": "Transition noise",
+      "group": "noise",
+      "aliases": ["transition noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.3e-05 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Transition noise, 2.3 ppm RMS of FSR; = 2.3e-5 V RMS referred to the FSR = 2 x VREF = 10 V span at VREF = 5 V",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "group": "dynamic",
+      "aliases": ["SNR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 104 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 2000, "unit": "Hz" },
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SNR, fIN = 2 kHz, VREF = 5 V (dBFS)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_and_distortion",
+      "name": "Signal-to-noise-and-distortion",
+      "group": "dynamic",
+      "aliases": ["SINAD", "S/(N+D)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 104 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 2000, "unit": "Hz" },
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SINAD, fIN = 2 kHz, VREF = 5 V (dBFS)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "group": "dynamic",
+      "aliases": ["THD"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -125 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 2000, "unit": "Hz" },
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "THD, fIN = 2 kHz, VREF = 5 V (dBc)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range",
+      "group": "dynamic",
+      "aliases": ["SFDR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 128 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 2000, "unit": "Hz" },
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "SFDR, fIN = 2 kHz, VREF = 5 V (dBc)",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 86 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_IN", "value": 500000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "CMRR, fIN = 500 kHz",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "input_bandwidth",
+      "name": "Input bandwidth (-3 dB)",
+      "group": "analog_input",
+      "aliases": ["-3dB bandwidth", "full-power bandwidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.4e07 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "BW_POINT", "note": "-3 dB" }
+          ],
+          "conditionsVerbatim": "-3 dB input bandwidth, 34 MHz",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input capacitance",
+      "group": "analog_input",
+      "aliases": ["Cin"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "PHASE", "note": "sample (acquire) phase" }
+          ],
+          "conditionsVerbatim": "Input capacitance, sample-mode, 45 pF",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "PHASE", "note": "hold (convert) phase" }
+          ],
+          "conditionsVerbatim": "Input capacitance, hold-mode, 5 pF",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input range",
+      "group": "analog_input",
+      "aliases": ["VCM range", "common-mode input range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.4, "typ": 2.5, "max": 2.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_REF", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Input common-mode range VCM = VREF/2 +/- 0.1 V (2.4 V to 2.6 V at VREF = 5 V)",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reference_voltage",
+      "name": "External reference voltage range",
+      "group": "reference",
+      "aliases": ["VREF", "external reference range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.5, "max": 5.1 },
+          "unit": "V",
+          "conditionsVerbatim": "VREF, external reference input range",
+          "sourcePage": 4,
+          "sourceTable": "Reference"
+        }
+      ]
+    },
+    {
+      "key": "reference_input_current",
+      "name": "Reference input current",
+      "group": "reference",
+      "aliases": ["IREF", "reference input current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.4e-04, "max": 1.1e-03 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F_S", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IREF, average reference input current, fSMPL = 1 Msps; scales with sample rate",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Reference"
+        }
+      ]
+    },
+    {
+      "key": "sample_rate",
+      "name": "Sampling rate (throughput)",
+      "group": "timing",
+      "aliases": ["fS", "throughput", "MSPS"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e06 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Maximum sampling / throughput rate, 1 Msps",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "conversion_time",
+      "name": "Conversion time",
+      "group": "timing",
+      "aliases": ["tCONV"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 6.75e-07 },
+          "unit": "s",
+          "conditionsVerbatim": "tCONV, conversion time, 675 ns max",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "acquisition_time",
+      "name": "Acquisition time",
+      "group": "timing",
+      "aliases": ["tACQ"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.12e-07 },
+          "unit": "s",
+          "conditionsVerbatim": "tACQ, acquisition time, 312 ns typ",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "aperture_delay",
+      "name": "Aperture delay",
+      "group": "timing",
+      "aliases": ["tAD", "aperture delay"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-10 },
+          "unit": "s",
+          "conditionsVerbatim": "Aperture delay, 500 ps typ",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "aperture_jitter",
+      "name": "Aperture jitter",
+      "group": "timing",
+      "aliases": ["aperture jitter", "aperture uncertainty"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-12 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditionsVerbatim": "Aperture jitter, 4 ps RMS typ",
+          "guarantee": "typical",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Analog supply voltage (VDD)",
+      "group": "power",
+      "aliases": ["VDD", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.375, "typ": 2.5, "max": 2.625 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "VDD analog rail" }
+          ],
+          "conditionsVerbatim": "VDD, analog supply voltage, 2.5 V nominal (2.375 V to 2.625 V)",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements"
+        }
+      ]
+    },
+    {
+      "key": "io_supply_voltage",
+      "name": "Digital I/O supply voltage (OVDD)",
+      "group": "power",
+      "aliases": ["OVDD", "IO supply"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.71, "max": 5.25 },
+          "unit": "V",
+          "conditionsVerbatim": "OVDD, digital I/O supply voltage, 1.71 V to 5.25 V",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": ["IVDD", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8.4e-03 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F_S", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IVDD supply current, fSMPL = 1 Msps (IOVDD is a separate ~0.2 mA typ line); datasheet max 10 mA",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "power",
+      "aliases": ["PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.1e-02 },
+          "unit": "W",
+          "conditions": [
+            { "param": "F_S", "value": 1000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Power dissipation, 21 mW at fSMPL = 1 Msps",
+          "guarantee": "typical",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_down_current",
+      "name": "Nap/sleep power-down current",
+      "group": "power",
+      "aliases": ["nap current", "sleep current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 9e-05 },
+          "unit": "A",
+          "conditionsVerbatim": "Power-down (nap) supply current, 90 uA max",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["TA", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating (ambient) temperature range, -40 degC to 125 degC (I-grade)",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "237820fb",
+    "sourceUrl": "https://www.analog.com/media/en/technical-documentation/data-sheets/237820fb.pdf",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "SAR sub_type. DC-accuracy and linearity (INL, DNL, offset, gain) are transcribed in the datasheet's native ppm-of-FSR rather than LSB, per the ADC dictionary rule that LSB is not a legal unit.",
+    "transition_noise has no ppm altUnit in adc-1.0.json (canonical unit V), so the printed 2.3 ppm RMS is converted to 2.3e-5 V RMS against FSR = 2 x VREF = 10 V (VREF = 5 V) and the ppm figure is preserved in conditionsVerbatim.",
+    "Fully-differential +/-VREF input, so component.polarity is bipolar. Full-scale range (FSR) = 2 x VREF.",
+    "Page numbers reflect the standard LTC2378-20 (Rev. fb) Electrical Characteristics layout; the PDF was not reachable during extraction to confirm exact pages."
+  ]
+}

@@ -1,0 +1,845 @@
+{
+  "family": "adc",
+  "manufacturer": "Analog Devices",
+  "mpn": "LTC2378-20",
+  "parameters": [
+    {
+      "aliases": [
+        "N",
+        "bit depth"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INL"
+      ],
+      "group": "linearity",
+      "key": "integral_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 2,
+            "typ": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DNL"
+      ],
+      "group": "linearity",
+      "key": "differential_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.5,
+            "typ": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "bipolar zero-scale error",
+        "zero-scale error"
+      ],
+      "group": "accuracy",
+      "key": "offset_error",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "bipolar zero-scale error drift"
+      ],
+      "group": "accuracy",
+      "key": "offset_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FSE",
+        "full-scale error"
+      ],
+      "group": "accuracy",
+      "key": "gain_error",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "full-scale error drift"
+      ],
+      "group": "accuracy",
+      "key": "gain_drift",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "transition noise"
+      ],
+      "group": "noise",
+      "key": "transition_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.000023
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SNR"
+      ],
+      "group": "dynamic",
+      "key": "signal_to_noise_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 2000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 104
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "S/(N+D)",
+        "SINAD"
+      ],
+      "group": "dynamic",
+      "key": "signal_to_noise_and_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 2000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 104
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "THD"
+      ],
+      "group": "dynamic",
+      "key": "total_harmonic_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 2000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SFDR"
+      ],
+      "group": "dynamic",
+      "key": "spurious_free_dynamic_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 2000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 128
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR"
+      ],
+      "group": "rejection",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 500000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 86
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "-3dB bandwidth",
+        "full-power bandwidth"
+      ],
+      "group": "analog_input",
+      "key": "input_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "-3 dB",
+              "param": "BW_POINT",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 34000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cin"
+      ],
+      "group": "analog_input",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "sample (acquire) phase",
+              "param": "PHASE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 4.5e-11
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "hold (convert) phase",
+              "param": "PHASE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 5e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCM range",
+        "common-mode input range"
+      ],
+      "group": "analog_input",
+      "key": "common_mode_input_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_REF",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.6,
+            "min": 2.4,
+            "typ": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VREF",
+        "external reference range"
+      ],
+      "group": "reference",
+      "key": "reference_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Reference",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.1,
+            "min": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IREF",
+        "reference input current"
+      ],
+      "group": "reference",
+      "key": "reference_input_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Reference",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0011,
+            "typ": 0.00094
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "MSPS",
+        "fS",
+        "throughput"
+      ],
+      "group": "timing",
+      "key": "sample_rate",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 1000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tCONV"
+      ],
+      "group": "timing",
+      "key": "conversion_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 6.75e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tACQ"
+      ],
+      "group": "timing",
+      "key": "acquisition_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "ADC Timing Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 3.12e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aperture delay",
+        "tAD"
+      ],
+      "group": "timing",
+      "key": "aperture_delay",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 5e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aperture jitter",
+        "aperture uncertainty"
+      ],
+      "group": "timing",
+      "key": "aperture_jitter",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Dynamic Accuracy",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 4e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDD",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VDD analog rail",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.625,
+            "min": 2.375,
+            "typ": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IO supply",
+        "OVDD"
+      ],
+      "group": "power",
+      "key": "io_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.25,
+            "min": 1.71
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IVDD",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0084
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation"
+      ],
+      "group": "power",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_S",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.021
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "nap current",
+        "sleep current"
+      ],
+      "group": "power",
+      "key": "power_down_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Power Requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "operating temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Converter Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": []
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "ADC-X", "manufacturer": "Y", "family": "adc" },
+  "parameters": [
+    { "key": "resolution", "measurements": [
+      { "limitClass": "characterized", "value": { "nom": 24 }, "unit": "bits", "sourcePage": 1 } ] },
+    { "key": "effective_number_of_bits", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 11.3 }, "unit": "bits",
+        "conditions": [ { "param": "F_IN", "value": 170000000, "unit": "Hz" } ],
+        "conditionsVerbatim": "ENOB at fIN = 170 MHz, -1 dBFS", "sourcePage": 11 } ] },
+    { "key": "integral_nonlinearity", "measurements": [
+      { "limitClass": "characterized", "value": { "max": 2 }, "unit": "ppm",
+        "conditionsVerbatim": "INL, +/-2 ppm of FSR (= +/-2 LSB at 20-bit)", "sourcePage": 3 } ] }
+  ],
+  "provenance": { "verified": false }
+}

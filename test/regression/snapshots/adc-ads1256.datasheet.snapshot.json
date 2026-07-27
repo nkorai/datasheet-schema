@@ -1,0 +1,1160 @@
+{
+  "family": "adc",
+  "manufacturer": "Texas Instruments",
+  "mpn": "ADS1256",
+  "parameters": [
+    {
+      "aliases": [
+        "N",
+        "bit depth"
+      ],
+      "group": "general",
+      "key": "resolution",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "by_design",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - System Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "nom": 24
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ENOB",
+        "effective resolution"
+      ],
+      "group": "noise",
+      "key": "effective_resolution",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 2.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 25.3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 2.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 22.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 21.7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 30000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 19.8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 30000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 2. Effective Number of Bits (ENOB, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 16.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NFR",
+        "noise-free bits"
+      ],
+      "group": "noise",
+      "key": "noise_free_resolution",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 2.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 3. Noise-Free Resolution (bits) with Buffer On",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "bits",
+          "value": {
+            "typ": 23
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS noise",
+        "Vn",
+        "input-referred noise"
+      ],
+      "group": "noise",
+      "key": "input_referred_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 2.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 2.47e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 30000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.000010728
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 2.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 12,
+          "sourceTable": "Table 1. Input Referred Noise (uV, rms) with Buffer On",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 3.3e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "INL"
+      ],
+      "group": "linearity",
+      "key": "integral_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 10,
+            "typ": 3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "typ": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "EG",
+        "FSE"
+      ],
+      "group": "accuracy",
+      "key": "gain_error",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.005
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TC gain",
+        "gain drift"
+      ],
+      "group": "accuracy",
+      "key": "gain_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCVOS",
+        "offset drift"
+      ],
+      "group": "accuracy",
+      "key": "offset_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": 1e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 64
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": 4e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RIN",
+        "Zin",
+        "input resistance"
+      ],
+      "group": "analog_input",
+      "key": "input_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "on",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 80000000
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "GAIN",
+              "unit": "V/V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "off",
+              "param": "BUFFER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 150000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR"
+      ],
+      "group": "rejection",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_IN",
+              "unit": "Hz",
+              "value": 60
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DATA_RATE",
+              "unit": "Hz",
+              "value": 30000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 95,
+            "typ": 110
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSR",
+        "PSRR"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "AVDD",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 60,
+            "typ": 70
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DVDD",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VREF",
+        "external reference range"
+      ],
+      "group": "reference",
+      "key": "reference_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - Voltage Reference Inputs",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.6,
+            "min": 0.5,
+            "nom": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SPS",
+        "data rate",
+        "fDATA"
+      ],
+      "group": "timing",
+      "key": "output_data_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "fCLKIN = 7.68 MHz",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - System Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 30000,
+            "min": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVDD",
+        "DVDD",
+        "supply voltage"
+      ],
+      "group": "power",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "AVDD (analog)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.25,
+            "min": 4.75
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DVDD (digital)",
+              "param": "V_SUPPLY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.6,
+            "min": 1.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AVDD current",
+        "IDD",
+        "supply current"
+      ],
+      "group": "power",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal mode, PGA = 1, buffer off (AVDD rail)",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.01,
+            "typ": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation"
+      ],
+      "group": "power",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "normal mode, PGA = 1, buffer off, DVDD = 3.3 V",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.057,
+            "typ": 0.038
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power-down current",
+        "sleep current"
+      ],
+      "group": "power",
+      "key": "power_down_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "power-down mode (per rail, AVDD and DVDD)",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Power-Supply",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "specified temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Temperature Range",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "AVDD",
+      "name": "AVDD",
+      "number": 1
+    },
+    {
+      "function": "AGND",
+      "name": "AGND",
+      "number": 2
+    },
+    {
+      "function": "REFN",
+      "name": "VREFN",
+      "number": 3
+    },
+    {
+      "function": "REFP",
+      "name": "VREFP",
+      "number": 4
+    },
+    {
+      "function": "AINCOM",
+      "name": "AINCOM",
+      "number": 5
+    },
+    {
+      "function": "AIN0",
+      "name": "AIN0",
+      "number": 6
+    },
+    {
+      "function": "AIN1",
+      "name": "AIN1",
+      "number": 7
+    },
+    {
+      "function": "AIN2",
+      "name": "AIN2",
+      "number": 8
+    },
+    {
+      "function": "AIN3",
+      "name": "AIN3",
+      "number": 9
+    },
+    {
+      "function": "AIN4",
+      "name": "AIN4",
+      "number": 10
+    },
+    {
+      "function": "AIN5",
+      "name": "AIN5",
+      "number": 11
+    },
+    {
+      "function": "AIN6",
+      "name": "AIN6",
+      "number": 12
+    },
+    {
+      "function": "AIN7",
+      "name": "AIN7",
+      "number": 13
+    },
+    {
+      "function": "PDWN",
+      "name": "SYNC/PDWN",
+      "number": 14
+    },
+    {
+      "function": "RESET",
+      "name": "RESET",
+      "number": 15
+    },
+    {
+      "function": "DVDD",
+      "name": "DVDD",
+      "number": 16
+    },
+    {
+      "function": "DGND",
+      "name": "DGND",
+      "number": 17
+    },
+    {
+      "function": "XTAL2",
+      "name": "XTAL2",
+      "number": 18
+    },
+    {
+      "function": "CLKIN",
+      "name": "XTAL1/CLKIN",
+      "number": 19
+    },
+    {
+      "function": "CS",
+      "name": "CS",
+      "number": 20
+    },
+    {
+      "function": "DRDY",
+      "name": "DRDY",
+      "number": 21
+    },
+    {
+      "function": "SDO",
+      "name": "DOUT",
+      "number": 22
+    },
+    {
+      "function": "SDI",
+      "name": "DIN",
+      "number": 23
+    },
+    {
+      "function": "SCLK",
+      "name": "SCLK",
+      "number": 24
+    },
+    {
+      "function": "CLKOUT",
+      "name": "D0/CLKOUT",
+      "number": 25
+    },
+    {
+      "function": "D1",
+      "name": "D1",
+      "number": 26
+    },
+    {
+      "function": "D2",
+      "name": "D2",
+      "number": 27
+    },
+    {
+      "function": "D3",
+      "name": "D3",
+      "number": 28
+    }
+  ]
+}

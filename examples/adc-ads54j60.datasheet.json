@@ -1,0 +1,3305 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "ADS54J60",
+    "manufacturer": "Texas Instruments",
+    "family": "adc",
+    "description": "Dual-channel, 16-bit, 1.0-GSPS RF-sampling pipelined analog-to-digital converter (sub_type: rf_sampling). Buffered analog inputs with uniform input impedance to 1.2-GHz input bandwidth, on-chip dither, and an integrated wideband digital down-converter (DDC) block per channel. JESD204B subclass-1 serial output (2 lanes/ADC at 10.0 Gbps or 4 lanes/ADC at 5.0 Gbps) with multi-chip synchronization via SYSREF/SYNC. Noise floor -159 dBFS/Hz. Pinout (72-pin VQFNP): differential analog inputs INAP/INAM (ch A) and INBP/INBM (ch B); differential sampling clock CLKINP/CLKINM; external timing reference SYSREFP/SYSREFM and SYNC; common-mode output VCM (2.1 V, no external reference pin); JESD204B serdes lanes DA0-3P/M (ch A) and DB0-3P/M (ch B); SPI control SCLK/SDIN/SDOUT/SEN, RESET, PDN; supplies AVDD (1.9 V), AVDD3V (3.0 V), DVDD (1.9 V), IOVDD (1.15 V), and grounds AGND/DGND plus the back-side GND thermal pad.",
+    "package": "VQFN-72 (RMP)",
+    "pinCount": 72,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      {
+        "orderCode": "ADS54J60IRMPT",
+        "package": "VQFNP (RMP-72)",
+        "packing": "Tape and Reel"
+      },
+      {
+        "orderCode": "ADS54J60IRMPR",
+        "package": "VQFNP (RMP-72)",
+        "packing": "Tape and Reel"
+      }
+    ]
+  },
+  "pinout": [
+    {
+      "number": 42,
+      "name": "INAP",
+      "function": "AINP",
+      "type": "analog",
+      "description": "Differential analog positive input, channel A.",
+      "sourcePage": 6
+    },
+    {
+      "number": 41,
+      "name": "INAM",
+      "function": "AINN",
+      "type": "analog",
+      "description": "Differential analog negative input, channel A.",
+      "sourcePage": 6
+    },
+    {
+      "number": 13,
+      "name": "INBP",
+      "function": "AINP",
+      "type": "analog",
+      "description": "Differential analog positive input, channel B.",
+      "sourcePage": 6
+    },
+    {
+      "number": 14,
+      "name": "INBM",
+      "function": "AINN",
+      "type": "analog",
+      "description": "Differential analog negative input, channel B.",
+      "sourcePage": 6
+    },
+    {
+      "number": 27,
+      "name": "CLKINP",
+      "function": "CLKP",
+      "type": "analog",
+      "description": "Positive differential ADC sampling clock input; internal 100-ohm termination to CLKINM.",
+      "sourcePage": 6
+    },
+    {
+      "number": 28,
+      "name": "CLKINM",
+      "function": "CLKN",
+      "type": "analog",
+      "description": "Negative differential ADC sampling clock input; internal 100-ohm termination to CLKINP.",
+      "sourcePage": 6
+    },
+    {
+      "number": 33,
+      "name": "SYSREFP",
+      "function": "SYSREF",
+      "type": "digital_in",
+      "description": "Positive external SYSREF input (JESD204B subclass 1). Connect to 1.8 V if unused.",
+      "sourcePage": 6
+    },
+    {
+      "number": 34,
+      "name": "SYSREFM",
+      "function": "SYSREF",
+      "type": "digital_in",
+      "description": "Negative external SYSREF input. Connect to GND if unused.",
+      "sourcePage": 6
+    },
+    {
+      "number": 63,
+      "name": "SYNC",
+      "function": "SYNC",
+      "type": "digital_in",
+      "description": "Synchronization input for the JESD204B port.",
+      "sourcePage": 6
+    },
+    {
+      "number": 22,
+      "name": "VCM",
+      "function": "VCM",
+      "type": "analog",
+      "description": "Common-mode voltage output, 2.1 V; inputs internally biased to this pin through 600 ohm (effective).",
+      "sourcePage": 6
+    },
+    {
+      "number": 61,
+      "name": "DA0P",
+      "function": "JESD_TXP",
+      "type": "digital_out",
+      "description": "JESD204B serial data positive output, channel A lane 0 (DAxP lanes 0-3).",
+      "sourcePage": 6
+    },
+    {
+      "number": 62,
+      "name": "DA0M",
+      "function": "JESD_TXN",
+      "type": "digital_out",
+      "description": "JESD204B serial data negative output, channel A lane 0 (DAxM lanes 0-3).",
+      "sourcePage": 6
+    },
+    {
+      "number": 66,
+      "name": "DB0P",
+      "function": "JESD_TXP",
+      "type": "digital_out",
+      "description": "JESD204B serial data positive output, channel B lane 0 (DBxP lanes 0-3).",
+      "sourcePage": 6
+    },
+    {
+      "number": 65,
+      "name": "DB0M",
+      "function": "JESD_TXN",
+      "type": "digital_out",
+      "description": "JESD204B serial data negative output, channel B lane 0 (DBxM lanes 0-3).",
+      "sourcePage": 6
+    },
+    {
+      "number": 6,
+      "name": "SCLK",
+      "function": "SCLK",
+      "type": "digital_in",
+      "description": "Serial (SPI) interface clock input.",
+      "sourcePage": 6
+    },
+    {
+      "number": 5,
+      "name": "SDIN",
+      "function": "SDI",
+      "type": "digital_in",
+      "description": "Serial (SPI) interface data input.",
+      "sourcePage": 6
+    },
+    {
+      "number": 11,
+      "name": "SDOUT",
+      "function": "SDO",
+      "type": "digital_out",
+      "description": "Serial (SPI) interface data output; can be configured as channel-B fast-overrange output.",
+      "sourcePage": 6
+    },
+    {
+      "number": 7,
+      "name": "SEN",
+      "function": "CS",
+      "type": "digital_in",
+      "description": "Serial (SPI) interface enable.",
+      "sourcePage": 6
+    },
+    {
+      "number": 48,
+      "name": "RESET",
+      "function": "RESET",
+      "type": "digital_in",
+      "description": "Hardware reset, active high; internal 20-kohm pulldown.",
+      "sourcePage": 6
+    },
+    {
+      "number": 50,
+      "name": "PDN",
+      "function": "PDN",
+      "type": "digital_in",
+      "description": "Power down, active low; can be configured as channel-A fast-overrange output.",
+      "sourcePage": 6
+    },
+    {
+      "number": 9,
+      "name": "AVDD",
+      "function": "AVDD",
+      "type": "power",
+      "description": "Analog 1.9-V power supply (pins 9,12,15,17,25,30,35,38,40,43,44,46).",
+      "sourcePage": 6
+    },
+    {
+      "number": 10,
+      "name": "AVDD3V",
+      "function": "AVDD",
+      "type": "power",
+      "description": "Analog 3.0-V power supply for the analog buffer (pins 10,16,24,31,39,45).",
+      "sourcePage": 6
+    },
+    {
+      "number": 8,
+      "name": "DVDD",
+      "function": "DVDD",
+      "type": "power",
+      "description": "Digital 1.9-V power supply (pins 8,47).",
+      "sourcePage": 6
+    },
+    {
+      "number": 4,
+      "name": "IOVDD",
+      "function": "OVDD",
+      "type": "power",
+      "description": "Digital 1.15-V supply for the JESD204B transmitter (pins 4,51,57,64,70).",
+      "sourcePage": 6
+    },
+    {
+      "number": 18,
+      "name": "AGND",
+      "function": "AGND",
+      "type": "power",
+      "description": "Analog ground (pins 18,23,26,29,32,36,37).",
+      "sourcePage": 6
+    },
+    {
+      "number": 3,
+      "name": "DGND",
+      "function": "DGND",
+      "type": "power",
+      "description": "Digital ground (pins 3,52,60,67).",
+      "sourcePage": 6
+    },
+    {
+      "number": 73,
+      "name": "GND Pad",
+      "function": "AGND",
+      "type": "thermal",
+      "description": "Exposed back-side ground / thermal pad; solder to the ground plane.",
+      "sourcePage": 5
+    }
+  ],
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": [
+        "N",
+        "16-bit"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "nom": 16
+          },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution = 16 bits",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "sample_rate",
+      "name": "ADC sampling rate",
+      "group": "timing",
+      "aliases": [
+        "fS",
+        "GSPS",
+        "MSPS",
+        "sampling rate"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 250000000.0,
+            "max": 1000000000.0
+          },
+          "unit": "Hz",
+          "conditions": [
+            {
+              "param": "MODE",
+              "note": "device clock frequency"
+            }
+          ],
+          "conditionsVerbatim": "ADC sampling rate 250 MSPS (min) to 1000 MSPS / 1.0 GSPS (max)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "group": "dynamic",
+      "aliases": [
+        "SNR"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 70.9
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 70.9 dBFS; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 70.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 70.6 dBFS; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 67.2,
+            "typ": 70
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 70 dBFS; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 67.2 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 69.2
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 69.2 dBFS; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 68.7
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 68.7 dBFS; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 68.1
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 68.1 dBFS; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 67.1
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 67.1 dBFS; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 67.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 67.6 dBFS; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 66
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 66 dBFS; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 64.4
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "SNR = 64.4 dBFS; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_and_distortion",
+      "name": "Signal-to-noise-and-distortion ratio",
+      "group": "dynamic",
+      "aliases": [
+        "SINAD",
+        "SNDR"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 70.7
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 70.7 dBFS; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 70.4
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 70.4 dBFS; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 67,
+            "typ": 69.8
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 69.8 dBFS; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 67 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 69.1
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 69.1 dBFS; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 68.3
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 68.3 dBFS; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 67.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 67.6 dBFS; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 66
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 66 dBFS; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 66.8
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 66.8 dBFS; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 65.2
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 65.2 dBFS; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 64.3
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "SINAD = 64.3 dBFS; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "effective_number_of_bits",
+      "name": "Effective number of bits",
+      "group": "dynamic",
+      "aliases": [
+        "ENOB"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 11.5
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 11.5 bits; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 11.4
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 11.4 bits; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 11.3
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 11.3 bits; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 11.2
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 11.2 bits; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 11.0
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 11.0 bits; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 10.9
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 10.9 bits; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 10.7
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 10.7 bits; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 10.8
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 10.8 bits; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 10.5
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 10.5 bits; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 10.4
+          },
+          "unit": "bits",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "ENOB = 10.4 bits; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spurious_free_dynamic_range",
+      "name": "Spurious-free dynamic range (excluding IL spurs)",
+      "group": "dynamic",
+      "aliases": [
+        "SFDR"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 85
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 85 dBc; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 84
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 84 dBc; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 78,
+            "typ": 88
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 88 dBc; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 78 dBc",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 86
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 86 dBc; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 81
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 81 dBc; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 78
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 78 dBc; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 73
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 73 dBc; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 72
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 72 dBc; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 68
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 68 dBc; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 72
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "SFDR = 72 dBc; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "second_harmonic_distortion",
+      "name": "Second-order harmonic distortion",
+      "group": "dynamic",
+      "aliases": [
+        "HD2"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 85
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 85 dBc; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 92
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 92 dBc; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 79,
+            "typ": 95
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 95 dBc; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 79 dBc",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 86
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 86 dBc; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 81
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 81 dBc; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 81
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 81 dBc; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 76
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 76 dBc; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 72
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 72 dBc; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 68
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 68 dBc; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 72
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "HD2 = 72 dBc; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "third_harmonic_distortion",
+      "name": "Third-order harmonic distortion",
+      "group": "dynamic",
+      "aliases": [
+        "HD3"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 87
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 87 dBc; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 84
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 84 dBc; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 82,
+            "typ": 89
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 89 dBc; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 82 dBc",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 92
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 92 dBc; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 82
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 82 dBc; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 78
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 78 dBc; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 73
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 73 dBc; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 70
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 70 dBc; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 75
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 75 dBc; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 84
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "HD3 = 84 dBc; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 10,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion",
+      "name": "Total harmonic distortion",
+      "group": "dynamic",
+      "aliases": [
+        "THD"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 83
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 83 dBc; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 83
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 83 dBc; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 74,
+            "typ": 87
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 87 dBc; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 74 dBc",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 84
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 84 dBc; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 78
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 78 dBc; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 76
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 76 dBc; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 71
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 71 dBc; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 71
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 71 dBc; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 67
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "THD = 67 dBc; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 71
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "THD = 71 dBc; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "noise_spectral_density",
+      "name": "Noise spectral density",
+      "group": "dynamic",
+      "aliases": [
+        "NSD",
+        "noise floor"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -157.9
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -157.9 dBFS/Hz; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -157.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -157.6 dBFS/Hz; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -157,
+            "max": -154.2
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -157 dBFS/Hz; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed worst-case (table MIN column) 154.2 dBFS/Hz i.e. -154.2",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -156.2
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -156.2 dBFS/Hz; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -155.7
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -155.7 dBFS/Hz; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -155.1
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -155.1 dBFS/Hz; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -154.1
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -154.1 dBFS/Hz; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -154.6
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -154.6 dBFS/Hz; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -153
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -153 dBFS/Hz; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -151.4
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "NSD = -151.4 dBFS/Hz; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 9,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "worst_spur",
+      "name": "Spurious-free dynamic range (excluding HD2, HD3, and IL spur)",
+      "group": "dynamic",
+      "aliases": [
+        "Non HD2, HD3",
+        "non-harmonic SFDR"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 94
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 94 dBFS; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 97
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 97 dBFS; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 79,
+            "typ": 93
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 93 dBFS; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 79 dBFS",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 95
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 95 dBFS; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 95
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 95 dBFS; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 91
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 91 dBFS; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 85
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 85 dBFS; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 90
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 90 dBFS; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 90
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 90 dBFS; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 96
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "Non HD2,HD3 SFDR = 96 dBFS; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "interleaving_spur",
+      "name": "Interleaving spur",
+      "group": "dynamic",
+      "aliases": [
+        "SFDR_IL",
+        "IL spur"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 88
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 10000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 88 dBc; fIN = 10 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 90
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 100000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 90 dBc; fIN = 100 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 69,
+            "typ": 87
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 87 dBc; fIN = 170 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC; guaranteed min 69 dBc",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 85
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 230000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 85 dBc; fIN = 230 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 84
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 270000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 84 dBc; fIN = 270 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 82
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 300000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 82 dBc; fIN = 300 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 82
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 370000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-1 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 82 dBc; fIN = 370 MHz, AIN = -1 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 79
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 470000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-3 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 79 dBc; fIN = 470 MHz, AIN = -3 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 79
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 79 dBc; fIN = 720 MHz, AIN = -6 dBFS; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 75
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 720000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-6 dBFS"
+            },
+            {
+              "param": "GAIN",
+              "note": "+5 dB digital gain"
+            }
+          ],
+          "conditionsVerbatim": "SFDR_IL = 75 dBc; fIN = 720 MHz, AIN = -6 dBFS, +5 dB digital gain; fS = 1.0 GSPS, 0-dB digital gain (unless gain noted), TA = 25 degC",
+          "guarantee": "typical",
+          "sourcePage": 11,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "crosstalk",
+      "name": "Crosstalk isolation between channel A and B",
+      "group": "dynamic",
+      "aliases": [
+        "channel isolation",
+        "interchannel isolation"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 100
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            },
+            {
+              "param": "A_IN",
+              "note": "full-scale aggressor"
+            }
+          ],
+          "conditionsVerbatim": "Crosstalk isolation between channel A and B = 100 dB; full-scale 170-MHz signal on aggressor; idle channel is victim",
+          "guarantee": "typical",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "intermodulation_distortion",
+      "name": "Two-tone, third-order intermodulation distortion",
+      "group": "dynamic",
+      "aliases": [
+        "IMD3"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -88
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "note": "fIN1 = 185 MHz, fIN2 = 190 MHz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-7 dBFS per tone"
+            }
+          ],
+          "conditionsVerbatim": "IMD3 = -88 dBFS; fIN1 = 185 MHz, fIN2 = 190 MHz, AIN = -7 dBFS (dBFS reference)",
+          "guarantee": "typical",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -79
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "note": "fIN1 = 365 MHz, fIN2 = 370 MHz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-7 dBFS per tone"
+            }
+          ],
+          "conditionsVerbatim": "IMD3 = -79 dBFS; fIN1 = 365 MHz, fIN2 = 370 MHz, AIN = -7 dBFS (dBFS reference)",
+          "guarantee": "typical",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -75
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "note": "fIN1 = 465 MHz, fIN2 = 470 MHz"
+            },
+            {
+              "param": "A_IN",
+              "note": "-7 dBFS per tone"
+            }
+          ],
+          "conditionsVerbatim": "IMD3 = -75 dBFS; fIN1 = 465 MHz, fIN2 = 470 MHz, AIN = -7 dBFS (dBFS reference)",
+          "guarantee": "typical",
+          "sourcePage": 12,
+          "sourceTable": "AC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Differential input full-scale voltage",
+      "group": "analog_input",
+      "aliases": [
+        "FSR",
+        "full-scale",
+        "VPP"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 1.9
+          },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [
+            {
+              "param": "RANGE",
+              "note": "differential full-scale"
+            }
+          ],
+          "conditionsVerbatim": "Differential input full-scale voltage = 1.9 VPP (peak-to-peak, differential)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage",
+      "group": "analog_input",
+      "aliases": [
+        "VIC",
+        "VCM"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "nom": 2.0
+          },
+          "unit": "V",
+          "conditionsVerbatim": "VIC, common-mode input voltage = 2.0 V (analog inputs internally biased to the VCM pin, 2.1 V, through 600 ohm effective)",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_bandwidth",
+      "name": "Analog input bandwidth (3 dB)",
+      "group": "analog_input",
+      "aliases": [
+        "full-power bandwidth",
+        "-3dB bandwidth",
+        "FPBW"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 1200000000.0
+          },
+          "unit": "Hz",
+          "conditions": [
+            {
+              "param": "BW_POINT",
+              "note": "-3 dB"
+            }
+          ],
+          "conditionsVerbatim": "Analog input bandwidth (3 dB) = 1.2 GHz; 50-ohm source driving ADC inputs terminated with 50 ohm",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_impedance",
+      "name": "Differential input resistance",
+      "group": "analog_input",
+      "aliases": [
+        "RIN",
+        "input resistance",
+        "Zin"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 600
+          },
+          "unit": "ohm",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "RIN, differential input resistance = 0.6 kohm at 170-MHz input frequency",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Differential input capacitance",
+      "group": "analog_input",
+      "aliases": [
+        "CIN",
+        "input capacitance"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 4.7e-12
+          },
+          "unit": "F",
+          "conditions": [
+            {
+              "param": "F_IN",
+              "value": 170000000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "CIN, differential input capacitance = 4.7 pF at 170-MHz input frequency",
+          "sourcePage": 9,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "aperture_jitter",
+      "name": "Aperture jitter",
+      "group": "timing",
+      "aliases": [
+        "tj",
+        "aperture uncertainty"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 1.2e-13
+          },
+          "unit": "s",
+          "statistic": "rms",
+          "conditionsVerbatim": "Aperture jitter = 120 fs rms",
+          "sourcePage": 13,
+          "sourceTable": "Timing Requirements"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": [
+        "AVDD",
+        "AVDD3V",
+        "DVDD",
+        "supply voltage"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 2.85,
+            "nom": 3.0,
+            "max": 3.6
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "AVDD3V, 3.0-V analog supply for the analog buffer"
+            }
+          ],
+          "conditionsVerbatim": "AVDD3V, 3.0-V analog supply: 2.85 / 3.0 / 3.6 V",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 1.8,
+            "nom": 1.9,
+            "max": 2.0
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "AVDD, 1.9-V analog supply"
+            }
+          ],
+          "conditionsVerbatim": "AVDD, 1.9-V analog supply: 1.8 / 1.9 / 2.0 V",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 1.7,
+            "nom": 1.9,
+            "max": 2.0
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "DVDD, 1.9-V digital supply"
+            }
+          ],
+          "conditionsVerbatim": "DVDD, 1.9-V digital supply: 1.7 / 1.9 / 2.0 V",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "io_supply_voltage",
+      "name": "IO supply voltage",
+      "group": "power",
+      "aliases": [
+        "IOVDD",
+        "SERDES supply"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 1.1,
+            "nom": 1.15,
+            "max": 1.2
+          },
+          "unit": "V",
+          "conditionsVerbatim": "IOVDD, 1.15-V digital supply for the JESD204B transmitter (SERDES): 1.1 / 1.15 / 1.2 V",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": [
+        "IAVDD",
+        "IAVDD3V",
+        "IDVDD",
+        "IIOVDD",
+        "supply current"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.334,
+            "max": 0.36
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "IAVDD3V, 3.0-V analog rail"
+            },
+            {
+              "param": "MODE",
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS"
+            },
+            {
+              "param": "A_IN",
+              "note": "full-scale on both channels"
+            }
+          ],
+          "conditionsVerbatim": "IAVDD3V, 3.0-V analog supply current = 334 mA typ, 360 mA max; VIN = full-scale on both channels",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.359,
+            "max": 0.51
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "IAVDD, 1.9-V analog rail"
+            },
+            {
+              "param": "MODE",
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS"
+            },
+            {
+              "param": "A_IN",
+              "note": "full-scale on both channels"
+            }
+          ],
+          "conditionsVerbatim": "IAVDD, 1.9-V analog supply current = 359 mA typ, 510 mA max; VIN = full-scale on both channels",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.197,
+            "max": 0.26
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "IDVDD, 1.9-V digital rail"
+            },
+            {
+              "param": "MODE",
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS"
+            }
+          ],
+          "conditionsVerbatim": "IDVDD, 1.9-V digital supply current = 197 mA typ, 260 mA max; eight lanes active (LMFS = 8224)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.566,
+            "max": 0.92
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "V_SUPPLY",
+              "note": "IIOVDD, 1.15-V SERDES rail"
+            },
+            {
+              "param": "MODE",
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS"
+            }
+          ],
+          "conditionsVerbatim": "IIOVDD, 1.15-V SERDES supply current = 566 mA typ, 920 mA max; eight lanes active (LMFS = 8224)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "group": "power",
+      "aliases": [
+        "Pdis",
+        "power dissipation"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.71,
+            "max": 3.1
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "MODE",
+              "note": "eight lanes active, LMFS = 8224, 1 GSPS, 10.0 Gbps/lane"
+            }
+          ],
+          "conditionsVerbatim": "Pdis, total power dissipation = 2.71 W typ, 3.1 W max; eight lanes active (LMFS = 8224) (about 1.35 W/channel)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.8
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "MODE",
+              "note": "four lanes active, LMFS = 4244"
+            }
+          ],
+          "conditionsVerbatim": "Pdis, total power dissipation = 2.80 W; four lanes active (LMFS = 4244)",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.74
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "MODE",
+              "note": "four lanes active, LMFS = 4222, 2X decimation"
+            }
+          ],
+          "conditionsVerbatim": "Pdis, total power dissipation = 2.74 W; four lanes active (LMFS = 4222), 2X decimation",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 2.66
+          },
+          "unit": "W",
+          "conditions": [
+            {
+              "param": "MODE",
+              "note": "two lanes active, LMFS = 2221, 4X decimation"
+            }
+          ],
+          "conditionsVerbatim": "Pdis, total power dissipation = 2.66 W; two lanes active (LMFS = 2221), 4X decimation",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_down_dissipation",
+      "name": "Global power-down power dissipation",
+      "group": "power",
+      "aliases": [
+        "power-down power"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 0.139,
+            "max": 0.315
+          },
+          "unit": "W",
+          "conditionsVerbatim": "Global power-down power dissipation = 139 mW typ, 315 mW max",
+          "sourcePage": 8,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating free-air temperature range",
+      "group": "general",
+      "aliases": [
+        "TA",
+        "operating temperature"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": -40,
+            "max": 85
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating free-air temperature, TA = -40 to 85 degC (operating junction TJ up to 125 degC)",
+          "sourcePage": 7,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "general",
+      "aliases": [
+        "RthetaJA",
+        "RtJA"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 22.3
+          },
+          "unit": "degC/W",
+          "conditions": [
+            {
+              "param": "PACKAGE",
+              "note": "RMP (VQFNP), 72 pins, JEDEC standard board"
+            }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance = 22.3 degC/W (RMP, 72-pin VQFNP)",
+          "sourcePage": 8,
+          "sourceTable": "Thermal Information"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human-body model",
+      "group": "general",
+      "aliases": [
+        "ESD HBM",
+        "V(ESD) HBM"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "typ": 1000
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic discharge, human-body model (HBM), +/-1000 V, per ANSI/ESDA/JEDEC JS-001",
+          "sourcePage": 7,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged-device model",
+      "group": "general",
+      "aliases": [
+        "ESD CDM",
+        "V(ESD) CDM"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "typ": 500
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic discharge, charged-device model (CDM), +/-500 V, per JEDEC JESD22-C101",
+          "sourcePage": 7,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "c5a1a60f67d5799a26646d8feacfe7d6ed7d54c0aaf63aa2c7da4906df4672c3",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/ads54j60.pdf",
+    "datasheetRevision": "SBAS706D - APRIL 2015 - REVISED APRIL 2019",
+    "publishedDate": "April 2019",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

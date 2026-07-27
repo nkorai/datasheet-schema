@@ -1,0 +1,515 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "PCM1808",
+    "manufacturer": "Texas Instruments",
+    "family": "adc",
+    "description": "Single-ended, stereo, 24-bit, 8-96 kHz multibit delta-sigma audio analog-to-digital converter (sub_type: audio). Two single-ended analog inputs (VINL/VINR) sampled against VREF (= 0.5 VCC); 64x oversampling delta-sigma modulators feed a linear-phase decimation/digital filter. Serial audio output in I2S or left-justified format (MSB-first, 2s complement), master or slave mode. Pins: VREF (1, reference decoupling = 0.5 VCC), AGND (2), VCC (3, analog 5 V), VDD (4, digital 3.3 V), DGND (5), SCKI (6, system/master clock input 256/384/512 fS), LRCK (7, audio-data latch/word clock), BCK (8, audio-data bit clock), DOUT (9, audio-data output), MD0 (10)/MD1 (11) mode select, FMT (12) format select, VINL (13)/VINR (14) analog inputs. 14-pin TSSOP (PW).",
+    "package": "TSSOP-14 (PW)",
+    "pinCount": 14,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "PCM1808PW", "package": "TSSOP-14 (PW)", "packing": "Tube" },
+      { "orderCode": "PCM1808PWR", "package": "TSSOP-14 (PW)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "VREF", "function": "VREF", "type": "analog", "description": "Reference-voltage decoupling (= 0.5 VCC). Bypass to AGND.", "sourcePage": 3 },
+    { "number": 2, "name": "AGND", "function": "AGND", "type": "power", "description": "Analog ground.", "sourcePage": 3 },
+    { "number": 3, "name": "VCC", "function": "AVDD", "type": "power", "description": "Analog power supply, 5 V.", "sourcePage": 3 },
+    { "number": 4, "name": "VDD", "function": "DVDD", "type": "power", "description": "Digital power supply, 3.3 V.", "sourcePage": 3 },
+    { "number": 5, "name": "DGND", "function": "DGND", "type": "power", "description": "Digital ground.", "sourcePage": 3 },
+    { "number": 6, "name": "SCKI", "function": "MCLK", "type": "digital_in", "description": "System (master) clock input; 256 fS, 384 fS or 512 fS. Schmitt-trigger, 5-V tolerant.", "sourcePage": 3 },
+    { "number": 7, "name": "LRCK", "function": "LRCK", "type": "digital_in", "description": "Audio-data latch-enable (word/LR) clock, input in slave mode or output in master mode.", "sourcePage": 3 },
+    { "number": 8, "name": "BCK", "function": "BCK", "type": "digital_in", "description": "Audio-data bit clock, input in slave mode or output in master mode.", "sourcePage": 3 },
+    { "number": 9, "name": "DOUT", "function": "SDOUT", "type": "digital_out", "description": "Audio-data digital output (serial).", "sourcePage": 3 },
+    { "number": 10, "name": "MD0", "function": "MD0", "type": "digital_in", "description": "Audio-interface mode select 0. Schmitt-trigger, 50-kohm pulldown, 5-V tolerant.", "sourcePage": 3 },
+    { "number": 11, "name": "MD1", "function": "MD1", "type": "digital_in", "description": "Audio-interface mode select 1. Schmitt-trigger, 50-kohm pulldown, 5-V tolerant.", "sourcePage": 3 },
+    { "number": 12, "name": "FMT", "function": "FMT", "type": "digital_in", "description": "Audio-interface format select (I2S vs left-justified). Schmitt-trigger, 50-kohm pulldown, 5-V tolerant.", "sourcePage": 3 },
+    { "number": 13, "name": "VINL", "function": "AINL", "type": "analog", "description": "Analog input, left channel (single-ended).", "sourcePage": 3 },
+    { "number": 14, "name": "VINR", "function": "AINR", "type": "analog", "description": "Analog input, right channel (single-ended).", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "resolution",
+      "name": "Resolution",
+      "group": "general",
+      "aliases": ["bit depth", "audio data bit length"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 24 },
+          "unit": "bits",
+          "conditionsVerbatim": "Resolution, 24 Bits (audio data bit length 24 bits, MSB-first, 2s complement)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "sample_rate",
+      "name": "Sampling frequency",
+      "group": "timing",
+      "aliases": ["fS", "sampling frequency"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 8000, "nom": 48000, "max": 96000 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "single-speed (fS <= 48 kHz) and dual-speed (fS = 96 kHz)" }
+          ],
+          "conditionsVerbatim": "fS, sampling frequency, 8 / 48 / 96 kHz (min / typ / max)",
+          "sourcePage": 5,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dynamic_range",
+      "name": "Dynamic range",
+      "group": "dynamic",
+      "aliases": ["DR", "dynamic range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 95, "typ": 99 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Dynamic range, fS = 48 kHz, A-weighted, dBV (Audio Precision, 400-Hz HPF, 20-kHz LPF, RMS)",
+          "statistic": "rms",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 101 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Dynamic range, fS = 96 kHz (system clock = 256 fS), A-weighted, dBV",
+          "statistic": "rms",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "signal_to_noise_ratio",
+      "name": "Signal-to-noise ratio",
+      "group": "dynamic",
+      "aliases": ["S/N", "SNR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 95, "typ": 99 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "S/N, signal-to-noise ratio, fS = 48 kHz, A-weighted, dB",
+          "statistic": "rms",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 101 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "WEIGHTING", "note": "A-weighted" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "S/N, signal-to-noise ratio, fS = 96 kHz (system clock = 256 fS), A-weighted, dB",
+          "statistic": "rms",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "total_harmonic_distortion_plus_noise",
+      "name": "Total harmonic distortion + noise",
+      "group": "dynamic",
+      "aliases": ["THD+N"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -93, "max": -87 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "A_IN", "note": "-0.5 dBFS input" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "THD+N, VIN = -0.5 dB, fS = 48 kHz, dB (relative to full scale; less-negative is worse, so max = -87)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -37 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "A_IN", "note": "-60 dBFS input" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "THD+N, VIN = -60 dB, fS = 48 kHz, dB (small-signal THD+N degrades as the -60 dBFS test tone approaches the noise floor)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "crosstalk",
+      "name": "Channel separation",
+      "group": "dynamic",
+      "aliases": ["channel separation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 93, "typ": 97 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Channel separation, fS = 48 kHz, dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Dynamic Performance"
+        }
+      ]
+    },
+    {
+      "key": "passband",
+      "name": "Pass band",
+      "group": "digital_filter",
+      "aliases": ["pass band"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 21792 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "single-speed, fS = 48 kHz" }
+          ],
+          "conditionsVerbatim": "Pass band, 0.454 fS (= 21792 Hz at fS = 48 kHz)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance"
+        }
+      ]
+    },
+    {
+      "key": "passband_ripple",
+      "name": "Pass-band ripple",
+      "group": "digital_filter",
+      "aliases": ["pass-band ripple"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.05 },
+          "unit": "dB",
+          "conditionsVerbatim": "Pass-band ripple, +/-0.05 dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance"
+        }
+      ]
+    },
+    {
+      "key": "stopband",
+      "name": "Stop band",
+      "group": "digital_filter",
+      "aliases": ["stop band"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 27984 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "single-speed, fS = 48 kHz" }
+          ],
+          "conditionsVerbatim": "Stop band, 0.583 fS (= 27984 Hz at fS = 48 kHz)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance"
+        }
+      ]
+    },
+    {
+      "key": "stopband_attenuation",
+      "name": "Stop-band attenuation",
+      "group": "digital_filter",
+      "aliases": ["stop-band attenuation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -65 },
+          "unit": "dB",
+          "conditionsVerbatim": "Stop-band attenuation, -65 dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance"
+        }
+      ]
+    },
+    {
+      "key": "group_delay",
+      "name": "Group delay (delay time)",
+      "group": "digital_filter",
+      "aliases": ["delay time", "group delay"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.625e-4 },
+          "unit": "s",
+          "conditions": [
+            { "param": "MODE", "note": "single-speed, fS = 48 kHz" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Delay time, 17.4 / fS (= 362.5 us at fS = 48 kHz)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Digital Filter Performance"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Full-scale analog input voltage",
+      "group": "analog_input",
+      "aliases": ["input voltage", "full scale input", "FSR"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 3.0 },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [
+            { "param": "RANGE", "note": "full scale (-0 dB), single-ended, VCC = 5 V" }
+          ],
+          "conditionsVerbatim": "Analog input voltage, full scale (-0 dB), VCC = 5 V, 3 Vp-p (= 0.6 VCC Vp-p); center voltage (VREF) = 0.5 VCC",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "input_impedance",
+      "name": "Input impedance",
+      "group": "analog_input",
+      "aliases": ["input impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 60000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Input impedance, 60 kohm",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Analog Input"
+        }
+      ]
+    },
+    {
+      "key": "antialiasing_filter_response",
+      "name": "Antialiasing filter frequency response",
+      "group": "analog_input",
+      "aliases": ["AAF -3dB", "antialiasing filter frequency response"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.3e6 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "BW_POINT", "note": "-3 dB" }
+          ],
+          "conditionsVerbatim": "Antialiasing filter frequency response, -3 dB, 1.3 MHz (analog input AAF corner)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Analog Input"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power",
+      "aliases": ["VCC", "VDD", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.5, "nom": 5.0, "max": 5.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "analog (VCC)" }
+          ],
+          "conditionsVerbatim": "VCC, analog supply voltage",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.7, "nom": 3.3, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (VDD)" }
+          ],
+          "conditionsVerbatim": "VDD, digital supply voltage",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.3, "max": 6.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "analog (VCC)" }
+          ],
+          "conditionsVerbatim": "VCC, analog supply voltage, absolute maximum",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.3, "max": 4.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (VDD)" }
+          ],
+          "conditionsVerbatim": "VDD, digital supply voltage, absolute maximum",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "power",
+      "aliases": ["ICC", "IDD", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8.6e-3, "max": 11e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "analog (ICC)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "ICC, analog supply current, fS = 48 kHz / 96 kHz, minimum load on LRCK/BCK/DOUT",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.9e-3, "max": 8e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (IDD)" },
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IDD, digital supply current, fS = 48 kHz, minimum load on LRCK/BCK/DOUT",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 10.2e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (IDD)" },
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "IDD, digital supply current, fS = 96 kHz (system clock = 256 fS)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "power",
+      "aliases": ["power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.2e-2, "max": 8.1e-2 },
+          "unit": "W",
+          "conditions": [
+            { "param": "F_S", "value": 48000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Power dissipation, fS = 48 kHz, 62 mW typ / 81 mW max",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.7e-2 },
+          "unit": "W",
+          "conditions": [
+            { "param": "F_S", "value": 96000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Power dissipation, fS = 96 kHz (system clock = 256 fS), 77 mW typ",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "power_down_current",
+      "name": "Power-down current",
+      "group": "power",
+      "aliases": ["power-down current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "analog (ICC)" }
+          ],
+          "conditionsVerbatim": "ICC, analog supply current, powered down (power-down/reset enabled by halting SCKI, BCK, LRCK), 1 uA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 150e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_SUPPLY", "note": "digital (IDD)" }
+          ],
+          "conditionsVerbatim": "IDD, digital supply current, powered down, 150 uA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - Power Supply Requirements"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating ambient temperature range",
+      "group": "general",
+      "aliases": ["TA", "operating ambient temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "TA, operating ambient temperature range",
+          "sourcePage": 4,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SLES177B - APRIL 2006 - REVISED AUGUST 2015",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/pcm1808.pdf",
+    "datasheetSha256": "c0843ada3827f4e9b3ab7e681d23288c1a19b395eb9f906dda25e81cbc94f9b3",
+    "publishedDate": "August 2015",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
