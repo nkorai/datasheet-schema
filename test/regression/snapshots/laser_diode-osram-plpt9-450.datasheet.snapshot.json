@@ -1,0 +1,583 @@
+{
+  "family": "laser_diode",
+  "manufacturer": "ams-OSRAM",
+  "mpn": "PLPT9 450MD_E B53B60",
+  "parameters": [
+    {
+      "aliases": [
+        "CW output power",
+        "Po",
+        "Pop",
+        "Popt",
+        "optical output power",
+        "output power"
+      ],
+      "group": "optical",
+      "key": "optical_output_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 3.7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Ordering Information / Wavelength Groups and Output Power Range",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_op",
+        "Iop",
+        "drive current",
+        "operating current",
+        "operation current"
+      ],
+      "group": "optical",
+      "key": "operating_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 4,
+            "typ": 3.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF",
+        "V_op",
+        "Vf",
+        "Vop",
+        "forward voltage",
+        "operating voltage"
+      ],
+      "group": "optical",
+      "key": "operating_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4.8,
+            "typ": 4.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "center wavelength",
+        "centroid wavelength",
+        "lambda_c",
+        "lambda_centroid",
+        "lasing wavelength"
+      ],
+      "group": "spectral",
+      "key": "center_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 3.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 4.5e-7,
+            "min": 4.34e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "beam divergence parallel",
+        "lateral divergence",
+        "slow-axis divergence",
+        "theta_//",
+        "theta_parallel"
+      ],
+      "group": "beam",
+      "key": "beam_divergence_parallel",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 3.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "max": 13,
+            "min": 6,
+            "typ": 11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "beam divergence perpendicular",
+        "fast-axis divergence",
+        "theta_perp",
+        "theta_perpendicular",
+        "transverse divergence"
+      ],
+      "group": "beam",
+      "key": "beam_divergence_perpendicular",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 3.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "max": 59,
+            "min": 41,
+            "typ": 54
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_th",
+        "Ith",
+        "lasing threshold",
+        "threshold",
+        "threshold current"
+      ],
+      "group": "optical",
+      "key": "threshold_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 7
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.45,
+            "typ": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PER",
+        "PTE",
+        "TE polarization",
+        "TE polarization ratio",
+        "polarization extinction ratio",
+        "polarization ratio"
+      ],
+      "group": "beam",
+      "key": "polarization_extinction_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJC",
+        "Rth_JC",
+        "thermal resistance junction to case",
+        "theta_JC"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "I_F",
+        "forward current",
+        "maximum forward current"
+      ],
+      "group": "optical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "Tj",
+        "junction temperature",
+        "maximum junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 135
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_C",
+        "Top",
+        "Topr",
+        "case temperature",
+        "operating temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 60,
+            "min": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "reverse current"
+      ],
+      "group": "optical",
+      "key": "reverse_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TS",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "LD_CATHODE",
+      "name": "LD Cathode",
+      "number": 1
+    },
+    {
+      "function": "LD_ANODE",
+      "name": "LD Anode",
+      "number": 2
+    },
+    {
+      "function": "CASE",
+      "name": "Case",
+      "number": 3
+    }
+  ]
+}

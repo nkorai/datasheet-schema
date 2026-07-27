@@ -1,0 +1,476 @@
+{
+  "family": "laser_diode",
+  "manufacturer": "Thorlabs",
+  "mpn": "L980P010",
+  "parameters": [
+    {
+      "aliases": [
+        "center wavelength",
+        "lambda_C",
+        "peak wavelength"
+      ],
+      "group": "spectral",
+      "key": "center_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 9.9e-7,
+            "min": 9.7e-7,
+            "typ": 9.8e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Po",
+        "optical output power",
+        "output power"
+      ],
+      "group": "optical",
+      "key": "optical_output_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.025
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_op",
+        "Iop",
+        "operating current"
+      ],
+      "group": "optical",
+      "key": "operating_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.04,
+            "typ": 0.025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ITH",
+        "I_th",
+        "threshold current"
+      ],
+      "group": "optical",
+      "key": "threshold_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.025,
+            "typ": 0.015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "V_op",
+        "Vop",
+        "forward voltage",
+        "operating voltage"
+      ],
+      "group": "optical",
+      "key": "operating_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.2,
+            "typ": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "L-I slope",
+        "dP/dI",
+        "differential efficiency",
+        "slope efficiency"
+      ],
+      "group": "optical",
+      "key": "slope_efficiency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/A",
+          "value": {
+            "min": 0.5,
+            "typ": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_m",
+        "Im",
+        "monitor current",
+        "monitor photodiode current"
+      ],
+      "group": "monitor_pd",
+      "key": "monitor_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "P_OUT",
+              "unit": "W",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00009,
+            "min": 0.00001,
+            "typ": 0.00005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "parallel beam divergence",
+        "slow-axis divergence",
+        "theta_//",
+        "theta_parallel"
+      ],
+      "group": "beam",
+      "key": "beam_divergence_parallel",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "max": 18,
+            "min": 10,
+            "typ": 13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fast-axis divergence",
+        "perpendicular beam divergence",
+        "theta_perp"
+      ],
+      "group": "beam",
+      "key": "beam_divergence_perpendicular",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "max": 40,
+            "min": 25,
+            "typ": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "A_s",
+        "As",
+        "astigmatic distance",
+        "astigmatism"
+      ],
+      "group": "beam",
+      "key": "astigmatism",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.000015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "LD reverse voltage",
+        "VR(LD)",
+        "V_R",
+        "reverse voltage"
+      ],
+      "group": "optical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD reverse voltage",
+        "VR(PD)",
+        "V_R(PD)",
+        "monitor reverse voltage"
+      ],
+      "group": "monitor_pd",
+      "key": "pd_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_C",
+        "Top",
+        "operating case temperature",
+        "operation case temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 50,
+            "min": -10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_STG",
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "beam angle deviation",
+        "pointing accuracy"
+      ],
+      "group": "beam",
+      "key": "beam_angle_deviation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specification",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "max": 3,
+            "min": -3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "emission point accuracy",
+        "positioning accuracy"
+      ],
+      "group": "beam",
+      "key": "emission_point_accuracy",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specification",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.00008,
+            "min": -0.00008
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "PD_ANODE",
+      "name": "PD",
+      "number": 1
+    },
+    {
+      "function": "CASE",
+      "name": "CASE",
+      "number": 2
+    },
+    {
+      "function": "LD_CATHODE",
+      "name": "LD",
+      "number": 3
+    }
+  ]
+}

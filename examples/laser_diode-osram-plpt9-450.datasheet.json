@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "PLPT9 450MD_E B53B60",
+    "manufacturer": "ams-OSRAM",
+    "family": "laser_diode",
+    "description": "450 nm 7 W blue multimode single-emitter Fabry-Perot laser diode (GaN-based visible edge emitter) in a TO90 metal-can package with an integrated ESD-protection diode. The laser diode is electrically isolated from the package/case, whose base plate is the sole heat-dissipation path (mount to a heat sink). This document encodes the 434-450 nm base wavelength bin (group/bin B53B60, ordering code Q65115A2158), rated 7.0 W typical at Iop = 3.7 A. There is NO back-facet monitor photodiode. Highly concentrated visible laser radiation - a Class 4-hazard emitter per IEC 60825-1.",
+    "package": "TO90 metal can, leaded",
+    "pinCount": 3,
+    "lifecycle": "active",
+    "temperatureGrade": "0..60",
+    "orderingVariants": [
+      { "orderCode": "Q65115A2158", "package": "TO90 metal can", "packing": "Group/bin B53B60; centroid wavelength 434 - 450 nm; Popt typ 7.0 W at Iop = 3.7 A" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "LD Cathode", "function": "LD_CATHODE", "type": "passive", "description": "Laser-diode cathode (-). Per the datasheet electrical internal circuit, PIN 1 = LD Cathode.", "sourcePage": 9 },
+    { "number": 2, "name": "LD Anode", "function": "LD_ANODE", "type": "passive", "description": "Laser-diode anode (+); forward drive current flows in here. PIN 2 = LD Anode. An internal ESD-protection diode is connected across the laser junction.", "sourcePage": 9 },
+    { "number": 3, "name": "Case", "function": "CASE", "type": "thermal", "description": "TO90 metal can / base plate. The laser diode is electrically isolated from the package; the base plate is the only heat-dissipation path and must be heatsunk. Not a numbered electrical pin in the datasheet.", "sourcePage": 2 }
+  ],
+  "parameters": [
+    {
+      "key": "optical_output_power",
+      "name": "Optical output power",
+      "group": "optical",
+      "aliases": ["Popt", "Po", "Pop", "output power", "optical output power", "CW output power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.0 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 3.7, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Optical output power Popt = 7.0 W typical at Iop = 3.7 A (drive current); TC = 25 degC. Base bin B53B60, centroid wavelength 434 - 450 nm; wavelength measured at IF = 3.5 A.",
+          "sourcePage": 3,
+          "sourceTable": "Ordering Information / Wavelength Groups and Output Power Range"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7.0 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Output power Popt max = 7.0 W (absolute maximum rating, centroid wavelength 434 - 450 nm). The 450 - 462 nm bin caps at 6.0 W and the 462 - 470 nm bin at 5.5 W; only the 434 - 450 nm ceiling applies to this document.",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_current",
+      "name": "Operating current",
+      "group": "optical",
+      "aliases": ["Iop", "I_op", "operating current", "operation current", "drive current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.7, "max": 4.0 },
+          "unit": "A",
+          "conditions": [
+            { "param": "P_OUT", "value": 7.0, "unit": "W" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Operating current Iop = 3.7 A (typ) / 4.0 A (max) at Popt = 7.0 W (434 - 450 nm); TC = 25 degC.",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Operating (forward) voltage",
+      "group": "optical",
+      "aliases": ["Vop", "V_op", "Vf", "VF", "forward voltage", "operating voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.1, "max": 4.8 },
+          "unit": "V",
+          "conditions": [
+            { "param": "P_OUT", "value": 7.0, "unit": "W" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Operating voltage Vop = 4.1 V (typ) / 4.8 V (max) at Popt = 7.0 W (434 - 450 nm); TC = 25 degC.",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "center_wavelength",
+      "name": "Centroid wavelength",
+      "group": "spectral",
+      "aliases": ["centroid wavelength", "center wavelength", "lasing wavelength", "lambda_c", "lambda_centroid"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.34e-7, "max": 4.5e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 3.5, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Centroid wavelength lambda_centroid 434 - 450 nm at IF = 3.5 A, TC = 25 degC - the range of the 7.0 W wavelength grade this document describes (the datasheet's separate 450 - 462 nm bin is the lower-power 5.5 W grade; per one-grade-per-document, only the 7 W / 434-450 nm range is encoded here).",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "beam_divergence_parallel",
+      "name": "Beam divergence, parallel to junction",
+      "group": "beam",
+      "aliases": ["theta_parallel", "theta_//", "beam divergence parallel", "slow-axis divergence", "lateral divergence"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 6, "typ": 11, "max": 13 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "I_F", "value": 3.5, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Beam divergence (1/e^2) parallel to pn-junction Theta_|| = 6 deg (min) / 11 deg (typ) / 13 deg (max) at IF = 3.5 A; TC = 25 degC. Full angle at 1/e^2 (slow axis).",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "beam_divergence_perpendicular",
+      "name": "Beam divergence, perpendicular to junction",
+      "group": "beam",
+      "aliases": ["theta_perpendicular", "theta_perp", "beam divergence perpendicular", "fast-axis divergence", "transverse divergence"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 41, "typ": 54, "max": 59 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "I_F", "value": 3.5, "unit": "A" },
+            { "param": "P_OUT", "value": 7.0, "unit": "W" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Beam divergence (1/e^2) perpendicular to pn-junction Theta_perp = 41 deg (min) / 54 deg (typ) / 59 deg (max) at IF = 3.5 A, Popt = 7.0 W (434 - 450 nm); TC = 25 degC. Full angle at 1/e^2 (fast axis).",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "group": "optical",
+      "aliases": ["Ith", "I_th", "threshold current", "lasing threshold", "threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.30, "max": 0.45 },
+          "unit": "A",
+          "conditions": [
+            { "param": "P_OUT", "value": 7.0, "unit": "W" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Threshold current Ith = 0.30 A (typ) / 0.45 A (max) for the Popt = 7.0 W (434 - 450 nm) bin; TC = 25 degC. High-power emitter, so the threshold is in amperes.",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "polarization_extinction_ratio",
+      "name": "Polarization extinction ratio (TE polarization)",
+      "group": "beam",
+      "aliases": ["PTE", "TE polarization", "polarization extinction ratio", "PER", "polarization ratio", "TE polarization ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "TE polarization PTE = 100:1 (typ); TC = 25 degC. A 100:1 power ratio is 20 dB (10*log10(100)). Printed 100:1 form preserved here.",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction to case",
+      "group": "thermal",
+      "aliases": ["RthJC", "Rth_JC", "theta_JC", "thermal resistance junction to case"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Thermal resistance junction/case (real) RthJC = 8 K/W (typ); TC = 25 degC. Printed in K/W; K/W and degC/W are numerically identical for a temperature delta.",
+          "sourcePage": 5,
+          "sourceTable": "Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (maximum)",
+      "group": "optical",
+      "aliases": ["IF", "I_F", "forward current", "maximum forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4.0 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward current IF max = 4.0 A (absolute maximum rating). Operation outside these conditions may lead to degradation or damage.",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["Tj", "TJ", "junction temperature", "maximum junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 135 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature Tj max = 135 degC (absolute maximum rating).",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (case) temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "Topr", "T_C", "operating temperature", "case temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0, "max": 60 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Top = 0 degC (min) to 60 degC (max).",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -40 degC (min) to 85 degC (max) (absolute maximum rating).",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current (laser)",
+      "group": "optical",
+      "aliases": ["IR", "reverse current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.02 },
+          "unit": "A",
+          "conditionsVerbatim": "Reverse current IR = 20 mA (max), absolute maximum rating.",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["TS", "soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature TS = 260 degC (max), absolute maximum rating.",
+          "sourcePage": 4,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "44bb29ec2213720ae76ef3a016605e464a34f8f4f0a2b98d1c3baa95866474ae",
+    "sourceUrl": "https://look.ams-osram.com/m/7ee07d538a821550/original/PLPT9-450MD_E.pdf",
+    "datasheetRevision": "Version 1.0",
+    "publishedDate": "2026-02-11",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

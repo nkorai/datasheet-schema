@@ -1,0 +1,552 @@
+{
+  "family": "laser_diode",
+  "manufacturer": "BWT Beijing",
+  "mpn": "K976DA3RN-30.00W",
+  "parameters": [
+    {
+      "aliases": [
+        "CW-Output Power",
+        "Po",
+        "output power"
+      ],
+      "group": "optical",
+      "key": "optical_output_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "min": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Center Wavelength",
+        "center wavelength",
+        "lambda_c"
+      ],
+      "group": "spectral",
+      "key": "center_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 9.79e-7,
+            "min": 9.73e-7,
+            "typ": 9.76e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FWHM",
+        "Spectral Width",
+        "delta_lambda",
+        "spectral width"
+      ],
+      "group": "spectral",
+      "key": "spectral_width",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 6e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Wavelength Shift with Temperature",
+        "dlambda/dT",
+        "wavelength temperature coefficient"
+      ],
+      "group": "spectral",
+      "key": "wavelength_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m/degC",
+          "value": {
+            "typ": 3e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Wavelength Shift with Current",
+        "dlambda/dI",
+        "wavelength current coefficient"
+      ],
+      "group": "spectral",
+      "key": "wavelength_current_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m/A",
+          "value": {
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Electrical-to-Optical Efficiency",
+        "PE",
+        "power conversion efficiency",
+        "wall-plug efficiency"
+      ],
+      "group": "optical",
+      "key": "power_conversion_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 48
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_op",
+        "Iop",
+        "Operating Current",
+        "operating current"
+      ],
+      "group": "optical",
+      "key": "operating_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 13,
+            "typ": 12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_th",
+        "Ith",
+        "Threshold Current",
+        "threshold current"
+      ],
+      "group": "optical",
+      "key": "threshold_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Voltage",
+        "V_op",
+        "Vop",
+        "operating voltage"
+      ],
+      "group": "optical",
+      "key": "operating_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6,
+            "typ": 4.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Slope Efficiency",
+        "dP/dI",
+        "eta",
+        "slope efficiency"
+      ],
+      "group": "optical",
+      "key": "slope_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_C",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/A",
+          "value": {
+            "typ": 2.7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "N.A.",
+        "NA",
+        "Numerical Aperture",
+        "numerical aperture"
+      ],
+      "group": "beam",
+      "key": "numerical_aperture",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Fiber Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 0.22
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Core diameter",
+        "Dcore",
+        "fiber core diameter"
+      ],
+      "group": "beam",
+      "key": "fiber_core_diameter",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Fiber Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 0.000105
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Case Temperature",
+        "T_C",
+        "Top",
+        "operating case temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 35,
+            "min": 15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Storage Temperature",
+        "Tst",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 70,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD",
+        "Vesd",
+        "esd withstand voltage"
+      ],
+      "group": "optical",
+      "key": "esd_withstand_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 500
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "feedback isolation",
+        "isolation",
+        "optical isolation"
+      ],
+      "group": "beam",
+      "key": "optical_isolation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lead soldering temperature",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Operating Notes",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "LD_ANODE",
+      "name": "LD(+)",
+      "number": 1
+    },
+    {
+      "function": "LD_CATHODE",
+      "name": "LD(-)",
+      "number": 2
+    }
+  ]
+}

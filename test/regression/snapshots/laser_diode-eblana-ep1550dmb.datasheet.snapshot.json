@@ -1,0 +1,575 @@
+{
+  "family": "laser_diode",
+  "manufacturer": "Eblana Photonics",
+  "mpn": "EP1550-DM-B",
+  "parameters": [
+    {
+      "aliases": [
+        "available wavelength range",
+        "center wavelength",
+        "lambda",
+        "lasing wavelength"
+      ],
+      "group": "spectral",
+      "key": "center_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 0.00000156,
+            "min": 0.00000154,
+            "typ": 0.00000155
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SMSR",
+        "side mode suppression ratio",
+        "side mode supression ratio"
+      ],
+      "group": "spectral",
+      "key": "side_mode_suppression_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 30,
+            "typ": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_th",
+        "Ith",
+        "lasing threshold",
+        "threshold current"
+      ],
+      "group": "optical",
+      "key": "threshold_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.02,
+            "typ": 0.014
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pf",
+        "coupled power",
+        "fiber output power",
+        "output power in fiber"
+      ],
+      "group": "optical",
+      "key": "fiber_output_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "min": 0.006,
+            "typ": 0.008
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delta_f",
+        "optical linewidth",
+        "self-heterodyne linewidth",
+        "spectral linewidth"
+      ],
+      "group": "spectral",
+      "key": "linewidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 800000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_lambda",
+        "dlambda/dT",
+        "temperature tuning coefficient",
+        "thermal tuning coefficient"
+      ],
+      "group": "spectral",
+      "key": "wavelength_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m/degC",
+          "value": {
+            "min": 7e-11,
+            "typ": 1e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_lambda",
+        "current tuning",
+        "current tuning coefficient",
+        "dlambda/dI"
+      ],
+      "group": "spectral",
+      "key": "wavelength_current_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m/A",
+          "value": {
+            "min": 8e-9,
+            "typ": 1.2e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SE",
+        "dP/dI",
+        "differential efficiency",
+        "slope efficiency"
+      ],
+      "group": "optical",
+      "key": "slope_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/A",
+          "value": {
+            "min": 0.1,
+            "typ": 0.12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "NTC resistance",
+        "R25",
+        "RT",
+        "R_T",
+        "thermistor resistance"
+      ],
+      "group": "cooler",
+      "key": "thermistor_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 10500,
+            "min": 9500,
+            "typ": 10000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "I_F",
+        "If",
+        "forward current",
+        "maximum forward current"
+      ],
+      "group": "optical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF",
+        "Vf",
+        "forward voltage",
+        "operating voltage"
+      ],
+      "group": "optical",
+      "key": "operating_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ITEC",
+        "I_TEC",
+        "Peltier current",
+        "TEC current",
+        "cooler current"
+      ],
+      "group": "cooler",
+      "key": "tec_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "LD reverse voltage",
+        "VR",
+        "V_R",
+        "Vr",
+        "reverse voltage"
+      ],
+      "group": "optical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD reverse voltage",
+        "VR(PD)",
+        "Vrev",
+        "monitor reverse voltage"
+      ],
+      "group": "monitor_pd",
+      "key": "pd_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCase",
+        "T_C",
+        "case temperature",
+        "operating case temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 65,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "Tstorage",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "THERM",
+      "name": "Thermistor",
+      "number": 1
+    },
+    {
+      "function": "THERM",
+      "name": "Thermistor",
+      "number": 2
+    },
+    {
+      "function": "LD_CATHODE",
+      "name": "LD cathode",
+      "number": 3
+    },
+    {
+      "function": "PD_ANODE",
+      "name": "PD anode",
+      "number": 4
+    },
+    {
+      "function": "PD_CATHODE",
+      "name": "PD cathode",
+      "number": 5
+    },
+    {
+      "function": "TEC_P",
+      "name": "TEC +",
+      "number": 6
+    },
+    {
+      "function": "TEC_N",
+      "name": "TEC -",
+      "number": 7
+    },
+    {
+      "function": "CASE",
+      "name": "Case Ground",
+      "number": 8
+    },
+    {
+      "function": "CASE",
+      "name": "Case Ground",
+      "number": 9
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 10
+    },
+    {
+      "function": "LD_ANODE",
+      "name": "LD anode",
+      "number": 11
+    },
+    {
+      "function": "LD_CATHODE",
+      "name": "LD cathode",
+      "number": 12
+    },
+    {
+      "function": "LD_ANODE",
+      "name": "LD anode",
+      "number": 13
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 14
+    }
+  ]
+}

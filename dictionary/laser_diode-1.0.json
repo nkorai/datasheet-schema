@@ -1,0 +1,907 @@
+{
+  "family": "laser_diode",
+  "dictionaryVersion": "1.1",
+  "description": "Semiconductor laser diode: a PN-junction emitter that lases above a threshold current, orderable as a single-emitter, a bar/stack, or a fiber-coupled module, and usually shipping with a back-facet monitor photodiode. Covers Fabry-Perot edge emitters (visible red, IR pump), single-frequency DFB/DBR sources (telecom 1310/1550 nm, atomic-reference 780 nm - narrow linewidth, high SMSR), VCSELs (850 nm datacom, 940 nm sensing/flood), and high-power multimode single-emitters and fiber-coupled modules. It reuses the diode/LED measurement envelope (forward voltage, wavelength, optical power, thermal) with a DISJOINT vocabulary - threshold current, slope efficiency, beam divergence, SMSR, linewidth, RIN, COD - plus an optional monitor-photodiode block. Out of scope as separate concerns: LEDs (the led family), photodiodes/phototransistors/APDs (receivers), optical transceiver modules and fiber (systems/passive), and laser-diode driver ICs. The integrated thermoelectric cooler (TEC) and thermistor of a pigtailed module are captured as an optional cooler block since they share the orderable MPN, but the driver IC never is. Synthesized from a 20-datasheet corpus across Thorlabs, Ushio, Eblana, LD-PD, ams-OSRAM, Broadcom, VI Systems, BWT, PAM-XIAMEN, Nichia/APS, and nLIGHT.",
+  "parameters": [
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "unit": "A",
+      "group": "optical",
+      "aliases": [
+        "Ith",
+        "I_th",
+        "I_TH",
+        "threshold current",
+        "lasing threshold",
+        "threshold"
+      ],
+      "hint": "The drive current at the onset of lasing (the extrapolated x-intercept of the light-versus-current curve), in amperes. Spans three decades by device class: ~0.5-1 mA for a datacom single-emitter VCSEL, ~15-70 mA for a red/IR Fabry-Perot, up to ~0.3-0.9 A for a high-power multi-junction or multimode emitter - so store the value at whatever magnitude the datasheet prints (mA normalized: 25 mA is 0.025). Rises with temperature; carry the case temperature as a T_C condition."
+    },
+    {
+      "key": "operating_current",
+      "name": "Operating current",
+      "unit": "A",
+      "group": "optical",
+      "aliases": [
+        "Iop",
+        "I_op",
+        "operating current",
+        "operation current",
+        "forward current at rated power",
+        "drive current",
+        "ILD",
+        "I_LD",
+        "laser current"
+      ],
+      "hint": "The forward drive current at the rated optical output power, in amperes (attach P_OUT and T_C conditions - it is always specified 'at Po = rated'). Distinct from the absolute-maximum forward-current rating (store that on forward_current with limitClass absolute_max)."
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (maximum)",
+      "unit": "A",
+      "group": "optical",
+      "aliases": [
+        "IF",
+        "I_F",
+        "If",
+        "forward current",
+        "maximum forward current",
+        "CW forward current"
+      ],
+      "hint": "The absolute-maximum continuous forward current the die survives (limitClass absolute_max), in amperes. A pulsed maximum is higher - store it as a second measurement with PULSE_WIDTH and DUTY conditions. Exceeding it risks catastrophic optical damage (see optical_output_power's COD ceiling)."
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Operating (forward) voltage",
+      "unit": "V",
+      "group": "optical",
+      "aliases": [
+        "Vop",
+        "V_op",
+        "Vf",
+        "VF",
+        "forward voltage",
+        "operating voltage",
+        "VLD",
+        "V_LD",
+        "Vd"
+      ],
+      "hint": "The forward voltage at the rated operating current, in volts (attach P_OUT / I_op). A single red/IR emitter runs ~2 V, a blue emitter ~4-5 V, a UV or stacked multi-emitter module tens of volts (a 6-bar stack ~22 V). Set limitClass absolute_max for a printed maximum forward-voltage rating."
+    },
+    {
+      "key": "optical_output_power",
+      "name": "Optical output power",
+      "unit": "W",
+      "group": "optical",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "Po",
+        "Pop",
+        "P_o",
+        "P_op",
+        "Pout",
+        "output power",
+        "optical output power",
+        "CW output power",
+        "peak output power",
+        "COD",
+        "catastrophic optical damage",
+        "Popt",
+        "Ppeak",
+        "P_peak",
+        "peak power",
+        "radiant power",
+        "P"
+      ],
+      "hint": "The optical (radiant) output power, in watts (mW normalized: 10 mW is 0.01; a pump/blue emitter is 1-140 W). Array over drive current (the light-versus-current curve). Two senses by limitClass, NOT separate keys: the rated/operating power (characterized, at I_op) and the maximum/COD ceiling above which the facet is destroyed (absolute_max - the 'catastrophic optical damage' limit, or a pulsed maximum with PULSE_WIDTH/DUTY). For a fiber-coupled part this is the chip/window power; the fiber-coupled figure, if distinct, goes in fiber_output_power."
+    },
+    {
+      "key": "slope_efficiency",
+      "name": "Slope (differential) efficiency",
+      "unit": "W/A",
+      "group": "optical",
+      "aliases": [
+        "slope efficiency",
+        "differential efficiency",
+        "SE",
+        "eta",
+        "eta_d",
+        "eta_s",
+        "dP/dI",
+        "L-I slope",
+        "differential quantum efficiency",
+        "quantum efficiency",
+        "η",
+        "ηd",
+        "ηs",
+        "external differential quantum efficiency"
+      ],
+      "hint": "The slope of the light-versus-current curve above threshold - optical watts out per amp of drive current in, in W/A (a printed mW/mA is the identical number: 0.8 mW/mA is 0.8 W/A, no scale factor). ~0.3-0.5 W/A for a datacom VCSEL, ~0.6-1.3 W/A for a red/IR Fabry-Perot, ~2-11 W/A for a high-power emitter/stack. NOTE: some datasheets mislabel this as 'quantum efficiency' when the printed unit is mW/mA - it is slope efficiency, alias it here."
+    },
+    {
+      "key": "power_conversion_efficiency",
+      "name": "Power conversion (wall-plug) efficiency",
+      "unit": "%",
+      "group": "optical",
+      "aliases": [
+        "PCE",
+        "WPE",
+        "wall-plug efficiency",
+        "power conversion efficiency",
+        "electrical-to-optical efficiency",
+        "E-O efficiency",
+        "PE",
+        "eta_PCE"
+      ],
+      "hint": "Optical output power as a percentage of input electrical power (Popt / (Vop x Iop) x 100). ~30-50 % for an efficient high-power pump; low for visible/short-wavelength parts. Store the printed percentage."
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (laser)",
+      "unit": "V",
+      "group": "optical",
+      "aliases": [
+        "VR",
+        "V_R",
+        "VR(LD)",
+        "reverse voltage",
+        "LD reverse voltage",
+        "maximum reverse voltage",
+        "Vrv"
+      ],
+      "hint": "The absolute-maximum reverse voltage across the laser junction (limitClass absolute_max), in volts (typically 2 V). A laser diode is not built to be reverse-biased. Distinct from the monitor photodiode's reverse bias (pd_reverse_voltage)."
+    },
+    {
+      "key": "differential_resistance",
+      "name": "Differential (series) resistance",
+      "unit": "ohm",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "Rd",
+        "R_d",
+        "differential resistance",
+        "series resistance",
+        "dynamic resistance",
+        "Rs",
+        "Rdiff",
+        "Rseries",
+        "Rs(dyn)"
+      ],
+      "hint": "The dynamic (series) resistance dV/dI above threshold, in ohms, at a stated current. Printed mainly on datacom parts (it sets the electrical match to the driver); a VCSEL is ~80-100 ohm."
+    },
+    {
+      "key": "center_wavelength",
+      "name": "Center (peak) wavelength",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "center wavelength",
+        "centre wavelength",
+        "central wavelength",
+        "peak wavelength",
+        "lasing wavelength",
+        "emission wavelength",
+        "centroid wavelength",
+        "lambda",
+        "lambda_c",
+        "lambda_p",
+        "lambda_o",
+        "wavelength",
+        "λ",
+        "λc",
+        "λp",
+        "λ0",
+        "λcentroid",
+        "λpeak"
+      ],
+      "hint": "The lasing wavelength, in metres (nm normalized: 1550 nm is 1.55e-6; 976 nm is 9.76e-7; 650 nm is 6.5e-7), at the rated operating point (attach I_op/P_OUT and T_C). A DFB/DBR part prints a tight tolerance (store as min/typ/max, e.g. 1310.0 +/- 0.5 nm); a Fabry-Perot a wide range. Shifts with temperature (wavelength_temperature_coefficient) and current (wavelength_current_coefficient)."
+    },
+    {
+      "key": "spectral_width",
+      "name": "Spectral width",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "spectral width",
+        "spectral bandwidth",
+        "delta_lambda",
+        "FWHM",
+        "spectral width FWHM",
+        "RMS spectral width",
+        "linewidth (multimode)",
+        "Δλ",
+        "σλ",
+        "20 dB bandwidth",
+        "-20 dB spectral width"
+      ],
+      "hint": "The width of the emission spectrum, in metres (nm normalized: 1 nm is 1e-9). A single-frequency DFB is <0.001 nm (report the coherent linewidth in Hz on the linewidth key instead), a Fabry-Perot ~1-3 nm, a free-running multimode pump ~6 nm. Carry the statistic (FWHM default, or rms - a VCSEL often prints RMS width) via the statistic field, and the drive/temperature point as conditions."
+    },
+    {
+      "key": "linewidth",
+      "name": "Optical linewidth",
+      "unit": "Hz",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "linewidth",
+        "optical linewidth",
+        "spectral linewidth",
+        "delta_f",
+        "delta_nu",
+        "Lorentzian linewidth",
+        "self-heterodyne linewidth",
+        "FWHM linewidth",
+        "coherence",
+        "Δν",
+        "Δf",
+        "instantaneous linewidth",
+        "integrated linewidth"
+      ],
+      "hint": "The coherent optical linewidth of a single-frequency (DFB/DBR/ECL) laser, as a FREQUENCY width in hertz (kHz/MHz normalized: 400 kHz is 4e5, 3 MHz is 3e6) - NOT a wavelength width (use spectral_width in m for a multimode part). It sets coherence length; ultra-narrow-linewidth parts reach <1 kHz. Record the measurement method (self-heterodyne) and bias in conditionsVerbatim."
+    },
+    {
+      "key": "side_mode_suppression_ratio",
+      "name": "Side-mode suppression ratio",
+      "unit": "dB",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "SMSR",
+        "side mode suppression ratio",
+        "side-mode suppression ratio",
+        "sidemode suppression",
+        "side mode supression ratio"
+      ],
+      "hint": "The power ratio between the dominant longitudinal mode and the strongest side mode, in dB - the single-frequency-ness of a DFB/DBR (typically >30 dB min, 40 dB typ). High SMSR is what makes a source single-mode; a Fabry-Perot (multi-mode) does not specify it."
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Wavelength temperature coefficient",
+      "unit": "m/degC",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "wavelength temperature coefficient",
+        "temperature tuning coefficient",
+        "dlambda/dT",
+        "thermal tuning coefficient",
+        "wavelength drift",
+        "wavelength shift with temperature",
+        "dλ/dT",
+        "Δλ/ΔT",
+        "lambda tempco"
+      ],
+      "hint": "The shift of lasing wavelength with temperature, in m/degC (nm/degC or nm/K normalized - identical for a slope: 0.3 nm/degC is 3e-10 m/degC). Positive (emission red-shifts as the junction heats). ~0.06-0.07 nm/degC for a VCSEL, ~0.1 nm/degC for a DFB, ~0.2-0.3 nm/degC for an edge-emitter; a VBG-wavelength-stabilized pump is far lower (~0.02 nm/degC)."
+    },
+    {
+      "key": "wavelength_current_coefficient",
+      "name": "Wavelength current-tuning coefficient",
+      "unit": "m/A",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "wavelength current coefficient",
+        "current tuning coefficient",
+        "dlambda/dI",
+        "wavelength shift with current",
+        "current tuning",
+        "dλ/dI",
+        "Δλ/ΔA",
+        "Δλ/ΔI"
+      ],
+      "hint": "The shift of lasing wavelength with drive current, in m/A (pm/mA or nm/mA normalized: 7 pm/mA is 7e-9 m/A, 1 nm/A is 1e-9 m/A). The fast tuning knob for a current-tuned single-frequency laser; a VBG-stabilized pump is ~0.03 nm/A while a free-running one is ~1 nm/A - the ratio is a real, comparable design figure."
+    },
+    {
+      "key": "relative_intensity_noise",
+      "name": "Relative intensity noise (RIN)",
+      "unit": "dB",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "RIN",
+        "relative intensity noise",
+        "intensity noise"
+      ],
+      "hint": "The relative intensity noise of a single-frequency source, in dB - the datasheet prints it as a per-hertz spectral density (dBc/Hz or dB/Hz); keep the unit dB and record the '/Hz' and the offset/bandwidth (and the dBc reference) in conditionsVerbatim, exactly as the ADC's noise-spectral-density keeps dB with the reference in verbatim. A per-hertz dB density is not made a base-SI unit."
+    },
+    {
+      "key": "extinction_ratio",
+      "name": "Extinction ratio",
+      "unit": "dB",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "extinction ratio",
+        "EXT",
+        "ER"
+      ],
+      "hint": "The optical power ratio between a logic-one and logic-zero level of a directly-modulated datacom transmitter, in dB (>10 dB typical). Printed on datacom VCSEL/DFB transmitter parts, at a stated data rate and pattern (carry those in conditionsVerbatim)."
+    },
+    {
+      "key": "beam_divergence_parallel",
+      "name": "Beam divergence, parallel to junction",
+      "unit": "deg",
+      "group": "beam",
+      "aliases": [
+        "theta_parallel",
+        "theta_//",
+        "beam divergence parallel",
+        "parallel beam divergence",
+        "slow-axis divergence",
+        "lateral divergence",
+        "theta_par",
+        "θ//",
+        "θ∥",
+        "Θ‖",
+        "θpar",
+        "FWHM parallel"
+      ],
+      "hint": "The far-field beam divergence in the plane parallel to the junction (the slow axis of an edge emitter), in degrees. Record whether it is FWHM or full-angle at 1/e-squared (vendors differ) in conditionsVerbatim. Edge emitters are astigmatic - the parallel angle is smaller than the perpendicular; a VCSEL is symmetric and uses beam_divergence instead."
+    },
+    {
+      "key": "beam_divergence_perpendicular",
+      "name": "Beam divergence, perpendicular to junction",
+      "unit": "deg",
+      "group": "beam",
+      "aliases": [
+        "theta_perpendicular",
+        "theta_perp",
+        "beam divergence perpendicular",
+        "perpendicular beam divergence",
+        "fast-axis divergence",
+        "transverse divergence",
+        "θ⊥",
+        "Θ┴",
+        "θperp",
+        "FWHM perpendicular"
+      ],
+      "hint": "The far-field beam divergence perpendicular to the junction (the fast axis of an edge emitter), in degrees - larger than the parallel angle (e.g. 30 deg vs 11 deg). Record FWHM vs 1/e-squared in conditionsVerbatim."
+    },
+    {
+      "key": "beam_divergence",
+      "name": "Beam divergence (symmetric)",
+      "unit": "deg",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "beam divergence",
+        "divergence angle",
+        "theta",
+        "full-angle divergence",
+        "D86 divergence",
+        "field of illumination",
+        "FOI"
+      ],
+      "hint": "The (circularly-symmetric) far-field beam divergence of a VCSEL or the field-of-illumination of a flood illuminator, in degrees - a single value because a VCSEL beam is round, unlike an edge emitter's two orthogonal angles. Record the definition (FWHM, 1/e-squared, D86, 50 %) in conditionsVerbatim."
+    },
+    {
+      "key": "beam_quality_m2",
+      "name": "Beam quality M-squared",
+      "unit": "1",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "M2",
+        "M^2",
+        "M squared",
+        "beam quality",
+        "beam propagation factor",
+        "beam parameter product"
+      ],
+      "hint": "The beam quality factor M-squared - a dimensionless number (unit 1), 1.0 for a diffraction-limited (ideal Gaussian) beam and higher for a multimode/high-power emitter. Beam parameter product (mm.mrad), if printed instead, is derivable (BPP = M2 x lambda / pi) and kept in conditionsVerbatim rather than given its own unit."
+    },
+    {
+      "key": "astigmatism",
+      "name": "Astigmatism",
+      "unit": "m",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "astigmatism",
+        "As",
+        "A_s",
+        "astigmatic distance"
+      ],
+      "hint": "The astigmatic distance between the apparent parallel- and perpendicular-axis source points of an edge emitter, in metres (um normalized: 15 um is 1.5e-5). Matters for collimation optics; a VCSEL has none."
+    },
+    {
+      "key": "polarization_extinction_ratio",
+      "name": "Polarization extinction ratio",
+      "unit": "dB",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "polarization extinction ratio",
+        "PER",
+        "polarization ratio",
+        "TE polarization ratio",
+        "TE/TM ratio",
+        "PTE",
+        "TE polarization"
+      ],
+      "hint": "The power ratio between the dominant (usually TE) and orthogonal polarization, in dB (a printed 100:1 ratio is 20 dB). Matters for polarization-sensitive coupling. Store the ratio in dB; keep a printed 'X:1' form in conditionsVerbatim."
+    },
+    {
+      "key": "numerical_aperture",
+      "name": "Numerical aperture (fiber output)",
+      "unit": "1",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "NA",
+        "numerical aperture",
+        "fiber NA"
+      ],
+      "hint": "The numerical aperture of a fiber-coupled module's output fiber - a dimensionless number (unit 1, typically 0.11-0.22). With fiber_core_diameter it sets the beam parameter product of the delivered light."
+    },
+    {
+      "key": "fiber_core_diameter",
+      "name": "Fiber core diameter",
+      "unit": "m",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "fiber core diameter",
+        "core diameter",
+        "Dcore",
+        "fiber diameter"
+      ],
+      "hint": "The core diameter of a fiber-coupled module's output/pigtail fiber, in metres (um normalized: 105 um is 1.05e-4). A package/output parameter, like an LED's viewing angle - not an intrinsic laser spec, but part of the orderable module."
+    },
+    {
+      "key": "fiber_output_power",
+      "name": "Fiber-coupled output power",
+      "unit": "W",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "fiber output power",
+        "output power in fiber",
+        "coupled power",
+        "Pf",
+        "fiber-coupled power"
+      ],
+      "hint": "The optical power delivered out of a fiber-coupled module's pigtail, in watts (mW normalized), after coupling loss - distinct from the chip's optical_output_power. Present only on pigtailed/module parts."
+    },
+    {
+      "key": "monitor_current",
+      "name": "Monitor photodiode current",
+      "unit": "A",
+      "group": "monitor_pd",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "P_OUT",
+      "aliases": [
+        "monitor current",
+        "Im",
+        "Is",
+        "I_m",
+        "I_mon",
+        "monitor photocurrent",
+        "PD current",
+        "monitor photodiode current",
+        "IMD",
+        "IPD",
+        "I_PD",
+        "Imon",
+        "monitor output current",
+        "tracking current"
+      ],
+      "hint": "The photocurrent of the built-in back-facet monitor photodiode at the rated optical power, in amperes (uA/mA normalized), at a stated monitor reverse bias (attach V_R) - used to servo the laser's output. Array over P_OUT (it tracks optical power). Present only when the package includes a monitor PD (high-power multimode and some blue parts omit it)."
+    },
+    {
+      "key": "monitor_dark_current",
+      "name": "Monitor photodiode dark current",
+      "unit": "A",
+      "group": "monitor_pd",
+      "optional": true,
+      "aliases": [
+        "monitor dark current",
+        "Id",
+        "I_D",
+        "dark current",
+        "PD dark current",
+        "Idark",
+        "ID(PD)",
+        "dark current (PD)"
+      ],
+      "hint": "The reverse leakage current of the monitor photodiode with the laser off, in amperes (nA normalized), at a stated reverse bias (attach V_R). Bounds the servo's zero-light offset."
+    },
+    {
+      "key": "monitor_capacitance",
+      "name": "Monitor photodiode capacitance",
+      "unit": "F",
+      "group": "monitor_pd",
+      "optional": true,
+      "aliases": [
+        "monitor capacitance",
+        "Ct",
+        "C_t",
+        "PD capacitance",
+        "monitor photodiode capacitance",
+        "Cj",
+        "C_PD",
+        "Cd",
+        "Ct(PD)"
+      ],
+      "hint": "The junction capacitance of the monitor photodiode, in farads (pF normalized), at a stated reverse bias and frequency. Sets the servo-loop bandwidth."
+    },
+    {
+      "key": "pd_reverse_voltage",
+      "name": "Monitor photodiode reverse voltage",
+      "unit": "V",
+      "group": "monitor_pd",
+      "optional": true,
+      "aliases": [
+        "VR(PD)",
+        "V_R(PD)",
+        "PD reverse voltage",
+        "monitor reverse voltage",
+        "Vrev"
+      ],
+      "hint": "The absolute-maximum reverse voltage of the monitor photodiode (limitClass absolute_max), in volts (typically 20-30 V), distinct from the laser's own reverse_voltage."
+    },
+    {
+      "key": "modulation_bandwidth",
+      "name": "Modulation bandwidth",
+      "unit": "Hz",
+      "group": "modulation",
+      "optional": true,
+      "aliases": [
+        "modulation bandwidth",
+        "optical bandwidth",
+        "f3dB",
+        "3 dB bandwidth",
+        "small-signal bandwidth",
+        "BW"
+      ],
+      "hint": "The small-signal -3 dB optical modulation bandwidth of a datacom laser, in hertz (GHz normalized: 19 GHz is 1.9e10). Distinct from the maximum data_rate it supports."
+    },
+    {
+      "key": "data_rate",
+      "name": "Maximum data rate",
+      "unit": "Hz",
+      "group": "modulation",
+      "optional": true,
+      "aliases": [
+        "data rate",
+        "maximum data rate",
+        "bit rate",
+        "baud rate",
+        "BR",
+        "DR",
+        "NRZ rate"
+      ],
+      "hint": "The maximum signalling rate of a datacom transmitter, in hertz (dimensionally 1/s; a printed Gbit/s or Gbaud is Hz - 25 Gbit/s NRZ is 2.5e10). Keep the printed Gbit/s or Gbaud and the line code (NRZ/PAM4) in conditionsVerbatim; it is related to but distinct from modulation_bandwidth."
+    },
+    {
+      "key": "rise_time",
+      "name": "Optical rise time",
+      "unit": "s",
+      "group": "modulation",
+      "optional": true,
+      "aliases": [
+        "tr",
+        "t_r",
+        "rise time",
+        "optical rise time"
+      ],
+      "hint": "The 10%-90% (or 20%-80%, per the datasheet) optical rise time, in seconds (ns normalized: 2 ns is 2e-9). Record the percentage points and the O/E-converter bandwidth in conditionsVerbatim."
+    },
+    {
+      "key": "fall_time",
+      "name": "Optical fall time",
+      "unit": "s",
+      "group": "modulation",
+      "optional": true,
+      "aliases": [
+        "tf",
+        "t_f",
+        "fall time",
+        "optical fall time"
+      ],
+      "hint": "The optical fall time, in seconds (ns normalized). Pairs with rise_time for data-rate capability."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction to case",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "RthJC",
+        "Rth_JC",
+        "theta_JC",
+        "thermal resistance junction to case",
+        "junction to case thermal resistance"
+      ],
+      "hint": "Junction-to-case thermal resistance, in degC/W (equivalently K/W), a few degC/W for a well-heatsunk power emitter. Sets the junction temperature rise for a given dissipated power."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "TJ",
+        "Tj",
+        "junction temperature",
+        "maximum junction temperature",
+        "Tj(max)",
+        "Tjmax"
+      ],
+      "hint": "The maximum allowable junction temperature (limitClass absolute_max), in degC. The reliability limit; laser lifetime falls steeply with junction temperature."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (case) temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Top",
+        "Topr",
+        "T_C",
+        "TCase",
+        "operating temperature",
+        "operating case temperature",
+        "case temperature",
+        "ambient operating temperature",
+        "Toper",
+        "Tc",
+        "Tamb",
+        "operation temperature"
+      ],
+      "hint": "The case/ambient temperature range over which the part operates (recommended), in degC. A cooled telecom module derates its case-temperature max relative to its submount setpoint; keep any such relation in conditionsVerbatim. Store min/max bounds."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Tstg",
+        "Tst",
+        "T_STG",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "hint": "The non-operating storage temperature range (limitClass absolute_max), in degC. Store min/max bounds."
+    },
+    {
+      "key": "esd_withstand_voltage",
+      "name": "ESD withstand voltage",
+      "unit": "V",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "VESD",
+        "ESD",
+        "ESD withstand voltage",
+        "HBM",
+        "CDM",
+        "human body model",
+        "electrostatic discharge"
+      ],
+      "hint": "The ESD threshold the part withstands, in volts (kV normalized). Laser facets are ESD-sensitive; some high-power multimode emitters explicitly omit ESD protection (record that, and any built-in protection diode, in conditionsVerbatim). State the model (HBM/CDM/JS-001 class)."
+    },
+    {
+      "key": "tec_current",
+      "name": "TEC (cooler) current",
+      "unit": "A",
+      "group": "cooler",
+      "optional": true,
+      "aliases": [
+        "ITEC",
+        "I_TEC",
+        "TEC current",
+        "cooler current",
+        "Peltier current"
+      ],
+      "hint": "The maximum current of the integrated thermoelectric cooler (TEC) in a pigtailed/butterfly module (limitClass absolute_max), in amperes. Part of the orderable module (shared MPN), not the laser junction itself - a cooler-subsystem parameter a driver-selection consumer needs to size the TEC controller. The TEC voltage and delta-T go in conditionsVerbatim."
+    },
+    {
+      "key": "thermistor_resistance",
+      "name": "Thermistor resistance",
+      "unit": "ohm",
+      "group": "cooler",
+      "optional": true,
+      "aliases": [
+        "RT",
+        "R_T",
+        "thermistor resistance",
+        "NTC resistance",
+        "R25",
+        "NTC",
+        "R(NTC)"
+      ],
+      "hint": "The nominal resistance of the module's integrated NTC thermistor at 25 degC, in ohms (kOhm normalized: 10 kOhm is 10000) - the temperature sense element of the cooling loop. Its %/degC or beta coefficient goes in conditionsVerbatim. A cooler-subsystem parameter, present only on temperature-controlled modules."
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current (laser)",
+      "unit": "A",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "IR",
+        "I_R",
+        "IR(LD)",
+        "reverse current",
+        "allowable reverse current",
+        "reverse leakage current"
+      ],
+      "hint": "The absolute-maximum allowable reverse current through the laser junction (limitClass absolute_max), in amperes (mA normalized: 20 mA is 0.02) - distinct from the laser's reverse_voltage rating and from the monitor photodiode's currents. A laser is not built for reverse conduction."
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Ts",
+        "Tls",
+        "Tsld",
+        "soldering temperature",
+        "lead soldering temperature",
+        "peak reflow temperature"
+      ],
+      "hint": "The maximum soldering/lead temperature (limitClass absolute_max), in degC (typically 260), for a stated time and distance from the body - keep those in conditionsVerbatim. Distinct from operating/junction temperature."
+    },
+    {
+      "key": "optical_isolation",
+      "name": "Optical (feedback) isolation",
+      "unit": "dB",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "optical isolation",
+        "feedback isolation",
+        "isolation",
+        "return loss",
+        "optical isolator isolation"
+      ],
+      "hint": "The isolation of a fiber-coupled module's integrated optical isolator against back-reflected light, in dB (typically ~30 dB over a stated wavelength band, kept in conditionsVerbatim). Protects the laser from feedback-induced instability; present only on isolated modules."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Total power dissipation",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Ptot",
+        "P_tot",
+        "Pd",
+        "Pdiss",
+        "power dissipation",
+        "total power dissipation"
+      ],
+      "hint": "The maximum total power the package dissipates (limitClass absolute_max), in watts - the electrical input minus the emitted optical power, all as heat. The led and diode families carry the same key. On a high-power emitter this drives the heatsink design with thermal_resistance_junction_case."
+    },
+    {
+      "key": "beam_angle_deviation",
+      "name": "Beam-angle (pointing) deviation",
+      "unit": "deg",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "beam angle deviation",
+        "pointing accuracy",
+        "beam pointing",
+        "beam pointing accuracy",
+        "emission angle deviation"
+      ],
+      "hint": "The guaranteed pointing tolerance of the emitted beam axis relative to the package reference, in degrees (e.g. +/-3 deg, parallel and perpendicular) - a min/typ/max spec on TO-can edge emitters (Thorlabs L-series). A collimation/alignment budget item, distinct from beam_divergence (the beam's own spread) and not a package-outline dimension."
+    },
+    {
+      "key": "emission_point_accuracy",
+      "name": "Emission-point positioning accuracy",
+      "unit": "m",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "emission point accuracy",
+        "emitter position accuracy",
+        "emission point",
+        "positioning accuracy",
+        "chip position accuracy"
+      ],
+      "hint": "The tolerance on the emitter's physical position within the package (delta-X/Y/Z), in metres (um normalized: +/-80 um is 8e-5). What a collimation-optics designer needs to place the focal point. Store the largest +/- bound, or per-axis measurements with the axis in conditionsVerbatim."
+    },
+    {
+      "key": "number_of_emitters",
+      "name": "Number of emitters",
+      "unit": "1",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "number of emitters",
+        "emitter count",
+        "N_emitters",
+        "number of apertures",
+        "emitters"
+      ],
+      "hint": "The count of individual emitting apertures in a VCSEL array or an edge-emitter bar - a dimensionless integer (unit 1). A single emitter omits it; a flood-illuminator VCSEL array is hundreds."
+    },
+    {
+      "key": "aperture_diameter",
+      "name": "Emitter aperture diameter",
+      "unit": "m",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "aperture diameter",
+        "oxide aperture",
+        "optical aperture",
+        "emitter aperture",
+        "aperture size",
+        "active aperture"
+      ],
+      "hint": "The diameter of a VCSEL's (oxide) emitting aperture, in metres (um normalized: 8.5 um is 8.5e-6). Sets the single-emitter power and beam properties."
+    },
+    {
+      "key": "wavelength_tuning_range",
+      "name": "Wavelength tuning range",
+      "unit": "m",
+      "group": "spectral",
+      "optional": true,
+      "aliases": [
+        "tuning range",
+        "wavelength tuning range",
+        "mode-hop-free tuning range",
+        "MHF tuning range",
+        "continuous tuning range"
+      ],
+      "hint": "The total (usually mode-hop-free) wavelength span a tunable single-frequency laser reaches via temperature/current tuning, in metres (nm normalized: 2 nm is 2e-9). The achievable SPAN - distinct from the tuning-rate coefficients wavelength_temperature_coefficient and wavelength_current_coefficient."
+    },
+    {
+      "key": "kink_free_power",
+      "name": "Kink-free power",
+      "unit": "W",
+      "group": "optical",
+      "optional": true,
+      "aliases": [
+        "kink-free power",
+        "kink free power",
+        "Pkink",
+        "power to kink",
+        "kink power"
+      ],
+      "hint": "The maximum optical output power before the first kink (a discontinuity from a lateral-mode or filamentation instability) in the light-versus-current curve, in watts - published on high-power single emitters. Distinct from the COD ceiling (a destructive limit); a kink is a usable-power limit."
+    },
+    {
+      "key": "thermistor_beta",
+      "name": "Thermistor B-constant",
+      "unit": "K",
+      "group": "cooler",
+      "optional": true,
+      "aliases": [
+        "thermistor beta",
+        "B constant",
+        "B25/85",
+        "beta",
+        "NTC B constant",
+        "B-value"
+      ],
+      "hint": "The B (beta) constant of the module's NTC thermistor, in kelvin (e.g. 3900 K, B25/85) - it sets the resistance-vs-temperature law used to read the cooling-loop temperature. Pairs with thermistor_resistance (the 25 degC value)."
+    },
+    {
+      "key": "fiber_cladding_diameter",
+      "name": "Fiber cladding diameter",
+      "unit": "m",
+      "group": "beam",
+      "optional": true,
+      "aliases": [
+        "cladding diameter",
+        "Dclad",
+        "fiber cladding diameter"
+      ],
+      "hint": "The cladding diameter of a fiber-coupled module's output fiber, in metres (um normalized: 125 um is 1.25e-4). Printed alongside fiber_core_diameter; a package/output parameter of the orderable module."
+    }
+  ]
+}

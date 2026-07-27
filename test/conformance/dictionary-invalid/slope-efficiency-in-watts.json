@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LD-FP-980", "manufacturer": "Y", "family": "laser_diode" },
+  "parameters": [
+    { "key": "slope_efficiency", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.8 }, "unit": "W", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false },
+  "notes": ["Schema-valid (W is a legal enum unit) but wrong dimension: slope efficiency is optical watts PER AMP of drive current (W/A), the slope of the light-versus-current curve, not an absolute power in W. The family unit-scoping check must reject this, since laser_diode's slope_efficiency declares unit W/A with no altUnits."]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LD-DFB-1550", "manufacturer": "Y", "family": "laser_diode" },
+  "parameters": [
+    { "key": "center_wavelength", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 1.549e-6, "typ": 1.55e-6, "max": 1.551e-6 }, "unit": "m",
+        "conditionsVerbatim": "center wavelength 1550 +/- 1 nm", "sourcePage": 1 } ] },
+    { "key": "slope_efficiency", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 0.1, "typ": 0.12 }, "unit": "W/A",
+        "conditionsVerbatim": "slope efficiency 0.10/0.12 mW/mA = W/A", "sourcePage": 1 } ] },
+    { "key": "wavelength_current_coefficient", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 8e-9 }, "unit": "m/A",
+        "conditionsVerbatim": "current tuning coefficient 8 pm/mA", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false }
+}

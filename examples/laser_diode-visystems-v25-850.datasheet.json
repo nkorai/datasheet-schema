@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "V25-850C1",
+    "manufacturer": "VI Systems",
+    "family": "laser_diode",
+    "description": "850 nm 25 Gbit/s top-emitting datacom VCSEL, bare die. A single-emitter (1x1) GaAs-based vertical-cavity surface-emitting laser chip for short-reach optical interconnects, active optical cables (AOC), and 25G/100G Ethernet. Contacted on the top surface via ground-source microprobe, wire bond, or flip-chip bond; no back-facet monitor photodiode. Symmetric round beam (20 deg FWHM divergence), 19 GHz f3dB modulation bandwidth, and RMS-specified spectral width - the datacom VCSEL parameter set. Siblings V25-850C4 (1x4) and V25-850C12 (1x12) are distinct multi-emitter array products, not covered here.",
+    "package": "Bare die, 1x1 VCSEL chip (top-emitting), ~210-250 x 210-250 x 140-160 um",
+    "pinCount": 2,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "0..85",
+    "orderingVariants": [
+      { "orderCode": "V25-850C1", "package": "1x1 single-emitter VCSEL chip, bare die" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "ANODE", "function": "LD_ANODE", "type": "passive", "description": "Laser p-contact (anode, +), on the top surface of the die. Forward drive current flows in here; contacted by ground-source microprobe, wire bond, or flip-chip bump.", "sourcePage": 1 },
+    { "number": 2, "name": "CATHODE", "function": "LD_CATHODE", "type": "passive", "description": "Laser n-contact (cathode, -), the substrate / bottom side of the die. No back-facet monitor photodiode is present.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "center_wavelength",
+      "name": "Emission wavelength",
+      "group": "spectral",
+      "aliases": ["lambda", "emission wavelength", "center wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 8.4e-7, "max": 8.6e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Emission wavelength lambda = 840 (min) / 860 (max) nm over T = 0 to 85 degC. Front-page nominal is 850 nm typ; the electro-optical table gives only the min/max bounds (no typ column value).",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "data_rate",
+      "name": "Maximum data rate",
+      "group": "modulation",
+      "aliases": ["BR", "data rate", "maximum data rate", "NRZ rate"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.5e10, "max": 2.8e10 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Maximum data rate BR = 25 (typ) / 28 (max) Gbit/s NRZ over T = 0 to 85 degC. Title page: '25 Gbit/s NRZ VCSEL (850nm)', up to 28 Gbit/s per channel.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "modulation_bandwidth",
+      "name": "Optical modulation bandwidth (f3dB)",
+      "group": "modulation",
+      "aliases": ["BW", "f3dB", "optical bandwidth", "3 dB bandwidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9e10 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Optical bandwidth BW (f3dB) = 19 GHz (typ), small-signal -3 dB, over T = 0 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "slope_efficiency",
+      "name": "Slope (differential) efficiency",
+      "group": "optical",
+      "aliases": ["eta", "slope efficiency", "differential efficiency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.3, "max": 0.5 },
+          "unit": "W/A",
+          "conditions": [
+            { "param": "I_F", "value": 0.005, "unit": "A" },
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Slope efficiency eta = 0.3 (min) / 0.5 (max) W/A at 5 mA, over T = 0 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "group": "optical",
+      "aliases": ["Ith", "I_th", "threshold current", "lasing threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 8e-4 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_C", "note": "25 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Threshold current Ith = 0.8 mA (max) over 25 to 85 degC. Front-page nominal < 0.5 mA typ (at room temperature); the electro-optical table gives only the 0.8 mA max bound.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "differential_resistance",
+      "name": "Differential (series) resistance",
+      "group": "optical",
+      "aliases": ["Rd", "R_d", "differential resistance", "series resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 80, "max": 100 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_F", "value": 0.005, "unit": "A" },
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Differential resistance Rd = 80 (typ) / 100 (max) ohm at 5 mA, over T = 0 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "beam_divergence",
+      "name": "Beam divergence (symmetric)",
+      "group": "beam",
+      "aliases": ["theta", "beam divergence", "divergence angle", "FWHM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Beam divergence theta = 20 deg (typ), FWHM full angle. Symmetric round VCSEL beam - a single value, using the beam_divergence key rather than the parallel/perpendicular pair.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "optical_output_power",
+      "name": "Peak optical output power",
+      "group": "optical",
+      "aliases": ["Pmax", "Po", "peak output power", "optical output power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.003, "max": 0.004 },
+          "unit": "W",
+          "statistic": "peak",
+          "conditions": [
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Peak output power Pmax = 3 (typ) / 4 (max) mW over T = 0 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "spectral_width",
+      "name": "Spectral width (RMS)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "RMS spectral width", "spectral bandwidth", "spectral width"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-10, "max": 8e-10 },
+          "unit": "m",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "I_F", "value": 0.005, "unit": "A" },
+            { "param": "T_C", "note": "T = 0 to 85 degC" }
+          ],
+          "conditionsVerbatim": "Spectral bandwidth (RMS) delta-lambda_RMS = 0.6 (typ) / 0.8 (max) nm at 5 mA, over T = 0 to 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Peak forward current (maximum)",
+      "group": "optical",
+      "aliases": ["If", "IF", "I_F", "peak forward current", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.009 },
+          "unit": "A",
+          "statistic": "peak",
+          "conditionsVerbatim": "Peak forward current If = 9 mA (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Maximum reverse voltage",
+      "group": "optical",
+      "aliases": ["Vrv", "VR", "V_R", "maximum reverse voltage", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "Maximum reverse voltage Vrv = 5 V (absolute maximum rating). A VCSEL is not built to be reverse-biased.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "Topr", "operating temperature", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Top max = 85 degC (listed in the Absolute Maximum Ratings table with only a max). The electro-optical characteristics are specified over T = 0 to 85 degC, giving the 0 degC lower bound; encoded as the recommended operating range.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tst", "Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tst = -40 to +100 degC (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["Tsl", "soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature Tsl = 150 degC (max), for a maximum of 260 s (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "4ad36eb8f855b8d7d4d45b9be12f8bd4bcc3781b293ef8fbc01e87d51cf719aa",
+    "sourceUrl": "https://v-i-systems.com/wp-content/uploads/2021/12/VIS-Datasheet-V25-850Cxx.pdf",
+    "datasheetRevision": "No. 190110 Rev 1.5",
+    "publishedDate": "2022-01-01",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

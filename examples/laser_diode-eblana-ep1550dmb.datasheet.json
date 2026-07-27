@@ -1,0 +1,325 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "EP1550-DM-B",
+    "manufacturer": "Eblana Photonics",
+    "family": "laser_diode",
+    "description": "1550 nm single-frequency Discrete-Mode (DM) narrow-linewidth telecom laser (DFB-like performance), available across the 1540-1560 nm range, in a 14-pin butterfly package with an integrated thermoelectric cooler (TEC), NTC thermistor, back-facet monitor photodiode, and optical isolator, terminated in an FC/APC single-mode fiber pigtail. Targeted at SONET/SDH and Gigabit Ethernet coherent/advanced-communications links. Class 3R laser product (IEC 60825-1).",
+    "package": "14-pin butterfly (Pinout 01), FC/APC single-mode fiber pigtail",
+    "pinCount": 14,
+    "lifecycle": "active",
+    "temperatureGrade": "-20..65",
+    "orderingVariants": [
+      { "orderCode": "EP1550-0-DM-B01-FA", "package": "14-pin butterfly", "packing": "FC/APC single-mode fiber (SMF) connector" },
+      { "orderCode": "EP1550-0-DM-B01-FM", "package": "14-pin butterfly", "packing": "FC/APC polarization-maintaining fiber (PM) connector" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Thermistor", "function": "THERM", "type": "passive", "description": "NTC thermistor terminal (10 kohm at 25 degC). Temperature-sense element of the cooling loop, paired with pin 2.", "sourcePage": 2 },
+    { "number": 2, "name": "Thermistor", "function": "THERM", "type": "passive", "description": "NTC thermistor terminal (10 kohm at 25 degC), paired with pin 1.", "sourcePage": 2 },
+    { "number": 3, "name": "LD cathode", "function": "LD_CATHODE", "type": "passive", "description": "Laser-diode cathode (tied to pin 12). Emission end of the LD junction, in series with the internal optical isolator.", "sourcePage": 2 },
+    { "number": 4, "name": "PD anode", "function": "PD_ANODE", "type": "passive", "description": "Back-facet monitor photodiode anode.", "sourcePage": 2 },
+    { "number": 5, "name": "PD cathode", "function": "PD_CATHODE", "type": "passive", "description": "Back-facet monitor photodiode cathode (reverse-bias positive terminal).", "sourcePage": 2 },
+    { "number": 6, "name": "TEC +", "function": "TEC_P", "type": "power", "description": "Thermoelectric cooler (Peltier) positive terminal.", "sourcePage": 2 },
+    { "number": 7, "name": "TEC -", "function": "TEC_N", "type": "power", "description": "Thermoelectric cooler (Peltier) negative terminal.", "sourcePage": 2 },
+    { "number": 8, "name": "Case Ground", "function": "CASE", "type": "passive", "description": "Butterfly case ground.", "sourcePage": 2 },
+    { "number": 9, "name": "Case Ground", "function": "CASE", "type": "passive", "description": "Butterfly case ground.", "sourcePage": 2 },
+    { "number": 10, "name": "NC", "function": "NC", "type": "passive", "description": "No connection.", "sourcePage": 2 },
+    { "number": 11, "name": "LD anode", "function": "LD_ANODE", "type": "passive", "description": "Laser-diode anode (drive-current input, tied to pin 13).", "sourcePage": 2 },
+    { "number": 12, "name": "LD cathode", "function": "LD_CATHODE", "type": "passive", "description": "Laser-diode cathode (tied to pin 3).", "sourcePage": 2 },
+    { "number": 13, "name": "LD anode", "function": "LD_ANODE", "type": "passive", "description": "Laser-diode anode (tied to pin 11).", "sourcePage": 2 },
+    { "number": 14, "name": "NC", "function": "NC", "type": "passive", "description": "No connection.", "sourcePage": 2 }
+  ],
+  "parameters": [
+    {
+      "key": "center_wavelength",
+      "name": "Available wavelength range",
+      "group": "spectral",
+      "aliases": ["lambda", "center wavelength", "available wavelength range", "lasing wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.54e-6, "typ": 1.55e-6, "max": 1.56e-6 },
+          "unit": "m",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Available Wavelength Range lambda = 1540 (min) / 1550 (typ) / 1560 (max) nm. Wavelength Tolerance lambda_spec = lambda-1 / lambda / lambda+1 nm (each part is factory-set to a single wavelength in this band with a +/-1 nm tolerance). CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "side_mode_suppression_ratio",
+      "name": "Side-mode suppression ratio",
+      "group": "spectral",
+      "aliases": ["SMSR", "side mode suppression ratio", "side mode supression ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 30, "typ": 40 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Side Mode Supression Ratio SMSR = 30 (min) / 40 (typ) dB. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "group": "optical",
+      "aliases": ["Ith", "I_th", "threshold current", "lasing threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.014, "max": 0.02 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Threshold Current Ith = 14 (typ) / 20 (max) mA. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fiber_output_power",
+      "name": "Output power in fiber",
+      "group": "optical",
+      "aliases": ["Pf", "fiber output power", "output power in fiber", "coupled power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.006, "typ": 0.008 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Output Power in fiber Pf = 6 (min) / 8 (typ) mW. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "linewidth",
+      "name": "Optical linewidth",
+      "group": "spectral",
+      "aliases": ["delta_f", "optical linewidth", "spectral linewidth", "self-heterodyne linewidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 8e5 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Optical linewidth delta-f = 800 kHz (max) - a coherent frequency (Lorentzian) linewidth, typically measured by the delayed self-heterodyne method. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Temperature tuning coefficient",
+      "group": "spectral",
+      "aliases": ["T_lambda", "temperature tuning coefficient", "dlambda/dT", "thermal tuning coefficient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 7e-11, "typ": 1e-10 },
+          "unit": "m/degC",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature Tuning Coefficient T-lambda = 0.07 (min) / 0.1 (typ) nm/degC (normalized to m/degC: 0.1 nm/degC is 1e-10). Emission red-shifts as the submount heats. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_current_coefficient",
+      "name": "Current tuning coefficient",
+      "group": "spectral",
+      "aliases": ["I_lambda", "current tuning coefficient", "dlambda/dI", "current tuning"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 8e-9, "typ": 1.2e-8 },
+          "unit": "m/A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Current Tuning Coefficient I-lambda = 8 (min) / 12 (typ) pm/mA (normalized to m/A: 12 pm/mA is 1.2e-8, factor 1e-9). The fast current-tuning knob of the single-frequency source. CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "slope_efficiency",
+      "name": "Slope efficiency",
+      "group": "optical",
+      "aliases": ["SE", "slope efficiency", "differential efficiency", "dP/dI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.1, "typ": 0.12 },
+          "unit": "W/A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Slope Efficiency SE = 0.10 (min) / 0.12 (typ) mW/mA (mW/mA is the identical number in W/A - no scale factor). CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "thermistor_resistance",
+      "name": "Thermistor resistance",
+      "group": "cooler",
+      "aliases": ["RT", "R_T", "thermistor resistance", "NTC resistance", "R25"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9500, "typ": 10000, "max": 10500 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Thermistor Resistance RT = 9.5 (min) / 10 (typ) / 10.5 (max) kOhm (10 kOhm NTC at 25 degC). Thermistor Temp. Coefficient C = -4.4 %/degC (typ). CW bias unless otherwise stated; TSUB = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Electro-Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (maximum)",
+      "group": "optical",
+      "aliases": ["If", "IF", "I_F", "forward current", "maximum forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.12 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward Current If = 120 mA (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Forward (operating) voltage",
+      "group": "optical",
+      "aliases": ["Vf", "VF", "forward voltage", "operating voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2 },
+          "unit": "V",
+          "conditionsVerbatim": "Forward Voltage Vf = 2 V (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "tec_current",
+      "name": "TEC (cooler) current",
+      "group": "cooler",
+      "aliases": ["ITEC", "I_TEC", "TEC current", "cooler current", "Peltier current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.2 },
+          "unit": "A",
+          "conditionsVerbatim": "TEC Current ITEC = 1.2 A (absolute maximum rating). Maximum current of the integrated thermoelectric cooler.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (laser diode)",
+      "group": "optical",
+      "aliases": ["Vr", "VR", "V_R", "reverse voltage", "LD reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse Voltage LD Vr = 2 V (absolute maximum rating). The laser junction is not built to be reverse-biased.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "pd_reverse_voltage",
+      "name": "Monitor photodiode reverse voltage",
+      "group": "monitor_pd",
+      "aliases": ["Vrev", "VR(PD)", "PD reverse voltage", "monitor reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 20 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse Voltage PD Vrev = 20 V (absolute maximum rating). Reverse-bias limit of the back-facet monitor photodiode, distinct from the laser's own reverse voltage.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Case (operating) temperature range",
+      "group": "thermal",
+      "aliases": ["TCase", "T_C", "case temperature", "operating case temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -20, "max": 65 },
+          "unit": "degC",
+          "conditionsVerbatim": "Case Temperature TCase = -20 to 65 degC. Chip Submount Temperature TSub = 0 to 50 degC (TEC setpoint range). Derate: for Tsub < 25 degC, the maximum case temperature is TCase,Max = Tsub + 40 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstorage", "Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Tstorage = -40 to 85 degC (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "9061966581635530ddd1ab84ee87ded5afc1394b1ea193d2dbc534aba0c659b2",
+    "sourceUrl": "https://eblanaphotonics.com/wp-content/uploads/2020/11/EP1550-DM-B.pdf",
+    "datasheetRevision": "Rev 2.1",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

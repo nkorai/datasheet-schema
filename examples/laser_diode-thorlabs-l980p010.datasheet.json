@@ -1,0 +1,302 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "L980P010",
+    "manufacturer": "Thorlabs",
+    "family": "laser_diode",
+    "description": "980 nm, 10 mW single-transverse-mode Fabry-Perot edge-emitting laser diode in a Ø5.6 mm TO-18 (TO can) 3-pin package with an integrated back-facet monitor photodiode. Center wavelength 970-990 nm, differential slope efficiency 0.5-0.8 W/A, astigmatic edge-emitter beam (parallel/perpendicular far-field divergence 13 deg / 30 deg typ). Compatible with Thorlabs laser-diode and TEC controllers and collimation optics. Pin Code A: pin 1 monitor-diode anode, pin 2 case common, pin 3 laser cathode.",
+    "package": "Ø5.6 mm TO-18 (TO can), 3-pin",
+    "pinCount": 3,
+    "lifecycle": "active",
+    "temperatureGrade": "-10..50",
+    "orderingVariants": [
+      { "orderCode": "L980P010", "package": "Ø5.6 mm TO-18 (TO can), 3-pin" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "PD", "function": "PD_ANODE", "type": "passive", "description": "Monitor photodiode anode. The back-facet monitor PD's anode; sourced photocurrent tracks laser output power for servo control (its cathode is internally common to the case).", "sourcePage": 2 },
+    { "number": 2, "name": "CASE", "function": "CASE", "type": "passive", "description": "Case common. The metal TO can, internally common to the laser-diode anode and the monitor-photodiode cathode (Pin Code A).", "sourcePage": 2 },
+    { "number": 3, "name": "LD", "function": "LD_CATHODE", "type": "passive", "description": "Laser-diode cathode. Drive current returns here; the laser anode is internally tied to the case common (pin 2).", "sourcePage": 2 }
+  ],
+  "parameters": [
+    {
+      "key": "center_wavelength",
+      "name": "Center wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_C", "center wavelength", "peak wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9.7e-7, "typ": 9.8e-7, "max": 9.9e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "P_OUT", "value": 0.01, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Center Wavelength lambda_C = 970 (min) / 980 (typ) / 990 (max) nm at rated output power Po = 10 mW (CW).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "optical_output_power",
+      "name": "Optical output power",
+      "group": "optical",
+      "aliases": ["Po", "output power", "optical output power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.01 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 0.025, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Output Power Po = 10 mW (typ), CW, at the typical operating current Iop = 25 mA. Datasheet prints Po min/max as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "operating_current",
+      "name": "Operating current",
+      "group": "optical",
+      "aliases": ["Iop", "I_op", "operating current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.025, "max": 0.04 },
+          "unit": "A",
+          "conditions": [
+            { "param": "P_OUT", "value": 0.01, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Operating Current Iop = 25 mA (typ) / 40 mA (max) at rated output power Po = 10 mW (CW). Datasheet prints Iop min as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "group": "optical",
+      "aliases": ["ITH", "I_th", "threshold current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.015, "max": 0.025 },
+          "unit": "A",
+          "conditionsVerbatim": "Threshold Current ITH = 15 mA (typ) / 25 mA (max), CW. Datasheet prints ITH min as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Operating (forward) voltage",
+      "group": "optical",
+      "aliases": ["Vop", "V_op", "operating voltage", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5, "max": 2.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "P_OUT", "value": 0.01, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Operating Voltage Vop = 1.5 V (typ) / 2.2 V (max) at rated output power Po = 10 mW (CW). Datasheet prints Vop min as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "slope_efficiency",
+      "name": "Slope (differential) efficiency",
+      "group": "optical",
+      "aliases": ["slope efficiency", "differential efficiency", "dP/dI", "L-I slope"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.5, "typ": 0.8 },
+          "unit": "W/A",
+          "conditionsVerbatim": "Slope Efficiency dP/dI = 0.5 W/A (min) / 0.8 W/A (typ). The datasheet prints the differential slope dP/dI directly in W/A; max printed as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "monitor_current",
+      "name": "Monitor photodiode current",
+      "group": "monitor_pd",
+      "aliases": ["Im", "I_m", "monitor current", "monitor photodiode current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e-5, "typ": 5e-5, "max": 9e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "P_OUT", "value": 0.01, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Monitor Current Im = 10 uA (min) / 50 uA (typ) / 90 uA (max) at rated output power Po = 10 mW. Monitor reverse bias not stated on the datasheet.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "beam_divergence_parallel",
+      "name": "Beam divergence, parallel to junction",
+      "group": "beam",
+      "aliases": ["theta_//", "theta_parallel", "parallel beam divergence", "slow-axis divergence"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 10, "typ": 13, "max": 18 },
+          "unit": "deg",
+          "conditionsVerbatim": "Beam Divergence (parallel to junction) theta_// = 10 deg (min) / 13 deg (typ) / 18 deg (max). FWHM full-angle divergence; the slow axis of the edge emitter.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "beam_divergence_perpendicular",
+      "name": "Beam divergence, perpendicular to junction",
+      "group": "beam",
+      "aliases": ["theta_perp", "perpendicular beam divergence", "fast-axis divergence"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 25, "typ": 30, "max": 40 },
+          "unit": "deg",
+          "conditionsVerbatim": "Beam Divergence (perpendicular to junction) theta_perp = 25 deg (min) / 30 deg (typ) / 40 deg (max). FWHM full-angle divergence; the fast axis of the edge emitter, larger than the parallel angle.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "astigmatism",
+      "name": "Astigmatism",
+      "group": "beam",
+      "aliases": ["As", "A_s", "astigmatism", "astigmatic distance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.5e-5 },
+          "unit": "m",
+          "conditionsVerbatim": "Astigmatism As = 15 um (max). Separation between the apparent parallel- and perpendicular-axis source points of the edge emitter; datasheet prints min/typ as '-'.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (L980P010)"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage (laser)",
+      "group": "optical",
+      "aliases": ["VR(LD)", "V_R", "LD reverse voltage", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2 },
+          "unit": "V",
+          "conditionsVerbatim": "LD Reverse Voltage VR (LD) = 2 V (absolute maximum). A laser diode is not built to be reverse-biased.",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max"
+        }
+      ]
+    },
+    {
+      "key": "pd_reverse_voltage",
+      "name": "Monitor photodiode reverse voltage",
+      "group": "monitor_pd",
+      "aliases": ["VR(PD)", "V_R(PD)", "PD reverse voltage", "monitor reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 30 },
+          "unit": "V",
+          "conditionsVerbatim": "PD Reverse Voltage VR (PD) = 30 V (absolute maximum), the monitor photodiode's own reverse-bias limit.",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (case) temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "T_C", "operation case temperature", "operating case temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -10, "max": 50 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operation Case Temperature = -10 to 50 degC (case temperature).",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "T_STG", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature = -40 to 85 degC (absolute maximum).",
+          "sourcePage": 1,
+          "sourceTable": "Specification / Max"
+        }
+      ]
+    },
+    {
+      "key": "beam_angle_deviation",
+      "name": "Beam angle deviation",
+      "group": "beam",
+      "aliases": ["beam angle deviation", "pointing accuracy"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -3, "max": 3 },
+          "unit": "deg",
+          "conditionsVerbatim": "Beam Angle Deviation theta// and theta-perp = -3 deg (min) to +3 deg (max) (pointing tolerance of the emitted beam axis relative to the package, both axes).",
+          "sourcePage": 1,
+          "sourceTable": "Specification"
+        }
+      ]
+    },
+    {
+      "key": "emission_point_accuracy",
+      "name": "Emission point accuracy",
+      "group": "beam",
+      "aliases": ["emission point accuracy", "positioning accuracy"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -8.0e-5, "max": 8.0e-5 },
+          "unit": "m",
+          "conditionsVerbatim": "Emission Point Accuracy deltaX / deltaY / deltaZ = +/-80 um (position tolerance of the emitter within the package, largest bound stored).",
+          "sourcePage": 1,
+          "sourceTable": "Specification"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "c9f9fee26971859d832c005b4cdaa06f9dd8bf27331883f97778aee7bb0bcdac",
+    "sourceUrl": "https://www.laser-opto.com/uploadfile/202508/2d922590ef7b9e1.pdf",
+    "datasheetRevision": "11916-S01 Rev H",
+    "publishedDate": "2013-12-12",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

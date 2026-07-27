@@ -1,0 +1,480 @@
+{
+  "family": "laser_diode",
+  "manufacturer": "VI Systems",
+  "mpn": "V25-850C1",
+  "parameters": [
+    {
+      "aliases": [
+        "center wavelength",
+        "emission wavelength",
+        "lambda"
+      ],
+      "group": "spectral",
+      "key": "center_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 8.6e-7,
+            "min": 8.4e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "BR",
+        "NRZ rate",
+        "data rate",
+        "maximum data rate"
+      ],
+      "group": "modulation",
+      "key": "data_rate",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "max": 28000000000,
+            "typ": 25000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "3 dB bandwidth",
+        "BW",
+        "f3dB",
+        "optical bandwidth"
+      ],
+      "group": "modulation",
+      "key": "modulation_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 19000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "differential efficiency",
+        "eta",
+        "slope efficiency"
+      ],
+      "group": "optical",
+      "key": "slope_efficiency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/A",
+          "value": {
+            "max": 0.5,
+            "min": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_th",
+        "Ith",
+        "lasing threshold",
+        "threshold current"
+      ],
+      "group": "optical",
+      "key": "threshold_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "25 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0008
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "R_d",
+        "Rd",
+        "differential resistance",
+        "series resistance"
+      ],
+      "group": "optical",
+      "key": "differential_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 100,
+            "typ": 80
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FWHM",
+        "beam divergence",
+        "divergence angle",
+        "theta"
+      ],
+      "group": "beam",
+      "key": "beam_divergence",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "typ": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pmax",
+        "Po",
+        "optical output power",
+        "peak output power"
+      ],
+      "group": "optical",
+      "key": "optical_output_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.004,
+            "typ": 0.003
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS spectral width",
+        "delta_lambda",
+        "spectral bandwidth",
+        "spectral width"
+      ],
+      "group": "spectral",
+      "key": "spectral_width",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "T = 0 to 85 degC",
+              "param": "T_C",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electro-optical characteristics (T = 0 to 85 degC)",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 8e-10,
+            "typ": 6e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "I_F",
+        "If",
+        "forward current",
+        "peak forward current"
+      ],
+      "group": "optical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR",
+        "V_R",
+        "Vrv",
+        "maximum reverse voltage",
+        "reverse voltage"
+      ],
+      "group": "optical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Top",
+        "Topr",
+        "operating temperature",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tst",
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tsl",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "LD_ANODE",
+      "name": "ANODE",
+      "number": 1
+    },
+    {
+      "function": "LD_CATHODE",
+      "name": "CATHODE",
+      "number": 2
+    }
+  ]
+}

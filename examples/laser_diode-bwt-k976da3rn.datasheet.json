@@ -1,0 +1,330 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "K976DA3RN-30.00W",
+    "manufacturer": "BWT Beijing",
+    "family": "laser_diode",
+    "description": "976 nm 30 W free-running fiber-coupled multi-single-emitter diode laser module, 105 um / 0.22 NA output fiber. A high-power CW pump source built by combining several single emitters and coupling their asymmetric radiation into a small-core multimode fiber with micro optics; used for laser pumping, medical, and material processing. Free-running (no wavelength-stabilizing VBG), so the spectrum is broad (~6 nm FWHM) and drifts with temperature and current. Includes 1040-1200 nm feedback isolation (~30 dB). Two-pin module (LD anode/cathode); no back-facet monitor photodiode and no integrated cooler are specified, so those blocks are omitted.",
+    "package": "Fiber-coupled diode laser module, 2-pin (105 um core / 125 um cladding / 245 um buffer, 0.22 NA, 1 m fiber, 0.9 mm PVC loose tube)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "15..35 (operating case)",
+    "orderingVariants": [
+      { "orderCode": "K976DA3RN-30.00W", "package": "Fiber-coupled diode laser module, 2-pin" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "LD(+)", "function": "LD_ANODE", "type": "passive", "description": "Laser diode anode (+). Solder to wire (not socket) for operation above 6 A; solder point close to the pin root, T < 260 degC, t < 10 s.", "sourcePage": 3 },
+    { "number": 2, "name": "LD(-)", "function": "LD_CATHODE", "type": "passive", "description": "Laser diode cathode (-). The fiber output is delivered through the pigtail, not a pin.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "optical_output_power",
+      "name": "CW output power",
+      "group": "optical",
+      "aliases": ["Po", "CW-Output Power", "output power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 30 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 12, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "CW output power Po = 30 W (min) at 25 degC, rated at operating current Iop = 12 A typ. This is the fiber-delivered output of the 105 um / 0.22 NA pigtail module (the datasheet states a single Po figure, so it is the module's rated/fiber output; no separate chip-window power is given).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "center_wavelength",
+      "name": "Center wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_c", "center wavelength", "Center Wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 9.73e-7, "typ": 9.76e-7, "max": 9.79e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 12, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Center wavelength lambda_c = 976 +/- 3 nm at 30 W, 25 degC (976 nm typ, 973 nm min, 979 nm max). Free-running (no VBG stabilization); shifts with temperature and current per the coefficients below.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "spectral_width",
+      "name": "Spectral width (FWHM)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "FWHM", "Spectral Width", "spectral width"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.0e-9 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 12, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Spectral width (FWHM) delta-lambda = 6 nm (typ) at 30 W, 25 degC. Broad because the module is free-running (no wavelength-locking VBG).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Wavelength shift with temperature",
+      "group": "spectral",
+      "aliases": ["dlambda/dT", "Wavelength Shift with Temperature", "wavelength temperature coefficient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0e-10 },
+          "unit": "m/degC",
+          "conditionsVerbatim": "Wavelength shift with temperature d-lambda/d-T = 0.3 nm/degC (typ). Positive (emission red-shifts as the case heats). nm/degC and nm/K are identical for a per-degree rate.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_current_coefficient",
+      "name": "Wavelength shift with current",
+      "group": "spectral",
+      "aliases": ["dlambda/dI", "Wavelength Shift with Current", "wavelength current coefficient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-9 },
+          "unit": "m/A",
+          "conditionsVerbatim": "Wavelength shift with current d-lambda/d-A = 1 nm/A (typ), i.e. 1e-9 m/A. Large because the module is free-running; a VBG-stabilized pump is ~0.03 nm/A.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "power_conversion_efficiency",
+      "name": "Electrical-to-optical efficiency",
+      "group": "optical",
+      "aliases": ["PE", "Electrical-to-Optical Efficiency", "power conversion efficiency", "wall-plug efficiency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 48 },
+          "unit": "%",
+          "conditions": [
+            { "param": "I_F", "value": 12, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Electrical-to-optical (wall-plug) efficiency PE = 48 % (typ) at 30 W, 25 degC. Consistent with 30 W / (4.8 V x 12 A) ~ 52 %.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data"
+        }
+      ]
+    },
+    {
+      "key": "operating_current",
+      "name": "Operating current",
+      "group": "optical",
+      "aliases": ["Iop", "I_op", "Operating Current", "operating current"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "typ": 12, "max": 13 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Operating current Iop = 12 A (typ) / 13 A (max) at 30 W output, 25 degC. Use a constant-current supply to avoid surge current.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data"
+        }
+      ]
+    },
+    {
+      "key": "threshold_current",
+      "name": "Threshold current",
+      "group": "optical",
+      "aliases": ["Ith", "I_th", "Threshold Current", "threshold current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Threshold current Ith = 0.9 A (typ) at 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data"
+        }
+      ]
+    },
+    {
+      "key": "operating_voltage",
+      "name": "Operating voltage",
+      "group": "optical",
+      "aliases": ["Vop", "V_op", "Operating Voltage", "operating voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.8, "max": 6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 12, "unit": "A" },
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Operating voltage Vop = 4.8 V (typ) / 6 V (max) at Iop = 12 A, 30 W, 25 degC. Multi-single-emitter module, so higher than a single ~2 V emitter.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data"
+        }
+      ]
+    },
+    {
+      "key": "slope_efficiency",
+      "name": "Slope efficiency",
+      "group": "optical",
+      "aliases": ["eta", "Slope Efficiency", "slope efficiency", "dP/dI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.7 },
+          "unit": "W/A",
+          "conditions": [
+            { "param": "T_C", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Slope efficiency eta = 2.7 W/A (typ) at 25 degC (light-versus-current slope above threshold).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Electrical Data"
+        }
+      ]
+    },
+    {
+      "key": "numerical_aperture",
+      "name": "Numerical aperture (output fiber)",
+      "group": "beam",
+      "aliases": ["NA", "N.A.", "Numerical Aperture", "numerical aperture"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.22 },
+          "unit": "1",
+          "conditionsVerbatim": "Numerical aperture N.A. = 0.22 (typ) of the output fiber.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Fiber Data"
+        }
+      ]
+    },
+    {
+      "key": "fiber_core_diameter",
+      "name": "Fiber core diameter",
+      "group": "beam",
+      "aliases": ["Dcore", "Core diameter", "fiber core diameter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.05e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "Core diameter Dcore = 105 um (typ). Cladding diameter 125 um, buffer diameter 245 um, total fiber length 1 m, 0.9 mm PVC loose tube (1.5 cm), minimum bending radius 50 mm (no dedicated dictionary keys for cladding/buffer/length/bend radius).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Fiber Data"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating case temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "T_C", "Operating Case Temperature", "operating case temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 15, "max": 35 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating case temperature Top = 15 to 35 degC (recommended). Note (3): defined by the package case; acceptable operating range 15-35 degC, but performance may vary. Laser diode must work with good cooling.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tst", "Storage Temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -20, "max": 70 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tst = -20 to +70 degC. Note (2): a non-condensing environment is required for operation and storage.",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others"
+        }
+      ]
+    },
+    {
+      "key": "esd_withstand_voltage",
+      "name": "ESD withstand voltage",
+      "group": "optical",
+      "aliases": ["Vesd", "ESD", "esd withstand voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 500 },
+          "unit": "V",
+          "conditionsVerbatim": "ESD Vesd = 500 V (max). ESD precautions must be taken during storage, transportation and operation (model/class not stated).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Others"
+        }
+      ]
+    },
+    {
+      "key": "optical_isolation",
+      "name": "Optical (feedback) isolation",
+      "group": "beam",
+      "aliases": ["feedback isolation", "optical isolation", "isolation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 30 },
+          "unit": "dB",
+          "conditionsVerbatim": "Feedback isolation = 30 dB (typ) over the 1040 - 1200 nm wavelength range (integrated optical isolator protecting the emitter from back-reflected pump/signal light).",
+          "sourcePage": 2,
+          "sourceTable": "Specifications (25 degC) - Optical Data"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["soldering temperature", "lead soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Lead soldering temperature < 260 degC for <= 10 s (handling/absolute-maximum limit).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Notes"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "ad611f14635403693b95e6cc30d9e67899512eb8b480bc153623dbd20bf44fbc",
+    "sourceUrl": "https://www.laserdiodesource.com/files/pdfs/laserdiodesource_com/9249/BWT_K976DA3RN_30_00W-1729161597.pdf",
+    "datasheetRevision": "19-1",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
