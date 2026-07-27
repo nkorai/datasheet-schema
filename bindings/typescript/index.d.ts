@@ -13,6 +13,7 @@ export declare const diodeDictionary: Record<string, unknown>;
 export declare const inductorDictionary: Record<string, unknown>;
 export declare const jfetDictionary: Record<string, unknown>;
 export declare const ldoDictionary: Record<string, unknown>;
+export declare const ledDictionary: Record<string, unknown>;
 export declare const mosfetDictionary: Record<string, unknown>;
 export declare const opAmpDictionary: Record<string, unknown>;
 export declare const resistorDictionary: Record<string, unknown>;

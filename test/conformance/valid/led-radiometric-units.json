@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LED-IR-X", "manufacturer": "Y", "family": "led" },
+  "parameters": [
+    { "key": "radiant_intensity", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 0.08, "typ": 0.17, "max": 0.4 }, "unit": "W/sr",
+        "conditions": [ { "param": "I_F", "value": 0.1, "unit": "A" } ],
+        "conditionsVerbatim": "Ie 80/170/400 mW/sr at IF = 100 mA, tp = 20 ms", "sourcePage": 2 } ] },
+    { "key": "radiant_flux", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 0.04 }, "unit": "W",
+        "conditions": [ { "param": "I_F", "value": 0.1, "unit": "A" } ],
+        "conditionsVerbatim": "radiant power 40 mW at IF = 100 mA", "sourcePage": 2 } ] },
+    { "key": "peak_wavelength", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 9.4e-7 }, "unit": "m",
+        "conditionsVerbatim": "peak wavelength 940 nm", "sourcePage": 2 } ] },
+    { "key": "wavelength_temperature_coefficient", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 2e-10 }, "unit": "m/degC",
+        "conditionsVerbatim": "0.2 nm/K", "sourcePage": 2 } ] }
+  ],
+  "provenance": { "verified": false }
+}

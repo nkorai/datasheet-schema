@@ -1,0 +1,486 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TSAL6100",
+    "manufacturer": "Vishay",
+    "family": "led",
+    "description": "High-power 940 nm infrared (IR) emitting diode in GaAlAs multi-quantum-well (MQW) technology, in a 5 mm (T-1 3/4) leaded through-hole blue-gray molded package. A radiometric IR emitter (specified in radiant intensity W/sr and radiant power W, not photometric candela/lumen - the human eye cannot see 940 nm). Narrow beam (angle of half intensity +/-10 deg), high radiant power, and high switching speed (15 ns rise/fall) suited to IR remote control, free-air transmission, optical counters, card readers, and smoke detectors. Good spectral matching with silicon photodetectors.",
+    "package": "T-1 3/4 (5 mm dia.), leaded through-hole",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "TSAL6100", "package": "T-1 3/4 (5 mm dia.), leaded through-hole", "packing": "Bulk (MOQ 4000 pcs, 4000 pcs/bulk)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "A", "function": "ANODE", "type": "passive", "description": "Anode (+). The longer lead; forward current flows in here toward the cathode.", "sourcePage": 4 },
+    { "number": 2, "name": "C", "function": "CATHODE", "type": "passive", "description": "Cathode (-). Identified by the flat/shorter lead side of the package.", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "radiant_intensity",
+      "name": "Radiant intensity",
+      "group": "optical_radiometric",
+      "aliases": ["Ie", "I_e", "radiant intensity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.08, "typ": 0.17, "max": 0.4 },
+          "unit": "W/sr",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "PULSE_WIDTH", "value": 0.02, "unit": "s" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Radiant intensity Ie = 80 (min) / 170 (typ) / 400 (max) mW/sr at IF = 100 mA, tp = 20 ms; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.65, "max": 1.45 },
+          "unit": "W/sr",
+          "conditions": [
+            { "param": "I_F", "value": 1.0, "unit": "A" },
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Radiant intensity Ie = 650 (typ) / 1450 (max) mW/sr at IF = 1 A, tp = 100 us; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "radiant_flux",
+      "name": "Radiant power",
+      "group": "optical_radiometric",
+      "aliases": ["phi_e", "radiant power", "radiant flux"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.04 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "PULSE_WIDTH", "value": 0.02, "unit": "s" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Radiant power phi_e = 40 mW (typ) at IF = 100 mA, tp = 20 ms; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_p", "peak wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.4e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Peak wavelength lambda_p = 940 nm at IF = 100 mA; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spectral_bandwidth",
+      "name": "Spectral bandwidth (FWHM)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "spectral bandwidth", "FWHM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0e-8 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Spectral bandwidth delta-lambda = 30 nm at IF = 100 mA; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Temperature coefficient of peak wavelength",
+      "group": "temperature_coefficient",
+      "aliases": ["TKlp", "TClambda", "temperature coefficient of wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.0e-10 },
+          "unit": "m/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature coefficient of lambda_p: TK_lambda_p = 0.2 nm/K at IF = 100 mA. Applies to the peak wavelength; emission red-shifts as the junction heats. K and degC are identical for a per-degree rate.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "electrical",
+      "aliases": ["VF", "V_F", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.35, "max": 1.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "PULSE_WIDTH", "value": 0.02, "unit": "s" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF = 1.35 (typ) / 1.6 (max) V at IF = 100 mA, tp = 20 ms; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.2, "max": 3.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 1.0, "unit": "A" },
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF = 2.2 (typ) / 3 (max) V at IF = 1 A, tp = 100 us; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage_temperature_coefficient",
+      "name": "Temperature coefficient of forward voltage",
+      "group": "temperature_coefficient",
+      "aliases": ["TKVF", "TCV", "temperature coefficient of forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -1.8e-3 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "I_F", "value": 1.0e-3, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature coefficient of VF: TK_VF = -1.8 mV/K at IF = 1 mA. Negative (VF falls as the junction heats). K and degC are identical for a per-degree rate.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "radiant_flux_temperature_coefficient",
+      "name": "Temperature coefficient of radiant power",
+      "group": "temperature_coefficient",
+      "aliases": ["TKphie", "temperature coefficient of radiant power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -6000 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature coefficient of radiant power: TK_phi_e = -0.6 %/K at IF = 20 mA (normalized to -6000 ppm/degC). Negative (radiant output falls as the junction heats).",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "group": "electrical",
+      "aliases": ["IR", "I_R", "reverse current", "reverse leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Reverse current IR = 10 uA (max) at VR = 5 V; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "junction_capacitance",
+      "name": "Junction capacitance",
+      "group": "electrical",
+      "aliases": ["Cj", "junction capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.0e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1.0e6, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Junction capacitance Cj = 40 pF (typ) at VR = 0 V, f = 1 MHz, E = 0; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "group": "switching",
+      "aliases": ["tr", "t_r", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Rise time tr = 15 ns at IF = 100 mA; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "group": "switching",
+      "aliases": ["tf", "t_f", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "I_F", "value": 0.1, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Fall time tf = 15 ns at IF = 100 mA; Tamb = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "viewing_angle",
+      "name": "Viewing angle (full angle at half intensity)",
+      "group": "optical",
+      "aliases": ["2theta_1/2", "viewing angle", "angle of half intensity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Angle of half intensity phi = +/-10 deg (printed as a half-angle). Normalized to the full angle at half intensity 2*phi = 20 deg.",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage",
+      "group": "electrical",
+      "aliases": ["VR", "V_R", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR = 5 V (absolute maximum rating); Tamb = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "group": "electrical",
+      "aliases": ["IF", "I_F", "DC forward current", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward current IF = 100 mA (absolute maximum DC rating); Tamb = 25 degC. Derated above 25 degC per Fig. 2.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak (pulsed) forward current",
+      "group": "electrical",
+      "aliases": ["IFM", "peak forward current", "pulsed forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.2 },
+          "unit": "A",
+          "conditions": [
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "DUTY", "note": "tp/T = 0.5 (50 % duty cycle)" }
+          ],
+          "conditionsVerbatim": "Peak forward current IFM = 200 mA (absolute maximum) at tp/T = 0.5, tp = 100 us; Tamb = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "surge_forward_current",
+      "name": "Surge forward current",
+      "group": "electrical",
+      "aliases": ["IFSM", "surge forward current", "surge current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" }
+          ],
+          "conditionsVerbatim": "Surge forward current IFSM = 1.5 A (absolute maximum, non-repetitive) at tp = 100 us; Tamb = 25 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "electrical",
+      "aliases": ["PV", "PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.16 },
+          "unit": "W",
+          "conditionsVerbatim": "Power dissipation PV = 160 mW (absolute maximum); Tamb = 25 degC. Derated above 25 degC per Fig. 1 (RthJA = 230 K/W).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["Tj", "TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature Tj = 100 degC (absolute maximum).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Tamb", "Topr", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range Tamb = -40 to +85 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range Tstg = -40 to +100 degC.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["Tsd", "Tsol", "soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature Tsd = 260 degC (absolute maximum) for t <= 5 s, 2 mm from case.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "group": "thermal",
+      "aliases": ["RthJA", "R_thJA", "thermal resistance junction to ambient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 230 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "Thermal resistance junction/ambient RthJA = 230 K/W (K/W and degC/W are numerically identical for a temperature delta), per J-STD-051, leads 7 mm soldered on PCB.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "1c7e0bce486ad4a1f9720f404bcf3c0fc44778bd3f225f001a437d82dbbc4a5b",
+    "sourceUrl": "https://www.vishay.com/docs/81009/tsal6100.pdf",
+    "datasheetRevision": "Rev. 1.8, 13-Mar-14 (Document Number 81009)",
+    "publishedDate": "2014-03-13",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

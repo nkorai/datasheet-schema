@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LED-WHITE-X", "manufacturer": "Y", "family": "led" },
+  "parameters": [
+    { "key": "luminous_intensity", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 0.071, "typ": 0.112 }, "unit": "cd",
+        "conditions": [ { "param": "I_F", "value": 0.02, "unit": "A" } ],
+        "conditionsVerbatim": "IV 71 mcd min / 112 mcd typ at IF = 20 mA", "sourcePage": 2 } ] },
+    { "key": "luminous_flux", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 156 }, "unit": "lm",
+        "conditions": [ { "param": "I_F", "value": 0.35, "unit": "A" } ],
+        "conditionsVerbatim": "156 lm at IF = 350 mA", "sourcePage": 1 } ] },
+    { "key": "luminous_efficacy", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 151 }, "unit": "lm/W", "sourcePage": 1 } ] },
+    { "key": "correlated_color_temperature", "measurements": [
+      { "limitClass": "characterized", "value": { "nom": 5000 }, "unit": "K", "sourcePage": 3 } ] },
+    { "key": "color_rendering_index", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 80 }, "unit": "1", "sourcePage": 3 } ] },
+    { "key": "dominant_wavelength", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 6.3e-7 }, "unit": "m",
+        "conditionsVerbatim": "dominant wavelength 630 nm", "sourcePage": 2 } ] }
+  ],
+  "provenance": { "verified": false }
+}

@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "NCSU276CT",
+    "manufacturer": "Nichia Corporation",
+    "family": "led",
+    "description": "UV-A (365 nm) ultraviolet LED in a 3.5 x 3.5 mm ceramic SMD package with a silicone-resin lens and Au-plated backside electrodes (anode + cathode). Radiometric emitter: optical output is specified as radiant flux (Phi_e) in watts, per CIE 127:2007, not photometrically. Built-in ESD protection device, Pb-free reflow soldering, RoHS compliant. This document is the U365 peak-wavelength rank (360-370 nm). Forward-voltage ranks (L1..H2, 3.2-4.4 V) and radiant-flux ranks (P6d22..P8d21, 870-1230 mW) ship mixed within one orderable part, the combination ratio decided by Nichia.",
+    "package": "Ceramic SMD, 3.5x3.5mm, silicone-resin lens (backside electrodes)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-10..85",
+    "orderingVariants": [
+      { "orderCode": "NCSU276CT-E", "package": "Ceramic SMD, 3.5x3.5mm, silicone lens", "packing": "Embossed carrier tape and reel, 3500 pcs/reel (phi330 mm), JIS C 0806" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Anode. Backside Au-plated electrode; solder connection is not visible by normal visual inspection.", "sourcePage": 4 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Cathode, identified by the cathode mark on the package. Backside Au-plated electrode; also the primary thermal path to the solder point (RthJS reference).", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "electrical",
+      "aliases": ["VF", "Vf", "V_F", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.8 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward Voltage VF = 3.8 V typ at IF = 500 mA. Initial characteristics at TS = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Initial Electrical/Optical Characteristics",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.2, "max": 4.4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward Voltage ranks at TS = 25 degC (shipped mixed, ratio decided by Nichia; tolerance +/-0.05 V): L1 3.2-3.4, L2 3.4-3.6, M1 3.6-3.8, M2 3.8-4.0, H1 4.0-4.2, H2 4.2-4.4 V. Envelope over all shipped ranks.",
+          "sourcePage": 3,
+          "sourceTable": "Ranks",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "radiant_flux",
+      "name": "Radiant flux (radiant power)",
+      "group": "optical_radiometric",
+      "aliases": ["Fe", "phi_e", "radiant flux", "radiant power", "optical power"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.05 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Radiant Flux Phi_e = 1050 mW typ at IF = 500 mA (TS = 25 degC). Radiant Flux value as per CIE 127:2007 standard.",
+          "sourcePage": 2,
+          "sourceTable": "Initial Electrical/Optical Characteristics",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.87, "max": 1.23 },
+          "unit": "W",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Radiant Flux ranks at TS = 25 degC (shipped mixed, ratio decided by Nichia; tolerance +/-6%): P6d22 870-950, P7d21 950-1040, P7d22 1040-1130, P8d21 1130-1230 mW. Envelope over all shipped ranks; per CIE 127:2007.",
+          "sourcePage": 3,
+          "sourceTable": "Ranks",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_p", "lambda_peak", "peak wavelength", "peak emission wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.65e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Peak Wavelength lambda_p = 365 nm typ at IF = 500 mA (TS = 25 degC).",
+          "sourcePage": 2,
+          "sourceTable": "Initial Electrical/Optical Characteristics",
+          "guarantee": "typical"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.6e-7, "max": 3.7e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Peak Wavelength rank U365 = 360-370 nm at TS = 25 degC (tolerance +/-3 nm). This document is the U365 rank.",
+          "sourcePage": 3,
+          "sourceTable": "Ranks",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "spectral_bandwidth",
+      "name": "Spectral bandwidth (FWHM)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "spectral bandwidth", "FWHM", "spectrum half width", "spectral half width"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.0e-9 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.5, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Spectrum Half Width (FWHM) delta_lambda = 9.0 nm typ at IF = 500 mA (TS = 25 degC).",
+          "sourcePage": 2,
+          "sourceTable": "Initial Electrical/Optical Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_solder",
+      "name": "Thermal resistance, junction to solder point",
+      "group": "thermal",
+      "aliases": ["RthJS", "Rth JS", "R_thJS", "thermal resistance junction to solder point"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.6, "max": 4.3 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Thermal Resistance RthJS = 3.6 degC/W typ, 4.3 degC/W max, at TS = 25 degC (the Initial Characteristics table header). RthJS is the thermal resistance from the junction to the TS (solder-point) measurement point.",
+          "sourcePage": 2,
+          "sourceTable": "Initial Electrical/Optical Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "group": "electrical",
+      "aliases": ["IF", "I_F", "DC forward current", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.7 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward Current IF = 700 mA (absolute maximum rating at TS = 25 degC).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak (pulsed) forward current",
+      "group": "electrical",
+      "aliases": ["IFP", "IFM", "pulse forward current", "pulsed forward current", "peak forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.0 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" },
+            { "param": "PULSE_WIDTH", "max": 0.01, "unit": "s" },
+            { "param": "DUTY", "max": 10, "unit": "%" }
+          ],
+          "conditionsVerbatim": "Pulse Forward Current IFP = 1000 mA (absolute maximum at TS = 25 degC), pulse width <= 10 ms and duty cycle <= 10%.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "group": "electrical",
+      "aliases": ["IR", "I_R", "allowable reverse current", "reverse current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.085 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Allowable Reverse Current IR = 85 mA (absolute maximum rating at TS = 25 degC). An LED is not designed for reverse operation; this is a maximum rating, not a leakage spec.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "electrical",
+      "aliases": ["PD", "Pd", "power dissipation", "total power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 3.25 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Power Dissipation PD = 3.25 W (absolute maximum rating at TS = 25 degC).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["TJ", "Tj", "junction temperature", "maximum junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 90 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature TJ = 90 degC (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Topr", "operating temperature", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -10, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Topr = -10 to +85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Tstg = -40 to +100 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "671741ef1bffafb1dd3b7eea5def60600f88747c0373b9a5dcefe1fbe91ba75b",
+    "sourceUrl": "https://led-ld.nichia.co.jp/api/data/spec/led/NCSU276CT-E(5581C).pdf",
+    "datasheetRevision": "STS-DA1-5581C <Cat.No.220902>",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "Radiometric UV-A emitter: optical output is radiant_flux (W) per CIE 127:2007, never photometric (no cd/lm/CCT/CRI).",
+    "This document is the U365 peak-wavelength rank (360-370 nm). Forward-voltage ranks (L1..H2) and radiant-flux ranks (P6d22..P8d21) are not separately orderable: a single NCSU276CT shipment contains a Nichia-decided mix of those ranks, so they are encoded as min/max envelopes on forward_voltage and radiant_flux rather than as ordering variants.",
+    "Built-in ESD protection device is stated on the cover page but no HBM/MM withstand voltage is quantified in the specification, so esd_withstand_voltage is omitted rather than invented.",
+    "MSL level is not stated numerically (reels ship in heat-sealed moisture-proof bags with desiccant), so component.msl is omitted."
+  ]
+}

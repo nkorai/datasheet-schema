@@ -1,0 +1,732 @@
+{
+  "family": "led",
+  "dictionaryVersion": "1.1",
+  "description": "Light-emitting diode: a single PN-junction electroluminescent emitter, orderable as such, whose primary spec is optical output versus forward current, with a forward voltage. Covers visible indicator LEDs, high-brightness/illumination white LEDs, multi-color/RGB LEDs, and infrared (IR) and ultraviolet (UV-A/B/C) emitters, in SMD and through-hole packages. The dictionary carries TWO parallel optical vocabularies and a part populates exactly one: a PHOTOMETRIC set (luminous intensity in cd, luminous flux in lm - visible parts, weighted by the eye's response) and a RADIOMETRIC set (radiant intensity in W/sr, radiant flux in W - IR/UV parts, which the eye cannot see). Out of scope as separate families: laser diodes (add threshold current, slope efficiency, coherence), LED driver ICs (a switching regulator - the LED is its load), photodiodes/phototransistors (receivers), and optocouplers (emitter+detector systems). Synthesized from a 20-datasheet corpus across Kingbright, Lite-On, Vishay, Wurth, Cree, ams-OSRAM, Nichia, Samsung, Everlight, Luminus, and Seoul Viosys.",
+  "parameters": [
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "unit": "V",
+      "group": "electrical",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "VF",
+        "Vf",
+        "V_F",
+        "forward voltage",
+        "forward voltage drop",
+        "Durchlassspannung",
+        "channel voltage"
+      ],
+      "hint": "The forward voltage drop at a stated forward current (attach I_F) and, for a colored/multi-die part, a stated EMITTER die. Array over I_F - datasheets tabulate VF at several drive currents (e.g. 350/700/1000/1500/2000 mA) and it rises with current. A blue/green (InGaN) die runs ~3 V, a red/amber (AlGaInP) die ~2 V, a UV-C die 5-6.5 V. Store the value at each printed point; carry the junction/solder temperature as a T_SP/T_A condition when given."
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "unit": "A",
+      "group": "electrical",
+      "aliases": [
+        "IF",
+        "I_F",
+        "DC forward current",
+        "continuous forward current",
+        "forward current",
+        "Durchlassstrom",
+        "drive current",
+        "IF(DC)",
+        "average forward current",
+        "IFAV",
+        "mean forward current"
+      ],
+      "hint": "The maximum continuous DC forward current (an absolute-maximum rating; set limitClass absolute_max), in amperes (mA normalized: 30 mA is 0.03; a 2 A power LED is 2). The recommended/nominal operating current at which optical specs are measured is a separate recommended-class value or a condition on the optical parameters. Often derated above a stated ambient/solder temperature - carry the derating knee in conditionsVerbatim."
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak (pulsed) forward current",
+      "unit": "A",
+      "group": "electrical",
+      "aliases": [
+        "IFP",
+        "IFM",
+        "IF peak",
+        "IF pulse",
+        "peak forward current",
+        "pulse forward current",
+        "pulsed forward current",
+        "Stossstrom",
+        "IFPM",
+        "repetitive peak forward current"
+      ],
+      "hint": "The maximum pulsed forward current (absolute_max), in amperes, valid only for a stated pulse width and duty cycle - attach PULSE_WIDTH (s) and DUTY conditions (e.g. 1/10 duty, 0.1 ms pulse). Higher than the DC rating because the junction has time to cool between pulses."
+    },
+    {
+      "key": "surge_forward_current",
+      "name": "Surge forward current",
+      "unit": "A",
+      "group": "electrical",
+      "aliases": [
+        "IFSM",
+        "surge current",
+        "surge forward current",
+        "non-repetitive peak current"
+      ],
+      "hint": "A single-event non-repetitive surge current the die survives (absolute_max), for a stated short pulse (attach PULSE_WIDTH, e.g. tp <= 10 us). Distinct from the repetitive peak_forward_current."
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage",
+      "unit": "V",
+      "group": "electrical",
+      "aliases": [
+        "VR",
+        "V_R",
+        "VREV",
+        "reverse voltage",
+        "Sperrspannung",
+        "VBR",
+        "V(BR)",
+        "reverse breakdown voltage",
+        "breakdown voltage"
+      ],
+      "hint": "An LED is not built to be reverse-biased. Two distinct senses distinguished by limitClass: the absolute-maximum reverse voltage rating (absolute_max, typically 5 V) and, on some parts, a guaranteed minimum reverse breakdown (characterized, at a stated reverse test current). Some emitters state 'not designed for reverse operation' - record that verbatim rather than a number."
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "unit": "A",
+      "group": "electrical",
+      "aliases": [
+        "IR",
+        "I_R",
+        "IREV",
+        "reverse current",
+        "reverse leakage current",
+        "allowable reverse current",
+        "Sperrstrom"
+      ],
+      "hint": "Reverse leakage current at a stated reverse voltage (attach V_R), in amperes (uA normalized: 10 uA is 1e-5). Note some power/UV parts instead print an 'allowable reverse current' as an absolute-maximum rating in mA - the limitClass disambiguates a leakage spec from a rating."
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "unit": "W",
+      "group": "electrical",
+      "aliases": [
+        "PD",
+        "PV",
+        "Pd",
+        "Ptot",
+        "PDiss",
+        "power dissipation",
+        "power consumption",
+        "total power dissipation",
+        "Pmax",
+        "maximum power dissipation"
+      ],
+      "hint": "The maximum power the package can dissipate (absolute_max), in watts (mW normalized: 150 mW is 0.15). Bounded by junction temperature and thermal resistance; derated above a reference temperature."
+    },
+    {
+      "key": "junction_capacitance",
+      "name": "Junction capacitance",
+      "unit": "F",
+      "group": "electrical",
+      "aliases": [
+        "Cj",
+        "C",
+        "junction capacitance",
+        "capacitance",
+        "terminal capacitance",
+        "Co",
+        "diode capacitance"
+      ],
+      "hint": "The diode junction capacitance at a stated bias and frequency (attach V_R and F, e.g. VR = 0 V, f = 1 MHz), in farads (pF normalized: 40 pF is 4e-11). Sets switching speed; printed mainly on IR/signal LEDs used for data links."
+    },
+    {
+      "key": "esd_withstand_voltage",
+      "name": "ESD withstand voltage",
+      "unit": "V",
+      "group": "electrical",
+      "aliases": [
+        "VESD",
+        "ESD",
+        "ESD withstand voltage",
+        "ESD threshold",
+        "HBM",
+        "electrostatic discharge threshold",
+        "human body model",
+        "CDM",
+        "MM",
+        "IEC 61000-4-2"
+      ],
+      "hint": "The human-body-model (HBM) ESD threshold the part withstands, in volts (kV normalized: 2 kV is 2000). InGaN dies are ESD-sensitive; a built-in ESD-protection diode raises this. State the model/class (JS-001 HBM Class) in conditionsVerbatim."
+    },
+    {
+      "key": "luminous_intensity",
+      "name": "Luminous intensity",
+      "unit": "cd",
+      "group": "optical_photometric",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "IV",
+        "Iv",
+        "I_v",
+        "luminous intensity",
+        "brightness",
+        "Lichtstarke",
+        "axial intensity"
+      ],
+      "hint": "The on-axis luminous intensity of a VISIBLE LED, in candela (mcd normalized: 3100 mcd is 3.1; 54 mcd is 0.054), measured with an eye-response (V-lambda / CIE) weighted sensor at a stated forward current (attach I_F) and, for a multi-die part, an EMITTER. Array over I_F (and EMITTER). The headline spec of an indicator LED. A radiometric IR/UV emitter uses radiant_intensity (W/sr) instead - a part carries one or the other, never both. When a datasheet prints two IV bases (vendor-standard vs CIE-127-traceable), record both as separate measurements with the basis in conditionsVerbatim."
+    },
+    {
+      "key": "luminous_flux",
+      "name": "Luminous flux",
+      "unit": "lm",
+      "group": "optical_photometric",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "luminous flux",
+        "Fv",
+        "phi_v",
+        "total luminous flux",
+        "Lichtstrom",
+        "flux",
+        "luminous flux Phi_v",
+        "output flux"
+      ],
+      "hint": "The total luminous flux (all directions) of a VISIBLE illumination LED, in lumens, at a stated drive current (attach I_F) and, for white parts, a correlated_color_temperature and color_rendering_index grade. The headline spec of a lighting LED. Array over I_F; a datasheet's flux is also specified per CCT and per CRI grade - carry those as CCT/CRI conditions (or, since they are grade-defining, emit one document per orderable CCT/CRI grade). A binned flux group is a min/max range on the value."
+    },
+    {
+      "key": "luminous_efficacy",
+      "name": "Luminous efficacy",
+      "unit": "lm/W",
+      "group": "optical_photometric",
+      "aliases": [
+        "luminous efficacy",
+        "efficacy",
+        "efficacy of radiation",
+        "Lichtausbeute",
+        "lm/W",
+        "LER",
+        "luminous efficacy of radiation",
+        "eta_v",
+        "system efficacy"
+      ],
+      "hint": "Luminous flux per electrical watt, in lm/W, at a stated drive point. Derivable as luminous_flux / (VF x IF), but datasheets publish it as a guaranteed, binned headline (e.g. >= 120 lm/W) - store the printed value to preserve that guarantee and its provenance rather than forcing recomputation."
+    },
+    {
+      "key": "radiant_intensity",
+      "name": "Radiant intensity",
+      "unit": "W/sr",
+      "group": "optical_radiometric",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "Ie",
+        "I_e",
+        "radiant intensity",
+        "radiance"
+      ],
+      "hint": "The on-axis radiant intensity of an IR/UV emitter (unweighted radiometric power per unit solid angle), in watts per steradian (mW/sr normalized: 170 mW/sr is 0.17), at a stated forward current (attach I_F, often pulsed - attach PULSE_WIDTH). Array over I_F. The radiometric analogue of luminous_intensity; a part carries one or the other. Never compare an intensity (W/sr) against a radiant_flux (W)."
+    },
+    {
+      "key": "radiant_flux",
+      "name": "Radiant flux (radiant power)",
+      "unit": "W",
+      "group": "optical_radiometric",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "Fe",
+        "phi_e",
+        "radiant flux",
+        "radiant power",
+        "total radiant flux",
+        "optical power",
+        "radiometric flux",
+        "radiant flux Phi_e",
+        "radiated power"
+      ],
+      "hint": "The total radiant power (all directions) of an IR/UV emitter, in watts (mW normalized: 40 mW is 0.04; a 16 mW UV-C part is 0.016), at a stated drive current (attach I_F), typically measured in an integrating sphere. Array over I_F. The radiometric analogue of luminous_flux. Distinct from radiant_intensity (W/sr)."
+    },
+    {
+      "key": "radiant_efficiency",
+      "name": "Radiant efficiency (wall-plug)",
+      "unit": "%",
+      "group": "optical_radiometric",
+      "aliases": [
+        "radiant efficiency",
+        "wall-plug efficiency",
+        "WPE",
+        "eta_e",
+        "power conversion efficiency"
+      ],
+      "hint": "Radiant flux as a percentage of input electrical power (radiant_flux / (VF x IF) x 100), for an IR/UV emitter. Low for UV-C (a few percent). Store the printed percentage."
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak wavelength",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "lambda_p",
+        "lambda_peak",
+        "peak wavelength",
+        "peak emission wavelength",
+        "wavelength at peak emission",
+        "WLP"
+      ],
+      "hint": "The wavelength of maximum spectral power, in metres (nm normalized: 940 nm is 9.4e-7; 630 nm is 6.3e-7; 275 nm is 2.75e-7), at a stated forward current (attach I_F). Distinct from dominant_wavelength (perceived hue) and centroid_wavelength (power-weighted mean) - a part may print more than one. The defining identity of the emitter."
+    },
+    {
+      "key": "dominant_wavelength",
+      "name": "Dominant wavelength",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "lambda_d",
+        "lambda_dom",
+        "lambda_D",
+        "dominant wavelength",
+        "WLD"
+      ],
+      "hint": "The perceived-hue wavelength (where the line from the CIE white point through the chromaticity coordinate meets the spectral locus), in metres (nm normalized: 630 nm is 6.3e-7). A VISIBLE-LED quantity; differs from peak_wavelength and is what color-critical indicator/RGB parts bin on. Attach I_F and, for multi-die parts, EMITTER."
+    },
+    {
+      "key": "centroid_wavelength",
+      "name": "Centroid wavelength",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "lambda_c",
+        "lambda_centroid",
+        "centroid wavelength",
+        "center wavelength",
+        "mean wavelength",
+        "WLC",
+        "average wavelength"
+      ],
+      "hint": "The power-weighted mean wavelength, in metres (nm normalized), at a stated forward current. The metrologically stable figure radiometric (IR/UV) work prefers; distinct from peak (e.g. 860 nm peak vs 850 nm centroid)."
+    },
+    {
+      "key": "spectral_bandwidth",
+      "name": "Spectral bandwidth (FWHM)",
+      "unit": "m",
+      "group": "spectral",
+      "aliases": [
+        "delta_lambda",
+        "spectral bandwidth",
+        "FWHM",
+        "spectral line half-width",
+        "spectrum half width",
+        "spectral half width",
+        "half bandwidth",
+        "line width",
+        "delta_lambda_half",
+        "half-width",
+        "spectral half-width",
+        "FWHM bandwidth",
+        "bandwidth at 50%"
+      ],
+      "hint": "The full width of the emission spectrum at 50% of peak power (FWHM), in metres (nm normalized: 30 nm is 3e-8; 9 nm is 9e-9). The same unit m as the wavelengths it is a width of. A narrow line (a UV/IR die ~10-30 nm) versus a broad phosphor-converted white spectrum. Attach I_F."
+    },
+    {
+      "key": "viewing_angle",
+      "name": "Viewing angle (full angle at half intensity)",
+      "unit": "deg",
+      "group": "optical",
+      "aliases": [
+        "2theta_1/2",
+        "2theta50%",
+        "viewing angle",
+        "beam angle",
+        "radiation angle",
+        "full angle",
+        "included angle",
+        "Abstrahlwinkel",
+        "angle of half intensity",
+        "half intensity angle",
+        "half-power angle",
+        "half angle",
+        "half-angle",
+        "theta_1/2",
+        "emission angle",
+        "cone angle",
+        "FWHM angle"
+      ],
+      "hint": "The FULL cone angle between the two off-axis directions where intensity falls to 50% of the on-axis value, in degrees. NORMALIZATION TRAP: vendors print either the full angle 2*theta-1/2 (e.g. 120 deg) OR the half angle theta-1/2 / 'angle of half intensity' (e.g. +/-80 deg or 40 deg). Normalize to the full angle: a printed half-angle is doubled (a printed +/-10 deg half-angle becomes 20 deg). Record which form was printed in conditionsVerbatim. A narrow-beam IR emitter is ~10-20 deg; a wide indicator ~120-140 deg."
+    },
+    {
+      "key": "correlated_color_temperature",
+      "name": "Correlated color temperature",
+      "unit": "K",
+      "group": "color",
+      "aliases": [
+        "CCT",
+        "color temperature",
+        "correlated color temperature",
+        "Tc",
+        "nominal CCT",
+        "colour temperature",
+        "CT"
+      ],
+      "hint": "The correlated color temperature of a WHITE LED, in kelvin (2700 K warm, 6500 K cool) - an absolute thermodynamic color point, NEVER converted to or from degC (a 5000 K CCT is not 5000 degC). Grade-defining: one orderable white LED has one nominal CCT, so emit one document per CCT grade; a datasheet that lists flux across several CCTs describes sibling grades. The fine chromaticity sub-bin (MacAdam step) around the nominal is a min/max on chromaticity_x/y."
+    },
+    {
+      "key": "color_rendering_index",
+      "name": "Color rendering index",
+      "unit": "1",
+      "group": "color",
+      "aliases": [
+        "CRI",
+        "Ra",
+        "color rendering index",
+        "colour rendering index",
+        "general color rendering index",
+        "Farbwiedergabe"
+      ],
+      "hint": "The general color rendering index Ra of a WHITE LED - a dimensionless 0-100 index (unit 1), higher is better (Ra 70 budget, 80 general, 90+ high-CRI). Grade-defining alongside CCT. The 0-100 range vs a 0-1 chromaticity coordinate is disambiguated by the key, not the unit."
+    },
+    {
+      "key": "special_color_rendering_index_r9",
+      "name": "Special color rendering index R9 (deep red)",
+      "unit": "1",
+      "group": "color",
+      "optional": true,
+      "aliases": [
+        "R9",
+        "special color rendering index",
+        "R9 saturated red",
+        "deep red rendering"
+      ],
+      "hint": "The special CRI for saturated deep red (R9), a dimensionless index (unit 1) high-CRI lighting parts guarantee separately from Ra because Ra averages R1-R8 and misses red. A negative R9 is common on low-CRI parts."
+    },
+    {
+      "key": "chromaticity_x",
+      "name": "CIE 1931 chromaticity x",
+      "unit": "1",
+      "group": "color",
+      "aliases": [
+        "CIE x",
+        "CCx",
+        "Cx",
+        "chromaticity x",
+        "chromaticity coordinate x",
+        "x coordinate",
+        "color coordinate x"
+      ],
+      "hint": "The CIE 1931 chromaticity x-coordinate of a VISIBLE LED - a dimensionless number (unit 1) in 0-1. Cross-vendor comparable: the ANSI C78.377 quadrangle centers (e.g. 5000 K -> x=0.3447) are identical across Nichia/Samsung/Osram. A binned color sub-rank is a min/max quadrangle around the nominal."
+    },
+    {
+      "key": "chromaticity_y",
+      "name": "CIE 1931 chromaticity y",
+      "unit": "1",
+      "group": "color",
+      "aliases": [
+        "CIE y",
+        "CCy",
+        "Cy",
+        "chromaticity y",
+        "chromaticity coordinate y",
+        "y coordinate",
+        "color coordinate y"
+      ],
+      "hint": "The CIE 1931 chromaticity y-coordinate of a VISIBLE LED - a dimensionless number (unit 1) in 0-1 (e.g. 5000 K -> y=0.3553). Pairs with chromaticity_x to fix the color point."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "unit": "degC/W",
+      "group": "thermal",
+      "aliases": [
+        "RthJA",
+        "Rth JA",
+        "R_thJA",
+        "thermal resistance junction to ambient",
+        "junction to ambient thermal resistance",
+        "Rtheta_JA",
+        "theta_JA",
+        "Rth(j-a)",
+        "Rth j-a"
+      ],
+      "hint": "Junction-to-ambient thermal resistance, in degC/W (equivalently K/W - the two are numerically identical for a temperature delta and both are legal). Board- and layout-dependent; a small indicator LED is 300-500 degC/W. State the board/pad condition in conditionsVerbatim."
+    },
+    {
+      "key": "thermal_resistance_junction_solder",
+      "name": "Thermal resistance, junction to solder point",
+      "unit": "degC/W",
+      "group": "thermal",
+      "aliases": [
+        "RthJS",
+        "Rth JS",
+        "RthJS real",
+        "R_thJS",
+        "thermal resistance junction to solder point",
+        "junction to solder point thermal resistance",
+        "Rtheta_JS",
+        "theta_JS",
+        "RthJSP",
+        "Rth(j-sp)",
+        "junction to solder point"
+      ],
+      "hint": "Junction-to-solder-point thermal resistance, in degC/W (or K/W), the figure a power LED publishes because it is board-independent (a few degC/W for a ceramic power LED). Osram splits a 'real' (measured) from an 'electrical' (efficiency-corrected) value - keep the basis in conditionsVerbatim."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "TJ",
+        "Tj",
+        "Tj,abs",
+        "junction temperature",
+        "maximum junction temperature",
+        "LED junction temperature",
+        "Sperrschichttemperatur"
+      ],
+      "hint": "The maximum allowable junction temperature (absolute_max), in degC (85-150 typical). The hard reliability limit; the whole thermal design keeps the junction below it."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Topr",
+        "Top",
+        "Ta",
+        "Tamb",
+        "operating temperature",
+        "operating temperature range",
+        "ambient temperature range"
+      ],
+      "hint": "The ambient temperature range over which the part operates (recommended), in degC. Store min/max bounds."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "hint": "The non-operating storage temperature range (absolute_max), in degC. Store min/max bounds."
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "Tsol",
+        "Tsd",
+        "soldering temperature",
+        "lead solder temperature",
+        "peak reflow temperature",
+        "Tsld",
+        "reflow temperature",
+        "Tpeak"
+      ],
+      "hint": "The maximum soldering/reflow temperature (absolute_max), in degC (typically 260), for a stated time and distance from the body - keep those in conditionsVerbatim."
+    },
+    {
+      "key": "rise_time",
+      "name": "Rise time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": [
+        "tr",
+        "t_r",
+        "rise time",
+        "optical rise time",
+        "ton",
+        "turn-on time"
+      ],
+      "hint": "The 10%-90% optical rise time, in seconds (ns normalized: 15 ns is 1.5e-8), at a stated forward current and load (attach I_F, R_L). Printed on IR/data-link emitters; a phosphor-converted white LED's slow phosphor makes this meaningless and it is omitted."
+    },
+    {
+      "key": "fall_time",
+      "name": "Fall time",
+      "unit": "s",
+      "group": "switching",
+      "aliases": [
+        "tf",
+        "t_f",
+        "fall time",
+        "optical fall time",
+        "toff",
+        "turn-off time"
+      ],
+      "hint": "The 90%-10% optical fall time, in seconds (ns normalized), at a stated forward current and load. Pairs with rise_time for data-rate capability."
+    },
+    {
+      "key": "forward_voltage_temperature_coefficient",
+      "name": "Temperature coefficient of forward voltage",
+      "unit": "V/degC",
+      "group": "temperature_coefficient",
+      "aliases": [
+        "TCV",
+        "TKVF",
+        "TC_VF",
+        "temperature coefficient of voltage",
+        "temperature coefficient of forward voltage",
+        "VF tempco",
+        "dVF/dT",
+        "VF temp coefficient"
+      ],
+      "hint": "The drift of forward voltage with temperature, in V/degC (mV/K normalized: -1.9 mV/K is -1.9e-3; K and degC are identical for a delta). Negative (VF falls as the junction heats). Used to sense junction temperature and to design current sources."
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Temperature coefficient of wavelength",
+      "unit": "m/degC",
+      "group": "temperature_coefficient",
+      "aliases": [
+        "TClambda",
+        "TKlp",
+        "temperature coefficient of wavelength",
+        "wavelength tempco",
+        "peak wavelength shift",
+        "wavelength drift",
+        "TKlambda_p",
+        "dlambda_p/dT",
+        "dlambda_d/dT",
+        "wavelength shift coefficient"
+      ],
+      "hint": "The drift of peak (or dominant) wavelength with temperature, in m/degC (nm/K normalized: 0.2 nm/K is 2e-10 m/degC). Positive (emission red-shifts as the junction heats). Attach which wavelength it applies to and the I_F in conditionsVerbatim."
+    },
+    {
+      "key": "luminous_flux_temperature_coefficient",
+      "name": "Temperature coefficient of luminous output",
+      "unit": "ppm/degC",
+      "group": "temperature_coefficient",
+      "aliases": [
+        "TCI",
+        "temperature coefficient of luminous flux",
+        "temperature coefficient of brightness",
+        "TKPhi_v",
+        "TCPhi",
+        "luminous output tempco",
+        "brightness tempco"
+      ],
+      "hint": "The relative drift of a VISIBLE part's luminous flux with temperature. Datasheets print it in %/degC (or %/K); normalize to ppm/degC (x1e4: -0.5 %/K is -5000 ppm/degC), the same relative-drift convention the reference/LDO families use. Negative (output falls as the junction heats). An IR/UV part's radiant-output drift uses radiant_flux_temperature_coefficient instead."
+    },
+    {
+      "key": "radiant_flux_temperature_coefficient",
+      "name": "Temperature coefficient of radiant output",
+      "unit": "ppm/degC",
+      "group": "temperature_coefficient",
+      "aliases": [
+        "TKphie",
+        "TKPhi_e",
+        "temperature coefficient of radiant power",
+        "temperature coefficient of radiant flux",
+        "temperature coefficient of radiant intensity",
+        "radiant output tempco",
+        "dPhi_e/dT"
+      ],
+      "hint": "The relative drift of an IR/UV part's radiant flux (or radiant intensity) with temperature - the radiometric twin of luminous_flux_temperature_coefficient. Datasheets print it in %/degC (e.g. Vishay 'temperature coefficient of phi_e', -0.6 %/K); normalize to ppm/degC (x1e4: -0.6 %/K is -6000 ppm/degC). Negative. Keeps a radiometric part off the photometric-named luminous key."
+    },
+    {
+      "key": "solder_point_temperature",
+      "name": "Solder-point temperature (max)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Ts",
+        "Ts max",
+        "Tsp",
+        "Tsp max",
+        "solder point temperature",
+        "solder-point temperature",
+        "thermal pad temperature",
+        "Tc solder point"
+      ],
+      "hint": "The maximum allowable temperature at the solder joint DURING OPERATION (absolute_max), in degC - the datasheet reference point a thermal designer measures and derates against (ams-OSRAM app note AN085 defines Ts). Distinct from soldering_temperature (the ~260 degC reflow PROCESS limit), junction_temperature (Tj), and operating_temperature_range (ambient). Power/illumination LEDs state it as an operating limit alongside Tj."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction to case",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "RthJC",
+        "Rtheta_JC",
+        "theta_JC",
+        "R_thJC",
+        "thermal resistance junction to case",
+        "junction to case thermal resistance"
+      ],
+      "hint": "Junction-to-case thermal resistance, in degC/W (or K/W), quoted by some ceramic power LEDs in addition to or instead of the board-independent junction-to-solder-point figure. State the reference case point in conditionsVerbatim."
+    },
+    {
+      "key": "chromaticity_duv",
+      "name": "Chromaticity Duv (distance from blackbody locus)",
+      "unit": "1",
+      "group": "color",
+      "optional": true,
+      "aliases": [
+        "Duv",
+        "duv",
+        "delta uv",
+        "tint",
+        "distance from blackbody locus",
+        "distance from Planckian locus",
+        "Duv to Planckian"
+      ],
+      "hint": "The signed perpendicular offset of a white LED's chromaticity from the Planckian (blackbody) locus - a dimensionless number (unit 1), positive above the locus (greenish) and negative below (pinkish). Modern white binning (ANSI C78.377) specifies the white point as correlated_color_temperature PLUS Duv, the tint that CIE x/y alone does not communicate cleanly. Grade-defining; typically within +/-0.006."
+    },
+    {
+      "key": "chromaticity_u_prime",
+      "name": "CIE 1976 chromaticity u'",
+      "unit": "1",
+      "group": "color",
+      "optional": true,
+      "aliases": [
+        "u'",
+        "CIE u'",
+        "u prime",
+        "u1976"
+      ],
+      "hint": "The CIE 1976 UCS chromaticity u'-coordinate - a dimensionless number (unit 1). The perceptually-uniform plane many white/tunable datasheets and bin maps use for the white point and color step size (a MacAdam-step or Delta-u'v' spec) instead of, or alongside, CIE 1931 x/y."
+    },
+    {
+      "key": "chromaticity_v_prime",
+      "name": "CIE 1976 chromaticity v'",
+      "unit": "1",
+      "group": "color",
+      "optional": true,
+      "aliases": [
+        "v'",
+        "CIE v'",
+        "v prime",
+        "v1976"
+      ],
+      "hint": "The CIE 1976 UCS chromaticity v'-coordinate - a dimensionless number (unit 1). Pairs with chromaticity_u_prime in the perceptually-uniform plane."
+    },
+    {
+      "key": "angular_color_uniformity",
+      "name": "Angular color uniformity",
+      "unit": "1",
+      "group": "color",
+      "optional": true,
+      "altUnits": ["K"],
+      "aliases": [
+        "angular color uniformity",
+        "angular CCT uniformity",
+        "color over angle",
+        "CoA",
+        "angular color homogeneity",
+        "color uniformity"
+      ],
+      "hint": "The variation of color over the emission beam that an illumination LED guarantees as a one-bin-over-angle claim - expressed as a Delta-u'v' (dimensionless, unit 1) or, when the datasheet gives it that way, a Delta-CCT (altUnit K). A characterized differentiator on premium white LEDs (Cree XLamp, Lumileds LUXEON)."
+    }
+  ]
+}

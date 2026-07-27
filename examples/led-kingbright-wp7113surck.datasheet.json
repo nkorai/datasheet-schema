@@ -1,0 +1,410 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "WP7113SURCK",
+    "manufacturer": "Kingbright",
+    "family": "led",
+    "description": "5mm (T-1 3/4) through-hole hyper-red indicator LED, AlGaInP on GaAs substrate, water-clear (non-diffused) lens. Two-lead radial package. Peak wavelength 645 nm, dominant wavelength 630 nm, 20 degree full viewing angle. On-axis luminous intensity 3100 mcd min / 5700 mcd typ at IF = 20 mA. Visible photometric part (luminous intensity in candela); a single AlGaInP emitter die.",
+    "package": "Through-hole T-1 3/4 (5mm), radial 2-lead",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85"
+  },
+  "pinout": [
+    { "number": 1, "name": "ANODE", "function": "ANODE", "type": "passive", "description": "Anode (+). The longer lead; connect to the more-positive rail through a current-limiting resistor.", "sourcePage": 1 },
+    { "number": 2, "name": "CATHODE", "function": "CATHODE", "type": "passive", "description": "Cathode (-). The shorter lead on the flatted side of the package flange.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "luminous_intensity",
+      "name": "Luminous intensity",
+      "group": "optical_photometric",
+      "aliases": ["Iv", "IV", "luminous intensity", "axial intensity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.1, "typ": 5.7 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Iv (mcd) @ 20 mA: Min. 3100, Typ. 5700. Selection Guide value (vendor-standard basis). Luminous intensity tolerance +/-15%.",
+          "sourcePage": 1,
+          "sourceTable": "Selection Guide",
+          "guarantee": "production_tested"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.0, "typ": 1.9 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Iv (mcd) @ 20 mA (asterisked): *1000 Min., *1900 Typ. Luminous intensity value is traceable to CIE127-2007 standards. This is the metrologically traceable basis; it reads lower than the vendor-standard Selection Guide figure. Tolerance +/-15%.",
+          "sourcePage": 1,
+          "sourceTable": "Selection Guide",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "peak_wavelength",
+      "name": "Peak wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_p", "lambda_peak", "peak wavelength", "wavelength at peak emission"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.45e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Wavelength at Peak Emission lambda-peak = 645 nm (typ) at IF = 20 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "dominant_wavelength",
+      "name": "Dominant wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_d", "lambda_dom", "dominant wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.3e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Dominant Wavelength lambda-dom = 630 nm (typ) at IF = 20 mA, TA = 25 degC. This is the setup value of the sorting machine; tolerance lambda-d = +/-1 nm. Value traceable to CIE127-2007 standards.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spectral_bandwidth",
+      "name": "Spectral bandwidth (FWHM)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "spectral bandwidth", "FWHM", "spectral line half-width"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.8e-8 },
+          "unit": "m",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Spectral Bandwidth at 50% Phi-REL-MAX, delta-lambda = 28 nm (typ) at IF = 20 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "viewing_angle",
+      "name": "Viewing angle (full angle at half intensity)",
+      "group": "optical",
+      "aliases": ["2theta_1/2", "viewing angle", "2theta1/2"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 20 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Viewing angle 2*theta-1/2 = 20 deg (the printed full angle between the two off-axis directions where intensity is half the on-axis value), at IF = 20 mA.",
+          "sourcePage": 1,
+          "sourceTable": "Selection Guide"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "electrical",
+      "aliases": ["VF", "V_F", "forward voltage", "forward voltage drop"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.95, "max": 2.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward Voltage VF = 1.95 V (typ), 2.5 V (max) at IF = 20 mA, TA = 25 degC. Forward voltage tolerance +/-0.1 V.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "group": "electrical",
+      "aliases": ["IR", "I_R", "reverse current", "reverse leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Reverse Current IR = 10 uA (max) at VR = 5 V, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "wavelength_temperature_coefficient",
+      "name": "Temperature coefficient of wavelength",
+      "group": "temperature_coefficient",
+      "aliases": ["TClambda", "TClp", "temperature coefficient of wavelength", "peak wavelength shift"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4e-10 },
+          "unit": "m/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "min": -10, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature Coefficient of lambda-peak, TC-lambda-peak = 0.14 nm/degC (typ) at IF = 20 mA, over -10 degC <= T <= 85 degC. Applies to the peak wavelength.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.0e-11 },
+          "unit": "m/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "min": -10, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature Coefficient of lambda-dom, TC-lambda-dom = 0.05 nm/degC (typ) at IF = 20 mA, over -10 degC <= T <= 85 degC. Applies to the dominant wavelength.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage_temperature_coefficient",
+      "name": "Temperature coefficient of forward voltage",
+      "group": "temperature_coefficient",
+      "aliases": ["TCV", "TCVF", "temperature coefficient of forward voltage", "VF tempco"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -1.9e-3 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.02, "unit": "A" },
+            { "param": "T_A", "min": -10, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Temperature Coefficient of VF, TCV = -1.9 mV/degC (typ) at IF = 20 mA, over -10 degC <= T <= 85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical / Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "electrical",
+      "aliases": ["PD", "Pd", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.075 },
+          "unit": "W",
+          "conditionsVerbatim": "Power Dissipation PD = 75 mW (absolute maximum) at TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage",
+      "group": "electrical",
+      "aliases": ["VR", "V_R", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse Voltage VR = 5 V (absolute maximum). An LED is not designed for reverse operation.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["Tj", "TJ", "junction temperature", "maximum junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 115 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature Tj = 115 degC (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "group": "electrical",
+      "aliases": ["IF", "I_F", "DC forward current", "continuous forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.03 },
+          "unit": "A",
+          "conditionsVerbatim": "DC Forward Current IF = 30 mA (absolute maximum) at TA = 25 degC. Derate above 25 degC per the forward-current derating curve.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak (pulsed) forward current",
+      "group": "electrical",
+      "aliases": ["IFP", "IFM", "peak forward current", "pulse forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.185 },
+          "unit": "A",
+          "conditions": [
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "DUTY", "note": "1/10 duty cycle" }
+          ],
+          "conditionsVerbatim": "Peak Forward Current IFP = 185 mA (absolute maximum), valid at 1/10 duty cycle, 0.1 ms pulse width.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_withstand_voltage",
+      "name": "ESD withstand voltage",
+      "group": "electrical",
+      "aliases": ["VESD", "ESD", "ESD withstand voltage", "ESD threshold", "HBM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3000 },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic Discharge Threshold (HBM) = 3000 V. The device withstands at least 3000 V human-body-model discharge.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "group": "thermal",
+      "aliases": ["RthJA", "Rth JA", "R_thJA", "thermal resistance junction to ambient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 490 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "Thermal Resistance (Junction / Ambient) Rth-JA = 490 degC/W. Results from mounting on PC board FR4 (pad size >= 16 mm2 per pad).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_solder",
+      "name": "Thermal resistance, junction to solder point",
+      "group": "thermal",
+      "aliases": ["RthJS", "Rth JS", "R_thJS", "thermal resistance junction to solder point"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 320 },
+          "unit": "degC/W",
+          "conditionsVerbatim": "Thermal Resistance (Junction / Solder point) Rth-JS = 320 degC/W. Results from mounting on PC board FR4 (pad size >= 16 mm2 per pad).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature",
+      "group": "thermal",
+      "aliases": ["Tsol", "lead solder temperature", "soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Lead Solder Temperature = 260 degC for 3 seconds (2 mm below package base); 260 degC for 5 seconds (5 mm below package base). Through-hole part; not compatible with reflow soldering.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "Topr", "operating temperature", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Top = -40 to +85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Tstg = -40 to +85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "ba580b5fe13f439598e2d426e199f8aab9715a3bee70c905b89690a565c48d3b",
+    "sourceUrl": "https://www.kingbrightusa.com/images/catalog/SPEC/WP7113SURCK.pdf",
+    "datasheetRevision": "Spec DSAF6186 / 1101005311, Rev V.11A, dated 2025-03-26",
+    "publishedDate": "2025-03-26",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

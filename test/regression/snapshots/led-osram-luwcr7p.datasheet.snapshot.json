@@ -1,0 +1,663 @@
+{
+  "family": "led",
+  "manufacturer": "ams-OSRAM",
+  "mpn": "LUW CR7P-LSLU-MMMW-1",
+  "parameters": [
+    {
+      "aliases": [
+        "Lichtstrom",
+        "flux",
+        "luminous flux",
+        "phi_v"
+      ],
+      "group": "optical_photometric",
+      "key": "luminous_flux",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features / Brightness Groups",
+          "statistic": "mean",
+          "stimulus": null,
+          "unit": "lm",
+          "value": {
+            "max": 180,
+            "min": 140,
+            "typ": 156
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Lichtausbeute",
+        "efficacy",
+        "lm/W",
+        "luminous efficacy"
+      ],
+      "group": "optical_photometric",
+      "key": "luminous_efficacy",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "lm/W",
+          "value": {
+            "typ": 151
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IV",
+        "Iv",
+        "Lichtstaerke",
+        "axial intensity",
+        "luminous intensity"
+      ],
+      "group": "optical_photometric",
+      "key": "luminous_intensity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Brightness Groups",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "max": 96,
+            "min": 81
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Durchlassspannung",
+        "VF",
+        "V_F",
+        "Vf",
+        "forward voltage"
+      ],
+      "group": "electrical",
+      "key": "forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.25,
+            "min": 2.8,
+            "typ": 2.95
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Sperrspannung",
+        "VR",
+        "V_R",
+        "reverse voltage"
+      ],
+      "group": "electrical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CRI",
+        "Farbwiedergabe",
+        "Ra",
+        "color rendering index"
+      ],
+      "group": "color",
+      "key": "color_rendering_index",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CCx",
+        "CIE x",
+        "Cx",
+        "chromaticity x",
+        "color coordinate x"
+      ],
+      "group": "color",
+      "key": "chromaticity_x",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 0.37
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CCy",
+        "CIE y",
+        "Cy",
+        "chromaticity y",
+        "color coordinate y"
+      ],
+      "group": "color",
+      "key": "chromaticity_y",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 0.44
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CCT",
+        "Tc",
+        "color temperature",
+        "correlated color temperature"
+      ],
+      "group": "color",
+      "key": "correlated_color_temperature",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            }
+          ],
+          "guarantee": "by_design",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Chromaticity Coordinate Groups",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "K",
+          "value": {
+            "max": 5000,
+            "min": 2700
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "2phi",
+        "Abstrahlwinkel",
+        "beam angle",
+        "full angle",
+        "viewing angle"
+      ],
+      "group": "optical",
+      "key": "viewing_angle",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "typ": 80
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Rth JS",
+        "RthJS",
+        "RthJS real",
+        "Waermewiderstand Sperrschicht Loetpad",
+        "thermal resistance junction to solder point"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_solder",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.35
+            }
+          ],
+          "guarantee": "by_characterization",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "max": 10.8,
+            "typ": 9.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC forward current",
+        "Durchlassstrom",
+        "IF",
+        "I_F",
+        "forward current"
+      ],
+      "group": "electrical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_SP",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFM",
+        "Stossstrom",
+        "surge current",
+        "surge forward current"
+      ],
+      "group": "electrical",
+      "key": "surge_forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "I_R",
+        "Sperrstrom",
+        "allowable reverse current",
+        "reverse current"
+      ],
+      "group": "electrical",
+      "key": "reverse_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Sperrschichttemperatur",
+        "TJ",
+        "Tj",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 135
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD",
+        "ESD withstand voltage",
+        "HBM",
+        "VESD",
+        "human body model"
+      ],
+      "group": "electrical",
+      "key": "esd_withstand_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 8000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Betriebstemperatur",
+        "Top",
+        "Topr",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 120,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Lagertemperatur",
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 120,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "A",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "C",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 3
+    }
+  ]
+}

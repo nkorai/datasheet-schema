@@ -1,0 +1,1372 @@
+{
+  "family": "led",
+  "manufacturer": "Cree LED",
+  "mpn": "CLVBA-FKA",
+  "parameters": [
+    {
+      "aliases": [
+        "dominant wavelength",
+        "lambda_DOM",
+        "λDOM"
+      ],
+      "group": "spectral",
+      "key": "dominant_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 6.24e-7,
+            "min": 6.19e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 5.4e-7,
+            "min": 5.2e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "max": 4.8e-7,
+            "min": 4.6e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FWHM",
+        "delta_lambda",
+        "spectral bandwidth at 50% IREL max",
+        "Δλ"
+      ],
+      "group": "spectral",
+      "key": "spectral_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 2.4e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 3.8e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 2.8e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF",
+        "VF(avg)",
+        "VF(max)",
+        "forward voltage"
+      ],
+      "group": "electrical",
+      "key": "forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2.4,
+            "typ": 1.9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.6,
+            "typ": 3
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.6,
+            "typ": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IV",
+        "IV(avg)",
+        "IV(min)",
+        "luminous intensity"
+      ],
+      "group": "optical_photometric",
+      "key": "luminous_intensity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.071,
+            "typ": 0.112
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.14,
+            "typ": 0.224
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.008
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.036,
+            "typ": 0.056
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.224,
+            "typ": 0.32
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.28,
+            "typ": 0.5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.02
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "cd",
+          "value": {
+            "min": 0.09,
+            "typ": 0.16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "forward current"
+      ],
+      "group": "electrical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.05
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.025
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFP",
+        "peak forward current"
+      ],
+      "group": "electrical",
+      "key": "peak_forward_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "duty <= 1/10",
+              "param": "DUTY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.2
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "duty <= 1/10",
+              "param": "DUTY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "duty <= 1/10",
+              "param": "DUTY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR",
+        "reverse voltage"
+      ],
+      "group": "electrical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "reverse current",
+        "reverse leakage current"
+      ],
+      "group": "electrical",
+      "key": "reverse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation"
+      ],
+      "group": "electrical",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.13
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 110
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Topr",
+        "operating temperature range",
+        "operation temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RTHJA",
+        "RthJA",
+        "junction/ambient"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 450
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 650
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 400
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 580
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 450
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 680
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RTHJS",
+        "RthJS",
+        "junction/solder point"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_solder",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 300
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "red",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 450
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 280
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "green",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 430
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 300
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "blue",
+              "param": "EMITTER",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 480
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "peak reflow temperature",
+        "peak temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Reflow Soldering",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 250
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "CATHODE_R",
+      "name": "R",
+      "number": 1
+    },
+    {
+      "function": "COMMON",
+      "name": "COM",
+      "number": 2
+    },
+    {
+      "function": "CATHODE_B",
+      "name": "B",
+      "number": 3
+    },
+    {
+      "function": "CATHODE_G",
+      "name": "G",
+      "number": 4
+    }
+  ]
+}

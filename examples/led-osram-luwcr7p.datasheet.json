@@ -1,0 +1,380 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LUW CR7P-LSLU-MMMW-1",
+    "manufacturer": "ams-OSRAM",
+    "family": "led",
+    "description": "OSLON SSL 80 high-power white illumination LED (LUW CR7P, 'EQ white' / Brilliant Mix). Single phosphor-converted InGaN emitter in a 3.0 x 3.0 mm SMT ceramic package with a silicone lens giving a prefocused ~80 deg beam. Photometric part: luminous flux typ 156 lm and luminous efficacy typ 151 lm/W at IF = 350 mA. This document describes the ordered grade Q65111A3446 = type LUW CR7P-LSLU-MMMW-1: brightness selection LSLU (flux groups LS/LT/LU, 140...180 lm), chromaticity selection MMMW, forward-voltage groups L1/L2/M1/MX. Sibling order groups (see orderingVariants) share the same EQ-white color / CRI grade and differ only in brightness bin (LTMP) or chromaticity sub-selection (MCML).",
+    "package": "OSLON SSL 80, SMT ceramic 3.0x3.0mm with silicone lens",
+    "pinCount": 3,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "msl": "MSL2",
+    "temperatureGrade": "-40..120",
+    "orderingVariants": [
+      { "orderCode": "Q65111A3446", "package": "OSLON SSL 80, SMT ceramic 3.0x3.0mm", "packing": "Tape and reel (LUW CR7P-LSLU-MMMW-1; brightness LS/LT/LU, chromaticity MM..MW) - the grade described here" },
+      { "orderCode": "Q65111A3443", "package": "OSLON SSL 80, SMT ceramic 3.0x3.0mm", "packing": "Tape and reel (LUW CR7P-LSLU-MCML-1; same brightness LS/LT/LU 140...180 lm, chromaticity MC..ML)" },
+      { "orderCode": "Q65111A4272", "package": "OSLON SSL 80, SMT ceramic 3.0x3.0mm", "packing": "Tape and reel (LUW CR7P-LTMP-MMMW-1; brighter selection LT/MP 150...194 lm, chromaticity MM..MW)" },
+      { "orderCode": "Q65111A4273", "package": "OSLON SSL 80, SMT ceramic 3.0x3.0mm", "packing": "Tape and reel (LUW CR7P-LTMP-MCML-1; brighter selection LT/MP 150...194 lm, chromaticity MC..ML)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "A", "function": "ANODE", "type": "passive", "description": "Anode (+). Forward current flows in here. One of the two electrical solder pads.", "sourcePage": 13 },
+    { "number": 2, "name": "C", "function": "CATHODE", "type": "passive", "description": "Cathode (-). The package is marked on the cathode side. An integrated ESD-protection device is connected in parallel with the LED chip.", "sourcePage": 13 },
+    { "number": 3, "name": "NC", "function": "NC", "type": "passive", "description": "Center 'no contact pad' per the package outline - a mechanical solder pad only, not electrically connected to the die and not a thermal pad (heat is extracted through the anode/cathode pads).", "sourcePage": 13 }
+  ],
+  "parameters": [
+    {
+      "key": "luminous_flux",
+      "name": "Luminous flux",
+      "group": "optical_photometric",
+      "aliases": ["luminous flux", "Lichtstrom", "phi_v", "flux"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 156, "min": 140, "max": 180 },
+          "unit": "lm",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Luminous Flux phi_V typ. 156 lm (headline, page 1) at IF = 350 mA, TS = 25 degC. Binned flux groups (page 5): LS 140...150, LT 150...164, LU 164...180, MP 180...194 lm. The ordered brightness selection LSLU (order code Q65111A3446, groups LS/LT/LU) spans 140...180 lm; only one brightness group ships per packing unit. Brightness measured during a ~10 ms current pulse, tolerance +/-7%. (sourcePage 1 = the typ headline; the group min/max span is on page 5.)",
+          "sourcePage": 1,
+          "sourceTable": "Features / Brightness Groups",
+          "statistic": "mean",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "luminous_efficacy",
+      "name": "Luminous efficacy",
+      "group": "optical_photometric",
+      "aliases": ["luminous efficacy", "efficacy", "Lichtausbeute", "lm/W"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 151 },
+          "unit": "lm/W",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Luminous efficacy typ. 151 lm/W at IF = 350 mA, TS = 25 degC (headline feature, page 1).",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "luminous_intensity",
+      "name": "Luminous intensity",
+      "group": "optical_photometric",
+      "aliases": ["IV", "Iv", "luminous intensity", "Lichtstaerke", "axial intensity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 81, "max": 96 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity IV at IF = 350 mA, TS = 25 degC (page 5 Brightness Groups). Per-group typ IV: LS 81, LT 88, LU 96, MP 105 cd. The ordered LSLU selection spans groups LS/LT/LU, so IV ranges 81 (LS) to 96 (LU) cd - stored as that envelope, mirroring the luminous_flux ranging. Measured during a ~10 ms current pulse, tolerance +/-7%.",
+          "sourcePage": 5,
+          "sourceTable": "Brightness Groups",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "electrical",
+      "aliases": ["VF", "Vf", "V_F", "forward voltage", "Durchlassspannung"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.80, "typ": 2.95, "max": 3.25 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF min. 2.80 / typ. 2.95 / max. 3.25 V at IF = 350 mA, TS = 25 degC (page 4). Binned VF groups (page 5): L1 2.80...2.90, L2 2.90...3.00, M1 3.00...3.10, MX 3.10...3.25 V; one VF group ships per packing unit. VF measured during a ~1 ms current pulse, tolerance +/-0.05 V.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage",
+      "group": "electrical",
+      "aliases": ["VR", "V_R", "reverse voltage", "Sperrspannung"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_R", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Reverse voltage VR max. 1.2 V at a reverse test current IR = 20 mA (page 4). This is a diode-test figure, not an operating rating - an LED is not designed for reverse operation; a separate allowable reverse current of 200 mA is listed as a maximum rating (page 3).",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "production_tested"
+        }
+      ]
+    },
+    {
+      "key": "color_rendering_index",
+      "name": "Color rendering index",
+      "group": "color",
+      "aliases": ["CRI", "Ra", "color rendering index", "Farbwiedergabe"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 65 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Color rendering index Ra typ. 65 at IF = 350 mA, TS = 25 degC (page 4). Dimensionless 0-100 index. Measured during a ~10 ms current pulse, tolerance +/-2.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "chromaticity_x",
+      "name": "CIE 1931 chromaticity x",
+      "group": "color",
+      "aliases": ["CIE x", "Cx", "CCx", "chromaticity x", "color coordinate x"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.37 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Chromaticity coordinate Cx typ. 0.37 acc. to CIE 1931 (EQ white / Brilliant Mix), at IF = 350 mA, TS = 25 degC (pages 1, 4). The fine chromaticity sub-bins of the ordered MMMW selection (groups MM..MW, page 7) sit around this nominal; chromaticity groups measured during a ~10 ms pulse, tolerance +/-0.005.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "chromaticity_y",
+      "name": "CIE 1931 chromaticity y",
+      "group": "color",
+      "aliases": ["CIE y", "Cy", "CCy", "chromaticity y", "color coordinate y"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.44 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Chromaticity coordinate Cy typ. 0.44 acc. to CIE 1931 (EQ white / Brilliant Mix), at IF = 350 mA, TS = 25 degC (pages 1, 4). Pairs with Cx = 0.37 to fix the color point above the blackbody locus. Chromaticity groups measured during a ~10 ms pulse, tolerance +/-0.005.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "correlated_color_temperature",
+      "name": "Correlated color temperature",
+      "group": "color",
+      "aliases": ["CCT", "color temperature", "Tc", "correlated color temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2700, "max": 5000 },
+          "unit": "K",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" }
+          ],
+          "conditionsVerbatim": "This is an 'EQ white' (Brilliant Mix) part; no single nominal CCT is printed on the datasheet. The nominal color point is Cx = 0.37, Cy = 0.44 (CIE 1931), which lies above the blackbody locus. The chromaticity-coordinate-group diagram (page 6) spans the CCT iso-lines from ~2700 K to 5000 K across the EQ-white bin region; encoded as that range rather than inventing a single value. The ordered MMMW chromaticity selection is a sub-region of this.",
+          "sourcePage": 6,
+          "sourceTable": "Chromaticity Coordinate Groups",
+          "guarantee": "by_design"
+        }
+      ]
+    },
+    {
+      "key": "viewing_angle",
+      "name": "Viewing angle (full angle at half intensity)",
+      "group": "optical",
+      "aliases": ["2phi", "viewing angle", "beam angle", "Abstrahlwinkel", "full angle"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 80 },
+          "unit": "deg",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" },
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Viewing angle at 50% IV, 2phi typ. 80 deg (pages 1, 4). Printed already as the FULL cone angle (2phi = 80 deg), not a half-angle, so no doubling applied. Prefocused OSLON SSL 80 radiation pattern.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "typical"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_solder",
+      "name": "Thermal resistance, junction to solder point",
+      "group": "thermal",
+      "aliases": ["RthJS", "Rth JS", "RthJS real", "thermal resistance junction to solder point", "Waermewiderstand Sperrschicht Loetpad"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9.6, "max": 10.8 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "I_F", "value": 0.35, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Real thermal resistance junction / solder point Rth JS real typ. 9.6 / max. 10.8 K/W (page 4; K/W is numerically identical to degC/W for a temperature delta). This is the 'real' (measured) value. Osram also prints an 'electrical' (efficiency-corrected, eta_e = 38%) Rth JS el typ. 6.0 / max. 6.7 K/W. Rth max is based on 6-sigma statistics.",
+          "sourcePage": 4,
+          "sourceTable": "Characteristics",
+          "guarantee": "by_characterization"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "group": "electrical",
+      "aliases": ["IF", "I_F", "forward current", "DC forward current", "Durchlassstrom"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1.0 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_SP", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward current IF max. 1000 mA (1.0 A) at TS = 25 degC (page 3 Maximum Ratings). The datasheet states the operating range as 100...1000 mA with 'Do not use below 100 mA' (page 12) and a derating of the max permissible current above a solder-point temperature knee.",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "surge_forward_current",
+      "name": "Surge forward current",
+      "group": "electrical",
+      "aliases": ["IFM", "surge current", "surge forward current", "Stossstrom"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2.0 },
+          "unit": "A",
+          "conditionsVerbatim": "Surge current IFM max. 2000 mA (2.0 A) (page 3 Maximum Ratings). Non-repetitive single-event surge, distinct from the 1.0 A DC rating.",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "group": "electrical",
+      "aliases": ["IR", "I_R", "reverse current", "allowable reverse current", "Sperrstrom"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.2 },
+          "unit": "A",
+          "conditionsVerbatim": "Reverse current IR max. 200 mA (0.2 A) (page 3 Maximum Ratings). This is an 'allowable reverse current' rating (note 2), not a leakage measurement; an LED is not designed for reverse operation.",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["TJ", "Tj", "junction temperature", "Sperrschichttemperatur"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 135 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature Tj max. 135 degC (page 3 Maximum Ratings). An absolute junction temperature Tj,abs = 160 degC is also listed, verified by testing 30 pieces (no catastrophic failures; luminous flux better than L70B50 after 1000 h).",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_withstand_voltage",
+      "name": "ESD withstand voltage",
+      "group": "electrical",
+      "aliases": ["VESD", "ESD", "ESD withstand voltage", "HBM", "human body model"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 8000 },
+          "unit": "V",
+          "conditionsVerbatim": "ESD withstand voltage VESD 8 kV (8000 V), acc. to ANSI/ESDA/JEDEC JS-001 HBM, Class 3B (page 3). The LED integrates an ESD-protection device in parallel with the chip.",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Top", "Topr", "operating temperature range", "Betriebstemperatur"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 120 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range Top = -40 ... 120 degC (page 3 Maximum Ratings).",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature range", "Lagertemperatur"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 120 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature range Tstg = -40 ... 120 degC (page 3 Maximum Ratings).",
+          "sourcePage": 3,
+          "sourceTable": "Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "9569e7949eb029f4736ef90293907a68ce11df9f4ef50b49f2d07cc391faae7f",
+    "sourceUrl": "https://docs.rs-online.com/f9ce/0900766b815fe2fd.pdf",
+    "datasheetRevision": "Version 1.2",
+    "publishedDate": "2015-12-21",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

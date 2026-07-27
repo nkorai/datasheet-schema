@@ -1,0 +1,656 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "CLVBA-FKA",
+    "manufacturer": "Cree LED",
+    "family": "led",
+    "description": "PLCC4 3-in-1 RGB SMD LED, common-anode. Three independent dies in one industry-standard PLCC4 package (3.2 x 2.8 mm): an AlGaInP red die (619-624 nm), an InGaN green die (520-540 nm), and an InGaN blue die (460-480 nm). Pin 2 is the shared common anode; pins 1, 4, and 3 are the red, green, and blue cathodes respectively. High-brightness, wide viewing angle, intended for full-color video screens, decorative lighting, and indoor signage. Each per-die optical/electrical value carries a note-only EMITTER condition (red/green/blue) so a package-wide limit (junction/operating/storage temperature) is distinguishable from a per-color spec.",
+    "package": "PLCC4 SMD, 3.2 x 2.8 mm",
+    "pinCount": 4,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..100",
+    "msl": "MSL5a",
+    "orderingVariants": [
+      { "orderCode": "CLVBA-FKA-CAEDH8BBB7a363", "package": "PLCC4 SMD, 3.2 x 2.8 mm", "packing": "Tape & Reel (max 2000 pcs/reel)" },
+      { "orderCode": "CLVBA-FKA-CA1D181BB7D3D3", "package": "PLCC4 SMD, 3.2 x 2.8 mm", "packing": "Tape & Reel (max 2000 pcs/reel)" },
+      { "orderCode": "CLVBA-FKA-CC1F1L1BB7D3D3", "package": "PLCC4 SMD, 3.2 x 2.8 mm", "packing": "Tape & Reel (max 2000 pcs/reel)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "R", "function": "CATHODE_R", "type": "passive", "description": "Red die cathode (AlGaInP). Drive current returns through this pin; anode is the shared pin 2. Pin-mark corner.", "sourcePage": 7 },
+    { "number": 2, "name": "COM", "function": "COMMON", "type": "passive", "description": "Common anode. Shared anode for all three dies (red/green/blue); this is a common-anode part.", "sourcePage": 7 },
+    { "number": 3, "name": "B", "function": "CATHODE_B", "type": "passive", "description": "Blue die cathode (InGaN).", "sourcePage": 7 },
+    { "number": 4, "name": "G", "function": "CATHODE_G", "type": "passive", "description": "Green die cathode (InGaN).", "sourcePage": 7 }
+  ],
+  "parameters": [
+    {
+      "key": "dominant_wavelength",
+      "name": "Dominant wavelength",
+      "group": "spectral",
+      "aliases": ["lambda_DOM", "λDOM", "dominant wavelength"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 6.19e-7, "max": 6.24e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Dominant Wavelength lambda_DOM, Red = 619 ~ 624 nm at IF = 8 mA, TA = 25 degC. Tolerance of measurement of dominant wavelength is +/-1 nm.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5.20e-7, "max": 5.40e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Dominant Wavelength lambda_DOM, Green = 520 ~ 540 nm at IF = 8 mA, TA = 25 degC. Tolerance of measurement of dominant wavelength is +/-1 nm.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4.60e-7, "max": 4.80e-7 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Dominant Wavelength lambda_DOM, Blue = 460 ~ 480 nm at IF = 8 mA, TA = 25 degC. Tolerance of measurement of dominant wavelength is +/-1 nm.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spectral_bandwidth",
+      "name": "Spectral bandwidth (FWHM)",
+      "group": "spectral",
+      "aliases": ["delta_lambda", "Δλ", "spectral bandwidth at 50% IREL max", "FWHM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.4e-8 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Spectral bandwidth at 50% IREL max, Delta_lambda, Red = 24 nm at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.8e-8 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Spectral bandwidth at 50% IREL max, Delta_lambda, Green = 38 nm at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.8e-8 },
+          "unit": "m",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Spectral bandwidth at 50% IREL max, Delta_lambda, Blue = 28 nm at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_voltage",
+      "name": "Forward voltage",
+      "group": "electrical",
+      "aliases": ["VF", "VF(avg)", "VF(max)", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.9, "max": 2.4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Forward Voltage, Red: VF(avg) = 1.9 V, VF(max) = 2.4 V at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Forward Voltage, Green: VF(avg) = 3.0 V, VF(max) = 3.6 V at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0, "max": 3.6 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Forward Voltage, Blue: VF(avg) = 3.0 V, VF(max) = 3.6 V at IF = 8 mA, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "luminous_intensity",
+      "name": "Luminous intensity",
+      "group": "optical_photometric",
+      "aliases": ["IV", "IV(min)", "IV(avg)", "luminous intensity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.071, "typ": 0.112 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity, Red: IV(min) = 71 mcd, IV(avg) = 112 mcd at IF = 8 mA, TA = 25 degC. Tolerance of measurement of luminous intensity is +/-10%.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.140, "typ": 0.224 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity, Green: IV(min) = 140 mcd, IV(avg) = 224 mcd at IF = 8 mA, TA = 25 degC. Tolerance of measurement of luminous intensity is +/-10%.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.036, "typ": 0.056 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "I_F", "value": 0.008, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity, Blue: IV(min) = 36 mcd, IV(avg) = 56 mcd at IF = 8 mA, TA = 25 degC. Tolerance of measurement of luminous intensity is +/-10%.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.224, "typ": 0.320 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity (Reference), Red: IV(min) = 224 mcd, IV(avg) = 320 mcd at IF = 20 mA, TA = 25 degC. Reference values; the 8 mA figures are the specified operating point.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.280, "typ": 0.500 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity (Reference), Green: IV(min) = 280 mcd, IV(avg) = 500 mcd at IF = 20 mA, TA = 25 degC. Reference values; the 8 mA figures are the specified operating point.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.090, "typ": 0.160 },
+          "unit": "cd",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "I_F", "value": 0.02, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Luminous Intensity (Reference), Blue: IV(min) = 90 mcd, IV(avg) = 160 mcd at IF = 20 mA, TA = 25 degC. Reference values; the 8 mA figures are the specified operating point.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "forward_current",
+      "name": "Forward current (DC)",
+      "group": "electrical",
+      "aliases": ["IF", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.05 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" }
+          ],
+          "conditionsVerbatim": "Forward Current IF, Red = 50 mA (absolute maximum), single-color light, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.025 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" }
+          ],
+          "conditionsVerbatim": "Forward Current IF, Green = 25 mA (absolute maximum), single-color light, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.025 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" }
+          ],
+          "conditionsVerbatim": "Forward Current IF, Blue = 25 mA (absolute maximum), single-color light, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak (pulsed) forward current",
+      "group": "electrical",
+      "aliases": ["IFP", "peak forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.2 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "DUTY", "note": "duty <= 1/10" }
+          ],
+          "conditionsVerbatim": "Peak Forward Current IFP, Red = 200 mA (absolute maximum). Pulse width <= 0.1 msec, duty <= 1/10, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "DUTY", "note": "duty <= 1/10" }
+          ],
+          "conditionsVerbatim": "Peak Forward Current IFP, Green = 100 mA (absolute maximum). Pulse width <= 0.1 msec, duty <= 1/10, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "PULSE_WIDTH", "value": 1.0e-4, "unit": "s" },
+            { "param": "DUTY", "note": "duty <= 1/10" }
+          ],
+          "conditionsVerbatim": "Peak Forward Current IFP, Blue = 100 mA (absolute maximum). Pulse width <= 0.1 msec, duty <= 1/10, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_voltage",
+      "name": "Reverse voltage",
+      "group": "electrical",
+      "aliases": ["VR", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" }
+          ],
+          "conditionsVerbatim": "Reverse Voltage VR, Red = 5 V (absolute maximum), TA = 25 degC. Continuous reverse voltage can cause LED damage.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" }
+          ],
+          "conditionsVerbatim": "Reverse Voltage VR, Green = 5 V (absolute maximum), TA = 25 degC. Continuous reverse voltage can cause LED damage.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" }
+          ],
+          "conditionsVerbatim": "Reverse Voltage VR, Blue = 5 V (absolute maximum), TA = 25 degC. Continuous reverse voltage can cause LED damage.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "reverse_current",
+      "name": "Reverse current",
+      "group": "electrical",
+      "aliases": ["IR", "reverse current", "reverse leakage current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" },
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Reverse Current (max) IR, Red = 10 uA at VR = 5 V, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" },
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Reverse Current (max) IR, Green = 10 uA at VR = 5 V, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" },
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Reverse Current (max) IR, Blue = 10 uA at VR = 5 V, TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Typical Electrical & Optical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "electrical",
+      "aliases": ["PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.13 },
+          "unit": "W",
+          "conditions": [
+            { "param": "EMITTER", "note": "red" }
+          ],
+          "conditionsVerbatim": "Power Dissipation PD, Red = 130 mW (absolute maximum), TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "W",
+          "conditions": [
+            { "param": "EMITTER", "note": "green" }
+          ],
+          "conditionsVerbatim": "Power Dissipation PD, Green = 100 mW (absolute maximum), TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "W",
+          "conditions": [
+            { "param": "EMITTER", "note": "blue" }
+          ],
+          "conditionsVerbatim": "Power Dissipation PD, Blue = 100 mW (absolute maximum), TA = 25 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature",
+      "group": "thermal",
+      "aliases": ["TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 110 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature TJ = 110 degC (absolute maximum). Identical for all three dies (R/G/B); a package-wide limit, no per-emitter distinction.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Topr", "operation temperature", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operation Temperature Topr = -40 ~ +100 degC. Package-wide.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Tstg = -40 ~ +100 degC (absolute maximum). Package-wide.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction to ambient",
+      "group": "thermal",
+      "aliases": ["RTHJA", "RthJA", "junction/ambient"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 450 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "red" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Red, 1 chip on = 450 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 650 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "red" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Red, 3 chip on = 650 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 400 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "green" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Green, 1 chip on = 400 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 580 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "green" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Green, 3 chip on = 580 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 450 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "blue" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Blue, 1 chip on = 450 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 680 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "blue" } ],
+          "conditionsVerbatim": "Junction/ambient RTHJA, Blue, 3 chip on = 680 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_solder",
+      "name": "Thermal resistance, junction to solder point",
+      "group": "thermal",
+      "aliases": ["RTHJS", "RthJS", "junction/solder point"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 300 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "red" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Red, 1 chip on = 300 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 450 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "red" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Red, 3 chip on = 450 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 280 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "green" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Green, 1 chip on = 280 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 430 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "green" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Green, 3 chip on = 430 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 300 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "blue" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Blue, 1 chip on = 300 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 480 },
+          "unit": "degC/W",
+          "conditions": [ { "param": "EMITTER", "note": "blue" } ],
+          "conditionsVerbatim": "Junction/solder point RTHJS, Blue, 3 chip on = 480 degC/W.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature (peak reflow)",
+      "group": "thermal",
+      "aliases": ["peak reflow temperature", "peak temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 250 },
+          "unit": "degC",
+          "conditionsVerbatim": "Reflow soldering: peak temperature = 250 degC max; time within 5 degC of actual peak <= 10 s; duration above 217 degC <= 60 s; preheat 150-200 degC for 120 s max; ramp-up 4 degC/s max, ramp-down 6 degC/s max. Rated MSL 5a, floor life 24 h out of bag.",
+          "sourcePage": 9,
+          "sourceTable": "Reflow Soldering"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Common-anode 3-in-1 RGB PLCC4 (pin config from the mechanical-dimensions drawing, page 7): pin 1 = RED cathode, pin 2 = COMMON ANODE, pin 3 = BLUE cathode, pin 4 = GREEN cathode.",
+    "EMITTER-axis showcase: each per-die optical/electrical value carries a note-only { param: EMITTER } condition (red/green/blue) composing with the numeric I_F condition; package-wide limits (junction/operating/storage temperature) carry no EMITTER condition. Luminous intensity is the composition case, with 6 measurements over EMITTER x I_F (8 mA and 20 mA reference points).",
+    "Discrepancy: the page-1 FEATURES block prints 'Luminous Intensity (mcd) @ IF=8mA  Red (224-560), Green (280-900), Blue (90-355)', which does not match the authoritative Typical Electrical & Optical Characteristics table on page 2 (Red 71/112, Green 140/224, Blue 36/56 mcd at 8 mA; the 224/280/90 figures are the 20 mA reference minimums). The page-2 characteristics table was used; the page-1 marketing summary appears mislabeled.",
+    "Viewing angle: the datasheet describes a 'wide viewing angle' qualitatively (page 1) but prints no numeric 2theta-1/2 value anywhere in the text, so viewing_angle is omitted (not invented).",
+    "Optical/electrical characteristics are typical values (the datasheet titles the table 'TYPICAL ELECTRICAL & OPTICAL CHARACTERISTICS'); IV(min)/VF(max)/IR(max) columns are the stated limits. Modeled as limitClass characterized. VF is specified only at IF = 8 mA in this datasheet.",
+    "Thermal resistances RTHJA and RTHJS are printed inside the Absolute Maximum Ratings table but are design characteristics, so they are modeled limitClass characterized; the chip-count basis (1 chip on vs 3 chips on) is preserved in conditionsVerbatim per value."
+  ],
+  "provenance": {
+    "datasheetSha256": "c783d5d0c989e9f7c9c66041c97abb1f7a4e07ccbb2bce480e7d6b8cf5e8e829",
+    "sourceUrl": "https://downloads.cree-led.com/files/ds/h/HB-CLVBA-FKA.pdf",
+    "datasheetRevision": "CLD-CT1165 Rev 14",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

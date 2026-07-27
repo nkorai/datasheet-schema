@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "LED-IR-X", "manufacturer": "Y", "family": "led" },
+  "parameters": [
+    { "key": "peak_wavelength", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 940 }, "unit": "Hz", "sourcePage": 2 } ] }
+  ],
+  "provenance": { "verified": false },
+  "notes": ["Schema-valid (Hz is a legal enum unit) but wrong dimension: an emitter's peak wavelength is a length in metres (940 nm = 9.4e-7 m), not a frequency in hertz. A datasheet never prints wavelength as a frequency. The family unit-scoping check must reject this, since led's peak_wavelength declares unit m with no altUnits."]
+}

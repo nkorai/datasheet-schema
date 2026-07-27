@@ -1,0 +1,923 @@
+{
+  "family": "led",
+  "manufacturer": "Vishay",
+  "mpn": "TSAL6100",
+  "parameters": [
+    {
+      "aliases": [
+        "I_e",
+        "Ie",
+        "radiant intensity"
+      ],
+      "group": "optical_radiometric",
+      "key": "radiant_intensity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.02
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/sr",
+          "value": {
+            "max": 0.4,
+            "min": 0.08,
+            "typ": 0.17
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W/sr",
+          "value": {
+            "max": 1.45,
+            "typ": 0.65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "phi_e",
+        "radiant flux",
+        "radiant power"
+      ],
+      "group": "optical_radiometric",
+      "key": "radiant_flux",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.02
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "typ": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "lambda_p",
+        "peak wavelength"
+      ],
+      "group": "spectral",
+      "key": "peak_wavelength",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 9.4e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "FWHM",
+        "delta_lambda",
+        "spectral bandwidth"
+      ],
+      "group": "spectral",
+      "key": "spectral_bandwidth",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "typ": 3e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TClambda",
+        "TKlp",
+        "temperature coefficient of wavelength"
+      ],
+      "group": "temperature_coefficient",
+      "key": "wavelength_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m/degC",
+          "value": {
+            "typ": 2e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF",
+        "V_F",
+        "forward voltage"
+      ],
+      "group": "electrical",
+      "key": "forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.02
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.6,
+            "typ": 1.35
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3,
+            "typ": 2.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCV",
+        "TKVF",
+        "temperature coefficient of forward voltage"
+      ],
+      "group": "temperature_coefficient",
+      "key": "forward_voltage_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": -0.0018
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TKphie",
+        "temperature coefficient of radiant power"
+      ],
+      "group": "temperature_coefficient",
+      "key": "radiant_flux_temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.02
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "typ": -6000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "I_R",
+        "reverse current",
+        "reverse leakage current"
+      ],
+      "group": "electrical",
+      "key": "reverse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cj",
+        "junction capacitance"
+      ],
+      "group": "electrical",
+      "key": "junction_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 4e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "t_r",
+        "tr"
+      ],
+      "group": "switching",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "t_f",
+        "tf"
+      ],
+      "group": "switching",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "2theta_1/2",
+        "angle of half intensity",
+        "viewing angle"
+      ],
+      "group": "optical",
+      "key": "viewing_angle",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Basic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "deg",
+          "value": {
+            "typ": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR",
+        "V_R",
+        "reverse voltage"
+      ],
+      "group": "electrical",
+      "key": "reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC forward current",
+        "IF",
+        "I_F",
+        "forward current"
+      ],
+      "group": "electrical",
+      "key": "forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFM",
+        "peak forward current",
+        "pulsed forward current"
+      ],
+      "group": "electrical",
+      "key": "peak_forward_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "tp/T = 0.5 (50 % duty cycle)",
+              "param": "DUTY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFSM",
+        "surge current",
+        "surge forward current"
+      ],
+      "group": "electrical",
+      "key": "surge_forward_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "PV",
+        "power dissipation"
+      ],
+      "group": "electrical",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "Tj",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tamb",
+        "Topr",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tsd",
+        "Tsol",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "R_thJA",
+        "RthJA",
+        "thermal resistance junction to ambient"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 230
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "A",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "C",
+      "number": 2
+    }
+  ]
+}
