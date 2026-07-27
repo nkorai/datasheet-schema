@@ -2,6 +2,20 @@
 
 All notable changes follow [Keep a Changelog](https://keepachangelog.com) and [Semantic Versioning](https://semver.org).
 
+## [1.16.1]
+
+Deepens regression coverage for the six families that had only a single committed example, and folds in one small dictionary gap the exercise surfaced. No schema change; every existing document stays valid.
+
+### Added
+- A diverse second example for each previously-single-example family, chosen to exercise vocabulary the first example did not — each fetched from a real datasheet with a recorded SHA-256 and a committed value snapshot:
+  - `analog_switch-dg408` — Vishay DG408 8:1 multiplexer (the S1–S8 / A0–A2 address / EN mux pinout, alongside the existing DG419 SPDT switch).
+  - `capacitor-samsung-cl31b106` — Samsung 10 µF 50 V X7R MLCC with its 7-point `capacitance_vs_dc_bias` derating array (0 V→0 %, 50 V→−90 %), the ceramic behavior the aluminum-electrolytic example never touched.
+  - `comparator-tlv3011` — TI nanopower open-drain comparator with an integrated reference (the `REF` pin, the reference block, and µs propagation delay over overdrive, alongside the high-speed TLV3501).
+  - `inductor-murata-lqw18an` — Murata 10 nH RF chip inductor (Q and self-resonant frequency, alongside the molded power inductor).
+  - `jfet-2n5460` — onsemi P-channel JFET (`component.polarity: negative`, alongside the N-channel 2N5457).
+  - `resistor-wsk2512` — Vishay 5 mΩ 4-terminal Kelvin current-sense shunt (the `I1`/`I2`/`S1`/`S2` force/sense pinout and `temperature_coefficient_element`, alongside the thick-film chip).
+- `analog_switch` dictionary gains `power_dissipation` (W) and `storage_temperature_range` (degC) — both appear on essentially every analog-switch datasheet and were absent, unlike the family's active siblings. Additive (dictionaryVersion 1.1); the DG408 example now carries both.
+
 ## [1.16.0]
 
 Adds the **`led`** family (the seventeenth family): the light-emitting diode, synthesized from a 20-datasheet corpus spanning visible indicator, high-brightness white lighting, RGB/multi-color, infrared (850/940 nm), and ultraviolet (UV-A/B/C) emitters across Kingbright, Lite-On, Vishay, Würth, Cree, ams-OSRAM, Nichia, Samsung, Everlight, Luminus, and Seoul Viosys. LEDs introduce two entire measurement domains — photometry and radiometry — absent from all sixteen prior families, so this release makes the largest set of additive unit changes yet (seven). The five examples went through both adversarial re-verification and a completeness critic. Laser diodes, LED-driver ICs, photodiodes/phototransistors, and optocouplers are intentionally **separate families**, not folded in here.

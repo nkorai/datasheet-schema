@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "LQW18AN10NG00D",
+    "manufacturer": "Murata",
+    "family": "inductor",
+    "description": "LQW18AN_00 series 10 nH high-frequency wirewound RF chip inductor (0603 / 1608-metric) for consumer/industrial equipment. A DIVERSE sibling to the WE-LHMI power-inductor exemplar: this RF chip inductor is characterized by the parameters a power inductor never carries - a guaranteed minimum quality factor Q (measured at a spot RF frequency, 250 MHz for this value), a self-resonant frequency SRF, and a single combined rated_current (not the split saturation/heating pair), with inductance measured at 100 MHz rather than 100 kHz. Non-polarized 2-terminal part (functions A/B). Row for the 10 nH, tolerance-code-G (+/-2%) grade extracted from the series rating table.",
+    "package": "0603 (1.6x0.8mm)",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-55..125",
+    "orderingVariants": [
+      { "orderCode": "LQW18AN10NG00D", "temperatureGrade": "-55..125", "packing": "taping, 4000 pcs/reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "A", "function": "A", "type": "passive", "description": "Winding terminal A. Non-polarized 2-terminal RF chip inductor; terminals are electrically interchangeable.", "sourcePage": 4 },
+    { "number": 2, "name": "B", "function": "B", "type": "passive", "description": "Winding terminal B. Non-polarized 2-terminal RF chip inductor; terminals are electrically interchangeable.", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "inductance",
+      "name": "Inductance (nominal)",
+      "group": "inductance",
+      "aliases": ["Inductance", "Nominal value"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1e-8 },
+          "unit": "H",
+          "conditions": [
+            { "param": "F", "value": 1e8, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Nominal inductance 10 nH; measuring frequency 100 MHz (per §7.1, Keysight E4991A or equivalent, approx. 0 dBm signal)",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "inductance_tolerance",
+      "name": "Inductance tolerance",
+      "group": "inductance",
+      "aliases": ["Tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -2, "max": 2 },
+          "unit": "%",
+          "conditionsVerbatim": "Tolerance code G = +/-2% (the G grade of the 10 nH part; a J grade with +/-5% is also offered)",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "quality_factor",
+      "name": "Quality factor (Q)",
+      "group": "quality",
+      "aliases": ["Q", "Q (Min.)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 35 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "F", "value": 2.5e8, "unit": "Hz" }
+          ],
+          "guarantee": "production_tested",
+          "conditionsVerbatim": "Q min. 35; measuring frequency 250 MHz (the 2.2 nH-39 nH Q band per §7.1); measured with Keysight E4991A or equivalent",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "self_resonant_frequency",
+      "name": "Self-resonant frequency (SRF)",
+      "group": "frequency",
+      "aliases": ["Self-resonant frequency", "SRF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 6e9 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Self-resonant frequency 6000 MHz min.; measured with Keysight N5230A or equivalent (§7.4)",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "dc_resistance",
+      "name": "DC resistance (DCR)",
+      "group": "resistance",
+      "aliases": ["DC resistance", "Rdc"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.11 },
+          "unit": "ohm",
+          "conditionsVerbatim": "DC resistance 0.11 ohm max.; measured with a digital multimeter (§7.3)",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "rated_current",
+      "name": "Rated (maximum continuous) current",
+      "group": "current_rating",
+      "aliases": ["Rated current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.65 },
+          "unit": "A",
+          "conditionsVerbatim": "Rated current 650 mA - a single combined figure defined by product temperature rise 20 degC max. AND inductance change rate within +/-10% (§7.5); an RF chip inductor gives one rating rather than splitting into distinct saturation and heating limits",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "general",
+      "aliases": ["Operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range -55 degC to +125 degC (storage temperature range identical)",
+          "sourcePage": 1,
+          "sourceTable": "Part Number and Rating"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "JELF243A_0024AC-01",
+    "datasheetSha256": "be795e7f314706838324684ee7d5f5694f8c68ee5a3351556dae6190fded697a",
+    "sourceUrl": "https://pim.murata.com/asset/pim4/inductor/JELF243A-0024_PDF_INDUCTOR",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

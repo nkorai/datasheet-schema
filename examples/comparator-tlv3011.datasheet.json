@@ -1,0 +1,598 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TLV3011",
+    "manufacturer": "Texas Instruments",
+    "family": "comparator",
+    "description": "Nanopower (2.8 uA typ supply current) single comparator with an open-drain output and an uncommitted, brought-out 1.242 V series voltage reference (1% initial accuracy, 100 ppm/degC max drift). Input common-mode range extends 200 mV beyond both rails; single-supply operation from 1.8 V to 5.5 V. Because it is a micropower part its propagation delay is in the microsecond range (6 us at 100 mV overdrive) and collapses with overdrive. sub_type: general_purpose (low-power). output stage: open_drain (the high level is set by an external pull-up; no internal VOH). This document covers the non-B TLV3011 (A grade); the TLV3011B adds built-in hysteresis, power-on-reset, fail-safe inputs and a 1.65 V minimum supply and is a separate grade not merged here.",
+    "package": "SOT-23-6",
+    "pinCount": 6,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..125",
+    "orderingVariants": [
+      { "orderCode": "TLV3011AIDBVR", "package": "SOT-23-6 (DBV)", "packing": "Tape and Reel" },
+      { "orderCode": "TLV3011AIDBVT", "package": "SOT-23-6 (DBV)", "packing": "Tape and Reel" },
+      { "orderCode": "TLV3011AIDCKR", "package": "SC-70-6 (DCK)", "packing": "Tape and Reel" },
+      { "orderCode": "TLV3011AIDCKT", "package": "SC-70-6 (DCK)", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "OUT", "function": "OUT", "type": "digital_out", "description": "Open-drain comparator output (external pull-up required).", "sourcePage": 3 },
+    { "number": 2, "name": "V-", "function": "VS_NEG", "type": "power", "description": "Negative (lowest) power supply / ground.", "sourcePage": 3 },
+    { "number": 3, "name": "IN+", "function": "IN_P", "type": "analog", "description": "Non-inverting comparator input.", "sourcePage": 3 },
+    { "number": 4, "name": "IN-", "function": "IN_N", "type": "analog", "description": "Inverting comparator input.", "sourcePage": 3 },
+    { "number": 5, "name": "REF", "function": "REF", "type": "analog", "description": "Integrated 1.242 V voltage-reference output.", "sourcePage": 3 },
+    { "number": 6, "name": "V+", "function": "VS_POS", "type": "power", "description": "Positive (highest) power supply.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "power_supply",
+      "aliases": ["VS", "specified voltage", "operating voltage range", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.8, "max": 5.5 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage VS = (V+) - (V-), 1.8 V to 5.5 V (TLV3011 non-B; B-versions extend down to 1.65 V)",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage, absolute maximum 7 V",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["TA", "ambient temperature", "operating free-air temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "TA, ambient temperature, -40 degC to 125 degC",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions"
+        }
+      ]
+    },
+    {
+      "key": "input_voltage_range",
+      "name": "Signal input voltage (absolute maximum)",
+      "group": "general",
+      "aliases": ["signal input pins voltage", "VIN abs max"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.5, "max": 0.5 },
+          "unit": "V",
+          "conditionsVerbatim": "Signal input pins, voltage, -0.5 V to (V+) + 0.5 V; stored as -0.5 V (below V-) to 0.5 V above V+",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage",
+      "name": "Input offset voltage",
+      "group": "offset",
+      "aliases": ["VOS", "input offset voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.015, "max": 0.015 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CM", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VOS, input offset voltage, VCM = 0 V, IO = 0; typ 0.5 mV, max 15 mV (stored as a +/-15 mV magnitude)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_voltage_drift",
+      "name": "Input offset voltage drift",
+      "group": "offset",
+      "aliases": ["dVOS/dT", "input offset voltage vs temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e-05 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dVOS/dT, input offset voltage vs temperature, TA = -40 degC to +125 degC, typ +/-12 uV/degC",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "input_bias_current",
+      "name": "Input bias current",
+      "group": "input_bias",
+      "aliases": ["IB", "input bias current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1e-11, "max": 1e-11 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = VS/2" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IB, input bias current, VCM = VS/2, TA = 25 degC; max +/-10 pA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "input_offset_current",
+      "name": "Input offset current",
+      "group": "offset",
+      "aliases": ["IOS", "input offset current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1e-11, "max": 1e-11 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = VS/2" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IOS, input offset current, VCM = VS/2, TA = 25 degC; max +/-10 pA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_input_range",
+      "name": "Common-mode input voltage range",
+      "group": "input",
+      "aliases": ["VCM", "common-mode voltage range", "input voltage range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.2, "max": 0.2 },
+          "unit": "V",
+          "conditionsVerbatim": "VCM, common-mode voltage range, (V-) - 0.2 V to (V+) + 0.2 V (200 mV beyond each rail); stored as -0.2 V below V- to 0.2 V above V+",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio",
+      "group": "rejection",
+      "aliases": ["CMRR", "common-mode rejection ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 60, "typ": 74 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = -0.2 V to (V+) - 1.5 V" }
+          ],
+          "conditionsVerbatim": "CMRR, common-mode rejection ratio, VCM = -0.2 V to (V+) - 1.5 V; min 60 dB, typ 74 dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 54, "typ": 62 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "V_CM", "note": "VCM = -0.2 V to (V+) + 0.2 V" }
+          ],
+          "conditionsVerbatim": "CMRR, common-mode rejection ratio, VCM = -0.2 V to (V+) + 0.2 V (full beyond-rails range); min 54 dB, typ 62 dB",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "power_supply_rejection_ratio",
+      "name": "Power-supply rejection ratio",
+      "group": "rejection",
+      "aliases": ["PSRR", "power supply rejection ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-04, "max": 1e-03 },
+          "unit": "V/V",
+          "conditions": [
+            { "param": "V_S", "min": 1.8, "max": 5.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "PSRR, power supply rejection ratio, VS = 1.8 V to 5.5 V; typ 100 uV/V, max 1000 uV/V",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low (open-drain saturation) voltage",
+      "group": "output",
+      "aliases": ["VOL", "voltage output low from rail", "output saturation voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.16, "max": 0.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_S", "value": 5, "unit": "V" },
+            { "param": "I_OUT", "value": 0.005, "unit": "A" },
+            { "param": "DIRECTION", "note": "sinking" }
+          ],
+          "conditionsVerbatim": "VOL, voltage output low from rail, VS = 5 V, IOUT = -5 mA (open-drain sinking); typ 160 mV, max 200 mV above V-",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay",
+      "name": "Propagation delay",
+      "group": "dynamic",
+      "aliases": ["tPLH", "tPHL", "propagation delay time", "response time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e-05 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.01, "unit": "V" },
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "DIRECTION", "note": "low to high (rising)" }
+          ],
+          "conditionsVerbatim": "Propagation delay time, low to high, f = 10 kHz, VSTEP = 1 V, input overdrive = 10 mV; typ 12 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-06 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.1, "unit": "V" },
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "DIRECTION", "note": "low to high (rising)" }
+          ],
+          "conditionsVerbatim": "Propagation delay time, low to high, f = 10 kHz, VSTEP = 1 V, input overdrive = 100 mV; typ 6 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.35e-05 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.01, "unit": "V" },
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "DIRECTION", "note": "high to low (falling)" }
+          ],
+          "conditionsVerbatim": "Propagation delay time, high to low, f = 10 kHz, VSTEP = 1 V, input overdrive = 10 mV; typ 13.5 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.5e-06 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_OVERDRIVE", "value": 0.1, "unit": "V" },
+            { "param": "F", "value": 10000, "unit": "Hz" },
+            { "param": "DIRECTION", "note": "high to low (falling)" }
+          ],
+          "conditionsVerbatim": "Propagation delay time, high to low, f = 10 kHz, VSTEP = 1 V, input overdrive = 100 mV; typ 6.5 us",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "rise_fall_time",
+      "name": "Output rise / fall time",
+      "group": "dynamic",
+      "aliases": ["tr", "tf", "rise time", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "C_L", "value": 1e-11, "unit": "F" },
+            { "param": "DIRECTION", "note": "rising" }
+          ],
+          "conditionsVerbatim": "tr, rise time, CL = 10 pF; typ 100 ns",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-07 },
+          "unit": "s",
+          "conditions": [
+            { "param": "C_L", "value": 1e-11, "unit": "F" },
+            { "param": "DIRECTION", "note": "falling" }
+          ],
+          "conditionsVerbatim": "tf, fall time, CL = 10 pF; typ 100 ns",
+          "guarantee": "typical",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Quiescent / supply current",
+      "group": "power_supply",
+      "aliases": ["IQ", "quiescent current", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.8e-06, "max": 5.0e-06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 5, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IQ, quiescent current, VS = 5 V, VO = High, TA = 25 degC; typ 2.8 uA, max 5 uA",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_output_voltage",
+      "name": "Integrated reference output voltage",
+      "group": "reference",
+      "aliases": ["VOUT", "reference output voltage", "internal reference voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1.208, "typ": 1.242, "max": 1.276 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VOUT, reference output voltage, TA = 25 degC; min 1.208 V, typ 1.242 V, max 1.276 V (initial accuracy +/-1%)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_temperature_drift",
+      "name": "Integrated reference temperature drift",
+      "group": "reference",
+      "aliases": ["dVOUT/dT", "reference temperature drift", "reference tempco"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 40, "max": 100 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 125, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dVOUT/dT, reference temperature drift, -40 degC <= TA <= 125 degC; typ 40 ppm/degC, max 100 ppm/degC",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_line_regulation",
+      "name": "Integrated reference line regulation",
+      "group": "reference",
+      "aliases": ["dVOUT/dVIN", "reference line regulation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 10, "max": 100 },
+          "unit": "ppm/V",
+          "conditions": [
+            { "param": "V_IN", "min": 1.8, "max": 5.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "dVOUT/dVIN, reference line regulation, 1.8 V <= VIN <= 5.5 V; typ 10 uV/V, max 100 uV/V (1 uV/V = 1 ppm/V)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_load_regulation",
+      "name": "Integrated reference load regulation",
+      "group": "reference",
+      "aliases": ["dVOUT/dILOAD", "reference load regulation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.36, "max": 1 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_OUT", "min": 0, "max": 0.0005, "unit": "A" },
+            { "param": "DIRECTION", "note": "sourcing" }
+          ],
+          "conditionsVerbatim": "dVOUT/dILOAD, reference load regulation, sourcing, 0 mA < ISOURCE <= 0.5 mA; typ 0.36 mV/mA, max 1 mV/mA (1 mV/mA = 1 ohm)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.6 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "I_OUT", "min": 0, "max": 0.0005, "unit": "A" },
+            { "param": "DIRECTION", "note": "sinking" }
+          ],
+          "conditionsVerbatim": "dVOUT/dILOAD, reference load regulation, sinking, 0 mA < ISINK <= 0.5 mA; typ 6.6 mV/mA (1 mV/mA = 1 ohm)",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_output_current",
+      "name": "Integrated reference output current",
+      "group": "reference",
+      "aliases": ["ILOAD", "reference output current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.0e-04 },
+          "unit": "A",
+          "conditionsVerbatim": "ILOAD, reference output current, typ 0.5 mA",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "reference_output_noise",
+      "name": "Integrated reference output noise",
+      "group": "reference",
+      "aliases": ["reference voltage noise", "reference output noise"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.0e-04 },
+          "unit": "V",
+          "conditions": [
+            { "param": "F", "note": "f = 0.1 Hz to 10 Hz" }
+          ],
+          "conditionsVerbatim": "Reference voltage noise, f = 0.1 Hz to 10 Hz; typ 0.2 mVPP",
+          "statistic": "peak_to_peak",
+          "guarantee": "typical",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Junction-to-ambient thermal resistance",
+      "group": "thermal",
+      "aliases": ["RthetaJA", "RthJA", "junction-to-ambient thermal resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 191.6 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "DBV (SOT-23), 6 pins" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, DBV (SOT-23) 6-pin; 191.6 degC/W",
+          "sourcePage": 5,
+          "sourceTable": "Thermal Information - TLV3011 and TLV3012"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 179.4 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "DCK (SC-70), 6 pins" }
+          ],
+          "conditionsVerbatim": "RthetaJA, junction-to-ambient thermal resistance, DCK (SC-70) 6-pin; 179.4 degC/W",
+          "sourcePage": 5,
+          "sourceTable": "Thermal Information - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "thermal",
+      "aliases": ["TJ", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ, junction temperature, absolute maximum 150 degC",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Tstg, storage temperature, -65 degC to 150 degC",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD, human body model",
+      "group": "general",
+      "aliases": ["ESD HBM", "V(ESD) HBM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 2000 },
+          "unit": "V",
+          "conditionsVerbatim": "V(ESD), human-body model (HBM), per ANSI/ESDA/JEDEC JS-001, +/-2000 V",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    },
+    {
+      "key": "esd_cdm",
+      "name": "ESD, charged device model",
+      "group": "general",
+      "aliases": ["ESD CDM", "V(ESD) CDM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 1000 },
+          "unit": "V",
+          "conditionsVerbatim": "V(ESD), charged-device model (CDM), per ANSI/ESDA/JEDEC JS-002, +/-1000 V",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "SBOS300C - FEBRUARY 2004 - REVISED APRIL 2023",
+    "sourceUrl": "https://www.ti.com/lit/ds/symlink/tlv3011.pdf",
+    "datasheetSha256": "02993c016420887ee4f1ab2fa640e7596c9c1324a73f4f72bee3b32adec38df3",
+    "publishedDate": "April 2023",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "family": "inductor",
+  "manufacturer": "Murata",
+  "mpn": "LQW18AN10NG00D",
+  "parameters": [
+    {
+      "aliases": [
+        "Inductance",
+        "Nominal value"
+      ],
+      "group": "inductance",
+      "key": "inductance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 100000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "H",
+          "value": {
+            "nom": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tolerance"
+      ],
+      "group": "inductance",
+      "key": "inductance_tolerance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 2,
+            "min": -2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Q",
+        "Q (Min.)"
+      ],
+      "group": "quality",
+      "key": "quality_factor",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 250000000
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "min": 35
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SRF",
+        "Self-resonant frequency"
+      ],
+      "group": "frequency",
+      "key": "self_resonant_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "min": 6000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC resistance",
+        "Rdc"
+      ],
+      "group": "resistance",
+      "key": "dc_resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 0.11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Rated current"
+      ],
+      "group": "current_rating",
+      "key": "rated_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Part Number and Rating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "A",
+      "name": "A",
+      "number": 1
+    },
+    {
+      "function": "B",
+      "name": "B",
+      "number": 2
+    }
+  ]
+}

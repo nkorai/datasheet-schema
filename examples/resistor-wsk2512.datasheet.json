@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "WSK25125L000FEA",
+    "manufacturer": "Vishay Dale",
+    "family": "resistor",
+    "description": "Power Metal Strip 4-terminal Kelvin current-sense shunt resistor, 2512 size, 5 mOhm (0.005 Ohm), +/-1% tolerance (F), +/-35 ppm/degC terminated TCR (0.005 to 0.2 Ohm bin), 1.0 W rated dissipation at 70 degC, solid manganese-copper / nickel-chrome alloy element with low element TCR (< 20 ppm/degC) and very low inductance, AEC-Q200 qualified (lead (Pb)-free tape/reel, code EA). Non-polar four-terminal Kelvin device: I1/I2 carry the current (force), E1/E2 (canonical sense S1/S2) tap the voltage across the element.",
+    "package": "2512",
+    "pinCount": 4,
+    "lifecycle": "active",
+    "temperatureGrade": "-65..170"
+  },
+  "pinout": [
+    { "number": 1, "name": "I1", "function": "I1", "type": "passive", "description": "Current (force) terminal 1. Carries the sensed current; interchangeable with I2.", "sourcePage": 3 },
+    { "number": 2, "name": "I2", "function": "I2", "type": "passive", "description": "Current (force) terminal 2. Carries the sensed current; interchangeable with I1.", "sourcePage": 3 },
+    { "number": 3, "name": "E1", "function": "S1", "type": "passive", "description": "Voltage-sense (Kelvin) terminal, marked E1 on the datasheet; canonical sense function S1. Taps the voltage across the metal element, isolated from the force-path IR drop.", "sourcePage": 3 },
+    { "number": 4, "name": "E2", "function": "S2", "type": "passive", "description": "Voltage-sense (Kelvin) terminal, marked E2 on the datasheet; canonical sense function S2. Taps the voltage across the metal element, isolated from the force-path IR drop.", "sourcePage": 3 }
+  ],
+  "parameters": [
+    {
+      "key": "resistance",
+      "name": "Nominal resistance",
+      "group": "electrical",
+      "aliases": ["R", "R25"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 0.005 },
+          "unit": "ohm",
+          "conditionsVerbatim": "5 mOhm nominal (value code 5L000 = 0.005 Ohm), 4-terminal Kelvin measurement, 25 degC reference",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications / Global Part Number Information"
+        }
+      ]
+    },
+    {
+      "key": "resistance_tolerance",
+      "name": "Resistance tolerance",
+      "group": "electrical",
+      "aliases": ["tol", "F"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1, "max": 1 },
+          "unit": "%",
+          "conditionsVerbatim": "Tolerance code F = +/- 1.0 % (4-terminal design allows 1 % down to 0.0005 Ohm)",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient",
+      "name": "Temperature coefficient of resistance (TCR)",
+      "group": "electrical",
+      "aliases": ["TCR", "TC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -35, "max": 35 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Temperature coefficient +/- 35 ppm/degC for the 0.005 Ohm to 0.2 Ohm resistance bin (applicable bin for this 0.005 Ohm value). Datasheet also lists +/-75 for 0.003-0.0049 Ohm, +/-250 for 0.001-0.0029 Ohm, +/-350 for 0.0005-0.00099 Ohm.",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "temperature_coefficient_element",
+      "name": "Element (alloy) temperature coefficient",
+      "group": "electrical",
+      "aliases": ["element TCR", "alloy TCR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 20 },
+          "unit": "ppm/degC",
+          "conditionsVerbatim": "Solid metal nickel-chrome or manganese-copper alloy resistive element with low TCR (< 20 ppm/degC) - the alloy element TCR, distinct from the terminated-part TCR that includes the terminals.",
+          "sourcePage": 1,
+          "sourceTable": "Features"
+        }
+      ]
+    },
+    {
+      "key": "rated_power",
+      "name": "Rated power dissipation",
+      "group": "power",
+      "aliases": ["P70", "rated dissipation"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 1.0 },
+          "unit": "W",
+          "conditions": [
+            { "param": "T_A", "value": 70, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Power rating P70degC = 1.0 W, at 70 degC ambient",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "power_derating",
+      "name": "Power derating curve",
+      "group": "power",
+      "aliases": ["derating curve"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 100 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 70, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Derating curve: 100 % of rated power up to 70 degC ambient",
+          "sourcePage": 3,
+          "sourceTable": "Derating"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "max": 0 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 170, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Derating curve: linear taper to 0 % of rated power at 170 degC ambient",
+          "sourcePage": 3,
+          "sourceTable": "Derating"
+        }
+      ]
+    },
+    {
+      "key": "max_working_voltage",
+      "name": "Maximum working (element) voltage",
+      "group": "electrical",
+      "aliases": ["Vmax", "Umax"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 0.0707 },
+          "unit": "V",
+          "conditionsVerbatim": "Maximum working voltage = (P x R)^1/2 = sqrt(1.0 W x 0.005 Ohm) = 0.0707 V (computed from rated power and this nominal resistance)",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "inductance",
+      "name": "Series inductance (ESL)",
+      "group": "electrical",
+      "aliases": ["ESL", "series inductance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5e-10, "max": 5e-9 },
+          "unit": "H",
+          "conditionsVerbatim": "Very low inductance 0.5 nH to 5 nH (series-wide range across resistance values)",
+          "sourcePage": 1,
+          "sourceTable": "Features"
+        }
+      ]
+    },
+    {
+      "key": "load_life_stability",
+      "name": "Load-life / long-term stability",
+      "group": "reliability",
+      "aliases": ["load life", "long-term stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0 },
+          "unit": "%",
+          "conditions": [
+            { "param": "T_A", "value": 70, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Load life: 1000 h at rated power, +70 degC, 1.5 h ON / 0.5 h OFF; test limit +/- 1.0 % + 0.0005 Ohm (percent tolerance-band drift captured; the additive 0.0005 Ohm floor term is not representable in %)",
+          "sourcePage": 3,
+          "sourceTable": "Performance"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating temperature", "category temp range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 170 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature range -65 degC to +170 degC",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "Revision: 11-Dec-2023, Document Number 30108",
+    "sourceUrl": "https://www.vishay.com/docs/30108/wsk2512.pdf",
+    "datasheetSha256": "227ffe2c9b26878a6c64cc0536e91d82a090ec0e20a6b54fc29c8ef12153f4d6",
+    "publishedDate": "2023-12-11",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

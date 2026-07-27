@@ -1,0 +1,451 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "CL31B106KBHNNNE",
+    "manufacturer": "Samsung Electro-Mechanics",
+    "family": "capacitor",
+    "description": "10 uF / 50 V X7R Class-II multilayer ceramic chip capacitor (MLCC), 1206 (3216 metric) case, 1.6 mm thick, tolerance +/-10% (K). Non-polar. X7R temperature characteristic: capacitance change within +/-15% over -55 to +125 degC. As a Class-II (ferroelectric) dielectric, the effective capacitance derates strongly under DC bias (capacitance_vs_dc_bias) and varies with applied AC signal level (capacitance_vs_ac_signal) and temperature (capacitance_vs_temperature). RoHS/Halogen compliant, Sn termination.",
+    "package": "1206 (3216 metric)",
+    "pinCount": 2,
+    "polarity": "bipolar",
+    "lifecycle": "active",
+    "temperatureGrade": "-55..125",
+    "orderingVariants": [
+      { "orderCode": "CL31B106KBHNNNE", "package": "1206 (3216 metric)", "packing": "Embossed tape, 7 inch reel, 2000 pcs" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "T1", "function": "T1", "type": "passive", "description": "Terminal 1. Non-polar ceramic capacitor: the two terminations are electrically interchangeable, no anode/cathode.", "sourcePage": 1 },
+    { "number": 2, "name": "T2", "function": "T2", "type": "passive", "description": "Terminal 2. Non-polar ceramic capacitor: the two terminations are electrically interchangeable, no anode/cathode.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "capacitance",
+      "name": "Rated (nominal) capacitance",
+      "group": "ratings",
+      "aliases": ["C", "nominal capacitance", "Capacitance value"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1.0e-5 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "V_DC", "value": 0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "10 uF nominal, X7R, measured at 1 kHz / 1.0 Vrms, no DC bias, 25 degC (Class II <= 10 uF measurement condition)",
+          "sourcePage": 1,
+          "sourceTable": "2. Description"
+        }
+      ]
+    },
+    {
+      "key": "capacitance_tolerance",
+      "name": "Capacitance tolerance",
+      "group": "ratings",
+      "aliases": ["tol", "K", "cap tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -10, "max": 10 },
+          "unit": "%",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Capacitance tolerance +/-10% (tolerance code K), measured at 1 kHz / 1.0 Vrms",
+          "sourcePage": 1,
+          "sourceTable": "2. Description"
+        }
+      ]
+    },
+    {
+      "key": "rated_voltage_dc",
+      "name": "Rated DC voltage",
+      "group": "ratings",
+      "aliases": ["VDC", "rated voltage", "Voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 50 },
+          "unit": "V",
+          "conditionsVerbatim": "Rated (maximum continuous working) DC voltage 50 V. The DC-bias capacitance derating is referenced to this value.",
+          "sourcePage": 1,
+          "sourceTable": "2. Description"
+        }
+      ]
+    },
+    {
+      "key": "capacitance_vs_dc_bias",
+      "name": "Capacitance change vs DC bias",
+      "group": "derating",
+      "aliases": ["DC bias characteristic", "bias derating"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); dC = 0% at 0 V DC (reference)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -10 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 5, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -10% at 5 V DC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -38 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 10, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -38% at 10 V DC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -68 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 20, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -68% at 20 V DC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -82 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 30, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -82% at 30 V DC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -87 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 40, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -87% at 40 V DC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -90 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_DC", "value": 50, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC Bias characteristics (Quadtech 7600, 1 kHz, 1 Vrms); ~ -90% at 50 V DC = rated voltage (read from graph). Effective capacitance at rated bias ~ 1 uF.",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics"
+        }
+      ]
+    },
+    {
+      "key": "capacitance_vs_temperature",
+      "name": "Capacitance change vs temperature",
+      "group": "temperature",
+      "aliases": ["dC/C vs T", "temperature characteristic", "TCC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -12 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": -55, "unit": "degC" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 0.5, "unit": "V" },
+            { "param": "V_DC", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Temperature characteristics of capacitance (TCC), Agilent 4284A, 1 kHz, 0.5 Vrms, no bias; ~ -12% at -55 degC (read from graph). X7R guarantee: within +/-15%.",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 0.5, "unit": "V" },
+            { "param": "V_DC", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "TCC (Agilent 4284A, 1 kHz, 0.5 Vrms, no bias); 0% at +25 degC reference",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -5 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 0.5, "unit": "V" },
+            { "param": "V_DC", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "TCC (Agilent 4284A, 1 kHz, 0.5 Vrms, no bias); ~ -5% at +85 degC (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -14 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": 125, "unit": "degC" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "V_AC", "value": 0.5, "unit": "V" },
+            { "param": "V_DC", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "TCC (Agilent 4284A, 1 kHz, 0.5 Vrms, no bias); ~ -14% at +125 degC (read from graph). Within X7R +/-15% limit.",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)"
+        }
+      ]
+    },
+    {
+      "key": "capacitance_vs_ac_signal",
+      "name": "Capacitance change vs AC signal level",
+      "group": "derating",
+      "aliases": ["AC voltage characteristic", "AC signal characteristic"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -16 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_AC", "value": 0.1, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "AC voltage characteristics (Agilent 4284A, 1 kHz); ~ -16% at 0.1 Vrms (relative to ~1 Vrms reference, read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -8 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_AC", "value": 0.5, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "AC voltage characteristics (Agilent 4284A, 1 kHz); ~ -8% at 0.5 Vrms (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -1 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_AC", "value": 1.0, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "AC voltage characteristics (Agilent 4284A, 1 kHz); ~ -1% at 1.0 Vrms (near reference, read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 11 },
+          "unit": "%",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_AC", "value": 2.0, "unit": "V" },
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "AC voltage characteristics (Agilent 4284A, 1 kHz); ~ +11% at 2.0 Vrms (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics"
+        }
+      ]
+    },
+    {
+      "key": "esr",
+      "name": "Equivalent series resistance",
+      "group": "impedance",
+      "aliases": ["Rs", "ESR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.01 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 100000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance/ESR characteristics (Agilent E4294A, 0.5 Vrms); ESR ~ 0.01 ohm at 100 kHz (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.005 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1000000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance/ESR characteristics (Agilent E4294A, 0.5 Vrms); ESR minimum ~ 0.005 ohm near 1 MHz (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.014 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 10000000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance/ESR characteristics (Agilent E4294A, 0.5 Vrms); ESR ~ 0.014 ohm at 10 MHz (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        }
+      ]
+    },
+    {
+      "key": "impedance",
+      "name": "Impedance",
+      "group": "impedance",
+      "aliases": ["Z", "|Z|"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 16 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance |Z| characteristics (Agilent E4294A, 0.5 Vrms); |Z| ~ 16 ohm at 1 kHz (capacitive region, read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.005 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1700000, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Impedance |Z| characteristics (Agilent E4294A, 0.5 Vrms); |Z| minimum ~ 0.005 ohm (= ESR) at self-resonant frequency ~ 1.7 MHz (read from graph)",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        }
+      ]
+    },
+    {
+      "key": "self_resonant_frequency",
+      "name": "Self-resonant frequency",
+      "group": "impedance",
+      "aliases": ["SRF", "f0"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.7e6 },
+          "unit": "Hz",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Self-resonant frequency ~ 1.7 MHz, read as the frequency of minimum |Z| in the Impedance/ESR graph (Agilent E4294A). Above it the part is inductive.",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating (category) temperature range",
+      "group": "general",
+      "aliases": ["category temperature range", "T_op"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "X7R category (operating) temperature range -55 to +125 degC, over which the TCC characteristic is specified (capacitance change within +/-15%).",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "f2e46f3935d21996a708595b334ad9efdcf15cb7674b9391758d110701d30e8e",
+    "sourceUrl": "https://datasheet.octopart.com/CL31B106KBHNNNE-Samsung-datasheet-67374631.pdf",
+    "datasheetRevision": "Samsung Electro-Mechanics MLCC Characteristics Data Sheet (Reference Sheet), CL31B106KBHNNNE",
+    "extractionMethod": "manual",
+    "fetchedAt": "2026-07-27T00:00:00Z",
+    "verified": true
+  }
+}

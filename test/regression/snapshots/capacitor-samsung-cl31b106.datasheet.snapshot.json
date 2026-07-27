@@ -1,0 +1,1057 @@
+{
+  "family": "capacitor",
+  "manufacturer": "Samsung Electro-Mechanics",
+  "mpn": "CL31B106KBHNNNE",
+  "parameters": [
+    {
+      "aliases": [
+        "C",
+        "Capacitance value",
+        "nominal capacitance"
+      ],
+      "group": "ratings",
+      "key": "capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "2. Description",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "K",
+        "cap tolerance",
+        "tol"
+      ],
+      "group": "ratings",
+      "key": "capacitance_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "2. Description",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 10,
+            "min": -10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDC",
+        "Voltage",
+        "rated voltage"
+      ],
+      "group": "ratings",
+      "key": "rated_voltage_dc",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "2. Description",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC bias characteristic",
+        "bias derating"
+      ],
+      "group": "derating",
+      "key": "capacitance_vs_dc_bias",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -10
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -38
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 20
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -68
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 30
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -82
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 40
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -87
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 50
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 3) DC Bias characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -90
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TCC",
+        "dC/C vs T",
+        "temperature characteristic"
+      ],
+      "group": "temperature",
+      "key": "capacitance_vs_temperature",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": -55
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -12
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -5
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 125
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -14
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "AC signal characteristic",
+        "AC voltage characteristic"
+      ],
+      "group": "derating",
+      "key": "capacitance_vs_ac_signal",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -16
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 0.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": -1
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_AC",
+              "unit": "V",
+              "value": 2
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 5) AC voltage characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESR",
+        "Rs"
+      ],
+      "group": "impedance",
+      "key": "esr",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 100000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 0.01
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 0.005
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 0.014
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Z",
+        "|Z|"
+      ],
+      "group": "impedance",
+      "key": "impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 16
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1700000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SRF",
+        "f0"
+      ],
+      "group": "impedance",
+      "key": "self_resonant_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 1) Frequency characteristics (Impedance |Z|, ESR)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 1700000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_op",
+        "category temperature range"
+      ],
+      "group": "general",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "3. Characteristics data - 2) Temperature characteristics of capacitance (TCC)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "T1",
+      "name": "T1",
+      "number": 1
+    },
+    {
+      "function": "T2",
+      "name": "T2",
+      "number": 2
+    }
+  ]
+}

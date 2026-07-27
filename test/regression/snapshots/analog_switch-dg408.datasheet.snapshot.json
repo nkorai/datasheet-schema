@@ -1,0 +1,1133 @@
+{
+  "family": "analog_switch",
+  "manufacturer": "Vishay Siliconix",
+  "mpn": "DG408",
+  "parameters": [
+    {
+      "aliases": [
+        "RDS(on)",
+        "RON",
+        "on-resistance"
+      ],
+      "group": "switch",
+      "key": "on_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_S",
+              "unit": "A",
+              "value": -0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 100,
+            "typ": 40
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_S",
+              "unit": "A",
+              "value": -0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RON match",
+        "delta RDS(on)",
+        "on-resistance matching between channels"
+      ],
+      "group": "switch",
+      "key": "on_resistance_match",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VANALOG",
+        "analog signal range"
+      ],
+      "group": "signal",
+      "key": "analog_signal_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 15,
+            "min": -15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Q",
+        "Qinj",
+        "charge injection"
+      ],
+      "group": "switch",
+      "key": "charge_injection",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-8
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "C",
+          "value": {
+            "typ": 2e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IS(off)",
+        "source leakage",
+        "source off leakage"
+      ],
+      "group": "leakage",
+      "key": "source_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-10
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 5e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID(off)",
+        "ID(on)",
+        "channel leakage",
+        "drain leakage"
+      ],
+      "group": "leakage",
+      "key": "drain_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-8
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-9
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 10
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "OIRR",
+        "off isolation"
+      ],
+      "group": "isolation",
+      "key": "off_isolation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -75
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CD(on)",
+        "on capacitance"
+      ],
+      "group": "capacitance",
+      "key": "on_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 3.7e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CD(off)",
+        "CS(off)",
+        "off capacitance"
+      ],
+      "group": "capacitance",
+      "key": "off_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 3e-12
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_D",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 2.6e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tTRANS",
+        "transition time"
+      ],
+      "group": "switching",
+      "key": "transition_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 2.5e-7,
+            "typ": 1.6e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "enable turn-on time",
+        "tON",
+        "ton(EN)"
+      ],
+      "group": "switching",
+      "key": "turn_on_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.5e-7,
+            "typ": 1.15e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "enable turn-off time",
+        "tOFF",
+        "toff(EN)"
+      ],
+      "group": "switching",
+      "key": "turn_off_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.5e-7,
+            "typ": 1.05e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "break-before-make interval",
+        "tBBM",
+        "tOPEN"
+      ],
+      "group": "switching",
+      "key": "break_before_make_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "min": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIH",
+        "VIL",
+        "VINH",
+        "VINL",
+        "logic input threshold"
+      ],
+      "group": "digital",
+      "key": "logic_threshold",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.4
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IAH",
+        "IAL",
+        "address input current",
+        "logic input current"
+      ],
+      "group": "digital",
+      "key": "logic_input_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 2.4
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cin",
+        "logic input capacitance"
+      ],
+      "group": "digital",
+      "key": "digital_input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 8e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I+",
+        "I-",
+        "ISUPPLY",
+        "negative supply current",
+        "positive supply current",
+        "supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Power Supplies",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000075,
+            "typ": 0.00001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Power Supplies",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating supply voltage",
+        "supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "supply_voltage_range",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "single-supply operation (V- = GND); dual-supply operation is +/-5 V to +/-20 V",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Features / Benefits",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 36,
+            "min": 5
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 44
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating ambient temperature range",
+        "operating temperature range"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Ordering Information (Commercial)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "temperature",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "power dissipation"
+      ],
+      "group": "temperature",
+      "key": "power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.6
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "A0",
+      "name": "A0",
+      "number": 1
+    },
+    {
+      "function": "EN",
+      "name": "EN",
+      "number": 2
+    },
+    {
+      "function": "VN",
+      "name": "V-",
+      "number": 3
+    },
+    {
+      "function": "S1",
+      "name": "S1",
+      "number": 4
+    },
+    {
+      "function": "S2",
+      "name": "S2",
+      "number": 5
+    },
+    {
+      "function": "S3",
+      "name": "S3",
+      "number": 6
+    },
+    {
+      "function": "S4",
+      "name": "S4",
+      "number": 7
+    },
+    {
+      "function": "D",
+      "name": "D",
+      "number": 8
+    },
+    {
+      "function": "S8",
+      "name": "S8",
+      "number": 9
+    },
+    {
+      "function": "S7",
+      "name": "S7",
+      "number": 10
+    },
+    {
+      "function": "S6",
+      "name": "S6",
+      "number": 11
+    },
+    {
+      "function": "S5",
+      "name": "S5",
+      "number": 12
+    },
+    {
+      "function": "VP",
+      "name": "V+",
+      "number": 13
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 14
+    },
+    {
+      "function": "A2",
+      "name": "A2",
+      "number": 15
+    },
+    {
+      "function": "A1",
+      "name": "A1",
+      "number": 16
+    }
+  ]
+}

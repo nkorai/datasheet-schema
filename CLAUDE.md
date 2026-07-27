@@ -100,7 +100,7 @@ when extending anything.
 |---|---|
 | `schema/datasheet-1.0.schema.json` | **The normative artifact.** Self-contained, no external `$ref`. Where prose and this disagree, this governs. |
 | `dictionary/family-dictionary-1.0.schema.json` | Meta-schema every family dictionary validates against. |
-| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (62 params), `mosfet` (45), `voltage_reference` (41), `op_amp` (59), `dc_dc` (92), `diode` (39), `bjt` (55), `capacitor` (32), `resistor` (22), `inductor` (19), `jfet` (30), `comparator` (38), `analog_switch` (23), `adc` (92), `dac` (104), `crystal` (20), `led` (43). |
+| `dictionary/<family>-x.y.json` | Per-family canonical keys, units, groups, aliases, hints. `ldo` (62 params), `mosfet` (45), `voltage_reference` (41), `op_amp` (59), `dc_dc` (92), `diode` (39), `bjt` (55), `capacitor` (32), `resistor` (22), `inductor` (19), `jfet` (30), `comparator` (38), `analog_switch` (25), `adc` (92), `dac` (104), `crystal` (20), `led` (43). |
 | `spec/v1.0/datasheet-spec.md` | Human-readable normative spec (RFC-2119 language). |
 | `CONFORMANCE.md` | The consumer's checklist: Layer 1 (portable JSON Schema) + Layer 2 (the 3 dictionary-driven family checks any consumer reimplements — key membership, unit scoping, axis dimension). Point adopters here. |
 | `spec/v1.0/*.txt` | Corpus evidence: parameter-frequency analysis over the 39-datasheet LDO corpus. |

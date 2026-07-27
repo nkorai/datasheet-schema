@@ -1,0 +1,1092 @@
+{
+  "family": "comparator",
+  "manufacturer": "Texas Instruments",
+  "mpn": "TLV3011",
+  "parameters": [
+    {
+      "aliases": [
+        "VS",
+        "operating voltage range",
+        "specified voltage",
+        "supply voltage"
+      ],
+      "group": "power_supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 1.8
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TA",
+        "ambient temperature",
+        "operating free-air temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Recommended Operating Conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIN abs max",
+        "signal input pins voltage"
+      ],
+      "group": "general",
+      "key": "input_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.5,
+            "min": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOS",
+        "input offset voltage"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.015,
+            "min": -0.015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOS/dT",
+        "input offset voltage vs temperature"
+      ],
+      "group": "offset",
+      "key": "input_offset_voltage_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": 0.000012
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IB",
+        "input bias current"
+      ],
+      "group": "input_bias",
+      "key": "input_bias_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = VS/2",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-11,
+            "min": -1e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IOS",
+        "input offset current"
+      ],
+      "group": "offset",
+      "key": "input_offset_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = VS/2",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-11,
+            "min": -1e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCM",
+        "common-mode voltage range",
+        "input voltage range"
+      ],
+      "group": "input",
+      "key": "common_mode_input_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.2,
+            "min": -0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR",
+        "common-mode rejection ratio"
+      ],
+      "group": "rejection",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = -0.2 V to (V+) - 1.5 V",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 60,
+            "typ": 74
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "VCM = -0.2 V to (V+) + 0.2 V",
+              "param": "V_CM",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "min": 54,
+            "typ": 62
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSRR",
+        "power supply rejection ratio"
+      ],
+      "group": "rejection",
+      "key": "power_supply_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5.5,
+              "min": 1.8,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/V",
+          "value": {
+            "max": 0.001,
+            "typ": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL",
+        "output saturation voltage",
+        "voltage output low from rail"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "sinking",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.2,
+            "typ": 0.16
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "propagation delay time",
+        "response time",
+        "tPHL",
+        "tPLH"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "low to high (rising)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000012
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "low to high (rising)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.000006
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "high to low (falling)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.0000135
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OVERDRIVE",
+              "unit": "V",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "high to low (falling)",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 0.0000065
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "rise time",
+        "tf",
+        "tr"
+      ],
+      "group": "dynamic",
+      "key": "rise_fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "rising",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-7
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "falling",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 7,
+          "sourceTable": "Switching Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IQ",
+        "quiescent current",
+        "supply current"
+      ],
+      "group": "power_supply",
+      "key": "quiescent_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.000005,
+            "typ": 0.0000028
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOUT",
+        "internal reference voltage",
+        "reference output voltage"
+      ],
+      "group": "reference",
+      "key": "reference_output_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.276,
+            "min": 1.208,
+            "typ": 1.242
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dT",
+        "reference tempco",
+        "reference temperature drift"
+      ],
+      "group": "reference",
+      "key": "reference_temperature_drift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 125,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 100,
+            "typ": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dVIN",
+        "reference line regulation"
+      ],
+      "group": "reference",
+      "key": "reference_line_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5.5,
+              "min": 1.8,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/V",
+          "value": {
+            "max": 100,
+            "typ": 10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVOUT/dILOAD",
+        "reference load regulation"
+      ],
+      "group": "reference",
+      "key": "reference_load_regulation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 0.0005,
+              "min": 0,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "sourcing",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 1,
+            "typ": 0.36
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 0.0005,
+              "min": 0,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "sinking",
+              "param": "DIRECTION",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 6.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ILOAD",
+        "reference output current"
+      ],
+      "group": "reference",
+      "key": "reference_output_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "reference output noise",
+        "reference voltage noise"
+      ],
+      "group": "reference",
+      "key": "reference_output_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "f = 0.1 Hz to 10 Hz",
+              "param": "F",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Electrical Characteristics - TLV3011 and TLV3012",
+          "statistic": "peak_to_peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.0002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA",
+        "RthetaJA",
+        "junction-to-ambient thermal resistance"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DBV (SOT-23), 6 pins",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Thermal Information - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 191.6
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "DCK (SC-70), 6 pins",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Thermal Information - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 179.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TJ",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Absolute Maximum Ratings - TLV3011 and TLV3012",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD HBM",
+        "V(ESD) HBM"
+      ],
+      "group": "general",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 2000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESD CDM",
+        "V(ESD) CDM"
+      ],
+      "group": "general",
+      "key": "esd_cdm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "ESD Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 1000
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 1
+    },
+    {
+      "function": "VS_NEG",
+      "name": "V-",
+      "number": 2
+    },
+    {
+      "function": "IN_P",
+      "name": "IN+",
+      "number": 3
+    },
+    {
+      "function": "IN_N",
+      "name": "IN-",
+      "number": 4
+    },
+    {
+      "function": "REF",
+      "name": "REF",
+      "number": 5
+    },
+    {
+      "function": "VS_POS",
+      "name": "V+",
+      "number": 6
+    }
+  ]
+}

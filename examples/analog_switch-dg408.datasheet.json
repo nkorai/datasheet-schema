@@ -1,0 +1,573 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "DG408",
+    "manufacturer": "Vishay Siliconix",
+    "family": "analog_switch",
+    "description": "8-channel single-ended CMOS analog multiplexer (sub_type: multiplexer, config: 8:1). Connects one of eight inputs (S1..S8) to a common output (D) as selected by a 3-bit binary address (A0, A1, A2), with an active-high enable (EN) that forces all channels off for stacking. Break-before-make switching prevents momentary crosstalk between adjacent channels; each on channel conducts equally in both directions and each off channel blocks to the supply rails. On-resistance 100 ohm max, 20 pC charge injection, 160 ns address-to-output transition. Built on the 44 V silicon-gate CMOS process with an epitaxial anti-latchup layer: operates from dual supplies (+/-5 V to +/-20 V) or a single supply (+5 V to +36 V, 44 V max V+ to V-), with TTL-compatible address and enable inputs over the full temperature range. DG408 is the single-ended 8:1 member of the DG408/DG409 family (DG409 is a dual differential 4:1). This document describes the DG408 (D suffix, -40 to +85 degC grade).",
+    "package": "SOIC-16",
+    "pinCount": 16,
+    "polarity": "positive",
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "DG408DJ-E3", "package": "16-pin plastic DIP", "packing": "Tube, RoHS" },
+      { "orderCode": "DG408DY-E3", "package": "16-pin SOIC", "packing": "Tube, RoHS" },
+      { "orderCode": "DG408DY-T1-E3", "package": "16-pin SOIC", "packing": "Tape and Reel, RoHS" },
+      { "orderCode": "DG408DQ-E3", "package": "16-pin TSSOP", "packing": "Tube, RoHS" },
+      { "orderCode": "DG408DQ-T1-E3", "package": "16-pin TSSOP", "packing": "Tape and Reel, RoHS" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "A0", "function": "A0", "type": "digital_in", "description": "Address (select) input, bit 0. A2:A1:A0 = 000 selects S1 .. 111 selects S8 when EN = 1. TTL/CMOS compatible.", "sourcePage": 1 },
+    { "number": 2, "name": "EN", "function": "EN", "type": "digital_in", "description": "Enable input. EN = 0 forces all eight channels off (D disconnected); EN = 1 enables the addressed channel. TTL/CMOS compatible; allows stacking multiple devices.", "sourcePage": 1 },
+    { "number": 3, "name": "V-", "function": "VN", "type": "power", "description": "Negative analog supply rail (e.g. -15 V dual, or GND for single-supply operation).", "sourcePage": 1 },
+    { "number": 4, "name": "S1", "function": "S1", "type": "analog", "description": "Channel-1 source terminal. Connected to D when A2:A1:A0 = 000 and EN = 1. Bidirectional analog signal path.", "sourcePage": 1 },
+    { "number": 5, "name": "S2", "function": "S2", "type": "analog", "description": "Channel-2 source terminal. Connected to D when A2:A1:A0 = 001 and EN = 1.", "sourcePage": 1 },
+    { "number": 6, "name": "S3", "function": "S3", "type": "analog", "description": "Channel-3 source terminal. Connected to D when A2:A1:A0 = 010 and EN = 1.", "sourcePage": 1 },
+    { "number": 7, "name": "S4", "function": "S4", "type": "analog", "description": "Channel-4 source terminal. Connected to D when A2:A1:A0 = 011 and EN = 1.", "sourcePage": 1 },
+    { "number": 8, "name": "D", "function": "D", "type": "analog", "description": "Common (drain) terminal; the multiplexer output shared by all eight channels. Bidirectional analog signal path.", "sourcePage": 1 },
+    { "number": 9, "name": "S8", "function": "S8", "type": "analog", "description": "Channel-8 source terminal. Connected to D when A2:A1:A0 = 111 and EN = 1.", "sourcePage": 1 },
+    { "number": 10, "name": "S7", "function": "S7", "type": "analog", "description": "Channel-7 source terminal. Connected to D when A2:A1:A0 = 110 and EN = 1.", "sourcePage": 1 },
+    { "number": 11, "name": "S6", "function": "S6", "type": "analog", "description": "Channel-6 source terminal. Connected to D when A2:A1:A0 = 101 and EN = 1.", "sourcePage": 1 },
+    { "number": 12, "name": "S5", "function": "S5", "type": "analog", "description": "Channel-5 source terminal. Connected to D when A2:A1:A0 = 100 and EN = 1.", "sourcePage": 1 },
+    { "number": 13, "name": "V+", "function": "VP", "type": "power", "description": "Positive analog supply rail (e.g. +15 V dual, or +5 V to +36 V single).", "sourcePage": 1 },
+    { "number": 14, "name": "GND", "function": "GND", "type": "power", "description": "Ground / logic reference.", "sourcePage": 1 },
+    { "number": 15, "name": "A2", "function": "A2", "type": "digital_in", "description": "Address (select) input, bit 2 (most significant). TTL/CMOS compatible.", "sourcePage": 1 },
+    { "number": 16, "name": "A1", "function": "A1", "type": "digital_in", "description": "Address (select) input, bit 1. TTL/CMOS compatible.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "on_resistance",
+      "name": "Drain-source on-resistance",
+      "group": "switch",
+      "aliases": ["RDS(on)", "RON", "on-resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 40, "max": 100 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "I_S", "value": -0.01, "unit": "A" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "RDS(on), VD = +/-10 V, IS = -10 mA, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); typ 40 ohm, D-suffix max 100 ohm",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 125 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "I_S", "value": -0.01, "unit": "A" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "RDS(on) over the full operating temperature range (D suffix, -40 to +85 degC), VD = +/-10 V, IS = -10 mA, V+ = 15 V, V- = -15 V; max 125 ohm (on-resistance rises with temperature)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "on_resistance_match",
+      "name": "On-resistance matching between channels",
+      "group": "switch",
+      "aliases": ["delta RDS(on)", "RON match", "on-resistance matching between channels"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 15 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "delta-RDS(on), matching between channels, VD = +/-10 V, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); max 15 ohm (channel-to-channel on-resistance spread within one device)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "analog_signal_range",
+      "name": "Analog signal range",
+      "group": "signal",
+      "aliases": ["VANALOG", "analog signal range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -15, "max": 15 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VANALOG, analog signal range, V+ = 15 V, V- = -15 V, over the full operating temperature range; min -15 V, max +15 V (rail-to-rail; also applies when V- = GND on single supply)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "charge_injection",
+      "name": "Charge injection",
+      "group": "switch",
+      "aliases": ["Q", "Qinj", "charge injection"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-11 },
+          "unit": "C",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "C_L", "value": 1e-8, "unit": "F" },
+            { "param": "V_S", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Q = 20 pC, CL = 10 nF, VS = 0 V, V+ = 15 V, V- = -15 V, TA = 25 degC (Room) (charge dumped onto the load at a channel transition)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "source_leakage_current",
+      "name": "Source off-leakage current",
+      "group": "leakage",
+      "aliases": ["IS(off)", "source off leakage", "source leakage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-10 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IS(off), VS = +/-10 V, VD = +/-10 V, VEN = 0 V, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); min -0.5 nA, max +0.5 nA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IS(off) over the full operating temperature range (D suffix, -40 to +85 degC), VS = +/-10 V, VD = +/-10 V, VEN = 0 V; min -5 nA, max +5 nA (leakage rises with temperature; magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "drain_leakage_current",
+      "name": "Drain leakage current",
+      "group": "leakage",
+      "aliases": ["ID(off)", "ID(on)", "drain leakage", "channel leakage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(off), open-switch drain leakage, DG408, VD = +/-10 V, VS = +/-10 V, VEN = 0 V, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); min -1 nA, max +1 nA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(off), open-switch drain leakage, DG408, over the full operating temperature range (-40 to +85 degC), VD = +/-10 V, VEN = 0 V; min -20 nA, max +20 nA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-9 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(on), closed-switch channel leakage, DG408, VS = VD = +/-10 V, sequence each switch on, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); min -1 nA, max +1 nA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_D", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ID(on), closed-switch channel leakage, DG408, over the full operating temperature range (-40 to +85 degC), VS = VD = +/-10 V, sequence each switch on; min -20 nA, max +20 nA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Analog Switch"
+        }
+      ]
+    },
+    {
+      "key": "off_isolation",
+      "name": "Off isolation",
+      "group": "isolation",
+      "aliases": ["OIRR", "off isolation"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -75 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" },
+            { "param": "R_L", "value": 1000, "unit": "ohm" },
+            { "param": "V_EN", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "OIRR, off isolation, VEN = 0 V, RL = 1 kohm, f = 1 MHz, V+ = 15 V, V- = -15 V, TA = 25 degC (Room); typ -75 dB (source-to-drain attenuation with the channel open)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "on_capacitance",
+      "name": "Drain on-capacitance",
+      "group": "capacitance",
+      "aliases": ["CD(on)", "on capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.7e-11 },
+          "unit": "F",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_D", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "CD(on), DG408, closed-switch common (drain) terminal capacitance, VEN = 0 V, VD = 0 V, f = 1 MHz, TA = 25 degC (Room); typ 37 pF",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "off_capacitance",
+      "name": "Off capacitance",
+      "group": "capacitance",
+      "aliases": ["CS(off)", "CD(off)", "off capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3e-12 },
+          "unit": "F",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_S", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "CS(off), open-switch source (channel) terminal capacitance, VEN = 0 V, VS = 0 V, f = 1 MHz, TA = 25 degC (Room); typ 3 pF",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.6e-11 },
+          "unit": "F",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_D", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "CD(off), DG408, open-switch common (drain) terminal capacitance, VEN = 0 V, VD = 0 V, f = 1 MHz, TA = 25 degC (Room); typ 26 pF (sets high-frequency feedthrough at the shared output)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "transition_time",
+      "name": "Address-to-output transition time",
+      "group": "switching",
+      "aliases": ["tTRANS", "transition time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.6e-7, "max": 2.5e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "tTRANS, address-to-output transition time (Test Circuit Fig. 2), V+ = 15 V, V- = -15 V, over the full operating temperature range; typ 160 ns, max 250 ns (mux settling delay from an address change to the newly selected channel at D)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Enable turn-on time",
+      "group": "switching",
+      "aliases": ["ton(EN)", "tON", "enable turn-on time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.15e-7, "max": 1.5e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "ton(EN), enable turn-on time (Test Circuit Fig. 3), V+ = 15 V, V- = -15 V, TA = 25 degC (Room); typ 115 ns, max 150 ns",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Enable turn-off time",
+      "group": "switching",
+      "aliases": ["toff(EN)", "tOFF", "enable turn-off time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.05e-7, "max": 1.5e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "toff(EN), enable turn-off time (Test Circuit Fig. 3), V+ = 15 V, V- = -15 V, TA = 25 degC (Room); typ 105 ns, max 150 ns",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "break_before_make_time",
+      "name": "Break-before-make interval",
+      "group": "switching",
+      "aliases": ["tOPEN", "break-before-make interval", "tBBM"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "tOPEN, break-before-make interval (Test Circuit Fig. 4), V+ = 15 V, V- = -15 V, TA = 25 degC (Room); guaranteed min 10 ns (dead time both channels are open during an address change, preventing momentary channel-to-channel shorting)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Dynamic Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "logic_threshold",
+      "name": "Logic input switching threshold",
+      "group": "digital",
+      "aliases": ["VINH", "VINL", "VIH", "VIL", "logic input threshold"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VINH, logic-high input voltage threshold, over the full operating temperature range; 2.4 V (a logic '1' = VAH >= 2.4 V per datasheet note; the table lists 2.4 V in the TYP column but it is the guaranteed high-level threshold). TTL compatible.",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.8 },
+          "unit": "V",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "VINL, logic-low input voltage threshold, over the full operating temperature range; max 0.8 V (a logic '0' = VAL <= 0.8 V per datasheet note). TTL compatible.",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control"
+        }
+      ]
+    },
+    {
+      "key": "logic_input_current",
+      "name": "Logic/address input current",
+      "group": "digital",
+      "aliases": ["IAH", "IAL", "logic input current", "address input current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 2.4, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IAH, logic-high input current, VA = 2.4 V and 15 V, over the full operating temperature range; min -10 uA, max +10 uA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_S", "value": 0, "unit": "V" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IAL, logic-low input current, VEN = 0 V, VA = 0 V (and 2.4 V), over the full operating temperature range; min -10 uA, max +10 uA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control"
+        }
+      ]
+    },
+    {
+      "key": "digital_input_capacitance",
+      "name": "Logic input capacitance",
+      "group": "digital",
+      "aliases": ["Cin", "logic input capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-12 },
+          "unit": "F",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Cin, logic (address/enable) input capacitance, f = 1 MHz, TA = 25 degC (Room); typ 8 pF",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Digital Control"
+        }
+      ]
+    },
+    {
+      "key": "quiescent_current",
+      "name": "Supply (quiescent) current",
+      "group": "power_supply",
+      "aliases": ["I+", "I-", "positive supply current", "negative supply current", "ISUPPLY", "supply current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-5, "max": 7.5e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "I+ (positive supply current), VEN = VA = 0 V or 5 V, V+ = 15 V, V- = -15 V, over the full operating temperature range; typ 10 uA, D-suffix max 75 uA",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Power Supplies"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "A",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "I- (negative supply current), VEN = VA = 0 V or 5 V, V+ = 15 V, V- = -15 V, over the full operating temperature range; typ 1 uA, min bound -75 uA (magnitude stored)",
+          "sourcePage": 3,
+          "sourceTable": "Specifications, Power Supplies"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage_range",
+      "name": "Supply voltage range",
+      "group": "power_supply",
+      "aliases": ["supply voltage", "operating supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 5, "max": 36 },
+          "unit": "V",
+          "conditions": [
+            { "param": "MODE", "note": "single-supply operation (V- = GND); dual-supply operation is +/-5 V to +/-20 V" }
+          ],
+          "conditionsVerbatim": "Operating supply range: single supply +5 V to +36 V; dual supplies +/-5 V to +/-20 V (Features / Benefits summary).",
+          "sourcePage": 1,
+          "sourceTable": "Features / Benefits"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 44 },
+          "unit": "V",
+          "conditionsVerbatim": "V+ to V- = 44 V absolute maximum; GND to V- = -25 V min; digital inputs / VS / VD limited to (V-) - 2 V to (V+) + 2 V or 20 mA whichever occurs first.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["operating temperature range", "operating ambient temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating (ambient) temperature range, DG408 D suffix (DJ/DY/DQ packages): -40 degC to +85 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Ordering Information (Commercial)"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "temperature",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature (Tstg): -65 degC to +125 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "power_dissipation",
+      "name": "Power dissipation",
+      "group": "temperature",
+      "aliases": ["PD", "power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.6 },
+          "unit": "W",
+          "conditionsVerbatim": "Maximum power dissipation: 600 mW (SOIC/TSSOP), 450 mW (PDIP), derated above 75 degC; SOIC value stored.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetRevision": "E24-0223-Rev. L, 29-Apr-2024 (Document Number 70062)",
+    "sourceUrl": "https://www.vishay.com/docs/70062/dg408.pdf",
+    "datasheetSha256": "e2f053eb0fbf865327422b93c7ff0790365e748b69f27475c31aa4de9ea3be8d",
+    "publishedDate": "2024-04-29",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

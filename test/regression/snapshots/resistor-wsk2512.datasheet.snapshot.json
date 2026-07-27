@@ -1,0 +1,311 @@
+{
+  "family": "resistor",
+  "manufacturer": "Vishay Dale",
+  "mpn": "WSK25125L000FEA",
+  "parameters": [
+    {
+      "aliases": [
+        "R",
+        "R25"
+      ],
+      "group": "electrical",
+      "key": "resistance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications / Global Part Number Information",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "nom": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F",
+        "tol"
+      ],
+      "group": "electrical",
+      "key": "resistance_tolerance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 1,
+            "min": -1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TC",
+        "TCR"
+      ],
+      "group": "electrical",
+      "key": "temperature_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 35,
+            "min": -35
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "alloy TCR",
+        "element TCR"
+      ],
+      "group": "electrical",
+      "key": "temperature_coefficient_element",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "P70",
+        "rated dissipation"
+      ],
+      "group": "power",
+      "key": "rated_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Standard Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "derating curve"
+      ],
+      "group": "power",
+      "key": "power_derating",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Derating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 100
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 170
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Derating",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Umax",
+        "Vmax"
+      ],
+      "group": "electrical",
+      "key": "max_working_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.0707
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESL",
+        "series inductance"
+      ],
+      "group": "electrical",
+      "key": "inductance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Features",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "H",
+          "value": {
+            "max": 5e-9,
+            "min": 5e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "load life",
+        "long-term stability"
+      ],
+      "group": "reliability",
+      "key": "load_life_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 70
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Performance",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "category temp range",
+        "operating temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Technical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 170,
+            "min": -65
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "I1",
+      "name": "I1",
+      "number": 1
+    },
+    {
+      "function": "I2",
+      "name": "I2",
+      "number": 2
+    },
+    {
+      "function": "S1",
+      "name": "E1",
+      "number": 3
+    },
+    {
+      "function": "S2",
+      "name": "E2",
+      "number": 4
+    }
+  ]
+}
