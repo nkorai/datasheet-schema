@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "ABS07-32.768KHZ",
+    "manufacturer": "Abracon",
+    "family": "crystal",
+    "description": "32.768 kHz tuning-fork (flexural-mode) quartz crystal unit in a seam-sealed ceramic SMD package, 3.2 x 1.5 x 0.9 mm. Standard grade: +/-20 ppm frequency tolerance at +25 C, 12.5 pF load capacitance, -40 to +85 C operating range. Two interchangeable terminals; no supply, output, or logic. Used as the timekeeping reference for RTCs and low-power microcontroller sub-clocks.",
+    "package": "SMD ceramic, 3.2x1.5x0.9mm",
+    "pinCount": 2,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "ABS07-32.768KHZ", "package": "SMD ceramic, 3.2x1.5x0.9mm", "packing": "Bulk" },
+      { "orderCode": "ABS07-32.768KHZ-T", "package": "SMD ceramic, 3.2x1.5x0.9mm", "packing": "Tape and reel, 3k pcs/reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "1", "function": "XTAL1", "type": "passive", "description": "Crystal terminal. The two terminals of a quartz crystal are electrically interchangeable (no polarity).", "sourcePage": 4 },
+    { "number": 2, "name": "2", "function": "XTAL2", "type": "passive", "description": "Crystal terminal. The two terminals of a quartz crystal are electrically interchangeable (no polarity).", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal frequency",
+      "group": "frequency",
+      "aliases": ["F0", "frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 32768 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Frequency 32.768 kHz, flexural (tuning-fork) mode, at CL = 12.5 pF",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance at +25 C",
+      "group": "frequency",
+      "aliases": ["Ftol", "frequency tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency Tolerance @+25C: -20 / +20 ppm (Option \"blank\")",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "parabolic_coefficient",
+      "name": "Parabolic (turnover) temperature coefficient",
+      "group": "temperature",
+      "aliases": ["B", "temperature coefficient", "ppm/T2"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.040, "typ": -0.036 },
+          "unit": "ppm/degC2",
+          "conditionsVerbatim": "Temperature Coefficient: -0.040 (min) / -0.036 (typ) ppm/T^2 (downward parabola about the turn-over temperature)",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "turnover_temperature",
+      "name": "Turn-over temperature",
+      "group": "temperature",
+      "aliases": ["Ti", "turn-over temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 20, "typ": 25, "max": 30 },
+          "unit": "degC",
+          "conditionsVerbatim": "Turn-over temperature: +20 (min) / +25 (typ) / +30 (max) C",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "equivalent_series_resistance",
+      "name": "Equivalent series resistance (R1)",
+      "group": "equivalent_circuit",
+      "aliases": ["R1", "ESR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 70000 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "R1 max 70 kOhm over -40 ~ +85 C (Option \"blank\" grade). The datasheet's 95 kOhm rows over -40~+125 and -55~+125 are the H and W temperature-option grades - different orderable parts - so they are not folded into this -40~+85 grade's document.",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "shunt_capacitance",
+      "name": "Shunt (static) capacitance C0",
+      "group": "equivalent_circuit",
+      "aliases": ["C0", "shunt capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 2.0e-12 },
+          "unit": "F",
+          "conditionsVerbatim": "Shunt capacitance (C0): typ 0.9 ~ 1.2 pF, max 2.0 pF (the typ is printed as a range, so only the guaranteed max is stored structurally; the range is preserved here)",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "quality_factor",
+      "name": "Quality factor Q",
+      "group": "equivalent_circuit",
+      "aliases": ["Q", "quality factor"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 10000, "typ": 30000 },
+          "unit": "1",
+          "conditionsVerbatim": "Q value: 10000 (min) / 30000 (typ) - a pure dimensionless number",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "load_capacitance",
+      "name": "Load capacitance CL",
+      "group": "equivalent_circuit",
+      "aliases": ["CL", "load capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 12.5e-12 },
+          "unit": "F",
+          "conditionsVerbatim": "Load capacitance (CL): 12.5 pF (Option \"blank\")",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "drive_level",
+      "name": "Drive level",
+      "group": "drive",
+      "aliases": ["DL", "drive level"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "typ": 1.0e-7, "max": 5.0e-7 },
+          "unit": "W",
+          "conditionsVerbatim": "Drive Level: typ 0.1 uW, max 0.5 uW (a single 'Drive Level' row - the operating envelope the specs are measured within, not a separately-printed survival limit)",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "group": "reliability",
+      "aliases": ["Faging", "aging"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -3, "max": 3 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "first_year" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "+/-3 ppm max, first year, +25 +/-3 C",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "group": "reliability",
+      "aliases": ["IR", "insulation resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5.0e8 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_DC", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Insulation Resistance: min 500 MOhm @ 100 Vdc +/-15 V",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["Topr", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature -40 to +85 C (Option \"blank\")",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "temperature",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature -55 to +125 C",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "5b21d42d9ca704d86cfb8f1b93488f3f3671c55ca90f334aa66f931866277dd1",
+    "sourceUrl": "https://abracon.com/Resonators/ABS07.pdf",
+    "datasheetRevision": "REV 08-10-22",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "HC-49/U-S 40.000MHz",
+    "manufacturer": "Citizen Finedevice",
+    "family": "crystal",
+    "description": "40.000 MHz AT-cut quartz crystal unit in the HC-49/U-S through-hole leaded metal-can (solder-can) package, 11.5 x 4.66 x 3.5 mm. Operated at its 3rd-overtone mode (the 30.0-50.0 MHz band of this model is 3rd overtone) and ordered series-resonant (load capacitance = infinity, CL not specified). Two-terminal passive resonator, RoHS compliant, for consumer products.",
+    "package": "HC-49/U-S (through-hole leaded metal can), 11.5 x 4.66 x 3.5 mm",
+    "pinCount": 2,
+    "lifecycle": "active"
+  },
+  "pinout": [
+    { "number": 1, "name": "1", "function": "XTAL1", "type": "passive", "description": "Passive crystal terminal. Non-polarized leaded terminal; the two terminals are interchangeable.", "sourcePage": 1 },
+    { "number": 2, "name": "2", "function": "XTAL2", "type": "passive", "description": "Passive crystal terminal. Non-polarized leaded terminal; the two terminals are interchangeable.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal frequency",
+      "group": "frequency",
+      "aliases": ["f0", "nominal frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 4.0e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "3rd_overtone" },
+            { "param": "RESONANCE", "note": "series" }
+          ],
+          "conditionsVerbatim": "40.000 MHz nominal; 30.0MHz ~ 50.0MHz band is 3rd Overtone mode; ordered series-resonant (CL = infinity)",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance at 25 degC",
+      "group": "frequency",
+      "aliases": ["Df/f0", "frequency tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -30, "max": 30 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency Tolerance df/f0 +/-30ppm at 25 degC",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency tolerance over operating temperature range",
+      "group": "frequency",
+      "aliases": ["Df/f0", "frequency tolerance over operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -30, "max": 30 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "min": -10, "max": 60, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency Tolerance over Operating Temperature Range df/f0: above 6.0MHz: +/-30ppm, over -10 degC ~ +60 degC (this 40 MHz part is above 6.0 MHz; below 6.0MHz the sheet specifies +/-50ppm)",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "equivalent_series_resistance",
+      "name": "Motional (series) resistance R1",
+      "group": "equivalent_circuit",
+      "aliases": ["R1", "motional (series) resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 100 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "F", "value": 4.0e7, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "MODE", "note": "3rd_overtone" }
+          ],
+          "conditionsVerbatim": "R1 100 ohm Max. for 36.0 <= f0 <= 50.0 MHz, 3rd Overtone mode, at 25 degC",
+          "sourcePage": 1,
+          "sourceTable": "MOTIONAL (SERIES) RESISTANCE (R1)"
+        }
+      ]
+    },
+    {
+      "key": "shunt_capacitance",
+      "name": "Shunt (static) capacitance C0",
+      "group": "equivalent_circuit",
+      "aliases": ["C0", "shunt capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 7.0e-12 },
+          "unit": "F",
+          "conditionsVerbatim": "Shunt capacitance C0 7.0pF Max.",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "drive_level",
+      "name": "Level of drive",
+      "group": "drive",
+      "aliases": ["DL", "level of drive"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 1.0e-4 },
+          "unit": "W",
+          "conditionsVerbatim": "Level of drive DL 100 uW (printed without a min/typ/max qualifier; conventionally the maximum recommended drive)",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "group": "reliability",
+      "aliases": ["IR", "insulation resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5.0e8 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_DC", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Insulation Resistance IR 500 MOhm Min. at DC100V +/-15V",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Aging (first year)",
+      "group": "reliability",
+      "aliases": ["Df/f0", "aging", "aging first year"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -5, "max": 5 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "first_year" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Aging (first year) df/f0 +/-5ppm Max. at 25 degC +/-3 degC",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["TOPR", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -20, "max": 70 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Range TOPR -20 degC ~ +70 degC",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "temperature",
+      "aliases": ["TSTR", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Range TSTR -40 degC ~ +85 degC",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "179858c869e9a75ea955c61c3aa3b887895a8c4a55ff0ded1e4f786699cdc829",
+    "sourceUrl": "https://cfd.citizen.co.jp/cms/cfd/pdf/english/HC-49_U-S_E.pdf",
+    "datasheetRevision": "Rev.2",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "family": "crystal",
+  "manufacturer": "Abracon",
+  "mpn": "ABS07-32.768KHZ",
+  "parameters": [
+    {
+      "aliases": [
+        "F0",
+        "frequency"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 32768
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ftol",
+        "frequency tolerance"
+      ],
+      "group": "frequency",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "B",
+        "ppm/T2",
+        "temperature coefficient"
+      ],
+      "group": "temperature",
+      "key": "parabolic_coefficient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC2",
+          "value": {
+            "min": -0.04,
+            "typ": -0.036
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ti",
+        "turn-over temperature"
+      ],
+      "group": "temperature",
+      "key": "turnover_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 30,
+            "min": 20,
+            "typ": 25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESR",
+        "R1"
+      ],
+      "group": "equivalent_circuit",
+      "key": "equivalent_series_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 70000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "C0",
+        "shunt capacitance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "shunt_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 2e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Q",
+        "quality factor"
+      ],
+      "group": "equivalent_circuit",
+      "key": "quality_factor",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "min": 10000,
+            "typ": 30000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CL",
+        "load capacitance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "load_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 1.25e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DL",
+        "drive level"
+      ],
+      "group": "drive",
+      "key": "drive_level",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 5e-7,
+            "typ": 1e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Faging",
+        "aging"
+      ],
+      "group": "reliability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 3,
+            "min": -3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "insulation resistance"
+      ],
+      "group": "reliability",
+      "key": "insulation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 500000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Topr",
+        "operating temperature range"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "temperature",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Key Electrical Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "XTAL1",
+      "name": "1",
+      "number": 1
+    },
+    {
+      "function": "XTAL2",
+      "name": "2",
+      "number": 2
+    }
+  ]
+}

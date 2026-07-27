@@ -1,0 +1,313 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "CX3225GB20000C0HPSHH",
+    "manufacturer": "Kyocera",
+    "family": "crystal",
+    "description": "20 MHz AT-cut quartz crystal unit, fundamental mode, in a 4-pad ceramic SMD package (3.2 x 2.5 x 0.8 mm, CX3225GB series). Two-terminal passive resonator (pins 1 and 3 are the crystal terminals; pins 2 and 4 are no-connect). Parallel-resonant, specified at CL = 7 pF. Pb-free, RoHS compliant, MSL 1.",
+    "package": "SMD ceramic, 3.2x2.5x0.8mm (4-pad)",
+    "pinCount": 4,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "msl": "MSL1",
+    "orderingVariants": [
+      { "orderCode": "CX3225GB20000C0HPSHH", "package": "SMD ceramic, 3.2x2.5x0.8mm (4-pad)", "packing": "Tape and Reel (phi180 reel, 3000 pcs max)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "HOT", "function": "XTAL1", "type": "passive", "description": "Crystal terminal (electrode). One of the two active resonator connections; interchangeable with pin 3.", "sourcePage": 5 },
+    { "number": 2, "name": "NC", "function": "NC", "type": "passive", "description": "No connect. Mechanical/ground pad; not electrically part of the resonator.", "sourcePage": 5 },
+    { "number": 3, "name": "HOT", "function": "XTAL2", "type": "passive", "description": "Crystal terminal (electrode). One of the two active resonator connections; interchangeable with pin 1.", "sourcePage": 5 },
+    { "number": 4, "name": "NC", "function": "NC", "type": "passive", "description": "No connect. Mechanical/ground pad; not electrically part of the resonator.", "sourcePage": 5 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal frequency",
+      "group": "frequency",
+      "aliases": ["F0", "nominal frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 2.0e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "Fundamental mode of vibration" },
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "C_L", "value": 7.0e-12, "unit": "F" },
+            { "param": "DL", "value": 1.0e-5, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Nominal Frequency F0 = 20 MHz (20000 kHz), Fundamental mode of vibration, nominal temperature +25 degC. Measured with IEC PI-Network Test Fixture, load capacitance 7 pF, drive level 10 uW.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "load_capacitance",
+      "name": "Load capacitance",
+      "group": "equivalent_circuit",
+      "aliases": ["CL", "load capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 7.0e-12 },
+          "unit": "F",
+          "conditionsVerbatim": "Load Capacitance CL = 7 pF (parallel-resonant frequency specified against this load).",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance",
+      "group": "frequency",
+      "aliases": ["df/F", "frequency tolerance", "calibration tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "C_L", "value": 7.0e-12, "unit": "F" },
+            { "param": "DL", "value": 1.0e-5, "unit": "W" }
+          ],
+          "conditionsVerbatim": "df/F = +/-20 ppm at +25 +/-3 degC. Measured with IEC PI-Network Test Fixture, load capacitance 7 pF, drive level 10 uW.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "group": "frequency",
+      "aliases": ["df/F", "frequency temperature characteristics", "frequency stability over temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -50, "max": 50 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency Temperature Characteristics df/F = +/-50 ppm over -40 to +85 degC, based on the oscillation frequency at +25 degC. This is the total excursion over the range, not a per-degree slope.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "group": "reliability",
+      "aliases": ["frequency aging rate", "aging"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -5.0, "max": 5.0 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "first_year" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency Aging Rate df/F = +/-5.0 ppm, 1st year, at +25 +/-3 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "equivalent_series_resistance",
+      "name": "Equivalent series resistance",
+      "group": "equivalent_circuit",
+      "aliases": ["ESR", "R1", "equivalent series resistance", "crystal impedance", "CI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 50 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "DL", "value": 1.0e-5, "unit": "W" }
+          ],
+          "conditionsVerbatim": "ESR = 50 ohm max, at series resonance, measured with IEC PI-Network Test Fixture, load capacitance = Series, drive level = 10 uW.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "drive_level",
+      "name": "Drive level",
+      "group": "drive",
+      "aliases": ["Pd", "DL", "drive level"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.0e-8, "max": 1.0e-4 },
+          "unit": "W",
+          "conditionsVerbatim": "Drive Level Pd = 0.01 to 100 uW (specified operating range). Tolerance, stability, and ESR are measured at 10 uW.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "group": "reliability",
+      "aliases": ["IR", "insulation resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5.0e8 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_DC", "value": 100, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Insulation Resistance IR = 500 Mohm min at 100 V DC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["Topr", "operating temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Topr = -40 to +85 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "temperature",
+      "aliases": ["Tstg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature Range Tstg = -40 to +85 degC.",
+          "sourcePage": 3,
+          "sourceTable": "Ratings"
+        }
+      ]
+    },
+    {
+      "key": "environmental_frequency_shift",
+      "name": "Frequency shift after environmental stress",
+      "group": "reliability",
+      "aliases": ["frequency shift after test", "delta f after test"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "shock" }
+          ],
+          "conditionsVerbatim": "Resistance to Shock: naturally dropped from a height of 100 cm onto a hard wood board, 3 times. After test, frequency shall not change more than +/-20e-6 (and CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "vibration" }
+          ],
+          "conditionsVerbatim": "Resistance to Vibration: frequency 10-55-10 Hz, amplitude 1.5 mm, cycle time 15 minutes, direction X/Y/Z (3 directions) 2 h each. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "high_temperature_storage" }
+          ],
+          "conditionsVerbatim": "Resistance to Heat: stored at +85 +/-2 degC for 500 h, then standard atmospheric conditions for 1 h before measurement. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "low_temperature_storage" }
+          ],
+          "conditionsVerbatim": "Resistance to Cold: stored at -40 +/-2 degC for 500 h, then standard atmospheric conditions for 1 h before measurement. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "thermal_shock" }
+          ],
+          "conditionsVerbatim": "Thermal Shock: 500 successive temperature cycles, each -40 +/-2 degC (30 min) to 25 +/-2 degC (5 min) to +85 +/-2 degC (30 min) to 25 +/-2 degC (5 min), then standard atmospheric conditions for 1 h before measurement. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "moisture" }
+          ],
+          "conditionsVerbatim": "Resistance to Moisture: stored at 60 +/-2 degC, relative humidity 90% to 95%, for 240 h, then standard atmospheric conditions for 1 h before measurement. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "reflow" }
+          ],
+          "conditionsVerbatim": "Soldering condition: lead-free solder paste (melting point +220 +/-5 degC); reflow profile preheat +150 to +180 degC for 150 s (typ.), peak +260 +/-5 degC for 10 s (max.), total 300 s (max.); 2 reflow passes; hand soldering +350 degC 3 s max. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -20, "max": 20 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "TEST", "note": "board_bending" }
+          ],
+          "conditionsVerbatim": "Intensity for bending in circuit board: soldered at the center of a 40 mm x 100 mm test board (t = 1.6 mm), 3 mm deflection applied. After test, frequency shall not change more than +/-20e-6 (CI change within +/-20% or +/-5 ohm, whichever is larger).",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "6a2a263101ea8bed65e7d4bfa16d10981f19cd9d4ba99a14164a0331accfe497",
+    "sourceUrl": "https://ele.kyocera.com/assets/products/crystal-device/specification/CX3225GB20000C0HPSHH_e.pdf",
+    "datasheetRevision": "KBS-5079K Rev.00 (drawing UKY1C-H2-25AAA-00[43]), Issued 2025/08/29",
+    "publishedDate": "2025-08-29",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -6,6 +6,7 @@ export declare const analogSwitchDictionary: Record<string, unknown>;
 export declare const bjtDictionary: Record<string, unknown>;
 export declare const capacitorDictionary: Record<string, unknown>;
 export declare const comparatorDictionary: Record<string, unknown>;
+export declare const crystalDictionary: Record<string, unknown>;
 export declare const dacDictionary: Record<string, unknown>;
 export declare const dcDcDictionary: Record<string, unknown>;
 export declare const diodeDictionary: Record<string, unknown>;

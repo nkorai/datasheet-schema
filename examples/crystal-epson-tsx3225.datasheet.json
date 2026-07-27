@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "TSX-3225",
+    "manufacturer": "Seiko Epson",
+    "family": "crystal",
+    "description": "TSX-3225 AT-cut, fundamental-mode SMD quartz crystal unit for RF reference, in a 3.2 x 2.5 x 0.6 mm 4-pad ceramic package. This document pins one ordered selection from the datasheet's ordering axis: 24.000 MHz nominal (parallel resonance at CL = 8 pF, frequency tolerance +/-10 x 10^-6 at +25 C). Applications: mobile phone, Bluetooth, W-LAN, ISM-band radio.",
+    "package": "SMD 3.2x2.5x0.6mm (4-pad ceramic)",
+    "pinCount": 4,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "X1E000021xxxx16", "package": "SMD 3.2x2.5x0.6mm", "packing": "Tape and reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "#1", "function": "XTAL1", "type": "passive", "description": "Crystal terminal. One of the two resonator connections (#1 and #3); the pair is non-polar and interchangeable.", "sourcePage": 1 },
+    { "number": 2, "name": "#2", "function": "GND", "type": "passive", "description": "Connected to the metal cover. Not a resonator terminal; connect to ground.", "sourcePage": 1 },
+    { "number": 3, "name": "#3", "function": "XTAL2", "type": "passive", "description": "Crystal terminal. The second resonator connection (paired with #1).", "sourcePage": 1 },
+    { "number": 4, "name": "#4", "function": "GND", "type": "passive", "description": "Connected to the metal cover. Not a resonator terminal; connect to ground.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal frequency",
+      "group": "frequency",
+      "aliases": ["f_nom", "nominal frequency range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 2.4e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "MODE", "note": "Fundamental" },
+            { "param": "RESONANCE", "note": "parallel" }
+          ],
+          "conditionsVerbatim": "Nominal frequency range 16.000 MHz to 48.000 MHz, Fundamental; 24.000 MHz selected. Parallel resonance specified at CL = 8 pF.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance",
+      "group": "frequency",
+      "aliases": ["f_tol", "frequency tolerance at 25C"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -10, "max": 10 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency tolerance f_tol: +/-10 x 10^-6 at +25 C",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "group": "frequency",
+      "aliases": ["f_tem", "frequency versus temperature characteristics"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -10, "max": 10 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "min": -20, "max": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Frequency versus temperature characteristics f_tem: +/-10 x 10^-6 over -20 C to +75 C (total excursion referenced to +25 C, not a per-degree slope)",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "load_capacitance",
+      "name": "Load capacitance",
+      "group": "equivalent_circuit",
+      "aliases": ["CL", "load capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 8.0e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "RESONANCE", "note": "parallel" }
+          ],
+          "conditionsVerbatim": "Load capacitance CL: 7 pF to infinity (please specify); 8 pF selected here (finite CL => parallel resonance).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "equivalent_series_resistance",
+      "name": "Equivalent series resistance",
+      "group": "equivalent_circuit",
+      "aliases": ["R1", "motional resistance", "ESR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 40 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "F", "value": 2.4e7, "unit": "Hz" },
+            { "param": "T_A", "min": -40, "max": 85, "unit": "degC" },
+            { "param": "DL", "value": 1.0e-4, "unit": "W" }
+          ],
+          "conditionsVerbatim": "Motional resistance (ESR) R1: 40 ohm Max. for 21.0 MHz <= f_nom <= 48.0 MHz; measured -40 C to +85 C, DL = 100 uW. (For 16.0 MHz <= f_nom < 21.0 MHz the limit is 60 ohm Max.; the 24 MHz selection falls in the 40 ohm band.)",
+          "sourcePage": 1,
+          "sourceTable": "Motional resistance (ESR) — TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "drive_level",
+      "name": "Drive level",
+      "group": "drive",
+      "aliases": ["DL", "level of drive"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 1.0e-6, "max": 1.0e-4 },
+          "unit": "W",
+          "conditionsVerbatim": "Level of drive DL — Recommended: 1 to 100 uW",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2.0e-4 },
+          "unit": "W",
+          "conditionsVerbatim": "Level of drive DL: 200 uW Max.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "group": "reliability",
+      "aliases": ["f_age", "frequency aging rate"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -1, "max": 1 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "AGING_PERIOD", "note": "first_year" }
+          ],
+          "conditionsVerbatim": "Frequency aging f_age: +/-1 x 10^-6 / year Max., +25 C, first year. (Note: for f_nom >= 40 MHz the limit is +/-2 x 10^-6 / year Max.; the 24 MHz selection uses the +/-1 x 10^-6 / year bound.)",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "group": "temperature",
+      "aliases": ["T_use", "operating temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature T_use: -40 C to +85 C (+105 C on request). Note: the frequency-stability window (-20 C to +75 C) is narrower than the operating range.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "group": "temperature",
+      "aliases": ["T_stg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature T_stg: -40 C to +125 C (storage as single product)",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "490f4efbb5351fe9448c68da0948f7ab174a6d795322aeca5a78f0ab514f892e",
+    "sourceUrl": "https://media.digikey.com/pdf/Data%20Sheets/Epson%20PDFs/FA-238(V),TSX-3225_Series_Rev_Dec_2015.pdf",
+    "datasheetRevision": "Rev Dec 2015",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "Shared datasheet 'FA-238(V), TSX-3225 Series'; this document encodes only the 'For RF Reference' column (TSX-3225), not the 'For Clock' FA-238/FA-238V columns.",
+    "The physical package has 4 pads: #1 and #3 are the two crystal (XTAL) terminals; #2 and #4 are connected to the metal cover and must be connected to ground (they are not resonator terminals).",
+    "Load capacitance is order-specified as '7 pF to infinity'; 8 pF was chosen as a representative finite (parallel-resonant) value. A series-resonant order (CL = infinity) would omit load_capacitance and set RESONANCE = series.",
+    "C0 (shunt capacitance), C1 (motional capacitance), Q, and insulation resistance are not printed on this Epson sheet and are therefore omitted rather than invented."
+  ]
+}

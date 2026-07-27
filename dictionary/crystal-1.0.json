@@ -1,0 +1,424 @@
+{
+  "family": "crystal",
+  "dictionaryVersion": "1.1",
+  "description": "Passive quartz crystal unit (resonator): a two-terminal electromechanical resonator with no supply, output, or logic. Covers AT-cut MHz crystals (fundamental and overtone) and Y-cut / flexural 32.768 kHz tuning-fork crystals, in SMD and through-hole (HC-49) packages. The active clock sources that CONTAIN a crystal - XO / TCXO / VCXO / OCXO oscillators - are a separate family (supply, output driver, jitter, phase noise, pullability); do not fold their parameters here. Synthesized from a 20-datasheet corpus across Abracon, Epson, NDK, Kyocera, Citizen, TXC, Pletronics, QST, and Micro Crystal.",
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal frequency",
+      "unit": "Hz",
+      "group": "frequency",
+      "aliases": [
+        "F0",
+        "Fo",
+        "f0",
+        "fnom",
+        "Fnom",
+        "f_nom",
+        "frequency",
+        "frequency range",
+        "nominal frequency",
+        "nominal frequency range",
+        "resonant frequency",
+        "specified frequency",
+        "operating frequency",
+        "oscillation frequency",
+        "center frequency"
+      ],
+      "hint": "The specified resonant frequency in Hz, base-SI with no SI prefix (32.768 kHz is 32768; 16 MHz is 1.6e7; 32.768 kHz tuning forks are exactly 32768). A datasheet 'frequency range' (e.g. 8-54 MHz) is the family's ordering axis, not a single part's tolerance - one emitted document pins one ordered frequency. Whether the value is the series- or parallel-resonant frequency depends on the RESONANCE condition; parallel-resonant frequency is specified at the stated load_capacitance."
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance",
+      "unit": "ppm",
+      "group": "frequency",
+      "aliases": [
+        "Ftol",
+        "f_tol",
+        "df/F",
+        "Df/f",
+        "Df/f0",
+        "tolerance",
+        "freq tolerance",
+        "frequency tolerance",
+        "frequency tolerance at 25C",
+        "frequency deviation at 25C",
+        "frequency accuracy at 25C",
+        "calibration tolerance",
+        "calibration frequency tolerance",
+        "trimming tolerance",
+        "initial tolerance",
+        "adjustment tolerance",
+        "frequency calibration",
+        "frequency accuracy",
+        "initial frequency deviation"
+      ],
+      "hint": "The initial frequency deviation from nominal at the +25 C reference (typically +/-25 C +/-3 C), in ppm, NOT including aging or temperature drift. Store the symmetric magnitude (a +/-20 ppm part is 20; asymmetric bounds go in min/max). A tolerance printed in percent converts to ppm (x1e4: +/-0.003 % is +/-30 ppm). Measured at the specified load_capacitance and drive_level - attach both as conditions. The many tolerance grades a datasheet lists (+/-10 / +/-20 / +/-30 / +/-50) are ordering-selectable; one document pins one grade."
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "unit": "ppm",
+      "group": "frequency",
+      "aliases": [
+        "Fstab",
+        "f_tem",
+        "frequency stability",
+        "frequency stability over temperature",
+        "frequency stability over operating temperature",
+        "frequency versus temperature characteristics",
+        "frequency temperature characteristics",
+        "frequency-temperature stability",
+        "F/T stability",
+        "frequency vs temperature",
+        "F vs T",
+        "temperature stability",
+        "thermal stability",
+        "frequency deviation over temperature",
+        "frequency drift over temperature",
+        "frequency-temperature deviation",
+        "frequency tolerance over operating temperature range",
+        "inclusive frequency tolerance",
+        "overall frequency tolerance",
+        "overall frequency stability",
+        "frequency tolerance/stability"
+      ],
+      "hint": "The total frequency excursion, referenced to +25 C, across the whole operating temperature range - in ppm. This is a single band over a RANGE, NOT a per-degree slope: keep unit ppm and carry the temperature range as a T_A condition (or in conditionsVerbatim), never normalize it to ppm/degC. AT-cut MHz parts publish this directly (+/-30 ppm over -20..+70 C); 32.768 kHz tuning-fork parts instead publish parabolic_coefficient + turnover_temperature, from which the excursion is computed, and often omit this key. A low-cost sheet that prints a single 'inclusive' or 'overall' figure combining initial tolerance AND temperature drift maps here, with the merged basis noted in conditionsVerbatim."
+    },
+    {
+      "key": "parabolic_coefficient",
+      "name": "Parabolic (turnover) temperature coefficient",
+      "unit": "ppm/degC2",
+      "group": "temperature",
+      "aliases": [
+        "B",
+        "beta",
+        "parabolic coefficient",
+        "temperature coefficient",
+        "second-order temperature coefficient",
+        "parabolic curvature constant",
+        "turnover temperature coefficient",
+        "a-constant",
+        "curvature constant",
+        "ppm/T2",
+        "ppm/C2",
+        "parabolic constant",
+        "quadratic temperature coefficient",
+        "2nd-order temperature coefficient",
+        "frequency-temperature coefficient"
+      ],
+      "hint": "The second-order (parabolic) temperature coefficient of a tuning-fork / Y-cut crystal, in ppm per degree-Celsius-squared. The frequency-vs-temperature curve is a downward parabola about the turnover_temperature: Df/f = parabolic_coefficient * (T - turnover_temperature)^2. Universally about -0.035 to -0.04 ppm/degC2 for 32.768 kHz tuning forks; it is the defining thermal spec of that cut and cannot be derived from ppm/degC. Store the magnitude with its sign as printed (it is negative). Does not apply to AT-cut MHz parts, which use frequency_stability instead."
+    },
+    {
+      "key": "turnover_temperature",
+      "name": "Turnover temperature",
+      "unit": "degC",
+      "group": "temperature",
+      "aliases": [
+        "Ti",
+        "TM",
+        "T0",
+        "Tinv",
+        "turnover temperature",
+        "turn-over temperature",
+        "peak temperature",
+        "apex temperature",
+        "inversion temperature",
+        "vertex temperature",
+        "turnover point",
+        "turning point temperature",
+        "temperature of turnover"
+      ],
+      "hint": "The temperature at which a tuning-fork crystal's frequency-vs-temperature parabola reaches its apex (df/dT = 0), in degC - typically +25 C +/-5 C. Pairs with parabolic_coefficient to fully define the f-vs-T curve. Store as a point (with tolerance in min/max if printed as a range)."
+    },
+    {
+      "key": "operating_temperature_range",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "temperature",
+      "aliases": [
+        "Topr",
+        "T_use",
+        "TOTR",
+        "operating temperature",
+        "operating temperature range",
+        "working temperature range",
+        "specified temperature range",
+        "usable temperature range",
+        "Topg",
+        "T_op",
+        "ambient operating temperature",
+        "temperature range"
+      ],
+      "hint": "The temperature range over which the electrical specs (tolerance, stability, ESR) are guaranteed, in degC. Store min = low bound, max = high bound. Automotive grades widen it to -40..+125 (Grade 1) or -40..+150 (Grade 0); each grade is a separate ordered part."
+    },
+    {
+      "key": "storage_temperature_range",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "temperature",
+      "aliases": [
+        "Tstg",
+        "Tstr",
+        "TSTR",
+        "T_stg",
+        "storage temperature",
+        "storage temperature range",
+        "non-operating temperature range"
+      ],
+      "hint": "The non-operating storage temperature range in degC (an absolute-maximum limit - set limitClass absolute_max). Store min/max bounds."
+    },
+    {
+      "key": "equivalent_series_resistance",
+      "name": "Equivalent series resistance",
+      "unit": "ohm",
+      "group": "equivalent_circuit",
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": [
+        "R1",
+        "Rr",
+        "Rs",
+        "Re",
+        "R_1",
+        "ESR",
+        "CI",
+        "equivalent series resistance",
+        "effective series resistance",
+        "motional resistance",
+        "equivalent resistance",
+        "series resistance",
+        "crystal impedance",
+        "crystal resistance",
+        "resonance impedance",
+        "resonance resistance",
+        "resistance",
+        "ESR max"
+      ],
+      "hint": "The motional-arm resistance R1 at series resonance, in ohms (kOhm for 32.768 kHz tuning forks, ohms for MHz parts - normalize: 70 kOhm is 70000). ESR is SINGLE-valued for one ordered grade: a datasheet's ESR-limit-per-frequency-band table is a FAMILY ordering artifact across MPNs (each frequency is a different orderable part), and a wider-temperature part with a higher ESR limit is likewise a different grade - since one document is one grade (spec section 4), emit only the single value for that part's frequency and temperature range, never fold sibling grades' rows into an array. `array: true` with `conditionAxis: F` exists only for the deliberate case of a consumer emitting one multi-frequency family document. Measured at a stated drive level (attach DL) with a named fixture (IEC pi-network, network analyzer) in conditionsVerbatim. Vendor 'CI' = crystal impedance = ESR; 'Re' = effective series resistance."
+    },
+    {
+      "key": "load_capacitance",
+      "name": "Load capacitance",
+      "unit": "F",
+      "group": "equivalent_circuit",
+      "aliases": [
+        "CL",
+        "C_L",
+        "load capacitance",
+        "load cap",
+        "specified load capacitance",
+        "C_load",
+        "external load capacitance",
+        "parallel load capacitance"
+      ],
+      "hint": "The external load capacitance the parallel-resonant frequency is specified against, in farads (pF normalized: 12.5 pF is 12.5e-12). Ordering-selectable (common: 6/7/9/12.5/18 pF); one document pins one value. A SERIES-resonant part (vendor 'series' / 'S' option / CL printed as infinity) has NO load capacitance - OMIT this parameter entirely rather than storing a sentinel, and record RESONANCE = series."
+    },
+    {
+      "key": "shunt_capacitance",
+      "name": "Shunt (static) capacitance",
+      "unit": "F",
+      "group": "equivalent_circuit",
+      "aliases": [
+        "C0",
+        "Co",
+        "C_0",
+        "shunt capacitance",
+        "static capacitance",
+        "parallel capacitance",
+        "pad to pad capacitance",
+        "electrode capacitance",
+        "shunt cap",
+        "static shunt capacitance",
+        "holder capacitance"
+      ],
+      "hint": "The static parallel-plate capacitance C0 of the electrodes and holder, in farads (pF normalized: ~1 pF for tuning forks, ~2-5 pF for MHz parts). Part of the equivalent circuit; with motional_capacitance sets the capacitance ratio C0/C1."
+    },
+    {
+      "key": "motional_capacitance",
+      "name": "Motional capacitance",
+      "unit": "F",
+      "group": "equivalent_circuit",
+      "aliases": [
+        "C1",
+        "Cm",
+        "Cmot",
+        "C_1",
+        "C_m",
+        "motional capacitance",
+        "motional arm capacitance",
+        "motional-arm capacitance",
+        "series capacitance",
+        "motion capacitance",
+        "dynamic capacitance"
+      ],
+      "hint": "The motional-arm capacitance C1 of the equivalent circuit, in farads (fF normalized: 3.4 fF is 3.4e-15). Seldom printed on commercial MHz sheets (derivable), but characteristic on tuning-fork parts. With shunt_capacitance it sets the capacitance_ratio C0/C1, and with ESR and nominal_frequency it determines quality_factor Q = 1/(2*pi*f0*C1*R1); store Q and the ratio directly when a datasheet prints them as guaranteed rows (see quality_factor, capacitance_ratio) rather than forcing the consumer to recompute."
+    },
+    {
+      "key": "motional_inductance",
+      "name": "Motional inductance",
+      "unit": "H",
+      "group": "equivalent_circuit",
+      "aliases": [
+        "L1",
+        "Lm",
+        "Lmot",
+        "L_1",
+        "L_m",
+        "motional inductance",
+        "motion inductance",
+        "series inductance",
+        "motional-arm inductance",
+        "dynamic inductance"
+      ],
+      "hint": "The motional-arm inductance L1 of the equivalent circuit, in henries (mH..kH range; a tuning fork is thousands of henries). Rarely tabulated - it appears mainly in a SPICE / equivalent-circuit block. Derivable from motional_capacitance and nominal_frequency (L1 = 1/((2*pi*f0)^2 * C1))."
+    },
+    {
+      "key": "quality_factor",
+      "name": "Quality factor",
+      "unit": "1",
+      "group": "equivalent_circuit",
+      "optional": true,
+      "aliases": [
+        "Q",
+        "Qm",
+        "quality factor",
+        "Q factor",
+        "unloaded Q",
+        "motional Q",
+        "figure of merit"
+      ],
+      "hint": "The resonator's unloaded quality factor Q - a pure dimensionless number (unit `1`), typically 1e4 to 1e6 (tens of thousands for a 32.768 kHz tuning fork, hundreds of thousands to millions for precision parts). Q = 1/(2*pi*f0*C1*R1), so it is derivable from motional_capacitance, ESR, and nominal_frequency; store it here ONLY when a datasheet prints Q as a guaranteed spec row (some tuning-fork and precision/RF parts do), preserving the printed value rather than dropping it. Higher Q means sharper selectivity and lower phase noise in the oscillator that uses it."
+    },
+    {
+      "key": "capacitance_ratio",
+      "name": "Capacitance ratio",
+      "unit": "1",
+      "group": "equivalent_circuit",
+      "optional": true,
+      "aliases": [
+        "r",
+        "gamma",
+        "C0/C1",
+        "Co/C1",
+        "capacitance ratio",
+        "cap ratio",
+        "capacitance ratio r"
+      ],
+      "hint": "The ratio of shunt to motional capacitance, C0/C1 - a pure dimensionless number (unit `1`), typically ~200-500. It is the master parameter that sets a crystal's pullability (the achievable Fs-to-Fa frequency span narrows as the ratio rises). Derivable from shunt_capacitance / motional_capacitance, but store it here when a datasheet prints it directly (many tuning-fork and precision sheets give a guaranteed max ratio without printing both capacitances)."
+    },
+    {
+      "key": "drive_level",
+      "name": "Drive level",
+      "unit": "W",
+      "group": "drive",
+      "aliases": [
+        "DL",
+        "Pd",
+        "GL",
+        "drive level",
+        "level of drive",
+        "excitation level",
+        "power dissipation",
+        "drive power",
+        "maximum drive level",
+        "crystal drive level",
+        "excitation power",
+        "P_d",
+        "DL max"
+      ],
+      "hint": "The power dissipated in the crystal, in watts (uW normalized: 100 uW is 1e-4, 0.5 uW is 5e-7). Two senses distinguished by limitClass, NOT by separate keys: the recommended operating drive level (limitClass recommended, ~0.1-10 uW, at which ESR/tolerance are measured) and the maximum drive the part survives undamaged (limitClass absolute_max, 'GL' / 'maximum level of drive'). Excessive drive accelerates aging and can fracture a tuning fork."
+    },
+    {
+      "key": "drive_level_dependency",
+      "name": "Drive level dependency",
+      "unit": "ppm",
+      "group": "drive",
+      "altUnits": [
+        "%"
+      ],
+      "optional": true,
+      "aliases": [
+        "DLD",
+        "drive level dependency",
+        "drive-level dependence",
+        "frequency shift with drive",
+        "ESR shift with drive"
+      ],
+      "hint": "The change in frequency (ppm) or in ESR (%) as drive level is swept across the specified range (e.g. 1 uW to 500 uW, max-min). A DLD spec bounds how much the resonator's behavior moves with excitation; a large DLD indicates a defective or contaminated crystal. Store the frequency-shift figure in ppm, the ESR-shift figure in % (altUnit). Uncommon on commercial sheets."
+    },
+    {
+      "key": "insulation_resistance",
+      "name": "Insulation resistance",
+      "unit": "ohm",
+      "group": "reliability",
+      "aliases": [
+        "IR",
+        "Ri",
+        "insulation resistance",
+        "isolation resistance",
+        "insulation resistance (IR)"
+      ],
+      "hint": "The DC resistance between terminals (and terminal-to-cover), in ohms (MOhm normalized: 500 MOhm is 5e8), measured at a stated DC bias (typically 100 Vdc). A minimum bound; attach the bias voltage as a V_DC condition."
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "unit": "ppm",
+      "group": "reliability",
+      "aliases": [
+        "Faging",
+        "f_age",
+        "aging",
+        "aging rate",
+        "frequency aging",
+        "frequency aging rate",
+        "long-term stability",
+        "long term frequency drift",
+        "frequency drift",
+        "first year aging",
+        "annual aging",
+        "aging (first year)",
+        "ppm/year"
+      ],
+      "hint": "The irreversible frequency change over a stated time window at constant temperature, in ppm - almost always given as a first-year bound (+/-3 ppm max, first year). Crystal aging is logarithmic, not linear, so this is NOT a per-year rate: keep unit ppm and carry the time window as an AGING_PERIOD condition (first_year, 10_year) - do NOT invent a ppm/year unit. A part specifying multiple horizons emits one measurement per horizon."
+    },
+    {
+      "key": "environmental_frequency_shift",
+      "name": "Frequency shift after environmental stress",
+      "unit": "ppm",
+      "group": "reliability",
+      "optional": true,
+      "aliases": [
+        "frequency shift",
+        "frequency deviation after test",
+        "delta f after test",
+        "frequency shift after reflow",
+        "frequency shift after shock",
+        "frequency shift after vibration",
+        "reflow frequency shift",
+        "soldering frequency shift"
+      ],
+      "hint": "The permitted permanent frequency shift after a reliability stress (solder reflow, mechanical shock, vibration, thermal shock, moisture, board bending), in ppm. Usually one bound (+/-20 ppm) covers a whole environmental-test suite; carry the specific stress as a note-only TEST condition and the full setup (drop height, vibration sweep, reflow profile) in conditionsVerbatim - the mechanical setup never enters the unit enum. Often paired with an allowed ESR/CI change (store that as a separate equivalent_series_resistance measurement or in %)."
+    },
+    {
+      "key": "spurious_response",
+      "name": "Spurious response",
+      "unit": "dB",
+      "group": "frequency",
+      "optional": true,
+      "aliases": [
+        "spurious response",
+        "spurious suppression",
+        "unwanted mode",
+        "spurious mode attenuation",
+        "spur suppression",
+        "spurious resonance",
+        "unwanted resonance",
+        "unwanted response",
+        "spurs"
+      ],
+      "hint": "Attenuation of unwanted (spurious) resonance modes relative to the main mode, in dB (a minimum suppression). Specified mainly on RF and overtone crystals where a spurious mode near the wanted frequency can pull an oscillator. Store the suppression magnitude; the offset frequency of the spur goes in conditionsVerbatim."
+    }
+  ]
+}

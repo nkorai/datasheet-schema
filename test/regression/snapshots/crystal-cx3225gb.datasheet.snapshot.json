@@ -1,0 +1,567 @@
+{
+  "family": "crystal",
+  "manufacturer": "Kyocera",
+  "mpn": "CX3225GB20000C0HPSHH",
+  "parameters": [
+    {
+      "aliases": [
+        "F0",
+        "nominal frequency"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Fundamental mode of vibration",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 7e-12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DL",
+              "unit": "W",
+              "value": 0.00001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 20000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CL",
+        "load capacitance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "load_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 7e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "calibration tolerance",
+        "df/F",
+        "frequency tolerance"
+      ],
+      "group": "frequency",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 7e-12
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DL",
+              "unit": "W",
+              "value": 0.00001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "df/F",
+        "frequency stability over temperature",
+        "frequency temperature characteristics"
+      ],
+      "group": "frequency",
+      "key": "frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 50,
+            "min": -50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aging",
+        "frequency aging rate"
+      ],
+      "group": "reliability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 5,
+            "min": -5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CI",
+        "ESR",
+        "R1",
+        "crystal impedance",
+        "equivalent series resistance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "equivalent_series_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DL",
+              "unit": "W",
+              "value": 0.00001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DL",
+        "Pd",
+        "drive level"
+      ],
+      "group": "drive",
+      "key": "drive_level",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.0001,
+            "min": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "insulation resistance"
+      ],
+      "group": "reliability",
+      "key": "insulation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 500000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Topr",
+        "operating temperature"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature range"
+      ],
+      "group": "temperature",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "delta f after test",
+        "frequency shift after test"
+      ],
+      "group": "reliability",
+      "key": "environmental_frequency_shift",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "shock",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "vibration",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "high_temperature_storage",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "low_temperature_storage",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "thermal_shock",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "moisture",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "reflow",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "board_bending",
+              "param": "TEST",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 10,
+          "sourceTable": "Environmental requirements",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 20,
+            "min": -20
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "XTAL1",
+      "name": "HOT",
+      "number": 1
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 2
+    },
+    {
+      "function": "XTAL2",
+      "name": "HOT",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    }
+  ]
+}

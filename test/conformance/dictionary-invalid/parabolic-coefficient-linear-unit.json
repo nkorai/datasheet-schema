@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "XTAL-32K768", "manufacturer": "Y", "family": "crystal" },
+  "parameters": [
+    { "key": "parabolic_coefficient", "measurements": [
+      { "limitClass": "characterized", "value": { "max": -0.04 }, "unit": "ppm/degC", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false },
+  "notes": ["Schema-valid (ppm/degC is a legal enum unit) but wrong dimension: the parabolic turnover coefficient is a SECOND-order coefficient in ppm/degC2, not the linear ppm/degC. The two are not interconvertible. The family unit-scoping check must reject this, since crystal's parabolic_coefficient declares unit ppm/degC2 with no altUnits."]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "XTAL-32K768", "manufacturer": "Y", "family": "crystal" },
+  "parameters": [
+    { "key": "nominal_frequency", "measurements": [
+      { "limitClass": "characterized", "value": { "nom": 32768 }, "unit": "Hz", "sourcePage": 1 } ] },
+    { "key": "quality_factor", "measurements": [
+      { "limitClass": "characterized", "value": { "min": 10000, "typ": 30000 }, "unit": "1",
+        "conditionsVerbatim": "Q value: 10000 min / 30000 typ (dimensionless)", "sourcePage": 1 } ] },
+    { "key": "capacitance_ratio", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 420 }, "unit": "1",
+        "conditionsVerbatim": "C0/C1 ratio r = 420 (dimensionless)", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false }
+}

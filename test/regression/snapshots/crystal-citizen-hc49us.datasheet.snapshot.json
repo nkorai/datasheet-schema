@@ -1,0 +1,341 @@
+{
+  "family": "crystal",
+  "manufacturer": "Citizen Finedevice",
+  "mpn": "HC-49/U-S 40.000MHz",
+  "parameters": [
+    {
+      "aliases": [
+        "f0",
+        "nominal frequency"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "3rd_overtone",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "series",
+              "param": "RESONANCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 40000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Df/f0",
+        "frequency tolerance"
+      ],
+      "group": "frequency",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 30,
+            "min": -30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Df/f0",
+        "frequency tolerance over operating temperature range"
+      ],
+      "group": "frequency",
+      "key": "frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 60,
+              "min": -10,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 30,
+            "min": -30
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "R1",
+        "motional (series) resistance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "equivalent_series_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 40000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "3rd_overtone",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "MOTIONAL (SERIES) RESISTANCE (R1)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "C0",
+        "shunt capacitance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "shunt_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "max": 7e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DL",
+        "level of drive"
+      ],
+      "group": "drive",
+      "key": "drive_level",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "insulation resistance"
+      ],
+      "group": "reliability",
+      "key": "insulation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DC",
+              "unit": "V",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 500000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Df/f0",
+        "aging",
+        "aging first year"
+      ],
+      "group": "reliability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 5,
+            "min": -5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TOPR",
+        "operating temperature range"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 70,
+            "min": -20
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TSTR",
+        "storage temperature range"
+      ],
+      "group": "temperature",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "STANDARD SPECIFICATIONS",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "XTAL1",
+      "name": "1",
+      "number": 1
+    },
+    {
+      "function": "XTAL2",
+      "name": "2",
+      "number": 2
+    }
+  ]
+}

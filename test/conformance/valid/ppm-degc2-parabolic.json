@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "component": { "mpn": "XTAL-32K768", "manufacturer": "Y", "family": "crystal" },
+  "parameters": [
+    { "key": "nominal_frequency", "measurements": [
+      { "limitClass": "characterized", "value": { "nom": 32768 }, "unit": "Hz", "sourcePage": 1 } ] },
+    { "key": "turnover_temperature", "measurements": [
+      { "limitClass": "characterized", "value": { "typ": 25, "min": 20, "max": 30 }, "unit": "degC", "sourcePage": 1 } ] },
+    { "key": "parabolic_coefficient", "measurements": [
+      { "limitClass": "characterized", "value": { "max": -0.04 }, "unit": "ppm/degC2",
+        "conditionsVerbatim": "B = -0.04 ppm/C2 (max); Df/f = B*(T - Ti)^2 about Ti = +25 C", "sourcePage": 1 } ] }
+  ],
+  "provenance": { "verified": false }
+}

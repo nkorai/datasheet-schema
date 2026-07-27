@@ -1,0 +1,342 @@
+{
+  "family": "crystal",
+  "manufacturer": "Seiko Epson",
+  "mpn": "TSX-3225",
+  "parameters": [
+    {
+      "aliases": [
+        "f_nom",
+        "nominal frequency range"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Fundamental",
+              "param": "MODE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "parallel",
+              "param": "RESONANCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 24000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "f_tol",
+        "frequency tolerance at 25C"
+      ],
+      "group": "frequency",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 10,
+            "min": -10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "f_tem",
+        "frequency versus temperature characteristics"
+      ],
+      "group": "frequency",
+      "key": "frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 75,
+              "min": -20,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 10,
+            "min": -10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CL",
+        "load capacitance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "load_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "parallel",
+              "param": "RESONANCE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 8e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ESR",
+        "R1",
+        "motional resistance"
+      ],
+      "group": "equivalent_circuit",
+      "key": "equivalent_series_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 24000000
+            },
+            {
+              "max": 85,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "DL",
+              "unit": "W",
+              "value": 0.0001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Motional resistance (ESR) — TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DL",
+        "level of drive"
+      ],
+      "group": "drive",
+      "key": "drive_level",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.0001,
+            "min": 0.000001
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.0002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "f_age",
+        "frequency aging rate"
+      ],
+      "group": "reliability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 1,
+            "min": -1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_use",
+        "operating temperature"
+      ],
+      "group": "temperature",
+      "key": "operating_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_stg",
+        "storage temperature"
+      ],
+      "group": "temperature",
+      "key": "storage_temperature_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics) — For RF Reference / TSX-3225",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -40
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "XTAL1",
+      "name": "#1",
+      "number": 1
+    },
+    {
+      "function": "GND",
+      "name": "#2",
+      "number": 2
+    },
+    {
+      "function": "XTAL2",
+      "name": "#3",
+      "number": 3
+    },
+    {
+      "function": "GND",
+      "name": "#4",
+      "number": 4
+    }
+  ]
+}
