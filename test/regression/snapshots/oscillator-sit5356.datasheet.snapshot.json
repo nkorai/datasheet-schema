@@ -1,0 +1,1460 @@
+{
+  "family": "oscillator",
+  "manufacturer": "SiTime",
+  "mpn": "SiT5356",
+  "parameters": [
+    {
+      "aliases": [
+        "F_nom",
+        "output frequency"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 10000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_stab",
+        "frequency stability over temperature"
+      ],
+      "group": "stability",
+      "key": "frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 105,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": "production_tested",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.1,
+            "min": -0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_init",
+        "initial tolerance"
+      ],
+      "group": "stability",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.3,
+            "min": -0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_Vdd",
+        "supply voltage sensitivity"
+      ],
+      "group": "stability",
+      "key": "frequency_stability_vs_supply",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.0025,
+            "typ": 0.0005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_load",
+        "output load sensitivity"
+      ],
+      "group": "stability",
+      "key": "frequency_stability_vs_load",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.0004,
+            "typ": 0.00005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dF/dT",
+        "frequency vs temperature slope"
+      ],
+      "group": "stability",
+      "key": "frequency_temperature_slope",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 85,
+              "min": -20,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 0.002,
+            "typ": 0.0009
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": -20,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 0.0035,
+            "typ": 0.001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": 105,
+              "min": 85,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 0.0033,
+            "typ": 0.0009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_hys",
+        "hysteresis over temperature"
+      ],
+      "group": "stability",
+      "key": "frequency_hysteresis",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 105,
+              "min": -40,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.042,
+            "typ": 0.025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aging",
+        "long-term stability"
+      ],
+      "group": "stability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "per_day",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.002,
+            "typ": 0.0005
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.23,
+            "typ": 0.057
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "5_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.32,
+            "typ": 0.073
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "10_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.36,
+            "typ": 0.08
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "20_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 85
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.4,
+            "typ": 0.087
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "24-hour holdover stability",
+        "F_24_Hold"
+      ],
+      "group": "stability",
+      "key": "holdover",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ADEV",
+        "sigma_y(tau)"
+      ],
+      "group": "stability",
+      "key": "allan_deviation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "TAU",
+              "unit": "s",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 1.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_use",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 105,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vdd",
+        "supply voltage"
+      ],
+      "group": "supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.63,
+            "min": 2.97,
+            "nom": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Idd",
+        "current consumption"
+      ],
+      "group": "supply",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 19200000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.053,
+            "typ": 0.044
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_od",
+        "OE disable current"
+      ],
+      "group": "supply",
+      "key": "disable_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 19200000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.051,
+            "typ": 0.043
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC",
+        "symmetry"
+      ],
+      "group": "output",
+      "key": "duty_cycle",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 55,
+            "min": 45
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tr",
+        "rise time"
+      ],
+      "group": "output",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.9e-9,
+            "min": 8e-10,
+            "typ": 1.2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tf",
+        "fall time"
+      ],
+      "group": "output",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.9e-9,
+            "min": 8e-10,
+            "typ": 1.2e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOH",
+        "output high voltage"
+      ],
+      "group": "output",
+      "key": "output_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.003
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.97
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL",
+        "output low voltage"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": -0.003
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.33
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Z_out",
+        "output impedance"
+      ],
+      "group": "output",
+      "key": "output_impedance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 3.3
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "typ": 17
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_start",
+        "start-up time"
+      ],
+      "group": "timing",
+      "key": "startup_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.0035,
+            "typ": 0.0025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_oe",
+        "output enable time"
+      ],
+      "group": "timing",
+      "key": "enable_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 6.8e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_stability",
+        "time to rated frequency stability"
+      ],
+      "group": "timing",
+      "key": "time_to_stability",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.045,
+            "typ": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIH",
+        "input high voltage"
+      ],
+      "group": "control",
+      "key": "input_high_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.31
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIL",
+        "input low voltage"
+      ],
+      "group": "control",
+      "key": "input_low_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Z_in",
+        "input pull-up impedance"
+      ],
+      "group": "control",
+      "key": "oe_input_impedance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 75000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS phase jitter",
+        "T_phj"
+      ],
+      "group": "jitter",
+      "key": "rms_phase_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 5000000,
+              "min": 12000,
+              "note": null,
+              "param": "INTEG_BW",
+              "unit": "Hz",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 4.8e-13,
+            "typ": 3.1e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS period jitter",
+        "T_jitt_per"
+      ],
+      "group": "jitter",
+      "key": "rms_period_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.1e-12,
+            "typ": 8e-13
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_jitt_cc",
+        "peak cycle-to-cycle jitter"
+      ],
+      "group": "jitter",
+      "key": "cycle_to_cycle_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 9e-12,
+            "typ": 6e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "L(f)",
+        "phase noise"
+      ],
+      "group": "phase_noise",
+      "key": "phase_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 1
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -74,
+            "typ": -80
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -102,
+            "typ": -108
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -123,
+            "typ": -127
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -145,
+            "typ": -148
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -151,
+            "typ": -154
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 100000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -150,
+            "typ": -154
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -162,
+            "typ": -167
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 5000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -163,
+            "typ": -168
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_spur",
+        "spurious"
+      ],
+      "group": "output",
+      "key": "spurious",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 10000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -106,
+            "typ": -112
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_stg",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vdd max",
+        "continuous power supply voltage range"
+      ],
+      "group": "supply",
+      "key": "absolute_max_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4,
+            "min": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "HBM",
+        "human body model"
+      ],
+      "group": "supply",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tj",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 130
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJA",
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Table 9. Thermal Considerations",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 54
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RthJC",
+        "theta-JC"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 9,
+          "sourceTable": "Table 9. Thermal Considerations",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "typ": 15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "peak reflow temperature",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 9,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "OE",
+      "name": "OE",
+      "number": 1
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 3
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 4
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 5
+    },
+    {
+      "function": "CLK",
+      "name": "CLK",
+      "number": 6
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 7
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 8
+    },
+    {
+      "function": "VDD",
+      "name": "VDD",
+      "number": 9
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 10
+    }
+  ]
+}

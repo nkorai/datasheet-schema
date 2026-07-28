@@ -1,0 +1,429 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "SG3225EEN",
+    "manufacturer": "Seiko Epson Corporation",
+    "family": "oscillator",
+    "description": "LV-PECL differential quartz crystal oscillator (SPXO) in a 3.2 x 2.5 x 1.05 mm 6-pad ceramic SMD package - the quartz counterpart to a MEMS differential clock. The SG3225EEN family spans 25 MHz to 500 MHz on a 2.5 V or 3.3 V rail with an output-enable (OE) function and 50 fs typ phase jitter at 156.25 MHz. This document captures the ordered grade SG3225EEN 156.250000M-CJGA: 156.25 MHz, 3.3 V rail (C), inclusive frequency tolerance +/-50 ppm (J), operating -40 to +85 C (G). Frequency tolerance is a single all-inclusive figure (initial + temperature + supply + long-term aging), the hallmark of a short-form clock-oscillator brief. Source is the Epson product brief; the full datasheet is available from Epson on request.",
+    "package": "SG3225 ceramic SMD (3.2 x 2.5 x 1.05 mm), 6 pad",
+    "pinCount": 6,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "SG3225EEN 156.250000M-CJGA", "package": "3225 SMD (3.2 x 2.5 x 1.05 mm)", "packing": "tape and reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "OE", "function": "OE", "type": "digital_in", "description": "Output enable. HIGH or Open = specified frequency output; LOW = output high impedance. Internal logic thresholds VIH = 70% VCC min, VIL = 30% VCC max.", "sourcePage": 1 },
+    { "number": 2, "name": "N.C.", "function": "NC", "type": "passive", "description": "No connection (leave Open or tie to VCC).", "sourcePage": 1 },
+    { "number": 3, "name": "GND", "function": "GND", "type": "power", "description": "Ground.", "sourcePage": 1 },
+    { "number": 4, "name": "OUT", "function": "OUT", "type": "digital_out", "description": "Non-inverting LV-PECL output. 50 ohm load terminated to VCC - 2.0 V.", "sourcePage": 1 },
+    { "number": 5, "name": "OUT", "function": "OUT_N", "type": "digital_out", "description": "Inverting / complementary LV-PECL output (printed as OUT with an overbar). 50 ohm load terminated to VCC - 2.0 V.", "sourcePage": 1 },
+    { "number": 6, "name": "VCC", "function": "VCC", "type": "power", "description": "Supply. Bypass 0.1 uF and 10 uF between VCC and GND, placed close to the VCC pin for optimum jitter.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal output frequency",
+      "group": "frequency",
+      "aliases": ["fo", "output frequency", "output frequency range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1.5625e8 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "SUBTYPE", "note": "spxo" },
+            { "param": "TECHNOLOGY", "note": "quartz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "Ordered output frequency fo = 156.250000 MHz (LV-PECL SPXO, quartz). Family output frequency range fo = 25 MHz to 500 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Frequency tolerance (inclusive)",
+      "group": "stability",
+      "aliases": ["f_tol", "frequency tolerance", "frequency calibration"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -50, "max": 50 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "f_tol = +/-50 x 10^-6 Max (J grade). INCLUSIVE figure: includes initial frequency tolerance, temperature variation, supply voltage change and long-term aging (referenced at +25 C), guaranteed over the full -40 to +85 C operating range. Per the brief's merged remark cells, the +/-25 ppm (D) grade bundles 5-year aging and the +/-50 / +/-100 ppm (J / L) grades bundle 10-year aging.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "supply",
+      "aliases": ["VCC", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 3.3, "min": 3.135, "max": 3.465 },
+          "unit": "V",
+          "conditionsVerbatim": "VCC = 3.3 V +/- 0.165 V (C grade). The D grade rail is 2.5 V +/- 0.125 V.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Current consumption",
+      "group": "supply",
+      "aliases": ["ICC", "current consumption"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.06 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F", "value": 1.5625e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "ICC = 60 mA Max (LV-PECL), OE = VCC, L_ECL = 50 ohm terminated to VCC - 2.0 V. A single max over the whole 25 to 500 MHz family range; the ordered carrier is fo = 156.25 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "disable_current",
+      "name": "Output-disable current",
+      "group": "supply",
+      "aliases": ["I_dis", "disable current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.025 },
+          "unit": "A",
+          "conditions": [
+            { "param": "OE", "note": "GND" }
+          ],
+          "conditionsVerbatim": "I_dis = 25 mA Max (LV-PECL) at OE = GND. Output is high impedance while the oscillator core keeps running (distinct from a full standby).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Symmetry (duty cycle)",
+      "group": "output",
+      "aliases": ["SYM", "symmetry", "duty cycle"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 45, "max": 55 },
+          "unit": "%",
+          "conditionsVerbatim": "SYM = 45 % to 55 %, measured at the output crossing point.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (VOH, LV-PECL)",
+      "group": "output",
+      "aliases": ["VOH", "output high voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.2 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "VOH = VCC - 1.1 V Min = 2.2 V at VCC = 3.3 V (LV-PECL DC characteristics). Output load L_ECL = 50 ohm terminated to VCC - 2.0 V.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (VOL, LV-PECL)",
+      "group": "output",
+      "aliases": ["VOL", "output low voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.8 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "VOL = VCC - 1.5 V Max = 1.8 V at VCC = 3.3 V (LV-PECL DC characteristics). Output load L_ECL = 50 ohm terminated to VCC - 2.0 V.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "output_load_resistance",
+      "name": "Output load resistance",
+      "group": "output",
+      "aliases": ["L_ECL", "output load condition", "termination resistance"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 50 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "L_ECL = 50 ohm, terminated to VCC - 2.0 V (LV-PECL output load condition).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "output",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3e-10 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" },
+            { "param": "F", "min": 2.5e7, "max": 2e8, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "tr = 0.3 ns Max at VCC = 3.3 V, 25 MHz <= fo <= 200 MHz, measured between 20 % and 80 % of (VOH - VOL). All other conditions: 0.35 ns Max.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "output",
+      "aliases": ["tf", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3e-10 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" },
+            { "param": "F", "min": 2.5e7, "max": 2e8, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "tf = 0.3 ns Max at VCC = 3.3 V, 25 MHz <= fo <= 200 MHz, measured between 20 % and 80 % of (VOH - VOL). All other conditions: 0.35 ns Max.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "input_high_voltage",
+      "name": "OE input high voltage (VIH)",
+      "group": "control",
+      "aliases": ["VIH", "input high voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.31 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIH = 70 % VCC Min = 2.31 V at VCC = 3.3 V (OE terminal).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "input_low_voltage",
+      "name": "OE input low voltage (VIL)",
+      "group": "control",
+      "aliases": ["VIL", "input low voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.99 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CC", "value": 3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "VIL = 30 % VCC Max = 0.99 V at VCC = 3.3 V (OE terminal).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "group": "timing",
+      "aliases": ["t_str", "startup time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.01 },
+          "unit": "s",
+          "conditionsVerbatim": "t_str = 10 ms Max. The time at minimum supply voltage is taken as 0 s.",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (integrated)",
+      "group": "jitter",
+      "aliases": ["phase jitter", "RMS phase jitter", "integrated phase jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 7.5e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 75 fs Typ. at fo = 100 MHz, integration band (offset frequency) 12 kHz to 20 MHz, LV-PECL. SG3225EEN product-family characterization curve.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6.0e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1.25e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 60 fs Typ. at fo = 125 MHz, integration band 12 kHz to 20 MHz, LV-PECL.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5.0e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 1.5625e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 50 fs Typ. at fo = 156.25 MHz (the ordered carrier), integration band 12 kHz to 20 MHz, LV-PECL. This is the datasheet headline jitter figure.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4.0e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 2e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 40 fs Typ. at fo = 200 MHz, integration band 12 kHz to 20 MHz, LV-PECL.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.0e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 3.125e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 30 fs Typ. at fo = 312.5 MHz, integration band 12 kHz to 20 MHz, LV-PECL.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.0e-14 },
+          "unit": "s",
+          "statistic": "rms",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "F", "value": 4.9152e8, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvpecl" }
+          ],
+          "conditionsVerbatim": "RMS phase jitter = 20 fs Typ. at fo = 491.52 MHz, integration band 12 kHz to 20 MHz, LV-PECL.",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["T_use", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "T_use = -40 to +85 C (G grade), the range the +/-50 ppm frequency tolerance is guaranteed over. The H grade extends to +105 C; above 200 MHz the maximum operating temperature is +85 C (figure *1).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["T_stg", "storage temperature range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "T_stg = -55 to +125 C (absolute maximum).",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Source is the Epson SG3225EEN / VEN product brief (2 pages, (c) Seiko Epson 2025); the full datasheet is available from Epson on request. All values are read from the LV-PECL (SG3225EEN) column.",
+    "frequency_tolerance is a single all-inclusive figure (initial tolerance + temperature + supply-voltage change + long-term aging at +25 C). The brief's merged remark cells associate 5-year aging with the +/-25 ppm (D) grade and 10-year aging with the +/-50 / +/-100 ppm (J / L) grades; this document uses the J grade (+/-50 ppm).",
+    "LV-PECL VOH (VCC - 1.1 V min) and VOL (VCC - 1.5 V max) are computed to absolute volts at the ordered VCC = 3.3 V; the printed VCC-relative form is kept in conditionsVerbatim.",
+    "The phase-jitter measurements are the printed SG3225EEN product-family characterization curve across carrier frequencies (100 / 125 / 156.25 / 200 / 312.5 / 491.52 MHz, integration band 12 kHz to 20 MHz). The ordered part outputs 156.25 MHz, whose guaranteed headline is 50 fs typ.",
+    "Ordered grade for this document: SG3225EEN 156.250000M-CJGA = C (3.3 V) / J (+/-50 ppm) / G (-40 to +85 C) / A (default internal code), product number X1G005221xxxx00."
+  ],
+  "provenance": {
+    "datasheetSha256": "adb3843eb1beb491dde7686212b602f05b960f200f3acb1c4bc6950290dbd6ec",
+    "sourceUrl": "https://download.epsondevice.com/td/pdf/brief/SG3225EEN_en.pdf",
+    "datasheetRevision": "Product brief, (c) Seiko Epson Corporation 2025",
+    "publishedDate": "2025",
+    "extractionMethod": "llm:claude-opus-4-8",
+    "verified": true
+  }
+}

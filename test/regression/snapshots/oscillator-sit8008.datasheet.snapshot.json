@@ -1,0 +1,974 @@
+{
+  "family": "oscillator",
+  "manufacturer": "SiTime",
+  "mpn": "SiT8008",
+  "parameters": [
+    {
+      "aliases": [
+        "Output Frequency Range",
+        "f"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "spxo",
+              "param": "SUBTYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "mems",
+              "param": "TECHNOLOGY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Frequency Range",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 20000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "F_stab",
+        "Frequency Stability"
+      ],
+      "group": "stability",
+      "key": "total_frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "spxo",
+              "param": "SUBTYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "mems",
+              "param": "TECHNOLOGY",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Frequency Stability and Aging",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 25,
+            "min": -25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Temperature Range",
+        "T_use"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Operating Temperature Range",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vdd"
+      ],
+      "group": "supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.63,
+            "min": 2.97,
+            "typ": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Current Consumption",
+        "Idd"
+      ],
+      "group": "supply",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 20000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0045,
+            "typ": 0.0038
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_std",
+        "Standby Current"
+      ],
+      "group": "supply",
+      "key": "standby_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "ST=GND",
+              "param": "SWITCH",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0000043,
+            "typ": 0.0000026
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_OD",
+        "OE Disable Current"
+      ],
+      "group": "supply",
+      "key": "disable_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "OE=GND",
+              "param": "SWITCH",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.004
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DC",
+        "Duty Cycle"
+      ],
+      "group": "output",
+      "key": "duty_cycle",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 55,
+            "min": 45
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tr"
+      ],
+      "group": "output",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 2e-9,
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tf"
+      ],
+      "group": "output",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 2e-9,
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOH"
+      ],
+      "group": "output",
+      "key": "output_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": -0.004
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.97
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.004
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.33
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIH"
+      ],
+      "group": "control",
+      "key": "input_high_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.31
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIL"
+      ],
+      "group": "control",
+      "key": "input_low_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Input Pull-up Impedence",
+        "Z_in"
+      ],
+      "group": "control",
+      "key": "oe_input_impedance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 100000,
+            "typ": 87000
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "ST logic low",
+              "param": "SWITCH",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 2000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CLOAD"
+      ],
+      "group": "output",
+      "key": "output_load_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Figure 1. Test Circuit",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 1.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Startup Time",
+        "T_start"
+      ],
+      "group": "timing",
+      "key": "startup_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Enable/Disable Time",
+        "T_oe"
+      ],
+      "group": "timing",
+      "key": "enable_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 110000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1.3e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Resume Time",
+        "T_resume"
+      ],
+      "group": "timing",
+      "key": "resume_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS Period Jitter",
+        "T_jitt"
+      ],
+      "group": "jitter",
+      "key": "rms_period_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 75000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 3e-12,
+            "typ": 1.76e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS Phase Jitter (random)",
+        "T_phj"
+      ],
+      "group": "jitter",
+      "key": "rms_phase_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 75000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "900 kHz to 7.5 MHz",
+              "param": "INTEG_BW",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 9e-13,
+            "typ": 5e-13
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 75000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "12 kHz to 20 MHz",
+              "param": "INTEG_BW",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 2e-12,
+            "typ": 1.3e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Storage Temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VDD"
+      ],
+      "group": "supply",
+      "key": "absolute_max_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4,
+            "min": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Electrostatic Discharge"
+      ],
+      "group": "supply",
+      "key": "esd_hbm",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 2000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Junction Temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "theta-JA"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_ambient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "3225",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "4-layer",
+              "param": "BOARD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Consideration",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "nom": 109
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "theta-JC"
+      ],
+      "group": "thermal",
+      "key": "thermal_resistance_junction_case",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "3225",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Consideration",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC/W",
+          "value": {
+            "nom": 27
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "peak reflow temperature",
+        "soldering temperature"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "OE",
+      "name": "OE/ST",
+      "number": 1
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 2
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 3
+    },
+    {
+      "function": "VDD",
+      "name": "VDD",
+      "number": 4
+    }
+  ]
+}

@@ -1,0 +1,770 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "V514",
+    "manufacturer": "Connor-Winfield",
+    "family": "oscillator",
+    "description": "3.3 V surface-mount 5x7.5 mm LVDS VCXO (voltage-controlled crystal oscillator). Quartz resonator with an integrated sustaining/output stage driving differential LVDS outputs and an enable/disable (tri-state) function, targeted at very-high-frequency, low-jitter, low-phase-noise clocking. The V514 model family spans a 130-167 MHz center-frequency range; this document describes one ordered grade at 148.5 MHz (the datasheet's own ordering example - 'V514-148.5M'). Headline: +/-80 ppm minimum absolute pull range (APR) and +/-50 ppm frequency stability over -20 to +70 C. Hermetically sealed ceramic package with grounded metal cover; RoHS/lead-free, tape-and-reel. Sub-type VCXO, quartz technology, LVDS output.",
+    "package": "5x7.5 mm ceramic surface-mount (6-pad)",
+    "pinCount": 6,
+    "lifecycle": "active",
+    "temperatureGrade": "-20..70",
+    "orderingVariants": [
+      {
+        "orderCode": "V514-148.5M",
+        "package": "5x7.5 mm SMD",
+        "packing": "Tape and reel"
+      }
+    ]
+  },
+  "pinout": [
+    {
+      "number": 1,
+      "name": "Vc (Control Voltage)",
+      "function": "VC",
+      "type": "analog",
+      "description": "Analog control-voltage (EFC) input. 0.3 to 3.0 V pulls the frequency about the 1.65 V nominal-center bias; positive transfer function.",
+      "sourcePage": 2
+    },
+    {
+      "number": 2,
+      "name": "Enable/Disable",
+      "function": "OE",
+      "type": "digital_in",
+      "description": "Output enable/disable. Low = Enable (active output); High or Open = Disable (both outputs high-impedance / tri-state).",
+      "sourcePage": 2
+    },
+    {
+      "number": 3,
+      "name": "Ground (Case)",
+      "function": "GND",
+      "type": "power",
+      "description": "Ground, connected to the grounded metal case/cover.",
+      "sourcePage": 2
+    },
+    {
+      "number": 4,
+      "name": "Q (Output)",
+      "function": "OUT",
+      "type": "digital_out",
+      "description": "True LVDS differential output (Q).",
+      "sourcePage": 2
+    },
+    {
+      "number": 5,
+      "name": "Qbar (Comp Output)",
+      "function": "OUT_N",
+      "type": "digital_out",
+      "description": "Complementary LVDS differential output (Q-bar).",
+      "sourcePage": 2
+    },
+    {
+      "number": 6,
+      "name": "Vcc",
+      "function": "VCC",
+      "type": "power",
+      "description": "3.3 V supply. Bypass with a >= 0.01 uF ceramic capacitor.",
+      "sourcePage": 2
+    }
+  ],
+  "parameters": [
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": [
+        "Storage Temperature"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "min": -55,
+            "max": 125
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature = -55 to 125 C (absolute maximum).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1.0 Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_supply_voltage",
+      "name": "Supply voltage (absolute maximum)",
+      "group": "supply",
+      "aliases": [
+        "Vcc"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "min": -0.5,
+            "max": 7.0
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Supply Voltage (Vcc) = -0.5 to 7.0 Vdc (absolute maximum).",
+          "sourcePage": 1,
+          "sourceTable": "Table 1.0 Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "nominal_frequency",
+      "name": "Center (output) frequency",
+      "group": "frequency",
+      "aliases": [
+        "Fo",
+        "Center Frequency"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "nom": 148500000.0
+          },
+          "unit": "Hz",
+          "conditions": [
+            {
+              "param": "SUBTYPE",
+              "note": "vcxo"
+            },
+            {
+              "param": "TECHNOLOGY",
+              "note": "quartz"
+            },
+            {
+              "param": "OUTPUT_TYPE",
+              "note": "lvds"
+            }
+          ],
+          "conditionsVerbatim": "Center Frequency (Fo). Model family available 130 to 167 MHz; this document = 148.5 MHz ordered (datasheet ordering example: V514-148.5M).",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "group": "stability",
+      "aliases": [
+        "Frequency Stability"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": -50,
+            "max": 50
+          },
+          "unit": "ppm",
+          "conditions": [
+            {
+              "param": "T_A",
+              "min": -20,
+              "max": 70,
+              "unit": "degC"
+            }
+          ],
+          "conditionsVerbatim": "Frequency Stability = -50 to +50 ppm (note 1: frequency stability vs. change in temperature relative to the frequency measured @ 25 C, over the -20 to +70 C operating range).",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": [
+        "Operating Temperature Range"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": -20,
+            "max": 70
+          },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Range = -20 to 70 C.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "supply",
+      "aliases": [
+        "Vcc"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 3.135,
+            "nom": 3.3,
+            "max": 3.465
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Supply Voltage (Vcc) = 3.135 (min) / 3.3 (nom) / 3.465 (max) Vdc.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "supply",
+      "aliases": [
+        "Icc"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.1
+          },
+          "unit": "A",
+          "conditions": [
+            {
+              "param": "F",
+              "value": 156250000.0,
+              "unit": "Hz"
+            },
+            {
+              "param": "OUTPUT_TYPE",
+              "note": "lvds"
+            }
+          ],
+          "conditionsVerbatim": "Supply Current (Icc) = 100 mA (max).",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rms_period_jitter",
+      "name": "RMS period jitter",
+      "group": "jitter",
+      "aliases": [
+        "Period Jitter"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 3e-12,
+            "max": 5e-12
+          },
+          "unit": "s",
+          "statistic": "rms",
+          "conditionsVerbatim": "Period Jitter = 3.0 ps (typ) / 5.0 ps (max), rms.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (integrated)",
+      "group": "jitter",
+      "aliases": [
+        "Phase Jitter"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 5e-13,
+            "max": 1e-12
+          },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            {
+              "param": "INTEG_BW",
+              "min": 12000,
+              "max": 20000000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "Phase Jitter (BW = 12 kHz to 20 MHz) = 0.5 ps (typ) / 1.0 ps (max), rms.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "phase_noise",
+      "name": "SSB phase noise",
+      "group": "phase_noise",
+      "aliases": [
+        "SSB Phase Noise"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -60
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_OFFSET",
+              "value": 10,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "SSB Phase Noise at 10 Hz offset = -60 dBc/Hz (typ), carrier @ Fo = 148.5 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -90
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_OFFSET",
+              "value": 100,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "SSB Phase Noise at 100 Hz offset = -90 dBc/Hz (typ), carrier @ Fo = 148.5 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -125
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_OFFSET",
+              "value": 1000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "SSB Phase Noise at 1 kHz offset = -125 dBc/Hz (typ), carrier @ Fo = 148.5 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -140
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_OFFSET",
+              "value": 10000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "SSB Phase Noise at 10 kHz offset = -140 dBc/Hz (typ), carrier @ Fo = 148.5 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": -145
+          },
+          "unit": "dB",
+          "conditions": [
+            {
+              "param": "F_OFFSET",
+              "value": 100000,
+              "unit": "Hz"
+            }
+          ],
+          "conditionsVerbatim": "SSB Phase Noise at 100 kHz offset = -145 dBc/Hz (typ), carrier @ Fo = 148.5 MHz.",
+          "sourcePage": 1,
+          "sourceTable": "Table 2.0 Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "control_voltage_range",
+      "name": "Control-voltage (EFC) range",
+      "group": "tuning",
+      "aliases": [
+        "Vc",
+        "Control Voltage Range"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "min": 0.3,
+            "nom": 1.65,
+            "max": 3.0
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Control Voltage Range (Vc) = 0.3 (min) / 1.65 (nom) / 3.0 (max) Vdc.",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "control_voltage_bias",
+      "name": "Control-voltage bias (center)",
+      "group": "tuning",
+      "aliases": [
+        "Vc center"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "nom": 1.65
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Nominal (un-pulled) center control voltage Vc = 1.65 V (= Vcc/2), the bias the pull range is referenced to.",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "absolute_pull_range",
+      "name": "Absolute pull range (APR)",
+      "group": "tuning",
+      "aliases": [
+        "APR",
+        "Absolute Pull Range"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 80
+          },
+          "unit": "ppm",
+          "conditions": [
+            {
+              "param": "V_C",
+              "min": 0.3,
+              "max": 3.0,
+              "unit": "V"
+            },
+            {
+              "param": "TUNING_POLARITY",
+              "note": "positive transfer function"
+            }
+          ],
+          "conditionsVerbatim": "Absolute Pull Range (APR) = +/-80 ppm (minimum guaranteed) (note 2: the minimum guaranteed pull range under all conditions over lifetime - including calibration @ 25 C, frequency vs. temperature, vs. supply voltage, vs. load, shock and vibration, and aging for ten years; referenced to Fo; positive transfer function).",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "tuning_linearity",
+      "name": "Tuning linearity (monotonic)",
+      "group": "tuning",
+      "aliases": [
+        "Monotonic Linearity"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": -10,
+            "max": 10
+          },
+          "unit": "%",
+          "conditionsVerbatim": "Monotonic Linearity = -10 to +10 %.",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "control_input_impedance",
+      "name": "Control-input impedance",
+      "group": "tuning",
+      "aliases": [
+        "Input Impedance"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 60000.0
+          },
+          "unit": "ohm",
+          "conditionsVerbatim": "Input Impedance = 60 kOhm (typ) on the Vc control pin.",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "control_input_bandwidth",
+      "name": "Control (modulation) bandwidth",
+      "group": "tuning",
+      "aliases": [
+        "Modulation Bandwidth"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 25000
+          },
+          "unit": "Hz",
+          "conditionsVerbatim": "Modulation Bandwidth (3 dB) = 25 kHz (min), -3 dB point.",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_low_voltage",
+      "name": "Enable input voltage, low (VIL)",
+      "group": "control",
+      "aliases": [
+        "Vil",
+        "Enable Input Voltage (Low)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "max": 0.99
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "V_S",
+              "value": 3.3,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "Enable Input Voltage (Low) (Vil) = 0.3 Vcc (max) -> 0.99 V at Vcc = 3.3 V (note 3: a Low on pad 2 enables the output; when disabled both outputs are high-impedance / tri-state).",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_high_voltage",
+      "name": "Disable input voltage, high (VIH)",
+      "group": "control",
+      "aliases": [
+        "Vih",
+        "Disable Input Voltage (High)"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 2.31
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "V_S",
+              "value": 3.3,
+              "unit": "V"
+            }
+          ],
+          "conditionsVerbatim": "Disable Input Voltage (High) (Vih) = 0.7 Vcc (min) -> 2.31 V at Vcc = 3.3 V (note 3: a High or Open on pad 2 disables the output / tri-state).",
+          "sourcePage": 1,
+          "sourceTable": "Table 3.0 Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_load_resistance",
+      "name": "Output load resistance",
+      "group": "output",
+      "aliases": [
+        "LOAD"
+      ],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": {
+            "max": 100
+          },
+          "unit": "ohm",
+          "conditions": [
+            {
+              "param": "OUTPUT_TYPE",
+              "note": "lvds"
+            }
+          ],
+          "conditionsVerbatim": "LOAD = 100 Ohms (max), the differential termination between the true and complementary outputs.",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "differential_output_swing",
+      "name": "Differential output voltage swing",
+      "group": "output",
+      "aliases": [
+        "Vod",
+        "Vopp",
+        "Output Differential Voltage",
+        "Output Swing"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 0.25,
+            "max": 0.45
+          },
+          "unit": "V",
+          "conditions": [
+            {
+              "param": "R_L",
+              "value": 100,
+              "unit": "ohm"
+            },
+            {
+              "param": "OUTPUT_TYPE",
+              "note": "lvds"
+            }
+          ],
+          "conditionsVerbatim": "Output Differential Voltage (Vod) = 250 mV (min) / 450 mV (max) (note 4: Vod measured with a 100 ohm resistor between the true output and the complementary output).",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 0.35
+          },
+          "unit": "V",
+          "statistic": "peak_to_peak",
+          "conditions": [
+            {
+              "param": "R_L",
+              "value": 100,
+              "unit": "ohm"
+            },
+            {
+              "param": "OUTPUT_TYPE",
+              "note": "lvds"
+            }
+          ],
+          "conditionsVerbatim": "Output Swing (Vopp), differential output peak-to-peak = 350 mV (min).",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Duty cycle (symmetry)",
+      "group": "output",
+      "aliases": [
+        "Duty Cycle"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "min": 45,
+            "nom": 50,
+            "max": 55
+          },
+          "unit": "%",
+          "conditionsVerbatim": "Duty Cycle = 45 (min) / 50 (nom) / 55 (max) % (note 5: measured at 50 % of output swing).",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "output",
+      "aliases": [
+        "tr",
+        "Differential Rise / Fall Time"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 3e-10,
+            "max": 7e-10
+          },
+          "unit": "s",
+          "conditionsVerbatim": "Differential Rise / Fall Time (20% to 80%) = 0.3 ns (typ) / 0.7 ns (max). One combined rise/fall row applies to both edges.",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "output",
+      "aliases": [
+        "tf",
+        "Differential Rise / Fall Time"
+      ],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": {
+            "typ": 3e-10,
+            "max": 7e-10
+          },
+          "unit": "s",
+          "conditionsVerbatim": "Differential Rise / Fall Time (20% to 80%) = 0.3 ns (typ) / 0.7 ns (max). One combined rise/fall row applies to both edges.",
+          "sourcePage": 1,
+          "sourceTable": "Table 4.0 LVDS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_control_voltage",
+      "name": "Control voltage (absolute maximum)",
+      "group": "tuning",
+      "aliases": [
+        "Vc max",
+        "control voltage absolute maximum"
+      ],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": {
+            "min": -0.5,
+            "max": 3.8
+          },
+          "unit": "V",
+          "conditionsVerbatim": "Vc abs max −0.5 to Vcc+0.5 V (=3.8 V at Vcc=3.3)",
+          "sourcePage": 1
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "90e94e23985974c2561406ba39fac9bf4d438bc0f2b0b77a70cefc715b615c13",
+    "sourceUrl": "https://conwin.com/datasheets/vx/vx596.pdf",
+    "datasheetRevision": "Vx596 Rev 00",
+    "publishedDate": "2007-11-28",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

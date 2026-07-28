@@ -1,0 +1,1031 @@
+{
+  "family": "oscillator",
+  "manufacturer": "Connor-Winfield",
+  "mpn": "OH300-50503CV-010.0M",
+  "parameters": [
+    {
+      "aliases": [
+        "Fo",
+        "center frequency"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "vcocxo (OCXO type code V, voltage-controlled)",
+              "param": "SUBTYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "quartz (overtone SC-cut)",
+              "param": "TECHNOLOGY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvcmos (3.3 Vdc CMOS square-wave, output code C)",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 10000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "frequency calibration"
+      ],
+      "group": "stability",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.1,
+            "min": -0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "frequency stability vs temperature"
+      ],
+      "group": "stability",
+      "key": "frequency_stability",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 70,
+              "min": 0,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.005,
+            "min": -0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "frequency stability vs load"
+      ],
+      "group": "stability",
+      "key": "frequency_stability_vs_load",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.002,
+            "min": -0.002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "frequency stability vs voltage"
+      ],
+      "group": "stability",
+      "key": "frequency_stability_vs_supply",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.002,
+            "min": -0.002
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "aging",
+        "lifetime tolerance"
+      ],
+      "group": "stability",
+      "key": "aging",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "per_day",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.001,
+            "min": -0.001
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "first_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.05,
+            "min": -0.05
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "20_year",
+              "param": "AGING_PERIOD",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 0.3,
+            "min": -0.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vcc"
+      ],
+      "group": "supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.47,
+            "min": 3.13,
+            "nom": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vdd max"
+      ],
+      "group": "supply",
+      "key": "absolute_max_supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7,
+            "min": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "re-stabilization",
+        "warm up time",
+        "warm-up time"
+      ],
+      "group": "oven",
+      "key": "warm_up_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 300
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Re-Stabilization Time",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 7200
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power consumption turn-on",
+        "turn-on power"
+      ],
+      "group": "oven",
+      "key": "warm_up_power",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "power consumption steady state",
+        "steady state power"
+      ],
+      "group": "oven",
+      "key": "steady_state_power",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 1.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "start-up time"
+      ],
+      "group": "timing",
+      "key": "startup_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ADEV",
+        "short term stability"
+      ],
+      "group": "stability",
+      "key": "allan_deviation",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "TAU",
+              "unit": "s",
+              "value": 1
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "typ": 1e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "phase jitter"
+      ],
+      "group": "jitter",
+      "key": "rms_phase_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "10 Hz to Fo/2 (Fo = 10 MHz, i.e. 10 Hz to 5 MHz)",
+              "param": "INTEG_BW",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 1e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "L(f)",
+        "SSB phase noise"
+      ],
+      "group": "phase_noise",
+      "key": "phase_noise",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 1
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -85
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 10
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -115
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 100
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -140
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 1000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -145
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 10000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -150
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F_OFFSET",
+              "unit": "Hz",
+              "value": 100000
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": -150
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "duty cycle",
+        "symmetry"
+      ],
+      "group": "output",
+      "key": "duty_cycle",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 55,
+            "min": 45,
+            "nom": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "output",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 6e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "tf"
+      ],
+      "group": "output",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 6e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Voh"
+      ],
+      "group": "output",
+      "key": "output_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": -0.004
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vol"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.004
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CL",
+        "load"
+      ],
+      "group": "output",
+      "key": "output_load_capacitance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "nom": 1.5e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "spurious output"
+      ],
+      "group": "output",
+      "key": "spurious",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "max": -80
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vc",
+        "control voltage range"
+      ],
+      "group": "tuning",
+      "key": "control_voltage_range",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3,
+            "min": 0.3,
+            "nom": 1.65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vc center",
+        "nominal control voltage"
+      ],
+      "group": "tuning",
+      "key": "control_voltage_bias",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 1.65
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "frequency pullability",
+        "pulling"
+      ],
+      "group": "tuning",
+      "key": "pullability",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "min": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "input impedance"
+      ],
+      "group": "tuning",
+      "key": "control_input_impedance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 100000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 70,
+            "min": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Vc max",
+        "control voltage absolute maximum"
+      ],
+      "group": "tuning",
+      "key": "absolute_max_control_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": null,
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7,
+            "min": -0.5
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "VC",
+      "name": "Vc",
+      "number": 1
+    },
+    {
+      "function": "NC",
+      "name": "N/C",
+      "number": 2
+    },
+    {
+      "function": "VCC",
+      "name": "Vcc",
+      "number": 3
+    },
+    {
+      "function": "OUT",
+      "name": "RF Output",
+      "number": 4
+    },
+    {
+      "function": "DNC",
+      "name": "DNC",
+      "number": 5
+    },
+    {
+      "function": "DNC",
+      "name": "DNC",
+      "number": 6
+    },
+    {
+      "function": "GND",
+      "name": "Ground",
+      "number": 7
+    }
+  ]
+}

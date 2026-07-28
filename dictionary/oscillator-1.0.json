@@ -1,0 +1,1030 @@
+{
+  "family": "oscillator",
+  "dictionaryVersion": "1.1",
+  "description": "Packaged active oscillator: a self-contained frequency source that contains a resonator (quartz, MEMS, or silicon) plus an active sustaining/output stage in one part, distinguished from the passive `crystal` family (a 2-terminal resonator with no supply, output driver, or logic - already shipped separately). One dictionary spans every sub-type over a shared core (nominal frequency, frequency stability/tolerance/aging, supply, output stage, jitter, phase noise), discriminated by which optional keys are present - the same pattern the `optocoupler` and `led` families use. Sub-types (note-only SUBTYPE axis): SPXO/XO (simple fixed-frequency clock oscillator), TCXO (temperature-compensated - tighter stability, no extra keys), VCXO / VC-TCXO (voltage-controlled - adds the tuning block: pull range, tuning slope in ppm/V, control voltage), DCXO (digital-control - has pull range but NO control voltage or ppm/V, its control is a digital word), OCXO / VC-OCXO (oven-controlled - adds warm-up time/power, Allan deviation, retrace), and MCXO (microprocessor-compensated - the full OCXO spec set MINUS the oven keys). Technology (note-only TECHNOLOGY axis) is quartz | mems | silicon; output stage (note-only OUTPUT_TYPE axis) is cmos | lvcmos | hcmos | lvpecl | lvds | hcsl | clipped_sine | sinewave - jitter and supply current are often specified per output type. ZERO new units - the second family after optocoupler to reuse the enum wholesale: frequency->Hz; stability/tolerance/aging/pull-range->ppm (a printed ppb is 1e-3 ppm - THE key normalization for this family; a printed x10^-6 is literally ppm); frequency-vs-temperature slope->ppm/degC (ppb/degC x1e-3); tuning slope->ppm/V; phase noise (dBc/Hz)->dB with the /Hz and carrier offset in conditionsVerbatim, arrayed over the F_OFFSET (offset-frequency) axis - the ADC-NSD / laser-RIN / crystal precedent; all jitter (RMS phase jitter integrated over a band, RMS period, cycle-to-cycle, peak-to-peak)->s (fs/ps normalized), the rms-vs-peak-to-peak distinction carried by the measurement statistic field; Allan deviation sigma_y(tau)->1 (dimensionless fractional frequency, the crystal quality_factor precedent), arrayed over the TAU (averaging-time) axis; warm-up/steady-state power->W; warm-up/start-up time->s; duty->%; supply/levels->V; current->A; load->F; impedance->ohm. Aging is bounded ppm over a named WINDOW (per_day / first_year / 5_year / 10_year / 20_year via AGING_PERIOD), never ppm/year (the crystal precedent). Deliberate non-adds kept in conditionsVerbatim: g-sensitivity / acceleration sensitivity (ppb/g - printed only on premium/defense OCXOs, often a typical or per-axis vector, not a guaranteed row; stored as a ppm magnitude with the per-g basis in verbatim, with a documented additive path to a future ppm/(m/s2) unit if a precision/aerospace push needs cross-part numeric comparison), power-supply-induced jitter sensitivity (s/V, e.g. fs/mV - single-vendor typical), the dynamic frequency-vs-ramp rate (ppb/s), and dBm output power (converts to W, printed form kept verbatim). Out of scope as separate future families: clock_generator / PLL / clock buffer / jitter cleaner (a part that SYNTHESIZES or DISTRIBUTES frequencies - PLL + dividers, an external reference input, or multiple/fanout outputs - vs an oscillator's single self-contained output; a programmable part's I2C/register map is configuration, not a datasheet guarantee, and stays out); real-time-clock ICs (timekeeping registers, not an output-stage/jitter spec); the passive `crystal` and 3-pin ceramic resonator modules (no active output stage). Synthesized from a 20-datasheet corpus across SiTime (MEMS), Abracon, Epson, ECS, NDK, Connor-Winfield, IQD, Vectron/Microchip, and Renesas/IDT, spanning SiT8008/SiT9365/SiT9501/SiT5356/SiT3521, ASV/ASTX-H11/ABV0225/AOCJY, SG-8018/TG-5021/SG3225, ECS-2033, NSC5318, V514/OH300, IQOV-164, MX-503, and 8N4Q001.",
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal output frequency",
+      "unit": "Hz",
+      "group": "frequency",
+      "aliases": [
+        "f0",
+        "fo",
+        "fOUT",
+        "F_nom",
+        "nominal frequency",
+        "output frequency",
+        "output frequency range",
+        "center frequency",
+        "Fo",
+        "frequency range",
+        "standard frequency"
+      ],
+      "hint": "The ordered output frequency, in hertz (a printed MHz is 1e6, kHz is 1e3, GHz is 1e9). One document = one ordered frequency/grade; if the part family spans a range (e.g. 1-340 MHz programmable), model the ordered frequency as the value and note the family range in the description. For a MEMS/programmable part the exact frequency is set at order time."
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "unit": "ppm",
+      "group": "stability",
+      "aliases": [
+        "F_stab",
+        "fS",
+        "frequency stability",
+        "frequency stability over temperature",
+        "frequency stability vs temperature",
+        "frequency temperature characteristics",
+        "frequency/temperature characteristics",
+        "temperature stability",
+        "delta f/f0 vs temperature"
+      ],
+      "hint": "The frequency deviation over the operating temperature range, in ppm (a printed ppb is 1e-3 ppm: +/-5 ppb is +/-0.005 ppm; a printed x10^-6 is literally ppm). The oscillator's headline; a TCXO tightens it to sub-ppm, an OCXO to ppb. Referenced to (fmax+fmin)/2 or to 25 degC - keep which in conditionsVerbatim. Some parts print an inclusive-of-everything stability (initial + temp + Vdd + load + aging); use total_frequency_stability for that and this key for the temperature-only figure when both are printed."
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Initial frequency tolerance (at 25 degC)",
+      "unit": "ppm",
+      "group": "stability",
+      "aliases": [
+        "f_tol",
+        "fI",
+        "F_init",
+        "initial tolerance",
+        "initial frequency tolerance",
+        "initial accuracy",
+        "frequency tolerance",
+        "frequency calibration",
+        "calibration tolerance"
+      ],
+      "hint": "The frequency accuracy at 25 degC at time of shipment, in ppm (ppb x1e-3). Distinct from the over-temperature frequency_stability. On a short-form datasheet the two are often merged into one inclusive frequency_tolerance - store it here and note 'inclusive' in verbatim if it bundles temp + aging."
+    },
+    {
+      "key": "frequency_stability_vs_supply",
+      "name": "Frequency stability vs supply voltage",
+      "unit": "ppm",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "F_Vdd",
+        "f0-VCC",
+        "frequency stability vs supply voltage",
+        "supply voltage sensitivity",
+        "frequency/voltage coefficient",
+        "frequency vs voltage",
+        "vs supply voltage change",
+        "supply voltage variation"
+      ],
+      "hint": "The total frequency change over the rated supply range (usually Vdd +/-5%), in ppm (ppb x1e-3). A TOTAL deviation over the range, not a per-volt rate - if a part instead prints a ppm/V slope, that is a different quantity (keep it verbatim or note it). Attach the supply-range condition."
+    },
+    {
+      "key": "frequency_stability_vs_load",
+      "name": "Frequency stability vs load",
+      "unit": "ppm",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "F_load",
+        "f0-Load",
+        "frequency stability vs load",
+        "output load sensitivity",
+        "frequency/load coefficient",
+        "vs load change",
+        "load variation"
+      ],
+      "hint": "The total frequency change over the rated load variation (usually +/-10%), in ppm (ppb x1e-3). Attach the load condition (e.g. 15 pF +/-10%)."
+    },
+    {
+      "key": "frequency_temperature_slope",
+      "name": "Frequency vs temperature slope",
+      "unit": "ppm/degC",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "dF/dT",
+        "delta-F/delta-T",
+        "frequency vs temperature slope",
+        "frequency temperature slope",
+        "frequency slope"
+      ],
+      "hint": "The local slope of the frequency-temperature curve, in ppm/degC (a printed ppb/degC is 1e-3: 1 ppb/degC is 0.001 ppm/degC). Per-K equals per-degC. A MEMS/TCXO dynamic-stability spec; distinct from the total frequency_stability over the range."
+    },
+    {
+      "key": "frequency_hysteresis",
+      "name": "Frequency hysteresis over temperature",
+      "unit": "ppm",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "F_hys",
+        "frequency hysteresis",
+        "hysteresis over temperature",
+        "thermal hysteresis"
+      ],
+      "hint": "The frequency difference between rising and falling temperature sweeps, in ppm (ppb x1e-3). Attach the temperature-cycle range."
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "unit": "ppm",
+      "group": "stability",
+      "array": true,
+      "conditionAxis": "AGING_PERIOD",
+      "aliases": [
+        "aging",
+        "ageing",
+        "f_age",
+        "fA",
+        "frequency aging",
+        "long-term stability",
+        "long-term frequency stability",
+        "daily aging",
+        "first year aging",
+        "yearly aging",
+        "10-year aging",
+        "lifetime tolerance"
+      ],
+      "hint": "The long-term frequency drift bounded over a NAMED time window, in ppm (ppb x1e-3) - array over the AGING_PERIOD axis (per_day / first_year / 5_year / 10_year / 20_year), NEVER as a ppm/year rate (the crystal precedent - aging is sub-linear, so a per-year rate would misrepresent it). A datasheet printing '+/-1 ppm/year' means +/-1 ppm bounded over the first year; store 1 in ppm with AGING_PERIOD=first_year."
+    },
+    {
+      "key": "total_frequency_stability",
+      "name": "Total (inclusive) frequency stability",
+      "unit": "ppm",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "fT",
+        "F_tot",
+        "total stability",
+        "overall frequency stability",
+        "total frequency stability",
+        "inclusive stability"
+      ],
+      "hint": "The all-inclusive frequency budget over life (initial tolerance + temperature + supply + load + aging), in ppm (ppb x1e-3), e.g. a Stratum-3 20-year total. Use when a part prints an explicit 'total/overall' figure alongside the component contributions; otherwise the individual keys carry it."
+    },
+    {
+      "key": "allan_deviation",
+      "name": "Allan deviation (short-term stability)",
+      "unit": "1",
+      "group": "stability",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "TAU",
+      "aliases": [
+        "ADEV",
+        "sigma_y(tau)",
+        "Allan deviation",
+        "Allan variance",
+        "root Allan variance",
+        "short term stability",
+        "short-term Allan deviation",
+        "two-sample deviation"
+      ],
+      "hint": "The Allan deviation sigma_y(tau) - short-term fractional-frequency stability, a dimensionless number (unit 1), e.g. 1e-11 at tau=1 s. Array over the TAU (averaging-time) axis (1 s, 10 s, 100 s). A printed '1E-11/s' is 'at tau=1 s', NOT a per-second rate - store 1e-11 (unit 1) with TAU=1 s. If a part prints Allan VARIANCE (sigma^2, also unit 1) note which in verbatim. An OCXO/precision headline; the crystal quality_factor set the dimensionless-1 precedent."
+    },
+    {
+      "key": "holdover",
+      "name": "Holdover frequency error",
+      "unit": "ppm",
+      "group": "stability",
+      "optional": true,
+      "aliases": [
+        "holdover",
+        "hold-over",
+        "holdover accuracy",
+        "holdover stability"
+      ],
+      "hint": "The frequency error accrued over a stated holdover window (e.g. loss of a GPS/GNSS discipline), in ppm (ppb x1e-3), with the window in conditionsVerbatim. A GNSS-disciplined-module spec, rare at the bare-oscillator level; where a part instead specifies a phase/time error over the window, that is a time in s, not this key."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "unit": "V",
+      "group": "supply",
+      "aliases": [
+        "Vdd",
+        "VCC",
+        "Vs",
+        "VDD",
+        "supply voltage",
+        "operating supply voltage",
+        "operating voltage"
+      ],
+      "hint": "The operating supply voltage, in volts (nominal with min/max, or a range). Common rails 1.8/2.5/2.8/3.0/3.3 V."
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "unit": "A",
+      "group": "supply",
+      "array": true,
+      "conditionAxis": "F",
+      "aliases": [
+        "Idd",
+        "Icc",
+        "ICC",
+        "IDD",
+        "supply current",
+        "current consumption",
+        "current draw"
+      ],
+      "hint": "The operating supply current, in amperes (a printed mA is 1e-3). Often binned by output frequency - array over F and attach the frequency and output-type conditions. A differential (LVPECL/LVDS) part's current excludes load termination unless stated."
+    },
+    {
+      "key": "standby_current",
+      "name": "Standby (power-down) current",
+      "unit": "A",
+      "group": "supply",
+      "optional": true,
+      "aliases": [
+        "I_std",
+        "Istb",
+        "standby current",
+        "stand-by current",
+        "power-down current"
+      ],
+      "hint": "The supply current in standby/power-down (ST pin asserted, output high-Z), in amperes (a printed uA is 1e-6). Distinct from disable_current (output disabled but oscillator running)."
+    },
+    {
+      "key": "disable_current",
+      "name": "Output-disable current",
+      "unit": "A",
+      "group": "supply",
+      "optional": true,
+      "aliases": [
+        "I_dis",
+        "I_od",
+        "disable current",
+        "OE disable current",
+        "output disable current"
+      ],
+      "hint": "The supply current with the output disabled (OE=GND) but the oscillator core still running, in amperes (mA/uA normalized). Higher than standby_current, which also stops the core."
+    },
+    {
+      "key": "reference_voltage",
+      "name": "Reference voltage output",
+      "unit": "V",
+      "group": "supply",
+      "optional": true,
+      "aliases": [
+        "Vref",
+        "reference voltage",
+        "center reference voltage"
+      ],
+      "hint": "A reference-voltage output pin some OCXO/VCXO parts provide to bias the control (EFC) input, in volts."
+    },
+    {
+      "key": "absolute_max_supply_voltage",
+      "name": "Supply voltage (absolute maximum)",
+      "unit": "V",
+      "group": "supply",
+      "optional": true,
+      "aliases": [
+        "absolute maximum supply voltage",
+        "maximum supply voltage",
+        "Vdd max"
+      ],
+      "hint": "The absolute-maximum continuous supply voltage, in volts. limitClass absolute_max."
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD withstand (HBM)",
+      "unit": "V",
+      "group": "supply",
+      "optional": true,
+      "aliases": [
+        "ESD",
+        "HBM",
+        "ESD HBM",
+        "human body model",
+        "electrostatic discharge"
+      ],
+      "hint": "The human-body-model ESD withstand voltage, in volts (JESD22-A114). limitClass absolute_max; machine-model / charged-device-model figures, if printed, stay verbatim or use a separate note."
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Duty cycle (symmetry)",
+      "unit": "%",
+      "group": "output",
+      "aliases": [
+        "DC",
+        "SYM",
+        "duty cycle",
+        "symmetry",
+        "output symmetry"
+      ],
+      "hint": "The output duty cycle / symmetry, in percent (e.g. 45-55%), measured at the 50% level. A range on one measurement."
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "unit": "s",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "tr",
+        "Tr",
+        "rise time"
+      ],
+      "hint": "The output rise time, in seconds (a printed ns is 1e-9, ps is 1e-12). Measured 10-90% or 20-80% - keep which in verbatim."
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "unit": "s",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "tf",
+        "Tf",
+        "fall time"
+      ],
+      "hint": "The output fall time, in seconds (ns 1e-9, ps 1e-12). Measured 10-90% or 20-80% - keep which in verbatim."
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (VOH)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOH",
+        "output high voltage",
+        "high level output voltage"
+      ],
+      "hint": "The single-ended output high voltage (CMOS/HCMOS), in volts. Often printed as a fraction of Vdd (90% Vdd) - normalize to absolute V at the rated Vdd and keep the '%Vdd' form in conditionsVerbatim; do NOT use V/V (these are swing levels, not a gain). Attach the IOH condition."
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (VOL)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOL",
+        "output low voltage",
+        "low level output voltage"
+      ],
+      "hint": "The single-ended output low voltage (CMOS/HCMOS), in volts (often '10% Vdd' - normalize to absolute V, keep %Vdd verbatim). Attach the IOL condition."
+    },
+    {
+      "key": "differential_output_swing",
+      "name": "Differential output voltage swing",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOD",
+        "Vod",
+        "V_Swing",
+        "Vopp",
+        "differential output voltage",
+        "differential output swing",
+        "output swing",
+        "differential voltage swing"
+      ],
+      "hint": "The differential output voltage swing of a differential stage (LVPECL/LVDS/HCSL), in volts (a printed mV is 1e-3). Set statistic to peak_to_peak when the datasheet prints a peak-to-peak swing. Attach the termination condition (e.g. 100 ohm between true and complement)."
+    },
+    {
+      "key": "output_offset_voltage",
+      "name": "Output offset (common-mode) voltage",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOS",
+        "offset voltage",
+        "output offset voltage",
+        "common mode voltage",
+        "common-mode output voltage",
+        "VOC"
+      ],
+      "hint": "The common-mode / offset voltage of a differential output (LVDS/LVPECL), in volts."
+    },
+    {
+      "key": "clipped_sine_output_level",
+      "name": "Clipped-sine / sine output level",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VPP",
+        "Vp-p",
+        "clipped sine output level",
+        "output voltage swing",
+        "sine output level",
+        "peak to peak output"
+      ],
+      "hint": "The output level of a clipped-sine or sinewave TCXO/OCXO output, in volts peak-to-peak (a printed Vpp/mVpp normalized). Set statistic to peak_to_peak. A DC-cut cap is usually specified - keep it verbatim. Distinct from a sine output_power printed in dBm."
+    },
+    {
+      "key": "output_power",
+      "name": "Sine output power",
+      "unit": "W",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "output power",
+        "sine output power",
+        "peak power",
+        "RF output power"
+      ],
+      "hint": "The RF output power of a sinewave OCXO into a stated load (usually 50 ohm), in watts. A printed dBm converts to W (W = 10^((dBm-30)/10): 5 dBm is 3.16e-3 W); keep the dBm form in conditionsVerbatim (the existing dBm->W precedent - dBm is not in the enum)."
+    },
+    {
+      "key": "output_load_capacitance",
+      "name": "Output load capacitance",
+      "unit": "F",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "CL",
+        "L_CMOS",
+        "output load capacitance",
+        "load capacitance",
+        "CMOS load",
+        "output load"
+      ],
+      "hint": "The rated capacitive load for a CMOS output, in farads (a printed pF is 1e-12: 15 pF is 1.5e-11). The condition the rise/fall, duty, and jitter specs are measured at."
+    },
+    {
+      "key": "output_load_resistance",
+      "name": "Output load resistance",
+      "unit": "ohm",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "load resistance",
+        "Load_R",
+        "output load resistance",
+        "termination resistance"
+      ],
+      "hint": "The rated load resistance for a clipped-sine or differential output (e.g. 10 kohm clipped-sine, 50 ohm PECL), in ohms (a printed kohm is 1e3)."
+    },
+    {
+      "key": "output_impedance",
+      "name": "Output impedance",
+      "unit": "ohm",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "Z_out",
+        "output impedance",
+        "source impedance"
+      ],
+      "hint": "The output source impedance of the driver, in ohms."
+    },
+    {
+      "key": "harmonic_suppression",
+      "name": "Harmonic suppression",
+      "unit": "dB",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "harmonics",
+        "harmonic suppression",
+        "harmonic content"
+      ],
+      "hint": "The suppression of output harmonics relative to the carrier, in dB (a printed dBc is stored as dB - keep the 'c' reference in verbatim, the phase-noise precedent). A sinewave-output spec."
+    },
+    {
+      "key": "spurious",
+      "name": "Spurious",
+      "unit": "dB",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "spurious",
+        "spurious response",
+        "spurious output",
+        "spurious suppression",
+        "T_spur",
+        "spurs"
+      ],
+      "hint": "The worst spurious level relative to the carrier, in dB (a printed dBc stored as dB, 'c' reference and the offset band in verbatim). Distinct from phase_noise (a density) - a spur is a discrete tone."
+    },
+    {
+      "key": "input_high_voltage",
+      "name": "Control-input high voltage (VIH)",
+      "unit": "V",
+      "group": "control",
+      "optional": true,
+      "aliases": [
+        "VIH",
+        "input high voltage",
+        "high level input voltage"
+      ],
+      "hint": "The logic-high threshold of the OE/ST control input, in volts (often '70% Vdd' - normalize to absolute V, keep %Vdd verbatim)."
+    },
+    {
+      "key": "input_low_voltage",
+      "name": "Control-input low voltage (VIL)",
+      "unit": "V",
+      "group": "control",
+      "optional": true,
+      "aliases": [
+        "VIL",
+        "input low voltage",
+        "low level input voltage"
+      ],
+      "hint": "The logic-low threshold of the OE/ST control input, in volts (often '30% Vdd')."
+    },
+    {
+      "key": "oe_input_impedance",
+      "name": "OE/ST input pull-up impedance",
+      "unit": "ohm",
+      "group": "control",
+      "optional": true,
+      "aliases": [
+        "Z_in",
+        "input pull-up impedance",
+        "OE input impedance",
+        "pull-up impedance",
+        "pull-down impedance"
+      ],
+      "hint": "The internal pull-up/pull-down impedance on the OE/ST enable pin, in ohms (kohm/Mohm normalized: 100 kohm is 1e5). Distinct from control_input_impedance (the VC/EFC analog control pin)."
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": [
+        "T_start",
+        "t_str",
+        "tSU",
+        "startup time",
+        "start-up time",
+        "output startup time",
+        "oscillation start-up time",
+        "time to first pulse"
+      ],
+      "hint": "The time from supply valid to a stable output, in seconds (a printed ms is 1e-3, us is 1e-6). For an OCXO this is the electronics start-up, distinct from warm_up_time (oven thermal settle)."
+    },
+    {
+      "key": "enable_time",
+      "name": "Output-enable time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": [
+        "T_oe",
+        "output enable time",
+        "enable time",
+        "tsta"
+      ],
+      "hint": "The delay from OE asserted to a valid output, in seconds (ns/us normalized). Often expressed as a fixed time plus a number of clock cycles - keep the formula in verbatim."
+    },
+    {
+      "key": "disable_time",
+      "name": "Output-disable time",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": [
+        "disable time",
+        "output disable time",
+        "disable delay time",
+        "tstp"
+      ],
+      "hint": "The delay from OE de-asserted to the output high-Z, in seconds."
+    },
+    {
+      "key": "resume_time",
+      "name": "Resume time (from standby)",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": [
+        "T_resume",
+        "resume time"
+      ],
+      "hint": "The time to a valid output after exiting standby (ST released), in seconds."
+    },
+    {
+      "key": "time_to_stability",
+      "name": "Time to rated frequency stability",
+      "unit": "s",
+      "group": "timing",
+      "optional": true,
+      "aliases": [
+        "T_stability",
+        "time to rated frequency stability",
+        "time to rated stability",
+        "settling time"
+      ],
+      "hint": "The time from power-on to the first output pulse that meets the rated frequency stability, in seconds (distinct from startup_time = first pulse of ANY accuracy). A TCXO/OCXO spec."
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (integrated)",
+      "unit": "s",
+      "group": "jitter",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "INTEG_BW",
+      "aliases": [
+        "T_phj",
+        "tjit(phi)",
+        "RMS phase jitter",
+        "random phase jitter",
+        "phase jitter",
+        "integrated phase jitter",
+        "RJ",
+        "random jitter"
+      ],
+      "hint": "The RMS phase jitter integrated over a stated offset band, in seconds (a printed fs is 1e-15, ps is 1e-12: 100 fs is 1e-13). statistic=rms. Array over the INTEG_BW (integration-band) axis when several bands are printed (12 kHz-20 MHz, 1.875-20 MHz mask, 4/16 MHz filters) - keep the exact band and carrier in conditionsVerbatim. THE low-jitter-oscillator headline."
+    },
+    {
+      "key": "rms_period_jitter",
+      "name": "RMS period jitter",
+      "unit": "s",
+      "group": "jitter",
+      "optional": true,
+      "aliases": [
+        "T_jitt",
+        "tjit(per)",
+        "RMS period jitter",
+        "period jitter"
+      ],
+      "hint": "The RMS period jitter (1-sigma cycle-to-average deviation), in seconds (ps 1e-12). statistic=rms. Attach the sample population and carrier (e.g. 10k cycles, JESD65B) in verbatim."
+    },
+    {
+      "key": "cycle_to_cycle_jitter",
+      "name": "Cycle-to-cycle jitter",
+      "unit": "s",
+      "group": "jitter",
+      "optional": true,
+      "aliases": [
+        "tjit(cc)",
+        "JCC",
+        "cycle-to-cycle jitter",
+        "peak cycle-to-cycle jitter",
+        "C2C jitter",
+        "adjacent period jitter"
+      ],
+      "hint": "The cycle-to-cycle jitter (adjacent-period deviation), in seconds (ps 1e-12). Usually a peak figure - set statistic to peak when so printed."
+    },
+    {
+      "key": "peak_to_peak_jitter",
+      "name": "Peak-to-peak period jitter",
+      "unit": "s",
+      "group": "jitter",
+      "optional": true,
+      "aliases": [
+        "tp-p",
+        "peak-to-peak jitter",
+        "peak to peak period jitter"
+      ],
+      "hint": "The peak-to-peak period jitter over a stated sample population, in seconds (ps 1e-12). statistic=peak_to_peak."
+    },
+    {
+      "key": "phase_noise",
+      "name": "SSB phase noise",
+      "unit": "dB",
+      "group": "phase_noise",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "F_OFFSET",
+      "aliases": [
+        "phase noise",
+        "SSB phase noise",
+        "single-sideband phase noise",
+        "L(f)",
+        "script-L(f)",
+        "phase noise density",
+        "SSB PN"
+      ],
+      "hint": "The single-sideband phase noise L(f), in dB - store the printed dBc/Hz magnitude as a dB value (e.g. -145) and keep the '/Hz' and the carrier ('@ 10 MHz, Vdd=3.3V') in conditionsVerbatim (the ADC dBFS/Hz, laser RIN, crystal precedent - no dBc/Hz unit). Array over the F_OFFSET (carrier-offset) axis - one measurement per offset (1 Hz, 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, 1 MHz). If a part also sweeps phase noise over carrier-frequency band, emit one document per band or keep the band verbatim."
+    },
+    {
+      "key": "absolute_pull_range",
+      "name": "Absolute pull range (APR)",
+      "unit": "ppm",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "APR",
+        "absolute pull range",
+        "minimum pull range",
+        "guaranteed pull range"
+      ],
+      "hint": "The VCXO/DCXO guaranteed pull range AFTER subtracting stability and aging, in ppm (the industry headline: APR = pull_range - frequency_stability - aging). Referenced to the nominal frequency. Present on VCXO and DCXO; a DCXO has APR but no control_voltage_range or tuning_slope."
+    },
+    {
+      "key": "pull_range",
+      "name": "Frequency pull range",
+      "unit": "ppm",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "PR",
+        "pull range",
+        "frequency pull range",
+        "tuning range",
+        "frequency tuning range",
+        "frequency control range",
+        "pulling"
+      ],
+      "hint": "The total frequency deviation over the full control range (full Vc sweep, or full digital-word range for a DCXO), in ppm. The raw range before stability/aging are subtracted (that is absolute_pull_range)."
+    },
+    {
+      "key": "pullability",
+      "name": "Pullability at stated control voltage",
+      "unit": "ppm",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "pullability",
+        "CLK output pullability"
+      ],
+      "hint": "The frequency pull at a stated symmetric control-voltage excursion (e.g. +/-200 ppm at Vc=1.65V +/-1.65V), in ppm. Distinguished from pull_range/APR by its conditions."
+    },
+    {
+      "key": "tuning_slope",
+      "name": "Tuning slope (KV)",
+      "unit": "ppm/V",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "KV",
+        "K_VCO",
+        "tuning slope",
+        "tuning sensitivity",
+        "VCXO tuning characteristic",
+        "control voltage sensitivity",
+        "modulation sensitivity",
+        "frequency vs control voltage slope"
+      ],
+      "hint": "The VCXO frequency-vs-control-voltage slope KV, in ppm/V (already in the enum; a printed ppm/V is stored as-is, e.g. 150). The VCXO headline; where a part prints only a pull range and a Vc range, KV = pull_range / Vc_range (derived). A DCXO has no KV (digital control). Sign/polarity is note-only (tuning_polarity)."
+    },
+    {
+      "key": "control_voltage_range",
+      "name": "Control-voltage (EFC) range",
+      "unit": "V",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "Vc",
+        "VCON",
+        "VC",
+        "control voltage range",
+        "control voltage",
+        "EFC",
+        "electrical frequency control",
+        "frequency adjustment voltage"
+      ],
+      "hint": "The control-voltage (EFC) input range over which the pull range is guaranteed, in volts. Present on VCXO/VC-TCXO/VC-OCXO; absent on a DCXO (digital control word) and a plain XO/TCXO/OCXO."
+    },
+    {
+      "key": "control_voltage_bias",
+      "name": "Control-voltage bias (center)",
+      "unit": "V",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "control voltage bias",
+        "center control voltage",
+        "nominal control voltage",
+        "Vc center"
+      ],
+      "hint": "The control voltage at which the nominal (un-pulled) frequency holds, in volts (e.g. Vc = 1.65 V = Vdd/2). The bias point the pull range is referenced to."
+    },
+    {
+      "key": "control_input_impedance",
+      "name": "Control-input impedance",
+      "unit": "ohm",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "Rin",
+        "control voltage input impedance",
+        "control input impedance",
+        "input resistance",
+        "input impedance",
+        "VC port impedance"
+      ],
+      "hint": "The input impedance of the VC/EFC control pin, in ohms (kohm/Mohm normalized: 100 kohm is 1e5, 2 Mohm is 2e6). Distinct from oe_input_impedance (the digital OE pin)."
+    },
+    {
+      "key": "control_input_bandwidth",
+      "name": "Control (modulation) bandwidth",
+      "unit": "Hz",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "modulation bandwidth",
+        "control voltage input bandwidth",
+        "VC bandwidth",
+        "tuning bandwidth",
+        "-3dB modulation bandwidth"
+      ],
+      "hint": "The -3 dB bandwidth of the control (VC) input's frequency-modulation response, in hertz (a printed kHz is 1e3). A VCXO spec."
+    },
+    {
+      "key": "tuning_linearity",
+      "name": "Tuning linearity",
+      "unit": "%",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "tuning linearity",
+        "pull range linearity",
+        "linearity",
+        "monotonic linearity",
+        "pull non-linearity"
+      ],
+      "hint": "The deviation of the pull-vs-control-voltage curve from a best-fit line, in percent (e.g. +/-10%). A DCXO is 'perfect' (digital) - omit rather than store 0."
+    },
+    {
+      "key": "absolute_max_control_voltage",
+      "name": "Control voltage (absolute maximum)",
+      "unit": "V",
+      "group": "tuning",
+      "optional": true,
+      "aliases": [
+        "absolute maximum control voltage",
+        "maximum control voltage",
+        "Vc max",
+        "control voltage absolute maximum",
+        "EFC absolute maximum",
+        "max control voltage"
+      ],
+      "hint": "The absolute-maximum voltage on the VC/EFC control pin, in volts (e.g. -0.5 to 7, or -0.5 to Vcc+0.5). limitClass absolute_max. The structural sibling of absolute_max_supply_voltage; distinct from control_voltage_range (the guaranteed-pull OPERATING range)."
+    },
+    {
+      "key": "warm_up_time",
+      "name": "Warm-up time (OCXO)",
+      "unit": "s",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "warm-up time",
+        "warm up time",
+        "warmup time",
+        "oven warm-up time",
+        "time to lock"
+      ],
+      "hint": "The time for an OCXO oven to reach a stated frequency accuracy after turn-on, in seconds (a printed minute is 60 s: 3 min is 180). Keep the accuracy criterion (e.g. within +/-100 ppb) in verbatim. Absent on an MCXO (compensated, not ovenized) - its presence is the OCXO tell."
+    },
+    {
+      "key": "warm_up_power",
+      "name": "Warm-up power (OCXO)",
+      "unit": "W",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "warm-up power",
+        "warm up power",
+        "power during warming-up",
+        "power consumption turn-on",
+        "turn-on power"
+      ],
+      "hint": "The peak power the OCXO oven draws during warm-up, in watts (a printed mW is 1e-3). limitClass absolute_max or recommended per how it is framed."
+    },
+    {
+      "key": "steady_state_power",
+      "name": "Steady-state power (OCXO)",
+      "unit": "W",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "steady state power",
+        "steady-state power",
+        "stable power consumption",
+        "power consumption steady state"
+      ],
+      "hint": "The OCXO steady-state (oven-maintained) power at a stated ambient (usually 25 degC), in watts. Lower than warm_up_power."
+    },
+    {
+      "key": "warm_up_accuracy",
+      "name": "Warm-up frequency accuracy (OCXO)",
+      "unit": "ppm",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "warm-up accuracy",
+        "warm up accuracy",
+        "frequency accuracy after warm-up"
+      ],
+      "hint": "The frequency accuracy an OCXO reaches within its warm-up time, in ppm (ppb x1e-3), referenced to the final stabilized frequency. Attach the warm-up time as a condition."
+    },
+    {
+      "key": "retrace",
+      "name": "Retrace (re-stabilization frequency offset)",
+      "unit": "ppm",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "retrace",
+        "re-stabilization",
+        "re-trace",
+        "frequency retrace"
+      ],
+      "hint": "The frequency offset an OCXO returns to after an off/on power cycle, relative to before, in ppm (ppb x1e-3), for a stated off-time. If a part instead tabulates a re-stabilization TIME vs off-time, that is a time (s) - keep the table in verbatim."
+    },
+    {
+      "key": "g_sensitivity",
+      "name": "Acceleration (g) sensitivity",
+      "unit": "ppm",
+      "group": "oven",
+      "optional": true,
+      "aliases": [
+        "g-sensitivity",
+        "g sensitivity",
+        "acceleration sensitivity",
+        "vibration sensitivity",
+        "gamma",
+        "acceleration sensitivity vector"
+      ],
+      "hint": "The fractional-frequency shift per unit acceleration (Delta-f/f per g), stored as the ppm MAGNITUDE with the per-g basis, axis (x/y/z or vector sum), and any vibration-profile band kept in conditionsVerbatim (e.g. '0.3 ppb/g, worst axis, 10-250 Hz' -> value 0.0003 ppm). A premium/defense-OCXO spec, deliberately NOT given a per-acceleration unit (ppb/g is not SI); if a future precision/aerospace push needs numeric cross-part comparison, the additive path is a ppm/(m/s2) unit with fixtures - the deferred-unit precedent (like lux/W-m2 for photodiode)."
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "aliases": [
+        "T_use",
+        "Topr",
+        "operating temperature",
+        "operating temperature range",
+        "operable temperature range"
+      ],
+      "hint": "The operating (ambient) temperature range, in degC. Model as a min and max on one measurement. The range the frequency_stability is guaranteed over."
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "T_stg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "hint": "The storage temperature range, in degC. limitClass absolute_max."
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Peak soldering (reflow) temperature",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "soldering temperature",
+        "peak reflow temperature",
+        "reflow temperature",
+        "peak soldering temperature",
+        "lead soldering temperature",
+        "solder reflow temperature",
+        "maximum soldering temperature",
+        "package peak reflow temperature"
+      ],
+      "hint": "The peak reflow/soldering temperature the package withstands, in degC (e.g. 260). limitClass absolute_max; keep the JEDEC J-STD-020 profile reference in conditionsVerbatim. A permanent post-reflow frequency SHIFT, if a part prints one as a guaranteed ppm row, is a separate quantity (kept verbatim for now, per the crystal reflow-TEST precedent)."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (abs max)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Tj",
+        "TJ",
+        "junction temperature"
+      ],
+      "hint": "The maximum junction temperature, in degC (MEMS/silicon parts). limitClass absolute_max."
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "theta-JA",
+        "thetaJA",
+        "RthJA",
+        "thermal resistance junction to ambient"
+      ],
+      "hint": "The junction-to-ambient thermal resistance, in degC/W (equal to K/W). Reference data on MEMS parts."
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case",
+      "unit": "degC/W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "theta-JC",
+        "thetaJC",
+        "RthJC",
+        "thermal resistance junction to case"
+      ],
+      "hint": "The junction-to-case thermal resistance, in degC/W (= K/W)."
+    }
+  ]
+}

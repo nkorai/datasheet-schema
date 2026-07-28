@@ -1,0 +1,763 @@
+{
+  "family": "oscillator",
+  "manufacturer": "Seiko Epson Corporation",
+  "mpn": "SG3225EEN",
+  "parameters": [
+    {
+      "aliases": [
+        "fo",
+        "output frequency",
+        "output frequency range"
+      ],
+      "group": "frequency",
+      "key": "nominal_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "spxo",
+              "param": "SUBTYPE",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "quartz",
+              "param": "TECHNOLOGY",
+              "unit": null,
+              "value": null
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "nom": 156250000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "f_tol",
+        "frequency calibration",
+        "frequency tolerance"
+      ],
+      "group": "stability",
+      "key": "frequency_tolerance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm",
+          "value": {
+            "max": 50,
+            "min": -50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCC",
+        "supply voltage"
+      ],
+      "group": "supply",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3.465,
+            "min": 3.135,
+            "nom": 3.3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICC",
+        "current consumption"
+      ],
+      "group": "supply",
+      "key": "supply_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 156250000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "I_dis",
+        "disable current"
+      ],
+      "group": "supply",
+      "key": "disable_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "GND",
+              "param": "OE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.025
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "SYM",
+        "duty cycle",
+        "symmetry"
+      ],
+      "group": "output",
+      "key": "duty_cycle",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "max": 55,
+            "min": 45
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOH",
+        "output high voltage"
+      ],
+      "group": "output",
+      "key": "output_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL",
+        "output low voltage"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "L_ECL",
+        "output load condition",
+        "termination resistance"
+      ],
+      "group": "output",
+      "key": "output_load_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "nom": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "output",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            },
+            {
+              "max": 200000000,
+              "min": 25000000,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 3e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "tf"
+      ],
+      "group": "output",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            },
+            {
+              "max": 200000000,
+              "min": 25000000,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 3e-10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIH",
+        "input high voltage"
+      ],
+      "group": "control",
+      "key": "input_high_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2.31
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIL",
+        "input low voltage"
+      ],
+      "group": "control",
+      "key": "input_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 3.3
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "startup time",
+        "t_str"
+      ],
+      "group": "timing",
+      "key": "startup_time",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RMS phase jitter",
+        "integrated phase jitter",
+        "phase jitter"
+      ],
+      "group": "jitter",
+      "key": "rms_phase_jitter",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 100000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 7.5e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 125000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 6e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 156250000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 5e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 200000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 4e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 312500000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 3e-14
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 491520000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "lvpecl",
+              "param": "OUTPUT_TYPE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": "typical",
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Phase Jitter",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 2e-14
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_use",
+        "operating temperature range"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "T_stg",
+        "storage temperature range"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 1,
+          "sourceTable": "Specifications (characteristics)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "OE",
+      "name": "OE",
+      "number": 1
+    },
+    {
+      "function": "NC",
+      "name": "N.C.",
+      "number": 2
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 3
+    },
+    {
+      "function": "OUT",
+      "name": "OUT",
+      "number": 4
+    },
+    {
+      "function": "OUT_N",
+      "name": "OUT",
+      "number": 5
+    },
+    {
+      "function": "VCC",
+      "name": "VCC",
+      "number": 6
+    }
+  ]
+}

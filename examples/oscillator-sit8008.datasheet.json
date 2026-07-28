@@ -1,0 +1,566 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "SiT8008",
+    "manufacturer": "SiTime",
+    "family": "oscillator",
+    "description": "MEMS programmable low-power SPXO (simple packaged crystal oscillator). A silicon-MEMS resonator plus a programmable PLL and an LVCMOS/HCMOS output stage in one part; any output frequency 1 to 110 MHz set at order/field-programming time (accurate to 6 decimal places), three total-stability grades (±20 / ±25 / ±50 ppm), five supply rails (1.8 / 2.5 / 2.8 / 3.0 / 3.3 V and 2.25–3.63 V), programmable drive strength (up to 60 pF loads), and an OE or ST (standby) function on pin 1. This document captures one concrete ordered grade: 20.000000 MHz, 3.3 V rail, ±25 ppm total stability, industrial −40 to +85 °C, 3.2 x 2.5 mm (3225) 4-pin package, default drive strength, 15 pF load. Values are the 3.3 V-rail figures of the multi-rail electrical table.",
+    "package": "3.2 x 2.5 x 0.75 mm (3225), 4-pin",
+    "pinCount": 4,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "SiT8008AI-33-33E-20.000000T", "package": "3.2 x 2.5 mm (3225)", "packing": "Tape and reel (representative order code for the 3.3 V / 20 MHz / ±25 ppm / industrial grade)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "OE/ST", "function": "OE", "type": "digital_in", "description": "Dual-function control input. In OE mode: H or Open = specified frequency output, L = output high-impedance (only the output driver is disabled, core keeps running -> disable_current). In ST (standby) mode: H or Open = specified frequency output, L = output weakly pulled low and the device sleeps, supply current drops to standby_current. A <10 kohm pull-up to Vdd is recommended in high-noise environments.", "sourcePage": 2 },
+    { "number": 2, "name": "GND", "function": "GND", "type": "power", "description": "Electrical ground. A 0.1 uF Vdd-to-GND bypass capacitor is recommended.", "sourcePage": 2 },
+    { "number": 3, "name": "OUT", "function": "OUT", "type": "digital_out", "description": "LVCMOS/HCMOS oscillator output.", "sourcePage": 2 },
+    { "number": 4, "name": "VDD", "function": "VDD", "type": "power", "description": "Power supply voltage.", "sourcePage": 2 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Output frequency",
+      "group": "frequency",
+      "aliases": ["f", "Output Frequency Range"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 2e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "SUBTYPE", "note": "spxo" },
+            { "param": "TECHNOLOGY", "note": "mems" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "Output Frequency Range f = 1 to 110 MHz (programmable, accurate to 6 decimal places). This document = the 20.000000 MHz ordered grade.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Frequency Range"
+        }
+      ]
+    },
+    {
+      "key": "total_frequency_stability",
+      "name": "Total (inclusive) frequency stability",
+      "group": "stability",
+      "aliases": ["F_stab", "Frequency Stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -25, "max": 25 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "SUBTYPE", "note": "spxo" },
+            { "param": "TECHNOLOGY", "note": "mems" }
+          ],
+          "conditionsVerbatim": "Frequency Stability F_stab = -25 to +25 PPM, INCLUSIVE of initial tolerance at 25 C, 1st-year aging at 25 C, and variations over operating temperature, rated supply voltage and load (15 pF +/-10%). Grade options are +/-20, +/-25, +/-50 PPM; +/-25 chosen here. Because aging is folded into this figure, the datasheet prints NO standalone aging spec.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Frequency Stability and Aging"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["T_use", "Operating Temperature Range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "T_use = -40 to +85 C (Industrial). The other offered range is -20 to +70 C (Extended Commercial). This document is the Industrial grade.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Operating Temperature Range"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "supply",
+      "aliases": ["Vdd"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.97, "typ": 3.3, "max": 3.63 },
+          "unit": "V",
+          "conditionsVerbatim": "Vdd = 2.97 (min) / 3.3 (typ) / 3.63 (max) V, the 3.3 V rail option. The part also offers 1.8 / 2.5 / 2.8 / 3.0 V and a 2.25-3.63 V continuous option.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "supply",
+      "aliases": ["Idd", "Current Consumption"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0038, "max": 0.0045 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F", "value": 2e7, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "Idd = 3.8 (typ) / 4.5 (max) mA, no-load, f = 20 MHz, Vdd = 2.8V, 3.0V, 3.3V (and 2.25-3.63V). Lower rails draw less (3.6/4.2 mA at 2.5V; 3.4/3.9 mA at 1.8V).",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption"
+        }
+      ]
+    },
+    {
+      "key": "standby_current",
+      "name": "Standby (power-down) current",
+      "group": "supply",
+      "aliases": ["I_std", "Standby Current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.6e-6, "max": 4.3e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "SWITCH", "note": "ST=GND" }
+          ],
+          "conditionsVerbatim": "I_std = 2.6 (typ) / 4.3 (max) uA, ST = GND, Vdd = 2.8V to 3.3V, output weakly pulled down. (The datasheet unit column prints 'A'; standby current is microamps - 1.8V rail is 0.6/1.3 uA.)",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption"
+        }
+      ]
+    },
+    {
+      "key": "disable_current",
+      "name": "Output-disable current",
+      "group": "supply",
+      "aliases": ["I_OD", "OE Disable Current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.004 },
+          "unit": "A",
+          "conditions": [
+            { "param": "SWITCH", "note": "OE=GND" }
+          ],
+          "conditionsVerbatim": "I_OD = 4 mA (max), Vdd = 2.5V to 3.3V, OE = GND, output weakly pulled down (oscillator core still running). 1.8V rail is 3.8 mA.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Supply Voltage and Current Consumption"
+        }
+      ]
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Duty cycle (symmetry)",
+      "group": "output",
+      "aliases": ["DC", "Duty Cycle"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 45, "max": 55 },
+          "unit": "%",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "DC = 45 to 55%, all Vdds. Duty Cycle = TH/Period, measured at the 50% level.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "output",
+      "aliases": ["Tr"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-9, "max": 2e-9 },
+          "unit": "s",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Tr = 1 (typ) / 2 (max) ns, 20% - 80%, Vdd = 2.5V/2.8V/3.0V/3.3V, 15 pF load, default drive strength. Printed as a single Tr/Tf row. 1.8V rail is 1.3/2.5 ns.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "output",
+      "aliases": ["Tf"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-9, "max": 2e-9 },
+          "unit": "s",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Tf = 1 (typ) / 2 (max) ns, 20% - 80%, Vdd = 2.5V/2.8V/3.0V/3.3V, 15 pF load, default drive strength. Printed jointly with Tr (symbol Tr, Tf). 1.8V rail is 1.3/2.5 ns.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (VOH)",
+      "group": "output",
+      "aliases": ["VOH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.97 },
+          "unit": "V",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" },
+            { "param": "I_OUT", "value": -0.004, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOH = 90% Vdd (min) = 2.97 V at Vdd = 3.3V, IOH = -4 mA (Vdd = 3.0V or 3.3V). Printed as '90% Vdd'; normalized to absolute V at the 3.3 V rail.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (VOL)",
+      "group": "output",
+      "aliases": ["VOL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.33 },
+          "unit": "V",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" },
+            { "param": "I_OUT", "value": 0.004, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOL = 10% Vdd (max) = 0.33 V at Vdd = 3.3V, IOL = 4 mA (Vdd = 3.0V or 3.3V). Printed as '10% Vdd'; normalized to absolute V at the 3.3 V rail.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_high_voltage",
+      "name": "Control-input high voltage (VIH)",
+      "group": "control",
+      "aliases": ["VIH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.31 },
+          "unit": "V",
+          "conditionsVerbatim": "VIH = 70% Vdd (min) = 2.31 V at Vdd = 3.3V, Pin 1 (OE or ST). Printed as '70% Vdd'; normalized to absolute V.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_low_voltage",
+      "name": "Control-input low voltage (VIL)",
+      "group": "control",
+      "aliases": ["VIL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.99 },
+          "unit": "V",
+          "conditionsVerbatim": "VIL = 30% Vdd (max) = 0.99 V at Vdd = 3.3V, Pin 1 (OE or ST). Printed as '30% Vdd'; normalized to absolute V.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "oe_input_impedance",
+      "name": "OE/ST input pull-up impedance",
+      "group": "control",
+      "aliases": ["Z_in", "Input Pull-up Impedence"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8.7e4, "max": 1e5 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Z_in = 87 (typ) / 100 (max) kohm, Pin 1, OE logic high or logic low, or ST logic high.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2e6 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "SWITCH", "note": "ST logic low" }
+          ],
+          "conditionsVerbatim": "Z_in = 2 Mohm (min), Pin 1, ST logic low.",
+          "sourcePage": 1,
+          "sourceTable": "Electrical Characteristics - Input Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_load_capacitance",
+      "name": "Output load capacitance",
+      "group": "output",
+      "aliases": ["CLOAD"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 1.5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "15 pF output load (including probe and fixture capacitance). All electrical specs are measured at 15 pF, default drive strength (note 1). The part supports up to 60 pF with additional drive-strength settings.",
+          "sourcePage": 3,
+          "sourceTable": "Figure 1. Test Circuit"
+        }
+      ]
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "group": "timing",
+      "aliases": ["T_start", "Startup Time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-3 },
+          "unit": "s",
+          "conditionsVerbatim": "T_start = 5 ms (max), measured from the time Vdd reaches its rated minimum value. No runt pulses or glitches during startup (note 5).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing"
+        }
+      ]
+    },
+    {
+      "key": "enable_time",
+      "name": "Output-enable time",
+      "group": "timing",
+      "aliases": ["T_oe", "Enable/Disable Time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.3e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "F", "value": 1.1e8, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "T_oe = 130 ns (max) at f = 110 MHz. For other frequencies, T_oe = 100 ns + 3 * cycles.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing"
+        }
+      ]
+    },
+    {
+      "key": "resume_time",
+      "name": "Resume time (from standby)",
+      "group": "timing",
+      "aliases": ["T_resume", "Resume Time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-3 },
+          "unit": "s",
+          "conditionsVerbatim": "T_resume = 5 ms (max), measured from the time the ST pin crosses the 50% threshold.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Startup and Resume Timing"
+        }
+      ]
+    },
+    {
+      "key": "rms_period_jitter",
+      "name": "RMS period jitter",
+      "group": "jitter",
+      "aliases": ["T_jitt", "RMS Period Jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.76e-12, "max": 3e-12 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "F", "value": 7.5e7, "unit": "Hz" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "T_jitt = 1.76 (typ) / 3 (max) ps RMS, f = 75 MHz, Vdd = 2.5V/2.8V/3.0V/3.3V. 1.8V rail is 1.78/3 ps.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter"
+        }
+      ]
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (integrated)",
+      "group": "jitter",
+      "aliases": ["T_phj", "RMS Phase Jitter (random)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-13, "max": 9e-13 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "F", "value": 7.5e7, "unit": "Hz" },
+            { "param": "INTEG_BW", "note": "900 kHz to 7.5 MHz" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "T_phj = 0.5 (typ) / 0.9 (max) ps RMS, f = 75 MHz, integration bandwidth = 900 kHz to 7.5 MHz.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.3e-12, "max": 2e-12 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "F", "value": 7.5e7, "unit": "Hz" },
+            { "param": "INTEG_BW", "note": "12 kHz to 20 MHz" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos" }
+          ],
+          "conditionsVerbatim": "T_phj = 1.3 (typ) / 2 (max) ps RMS, f = 75 MHz, integration bandwidth = 12 kHz to 20 MHz.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics (continued) - Jitter"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Storage Temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature = -65 to 150 C (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_supply_voltage",
+      "name": "Supply voltage (absolute maximum)",
+      "group": "supply",
+      "aliases": ["VDD"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.5, "max": 4 },
+          "unit": "V",
+          "conditionsVerbatim": "VDD = -0.5 to 4 V (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD withstand (HBM)",
+      "group": "supply",
+      "aliases": ["Electrostatic Discharge"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2000 },
+          "unit": "V",
+          "conditionsVerbatim": "Electrostatic Discharge = 2000 V (absolute maximum, human body model).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["Junction Temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature = 150 C (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "group": "thermal",
+      "aliases": ["theta-JA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 109 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "3225" },
+            { "param": "BOARD", "note": "4-layer" }
+          ],
+          "conditionsVerbatim": "theta-JA = 109 C/W for the 3225 (3.2x2.5 mm) package on a 4-layer board; 212 C/W on a 2-layer board.",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Consideration"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case",
+      "group": "thermal",
+      "aliases": ["theta-JC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 27 },
+          "unit": "degC/W",
+          "conditions": [
+            { "param": "PACKAGE", "note": "3225" }
+          ],
+          "conditionsVerbatim": "theta-JC (bottom) = 27 C/W for the 3225 (3.2x2.5 mm) package.",
+          "sourcePage": 2,
+          "sourceTable": "Thermal Consideration"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Peak soldering (reflow) temperature",
+      "group": "thermal",
+      "aliases": ["peak reflow temperature", "soldering temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Peak reflow temperature, JEDEC J-STD-020",
+          "sourcePage": 2
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "0b5cfe117adfb0e55a1b82f3e567c48b0b7f5c0c7c766738189e01a82585d5b0",
+    "sourceUrl": "https://www.sitime.com/sites/default/files/mature-datasheets/SiT8008-datasheet.pdf",
+    "datasheetRevision": "Rev. 1.11",
+    "publishedDate": "2013-05",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

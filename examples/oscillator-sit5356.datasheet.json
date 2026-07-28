@@ -1,0 +1,846 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "SiT5356",
+    "manufacturer": "SiTime",
+    "family": "oscillator",
+    "description": "MEMS Super-TCXO (Elite Platform Precision), fully compliant to Telcordia GR-1244-CORE Stratum 3. DualMEMS temperature sensing with TurboCompensation for best dynamic stability under airflow, thermal shock, vibration and EMI; on-chip regulators eliminate an external LDO. This document describes ONE ordered grade: the Stratum-3+ frequency-stability option (order code 'Q', +/-0.1 ppm / +/-100 ppb), plain TCXO configuration (pin 1 = OE, non-pullable output), 10.000000 MHz LVCMOS output, 3.3 V supply, Extended-Industrial -40 to +105 C. The SiT5356 is factory-programmable for any frequency 1-60 MHz and also ships as VCTCXO (voltage control, +/-6.25 ppm pull) and DCTCXO (I2C digital pull to 5 ppt) configurations and as +/-0.2 / +/-0.25 ppm (Stratum 3, codes P/N) grades - each a distinct orderable grade documented separately. The exemplar exercises the ppb->ppm normalization (SiTime prints ppb; 1 ppb = 1e-3 ppm), phase_noise arrayed over F_OFFSET, and allan_deviation.",
+    "package": "Ceramic 5.0 x 3.2 mm, 10-pin",
+    "pinCount": 10,
+    "lifecycle": "active",
+    "msl": "MSL1",
+    "temperatureGrade": "-40..105 (Extended Industrial)",
+    "orderingVariants": [
+      { "orderCode": "SiT5356AC-FQ-33E0-10.000000T", "package": "Ceramic 5.0 x 3.2 mm", "packing": "12 mm Tape & Reel, 3 ku reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "OE", "function": "OE", "type": "digital_in", "description": "Output enable (TCXO configuration, order-code 'E'). Internal 100 kOhm pull-up to Vdd. H = specified frequency output; L = output high-impedance (only the output driver is disabled). Can be ordered as NC ('N') instead.", "sourcePage": 10 },
+    { "number": 2, "name": "NC", "function": "NC", "type": "passive", "description": "No connect in TCXO configuration (SCL / I2C serial clock only in DCTCXO). Can be left floating.", "sourcePage": 10 },
+    { "number": 3, "name": "NC", "function": "NC", "type": "passive", "description": "No connect. Can be left floating.", "sourcePage": 10 },
+    { "number": 4, "name": "GND", "function": "GND", "type": "power", "description": "Ground.", "sourcePage": 10 },
+    { "number": 5, "name": "NC", "function": "NC", "type": "passive", "description": "No connect in TCXO configuration (A0 I2C address pin only in DCTCXO). Can be left floating.", "sourcePage": 10 },
+    { "number": 6, "name": "CLK", "function": "CLK", "type": "digital_out", "description": "LVCMOS (or clipped-sinewave) oscillator output.", "sourcePage": 10 },
+    { "number": 7, "name": "NC", "function": "NC", "type": "passive", "description": "No connect. Can be left floating.", "sourcePage": 10 },
+    { "number": 8, "name": "NC", "function": "NC", "type": "passive", "description": "No connect. Can be left floating.", "sourcePage": 10 },
+    { "number": 9, "name": "VDD", "function": "VDD", "type": "power", "description": "Power supply. Requires 0.1 uF in parallel with 10 uF between VDD and GND.", "sourcePage": 10 },
+    { "number": 10, "name": "NC", "function": "NC", "type": "passive", "description": "No connect in TCXO configuration (SDA I2C serial data only in DCTCXO). Can be left floating.", "sourcePage": 10 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal output frequency",
+      "group": "frequency",
+      "aliases": ["F_nom", "output frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 10000000 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Ordered output frequency 10.000000 MHz. The SiT5356 covers any frequency 1 MHz to 60 MHz in 1 Hz steps (F_nom range on Table 1); this document is the 10 MHz ordered grade.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability over temperature",
+      "group": "stability",
+      "aliases": ["F_stab", "frequency stability over temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.1, "max": 0.1 },
+          "unit": "ppm",
+          "guarantee": "production_tested",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 105, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "F_stab = +/-0.1 ppm (+/-100 ppb) max, Stratum 3+ grade (order code 'Q'). Referenced to (max frequency + min frequency)/2 over the rated -40 to +105 C temperature range, in TCXO mode.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Initial frequency tolerance at 25 C",
+      "group": "stability",
+      "aliases": ["F_init", "initial tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.3, "max": 0.3 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "F_init = +/-0.3 ppm max (Stratum 3+ grade). Initial frequency at 25 C, 48 hours after 2 reflows.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability_vs_supply",
+      "name": "Frequency stability vs supply voltage",
+      "group": "stability",
+      "aliases": ["F_Vdd", "supply voltage sensitivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0005, "max": 0.0025 },
+          "unit": "ppm",
+          "conditionsVerbatim": "F_Vdd = +/-0.5 ppb typ / +/-2.5 ppb max over Vdd +/-5% (Stratum 3+ grade). Printed in ppb; +/-0.5 ppb = +/-0.0005 ppm, +/-2.5 ppb = +/-0.0025 ppm. Value stored as the deviation magnitude.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability_vs_load",
+      "name": "Frequency stability vs load",
+      "group": "stability",
+      "aliases": ["F_load", "output load sensitivity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.00005, "max": 0.0004 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "F_load = +/-0.05 ppb typ / +/-0.4 ppb max, LVCMOS output 15 pF +/-10% (Stratum 3+ grade). Printed in ppb; +/-0.05 ppb = +/-0.00005 ppm, +/-0.4 ppb = +/-0.0004 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "frequency_temperature_slope",
+      "name": "Frequency vs temperature slope",
+      "group": "stability",
+      "aliases": ["dF/dT", "frequency vs temperature slope"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0009, "max": 0.002 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "T_A", "min": -20, "max": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dF/dT = +/-0.9 ppb/C typ / +/-2 ppb/C max, 0.5 C/min ramp, -20 to 85 C (Stratum 3+ grade). Printed in ppb/C; x1e-3 -> +/-0.0009 / +/-0.002 ppm/C.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.001, "max": 0.0035 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": -20, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dF/dT = +/-1 ppb/C typ / +/-3.5 ppb/C max, 0.5 C/min ramp, -40 to -20 C. x1e-3 -> +/-0.001 / +/-0.0035 ppm/C.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0009, "max": 0.0033 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "T_A", "min": 85, "max": 105, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "dF/dT = +/-0.9 ppb/C typ / +/-3.3 ppb/C max, 0.5 C/min ramp, 85 to 105 C. x1e-3 -> +/-0.0009 / +/-0.0033 ppm/C.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "frequency_hysteresis",
+      "name": "Frequency hysteresis over temperature",
+      "group": "stability",
+      "aliases": ["F_hys", "hysteresis over temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.025, "max": 0.042 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "T_A", "min": -40, "max": 105, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "F_hys = +/-25 ppb typ / +/-42 ppb max, -40 to 105 C, 0.5 C/min ramp, defined as +/-deltaF/2 (Stratum 3+ grade). Printed in ppb; x1e-3 -> +/-0.025 / +/-0.042 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "group": "stability",
+      "aliases": ["aging", "long-term stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0005, "max": 0.002 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "per_day" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "One-Day Aging F_1d = +/-0.5 ppb typ / +/-2.0 ppb max at 85 C, after 30 days of continued operation (aging measured with respect to day 31). x1e-3 -> +/-0.0005 / +/-0.002 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.057, "max": 0.23 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "first_year" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "One-Year Aging F_1y = +/-57 ppb typ / +/-230 ppb max at 85 C, after 2 days of continued operation (measured with respect to day 3). x1e-3 -> +/-0.057 / +/-0.23 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.073, "max": 0.32 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "5_year" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "5-Year Aging F_5y = +/-73 ppb typ / +/-320 ppb max at 85 C. x1e-3 -> +/-0.073 / +/-0.32 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.08, "max": 0.36 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "10_year" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "10-Year Aging F_10y = +/-80 ppb typ / +/-360 ppb max at 85 C. x1e-3 -> +/-0.08 / +/-0.36 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.087, "max": 0.4 },
+          "unit": "ppm",
+          "conditions": [
+            { "param": "AGING_PERIOD", "note": "20_year" },
+            { "param": "T_A", "value": 85, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "20-Year Aging F_20y = +/-87 ppb typ / +/-400 ppb max at 85 C. x1e-3 -> +/-0.087 / +/-0.4 ppm.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "holdover",
+      "name": "24-hour holdover stability",
+      "group": "stability",
+      "aliases": ["F_24_Hold", "24-hour holdover stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.15 },
+          "unit": "ppm",
+          "conditionsVerbatim": "24-hour holdover stability F_24_Hold = +/-0.15 ppm max (Stratum 3+ grade). Inclusive of frequency variation due to temperature, +/-10% supply variation, +/-1.5 pF load variation and 24-hour aging.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "allan_deviation",
+      "name": "Allan deviation (short-term stability)",
+      "group": "stability",
+      "aliases": ["ADEV", "sigma_y(tau)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-11 },
+          "unit": "1",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "TAU", "value": 10, "unit": "s" }
+          ],
+          "conditionsVerbatim": "ADEV = 1.5e-11 typ at 10 second averaging time. Measured 2 hours after startup in a temperature chamber at constant temperature in still air. Dimensionless fractional-frequency stability (unit 1).",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Frequency Stability - Stratum 3+ Grade"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["T_use", "operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 105 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Range T_use = -40 to +105 C (Extended Industrial, order code 'E'). The range the frequency stability is guaranteed over.",
+          "sourcePage": 4,
+          "sourceTable": "Table 1. Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage",
+      "group": "supply",
+      "aliases": ["Vdd", "supply voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 2.97, "nom": 3.3, "max": 3.63 },
+          "unit": "V",
+          "conditionsVerbatim": "Vdd = 3.3 V +/-10% (2.97 min / 3.3 nom / 3.63 max), '33' supply option.",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "supply_current",
+      "name": "Supply current",
+      "group": "supply",
+      "aliases": ["Idd", "current consumption"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.044, "max": 0.053 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F", "value": 19200000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Idd = 44 mA typ / 53 mA max at F_nom = 19.2 MHz, No Load, TCXO and DCTCXO modes. (VCTCXO mode: 48 / 57 mA - a different configuration.)",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "disable_current",
+      "name": "Output-disable current (OE = GND)",
+      "group": "supply",
+      "aliases": ["I_od", "OE disable current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.043, "max": 0.051 },
+          "unit": "A",
+          "conditions": [
+            { "param": "F", "value": 19200000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "I_od = 43 mA typ / 51 mA max, OE = GND (output weakly pulled down, oscillator core running), TCXO/DCTCXO modes, F_nom = 19.2 MHz.",
+          "sourcePage": 5,
+          "sourceTable": "Table 2. DC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Duty cycle (symmetry)",
+      "group": "output",
+      "aliases": ["DC", "symmetry"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 45, "max": 55 },
+          "unit": "%",
+          "conditionsVerbatim": "Duty Cycle = 45% min / 55% max, LVCMOS output.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "output",
+      "aliases": ["Tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 8e-10, "typ": 1.2e-9, "max": 1.9e-9 },
+          "unit": "s",
+          "conditionsVerbatim": "Tr = 0.8 ns min / 1.2 ns typ / 1.9 ns max, measured 10% - 90% Vdd, LVCMOS output.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "output",
+      "aliases": ["Tf", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 8e-10, "typ": 1.2e-9, "max": 1.9e-9 },
+          "unit": "s",
+          "conditionsVerbatim": "Tf = 0.8 ns min / 1.2 ns typ / 1.9 ns max, measured 10% - 90% Vdd, LVCMOS output (Tr, Tf specified together).",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (VOH)",
+      "group": "output",
+      "aliases": ["VOH", "output high voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.97 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": 0.003, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOH = 90% Vdd min at IOH = +3 mA; at Vdd = 3.3 V that is 2.97 V. LVCMOS output.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (VOL)",
+      "group": "output",
+      "aliases": ["VOL", "output low voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.33 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": -0.003, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VOL = 10% Vdd max at IOL = -3 mA; at Vdd = 3.3 V that is 0.33 V. LVCMOS output.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_impedance",
+      "name": "Output impedance",
+      "group": "output",
+      "aliases": ["Z_out", "output impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 17 },
+          "unit": "ohm",
+          "guarantee": "typical",
+          "conditions": [
+            { "param": "V_S", "value": 3.3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Z_out = 17 ohm typ, impedance looking into output buffer at Vdd = 3.3 V (18 ohm at 2.8 V, 19 ohm at 2.5 V).",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. LVCMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "group": "timing",
+      "aliases": ["T_start", "start-up time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.0025, "max": 0.0035 },
+          "unit": "s",
+          "conditionsVerbatim": "T_start = 2.5 ms typ / 3.5 ms max, time to first pulse measured from Vdd reaching 90% of final value, Vdd ramp = 100 us from 0 V to Vdd.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_time",
+      "name": "Output-enable time",
+      "group": "timing",
+      "aliases": ["T_oe", "output enable time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 6.8e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "F", "value": 10000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "T_oe = 680 ns max, delay from OE asserted to valid output, F_nom = 10 MHz.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "time_to_stability",
+      "name": "Time to rated frequency stability",
+      "group": "timing",
+      "aliases": ["T_stability", "time to rated frequency stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.005, "max": 0.045 },
+          "unit": "s",
+          "conditionsVerbatim": "T_stability = 5 ms typ / 45 ms max, time to first accurate pulse within rated stability, measured from Vdd reaching 90% of final value, Vdd ramp = 100 us.",
+          "sourcePage": 5,
+          "sourceTable": "Table 1. Start-up Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_high_voltage",
+      "name": "OE input high voltage (VIH)",
+      "group": "control",
+      "aliases": ["VIH", "input high voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.31 },
+          "unit": "V",
+          "conditionsVerbatim": "VIH = 70% Vdd min on the OE pin; at Vdd = 3.3 V that is 2.31 V.",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin"
+        }
+      ]
+    },
+    {
+      "key": "input_low_voltage",
+      "name": "OE input low voltage (VIL)",
+      "group": "control",
+      "aliases": ["VIL", "input low voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.99 },
+          "unit": "V",
+          "conditionsVerbatim": "VIL = 30% Vdd max on the OE pin; at Vdd = 3.3 V that is 0.99 V.",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin"
+        }
+      ]
+    },
+    {
+      "key": "oe_input_impedance",
+      "name": "OE input pull-up impedance",
+      "group": "control",
+      "aliases": ["Z_in", "input pull-up impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 75000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Z_in = 75 kOhm min, internal pull-up to Vdd on the OE pin.",
+          "sourcePage": 6,
+          "sourceTable": "Table 3. Input Characteristics - OE Pin"
+        }
+      ]
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (random, integrated)",
+      "group": "jitter",
+      "aliases": ["T_phj", "RMS phase jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.1e-13, "max": 4.8e-13 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "INTEG_BW", "min": 12000, "max": 5000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "T_phj = 0.31 ps typ / 0.48 ps max, F_nom = 10 MHz, integration bandwidth 12 kHz to 5 MHz, LVCMOS, -40 to 105 C.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        }
+      ]
+    },
+    {
+      "key": "rms_period_jitter",
+      "name": "RMS period jitter",
+      "group": "jitter",
+      "aliases": ["T_jitt_per", "RMS period jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-13, "max": 1.1e-12 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [
+            { "param": "F", "value": 10000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "T_jitt_per = 0.8 ps typ / 1.1 ps max, F_nom = 10 MHz, population 10 k, LVCMOS, -40 to 105 C.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        }
+      ]
+    },
+    {
+      "key": "cycle_to_cycle_jitter",
+      "name": "Peak cycle-to-cycle jitter",
+      "group": "jitter",
+      "aliases": ["T_jitt_cc", "peak cycle-to-cycle jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-12, "max": 9e-12 },
+          "unit": "s",
+          "statistic": "peak",
+          "conditions": [
+            { "param": "F", "value": 10000000, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "T_jitt_cc = 6 ps typ / 9 ps max, F_nom = 10 MHz, population 1 k, measured as absolute value, LVCMOS, -40 to 105 C.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        }
+      ]
+    },
+    {
+      "key": "phase_noise",
+      "name": "SSB phase noise",
+      "group": "phase_noise",
+      "aliases": ["phase noise", "L(f)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -80, "max": -74 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 1, "unit": "Hz" } ],
+          "conditionsVerbatim": "-80 dBc/Hz typ / -74 dBc/Hz max at 1 Hz offset, F_nom = 10 MHz carrier, TCXO mode, LVCMOS, -40 to 105 C.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -108, "max": -102 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "-108 dBc/Hz typ / -102 dBc/Hz max at 10 Hz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -127, "max": -123 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 100, "unit": "Hz" } ],
+          "conditionsVerbatim": "-127 dBc/Hz typ / -123 dBc/Hz max at 100 Hz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -148, "max": -145 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "-148 dBc/Hz typ / -145 dBc/Hz max at 1 kHz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -154, "max": -151 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 10000, "unit": "Hz" } ],
+          "conditionsVerbatim": "-154 dBc/Hz typ / -151 dBc/Hz max at 10 kHz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -154, "max": -150 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 100000, "unit": "Hz" } ],
+          "conditionsVerbatim": "-154 dBc/Hz typ / -150 dBc/Hz max at 100 kHz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -167, "max": -162 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 1000000, "unit": "Hz" } ],
+          "conditionsVerbatim": "-167 dBc/Hz typ / -162 dBc/Hz max at 1 MHz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -168, "max": -163 },
+          "unit": "dB",
+          "conditions": [ { "param": "F_OFFSET", "value": 5000000, "unit": "Hz" } ],
+          "conditionsVerbatim": "-168 dBc/Hz typ / -163 dBc/Hz max at 5 MHz offset, F_nom = 10 MHz carrier.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        }
+      ]
+    },
+    {
+      "key": "spurious",
+      "name": "Spurious",
+      "group": "output",
+      "aliases": ["T_spur", "spurious"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -112, "max": -106 },
+          "unit": "dB",
+          "conditions": [ { "param": "F", "value": 10000000, "unit": "Hz" } ],
+          "conditionsVerbatim": "T_spur = -112 dBc typ / -106 dBc max, F_nom = 10 MHz, 1 kHz to 5 MHz offsets, Vdd = 2.8 / 3.0 / 3.3 V (at Vdd = 2.5 V the max is -101 dBc). LVCMOS, -40 to 105 C.",
+          "sourcePage": 8,
+          "sourceTable": "Table 6. Jitter & Phase Noise - LVCMOS, -40 to 105 C"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["T_stg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -65, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature = -65 to 125 C (absolute maximum).",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_supply_voltage",
+      "name": "Supply voltage (absolute maximum)",
+      "group": "supply",
+      "aliases": ["Vdd max", "continuous power supply voltage range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.5, "max": 4 },
+          "unit": "V",
+          "conditionsVerbatim": "Continuous Power Supply Voltage Range (Vdd) = -0.5 to 4 V (absolute maximum).",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits"
+        }
+      ]
+    },
+    {
+      "key": "esd_hbm",
+      "name": "ESD withstand (HBM)",
+      "group": "supply",
+      "aliases": ["HBM", "human body model"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 2000 },
+          "unit": "V",
+          "conditionsVerbatim": "Human Body Model (HBM) ESD Protection = 2000 V, JESD22-A114.",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (absolute maximum)",
+      "group": "thermal",
+      "aliases": ["Tj", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 130 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction Temperature = 130 C (absolute maximum). Exceeding this for an extended period may damage the device.",
+          "sourcePage": 9,
+          "sourceTable": "Table 8. Absolute Maximum Limits"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_ambient",
+      "name": "Thermal resistance, junction-to-ambient",
+      "group": "thermal",
+      "aliases": ["theta-JA", "RthJA"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 54 },
+          "unit": "degC/W",
+          "guarantee": "typical",
+          "conditionsVerbatim": "theta-JA = 54 C/W, ceramic 5.0 x 3.2 mm, measured in still air, device on a JESD51 2s2p board.",
+          "sourcePage": 9,
+          "sourceTable": "Table 9. Thermal Considerations"
+        }
+      ]
+    },
+    {
+      "key": "thermal_resistance_junction_case",
+      "name": "Thermal resistance, junction-to-case (bottom)",
+      "group": "thermal",
+      "aliases": ["theta-JC", "RthJC"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 15 },
+          "unit": "degC/W",
+          "guarantee": "typical",
+          "conditionsVerbatim": "theta-JC (bottom) = 15 C/W, ceramic 5.0 x 3.2 mm.",
+          "sourcePage": 9,
+          "sourceTable": "Table 9. Thermal Considerations"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Peak soldering (reflow) temperature",
+      "group": "thermal",
+      "aliases": ["soldering temperature", "peak reflow temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature 260 °C, JEDEC J-STD-020",
+          "sourcePage": 9
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "This document is the Stratum-3+ (+/-0.1 ppm, order code 'Q'), plain TCXO (pin 1 = OE), 10 MHz LVCMOS, 3.3 V, Extended-Industrial (-40 to +105 C) grade. The +/-0.2 ppm and +/-0.25 ppm (Stratum 3, codes 'P'/'N') grades, the VCTCXO (voltage-controlled) and DCTCXO (I2C digital-pull) configurations, and the -20 to +70 / -40 to +85 temperature options are separate orderable grades with different specs (per the one-grade-per-document rule) and are not folded in here.",
+    "SiTime prints stability, tolerance, sensitivity, hysteresis, aging and the temperature slope in ppb (and ppb/C). All are normalized to ppm (and ppm/C) at 1 ppb = 1e-3 ppm; the original ppb figures are preserved in each conditionsVerbatim.",
+    "Because this is the +/-0.1 ppm grade, the +/-4.6 ppm 20-Year Total Stability (F_tot_20y) figure is NOT applicable - it is printed only for the Stratum 3 (+/-0.2/+/-0.25 ppm) grade table and would belong to those separate grade documents. This grade's aging and holdover carry its long-term budget instead.",
+    "Guaranteed specs printed with no dictionary key, kept only here: Mechanical Shock Resistance 30000 g (MIL-STD-883F Method 2002) and Mechanical Vibration Resistance 70 g (Method 2007) - mechanical survival ratings distinct from the ppb/g fractional-frequency g_sensitivity; Maximum Operating Junction Temperature table (Table 10) mapping ambient to Tj (e.g. 105 C ambient -> 115 C Tj), a derating guide rather than a single value.",
+    "Spurious for this -40 to +105 C grade at 3.3 V is -112/-106 dBc; the -40 to +85 C jitter/phase-noise table (Table 4) instead prints -112/-105 dBc, and Table 6 also lists -112/-101 dBc at Vdd = 2.5 V.",
+    "Idd/I_od supply currents are specified by the datasheet at F_nom = 19.2 MHz (not at this part's 10 MHz output); the 19.2 MHz reference condition is retained on those measurements."
+  ],
+  "provenance": {
+    "datasheetSha256": "4ba2f5530228193e7339ea8238f6ffa8257589e15cc77c5a4eb2e77beb71ab96",
+    "sourceUrl": "https://www.sitime.com/datasheet/SiT5356",
+    "datasheetRevision": "Rev 1.08, 1 January 2023",
+    "publishedDate": "2023-01",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

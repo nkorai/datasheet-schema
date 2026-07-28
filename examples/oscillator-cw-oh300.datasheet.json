@@ -1,0 +1,610 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "OH300-50503CV-010.0M",
+    "manufacturer": "Connor-Winfield",
+    "family": "oscillator",
+    "description": "Stratum-3E high-stability oven-controlled crystal oscillator (OCXO), voltage-controlled variant (VCOCXO). Overtone SC-cut quartz resonator in an ovenized 22 x 25 x 12.7 mm SMT package. This ordered grade OH300-50503CV-010.0M is: temperature code 5 (0 to 70 C), stability code 05 (+/-5 ppb over temperature), supply code 03 (3.3 Vdc), CMOS output, OCXO type V (voltage-controlled), 10.0 MHz. The OH300 series spans 5 to 50 MHz with +/-5/10/20/50 ppb stability grades; per note 1 the +/-5 ppb grade is available only over the 0-70 C and -20-70 C temperature ranges. Exercises the OCXO oven block (warm-up time/power, steady-state power, Allan deviation over averaging time, SSB phase noise over offset frequency) plus the VCOCXO control/tuning block. Targets cellular base stations, Synchronous Ethernet, VSAT, and Stratum-3E timing.",
+    "package": "OH300 22 x 25 x 12.7 mm SMT (7-pad surface mount)",
+    "pinCount": 7,
+    "lifecycle": "active",
+    "temperatureGrade": "0..70",
+    "orderingVariants": [
+      { "orderCode": "OH300-50503CV-010.0M", "package": "22 x 25 x 12.7 mm SMT", "temperatureGrade": "0..70", "packing": "Tape and Reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Vc", "function": "VC", "type": "analog", "description": "Voltage control (EFC) input for the VCOCXO (OCXO type V); on the fixed-frequency OCXO type F this pad is N/C. Note 8: the Vc input must be biased at its nominal value (1.65 V for 3.3 Vdc models) or the output is unstable.", "sourcePage": 4 },
+    { "number": 2, "name": "N/C", "function": "NC", "type": "passive", "description": "No internal connection.", "sourcePage": 4 },
+    { "number": 3, "name": "Vcc", "function": "VCC", "type": "power", "description": "Supply voltage (3.3 Vdc for supply code 03). Must reach Vcc monotonically within a ramp-up time of <12 ms (note 5).", "sourcePage": 4 },
+    { "number": 4, "name": "RF Output", "function": "OUT", "type": "digital_out", "description": "Oscillator output. CMOS square-wave for output code C, into a 15 pF load.", "sourcePage": 4 },
+    { "number": 5, "name": "DNC", "function": "DNC", "type": "passive", "description": "Do Not Connect. Do not connect DNC pads to ground or supply rails.", "sourcePage": 4 },
+    { "number": 6, "name": "DNC", "function": "DNC", "type": "passive", "description": "Do Not Connect. Do not connect DNC pads to ground or supply rails.", "sourcePage": 4 },
+    { "number": 7, "name": "Ground", "function": "GND", "type": "power", "description": "Ground (case).", "sourcePage": 4 }
+  ],
+  "parameters": [
+    {
+      "key": "nominal_frequency",
+      "name": "Nominal output (center) frequency",
+      "group": "frequency",
+      "aliases": ["Fo", "center frequency"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1e7 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "SUBTYPE", "note": "vcocxo (OCXO type code V, voltage-controlled)" },
+            { "param": "TECHNOLOGY", "note": "quartz (overtone SC-cut)" },
+            { "param": "OUTPUT_TYPE", "note": "lvcmos (3.3 Vdc CMOS square-wave, output code C)" }
+          ],
+          "conditionsVerbatim": "Ordered center frequency Fo = 10.0 MHz. OH300 series center frequency range 5 to 50 MHz; one document = one ordered frequency/grade.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_tolerance",
+      "name": "Initial frequency calibration tolerance (at 25 C)",
+      "group": "stability",
+      "aliases": ["frequency calibration"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.1, "max": 0.1 },
+          "unit": "ppm",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "Frequency Calibration: -0.1 to +0.1 ppm @ 25 C.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability",
+      "name": "Frequency stability vs change in temperature",
+      "group": "stability",
+      "aliases": ["frequency stability vs temperature"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.005, "max": 0.005 },
+          "unit": "ppm",
+          "conditions": [ { "param": "T_A", "min": 0, "max": 70, "unit": "degC" } ],
+          "conditionsVerbatim": "Frequency Stability vs. Change in Temperature, Stability Code 05: -5.0 to +5.0 ppb over the 0 to 70 C range (temperature code 5), calculated as [(Fmax-Fmin)/(2*Fo)] with control voltage at nominal (notes 1, 2). +/-5 ppb = +/-0.005 ppm.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability_vs_load",
+      "name": "Frequency stability vs load",
+      "group": "stability",
+      "aliases": ["frequency stability vs load"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.002, "max": 0.002 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Frequency Stability vs. Load: -2.0 to +2.0 ppb at +/-5% load change. +/-2 ppb = +/-0.002 ppm.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "frequency_stability_vs_supply",
+      "name": "Frequency stability vs supply voltage",
+      "group": "stability",
+      "aliases": ["frequency stability vs voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.002, "max": 0.002 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Frequency Stability vs. Voltage: -2.0 to +2.0 ppb at +/-5% Vcc change. +/-2 ppb = +/-0.002 ppm.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "aging",
+      "name": "Frequency aging",
+      "group": "stability",
+      "aliases": ["aging", "lifetime tolerance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.001, "max": 0.001 },
+          "unit": "ppm",
+          "conditions": [ { "param": "AGING_PERIOD", "note": "per_day" } ],
+          "conditionsVerbatim": "Aging: Daily, 5 MHz to 20 MHz band: -1.0 to +1.0 ppb/day, at time of shipment after 48 hours of operation (note 3). +/-1 ppb/day = +/-0.001 ppm (bounded per day, not a rate).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.05, "max": 0.05 },
+          "unit": "ppm",
+          "conditions": [ { "param": "AGING_PERIOD", "note": "first_year" } ],
+          "conditionsVerbatim": "Aging: First Year, 5 MHz to 20 MHz band: -50 to +50 ppb. +/-50 ppb = +/-0.05 ppm.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": -0.3, "max": 0.3 },
+          "unit": "ppm",
+          "conditions": [ { "param": "AGING_PERIOD", "note": "20_year" } ],
+          "conditionsVerbatim": "Lifetime Tolerance (20 Years), 5 MHz to 20 MHz band: -300 to +300 ppb, inclusive of calibration, operating temperature, supply voltage change, load change and 20 years aging (note 4). +/-300 ppb = +/-0.3 ppm.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Supply voltage (Vcc)",
+      "group": "supply",
+      "aliases": ["Vcc"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 3.13, "nom": 3.30, "max": 3.47 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply Voltage (Vcc), Voltage Code 03: 3.13 / 3.30 / 3.47 Vdc. Vcc must be reached monotonically within a ramp-up time of <12 ms (note 5).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_supply_voltage",
+      "name": "Supply voltage (absolute maximum)",
+      "group": "supply",
+      "aliases": ["Vdd max"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.5, "max": 7.0 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply Voltage (absolute maximum): -0.5 to 7.0 Vdc.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "warm_up_time",
+      "name": "Warm-up time / re-stabilization time (OCXO oven)",
+      "group": "oven",
+      "aliases": ["warm-up time", "warm up time", "re-stabilization"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 300 },
+          "unit": "s",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "Warm Up Time @ 25 C: 5 minutes (max) = 300 s, measured within +/-100 ppb of final frequency, referenced one hour after turn-on (note 7).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 7200 },
+          "unit": "s",
+          "conditionsVerbatim": "Re-Stabilization Time table (off time -> re-stabilization time, to again meet daily-aging and short-term-stability requirements): <1 Hour -> <2 Hours; <6 Hour -> <12 Hours; <24 Hour -> <48 Hours; 1 to 16 Days -> 48 Hours + 1/4 Off Time; >16 Days -> <6 Days. Worst case for the shortest off time (<1 Hour off) is <2 Hours = 7200 s. The OH300 tabulates a re-stabilization TIME vs off-time (a time in s), not a frequency-retrace offset in ppm, so the retrace key is not used.",
+          "sourcePage": 3,
+          "sourceTable": "Re-Stabilization Time"
+        }
+      ]
+    },
+    {
+      "key": "warm_up_power",
+      "name": "Warm-up (turn-on) power (OCXO oven)",
+      "group": "oven",
+      "aliases": ["turn-on power", "power consumption turn-on"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 3.00 },
+          "unit": "W",
+          "conditionsVerbatim": "Power Consumption: Turn-On, 0 to 70 C Models: 3.00 W (max), measured with Vcc = nominal, in calm air (note 6).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "steady_state_power",
+      "name": "Steady-state power (OCXO oven)",
+      "group": "oven",
+      "aliases": ["steady state power", "power consumption steady state"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.10 },
+          "unit": "W",
+          "conditions": [ { "param": "T_A", "value": 25, "unit": "degC" } ],
+          "conditionsVerbatim": "Power Consumption: Steady State @ 25 C, 0 to 70 C Models: 1.10 W (max), Vcc = nominal, calm air (note 6).",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "startup_time",
+      "name": "Start-up time",
+      "group": "timing",
+      "aliases": ["start-up time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.5 },
+          "unit": "s",
+          "conditionsVerbatim": "Start-Up Time: 500 ms (max) = 0.5 s. The electronics start-up, distinct from the 5-minute oven warm-up.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "allan_deviation",
+      "name": "Short-term Allan deviation",
+      "group": "stability",
+      "aliases": ["ADEV", "short term stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.0e-11 },
+          "unit": "1",
+          "guarantee": "typical",
+          "conditions": [ { "param": "TAU", "value": 1, "unit": "s" } ],
+          "conditionsVerbatim": "Short Term Allan Deviation (1s), Fo = 10 MHz: 1.0E-11 (nominal/typical). Dimensionless fractional frequency at tau = 1 s ('RMS' removed from the units per revision 16). '1s' means at tau = 1 s, not a per-second rate.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "rms_phase_jitter",
+      "name": "RMS phase jitter (integrated)",
+      "group": "jitter",
+      "aliases": ["phase jitter"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 1.0e-12 },
+          "unit": "s",
+          "statistic": "rms",
+          "conditions": [ { "param": "INTEG_BW", "note": "10 Hz to Fo/2 (Fo = 10 MHz, i.e. 10 Hz to 5 MHz)" } ],
+          "conditionsVerbatim": "Phase Jitter (BW: 10 Hz to Fo/2): 1.0 ps rms (max) = 1.0e-12 s.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "phase_noise",
+      "name": "SSB phase noise (CMOS output, 5-12 MHz band)",
+      "group": "phase_noise",
+      "aliases": ["SSB phase noise", "L(f)"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -85 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 1, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 1 Hz offset: -85 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output. Stored as dB; the /Hz reference kept here.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -115 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 10, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 10 Hz offset: -115 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -140 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 100, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 100 Hz offset: -140 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -145 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 1000, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 1 kHz offset: -145 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -150 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 10000, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 10 kHz offset: -150 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -150 },
+          "unit": "dB",
+          "guarantee": "typical",
+          "conditions": [ { "param": "F_OFFSET", "value": 100000, "unit": "Hz" } ],
+          "conditionsVerbatim": "SSB Phase Noise @ 100 kHz offset: -150 dBc/Hz, typical, 10 MHz carrier (5-12 MHz band), CMOS output.",
+          "sourcePage": 3,
+          "sourceTable": "Phase Noise Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "duty_cycle",
+      "name": "Duty cycle (symmetry)",
+      "group": "output",
+      "aliases": ["duty cycle", "symmetry"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 45, "nom": 50, "max": 55 },
+          "unit": "%",
+          "conditionsVerbatim": "Duty Cycle at 50% of Vcc: 45 / 50 / 55 % (CMOS output).",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "output",
+      "aliases": ["rise time", "tr"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 6e-9 },
+          "unit": "s",
+          "conditions": [ { "param": "C_L", "value": 1.5e-11, "unit": "F" } ],
+          "conditionsVerbatim": "Rise / Fall Time: 10% to 90%: 6 ns (max) = 6e-9 s, into a 15 pF CMOS load. The datasheet gives one combined rise/fall spec.",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "output",
+      "aliases": ["fall time", "tf"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 6e-9 },
+          "unit": "s",
+          "conditions": [ { "param": "C_L", "value": 1.5e-11, "unit": "F" } ],
+          "conditionsVerbatim": "Rise / Fall Time: 10% to 90%: 6 ns (max) = 6e-9 s, into a 15 pF CMOS load. Combined rise/fall spec (same 6 ns bound applies to the fall edge).",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "Output high voltage (Voh)",
+      "group": "output",
+      "aliases": ["Voh"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 3.0 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": -0.004, "unit": "A" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Output Voltage High (Voh), 3.3 Vdc Models: 3.0 V (min) at Ioh = -4 mA (source), 15 pF load.",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Output low voltage (Vol)",
+      "group": "output",
+      "aliases": ["Vol"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.4 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_OUT", "value": 0.004, "unit": "A" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Output Voltage Low (Vol), 3.3 Vdc Models: 0.4 V (max) at Iol = 4 mA (sink), 15 pF load.",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_load_capacitance",
+      "name": "Rated output load capacitance",
+      "group": "output",
+      "aliases": ["load", "CL"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 1.5e-11 },
+          "unit": "F",
+          "conditionsVerbatim": "Load: 15 pF (nominal) for the CMOS output. The condition the rise/fall, duty, and output-level specs are measured at.",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "spurious",
+      "name": "Spurious output",
+      "group": "output",
+      "aliases": ["spurious output"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": -80 },
+          "unit": "dB",
+          "conditionsVerbatim": "Spurious Output (CMOS): -80 dBc (max). Stored as dB; the 'c' (carrier) reference kept here.",
+          "sourcePage": 3,
+          "sourceTable": "CMOS Output Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "control_voltage_range",
+      "name": "Control-voltage (Vc / EFC) range",
+      "group": "tuning",
+      "aliases": ["Vc", "control voltage range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0.30, "nom": 1.65, "max": 3.00 },
+          "unit": "V",
+          "conditionsVerbatim": "Control Voltage Range (Vc), 3.3 Vdc Models (VCOCXO, OCXO type V): 0.30 / 1.65 / 3.00 V. Note 8: Vc must be biased at the nominal value or the output is unstable.",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option"
+        }
+      ]
+    },
+    {
+      "key": "control_voltage_bias",
+      "name": "Control-voltage bias (center)",
+      "group": "tuning",
+      "aliases": ["nominal control voltage", "Vc center"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "nom": 1.65 },
+          "unit": "V",
+          "conditionsVerbatim": "Nominal (center) control voltage Vc = 1.65 V for 3.3 Vdc models; the un-pulled frequency holds at this bias.",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option"
+        }
+      ]
+    },
+    {
+      "key": "pullability",
+      "name": "Frequency pullability",
+      "group": "tuning",
+      "aliases": ["frequency pullability", "pulling"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.4 },
+          "unit": "ppm",
+          "conditionsVerbatim": "Frequency Pullability: +/-0.4 ppm (minimum) over the 0.30-3.00 V control-voltage range (VCOCXO). Stored as the +/- magnitude (min guaranteed pull).",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option"
+        }
+      ]
+    },
+    {
+      "key": "control_input_impedance",
+      "name": "Control-input impedance",
+      "group": "tuning",
+      "aliases": ["input impedance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e5 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Input Impedance (Vc control pin): 100 kOhm (min) = 1e5 ohm.",
+          "sourcePage": 3,
+          "sourceTable": "Input Characteristics - Voltage Controlled Option"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["operating temperature range"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0, "max": 70 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating Temperature Range, Temperature Code 5: 0 to 70 C.",
+          "sourcePage": 2,
+          "sourceTable": "Operating Specifications"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage Temperature: -55 to 125 C (absolute maximum).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "absolute_max_control_voltage",
+      "name": "Control voltage (absolute maximum)",
+      "group": "tuning",
+      "aliases": ["Vc max", "control voltage absolute maximum"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -0.5, "max": 7.0 },
+          "unit": "V",
+          "conditionsVerbatim": "Control voltage absolute maximum −0.5 to 7.0 V",
+          "sourcePage": 4
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Ordered grade OH300-50503CV-010.0M decodes as: package OH300 (22x25 mm SMT), temperature code 5 (0 to 70 C), stability code 05 (+/-5.0 ppb over temperature), supply code 03 (3.3 Vdc), output code C (CMOS), OCXO type V (VCOCXO, voltage-controlled), 10.0 MHz. Per note 1, the +/-5 ppb stability grade is available only over the 0-70 C and -20-70 C temperature ranges.",
+    "Several specs are frequency-band dependent. At the ordered 10 MHz this document uses the 5-20 MHz aging band (daily +/-1 ppb, first-year +/-50 ppb, 20-year +/-300 ppb) and the 5-12 MHz phase-noise column (-85/-115/-140/-145/-150/-150 dBc/Hz). Higher-frequency bands (>20-40, >40-50 MHz) have larger aging and higher phase noise and would be a separate document per band.",
+    "ppb->ppm conversion (x1e-3) applied throughout: +/-5 ppb = 0.005 ppm, +/-2 ppb = 0.002 ppm, +/-1 ppb/day = 0.001 ppm, +/-50 ppb = 0.05 ppm, +/-300 ppb = 0.3 ppm.",
+    "CMOS output drive currents Ioh = -4 mA and Iol = 4 mA have no dedicated oscillator-dictionary key; they are captured as I_OUT conditions on output_high_voltage / output_low_voltage (the currents at which Voh/Vol are guaranteed).",
+    "The Re-Stabilization Time table (page 3) is a re-stabilization TIME vs off-time (in seconds), not a frequency-retrace offset in ppm. Per the dictionary retrace hint it is kept in conditionsVerbatim on a second warm_up_time measurement; the retrace key (unit ppm) is intentionally not used because this part specifies a time, not a ppm offset.",
+    "Sinewave-output specifications (output code S: Output Power 5.0 dBm min into 50 ohm, Harmonics -30 dBc, Spurious -80 dBc) are omitted because this ordered grade is CMOS output (code C). For reference, 5.0 dBm converts to 10^((5-30)/10) = 3.162e-3 W, which would populate the output_power key on a sinewave grade.",
+    "No holdover spec is printed (holdover is a GNSS-disciplined-module figure, not present on this bare OCXO).",
+    "Environmental Characteristics (shock 100 G, sinusoidal/random vibration, 70,000 ft altitude, moisture) and mechanical/package outline data are out of scope for the datasheet-schema electrical envelope and are not modeled."
+  ],
+  "provenance": {
+    "datasheetSha256": "78a6f319732d496d00c3595f4c8ded7c015aa4fae0e101c861d7898dc718d1c4",
+    "sourceUrl": "https://conwin.com/datasheets/cx/cx210.pdf",
+    "datasheetRevision": "Bulletin Cx210 Revision 18",
+    "publishedDate": "2023-07-06",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
