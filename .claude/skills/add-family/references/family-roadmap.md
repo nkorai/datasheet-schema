@@ -1,8 +1,8 @@
 # Family roadmap — remaining families, highest to lowest value
 
-**Shipped (19):** ldo · dc_dc · mosfet · jfet · bjt · diode · voltage_reference · op_amp ·
+**Shipped (20):** ldo · dc_dc · mosfet · jfet · bjt · diode · voltage_reference · op_amp ·
 comparator · analog_switch · adc · dac · capacitor · resistor · inductor · crystal · led ·
-laser_diode · photodiode.
+laser_diode · photodiode · optocoupler.
 
 **Value** = how often the part appears on a real analog / mixed-signal / power board × how
 cleanly it fits the schema (a discrete, orderable component with a design-grade spec table) ×
@@ -19,7 +19,7 @@ you pick one — a "new units?" guess here is a hypothesis for the corpus to con
 
 | # | family | headline specs | new units? | notes |
 |---|---|---|---|---|
-| 1 | **optocoupler** | current transfer ratio (CTR), isolation withstand voltage, CMTI, creepage/clearance | likely **none** (CTR→%, VISO→V, CMTI→V/us exists, creepage→m) | The opto capstone (LED + detector in one isolating package). Output-type discriminator (phototransistor / logic / gate-drive / linear / Darlington), one dict with optional per-output blocks. Photo-triac/SSR-driver: decide in-scope vs a `solid_state_relay` family. Corpus was in progress. |
+| ~~1~~ | ~~**optocoupler**~~ | ✅ **SHIPPED 1.19.0** — 93 params, zero new units. One dict, output-type blocks (phototransistor/darlington/logic/gate-drive/linear/photovoltaic/triac-driver) over a shared LED-input + isolation core. Photo-triac-*driver* in-family; load-carrying SSR → future `solid_state_relay`; digital isolator (no LED) and isolation amplifier → separate future families. |
 | 2 | **oscillator** | frequency, stability, phase jitter (s), phase noise (dBc/Hz→dB), pullability (ppm/V), start-up time | likely **none** (jitter→s, phase noise→dB, pullability→ppm/V) | The crystal's active sibling (XO/TCXO/VCXO/OCXO). Reuses much crystal vocab + adds active-device (supply, output type, jitter). Output type CMOS/LVDS/LVPECL/clipped-sine as note-only. |
 | 3 | **gate_driver** | peak source/sink current (A), propagation delay, UVLO, deadtime, isolation (for isolated) | likely **none** | Ubiquitous in power. Overlaps the gate-drive optocoupler output block — coordinate. Half-bridge, isolated, and low-side variants. |
 | 4 | **transformer** | turns ratio (V/V or 1), inductance, isolation voltage, leakage inductance, DCR, saturation | likely **none** (turns ratio→V/V, isolation→V) | Passive but distinct from inductor (turns ratio + isolation are the headline). Signal, gate-drive, flyback, current-sense transformers. |
