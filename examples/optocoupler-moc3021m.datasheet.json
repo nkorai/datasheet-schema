@@ -1,0 +1,532 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "MOC3021M",
+    "manufacturer": "onsemi (Fairchild Semiconductor)",
+    "family": "optocoupler",
+    "description": "6-pin DIP random-phase photo-triac-driver optocoupler. A GaAs infrared emitting diode is optically coupled to a light-activated silicon bilateral switch (functions like a triac) across the isolation barrier, and is intended to trigger a larger external power triac for 115/240 VAC resistive and inductive loads - it is a TRIGGER device only and must not drive a load directly. 400 V peak blocking voltage (MOC302XM group), IFT max 15 mA (the MOC3021M/MOC3010M grade), UL1577 4170 VACRMS isolation, DIN EN/IEC 60747-5-5 rated. Part of the MOC3010M/MOC3011M/MOC3012M/MOC3020M/MOC3021M/MOC3022M/MOC3023M family; only MOC3021M's IFT grade (15 mA) is emitted here.",
+    "package": "6-Pin DIP",
+    "pinCount": 6,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..85",
+    "orderingVariants": [
+      { "orderCode": "MOC3021M", "package": "DIP 6-Pin", "packing": "Tube (50 units)" },
+      { "orderCode": "MOC3021SM", "package": "SMT 6-Pin (Lead Bend)", "packing": "Tube (50 units)" },
+      { "orderCode": "MOC3021SR2M", "package": "SMT 6-Pin (Lead Bend)", "packing": "Tape and Reel (1000 units)" },
+      { "orderCode": "MOC3021VM", "package": "DIP 6-Pin, DIN EN/IEC 60747-5-5 Option", "packing": "Tube (50 units)" },
+      { "orderCode": "MOC3021SVM", "package": "SMT 6-Pin (Lead Bend), DIN EN/IEC 60747-5-5 Option", "packing": "Tube (50 units)" },
+      { "orderCode": "MOC3021SR2VM", "package": "SMT 6-Pin (Lead Bend), DIN EN/IEC 60747-5-5 Option", "packing": "Tape and Reel (1000 units)" },
+      { "orderCode": "MOC3021TVM", "package": "DIP 6-Pin, 0.4in Lead Spacing, DIN EN/IEC 60747-5-5 Option", "packing": "Tube (50 units)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Input GaAs IR LED anode.", "sourcePage": 1 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Input GaAs IR LED cathode.", "sourcePage": 1 },
+    { "number": 3, "name": "N/C", "function": "NC", "type": "passive", "description": "No internal connection.", "sourcePage": 1 },
+    { "number": 4, "name": "Main Terminal", "function": "MT", "type": "passive", "description": "One main terminal of the bilateral-switch (triac) output. The datasheet labels both output terminals simply 'MAIN TERMINAL' and does not distinguish MT1 from MT2; the device is a symmetric bilateral switch, so no MT1/MT2 assignment is printed.", "sourcePage": 1 },
+    { "number": 5, "name": "N/C (Substrate)", "function": "SUBSTRATE", "type": "passive", "description": "Triac substrate. Marked 'NC* - DO NOT CONNECT (TRIAC SUBSTRATE)'; must be left unconnected.", "sourcePage": 1 },
+    { "number": 6, "name": "Main Terminal", "function": "MT", "type": "passive", "description": "The other main terminal of the bilateral-switch (triac) output. Not distinguished as MT1/MT2 in the datasheet (see pin 4).", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "led_forward_voltage",
+      "name": "Input forward voltage",
+      "group": "input",
+      "aliases": ["VF", "Input Forward Voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.15, "max": 1.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VF Input Forward Voltage, IF = 10 mA, all devices: typ 1.15 V, max 1.50 V.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Emitter)"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_current",
+      "name": "Reverse leakage current",
+      "group": "input",
+      "aliases": ["IR", "Reverse Leakage Current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-8, "max": 1e-4 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 3, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "IR Reverse Leakage Current, VR = 3 V, TA = 25 C, all devices: typ 0.01 uA (1e-8 A), max 100 uA (1e-4 A).",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Emitter)"
+        }
+      ]
+    },
+    {
+      "key": "input_forward_current",
+      "name": "Continuous forward current (abs max)",
+      "group": "input",
+      "aliases": ["IF", "Continuous Forward Current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.06 },
+          "unit": "A",
+          "conditionsVerbatim": "IF Continuous Forward Current, all devices: 60 mA (0.06 A). Emitter power dissipation 100 mW, derate 1.33 mW/C above 25 C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_voltage",
+      "name": "Reverse voltage (abs max)",
+      "group": "input",
+      "aliases": ["VR", "Reverse Voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 3 },
+          "unit": "V",
+          "conditionsVerbatim": "VR Reverse Voltage, all devices: 3 V.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)"
+        }
+      ]
+    },
+    {
+      "key": "input_power_dissipation",
+      "name": "Emitter (LED) power dissipation (abs max)",
+      "group": "input",
+      "aliases": ["PD", "Total Power Dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "W",
+          "conditionsVerbatim": "PD Total Power Dissipation at 25 C Ambient (Emitter), all devices: 100 mW (0.1 W). Derate above 25 C at 1.33 mW/C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)"
+        }
+      ]
+    },
+    {
+      "key": "led_trigger_current",
+      "name": "LED trigger current",
+      "group": "transfer",
+      "aliases": ["IFT", "LED Trigger Current"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 0.015 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_MT", "value": 3, "unit": "V" }
+          ],
+          "conditionsVerbatim": "IFT LED Trigger Current, applied main-terminal voltage = 3 V, MOC3021M: max 15 mA (0.015 A). Note 2: all devices are guaranteed to trigger at an IF <= max IFT; recommended operating IF lies between max IFT (15 mA for MOC3021M) and absolute-maximum IF (60 mA). Only MOC3021M's 15 mA grade is emitted (MOC3022M=10 mA and MOC3023M=5 mA are separate grades).",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - DC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "off_state_voltage",
+      "name": "Off-state output terminal voltage (abs max)",
+      "group": "output",
+      "aliases": ["VDRM", "Off-State Output Terminal Voltage", "Peak Blocking Voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 400 },
+          "unit": "V",
+          "conditionsVerbatim": "VDRM Off-State Output Terminal Voltage, MOC3020M/MOC3021M/MOC3022M/MOC3023M (MOC302XM group): 400 V (peak). The MOC301XM group is rated 250 V; MOC3021M is 400 V.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)"
+        }
+      ]
+    },
+    {
+      "key": "on_state_voltage",
+      "name": "Peak on-state voltage",
+      "group": "output",
+      "aliases": ["VTM", "Peak On-State Voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.8, "max": 3.0 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditions": [
+            { "param": "I_T", "value": 0.1, "unit": "A" },
+            { "param": "I_F", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "VTM Peak On-State Voltage, Either Direction, ITM = 100 mA peak, IF = 0, all devices: typ 1.8 V, max 3.0 V.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Detector)"
+        }
+      ]
+    },
+    {
+      "key": "off_state_leakage",
+      "name": "Peak blocking (leakage) current",
+      "group": "output",
+      "aliases": ["IDRM", "Peak Blocking Current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-8, "max": 1e-7 },
+          "unit": "A",
+          "statistic": "peak",
+          "conditions": [
+            { "param": "V_DRM", "value": 400, "unit": "V" },
+            { "param": "I_F", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "IDRM Peak Blocking Current, Either Direction, Rated VDRM (400 V for MOC3021M), IF = 0, all devices: typ 10 nA (1e-8 A), max 100 nA (1e-7 A). Note 1: test voltage must be applied within the dv/dt rating.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Detector)"
+        }
+      ]
+    },
+    {
+      "key": "holding_current",
+      "name": "Holding current",
+      "group": "output",
+      "aliases": ["IH", "Holding Current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-4 },
+          "unit": "A",
+          "conditionsVerbatim": "IH Holding Current, Either Direction, all devices: typ 100 uA (1e-4 A).",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - DC Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "static_dv_dt",
+      "name": "Static dv/dt",
+      "group": "output",
+      "aliases": ["dv/dt", "Static dv/dt"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 10 },
+          "unit": "V/us",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Static dv/dt read at TA = 25 C from the characterization curve Figure 7 (dv/dt vs. Temperature), y-axis 0-12 V/us, curve begins at 10 V/us at 25 C and falls to ~1.5 V/us at 100 C (test circuit Figure 9). Typical, from characterization curve Fig.7; there is NO guaranteed static dv/dt table row on this datasheet. This is NOT the 100 V/us figure of Motorola-lineage MOC302x sheets, which does not appear here.",
+          "sourcePage": 5,
+          "sourceTable": "Typical Performance Curves - Figure 7. dv/dt vs. Temperature"
+        }
+      ]
+    },
+    {
+      "key": "output_surge_current",
+      "name": "Peak repetitive surge current (abs max)",
+      "group": "output",
+      "aliases": ["ITSM", "Peak Repetitive Surge Current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "PULSE_WIDTH", "value": 1e-4, "unit": "s" }
+          ],
+          "conditionsVerbatim": "ITSM peak surge current, PW = 100 µs, 120 pps (Detector abs-max)",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)"
+        }
+      ]
+    },
+    {
+      "key": "isolation_voltage",
+      "name": "Isolation voltage (VISO)",
+      "group": "isolation",
+      "aliases": ["VISO", "Isolation Voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4170 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditionsVerbatim": "VISO Isolation Voltage, t = 1 Minute, all devices: min 4170 VACRMS (UL1577). Note 3: internal device dielectric breakdown rating; for this test pins 1 and 2 are common, and pins 4, 5 and 6 are common.",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Isolation Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "working_isolation_voltage",
+      "name": "Maximum working insulation voltage (VIORM)",
+      "group": "isolation",
+      "aliases": ["VIORM", "Maximum Working Insulation Voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 850 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "VIORM Maximum Working Insulation Voltage (DIN EN/IEC 60747-5-5): 850 Vpeak.",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "transient_isolation_voltage",
+      "name": "Highest allowable over-voltage (VIOTM)",
+      "group": "isolation",
+      "aliases": ["VIOTM", "Highest Allowable Over-Voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 6000 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "VIOTM Highest Allowable Over-Voltage (DIN EN/IEC 60747-5-5): 6000 Vpeak.",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "partial_discharge_test_voltage",
+      "name": "Input-to-output test voltage (VPR)",
+      "group": "isolation",
+      "aliases": ["VPR", "Input-to-Output Test Voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1275 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "VPR Input-to-Output Test Voltage, Method A: VIORM x 1.6 = VPR, Type and Sample Test with tm = 10 s, Partial Discharge < 5 pC: 1275 Vpeak. (The < 5 pC partial-discharge criterion is a test-acceptance charge, kept verbatim, not stored as a value.)",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 1594 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "VPR Input-to-Output Test Voltage, Method B: VIORM x 1.875 = VPR, 100% Production Test with tm = 1 s, Partial Discharge < 5 pC: 1594 Vpeak.",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "creepage_distance",
+      "name": "External creepage",
+      "group": "isolation",
+      "aliases": ["External Creepage", "creepage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "External Creepage >= 7 mm (0.007 m).",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "clearance_distance",
+      "name": "External clearance",
+      "group": "isolation",
+      "aliases": ["External Clearance", "clearance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "External Clearance >= 7 mm (0.007 m) for the standard part.",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.01 },
+          "unit": "m",
+          "conditions": [
+            { "param": "PACKAGE", "note": "Option TV, 0.4in lead spacing" }
+          ],
+          "conditionsVerbatim": "External Clearance (for Option TV, 0.4in Lead Spacing) >= 10 mm (0.01 m).",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "insulation_thickness",
+      "name": "Distance through insulation (DTI)",
+      "group": "isolation",
+      "aliases": ["DTI", "Distance Through Insulation", "Insulation Thickness"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "DTI Distance Through Insulation (Insulation Thickness) >= 0.5 mm (5e-4 m).",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "isolation_resistance",
+      "name": "Insulation (input-output) resistance",
+      "group": "isolation",
+      "aliases": ["RIO", "Insulation Resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e9 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_IO", "value": 500, "unit": "V" }
+          ],
+          "conditionsVerbatim": "RIO Insulation Resistance at TS (safety case temperature), VIO = 500 V: > 1e9 ohm.",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "comparative_tracking_index",
+      "name": "Comparative tracking index (CTI)",
+      "group": "isolation",
+      "aliases": ["CTI", "Comparative Tracking Index"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "nom": 175 },
+          "unit": "V",
+          "conditionsVerbatim": "Comparative Tracking Index: 175 (V), Pollution Degree 2 (DIN VDE 0110/1.89).",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["TSTG", "Storage Temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "TSTG Storage Temperature, all devices: -40 to +150 C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature",
+      "group": "thermal",
+      "aliases": ["TOPR", "Operating Temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 85 },
+          "unit": "degC",
+          "conditionsVerbatim": "TOPR Operating Temperature, all devices: -40 to +85 C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature range (abs max)",
+      "group": "thermal",
+      "aliases": ["TJ", "Junction Temperature Range"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "TJ Junction Temperature Range, all devices: -40 to +100 C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Lead solder temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["TSOL", "Lead Solder Temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "TSOL Lead Solder Temperature, all devices: 260 C for 10 seconds.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)"
+        }
+      ]
+    },
+    {
+      "key": "total_power_dissipation",
+      "name": "Total device power dissipation (abs max)",
+      "group": "thermal",
+      "aliases": ["PD", "Total Device Power Dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.33 },
+          "unit": "W",
+          "conditionsVerbatim": "PD Total Device Power Dissipation at 25 C Ambient, all devices: 330 mW (0.33 W). Derate above 25 C at 4.4 mW/C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)"
+        }
+      ]
+    },
+    {
+      "key": "collector_power_dissipation",
+      "name": "Detector (output) power dissipation (abs max)",
+      "group": "output",
+      "aliases": ["PD", "Detector Power Dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.3 },
+          "unit": "W",
+          "conditionsVerbatim": "PD Total Power Dissipation at 25 C Ambient (Detector), all devices: 300 mW (0.3 W). Derate above 25 C at 4 mW/C.",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "0d9341273d8041b7807478b578c28acd15691253e120378f5f4c4e77820db650",
+    "sourceUrl": "https://componentsearchengine.com/Datasheets/1/MOC3021M.pdf",
+    "datasheetRevision": "MOC301XM, MOC302XM Rev. 1.5 (July 2015)",
+    "publishedDate": "2015-07",
+    "extractionMethod": "manual",
+    "verified": true
+  },
+  "notes": [
+    "Source PDF: the genuine Fairchild Semiconductor (now onsemi) MOC301XM/MOC302XM Rev. 1.5 (July 2015) family datasheet, obtained via the componentsearchengine.com (SamacSys) mirror because onsemi.com and its direct mirrors (mouser, lcsc) were WAF-blocked/JS-gated at extraction time. The mirror is byte-identical to the manufacturer document for pages 1-9 and 13 (trademarks/disclaimer); page 14 is an appended Mouser distributor cover page and carries no device specifications. Page numbers in provenance are the printed Fairchild page numbers, which match this PDF's pages 1-9.",
+    "Grade scope: this document describes only the MOC3021M grade (IFT max 15 mA, VDRM 400 V). The datasheet's IFT column also lists MOC3020M=30 mA, MOC3011M/MOC3022M=10 mA and MOC3012M/MOC3023M=5 mA; those are separate orderable grades and are intentionally not merged in (spec: one grade per document).",
+    "Edge case - static dv/dt: this datasheet has NO guaranteed static dv/dt table row. A typical value of 10 V/us was read at TA=25 C off the Figure 7 characterization curve (dv/dt vs. Temperature, y-axis 0-12 V/us) and is stored with limitClass 'characterized' and a conditionsVerbatim note. The 100 V/us figure seen on Motorola-lineage MOC302x sheets does NOT appear on this onsemi/Fairchild PDF and was not used.",
+    "Pinout: the datasheet labels both output pins (4 and 6) simply 'MAIN TERMINAL' and does not distinguish MT1 from MT2 (the bilateral switch is symmetric); both are given function MT. Pin 5 is the triac substrate, marked 'NC* - DO NOT CONNECT'.",
+    "Non-numeric safety classifications (not modeled as values): Installation Classifications I-IV (for rated mains < 150 VRMS and < 300 VRMS), Climatic Classification 40/85/21, and Pollution Degree 2 (DIN VDE 0110/1.89), all page 2."
+  ]
+}

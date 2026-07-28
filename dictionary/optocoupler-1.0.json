@@ -1,0 +1,1454 @@
+{
+  "family": "optocoupler",
+  "dictionaryVersion": "1.1",
+  "description": "Optocoupler (optoisolator, photocoupler): a single package that couples an LED emitter to a photodetector across a galvanic-isolation barrier, transferring a signal while withstanding thousands of volts between input and output. The LED emitter is the family's necessary condition - it is what separates an optocoupler from a capacitive/magnetic DIGITAL ISOLATOR (ADuM/Si84xx/ISO7xxx, no LED, a separate future family). One dictionary spans every output architecture; a part populates the output block for its type and shares the LED-input group and the isolation-safety group with all others. Output types (discriminated by which output keys are present, plus the note-only OUTPUT condition axis): phototransistor (marquee current_transfer_ratio, a % ratio); photodarlington (same block, order-of-magnitude-higher CTR, slow switching); logic_gate / high-speed digital (6N137-class: NO CTR - the transfer is input_threshold_current + propagation delay, with output-side supply, logic levels, and often an enable pin); gate_drive (IGBT/MOSFET drivers: peak source/sink output_current, UVLO, output_on_resistance); linear (IL300/HCNR-class servo-photodiode: transfer_gain K3 = K2/K1, nonlinearity, gain tempco); photovoltaic MOSFET-driver (VOM1271: open_circuit_voltage + short_circuit_current, drives an EXTERNAL switch); and photo-triac_driver (MOC302x: led_trigger_current, off/on-state voltage, holding current, dv/dt - a TRIGGER device firing a bigger external triac). Out of scope as separate future families: solid_state_relay (integrated LOAD-CARRYING output switch - headline on_resistance / load current / load-voltage, not a coupler - e.g. CPC1017N, PVT/AQV); digital_isolator (capacitive/magnetic, no LED - ADuM/Si84xx/ISO7xxx); isolation_amplifier / isolated-ADC (analog-in to analog-out at a fixed gain with no user-visible LED/CTR transfer - HCPL-78xx, ACPL-C87x, AMC1200); and the discrete led / laser_diode / photodiode / phototransistor that are already their own families (an optocoupler is the barrier-crossing COMBINATION, not the discrete parts). Zero new units: CTR->% (or 1), all isolation ratings VISO/VIORM/VIOTM/VIOSM/VPR->V (the printed Vrms/Vpeak distinction carried by the measurement statistic field, not a unit), CMTI/dv/dt->V/us (kV/us x1e3), data_rate->Hz (MBd x1e6, binary NRZ), creepage/clearance/insulation->m, CTI->V, gain ratios K1/K2/K3->1, nonlinearity->%, gain tempco->ppm/degC, VF tempco->V/degC. Deliberate non-adds kept in conditionsVerbatim: partial-discharge charge (pC, a test-acceptance criterion - VPR in V is the device value), humidity %RH, and MBd (baud). Synthesized from a 20-datasheet corpus across Vishay, Broadcom (Avago/HP), Toshiba, Sharp, Everlight, Lite-On, and onsemi/Fairchild, spanning 4N35/PC817/EL817/TLP785 (phototransistor), 6N137/HCPL-2601/VO2611/TLP2361 (logic), HCPL-3120/ACNW3190/FOD3120/TLP350 (gate-drive), IL300/HCNR201 (linear), TLP627M (Darlington), MOC3021M (triac driver), and VOM1271 (photovoltaic).",
+  "parameters": [
+    {
+      "key": "led_forward_voltage",
+      "name": "LED forward voltage",
+      "unit": "V",
+      "group": "input",
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "VF",
+        "Vf",
+        "V_F",
+        "forward voltage",
+        "input forward voltage",
+        "LED forward voltage",
+        "input diode forward voltage"
+      ],
+      "hint": "The LED's forward voltage at a stated drive current (typically IF = 10-20 mA), in volts. The one parameter universal to every optocoupler regardless of output type. Array over I_F when specified at several drive currents; attach the I_F condition. ~1.1-1.6 V for a GaAs/AlGaAs input LED."
+    },
+    {
+      "key": "input_forward_current",
+      "name": "Input forward current (abs max)",
+      "unit": "A",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "IF",
+        "I_F",
+        "forward current",
+        "input forward current",
+        "continuous forward current",
+        "LED forward current"
+      ],
+      "hint": "The maximum continuous LED forward current, in amperes (a printed mA is 1e-3 A: 50 mA is 0.05). limitClass absolute_max. Derate above a stated ambient - keep the derating onset in conditionsVerbatim (the mA/degC slope is derivable, not stored)."
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Peak/pulsed forward current (abs max)",
+      "unit": "A",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "IFM",
+        "IFP",
+        "IFSM",
+        "IFPT",
+        "I_FM",
+        "peak forward current",
+        "pulse forward current",
+        "peak transient input forward current",
+        "surge current",
+        "surge forward current",
+        "repetitive peak forward current"
+      ],
+      "hint": "The peak or pulsed LED current under a stated pulse width and duty, in amperes (1 A pulse is 1.0). limitClass absolute_max; attach the pulse width / duty as conditions or keep verbatim."
+    },
+    {
+      "key": "input_reverse_voltage",
+      "name": "Input reverse voltage (abs max)",
+      "unit": "V",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "VR",
+        "V_R",
+        "reverse voltage",
+        "input reverse voltage",
+        "LED reverse voltage"
+      ],
+      "hint": "The maximum reverse voltage across the input LED, in volts (typically 3-6 V). limitClass absolute_max."
+    },
+    {
+      "key": "input_reverse_current",
+      "name": "Input reverse current",
+      "unit": "A",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "IR",
+        "I_R",
+        "reverse current",
+        "input reverse current",
+        "LED reverse leakage",
+        "reverse leakage current"
+      ],
+      "hint": "The LED reverse leakage current at a stated reverse voltage, in amperes (a printed uA is 1e-6). Attach the V_R condition."
+    },
+    {
+      "key": "input_reverse_breakdown",
+      "name": "Input reverse breakdown voltage",
+      "unit": "V",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "BVR",
+        "BV_R",
+        "input reverse breakdown voltage",
+        "reverse breakdown voltage"
+      ],
+      "hint": "The LED reverse breakdown voltage (a min guarantee at a stated leakage, e.g. IR = 10 uA), in volts. Common on logic-output couplers; distinct from the absolute-max input_reverse_voltage."
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (LED) capacitance",
+      "unit": "F",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "CI",
+        "CIN",
+        "Ct",
+        "CT",
+        "Cj",
+        "input capacitance",
+        "terminal capacitance",
+        "LED junction capacitance",
+        "junction capacitance",
+        "diode capacitance"
+      ],
+      "hint": "The input LED terminal/junction capacitance at a stated frequency (usually f = 1 MHz), in farads (a printed pF is 1e-12). ~25-80 pF."
+    },
+    {
+      "key": "vf_temp_coefficient",
+      "name": "LED forward-voltage temperature coefficient",
+      "unit": "V/degC",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "dVF/dT",
+        "dVF/dTA",
+        "VF/TA",
+        "input forward voltage temperature coefficient",
+        "input diode temperature coefficient",
+        "forward voltage temperature coefficient"
+      ],
+      "hint": "The temperature drift of the LED forward voltage, in V/degC (a printed mV/degC or mV/K is 1e-3; per-K equals per-degC, same number). Typically negative, ~-1.5 to -1.7 mV/degC."
+    },
+    {
+      "key": "input_power_dissipation",
+      "name": "Input (LED) power dissipation (abs max)",
+      "unit": "W",
+      "group": "input",
+      "optional": true,
+      "aliases": [
+        "PD",
+        "P_input",
+        "input power dissipation",
+        "LED power dissipation",
+        "power dissipation input"
+      ],
+      "hint": "The maximum input-side (LED) power dissipation, in watts (a printed mW is 1e-3: 70 mW is 0.07). limitClass absolute_max."
+    },
+    {
+      "key": "current_transfer_ratio",
+      "name": "Current transfer ratio (CTR)",
+      "unit": "%",
+      "group": "transfer",
+      "array": true,
+      "conditionAxis": "I_F",
+      "altUnits": ["1"],
+      "aliases": [
+        "CTR",
+        "CTRDC",
+        "CTR_DC",
+        "IC/IF",
+        "IC / IF",
+        "current transfer ratio",
+        "DC current transfer ratio"
+      ],
+      "hint": "The marquee spec of a phototransistor/photodarlington output: output collector current divided by LED forward current, as a PERCENT (store the printed percent, e.g. 50-600, not the 0.5-6.0 ratio - vendors bin ranks as '80 to 160 %'). altUnit 1 for a sheet printing a bare ratio. Swept vs I_F (and vs T_A) - array over I_F and attach the V_CE and I_F conditions. Binned CTR ranks (A/B/C/D, GR/BL/...) are separate orderable grades - one document per grade, never fold the rank table into one array. A Darlington reaches 1000-6000 %; a logic/gate-drive/linear output has NO CTR."
+    },
+    {
+      "key": "saturated_ctr",
+      "name": "Saturated current transfer ratio",
+      "unit": "%",
+      "group": "transfer",
+      "optional": true,
+      "altUnits": ["1"],
+      "aliases": [
+        "IC/IF(sat)",
+        "saturated CTR",
+        "saturated current transfer ratio",
+        "CTR(sat)"
+      ],
+      "hint": "The CTR measured with the output transistor in saturation (at a low stated V_CE, e.g. 0.4 V), in percent. Attach the V_CE and I_F conditions."
+    },
+    {
+      "key": "input_threshold_current",
+      "name": "Input threshold current",
+      "unit": "A",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "ITH",
+        "IFHL",
+        "IFLH",
+        "IFTH",
+        "IFH",
+        "IF(on)",
+        "input threshold current",
+        "threshold input current",
+        "input current high level",
+        "input current to switch output"
+      ],
+      "hint": "The LED forward current that toggles a LOGIC-output coupler's gate to the on state, in amperes (a printed mA is 1e-3). The logic-output analogue of CTR - the transfer is a current threshold, not a ratio. Attach the output-load / VCC conditions."
+    },
+    {
+      "key": "input_current_off",
+      "name": "Input current, output-off (max)",
+      "unit": "A",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "IFL",
+        "IF(off)",
+        "input current low level",
+        "input current off threshold"
+      ],
+      "hint": "The maximum LED current for which a LOGIC-output coupler's output stays high/off, in amperes (a printed uA is 1e-6: 250 uA is 2.5e-4). A recommended-operating bound on the off state."
+    },
+    {
+      "key": "led_trigger_current",
+      "name": "LED trigger current",
+      "unit": "A",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "IFT",
+        "I_FT",
+        "LED trigger current",
+        "trigger current",
+        "required LED trigger current"
+      ],
+      "hint": "The LED current that fires a PHOTO-TRIAC-DRIVER output, in amperes (a printed mA is 1e-3: 15 mA is 0.015). limitClass recommended (a max-to-guarantee-triggering value). Measured at a stated main-terminal voltage."
+    },
+    {
+      "key": "transfer_gain",
+      "name": "Transfer gain K3 (linear)",
+      "unit": "1",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "K3",
+        "K2/K1",
+        "transfer gain",
+        "K3 (transfer gain)",
+        "K3 = K2/K1",
+        "IPD2/IPD1",
+        "coupling gain"
+      ],
+      "hint": "The servo-to-forward gain ratio (K3 = K2/K1) of a LINEAR (servo-photodiode) coupler, dimensionless (~1, e.g. 0.85-1.15). This is the linear coupler's marquee - the near-unity, temperature-stable ratio that makes it usable for analog isolation. Vishay literally prints the unit column as 'K2/K1'. Attach the IPD / VPD conditions."
+    },
+    {
+      "key": "servo_gain",
+      "name": "Servo gain K1 (linear)",
+      "unit": "1",
+      "group": "transfer",
+      "optional": true,
+      "altUnits": ["%"],
+      "aliases": [
+        "K1",
+        "servo gain",
+        "IP1/IF",
+        "IPD1/IF",
+        "input photodiode current transfer ratio"
+      ],
+      "hint": "The input (servo) photodiode current per LED current (IPD1/IF) of a linear coupler, dimensionless (~0.005-0.015 as a bare ratio, or ~0.5 % - genuinely multi-unit: Vishay prints a bare ratio, Broadcom prints %). Attach the I_F / V_PD conditions."
+    },
+    {
+      "key": "forward_gain",
+      "name": "Forward gain K2 (linear)",
+      "unit": "1",
+      "group": "transfer",
+      "optional": true,
+      "altUnits": ["%"],
+      "aliases": [
+        "K2",
+        "forward gain",
+        "IP2/IF",
+        "IPD2/IF",
+        "output photodiode gain"
+      ],
+      "hint": "The output (forward) photodiode current per LED current (IPD2/IF) of a linear coupler, dimensionless. Attach the I_F / V_PD conditions."
+    },
+    {
+      "key": "transfer_gain_nonlinearity",
+      "name": "Transfer-gain nonlinearity (linear)",
+      "unit": "%",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "NLBF",
+        "NLEF",
+        "nonlinearity",
+        "DC nonlinearity",
+        "transfer gain linearity",
+        "best fit nonlinearity",
+        "ends fit nonlinearity"
+      ],
+      "hint": "The DC nonlinearity of a linear coupler's transfer, in percent (best-fit NLBF or ends-fit NLEF - keep which in conditionsVerbatim; ~0.01-0.25 % for a precision part like HCNR201). The spec that makes a linear coupler analog-grade. Attach the IPD range as a condition."
+    },
+    {
+      "key": "transfer_gain_temp_coefficient",
+      "name": "Transfer-gain temperature coefficient (linear)",
+      "unit": "ppm/degC",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "K3/TA",
+        "dK3/dTA",
+        "transfer gain stability",
+        "temperature coefficient of transfer gain",
+        "gain temperature coefficient"
+      ],
+      "hint": "The temperature drift of a linear coupler's transfer gain K3, in ppm/degC (a printed %/degC is x1e4: 0.005 %/degC is 50 ppm/degC; a printed ppm/degC is stored as-is, e.g. -65). Per-K equals per-degC."
+    },
+    {
+      "key": "input_threshold_voltage",
+      "name": "Input threshold voltage (logic/gate-drive)",
+      "unit": "V",
+      "group": "transfer",
+      "optional": true,
+      "aliases": [
+        "VFHL",
+        "VF(OFF)",
+        "VFOFF",
+        "input threshold voltage",
+        "threshold input voltage",
+        "input off-state voltage",
+        "off-state input voltage"
+      ],
+      "hint": "The input-pin forward voltage that guarantees a logic/gate-drive output stays off (VF(OFF)) or defines the H/L switch point (VFHL), in volts (~0.8 V). The voltage analogue of input_threshold_current - distinct from it (a current) and from input_current_off. Printed on gate-drive parts (TLP5754, ACNW3190)."
+    },
+    {
+      "key": "open_circuit_voltage",
+      "name": "Output open-circuit voltage (photovoltaic)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "VOC",
+        "V_OC",
+        "open circuit voltage",
+        "photovoltaic output voltage"
+      ],
+      "hint": "The open-circuit output voltage of a PHOTOVOLTAIC MOSFET-driver output (VOM1271-class), in volts (~8 V at IF = 10 mA). Array over I_F. The photovoltaic output drives an external MOSFET gate - it carries no load itself (that would make it a solid_state_relay)."
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current (photovoltaic)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_F",
+      "aliases": [
+        "ISC",
+        "I_SC",
+        "short circuit current",
+        "photovoltaic output current"
+      ],
+      "hint": "The short-circuit output current of a photovoltaic MOSFET-driver output, in amperes (a printed uA is 1e-6: 15 uA is 1.5e-5). Array over I_F - it sets the external-MOSFET gate turn-on speed."
+    },
+    {
+      "key": "output_photocurrent",
+      "name": "Output photocurrent (linear)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IP1",
+        "IP2",
+        "IPD",
+        "IPD1",
+        "IPD2",
+        "servo photocurrent",
+        "forward photocurrent",
+        "output photocurrent"
+      ],
+      "hint": "The photocurrent of a linear coupler's servo (IP1) or output (IP2) photodiode at a stated I_F, in amperes (a printed uA is 1e-6). Attach the I_F and V_PD/V_DET conditions."
+    },
+    {
+      "key": "photodiode_leakage_current",
+      "name": "Output photodiode leakage/dark current (linear)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "ID",
+        "ILK",
+        "output dark current",
+        "photodiode leakage",
+        "photodiode dark current"
+      ],
+      "hint": "The dark/leakage current of a linear coupler's output photodiode at a stated reverse bias (Vdet), in amperes (a printed nA is 1e-9). Distinct from a phototransistor's collector_dark_current. Attach the V_DET condition."
+    },
+    {
+      "key": "collector_emitter_saturation_voltage",
+      "name": "Collector-emitter saturation voltage",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "I_C",
+      "aliases": [
+        "VCE(sat)",
+        "VCEsat",
+        "VCE sat",
+        "collector-emitter saturation voltage",
+        "saturation voltage"
+      ],
+      "hint": "The saturated collector-emitter voltage of a phototransistor/Darlington output at a stated I_C and I_F, in volts (~0.1-0.2 V phototransistor, ~1.0-1.2 V Darlington - the double drop is a Darlington tell). Array over I_C; attach I_F."
+    },
+    {
+      "key": "collector_dark_current",
+      "name": "Collector dark current",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": [
+        "ICEO",
+        "IDARK",
+        "IC(off)",
+        "collector dark current",
+        "collector-emitter leakage current",
+        "collector emitter leakage current",
+        "off-state collector current",
+        "dark current"
+      ],
+      "hint": "The collector leakage current of a phototransistor/Darlington output with the LED off (IF = 0), at a stated V_CE, in amperes (a printed nA is 1e-9, uA is 1e-6). Rises strongly with temperature - array over T_A (e.g. 25 and 85 degC). Attach V_CE."
+    },
+    {
+      "key": "collector_emitter_voltage",
+      "name": "Collector-emitter voltage / breakdown",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VCEO",
+        "BVCEO",
+        "V(BR)CEO",
+        "collector-emitter voltage",
+        "collector emitter breakdown voltage",
+        "collector-emitter breakdown voltage"
+      ],
+      "hint": "The collector-emitter voltage rating (absolute_max) or breakdown (a min guarantee at a stated I_C), in volts (~35-80 V; a Darlington can be 300 V). Use limitClass to distinguish the abs-max rating from the characterized breakdown."
+    },
+    {
+      "key": "emitter_collector_voltage",
+      "name": "Emitter-collector voltage / breakdown",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VECO",
+        "BVECO",
+        "V(BR)ECO",
+        "emitter-collector voltage",
+        "emitter collector breakdown voltage"
+      ],
+      "hint": "The reverse (emitter-collector) voltage rating or breakdown of a phototransistor output, in volts (~6-7 V)."
+    },
+    {
+      "key": "collector_base_breakdown",
+      "name": "Collector-base breakdown voltage (base-pin part)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "BVCBO",
+        "V(BR)CBO",
+        "collector-base breakdown voltage"
+      ],
+      "hint": "The collector-base breakdown of a phototransistor output whose BASE pin is brought out (e.g. 4N35, 6-pin), in volts. Present only on base-out variants - the direct analogue of laser_diode's optional monitor_pd block."
+    },
+    {
+      "key": "emitter_base_breakdown",
+      "name": "Emitter-base breakdown voltage (base-pin part)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VEBO",
+        "BVEBO",
+        "emitter-base breakdown voltage"
+      ],
+      "hint": "The emitter-base breakdown of a base-out phototransistor output (e.g. 4N35), in volts (~7 V). Present only on base-out variants."
+    },
+    {
+      "key": "collector_current",
+      "name": "Collector current (abs max)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IC",
+        "I_C",
+        "collector current",
+        "output collector current"
+      ],
+      "hint": "The maximum output collector current of a phototransistor/Darlington output, in amperes (a printed mA is 1e-3: 50 mA is 0.05). limitClass absolute_max."
+    },
+    {
+      "key": "collector_power_dissipation",
+      "name": "Collector (output) power dissipation (abs max)",
+      "unit": "W",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "PC",
+        "P_C",
+        "collector power dissipation",
+        "output power dissipation",
+        "detector power dissipation"
+      ],
+      "hint": "The maximum output-side (detector/collector) power dissipation, in watts (a printed mW is 1e-3: 150 mW is 0.15). limitClass absolute_max."
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output capacitance",
+      "unit": "F",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "CCE",
+        "C_CE",
+        "CPD",
+        "collector-emitter capacitance",
+        "collector emitter capacitance",
+        "output capacitance",
+        "photodiode capacitance"
+      ],
+      "hint": "The output-element capacitance (collector-emitter for a phototransistor, photodiode for a linear coupler) at a stated frequency, in farads (a printed pF is 1e-12)."
+    },
+    {
+      "key": "output_reverse_voltage",
+      "name": "Output (detector) reverse voltage (abs max)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "output reverse voltage",
+        "detector reverse voltage",
+        "photodiode reverse voltage",
+        "reverse voltage (output)"
+      ],
+      "hint": "The reverse-voltage abs-max rating of a linear/photodiode-output coupler's OUTPUT detector (IL300 output VR = 50 V), in volts. limitClass absolute_max. Distinct from the LED's input_reverse_voltage - do NOT alias bare `VR` (a datasheet uses VR for both input and output, disambiguated only by section)."
+    },
+    {
+      "key": "output_surge_current",
+      "name": "Output surge current (triac driver, abs max)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "ITSM",
+        "peak surge current",
+        "non-repetitive surge current",
+        "peak repetitive surge current",
+        "surge on-state current"
+      ],
+      "hint": "The peak (non-repetitive) surge on-state current of a photo-triac-driver OUTPUT, in amperes (~1 A, at a stated pulse width and rep rate). limitClass absolute_max. Distinct from the input LED's peak_forward_current (IFSM) - this is the output triac terminal."
+    },
+    {
+      "key": "output_voltage_abs_max",
+      "name": "Output-pin voltage (abs max)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "output voltage (abs max)",
+        "output terminal voltage",
+        "output pin voltage rating",
+        "VO(PEAK)",
+        "peak output voltage rating"
+      ],
+      "hint": "The absolute-max voltage on a logic/gate-drive output pin (6N137 VO = 7 V; TLP5754 VO = -0.5 to 35 V), in volts. limitClass absolute_max. A pin-stress rating distinct from the recommended supply_voltage (VCC) and from a phototransistor's collector_emitter_voltage. Where a sheet expresses it relative to VCC (VOH = VCC-4) that operating point is not an absolute volt - keep it verbatim, not here."
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Low-level output voltage (logic)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOL",
+        "V_OL",
+        "low level output voltage",
+        "output low voltage"
+      ],
+      "hint": "The logic-low output voltage of a LOGIC-output coupler at a stated sink current, in volts (~0.2-0.6 V). Attach the sink-current (I_OL/I_OUT) and VCC/IF conditions."
+    },
+    {
+      "key": "output_high_voltage",
+      "name": "High-level output voltage (totem-pole logic)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VOH",
+        "V_OH",
+        "high level output voltage",
+        "output high voltage"
+      ],
+      "hint": "The logic-high output voltage of a TOTEM-POLE / push-pull logic output (e.g. TLP2361), in volts. Its presence (vs an output_high_current leakage + output_pullup_resistor) is what marks a totem-pole vs an open-collector/open-drain output."
+    },
+    {
+      "key": "output_high_current",
+      "name": "High-level output current (open-collector leakage)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IOH",
+        "I_OH",
+        "high level output current",
+        "output high leakage current"
+      ],
+      "hint": "The output leakage current of an OPEN-COLLECTOR/open-drain logic output in the high state, in amperes (a printed uA is 1e-6: 100 uA is 1e-4). Attach the VO and VCC conditions. An open-collector part pairs this with output_pullup_resistor; a totem-pole part instead prints output_high_voltage."
+    },
+    {
+      "key": "output_pullup_resistor",
+      "name": "Output pull-up resistor (recommended)",
+      "unit": "ohm",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "RL",
+        "R_L",
+        "output pull-up resistor",
+        "load resistor",
+        "pull-up resistor"
+      ],
+      "hint": "The recommended external pull-up resistor for an open-collector/open-drain logic output, in ohms (a printed kohm is 1e3: 350 ohm-4 kohm range). limitClass recommended."
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Output supply voltage (recommended)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VCC",
+        "VDD",
+        "V_CC",
+        "supply voltage",
+        "power supply voltage",
+        "output supply voltage"
+      ],
+      "hint": "The output-side supply voltage of a logic or gate-drive coupler, in volts (~4.5-5.5 V logic; 15-30 V gate-drive). A phototransistor/linear/triac coupler has no output-side supply. limitClass recommended (or absolute_max for the rating)."
+    },
+    {
+      "key": "supply_current_high",
+      "name": "High-level supply current (logic)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "ICCH",
+        "I_CCH",
+        "high level supply current",
+        "quiescent supply current high"
+      ],
+      "hint": "The output-side supply current with the output high (LED off), in amperes (a printed mA is 1e-3). Attach the VCC/VE conditions."
+    },
+    {
+      "key": "supply_current_low",
+      "name": "Low-level supply current (logic)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "ICCL",
+        "I_CCL",
+        "ICC",
+        "low level supply current",
+        "supply current",
+        "quiescent supply current low"
+      ],
+      "hint": "The output-side supply current with the output low (LED on), in amperes (a printed mA is 1e-3). Attach the VCC/VE conditions. A single ICC value uses this key."
+    },
+    {
+      "key": "enable_voltage_high",
+      "name": "Enable input high threshold (logic)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VEH",
+        "V_EH",
+        "high level enable voltage",
+        "enable voltage high"
+      ],
+      "hint": "The high-level threshold of a logic coupler's output-enable pin, in volts (min ~2 V). Present only on parts with an enable/output-enable input."
+    },
+    {
+      "key": "enable_voltage_low",
+      "name": "Enable input low threshold (logic)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VEL",
+        "V_EL",
+        "low level enable voltage",
+        "enable voltage low"
+      ],
+      "hint": "The low-level threshold of a logic coupler's output-enable pin, in volts (max ~0.8 V)."
+    },
+    {
+      "key": "enable_current_high",
+      "name": "Enable input current, high (logic)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IEH",
+        "I_EH",
+        "high level enable current"
+      ],
+      "hint": "The enable-pin input current in the high state, in amperes (a printed uA/mA normalized; often negative, ~-0.2 to -1.6 mA). Attach the VE condition."
+    },
+    {
+      "key": "enable_current_low",
+      "name": "Enable input current, low (logic)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IEL",
+        "I_EL",
+        "low level enable current"
+      ],
+      "hint": "The enable-pin input current in the low state, in amperes. Attach the VE condition."
+    },
+    {
+      "key": "fanout",
+      "name": "Output fan-out (logic)",
+      "unit": "1",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "fanout",
+        "fan out",
+        "fan-out",
+        "N (TTL loads)",
+        "TTL fan out"
+      ],
+      "hint": "The number of TTL loads a logic-output coupler can drive, a dimensionless count (e.g. 5). Recommended-operating."
+    },
+    {
+      "key": "output_current_high",
+      "name": "Peak output source current (gate-drive)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IOH(PEAK)",
+        "IOHPK",
+        "IOPH",
+        "peak output source current",
+        "peak source current",
+        "gate drive source current"
+      ],
+      "hint": "The peak SOURCE (turn-on) output current of a GATE-DRIVE output (HCPL-3120/ACNW3190-class), in amperes (~1-5 A). Attach the output-voltage condition (e.g. VO = VCC-4). Distinct from a logic output's uA-scale leakage IOH - a gate driver sources amps."
+    },
+    {
+      "key": "output_current_low",
+      "name": "Peak output sink current (gate-drive)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IOL",
+        "IOL(PEAK)",
+        "IOLPK",
+        "IOPL",
+        "peak output sink current",
+        "low level output current",
+        "peak sink current",
+        "gate drive sink current"
+      ],
+      "hint": "The peak SINK (turn-off) output current of a gate-drive output, in amperes (~1-5 A). Attach the output-voltage condition (e.g. VO = VEE+2.5)."
+    },
+    {
+      "key": "peak_output_current",
+      "name": "Peak output current (gate-drive, abs max)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IO(PEAK)",
+        "IOPK",
+        "peak output current",
+        "maximum peak output current"
+      ],
+      "hint": "The absolute-max peak output current of a gate-drive output (either direction), in amperes. limitClass absolute_max."
+    },
+    {
+      "key": "output_on_resistance",
+      "name": "Output on-resistance (gate-drive)",
+      "unit": "ohm",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "RDS(ON)",
+        "RDSON",
+        "Ron",
+        "output on resistance",
+        "on-state resistance",
+        "pull-up resistance",
+        "pull-down resistance"
+      ],
+      "hint": "The on-state resistance of a gate-drive output stage (pull-up or pull-down), in ohms. Note: a gate driver's on-resistance drives an EXTERNAL gate - a part whose on-resistance carries the LOAD current is a solid_state_relay, a separate family."
+    },
+    {
+      "key": "uvlo_threshold_rising",
+      "name": "UVLO threshold, rising (gate-drive)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VUVLO+",
+        "UVLO+",
+        "VUVLO rising",
+        "undervoltage lockout rising threshold"
+      ],
+      "hint": "The rising (turn-on) under-voltage-lockout threshold of a gate-drive output supply, in volts (~11-13 V). Together with uvlo_threshold_falling defines the UVLO hysteresis."
+    },
+    {
+      "key": "uvlo_threshold_falling",
+      "name": "UVLO threshold, falling (gate-drive)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VUVLO-",
+        "UVLO-",
+        "VUVLO falling",
+        "undervoltage lockout falling threshold"
+      ],
+      "hint": "The falling (turn-off) under-voltage-lockout threshold of a gate-drive output supply, in volts (~9.5-11 V)."
+    },
+    {
+      "key": "off_state_voltage",
+      "name": "Off-state output voltage (triac driver, abs max)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VDRM",
+        "V_DRM",
+        "off-state output terminal voltage",
+        "peak blocking voltage",
+        "peak off-state voltage",
+        "repetitive peak off-state voltage"
+      ],
+      "hint": "The peak off-state (blocking) voltage a PHOTO-TRIAC-DRIVER output withstands, in volts (~400-800 V). limitClass absolute_max. The triac driver only triggers an external triac - it does not carry the load."
+    },
+    {
+      "key": "on_state_voltage",
+      "name": "On-state voltage (triac driver)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VTM",
+        "V_TM",
+        "peak on-state voltage",
+        "on-state voltage"
+      ],
+      "hint": "The peak on-state voltage drop across a triac-driver output at a stated on-state current (either direction), in volts (~1.8-3 V). Attach the ITM condition."
+    },
+    {
+      "key": "off_state_leakage",
+      "name": "Off-state leakage current (triac driver)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IDRM",
+        "I_DRM",
+        "peak blocking current",
+        "off-state leakage current",
+        "leakage current"
+      ],
+      "hint": "The peak blocking (leakage) current of a triac-driver output at rated VDRM with the LED off, in amperes (a printed nA is 1e-9). Attach the V(off) condition."
+    },
+    {
+      "key": "holding_current",
+      "name": "Holding current (triac driver)",
+      "unit": "A",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "IH",
+        "I_H",
+        "holding current"
+      ],
+      "hint": "The holding current of a triac-driver output (either direction), in amperes (a printed uA is 1e-6: 100 uA is 1e-4). Below this the triac output turns off."
+    },
+    {
+      "key": "static_dv_dt",
+      "name": "Static dv/dt (triac driver)",
+      "unit": "V/us",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "dv/dt",
+        "static dv/dt",
+        "critical rate of rise of off-state voltage",
+        "commutating dv/dt"
+      ],
+      "hint": "The critical rate of rise of off-state voltage a triac-driver output withstands without false triggering, in V/us (a printed kV/us is x1e3). Often characterized (a curve, no guaranteed row) rather than a guaranteed value - set limitClass to characterized when it is curve-only. Distinct from CMTI (which is an isolation-barrier spec)."
+    },
+    {
+      "key": "inhibit_voltage",
+      "name": "Zero-cross inhibit voltage (zero-cross triac driver)",
+      "unit": "V",
+      "group": "output",
+      "optional": true,
+      "aliases": [
+        "VIH",
+        "inhibit voltage",
+        "zero-cross inhibit voltage"
+      ],
+      "hint": "The main-terminal off-state voltage above which a ZERO-CROSS triac driver (MOC3063-class) inhibits triggering, in volts. Present only on zero-cross parts (note the note-only SWITCH = zero_cross condition); a random-phase driver omits it."
+    },
+    {
+      "key": "isolation_voltage",
+      "name": "Isolation withstand voltage (VISO)",
+      "unit": "V",
+      "group": "isolation",
+      "aliases": [
+        "VISO",
+        "Viso",
+        "BVS",
+        "BV",
+        "isolation voltage",
+        "isolation test voltage",
+        "input-output momentary withstand voltage",
+        "maximum rated withstanding isolation voltage",
+        "withstand voltage",
+        "dielectric strength"
+      ],
+      "hint": "The headline isolation withstand voltage (UL1577), in volts (~3750-5000 V). The printed 'Vrms' is a magnitude - store the number in V and set the measurement statistic to rms; keep 'AC, 1 min, 40-60% RH' in conditionsVerbatim. The one isolation spec on virtually every optocoupler. CONVENTION: store this single-value withstand in the `max` slot with limitClass absolute_max - a do-not-exceed rating, matching the diode VRRM precedent, so it is queryable on one bound across parts regardless of whether a given sheet's prose says 'maximum rated' or 'minimum withstand'."
+    },
+    {
+      "key": "working_isolation_voltage",
+      "name": "Maximum working insulation voltage (VIORM)",
+      "unit": "V",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "VIORM",
+        "V_IORM",
+        "maximum working insulation voltage",
+        "maximum operating insulation voltage",
+        "maximum repetitive peak isolation voltage",
+        "working insulation voltage"
+      ],
+      "hint": "The maximum repetitive-peak working insulation voltage (IEC/EN 60747-5-5), in volts (~630-1414 Vpeak). Store the number in V with statistic peak; the standard/basis stays verbatim. The continuous-operation rating (VISO is a 1-minute withstand)."
+    },
+    {
+      "key": "transient_isolation_voltage",
+      "name": "Transient isolation voltage (VIOTM)",
+      "unit": "V",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "VIOTM",
+        "V_IOTM",
+        "VTR",
+        "maximum transient isolation voltage",
+        "highest allowable overvoltage",
+        "highest permissible overvoltage",
+        "transient overvoltage"
+      ],
+      "hint": "The highest allowable transient (impulse) isolation voltage (IEC 60747-5-5), in volts (~6000-10000 Vpeak). Store the number in V with statistic peak."
+    },
+    {
+      "key": "surge_isolation_voltage",
+      "name": "Surge isolation voltage (VIOSM)",
+      "unit": "V",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "VIOSM",
+        "V_IOSM",
+        "surge isolation voltage",
+        "maximum surge isolation voltage"
+      ],
+      "hint": "The surge (1.2/50 us impulse) isolation voltage of a reinforced-isolation part, in volts (Vpeak). Printed only on higher-grade parts (many parts print VIORM/VIOTM/VPR but no VIOSM). Store in V with statistic peak."
+    },
+    {
+      "key": "partial_discharge_test_voltage",
+      "name": "Partial-discharge test voltage (VPR)",
+      "unit": "V",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "VPR",
+        "V_PR",
+        "input-output test voltage",
+        "input to output test voltage",
+        "partial discharge test voltage",
+        "routine test voltage"
+      ],
+      "hint": "The partial-discharge test voltage (VIORM x 1.6 or x1.875, IEC 60747-5-5 method a/b), in volts (Vpeak). The pass criterion (PD < 5 pC) is a test-acceptance charge, NOT stored as a value - keep '< 5 pC' in conditionsVerbatim; the device value is this test voltage in V."
+    },
+    {
+      "key": "isolation_resistance",
+      "name": "Isolation (input-output) resistance",
+      "unit": "ohm",
+      "group": "isolation",
+      "array": true,
+      "conditionAxis": "T_A",
+      "aliases": [
+        "RIO",
+        "RI-O",
+        "RS",
+        "RISO",
+        "Riso",
+        "isolation resistance",
+        "input-output resistance",
+        "resistance input output"
+      ],
+      "hint": "The DC resistance across the isolation barrier at a stated bias (usually 500 V) and temperature, in ohms (~1e11-1e14). Often given at 25 and 100 degC - array over T_A. Attach the V_S/V_IO bias condition."
+    },
+    {
+      "key": "barrier_capacitance",
+      "name": "Barrier (input-output) capacitance",
+      "unit": "F",
+      "group": "isolation",
+      "aliases": [
+        "CIO",
+        "CI-O",
+        "CS",
+        "Cf",
+        "CCM",
+        "barrier capacitance",
+        "coupling capacitance",
+        "input-output capacitance",
+        "floating capacitance",
+        "capacitance input output",
+        "total capacitance input to output",
+        "common mode capacitance"
+      ],
+      "hint": "The capacitance across the isolation barrier at a stated frequency (usually 1 MHz), in farads (a printed pF is 1e-12: 0.6 pF is 6e-13). Sub-picofarad - it sets the common-mode coupling. Near-universal."
+    },
+    {
+      "key": "creepage_distance",
+      "name": "External creepage distance",
+      "unit": "m",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "creepage",
+        "creepage distance",
+        "minimum creepage distance",
+        "external creepage",
+        "L(102)",
+        "CPG"
+      ],
+      "hint": "The shortest input-to-output distance along the package surface, in metres (a printed mm is 1e-3: 7 mm is 0.007). A safety-insulation distance - a legitimate `m` value (the metre also serves optical wavelength in other families; the key carries the distinction). Sets the pollution-degree/working-voltage rating."
+    },
+    {
+      "key": "clearance_distance",
+      "name": "External clearance distance",
+      "unit": "m",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "clearance",
+        "clearance distance",
+        "minimum clearance",
+        "external clearance",
+        "L(101)",
+        "CLR"
+      ],
+      "hint": "The shortest input-to-output distance through air, in metres (a printed mm is 1e-3). A safety-insulation distance."
+    },
+    {
+      "key": "insulation_thickness",
+      "name": "Internal insulation thickness (DTI)",
+      "unit": "m",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "DTI",
+        "ti",
+        "insulation thickness",
+        "internal insulation thickness",
+        "minimum insulation thickness",
+        "distance through insulation",
+        "internal plastic gap"
+      ],
+      "hint": "The internal insulation thickness between emitter and detector (distance through insulation), in metres (a printed mm is 1e-3: 0.4 mm is 4e-4). A safety-insulation distance; > 0.4 mm qualifies a part for reinforced insulation."
+    },
+    {
+      "key": "comparative_tracking_index",
+      "name": "Comparative tracking index (CTI)",
+      "unit": "V",
+      "group": "isolation",
+      "optional": true,
+      "altUnits": ["1"],
+      "aliases": [
+        "CTI",
+        "comparative tracking index",
+        "tracking index"
+      ],
+      "hint": "The comparative tracking index (DIN IEC 112) - the max voltage the package material withstands without surface tracking, in volts (e.g. 175, >200; Broadcom prints 'CTI >200 V'). Canonical V; altUnit 1 for a sheet printing a bare index. Determines the material insulation group."
+    },
+    {
+      "key": "safety_input_current",
+      "name": "Safety-limiting input current (IS/ISI)",
+      "unit": "A",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "IS",
+        "ISI",
+        "safety input current",
+        "safety-limiting input current",
+        "input safety current"
+      ],
+      "hint": "The safety-limiting input current (60747-5-5 safety block), in amperes (a printed mA is 1e-3: 150 mA is 0.15). A single-fault safety limit."
+    },
+    {
+      "key": "safety_output_power",
+      "name": "Safety-limiting output power (PS/PSO)",
+      "unit": "W",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "PS",
+        "PSO",
+        "safety output power",
+        "safety-limiting output power",
+        "output safety power"
+      ],
+      "hint": "The safety-limiting output power (60747-5-5), in watts (a printed mW is 1e-3: 350 mW is 0.35)."
+    },
+    {
+      "key": "safety_case_temperature",
+      "name": "Safety-limiting case temperature (TS)",
+      "unit": "degC",
+      "group": "isolation",
+      "optional": true,
+      "aliases": [
+        "safety case temperature",
+        "safety-limiting case temperature",
+        "input safety temperature",
+        "maximum case temperature (safety)"
+      ],
+      "hint": "The safety-limiting case temperature (60747-5-5), in degC (~150-175). A single-fault safety limit distinct from the operating temperature range."
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tr",
+        "t_r",
+        "rise time",
+        "output rise time",
+        "response time (rise)"
+      ],
+      "hint": "The output rise time (10-90%) at a stated load, in seconds (a printed us is 1e-6, ns is 1e-9). Attach the R_L / C_L conditions."
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tf",
+        "t_f",
+        "fall time",
+        "output fall time",
+        "response time (fall)"
+      ],
+      "hint": "The output fall time (90-10%) at a stated load, in seconds. Attach the R_L / C_L conditions."
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "ton",
+        "t_on",
+        "turn-on time",
+        "turn on time",
+        "switching time"
+      ],
+      "hint": "The output turn-on delay at a stated load, in seconds (a phototransistor ~us; a Darlington ~tens of us). Array-worthy when swept vs R_L. Attach R_L / VCC / IF."
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "toff",
+        "t_off",
+        "turn-off time",
+        "turn off time"
+      ],
+      "hint": "The output turn-off delay at a stated load, in seconds. Attach R_L / VCC / IF."
+    },
+    {
+      "key": "storage_time",
+      "name": "Storage time",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "ts",
+        "t_s",
+        "storage time"
+      ],
+      "hint": "The output storage time (a phototransistor/Darlington switching delay), in seconds. Attach the switching conditions."
+    },
+    {
+      "key": "propagation_delay_high",
+      "name": "Propagation delay to high output (logic/gate-drive)",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tPLH",
+        "tpLH",
+        "t_PLH",
+        "propagation delay to high output level",
+        "propagation delay time to logic high"
+      ],
+      "hint": "The LED-to-output propagation delay to the high output level, in seconds (logic ~ns, gate-drive ~0.1-0.5 us). Attach the R_L/C_L (or R_G/C_G gate-load) and VCC conditions."
+    },
+    {
+      "key": "propagation_delay_low",
+      "name": "Propagation delay to low output (logic/gate-drive)",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tPHL",
+        "tpHL",
+        "t_PHL",
+        "propagation delay to low output level",
+        "propagation delay time to logic low"
+      ],
+      "hint": "The LED-to-output propagation delay to the low output level, in seconds. Attach the load and VCC conditions."
+    },
+    {
+      "key": "pulse_width_distortion",
+      "name": "Pulse-width distortion (logic)",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "PWD",
+        "pulse width distortion",
+        "|tPLH-tPHL|",
+        "|tPHL-tPLH|"
+      ],
+      "hint": "The pulse-width distortion |tPLH - tPHL| of a logic-output coupler, in seconds. Bounds the timing error a data stream accumulates."
+    },
+    {
+      "key": "propagation_delay_skew",
+      "name": "Propagation delay skew (logic)",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tPSK",
+        "tpsk",
+        "propagation delay skew",
+        "part-to-part skew"
+      ],
+      "hint": "The part-to-part propagation-delay skew of a logic-output coupler, in seconds - bounds skew across units in a multi-channel bus. Attach the load conditions."
+    },
+    {
+      "key": "enable_propagation_delay",
+      "name": "Enable propagation delay (logic)",
+      "unit": "s",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "tELH",
+        "tEHL",
+        "enable propagation delay",
+        "enable propagation delay time"
+      ],
+      "hint": "The propagation delay from the output-enable pin to the output (VEH->VEL or VEL->VEH), in seconds. Present only on parts with an enable pin."
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Cutoff frequency / bandwidth",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "fc",
+        "f_c",
+        "BW",
+        "f-3dB",
+        "cutoff frequency",
+        "cut-off frequency",
+        "bandwidth",
+        "frequency response",
+        "-3 dB bandwidth"
+      ],
+      "hint": "The -3 dB bandwidth of a phototransistor or linear-coupler output, in hertz (a printed kHz is 1e3, MHz is 1e6). ~80 kHz phototransistor, ~1-9 MHz linear. Attach the load conditions."
+    },
+    {
+      "key": "data_rate",
+      "name": "Data rate (logic)",
+      "unit": "Hz",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "data rate",
+        "data transfer rate",
+        "signaling rate",
+        "MBd",
+        "Mbit/s",
+        "Mbps",
+        "megabaud"
+      ],
+      "hint": "The maximum signaling rate of a high-speed logic-output coupler, in hertz (a printed MBd/Mbit/s is 1e6: 10 MBd is 1e7). MBd (baud) equals bit/s only for 1 bit/symbol (binary NRZ), which holds for these parts - keep 'MBd' in conditionsVerbatim."
+    },
+    {
+      "key": "common_mode_transient_immunity",
+      "name": "Common-mode transient immunity (CMTI/CMR)",
+      "unit": "V/us",
+      "group": "dynamic",
+      "optional": true,
+      "array": true,
+      "conditionAxis": "OUTPUT_STATE",
+      "aliases": [
+        "CMTI",
+        "CMR",
+        "CMH",
+        "CML",
+        "|CMH|",
+        "|CML|",
+        "common mode transient immunity",
+        "instantaneous common mode rejection"
+      ],
+      "hint": "The common-mode dV/dt across the barrier the output tolerates without a false transition, in V/us (a printed kV/us is x1e3: 15 kV/us is 15000; a printed V/us is stored as-is - 1000 V/us is 1000, NOT converted). Usually specified for both output states (|CMH| high, |CML| low) - array over the note-only OUTPUT_STATE axis. Attach the common-mode voltage V_CM (e.g. 1000 V or 1500 V) as a condition - it varies across vendors and is load-bearing. An isolation-barrier transient-slew spec; distinct from the static dB rejection ratio common_mode_rejection_ratio and from a triac driver's static_dv_dt."
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio (CMRR/IMRR)",
+      "unit": "dB",
+      "group": "dynamic",
+      "optional": true,
+      "aliases": [
+        "CMRR",
+        "IMRR",
+        "common mode rejection ratio",
+        "isolation mode rejection ratio",
+        "common mode noise rejection"
+      ],
+      "hint": "The static common-mode rejection ratio of a linear/analog-isolation coupler (a linear coupler names the isolation-mode form IMRR), in dB at a stated low frequency (typically 60 Hz). A linear-coupler headline (IL300 100 dB, HCNR201 IMRR 95 dB). Distinct from the V/us common_mode_transient_immunity - do NOT store a dB rejection ratio there."
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Topr",
+        "Tamb",
+        "TA",
+        "Toper",
+        "operating temperature",
+        "operating temperature range",
+        "ambient operating temperature"
+      ],
+      "hint": "The operating (ambient) temperature range, in degC. Model as a min and max on one measurement."
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Tstg",
+        "storage temperature",
+        "storage temperature range"
+      ],
+      "hint": "The storage temperature range, in degC. limitClass absolute_max."
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (abs max)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Tj",
+        "TJ",
+        "junction temperature"
+      ],
+      "hint": "The maximum junction temperature, in degC. limitClass absolute_max."
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering / reflow temperature (abs max)",
+      "unit": "degC",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Tsol",
+        "Tsld",
+        "soldering temperature",
+        "lead soldering temperature",
+        "reflow temperature"
+      ],
+      "hint": "The maximum soldering/reflow temperature at a stated dwell, in degC (~260). limitClass absolute_max; keep the dwell (e.g. 10 s) verbatim."
+    },
+    {
+      "key": "total_power_dissipation",
+      "name": "Total package power dissipation (abs max)",
+      "unit": "W",
+      "group": "thermal",
+      "optional": true,
+      "aliases": [
+        "Ptot",
+        "PT",
+        "total power dissipation",
+        "total package power dissipation"
+      ],
+      "hint": "The maximum total package power dissipation (input + output), in watts (a printed mW is 1e-3: 200 mW is 0.2). limitClass absolute_max. The mW/degC derating slope is derivable from this plus the derating onset (kept verbatim), not stored."
+    }
+  ]
+}

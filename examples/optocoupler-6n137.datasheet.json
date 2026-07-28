@@ -1,0 +1,912 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "6N137",
+    "manufacturer": "Vishay Semiconductors",
+    "family": "optocoupler",
+    "description": "Single-channel 10 MBd high-speed optocoupler: a high-efficiency AlGaAs input LED coupled across a galvanic-isolation barrier to a high-speed integrated photo-detector logic gate with an OPEN-DRAIN output and a strobable (active-low) enable input. LVTTL/LVCMOS compatible, 8-pin DIP. This document describes the 6N137 grade only, the 1000 V/us (1 kV/us) common-mode transient immunity grade of the shared 6N137/VO2601/VO2611 datasheet; the VO2601 (5000 V/us) and VO2611 (15 000 V/us) grades differ only in CMTI and are separate MPNs, one document per grade.",
+    "package": "DIP-8",
+    "pinCount": 8,
+    "lifecycle": "active",
+    "temperatureGrade": "-40..100",
+    "orderingVariants": [
+      { "orderCode": "6N137", "package": "DIP-8" },
+      { "orderCode": "6N137-X006", "package": "DIP-8, 400 mil (option 6)" },
+      { "orderCode": "6N137-X007T", "package": "SMD-8 (option 7)" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "NC", "function": "NC", "type": "passive", "description": "No internal connection.", "sourcePage": 1 },
+    { "number": 2, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Input LED anode. Drive current into this pin to turn the LED on.", "sourcePage": 1 },
+    { "number": 3, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Input LED cathode.", "sourcePage": 1 },
+    { "number": 4, "name": "NC", "function": "NC", "type": "passive", "description": "No internal connection.", "sourcePage": 1 },
+    { "number": 5, "name": "GND", "function": "GND", "type": "power", "description": "Output-side ground.", "sourcePage": 1 },
+    { "number": 6, "name": "VO", "function": "VO", "type": "digital_out", "description": "Open-drain logic output. Requires an external pull-up resistor (RL) to VCC.", "sourcePage": 1 },
+    { "number": 7, "name": "VE", "function": "ENABLE", "type": "digital_in", "description": "Output enable (strobe). Logic high enables the output; if unused, connect to VCC. No external pull-up required for a high state.", "sourcePage": 1 },
+    { "number": 8, "name": "VCC", "function": "VCC", "type": "power", "description": "Output-side positive supply, 4.5 V to 5.5 V recommended.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "input_forward_current",
+      "name": "Input forward current (abs max)",
+      "group": "input",
+      "aliases": ["IF"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.02 },
+          "unit": "A",
+          "conditionsVerbatim": "Input forward current IF = 20 mA (absolute maximum rating, Tamb = 25 C).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_voltage",
+      "name": "Reverse input voltage (abs max)",
+      "group": "input",
+      "aliases": ["VR"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse input voltage VR = 5 V (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "input_power_dissipation",
+      "name": "Input power dissipation (abs max)",
+      "group": "input",
+      "aliases": ["Pdiss (input)"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.04 },
+          "unit": "W",
+          "conditionsVerbatim": "Input power dissipation Pdiss = 40 mW (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "led_forward_voltage",
+      "name": "Input forward voltage",
+      "group": "input",
+      "aliases": ["VF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.38, "max": 1.70 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Input forward voltage VF = 1.38 V (typ) / 1.70 V (max) at IF = 10 mA.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "vf_temp_coefficient",
+      "name": "Input forward-voltage temperature coefficient",
+      "group": "input",
+      "aliases": ["dVF/dT"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -1.5e-3 },
+          "unit": "V/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Input forward voltage temperature coefficient dVF/dT = -1.5 mV/K (typ) at IF = 10 mA (per-K equals per-degC).",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_breakdown",
+      "name": "Input reverse breakdown voltage",
+      "group": "input",
+      "aliases": ["BVR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_R", "value": 1e-5, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Input reverse breakdown voltage BVR = 5 V (min) at IR = 10 uA.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (LED) capacitance",
+      "group": "input",
+      "aliases": ["CI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.4e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Input capacitance CI = 34 pF (typ) at f = 1 MHz, VF = 0 V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "input_threshold_current",
+      "name": "Input threshold current",
+      "group": "transfer",
+      "aliases": ["ITH", "IFH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2e-3, "max": 5e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_EN", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "value": 0.6, "unit": "V" },
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "I_OUT", "value": 0.013, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Input threshold current ITH = 2 mA (typ) / 5 mA (max) at VE = 2 V, VO = 0.6 V, VCC = 5.5 V, IOL (sinking) = 13 mA.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        },
+        {
+          "limitClass": "recommended",
+          "value": { "min": 5e-3, "max": 0.015 },
+          "unit": "A",
+          "conditionsVerbatim": "Input current high level IFH = 5 mA (min) to 15 mA (max) (recommended operating condition, the drive-current range that guarantees the on state).",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions"
+        }
+      ]
+    },
+    {
+      "key": "input_current_off",
+      "name": "Input current, output-off (recommended max)",
+      "group": "transfer",
+      "aliases": ["IFL"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 0, "max": 2.5e-4 },
+          "unit": "A",
+          "conditionsVerbatim": "Input current low level IFL = 0 to 250 uA (recommended operating condition; below this the output stays high/off).",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions"
+        }
+      ]
+    },
+    {
+      "key": "output_low_voltage",
+      "name": "Low-level output voltage",
+      "group": "output",
+      "aliases": ["VOL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.20, "max": 0.60 },
+          "unit": "V",
+          "conditions": [
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 2, "unit": "V" },
+            { "param": "I_F", "value": 5e-3, "unit": "A" },
+            { "param": "I_OUT", "value": 0.013, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Low level output voltage VOL = 0.20 V (typ) / 0.60 V (max) at VCC = 5.5 V, VE = 2 V, IF = 5 mA, IOL (sinking) = 13 mA.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "output_high_current",
+      "name": "Output current (open-drain leakage / abs-max rating)",
+      "group": "output",
+      "aliases": ["IOH", "IO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6, "max": 1e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 2, "unit": "V" },
+            { "param": "V_OUT", "value": 5.5, "unit": "V" },
+            { "param": "I_F", "value": 2.5e-4, "unit": "A" }
+          ],
+          "conditionsVerbatim": "High level output current (open-drain leakage) IOH = 1 uA (typ) / 10 uA (max) at VCC = 5.5 V, VE = 2 V, VO = 5.5 V, IF = 250 uA.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.05 },
+          "unit": "A",
+          "conditionsVerbatim": "Output current IO = 50 mA (absolute maximum rating; the max current the open-drain output transistor may sink). Distinct from the uA-scale high-state leakage IOH above.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "output_pullup_resistor",
+      "name": "Output pull-up resistor (recommended)",
+      "group": "output",
+      "aliases": ["RL"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 330, "max": 4000 },
+          "unit": "ohm",
+          "conditionsVerbatim": "Output pull up resistor RL = 330 ohm to 4000 ohm (recommended, external pull-up for the open-drain output).",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions"
+        }
+      ]
+    },
+    {
+      "key": "supply_voltage",
+      "name": "Output supply voltage",
+      "group": "output",
+      "aliases": ["VCC"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": 4.5, "max": 5.5 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage VCC = 4.5 V to 5.5 V (recommended operating condition).",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7 },
+          "unit": "V",
+          "conditionsVerbatim": "Supply voltage VCC = 7 V (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "supply_current_low",
+      "name": "Low-level supply current",
+      "group": "output",
+      "aliases": ["ICCL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.5e-3, "max": 5e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Low level supply current ICCL = 3.5 mA (typ) / 5 mA (max) at IF = 10 mA, VCC = 5.5 V, VE = 0.5 V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "supply_current_high",
+      "name": "High-level supply current",
+      "group": "output",
+      "aliases": ["ICCH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 3.7e-3, "max": 5e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_F", "value": 0, "unit": "A" },
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "High level supply current ICCH = 3.7 mA (typ) / 5 mA (max) at IF = 0 mA, VCC = 5.5 V, VE = 0.5 V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_current_low",
+      "name": "Low-level enable current",
+      "group": "output",
+      "aliases": ["IEL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -9e-4, "max": -1.6e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 0.5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Low level enable current IEL = -0.9 mA (typ) / -1.6 mA (max) at VCC = 5.5 V, VE = 0.5 V. Sign preserved: current flows out of the enable pin.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_current_high",
+      "name": "High-level enable current",
+      "group": "output",
+      "aliases": ["IEH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": -1.9e-4, "max": -1.6e-3 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CC", "value": 5.5, "unit": "V" },
+            { "param": "V_EN", "value": 2, "unit": "V" }
+          ],
+          "conditionsVerbatim": "High level enable current IEH = -0.19 mA (typ) / -1.6 mA (max) at VCC = 5.5 V, VE = 2 V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_voltage_low",
+      "name": "Low-level enable voltage",
+      "group": "output",
+      "aliases": ["VEL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 0.8 },
+          "unit": "V",
+          "conditionsVerbatim": "Low level enable voltage VEL = 0.8 V (max). Recommended operating range 0 to 0.8 V.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_voltage_high",
+      "name": "High-level enable voltage",
+      "group": "output",
+      "aliases": ["VEH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2 },
+          "unit": "V",
+          "conditionsVerbatim": "High level enable voltage VEH = 2 V (min). Recommended operating range 2 V to VCC.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fanout",
+      "name": "Output fan-out",
+      "group": "output",
+      "aliases": ["N"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 5 },
+          "unit": "1",
+          "conditions": [
+            { "param": "R_L", "value": 1000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Fanout N = 5 TTL loads (max) at RL = 1 kohm (recommended operating condition).",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay_high",
+      "name": "Propagation delay to high output level",
+      "group": "dynamic",
+      "aliases": ["tPLH"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.5e-8, "typ": 5.0e-8, "max": 9.0e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Propagation delay time to high output level tPLH = 25 ns (min) / 50 ns (typ) / 90 ns (max) at RL = 350 ohm, CL = 15 pF, Tamb = 25 C. Over the full -40 to +100 C range tPLH max = 100 ns.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay_low",
+      "name": "Propagation delay to low output level",
+      "group": "dynamic",
+      "aliases": ["tPHL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 2.5e-8, "typ": 4.0e-8, "max": 9.0e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Propagation delay time to low output level tPHL = 25 ns (min) / 40 ns (typ) / 90 ns (max) at RL = 350 ohm, CL = 15 pF, Tamb = 25 C. Over the full -40 to +100 C range tPHL max = 100 ns.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "pulse_width_distortion",
+      "name": "Pulse-width distortion",
+      "group": "dynamic",
+      "aliases": ["PWD", "|tPLH - tPHL|"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Pulse width distortion |tPLH - tPHL| = 10 ns (typ) at RL = 350 ohm, CL = 15 pF.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "propagation_delay_skew",
+      "name": "Propagation delay skew",
+      "group": "dynamic",
+      "aliases": ["tPSK"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "max": 4e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Propagation delay skew tPSK = 40 ns (max) at RL = 350 ohm, CL = 15 pF.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "dynamic",
+      "aliases": ["tr"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.3e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Output rise time (10 % to 90 %) tr = 23 ns (typ) at RL = 350 ohm, CL = 15 pF.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "dynamic",
+      "aliases": ["tf"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Output fall time (90 % to 10 %) tf = 10 ns (typ) at RL = 350 ohm, CL = 15 pF.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "enable_propagation_delay",
+      "name": "Enable propagation delay",
+      "group": "dynamic",
+      "aliases": ["tELH", "tEHL"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.5e-8 },
+          "unit": "s",
+          "conditions": [
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "C_L", "value": 1.5e-11, "unit": "F" }
+          ],
+          "conditionsVerbatim": "Propagation delay time of enable (tELH and tEHL) = 15 ns (typ) at RL = 350 ohm, CL = 15 pF, VEL = 0 V, VEH = 3 V.",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics"
+        }
+      ]
+    },
+    {
+      "key": "data_rate",
+      "name": "Data rate",
+      "group": "dynamic",
+      "aliases": ["data rate", "MBd"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e7 },
+          "unit": "Hz",
+          "conditionsVerbatim": "Data rate = 10 MBd (headline high-speed rating; binary NRZ, MBd = Mbit/s for 1 bit/symbol).",
+          "sourcePage": 1,
+          "sourceTable": "Description"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_transient_immunity",
+      "name": "Common-mode transient immunity",
+      "group": "dynamic",
+      "aliases": ["CMTI", "CMR", "|CMH|", "|CML|"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1000 },
+          "unit": "V/us",
+          "conditions": [
+            { "param": "V_CC", "value": 5, "unit": "V" },
+            { "param": "V_CM", "value": 1000, "unit": "V" },
+            { "param": "I_F", "value": 0, "unit": "A" },
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "OUTPUT_STATE", "note": "high (VO > 2.0 V)" }
+          ],
+          "conditionsVerbatim": "Logic high common mode transient immunity |CMH| = 1000 V/us (min) at VCC = 5 V, |VCM| = 1000 V, IF = 0 mA, VO > 2.0 V, RL = 350 ohm. Printed as 1000 V/us (1 kV/us) for the 6N137 grade - value 1000, no kV/us conversion. VO2601 = 5000 V/us and VO2611 = 15 000 V/us are separate grades, not this document.",
+          "sourcePage": 5,
+          "sourceTable": "Common mode transient immunity"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1000 },
+          "unit": "V/us",
+          "conditions": [
+            { "param": "V_CC", "value": 5, "unit": "V" },
+            { "param": "V_CM", "value": 1000, "unit": "V" },
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "R_L", "value": 350, "unit": "ohm" },
+            { "param": "OUTPUT_STATE", "note": "low (VO < 0.8 V)" }
+          ],
+          "conditionsVerbatim": "Logic low common mode transient immunity |CML| = 1000 V/us (min) at VCC = 5 V, |VCM| = 1000 V, IF = 10 mA, VO < 0.8 V, RL = 350 ohm.",
+          "sourcePage": 5,
+          "sourceTable": "Common mode transient immunity"
+        }
+      ]
+    },
+    {
+      "key": "isolation_voltage",
+      "name": "Isolation withstand voltage (VISO)",
+      "group": "isolation",
+      "aliases": ["VISO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5000 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditionsVerbatim": "Maximum rated withstanding isolation voltage VISO = 5000 Vrms according to UL1577, t = 1 min.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "transient_isolation_voltage",
+      "name": "Transient isolation voltage (VIOTM)",
+      "group": "isolation",
+      "aliases": ["VIOTM"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 6000 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "Maximum transient isolation voltage VIOTM = 6000 Vpeak according to DIN EN 60747-5-5 (VDE option 1).",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "working_isolation_voltage",
+      "name": "Maximum working / repetitive-peak isolation voltage (VIORM)",
+      "group": "isolation",
+      "aliases": ["VIORM"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "max": 630 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "Maximum repetitive peak isolation voltage VIORM = 630 Vpeak according to DIN EN 60747-5-5 (VDE option 1).",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "isolation_resistance",
+      "name": "Isolation (input-output) resistance",
+      "group": "isolation",
+      "aliases": ["RIO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e12 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "T_A", "value": 25, "unit": "degC" },
+            { "param": "V_IN", "value": 500, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Isolation resistance RIO >= 1e12 ohm at Tamb = 25 C, VIO = 500 V.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "comparative_tracking_index",
+      "name": "Comparative tracking index (CTI)",
+      "group": "isolation",
+      "aliases": ["CTI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 175 },
+          "unit": "V",
+          "conditionsVerbatim": "Comparative tracking index CTI = 175 V, insulation group IIIa (DIN IEC 112).",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_output_power",
+      "name": "Safety-limiting output power (PSO)",
+      "group": "isolation",
+      "aliases": ["PSO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.6 },
+          "unit": "W",
+          "conditionsVerbatim": "Maximum output power dissipation (safety) PSO = 600 mW.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_input_current",
+      "name": "Safety-limiting input current (ISI)",
+      "group": "isolation",
+      "aliases": ["ISI"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.23 },
+          "unit": "A",
+          "conditionsVerbatim": "Maximum input current (safety) ISI = 230 mA.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_case_temperature",
+      "name": "Safety-limiting (derated) ambient temperature (TS)",
+      "group": "isolation",
+      "aliases": ["TS"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 175 },
+          "unit": "degC",
+          "conditionsVerbatim": "Maximum ambient temperature (derated), safety TS = 175 C.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "creepage_distance",
+      "name": "External creepage distance",
+      "group": "isolation",
+      "aliases": ["creepage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Creepage distance >= 7 mm for DIP-8 / SMD-8 (>= 8 mm for the DIP-8 400 mil option).",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "clearance_distance",
+      "name": "External clearance distance",
+      "group": "isolation",
+      "aliases": ["clearance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Clearance distance >= 7 mm for DIP-8 / SMD-8 (>= 8 mm for the DIP-8 400 mil option).",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "insulation_thickness",
+      "name": "Internal insulation thickness (DTI)",
+      "group": "isolation",
+      "aliases": ["DTI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "Insulation thickness DTI >= 0.4 mm.",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings"
+        }
+      ]
+    },
+    {
+      "key": "barrier_capacitance",
+      "name": "Barrier (input-output) capacitance",
+      "group": "isolation",
+      "aliases": ["CIO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 4e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Input to output capacitance CIO = 4 pF (typ) at f = 1 MHz, Tamb = 25 C.",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Tamb", "Topr"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -40, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Tamb = -40 to +100 C.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings / Recommended operating conditions"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -55 to +125 C (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Solder reflow temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["Tsol"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Solder reflow temperature = 260 C for 5 s (absolute maximum rating; refer to reflow/wave profile for SMD/DIP).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "collector_power_dissipation",
+      "name": "Output power dissipation (abs max)",
+      "group": "output",
+      "aliases": ["Pdiss (output)"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.085 },
+          "unit": "W",
+          "conditionsVerbatim": "Output power dissipation Pdiss = 85 mW (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    },
+    {
+      "key": "output_voltage_abs_max",
+      "name": "Output-pin voltage (abs max)",
+      "group": "output",
+      "aliases": ["VO", "output voltage (abs max)"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7 },
+          "unit": "V",
+          "conditionsVerbatim": "Output voltage VO (abs max)",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "datasheetSha256": "3a0bcf5e297453d3199b644580c1a8498bb632c1840804be313fe8543d49097d",
+    "sourceUrl": "https://www.vishay.com/docs/84732/6n137_vo2601_vo2611.pdf",
+    "datasheetRevision": "Rev. 2.3, 23-Apr-2024",
+    "publishedDate": "2024-04-23",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,1620 @@
+{
+  "family": "optocoupler",
+  "manufacturer": "Vishay Semiconductors",
+  "mpn": "6N137",
+  "parameters": [
+    {
+      "aliases": [
+        "IF"
+      ],
+      "group": "input",
+      "key": "input_forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR"
+      ],
+      "group": "input",
+      "key": "input_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pdiss (input)"
+      ],
+      "group": "input",
+      "key": "input_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.04
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VF"
+      ],
+      "group": "input",
+      "key": "led_forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.7,
+            "typ": 1.38
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dVF/dT"
+      ],
+      "group": "input",
+      "key": "vf_temp_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/degC",
+          "value": {
+            "typ": -0.0015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "BVR"
+      ],
+      "group": "input",
+      "key": "input_reverse_breakdown",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_R",
+              "unit": "A",
+              "value": 0.00001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CI"
+      ],
+      "group": "input",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 3.4e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFH",
+        "ITH"
+      ],
+      "group": "transfer",
+      "key": "input_threshold_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 2
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OUT",
+              "unit": "V",
+              "value": 0.6
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.013
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005,
+            "typ": 0.002
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.015,
+            "min": 0.005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFL"
+      ],
+      "group": "transfer",
+      "key": "input_current_off",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00025,
+            "min": 0
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VOL"
+      ],
+      "group": "output",
+      "key": "output_low_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 2
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.005
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_OUT",
+              "unit": "A",
+              "value": 0.013
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.6,
+            "typ": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IO",
+        "IOH"
+      ],
+      "group": "output",
+      "key": "output_high_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 2
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_OUT",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.00025
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.00001,
+            "typ": 0.000001
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RL"
+      ],
+      "group": "output",
+      "key": "output_pullup_resistor",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "max": 4000,
+            "min": 330
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VCC"
+      ],
+      "group": "output",
+      "key": "supply_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5.5,
+            "min": 4.5
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICCL"
+      ],
+      "group": "output",
+      "key": "supply_current_low",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005,
+            "typ": 0.0035
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ICCH"
+      ],
+      "group": "output",
+      "key": "supply_current_high",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.005,
+            "typ": 0.0037
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IEL"
+      ],
+      "group": "output",
+      "key": "enable_current_low",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 0.5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": -0.0016,
+            "typ": -0.0009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IEH"
+      ],
+      "group": "output",
+      "key": "enable_current_high",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5.5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_EN",
+              "unit": "V",
+              "value": 2
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": -0.0016,
+            "typ": -0.00019
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VEL"
+      ],
+      "group": "output",
+      "key": "enable_voltage_low",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VEH"
+      ],
+      "group": "output",
+      "key": "enable_voltage_high",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 2
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "N"
+      ],
+      "group": "output",
+      "key": "fanout",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 1000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tPLH"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay_high",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 9e-8,
+            "min": 2.5e-8,
+            "typ": 5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tPHL"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay_low",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 9e-8,
+            "min": 2.5e-8,
+            "typ": 4e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PWD",
+        "|tPLH - tPHL|"
+      ],
+      "group": "dynamic",
+      "key": "pulse_width_distortion",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tPSK"
+      ],
+      "group": "dynamic",
+      "key": "propagation_delay_skew",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "max": 4e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tr"
+      ],
+      "group": "dynamic",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 2.3e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tf"
+      ],
+      "group": "dynamic",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "tEHL",
+        "tELH"
+      ],
+      "group": "dynamic",
+      "key": "enable_propagation_delay",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "C_L",
+              "unit": "F",
+              "value": 1.5e-11
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Switching characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 1.5e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "MBd",
+        "data rate"
+      ],
+      "group": "dynamic",
+      "key": "data_rate",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 1,
+          "sourceTable": "Description",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 10000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMR",
+        "CMTI",
+        "|CMH|",
+        "|CML|"
+      ],
+      "group": "dynamic",
+      "key": "common_mode_transient_immunity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "high (VO > 2.0 V)",
+              "param": "OUTPUT_STATE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Common mode transient immunity",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/us",
+          "value": {
+            "min": 1000
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CC",
+              "unit": "V",
+              "value": 5
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_CM",
+              "unit": "V",
+              "value": 1000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 350
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": "low (VO < 0.8 V)",
+              "param": "OUTPUT_STATE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Common mode transient immunity",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/us",
+          "value": {
+            "min": 1000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VISO"
+      ],
+      "group": "isolation",
+      "key": "isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIOTM"
+      ],
+      "group": "isolation",
+      "key": "transient_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIORM"
+      ],
+      "group": "isolation",
+      "key": "working_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 630
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RIO"
+      ],
+      "group": "isolation",
+      "key": "isolation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IN",
+              "unit": "V",
+              "value": 500
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 1000000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CTI"
+      ],
+      "group": "isolation",
+      "key": "comparative_tracking_index",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "min": 175
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSO"
+      ],
+      "group": "isolation",
+      "key": "safety_output_power",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISI"
+      ],
+      "group": "isolation",
+      "key": "safety_input_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.23
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TS"
+      ],
+      "group": "isolation",
+      "key": "safety_case_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 175
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "creepage"
+      ],
+      "group": "isolation",
+      "key": "creepage_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "clearance"
+      ],
+      "group": "isolation",
+      "key": "clearance_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DTI"
+      ],
+      "group": "isolation",
+      "key": "insulation_thickness",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Safety and insulation ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.0004
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CIO"
+      ],
+      "group": "isolation",
+      "key": "barrier_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 4e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tamb",
+        "Topr"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings / Recommended operating conditions",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tsol"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pdiss (output)"
+      ],
+      "group": "output",
+      "key": "collector_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.085
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VO",
+        "output voltage (abs max)"
+      ],
+      "group": "output",
+      "key": "output_voltage_abs_max",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute maximum ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 7
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 1
+    },
+    {
+      "function": "ANODE",
+      "name": "Anode",
+      "number": 2
+    },
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    },
+    {
+      "function": "GND",
+      "name": "GND",
+      "number": 5
+    },
+    {
+      "function": "VO",
+      "name": "VO",
+      "number": 6
+    },
+    {
+      "function": "ENABLE",
+      "name": "VE",
+      "number": 7
+    },
+    {
+      "function": "VCC",
+      "name": "VCC",
+      "number": 8
+    }
+  ]
+}

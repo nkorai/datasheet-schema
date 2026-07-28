@@ -1,0 +1,800 @@
+{
+  "family": "optocoupler",
+  "manufacturer": "onsemi (Fairchild Semiconductor)",
+  "mpn": "MOC3021M",
+  "parameters": [
+    {
+      "aliases": [
+        "Input Forward Voltage",
+        "VF"
+      ],
+      "group": "input",
+      "key": "led_forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Emitter)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.5,
+            "typ": 1.15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "Reverse Leakage Current"
+      ],
+      "group": "input",
+      "key": "input_reverse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 3
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Emitter)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.0001,
+            "typ": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Continuous Forward Current",
+        "IF"
+      ],
+      "group": "input",
+      "key": "input_forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Reverse Voltage",
+        "VR"
+      ],
+      "group": "input",
+      "key": "input_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "Total Power Dissipation"
+      ],
+      "group": "input",
+      "key": "input_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Emitter)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IFT",
+        "LED Trigger Current"
+      ],
+      "group": "transfer",
+      "key": "led_trigger_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_MT",
+              "unit": "V",
+              "value": 3
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - DC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.015
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Off-State Output Terminal Voltage",
+        "Peak Blocking Voltage",
+        "VDRM"
+      ],
+      "group": "output",
+      "key": "off_state_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 400
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Peak On-State Voltage",
+        "VTM"
+      ],
+      "group": "output",
+      "key": "on_state_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_T",
+              "unit": "A",
+              "value": 0.1
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Detector)",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 3,
+            "typ": 1.8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IDRM",
+        "Peak Blocking Current"
+      ],
+      "group": "output",
+      "key": "off_state_leakage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DRM",
+              "unit": "V",
+              "value": 400
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Individual Component Characteristics (Detector)",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1e-7,
+            "typ": 1e-8
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Holding Current",
+        "IH"
+      ],
+      "group": "output",
+      "key": "holding_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - DC Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.0001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Static dv/dt",
+        "dv/dt"
+      ],
+      "group": "output",
+      "key": "static_dv_dt",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 5,
+          "sourceTable": "Typical Performance Curves - Figure 7. dv/dt vs. Temperature",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V/us",
+          "value": {
+            "typ": 10
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ITSM",
+        "Peak Repetitive Surge Current"
+      ],
+      "group": "output",
+      "key": "output_surge_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "PULSE_WIDTH",
+              "unit": "s",
+              "value": 0.0001
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Isolation Voltage",
+        "VISO"
+      ],
+      "group": "isolation",
+      "key": "isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Electrical Characteristics - Isolation Characteristics",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4170
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Maximum Working Insulation Voltage",
+        "VIORM"
+      ],
+      "group": "isolation",
+      "key": "working_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 850
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Highest Allowable Over-Voltage",
+        "VIOTM"
+      ],
+      "group": "isolation",
+      "key": "transient_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 6000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Input-to-Output Test Voltage",
+        "VPR"
+      ],
+      "group": "isolation",
+      "key": "partial_discharge_test_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 1275
+          }
+        },
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 1594
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "External Creepage",
+        "creepage"
+      ],
+      "group": "isolation",
+      "key": "creepage_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "External Clearance",
+        "clearance"
+      ],
+      "group": "isolation",
+      "key": "clearance_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": "Option TV, 0.4in lead spacing",
+              "param": "PACKAGE",
+              "unit": null,
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.01
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DTI",
+        "Distance Through Insulation",
+        "Insulation Thickness"
+      ],
+      "group": "isolation",
+      "key": "insulation_thickness",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.0005
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Insulation Resistance",
+        "RIO"
+      ],
+      "group": "isolation",
+      "key": "isolation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_IO",
+              "unit": "V",
+              "value": 500
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 1000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CTI",
+        "Comparative Tracking Index"
+      ],
+      "group": "isolation",
+      "key": "comparative_tracking_index",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "nom": 175
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Storage Temperature",
+        "TSTG"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Operating Temperature",
+        "TOPR"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 85,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Junction Temperature Range",
+        "TJ"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -40
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Lead Solder Temperature",
+        "TSOL"
+      ],
+      "group": "thermal",
+      "key": "soldering_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 260
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PD",
+        "Total Device Power Dissipation"
+      ],
+      "group": "thermal",
+      "key": "total_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Total Device)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.33
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Detector Power Dissipation",
+        "PD"
+      ],
+      "group": "output",
+      "key": "collector_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 3,
+          "sourceTable": "Absolute Maximum Ratings (Detector)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "Anode",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "Cathode",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "N/C",
+      "number": 3
+    },
+    {
+      "function": "MT",
+      "name": "Main Terminal",
+      "number": 4
+    },
+    {
+      "function": "SUBSTRATE",
+      "name": "N/C (Substrate)",
+      "number": 5
+    },
+    {
+      "function": "MT",
+      "name": "Main Terminal",
+      "number": 6
+    }
+  ]
+}

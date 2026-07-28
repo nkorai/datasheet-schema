@@ -1,0 +1,1297 @@
+{
+  "family": "optocoupler",
+  "manufacturer": "Vishay Semiconductors",
+  "mpn": "IL300",
+  "parameters": [
+    {
+      "aliases": [
+        "VF",
+        "forward voltage"
+      ],
+      "group": "input",
+      "key": "led_forward_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 1.5,
+            "typ": 1.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IR",
+        "reverse current"
+      ],
+      "group": "input",
+      "key": "input_reverse_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_R",
+              "unit": "V",
+              "value": 5
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.000001
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cj",
+        "junction capacitance"
+      ],
+      "group": "input",
+      "key": "input_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 2.6e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IP1/IF",
+        "K1",
+        "servo gain"
+      ],
+      "group": "transfer",
+      "key": "servo_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "max": 0.015,
+            "min": 0.005,
+            "typ": 0.009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IP2/IF",
+        "K2",
+        "forward gain"
+      ],
+      "group": "transfer",
+      "key": "forward_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "max": 0.015,
+            "min": 0.005,
+            "typ": 0.009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "K2/K1",
+        "K3",
+        "transfer gain"
+      ],
+      "group": "transfer",
+      "key": "transfer_gain",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "1",
+          "value": {
+            "max": 1.65,
+            "min": 0.56,
+            "typ": 1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "K3/TA",
+        "dK3/dTA",
+        "transfer gain stability"
+      ],
+      "group": "transfer",
+      "key": "transfer_gain_temp_coefficient",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            },
+            {
+              "max": 75,
+              "min": 0,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ppm/degC",
+          "value": {
+            "max": 1500,
+            "typ": 50
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "dK3",
+        "nonlinearity",
+        "transfer gain linearity"
+      ],
+      "group": "transfer",
+      "key": "transfer_gain_nonlinearity",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": 0.01,
+              "min": 0.002,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": null
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "%",
+          "value": {
+            "typ": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IP1",
+        "IP2",
+        "forward photocurrent",
+        "servo photocurrent"
+      ],
+      "group": "output",
+      "key": "output_photocurrent",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.00009
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.00009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISC",
+        "short circuit current"
+      ],
+      "group": "output",
+      "key": "short_circuit_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "typ": 0.00009
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VD",
+        "open circuit voltage"
+      ],
+      "group": "output",
+      "key": "open_circuit_voltage",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ID",
+        "dark current"
+      ],
+      "group": "output",
+      "key": "photodiode_leakage_current",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_DET",
+              "unit": "V",
+              "value": -15
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 2.5e-8,
+            "typ": 1e-9
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Cj",
+        "photodiode capacitance"
+      ],
+      "group": "output",
+      "key": "output_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 1.2e-11
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pdiss",
+        "output power dissipation"
+      ],
+      "group": "output",
+      "key": "collector_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "-3 dB bandwidth",
+        "BW",
+        "frequency response"
+      ],
+      "group": "dynamic",
+      "key": "cutoff_frequency",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 50
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Photoconductive Operation",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "Hz",
+          "value": {
+            "typ": 1400000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "rise time",
+        "tr"
+      ],
+      "group": "dynamic",
+      "key": "rise_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 8e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "fall time",
+        "tf"
+      ],
+      "group": "dynamic",
+      "key": "fall_time",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "I_F",
+              "unit": "A",
+              "value": 0.01
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 10000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "s",
+          "value": {
+            "typ": 8e-7
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CIO",
+        "input-output capacitance"
+      ],
+      "group": "isolation",
+      "key": "barrier_capacitance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 1000000
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "F",
+          "value": {
+            "typ": 1e-12
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VISO",
+        "isolation voltage",
+        "maximum rated withstanding isolation voltage"
+      ],
+      "group": "isolation",
+      "key": "isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "rms",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 4420
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIOTM",
+        "maximum transient isolation voltage"
+      ],
+      "group": "isolation",
+      "key": "transient_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 10000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VIORM",
+        "maximum repetitive peak isolation voltage"
+      ],
+      "group": "isolation",
+      "key": "working_isolation_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": "peak",
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 890
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "RIO",
+        "isolation resistance"
+      ],
+      "group": "isolation",
+      "key": "isolation_resistance",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 500
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 25
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 1000000000000
+          }
+        },
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "V_S",
+              "unit": "V",
+              "value": 500
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "T_A",
+              "unit": "degC",
+              "value": 100
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "ohm",
+          "value": {
+            "min": 100000000000
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CTI",
+        "comparative tracking index"
+      ],
+      "group": "isolation",
+      "key": "comparative_tracking_index",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "typ": 175
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "PSO",
+        "output safety power"
+      ],
+      "group": "isolation",
+      "key": "safety_output_power",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "ISI",
+        "input safety current"
+      ],
+      "group": "isolation",
+      "key": "safety_input_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.275
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "TS",
+        "safety temperature"
+      ],
+      "group": "isolation",
+      "key": "safety_case_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 175
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "creepage",
+        "creepage distance"
+      ],
+      "group": "isolation",
+      "key": "creepage_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "clearance",
+        "clearance distance"
+      ],
+      "group": "isolation",
+      "key": "clearance_distance",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.007
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "DTI",
+        "insulation thickness"
+      ],
+      "group": "isolation",
+      "key": "insulation_thickness",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "m",
+          "value": {
+            "min": 0.0004
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Pdiss",
+        "input power dissipation"
+      ],
+      "group": "input",
+      "key": "input_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IF",
+        "forward current"
+      ],
+      "group": "input",
+      "key": "input_forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "IPK",
+        "peak forward current",
+        "surge current"
+      ],
+      "group": "input",
+      "key": "peak_forward_current",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "A",
+          "value": {
+            "max": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "VR",
+        "reverse voltage"
+      ],
+      "group": "input",
+      "key": "input_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 5
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tj",
+        "junction temperature"
+      ],
+      "group": "thermal",
+      "key": "junction_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 125
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tstg",
+        "storage temperature"
+      ],
+      "group": "thermal",
+      "key": "storage_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 150,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Tamb",
+        "operating temperature"
+      ],
+      "group": "thermal",
+      "key": "operating_temperature",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "recommended",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "degC",
+          "value": {
+            "max": 100,
+            "min": -55
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "Ptot",
+        "total package dissipation"
+      ],
+      "group": "thermal",
+      "key": "total_power_dissipation",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "W",
+          "value": {
+            "max": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "CMRR",
+        "IMRR",
+        "common mode rejection ratio",
+        "isolation mode rejection ratio"
+      ],
+      "group": "dynamic",
+      "key": "common_mode_rejection_ratio",
+      "measurements": [
+        {
+          "conditions": [
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "F",
+              "unit": "Hz",
+              "value": 60
+            },
+            {
+              "max": null,
+              "min": null,
+              "note": null,
+              "param": "R_L",
+              "unit": "ohm",
+              "value": 2200
+            }
+          ],
+          "guarantee": null,
+          "limitClass": "characterized",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - COUPLER",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "dB",
+          "value": {
+            "typ": 100
+          }
+        }
+      ]
+    },
+    {
+      "aliases": [
+        "detector reverse voltage",
+        "output reverse voltage",
+        "photodiode reverse voltage"
+      ],
+      "group": "output",
+      "key": "output_reverse_voltage",
+      "measurements": [
+        {
+          "conditions": [],
+          "guarantee": null,
+          "limitClass": "absolute_max",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT",
+          "statistic": null,
+          "stimulus": null,
+          "unit": "V",
+          "value": {
+            "max": 50
+          }
+        }
+      ]
+    }
+  ],
+  "pinout": [
+    {
+      "function": "ANODE",
+      "name": "A",
+      "number": 1
+    },
+    {
+      "function": "CATHODE",
+      "name": "C",
+      "number": 2
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 3
+    },
+    {
+      "function": "NC",
+      "name": "NC",
+      "number": 4
+    },
+    {
+      "function": "OUT_CATHODE",
+      "name": "K2 Cathode",
+      "number": 5
+    },
+    {
+      "function": "OUT_ANODE",
+      "name": "K2 Anode",
+      "number": 6
+    },
+    {
+      "function": "SERVO_ANODE",
+      "name": "K1 Anode",
+      "number": 7
+    },
+    {
+      "function": "SERVO_CATHODE",
+      "name": "K1 Cathode",
+      "number": 8
+    }
+  ]
+}

@@ -1,0 +1,764 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "IL300",
+    "manufacturer": "Vishay Semiconductors",
+    "family": "optocoupler",
+    "description": "Linear (servo-photodiode) optocoupler for high-linearity analog isolation. An AlGaAs infrared emitter irradiates two matched PIN photodiodes: a feedback/servo photodiode (K1) whose photocurrent IP1 is used to servo the emitter drive, and an output/forward photodiode (K2) whose photocurrent IP2 tracks the servo flux. The matched pair makes the input-output transfer gain K3 = K2/K1 near-unity (guaranteed electrical limits min 0.56 / typ 1 / max 1.65, spanning bins A through J) and highly temperature-stable (typ +/-0.005 %/degC). Couples AC and DC signals; isolation rated 4420 Vrms. 8-pin DIP (also SMD options 7/9). This document describes the base IL300 electrical table across the full K3 bin range (bins A through J); the K3-tolerance suffix variants (IL300-E/-F/-EF/-DEFG and their -X0## package options) are separate orderable grades.",
+    "package": "DIP-8",
+    "pinCount": 8,
+    "lifecycle": "active",
+    "temperatureGrade": "-55..100",
+    "orderingVariants": [
+      { "orderCode": "IL300", "package": "DIP-8" },
+      { "orderCode": "IL300-X007T", "package": "SMD-8 (option 7)", "packing": "tape and reel" },
+      { "orderCode": "IL300-X009T", "package": "SMD-8 (option 9)", "packing": "tape and reel" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "A", "function": "ANODE", "type": "passive", "description": "Input LED (AlGaAs infrared emitter) anode. Forward current IF drives the emitter.", "sourcePage": 1 },
+    { "number": 2, "name": "C", "function": "CATHODE", "type": "passive", "description": "Input LED (emitter) cathode.", "sourcePage": 1 },
+    { "number": 3, "name": "NC", "function": "NC", "type": "passive", "description": "No connection.", "sourcePage": 1 },
+    { "number": 4, "name": "NC", "function": "NC", "type": "passive", "description": "No connection.", "sourcePage": 1 },
+    { "number": 5, "name": "K2 Cathode", "function": "OUT_CATHODE", "type": "passive", "description": "Output/forward PIN photodiode (K2) cathode. Reverse-biased at Vdet; sources the output photocurrent IP2 that tracks the emitter flux.", "sourcePage": 1 },
+    { "number": 6, "name": "K2 Anode", "function": "OUT_ANODE", "type": "passive", "description": "Output/forward PIN photodiode (K2) anode.", "sourcePage": 1 },
+    { "number": 7, "name": "K1 Anode", "function": "SERVO_ANODE", "type": "passive", "description": "Servo/feedback PIN photodiode (K1) anode.", "sourcePage": 1 },
+    { "number": 8, "name": "K1 Cathode", "function": "SERVO_CATHODE", "type": "passive", "description": "Servo/feedback PIN photodiode (K1) cathode. Reverse-biased at Vdet; sources the servo photocurrent IP1 used to close the feedback loop.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "led_forward_voltage",
+      "name": "LED forward voltage",
+      "group": "input",
+      "aliases": ["VF", "forward voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4, "max": 1.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF = 1.4 V (typ) / 1.5 V (max) at IF = 10 mA.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_current",
+      "name": "Input (LED) reverse current",
+      "group": "input",
+      "aliases": ["IR", "reverse current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-6 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 5, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Reverse current IR = 1 uA (typ) at VR = 5 V.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (LED) junction capacitance",
+      "group": "input",
+      "aliases": ["Cj", "junction capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.6e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Junction capacitance Cj = 26 pF (typ) at VF = 0 V, f = 1 MHz.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT (LED EMITTER)"
+        }
+      ]
+    },
+    {
+      "key": "servo_gain",
+      "name": "K1, servo gain (IP1/IF)",
+      "group": "transfer",
+      "aliases": ["K1", "servo gain", "IP1/IF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.005, "typ": 0.009, "max": 0.015 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" }
+          ],
+          "conditionsVerbatim": "K1, servo gain (IP1/IF) = 0.005 (min) / 0.009 (typ) / 0.015 (max) at IF = 10 mA, Vdet = -15 V. Printed as a bare ratio (no unit column).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "forward_gain",
+      "name": "K2, forward gain (IP2/IF)",
+      "group": "transfer",
+      "aliases": ["K2", "forward gain", "IP2/IF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.005, "typ": 0.009, "max": 0.015 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" }
+          ],
+          "conditionsVerbatim": "K2, forward gain (IP2/IF) = 0.005 (min) / 0.009 (typ) / 0.015 (max) at IF = 10 mA, Vdet = -15 V. Printed as a bare ratio (no unit column).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "transfer_gain",
+      "name": "K3, transfer gain (K2/K1)",
+      "group": "transfer",
+      "aliases": ["K3", "K2/K1", "transfer gain"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.56, "typ": 1, "max": 1.65 },
+          "unit": "1",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" }
+          ],
+          "conditionsVerbatim": "K3, transfer gain (K2/K1) = 0.56 (min) / 1 (typ) / 1.65 (max) at IF = 10 mA, Vdet = -15 V. Vishay prints the unit column literally as 'K2/K1'; stored dimensionless (unit 1). Sorted at test into K3 bins A through J (each +/-6 %); base IL300 spans the full range.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "transfer_gain_temp_coefficient",
+      "name": "Transfer gain stability (dK3/dTA)",
+      "group": "transfer",
+      "aliases": ["K3/TA", "dK3/dTA", "transfer gain stability"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 50, "max": 1500 },
+          "unit": "ppm/degC",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" },
+            { "param": "T_A", "min": 0, "max": 75, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Transfer gain stability dK3/dTA = +/-0.005 %/degC (typ) / +/-0.15 %/degC (max) at IF = 10 mA, Vdet = -15 V, Tamb = 0 degC to 75 degC. Converted %/degC -> ppm/degC (x1e4): typ 50, max 1500; the +/- sign (drift can be either polarity) is retained here, the value stored as magnitude.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "transfer_gain_nonlinearity",
+      "name": "Transfer gain linearity (dK3)",
+      "group": "transfer",
+      "aliases": ["dK3", "transfer gain linearity", "nonlinearity"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.25 },
+          "unit": "%",
+          "conditions": [
+            { "param": "I_F", "min": 0.002, "max": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Transfer gain linearity dK3 = +/-0.25 % (typ) over IF = 2 mA to 10 mA. Stored as magnitude 0.25 %.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "output_photocurrent",
+      "name": "Servo (IP1) and forward (IP2) photocurrent",
+      "group": "output",
+      "aliases": ["IP1", "IP2", "servo photocurrent", "forward photocurrent"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Servo photocurrent IP1 = 90 uA (typ) at IF = 10 mA, Vdet = -15 V (K1/feedback photodiode).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "V_DET", "value": -15, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Forward current IP2 = 90 uA (typ) at IF = 10 mA, Vdet = -15 V (K2/output photodiode).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "short_circuit_current",
+      "name": "Output short-circuit current",
+      "group": "output",
+      "aliases": ["ISC", "short circuit current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 9e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Short circuit current ISC = 90 uA (typ) at IF = 10 mA.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "open_circuit_voltage",
+      "name": "Output open-circuit voltage",
+      "group": "output",
+      "aliases": ["VD", "open circuit voltage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 0.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Open circuit voltage VD = 500 mV (typ) at IF = 10 mA.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "photodiode_leakage_current",
+      "name": "Output photodiode dark current",
+      "group": "output",
+      "aliases": ["ID", "dark current"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-9, "max": 2.5e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_DET", "value": -15, "unit": "V" },
+            { "param": "I_F", "value": 0, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Dark current ID = 1 nA (typ) / 25 nA (max) at Vdet = -15 V, IF = 0 A.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Output photodiode junction capacitance",
+      "group": "output",
+      "aliases": ["Cj", "photodiode capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.2e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Junction capacitance Cj = 12 pF (typ) at VF = 0 V, f = 1 MHz.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_power_dissipation",
+      "name": "Output power dissipation (abs max)",
+      "group": "output",
+      "aliases": ["Pdiss", "output power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.05 },
+          "unit": "W",
+          "conditionsVerbatim": "OUTPUT Power dissipation Pdiss = 50 mW (absolute maximum rating, Tamb = 25 degC). The output element is a PIN photodiode; this is its dissipation limit.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "cutoff_frequency",
+      "name": "Frequency response (-3 dB bandwidth)",
+      "group": "dynamic",
+      "aliases": ["BW", "frequency response", "-3 dB bandwidth"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.4e6 },
+          "unit": "Hz",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "R_L", "value": 50, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Frequency response BW (-3 dB) = 1.4 MHz (typ) at IF = 10 mA, MOD = +/-4 mA, RL = 50 ohm (photoconductive operation).",
+          "sourcePage": 3,
+          "sourceTable": "Photoconductive Operation"
+        }
+      ]
+    },
+    {
+      "key": "rise_time",
+      "name": "Output rise time",
+      "group": "dynamic",
+      "aliases": ["tr", "rise time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "R_L", "value": 10000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Rise time tr = 0.8 us (typ) at IF = 10 mA, MOD = +2 mA, RL = 10 kohm.",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "fall_time",
+      "name": "Output fall time",
+      "group": "dynamic",
+      "aliases": ["tf", "fall time"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 8e-7 },
+          "unit": "s",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "R_L", "value": 10000, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Fall time tf = 0.8 us (typ) at IF = 10 mA, MOD = +2 mA, RL = 10 kohm.",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "barrier_capacitance",
+      "name": "Input-output (barrier) capacitance",
+      "group": "isolation",
+      "aliases": ["CIO", "input-output capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Input-output capacitance = 1 pF (typ) at VF = 0 V, f = 1 MHz.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "isolation_voltage",
+      "name": "Maximum rated withstanding isolation voltage (VISO)",
+      "group": "isolation",
+      "aliases": ["VISO", "isolation voltage", "maximum rated withstanding isolation voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 4420 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditionsVerbatim": "Maximum rated withstanding isolation voltage VISO = 4420 Vrms, t = 1 min (UL 1577). Stored in V with statistic rms.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "transient_isolation_voltage",
+      "name": "Maximum transient isolation voltage (VIOTM)",
+      "group": "isolation",
+      "aliases": ["VIOTM", "maximum transient isolation voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "typ": 10000 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "Maximum transient isolation voltage VIOTM = 10 000 Vpeak (DIN EN 60747-5-5, option 1). Stored in V with statistic peak.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "working_isolation_voltage",
+      "name": "Maximum repetitive peak isolation voltage (VIORM)",
+      "group": "isolation",
+      "aliases": ["VIORM", "maximum repetitive peak isolation voltage"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "typ": 890 },
+          "unit": "V",
+          "statistic": "peak",
+          "conditionsVerbatim": "Maximum repetitive peak isolation voltage VIORM = 890 Vpeak (DIN EN 60747-5-5, option 1; continuous-working rating). Stored in V with statistic peak.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "isolation_resistance",
+      "name": "Isolation (input-output) resistance",
+      "group": "isolation",
+      "aliases": ["RIO", "isolation resistance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e12 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_S", "value": 500, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Isolation resistance RIO >= 1e12 ohm at VIO = 500 V, Tamb = 25 degC.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 1e11 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_S", "value": 500, "unit": "V" },
+            { "param": "T_A", "value": 100, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Isolation resistance RIO >= 1e11 ohm at VIO = 500 V, Tamb = 100 degC.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "comparative_tracking_index",
+      "name": "Comparative tracking index (CTI)",
+      "group": "isolation",
+      "aliases": ["CTI", "comparative tracking index"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 175 },
+          "unit": "V",
+          "conditionsVerbatim": "Comparative tracking index CTI = 175 V.",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_output_power",
+      "name": "Output safety power (PSO)",
+      "group": "isolation",
+      "aliases": ["PSO", "output safety power"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.4 },
+          "unit": "W",
+          "conditionsVerbatim": "Output safety power PSO = 400 mW (60747-5-5 safety-limiting value).",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_input_current",
+      "name": "Input safety current (ISI)",
+      "group": "isolation",
+      "aliases": ["ISI", "input safety current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.275 },
+          "unit": "A",
+          "conditionsVerbatim": "Input safety current ISI = 275 mA (60747-5-5 safety-limiting value).",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "safety_case_temperature",
+      "name": "Safety temperature (TS)",
+      "group": "isolation",
+      "aliases": ["TS", "safety temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 175 },
+          "unit": "degC",
+          "conditionsVerbatim": "Safety temperature TS = 175 degC (60747-5-5 safety-limiting value).",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "creepage_distance",
+      "name": "External creepage distance",
+      "group": "isolation",
+      "aliases": ["creepage", "creepage distance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Creepage distance (DIP-8) >= 7 mm. (Package options 6/7/9 are >= 8 mm.)",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "clearance_distance",
+      "name": "External clearance distance",
+      "group": "isolation",
+      "aliases": ["clearance", "clearance distance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Clearance distance (DIP-8) >= 7 mm. (Package options 6/7/9 are >= 8 mm.)",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "insulation_thickness",
+      "name": "Internal insulation thickness (DTI)",
+      "group": "isolation",
+      "aliases": ["DTI", "insulation thickness"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "Insulation thickness DTI >= 0.4 mm (> 0.4 mm internal insulation distance qualifies reinforced insulation).",
+          "sourcePage": 4,
+          "sourceTable": "Safety and Insulation Ratings"
+        }
+      ]
+    },
+    {
+      "key": "input_power_dissipation",
+      "name": "Input (LED) power dissipation (abs max)",
+      "group": "input",
+      "aliases": ["Pdiss", "input power dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "W",
+          "conditionsVerbatim": "INPUT Power dissipation Pdiss = 100 mW (absolute maximum rating, Tamb = 25 degC).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_forward_current",
+      "name": "Input forward current (abs max)",
+      "group": "input",
+      "aliases": ["IF", "forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.06 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward current IF = 60 mA (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Surge (pulsed) forward current (abs max)",
+      "group": "input",
+      "aliases": ["IPK", "surge current", "peak forward current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.25 },
+          "unit": "A",
+          "conditionsVerbatim": "Surge current IPK = 250 mA (pulse width < 10 us, absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_voltage",
+      "name": "Input (LED) reverse voltage (abs max)",
+      "group": "input",
+      "aliases": ["VR", "reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR = 5 V (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["Tj", "junction temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 125 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature Tj = 125 degC (absolute maximum rating; both input LED and output photodiode).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range (abs max)",
+      "group": "thermal",
+      "aliases": ["Tstg", "storage temperature"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = -55 to +150 degC (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating temperature range",
+      "group": "thermal",
+      "aliases": ["Tamb", "operating temperature"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -55, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Tamb = -55 to +100 degC.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "total_power_dissipation",
+      "name": "Total package power dissipation (abs max)",
+      "group": "thermal",
+      "aliases": ["Ptot", "total package dissipation"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.15 },
+          "unit": "W",
+          "conditionsVerbatim": "Total package dissipation Ptot = 150 mW at 25 degC (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "common_mode_rejection_ratio",
+      "name": "Common-mode rejection ratio (CMRR/IMRR)",
+      "group": "dynamic",
+      "aliases": ["CMRR", "IMRR", "common mode rejection ratio", "isolation mode rejection ratio"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 100 },
+          "unit": "dB",
+          "conditions": [
+            { "param": "F", "value": 60, "unit": "Hz" },
+            { "param": "R_L", "value": 2200, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "CMRR, f = 60 Hz, R_L = 2.2 kΩ",
+          "sourcePage": 3,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "output_reverse_voltage",
+      "name": "Output (detector) reverse voltage (abs max)",
+      "group": "output",
+      "aliases": ["output reverse voltage", "detector reverse voltage", "photodiode reverse voltage"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 50 },
+          "unit": "V",
+          "conditionsVerbatim": "OUTPUT reverse voltage V_R (abs max)",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "K3 (transfer gain = K2/K1) is the marquee linear-coupler spec and is stored dimensionless (unit 1); Vishay prints its unit column literally as 'K2/K1'. K1 (servo) and K2 (forward) gains are likewise bare ratios (unit 1).",
+    "Transfer gain stability dK3/dTA is printed as +/-0.005 %/degC (typ) / +/-0.15 %/degC (max) and converted to ppm/degC by x1e4 (typ 50, max 1500).",
+    "Completeness signals - printed, guaranteed specs with no key in the optocoupler dictionary, kept out of parameters rather than forced into a wrong key: (1) Common mode capacitance CCM = 1 pF (typ) at VF = 0 V, f = 1 MHz (page 3) - distinct from the input-output barrier capacitance CIO; (2) Phase response = -45 deg (typ) at 200 kHz, Vdet = -15 V (page 3). The output power dissipation (50 mW) is mapped to collector_power_dissipation (alias 'output power dissipation'), the only output-side dissipation key. (CMRR = 100 dB and the OUTPUT reverse voltage VR = 50 V, previously listed here, are now promoted to first-class parameters.)",
+    "The OUTPUT power dissipation abs-max (50 mW) is carried under collector_power_dissipation; the IL300 output element is a PIN photodiode, not a phototransistor collector, but that key's aliases cover 'output/detector power dissipation'."
+  ],
+  "provenance": {
+    "datasheetSha256": "cfe988098e38fd0e797107128799ae178b93fa9180516dfc6cecb374b7b40ed8",
+    "sourceUrl": "https://www.vishay.com/docs/83622/il300.pdf",
+    "datasheetRevision": "Rev. 2.7, 05-Nov-2025, Document Number 83622",
+    "publishedDate": "2025-11-05",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}

@@ -1,0 +1,632 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "mpn": "4N35",
+    "manufacturer": "Vishay Semiconductors",
+    "family": "optocoupler",
+    "description": "Phototransistor-output optocoupler in a 6-pin DIP with the phototransistor BASE brought out (pin 6). A gallium-arsenide infrared LED (input, pins 1-2) is optically coupled across a galvanic-isolation barrier to a silicon NPN phototransistor (output, pins 4-5-6). CTR > 100 % grade (the 4N35 rank; the sister 4N36/4N37 are separate documents). Isolation test voltage 5000 Vrms, input-output coupling capacitance < 0.5 pF. The base-out pin is what distinguishes this part from the base-less PC817/EL817 phototransistor couplers, enabling BVCBO characterization and external base biasing.",
+    "package": "DIP-6",
+    "pinCount": 6,
+    "lifecycle": "active",
+    "temperatureGrade": "-55..100",
+    "orderingVariants": [
+      { "orderCode": "4N35", "package": "DIP-6", "packing": "tube" }
+    ]
+  },
+  "pinout": [
+    { "number": 1, "name": "Anode", "function": "ANODE", "type": "passive", "description": "Input LED anode. Forward drive current IF flows in here (VF ~1.3 V at IF = 10 mA).", "sourcePage": 1 },
+    { "number": 2, "name": "Cathode", "function": "CATHODE", "type": "passive", "description": "Input LED cathode. Reverse voltage across the LED must stay below VR = 6 V (abs max).", "sourcePage": 1 },
+    { "number": 3, "name": "NC", "function": "NC", "type": "passive", "description": "No connection.", "sourcePage": 1 },
+    { "number": 4, "name": "Emitter", "function": "EMITTER", "type": "passive", "description": "Output phototransistor emitter.", "sourcePage": 1 },
+    { "number": 5, "name": "Collector", "function": "COLLECTOR", "type": "passive", "description": "Output phototransistor collector. Collector-emitter breakdown BVCEO min 30 V; abs-max VCEO 70 V.", "sourcePage": 1 },
+    { "number": 6, "name": "Base", "function": "BASE", "type": "passive", "description": "Output phototransistor base, brought out on this 6-pin variant. Enables collector-base breakdown (BVCBO) characterization and optional external base biasing; leave floating for standard optocoupler operation.", "sourcePage": 1 }
+  ],
+  "parameters": [
+    {
+      "key": "input_reverse_voltage",
+      "name": "Input reverse voltage (abs max)",
+      "group": "input",
+      "aliases": ["VR"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 6 },
+          "unit": "V",
+          "conditionsVerbatim": "Reverse voltage VR = 6 V (absolute maximum rating, Tamb = 25 °C).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_forward_current",
+      "name": "Input forward current (abs max)",
+      "group": "input",
+      "aliases": ["IF"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.05 },
+          "unit": "A",
+          "conditionsVerbatim": "Forward current IF = 50 mA (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "peak_forward_current",
+      "name": "Surge (peak) forward current (abs max)",
+      "group": "input",
+      "aliases": ["IFSM", "surge current"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 1 },
+          "unit": "A",
+          "conditionsVerbatim": "Surge current IFSM = 1 A at t ≤ 10 µs.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_power_dissipation",
+      "name": "Input (LED) power dissipation (abs max)",
+      "group": "input",
+      "aliases": ["Pdiss"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.07 },
+          "unit": "W",
+          "conditionsVerbatim": "Power dissipation Pdiss = 70 mW (input, absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "led_forward_voltage",
+      "name": "LED forward voltage",
+      "group": "input",
+      "aliases": ["VF"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1.3, "max": 1.5 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF = 1.3 V (typ) / 1.5 V (max) at IF = 10 mA (Tamb = 25 °C). JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.9, "typ": 1.3, "max": 1.7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "T_A", "value": -55, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Forward voltage VF = 0.9 V (min) / 1.3 V (typ) / 1.7 V (max) at IF = 10 mA, Tamb = - 55 °C. JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_reverse_current",
+      "name": "Input reverse current",
+      "group": "input",
+      "aliases": ["IR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-7, "max": 1e-5 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_R", "value": 6, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Reverse current IR = 0.1 µA (typ) / 10 µA (max) at VR = 6 V. JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "input_capacitance",
+      "name": "Input (LED) capacitance",
+      "group": "input",
+      "aliases": ["Cj", "CO", "junction capacitance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Junction capacitance Cj = 50 pF (typ) at VR = 0 V, f = 1 MHz. The datasheet's INPUT section prints two distinct input-LED capacitances (see the CO row); both are preserved.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 2.5e-11 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_R", "value": 0, "unit": "V" },
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Capacitance CO = 25 pF (typ) at VR = 0 V, f = 1 MHz. Second, separately-symboled input capacitance printed alongside Cj on the same sheet.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - INPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_emitter_voltage",
+      "name": "Collector-emitter voltage / breakdown",
+      "group": "output",
+      "aliases": ["VCEO", "BVCEO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 70 },
+          "unit": "V",
+          "conditionsVerbatim": "Collector emitter breakdown voltage VCEO = 70 V (absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 30 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 0.001, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Collector emitter breakdown voltage BVCEO = 30 V (min) at IC = 1 mA (4N35 grade). JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "emitter_collector_voltage",
+      "name": "Emitter-collector breakdown voltage",
+      "group": "output",
+      "aliases": ["BVECO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 7 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_E", "value": 1e-4, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Emitter collector breakdown voltage BVECO = 7 V (min) at IE = 100 µA. JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_base_breakdown",
+      "name": "Collector-base breakdown voltage (base-out part)",
+      "group": "output",
+      "aliases": ["BVCBO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 70 },
+          "unit": "V",
+          "conditions": [
+            { "param": "I_C", "value": 1e-4, "unit": "A" },
+            { "param": "I_B", "value": 1e-6, "unit": "A" }
+          ],
+          "conditionsVerbatim": "Collector base breakdown voltage BVCBO = 70 V (min) at IC = 100 µA, IB = 1 µA. Present because the 4N35's base pin is brought out. JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "emitter_base_breakdown",
+      "name": "Emitter-base voltage (abs max, base-out part)",
+      "group": "output",
+      "aliases": ["VEBO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 7 },
+          "unit": "V",
+          "conditionsVerbatim": "Emitter base breakdown voltage VEBO = 7 V (absolute maximum rating). Present because the 4N35's base pin is brought out.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_current",
+      "name": "Collector current (abs max)",
+      "group": "output",
+      "aliases": ["IC"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.05 },
+          "unit": "A",
+          "conditionsVerbatim": "Collector current IC = 50 mA (continuous, absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        },
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.1 },
+          "unit": "A",
+          "conditions": [
+            { "param": "PULSE_WIDTH", "max": 0.001, "unit": "s" }
+          ],
+          "conditionsVerbatim": "Collector current IC = 100 mA at t ≤ 1 ms (pulsed, absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_power_dissipation",
+      "name": "Collector (output) power dissipation (abs max)",
+      "group": "output",
+      "aliases": ["Pdiss"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 0.07 },
+          "unit": "W",
+          "conditionsVerbatim": "Power dissipation Pdiss = 70 mW (output, absolute maximum rating).",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "collector_dark_current",
+      "name": "Collector-emitter dark (leakage) current",
+      "group": "output",
+      "aliases": ["ICEO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 5e-9, "max": 5e-8 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Collector emitter leakage current ICEO = 5 nA (typ) / 50 nA (max) at VCE = 10 V, IF = 0 (Tamb = 25 °C). JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "max": 5e-4 },
+          "unit": "A",
+          "conditions": [
+            { "param": "V_CE", "value": 30, "unit": "V" },
+            { "param": "T_A", "value": 100, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Collector emitter leakage current ICEO = 500 µA (max) at VCE = 30 V, IF = 0, Tamb = 100 °C. JEDEC registered value.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "output_capacitance",
+      "name": "Collector-emitter (output) capacitance",
+      "group": "output",
+      "aliases": ["CCE"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-12 },
+          "unit": "F",
+          "conditions": [
+            { "param": "V_CE", "value": 0, "unit": "V" }
+          ],
+          "conditionsVerbatim": "Collector emitter capacitance CCE = 6 pF at VCE = 0.",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - OUTPUT"
+        }
+      ]
+    },
+    {
+      "key": "current_transfer_ratio",
+      "name": "DC current transfer ratio (CTR)",
+      "group": "transfer",
+      "aliases": ["CTRDC", "CTR"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 100 },
+          "unit": "%",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_F", "value": 0.01, "unit": "A" }
+          ],
+          "conditionsVerbatim": "DC current transfer ratio CTRDC = 100 % (min) at VCE = 10 V, IF = 10 mA (4N35 grade, Tamb = 25 °C). JEDEC registered value.",
+          "sourcePage": 3,
+          "sourceTable": "Current Transfer Ratio"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "min": 40, "typ": 50 },
+          "unit": "%",
+          "conditions": [
+            { "param": "V_CE", "value": 10, "unit": "V" },
+            { "param": "I_F", "value": 0.01, "unit": "A" },
+            { "param": "T_A", "min": -55, "max": 100, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "DC current transfer ratio CTRDC = 40 % (min) / 50 % (typ) at VCE = 10 V, IF = 10 mA, TA = - 55 °C to + 100 °C (4N35 grade). JEDEC registered value.",
+          "sourcePage": 3,
+          "sourceTable": "Current Transfer Ratio"
+        }
+      ]
+    },
+    {
+      "key": "turn_on_time",
+      "name": "Turn-on time",
+      "group": "dynamic",
+      "aliases": ["ton"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-5 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 0.002, "unit": "A" },
+            { "param": "R_L", "value": 100, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Switching time ton = 10 µs (typ) at VCC = 10 V, IC = 2 mA, RL = 100 Ω. The sheet prints ton and toff as a single 10 µs row. JEDEC registered value.",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "turn_off_time",
+      "name": "Turn-off time",
+      "group": "dynamic",
+      "aliases": ["toff"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e-5 },
+          "unit": "s",
+          "conditions": [
+            { "param": "V_CC", "value": 10, "unit": "V" },
+            { "param": "I_C", "value": 0.002, "unit": "A" },
+            { "param": "R_L", "value": 100, "unit": "ohm" }
+          ],
+          "conditionsVerbatim": "Switching time toff = 10 µs (typ) at VCC = 10 V, IC = 2 mA, RL = 100 Ω. The sheet prints ton and toff as a single 10 µs row. JEDEC registered value.",
+          "sourcePage": 3,
+          "sourceTable": "Switching Characteristics"
+        }
+      ]
+    },
+    {
+      "key": "isolation_voltage",
+      "name": "Isolation withstand voltage (VISO)",
+      "group": "isolation",
+      "aliases": ["VISO"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 5000 },
+          "unit": "V",
+          "statistic": "rms",
+          "conditionsVerbatim": "Isolation test voltage VISO = 5000 VRMS. The printed 'VRMS' magnitude is stored in V with statistic rms.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "creepage_distance",
+      "name": "External creepage distance",
+      "group": "isolation",
+      "aliases": ["creepage"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Creepage ≥ 7 mm.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "clearance_distance",
+      "name": "External clearance distance",
+      "group": "isolation",
+      "aliases": ["clearance"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 0.007 },
+          "unit": "m",
+          "conditionsVerbatim": "Clearance ≥ 7 mm.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "insulation_thickness",
+      "name": "Internal insulation thickness (DTI)",
+      "group": "isolation",
+      "aliases": ["insulation thickness"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 4e-4 },
+          "unit": "m",
+          "conditionsVerbatim": "Isolation thickness between emitter and detector ≥ 0.4 mm.",
+          "sourcePage": 1,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "comparative_tracking_index",
+      "name": "Comparative tracking index (CTI)",
+      "group": "isolation",
+      "aliases": ["CTI"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "min": 175 },
+          "unit": "V",
+          "conditionsVerbatim": "Comparative tracking index = 175 (DIN IEC 112 / VDE 0303, part 1). Printed as a bare index; the canonical unit is V.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    },
+    {
+      "key": "isolation_resistance",
+      "name": "Isolation (input-output) resistance",
+      "group": "isolation",
+      "aliases": ["RIO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e12 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_S", "value": 500, "unit": "V" },
+            { "param": "T_A", "value": 25, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Isolation resistance RIO = 10^12 Ω at VIO = 500 V, Tamb = 25 °C.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        },
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 1e11 },
+          "unit": "ohm",
+          "conditions": [
+            { "param": "V_S", "value": 500, "unit": "V" },
+            { "param": "T_A", "value": 100, "unit": "degC" }
+          ],
+          "conditionsVerbatim": "Isolation resistance RIO = 10^11 Ω at VIO = 500 V, Tamb = 100 °C. The Electrical Characteristics table also lists RIO = 10^11 Ω (min) at VIO = 500 V as the guaranteed input-output resistance.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    },
+    {
+      "key": "barrier_capacitance",
+      "name": "Barrier (input-output) capacitance",
+      "group": "isolation",
+      "aliases": ["CIO"],
+      "measurements": [
+        {
+          "limitClass": "characterized",
+          "value": { "typ": 6e-13 },
+          "unit": "F",
+          "conditions": [
+            { "param": "F", "value": 1e6, "unit": "Hz" }
+          ],
+          "conditionsVerbatim": "Capacitance, input output CIO = 0.6 pF at f = 1 MHz (datasheet feature line: input-output coupling capacitance < 0.5 pF).",
+          "sourcePage": 2,
+          "sourceTable": "Electrical Characteristics - COUPLER"
+        }
+      ]
+    },
+    {
+      "key": "storage_temperature",
+      "name": "Storage temperature range",
+      "group": "thermal",
+      "aliases": ["Tstg"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "min": -55, "max": 150 },
+          "unit": "degC",
+          "conditionsVerbatim": "Storage temperature Tstg = - 55 to + 150 °C.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    },
+    {
+      "key": "operating_temperature",
+      "name": "Operating (ambient) temperature range",
+      "group": "thermal",
+      "aliases": ["Tamb", "Topr"],
+      "measurements": [
+        {
+          "limitClass": "recommended",
+          "value": { "min": -55, "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Operating temperature Tamb = - 55 to + 100 °C.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    },
+    {
+      "key": "junction_temperature",
+      "name": "Junction temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["Tj"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 100 },
+          "unit": "degC",
+          "conditionsVerbatim": "Junction temperature Tj = 100 °C (absolute maximum rating).",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    },
+    {
+      "key": "soldering_temperature",
+      "name": "Soldering temperature (abs max)",
+      "group": "thermal",
+      "aliases": ["Tsld"],
+      "measurements": [
+        {
+          "limitClass": "absolute_max",
+          "value": { "max": 260 },
+          "unit": "degC",
+          "conditionsVerbatim": "Soldering temperature Tsld = 260 °C, max. 10 s dip soldering, distance to seating plane ≥ 1.5 mm.",
+          "sourcePage": 2,
+          "sourceTable": "Absolute Maximum Ratings - COUPLER (continued)"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "The 4N35 datasheet (Vishay Doc. 81181) covers three CTR-identical grades (4N35, 4N36, 4N37, all CTR > 100 %); this document describes the 4N35 orderable grade only, per the one-grade-per-document rule.",
+    "The INPUT section of the Electrical Characteristics prints two separately-symboled LED capacitances at the same conditions (VR = 0 V, f = 1 MHz): Junction capacitance Cj = 50 pF and Capacitance CO = 25 pF. Both are preserved as measurements under input_capacitance rather than choosing between them.",
+    "Absolute-maximum input and output power dissipation are both 70 mW on this part; each is captured on its own key (input_power_dissipation, collector_power_dissipation)."
+  ],
+  "provenance": {
+    "datasheetSha256": "36e7fc654f6098e7d1bd7a53880f62e58454cd2d1d6baeac05852ee379e46bb2",
+    "sourceUrl": "https://www.vishay.com/docs/81181/4n35.pdf",
+    "datasheetRevision": "Rev. 1.2, 07-Jan-10 (Document Number 81181)",
+    "publishedDate": "2010-01-07",
+    "extractionMethod": "manual",
+    "verified": true
+  }
+}
